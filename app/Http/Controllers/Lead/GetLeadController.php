@@ -16,7 +16,6 @@ class GetLeadController extends Controller
     public function __invoke(Lead $lead): View
     {
         $name = config('app.name');
-        $lead = Lead::where('uuid', $leadUuid)->firstOrFail();
 
         return view('lead.lead_index', [
             'lead' => $lead,
