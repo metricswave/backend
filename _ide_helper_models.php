@@ -19,9 +19,7 @@ namespace App\Models{
  * @property string $email
  * @property int $paid_price
  * @property \Illuminate\Support\Carbon|null $paid_at
- * @property int $form_filled
- * @property int $landing_shared
- * @property int $follow_me_on_twitter
+ * @property bool $form_filled
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Database\Factories\LeadFactory factory($count = null, $state = [])
@@ -30,16 +28,38 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Lead query()
  * @method static \Illuminate\Database\Eloquent\Builder|Lead whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Lead whereEmail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Lead whereFollowMeOnTwitter($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Lead whereFormFilled($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Lead whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Lead whereLandingShared($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Lead wherePaidAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Lead wherePaidPrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Lead whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Lead whereUuid($value)
  */
 	class Lead extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Price
+ *
+ * @property int $id
+ * @property int $price
+ * @property int $remaining
+ * @property int $total_available
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Database\Factories\PriceFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder|Price newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Price newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Price query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Price whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Price whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Price wherePrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Price whereRemaining($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Price whereTotalAvailable($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Price whereUpdatedAt($value)
+ */
+	class Price extends \Eloquent {}
 }
 
 namespace App\Models{
