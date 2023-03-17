@@ -13,6 +13,7 @@ return new class extends Migration {
             $table->string('email');
             $table->integer('paid_price')->default(0);
             $table->dateTime('paid_at')->nullable();
+            $table->boolean('form_filled')->default(false);
             $table->timestamps();
         });
     }

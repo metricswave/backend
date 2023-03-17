@@ -14,11 +14,14 @@ namespace App\Models{
 /**
  * App\Models\Lead
  *
+ * @property int $id
  * @property string $uuid
  * @property string $email
  * @property int $paid_price
- * @property Date $paid_at
- * @property int $id
+ * @property \Illuminate\Support\Carbon|null $paid_at
+ * @property int $form_filled
+ * @property int $landing_shared
+ * @property int $follow_me_on_twitter
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Database\Factories\LeadFactory factory($count = null, $state = [])
@@ -27,7 +30,10 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Lead query()
  * @method static \Illuminate\Database\Eloquent\Builder|Lead whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Lead whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lead whereFollowMeOnTwitter($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lead whereFormFilled($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Lead whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lead whereLandingShared($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Lead wherePaidAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Lead wherePaidPrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Lead whereUpdatedAt($value)
