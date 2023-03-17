@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --font-mono: 'PT Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+    monospace;
+
+    --landing-nav-height: 56px;
+
+    /*  Colors */
+    --text-color: #111;
+    --background-color: rgb(249 246 241);
+
+    /*  Size and spacing */
+    --landing-max-width: 768px;
+    --app-padding: 1rem;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        /*  Colors */
+        --text-color: #dfdfdf;
+        --background-color: #181818;
+    }
+}
+
+html {
+    font-family: var(--font-mono);
+    color: var(--text-color);
+    background: var(--background-color);
+    scroll-behavior: smooth;
+}
+
+.mw-landing {
+    @apply max-w-[var(--landing-max-width)];
+}
+
+.p-app {
+    @apply p-[var(--app-padding)];
+}
