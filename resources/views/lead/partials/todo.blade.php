@@ -29,7 +29,7 @@
         <a
             class="items-top group flex cursor-pointer flex-row rounded p-5 transition-all duration-300 hover:animate-none hover:bg-blue-50/75 active:bg-blue-100/50 dark:hover:bg-blue-800/5 dark:active:bg-blue-500/50 bg-red-500/5 mt-4"
             target="_blank"
-            href="https://twitter.com/intent/tweet?text=I%20just%20discover%20{{ config('app.name') }}%20%F0%9F%8E%89!%0A%0AAn%20app%20that%20will%20send%20you%20Real-time%20notifications%20for%20everything%20that%20matters to you.%0A%0ANever%20miss%20a%20beat%20%F0%9F%94%A5&url=https%3A%2F%2F{{ config('app.url') }}">
+            href="https://twitter.com/intent/tweet?text=I%20just%20discover%20{{ config('app.name') }}%20%F0%9F%8E%89!%0A%0AAn%20app%20that%20will%20send%20you%20Real-time%20notifications%20for%20everything%20that%20matters to you.%0A%0ANever%20miss%20a%20beat%20%F0%9F%94%A5&url={{ config('app.url') }}">
 
             <!-- Circle -->
             <div class="">
