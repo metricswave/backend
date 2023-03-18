@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Mail;
 
 class UserLifetimeLicenceMailCommand extends Command
 {
+    private const MAIL_TYPE = 'user-lifetime-license-v2';
+
     protected $signature = 'app:mail:user-lifetime-licence-mail';
 
     protected $description = 'Send lifetime license deal to user who has not bought a license yet.';
@@ -17,7 +19,7 @@ class UserLifetimeLicenceMailCommand extends Command
     public function handle(): void
     {
         $leads = Lead::whereNull('paid_at')->get();
-        $mailLogs = MailLog::where('type', 'user-lifetime-license')->get()->pluck('mail');
+        $mailLogs = MailLog::where('type', self::MAIL_TYPE)->get()->pluck('mail');
 
         $leads = $leads->filter(function (Lead $lead) use ($mailLogs) {
             return !$mailLogs->contains($lead->email);
@@ -28,7 +30,7 @@ class UserLifetimeLicenceMailCommand extends Command
 
             MailLog::create([
                 'mail' => $lead->email,
-                'type' => 'user-lifetime-license',
+                'type' => self::MAIL_TYPE,
             ]);
         });
     }
