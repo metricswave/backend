@@ -59,6 +59,7 @@
     <!-- Scripts -->
     @viteReactRefresh
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @include('partials.analytics')
 </head>
 <body>
     <nav class="p-app mw-landing mx-auto mt-8 flex items-center justify-between">
