@@ -64,7 +64,7 @@
     <nav class="p-app mw-landing mx-auto mt-8 flex items-center justify-between">
         <a class="flex items-center space-x-3 text-zinc-900 dark:text-white"
            href="/">
-            <div class="inline-block h-6 w-6 rounded-full bg-gradient-to-b from-pink-500 to-amber-500"></div>
+            <div class="inline-block h-6 w-6 bg-gradient-to-b from-pink-500 to-amber-500"></div>
             <span class="font-bold tracking-tighter">{{ config('app.name') }}</span>
         </a>
 

@@ -17,6 +17,6 @@ class PostLeadController extends Controller
     {
         $lead = ($this->createLeadService)($request->email);
 
-        return response()->redirectTo("/lead/{$lead->uuid}");
+        return response()->redirectTo("/leads/{$lead->uuid}");
     }
 }

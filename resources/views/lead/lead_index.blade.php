@@ -44,7 +44,7 @@
             <div class="mw-landing mx-auto flex flex-col space-y-6 sm:flex-row sm:space-y-0 sm:space-x-6">
                 @foreach($prices as $price)
                     <a
-                        href="{{ $price->remaining === 0 ? '' : '/lead/' . $lead->uuid . '/price/' . $price->id }}"
+                        href="{{ $price->remaining === 0 ? '' : '/leads/' . $lead->uuid . '/prices/' . $price->id }}"
                         class="backdrop-blur-x duration-400 flex-1 rounded border bg-white/50 p-6 transition-all  dark:border-zinc-600 dark:bg-zinc-700/50 dark:shadow-zinc-400 {{ $price->remaining > 0 ? 'shadow hover:bg-white/90 dark:hover:bg-zinc-700' : 'cursor-default opacity-90' }}">
 
                         <h3 class="mt-3 flex flex-row items-center justify-center text-center text-6xl font-light">

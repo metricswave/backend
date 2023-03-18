@@ -22,11 +22,11 @@ Route::view('/privacy-policy', 'privacy-policy');
 Route::view('/terms-and-conditions', 'terms-and-conditions');
 
 // Leads
-Route::get('/lead/{lead:uuid}', GetLeadController::class);
-Route::post('/lead', PostLeadController::class);
+Route::get('/leads/{lead:uuid}', GetLeadController::class);
+Route::post('/leads', PostLeadController::class);
 
 // Prices
-Route::get('/lead/{lead:uuid}/price/{price}', GetCheckoutController::class);
+Route::get('/leads/{lead:uuid}/prices/{price}', GetCheckoutController::class);
 
 // Tally
 Route::post('/tally', PostTallyController::class);

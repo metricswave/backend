@@ -1,4 +1,4 @@
-<form action="/lead"
+<form action="/leads"
       class="flex w-full flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-2"
       method="POST">
     @csrf

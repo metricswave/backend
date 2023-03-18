@@ -28,8 +28,8 @@ class GetCheckoutController extends Controller
                     ],
                 ],
                 [
-                    'success_url' => url('/lead/' . $lead->uuid . '/success'),
-                    'cancel_url' => url('/lead/' . $lead->uuid . '?cancelled=true'),
+                    'success_url' => url('/leads/' . $lead->uuid . '/success'),
+                    'cancel_url' => url('/leads/' . $lead->uuid . '?cancelled=true'),
                     'mode' => 'payment',
                     'metadata' => [
                         'lead_uuid' => $lead->uuid,

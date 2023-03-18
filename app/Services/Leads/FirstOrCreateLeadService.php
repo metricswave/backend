@@ -11,7 +11,7 @@ class FirstOrCreateLeadService
     {
         return Lead::firstOrCreate(
             ['email' => $mail],
-            ['uuid' => Str::uuid()->toString()]
+            ['uuid' => Str::random(15)]
         );
     }
 }

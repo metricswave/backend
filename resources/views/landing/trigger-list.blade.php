@@ -1,8 +1,9 @@
 <div class="relative before:absolute before:top-0 before:bottom-0 before:left-0 before:z-10 before:block before:w-10 before:bg-gradient-to-r before:from-[var(--background-color)] before:via-[var(--background-color)] before:to-transparent after:absolute after:top-0 after:bottom-0 after:right-0 after:block after:w-10 after:bg-gradient-to-r after:from-transparent after:via-[var(--background-color)] after:to-[var(--background-color)]">
     <div class="mt-[-620px] mb-10 overflow-x-scroll px-20 pt-20 pb-10">
-        <div class="absolute top-28 h-48 w-48 animate-blob rounded-full bg-pink-500/10 blur-3xl"></div>
-        <div class="absolute top-40 right-96 h-48 w-48 animate-blob rounded-full bg-cyan-500/10 blur-3xl"></div>
-        <div class="absolute top-36 right-0 h-48 w-48 animate-blob rounded-full bg-pink-500/10 blur-3xl"></div>
+        <div class="absolute z-10 top-28 h-48 w-48 animate-blob rounded-full bg-pink-500/10 blur-3xl"></div>
+        <div class="absolute z-10 top-40 right-96 h-48 w-48 animate-blob rounded-full bg-cyan-500/10 blur-3xl"></div>
+        <div class="absolute z-10 top-36 right-0 h-48 w-48 animate-blob rounded-full bg-pink-500/10 blur-3xl"></div>
+
         <div class="relative flex w-[3300px] space-x-10 py-5 px-10 after:content-[''] undefined">
             <div class="w-[450px]">
                 <div class="group relative w-full">
