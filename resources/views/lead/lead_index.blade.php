@@ -8,7 +8,7 @@
                     roadmap to see when the first version will be available and what it will contain. Just one more
                     thing, <a
                         class="text-blue-500 hover:underline"
-                        href="https://twitter.com/intent/tweet?text=Just%20got%20my%20lifetime%20license%20for%20v{{ config('app.name') }}!%0A%0ALooking%20forward%20to%20launching%20the%20app%20to%20set%20up%20my%20own%20notifications.%0A%{{ config('app.url') }}"
+                        href="https://twitter.com/intent/tweet?text=Just%20got%20my%20lifetime%20license%20for%20{{ config('app.name') }}!%0A%0ALooking%20forward%20to%20launching%20the%20app%20to%20set%20up%20my%20own%20notifications.&url={{ config('app.url') }}"
                         rel="noreferrer"
                         target="_blank">Share your purchase!</a></p>
 
