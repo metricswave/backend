@@ -1,6 +1,21 @@
 @extends('layouts.landing')
 
 @section('content')
+    @if(request()->query('success'))
+        <div class="mw-landing mt-20 mb-10 mx-auto">
+            <div class="p-4 rounded bg-green-50 dark:bg-green-500/10">
+                <p><strong>Thanks for purchasing a lifetime license 🥰.</strong> In the coming days, we will publish a
+                    roadmap to see when the first version will be available and what it will contain. Just one more
+                    thing, <a
+                        class="text-blue-500 hover:underline"
+                        href="https://twitter.com/intent/tweet?text=Just%20got%20my%20lifetime%20license%20for%20v{{ config('app.name') }}!%0A%0ALooking%20forward%20to%20launching%20the%20app%20to%20set%20up%20my%20own%20notifications.%0A%{{ config('app.url') }}"
+                        rel="noreferrer"
+                        target="_blank">Share your purchase!</a></p>
+
+            </div>
+        </div>
+    @endif
+
     <div class="mw-landing p-app mx-auto mt-20">
         <div class="flex flex-col space-y-6 text-lg leading-loose">
             <h3 class="text-2xl">Hi 👋,</h3>
