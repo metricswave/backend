@@ -12,7 +12,7 @@ class PostTallyController extends Controller
     public function __invoke(Request $request): Response
     {
         $leadUuid = collect($request->json('data.fields', []))
-            ->find(fn($field) => $field['label'] === 'lead_id');
+            ->first(fn($field) => $field['label'] === 'lead_id');
 
         Lead::where('uuid', $leadUuid['value'])
             ->update([
