@@ -3,7 +3,6 @@
 use App\Http\Controllers\Checkout\GetCheckoutController;
 use App\Http\Controllers\Lead\GetLeadController;
 use App\Http\Controllers\Lead\PostLeadController;
-use App\Http\Controllers\Tally\PostTallyController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,8 +26,5 @@ Route::post('/leads', PostLeadController::class);
 
 // Prices
 Route::get('/leads/{lead:uuid}/prices/{price}', GetCheckoutController::class);
-
-// Tally
-Route::post('/tally', PostTallyController::class);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
