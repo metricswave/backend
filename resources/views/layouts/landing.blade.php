@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+{{--<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">--}}
 <head>
     <meta charset="utf-8">
     <meta name="viewport"
@@ -21,7 +21,7 @@
     <meta property="og:description"
           content="Real-time notifications for everything that matters to you."/>
     <meta property="og:image"
-          content="/images/notifywave.png"/>
+          content="{{ config('app.url') }}/images/notifywave.png"/>
 
     <meta name="twitter:card"
           content="summary_large_image"/>
@@ -32,7 +32,7 @@
     <meta name="twitter:creator"
           content="@get_monse"/>
     <meta name="twitter:image"
-          content="/images/notifywave.png"/>
+          content="{{ config('app.url') }}/images/notifywave.png"/>
 
     {{-- Favicon --}}
     <link rel="apple-touch-icon"
