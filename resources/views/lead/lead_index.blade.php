@@ -37,7 +37,7 @@
             <div class="flex flex-col space-y-6 pt-12 sm:pt-20">
                 <h2 class="scroll-mt-10 text-2xl font-bold dark:text-white"
                     id="lifetime-license">Lifetime license ✨</h2>
-                <p><span class="underline">This is a unique opportunity.</span> In the future, when we launch
+                <p><span class="font-bold">This is a unique opportunity.</span> In the future, when we launch
                     {{ config('app.name') }}, there will be two plans, a free plan and a monthly payment plan.</p>
                 <p>The free plan will have a maximum number of notifications and some triggers will be available only to
                     paid users.</p>
