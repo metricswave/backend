@@ -21,7 +21,7 @@
     <meta property="og:description"
           content="Real-time notifications for everything that matters to you."/>
     <meta property="og:image"
-          content="{{ config('app.url') }}/images/notifywave.png"/>
+          content="{{ config('app.url') }}/images/notifywave.png?v=20230327173352"/>
 
     <meta name="twitter:card"
           content="summary_large_image"/>
@@ -32,7 +32,7 @@
     <meta name="twitter:creator"
           content="@get_monse"/>
     <meta name="twitter:image"
-          content="{{ config('app.url') }}/images/notifywave.png"/>
+          content="{{ config('app.url') }}/images/notifywave.png?v=20230327173352"/>
 
     {{-- Favicon --}}
     <link rel="apple-touch-icon"
