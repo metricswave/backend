@@ -66,8 +66,8 @@
                 </li>
             </ol>
 
-            <div class="-mt-44 mb-4 overflow-x-scroll px-20 pt-4 pb-10 pl-[50%]">
-                <div class="relative flex w-[3300px] space-x-10 after:content-[''] -ml-[340px]">
+            <div class="-mt-44 mb-4 overflow-x-scroll px-20 pt-4 pb-10 sm:pl-[50%]">
+                <div class="relative flex w-[1000px] space-x-10 after:content-[''] -ml-10 sm:-ml-[340px]">
                     <div class="w-[450px]">
                         <div class="group relative w-full">
                             <div class="absolute -inset-0.5 bg-gradient-to-r from-cyan-100 to-cyan-200 animate-tilt rounded-xl opacity-10 blur transition duration-[2s] group-hover:opacity-50 group-hover:duration-300"></div>
@@ -156,8 +156,8 @@
                 </li>
             </ol>
 
-            <div class="-mt-44 mb-4 overflow-x-scroll px-20 pt-4 pb-10 pl-[50%]">
-                <div class="relative flex w-[3300px] space-x-10 after:content-[''] -ml-[340px]">
+            <div class="-mt-44 mb-4 overflow-x-scroll px-20 pt-4 pb-10 sm:pl-[50%]">
+                <div class="relative flex w-[1500px] space-x-10 after:content-[''] -ml-10 sm:-ml-[340px]">
                     <div class="w-[450px]">
                         <div class="group relative w-full">
                             <div class="absolute -inset-0.5 bg-gradient-to-r from-red-100 to-purple-200 animate-tilt rounded-xl opacity-10 blur transition duration-[2s] group-hover:opacity-50 group-hover:duration-300"></div>
