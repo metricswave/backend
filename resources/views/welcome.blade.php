@@ -8,7 +8,7 @@
                 for everything that matters to you</h1>
 
             <p class="text-xl font-light leading-normal sm:text-2xl">&mdash; from your favorites sport events,
-                reminders to leave for appointments, latest news updates, bank transactions, severe weather alerts,
+                reminders to leave for appointments, the latest news updates, bank transactions, severe weather alerts,
                 or anything else.</p>
 
             <p class="text-xl font-light leading-normal sm:text-2xl">Never miss a beat and stay on top of your

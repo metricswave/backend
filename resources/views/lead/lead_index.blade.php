@@ -27,6 +27,13 @@
                 @include('lead.partials.todo')
             </div>
 
+            <div class="mt-12 px-5 py-4 shadow-sm text-base rounded bg-yellow-50 dark:bg-yellow-500/10">
+                <p>🗺️ &mdash; We want to be transparent with the timing and development of our app. Here you have all
+                    the information about how it will be and when the first version will be released.
+                    <a class="font-bold underline underline-offset-4 hover:no-underline"
+                       href="/roadmap">Check our roadmap →</a></p>
+            </div>
+
             <div class="flex flex-col space-y-6 pt-12 sm:pt-20">
                 <h2 class="scroll-mt-10 text-2xl font-bold dark:text-white"
                     id="lifetime-license">Lifetime license ✨</h2>
