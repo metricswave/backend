@@ -146,8 +146,7 @@
 
                     <h3 class="mb-3 text-xl font-bold">💅 Custom trigger</h3>
                     <p class="pb-4 text-lg font-light leading-normal">You will be able to
-                        integrate {{ config('app.name') }} with
-                        other applications or scripts easily.</p>
+                        integrate {{ config('app.name') }} with other applications or scripts easily.</p>
                     <p class="pb-4 text-lg font-light leading-normal">You will receive a URL from which you can send
                         notifications to yourself instantly. This way you can easily integrate it into almost any
                         site.</p>
@@ -192,7 +191,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="w-[450px]">
                         <div class="group relative w-full">
                             <div class="absolute -inset-0.5 bg-gradient-to-r from-red-100 to-pink-400 animate-tilt rounded-xl opacity-10 blur transition duration-[2s] group-hover:opacity-50 group-hover:duration-300"></div>
@@ -226,7 +224,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="w-[450px]">
                         <div class="group relative w-full">
                             <div class="absolute -inset-0.5 bg-gradient-to-r from-pink-100 to-blue-400 animate-tilt rounded-xl opacity-10 blur transition duration-[2s] group-hover:opacity-50 group-hover:duration-300"></div>
@@ -260,7 +257,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
 
