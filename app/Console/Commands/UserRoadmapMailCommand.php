@@ -2,28 +2,28 @@
 
 namespace App\Console\Commands;
 
-use App\Mail\LifetimeLicenseDealMail;
+use App\Mail\RoadmapMail;
 use App\Models\Lead;
 use App\Models\MailLog;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
 
-class UserLifetimeLicenceMailCommand extends Command
+class UserRoadmapMailCommand extends Command
 {
     use LeadMailCommand;
 
-    private const MAIL_TYPE = 'user-lifetime-license-v2';
+    private const MAIL_TYPE = 'user-roadmap';
 
-    protected $signature = 'app:mail:user-lifetime-licence-mail {email?}';
+    protected $signature = 'app:mail:user-roadmap {email?}';
 
-    protected $description = 'Send lifetime license deal to user who has not bought a license yet.';
+    protected $description = 'Send a mail about the roadmap to the user.';
 
     public function handle(): void
     {
         $leads = $this->getMailableLeads($this->argument('email'), self::MAIL_TYPE);
 
         $this->withProgressBar($leads, function (Lead $lead) {
-            Mail::send(new LifetimeLicenseDealMail($lead));
+            Mail::send(new RoadmapMail($lead));
 
             MailLog::create([
                 'mail' => $lead->email,

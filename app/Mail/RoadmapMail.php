@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class LifetimeLicenseDealMail extends Mailable
+class RoadmapMail extends Mailable
 {
     use Queueable;
     use SerializesModels;
@@ -22,16 +22,17 @@ class LifetimeLicenseDealMail extends Mailable
     {
         return new Envelope(
             to: $this->lead->email,
-            subject: 'Lifetime License Deal Mail',
+            subject: 'Our roadmap is ready 🗺️',
         );
     }
 
     public function content(): Content
     {
         return new Content(
-            markdown: 'mail.lifetime_license_deal',
+            markdown: 'mail.roadmap',
             with: [
                 'leadUuid' => $this->lead->uuid,
+                'hasLicense' => $this->lead->paid_price > 0,
             ],
         );
     }
