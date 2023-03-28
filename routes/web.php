@@ -22,13 +22,3 @@ Route::post('/leads', PostLeadController::class);
 
 // Prices
 Route::get('/leads/{lead:uuid}/prices/{price}', GetCheckoutController::class);
-
-
-/*
-|--------------------------------------------------------------------------
-| Single Page Application
-|--------------------------------------------------------------------------
- */
-if (config('app.env') === 'local') {
-    Route::get('/app', App\Http\Controllers\AppController::class)->name('app');
-}
