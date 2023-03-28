@@ -31,22 +31,32 @@ class LoginController extends Controller
         ]);
     }
 
-    private function token(User $user, string $deviceName): string
+    private function token(User $user, string $deviceName): array
     {
-        return $user
-            ->createToken(
-                name: $deviceName,
-                expiresAt: now()->addDay()
-            )->plainTextToken;
+        $expiresAt = now()->addDay();
+
+        return [
+            'token' => $user
+                ->createToken(
+                    name: $deviceName,
+                    expiresAt: $expiresAt
+                )->plainTextToken,
+            'expires_at' => $expiresAt->timestamp,
+        ];
     }
 
-    private function refreshToken(User $user, string $deviceName): string
+    private function refreshToken(User $user, string $deviceName): array
     {
-        return $user
-            ->createToken(
-                name: $deviceName,
-                abilities: ['refresh'],
-                expiresAt: now()->addDay(),
-            )->plainTextToken;
+        $expiresAt = now()->addWeek();
+
+        return [
+            'token' => $user
+                ->createToken(
+                    name: $deviceName,
+                    abilities: ['refresh'],
+                    expiresAt: $expiresAt,
+                )->plainTextToken,
+            'expires_at' => $expiresAt->timestamp,
+        ];
     }
 }
