@@ -7,13 +7,8 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| Landing page routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
 */
 
 Route::view('/', 'welcome');
@@ -28,4 +23,12 @@ Route::post('/leads', PostLeadController::class);
 // Prices
 Route::get('/leads/{lead:uuid}/prices/{price}', GetCheckoutController::class);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+/*
+|--------------------------------------------------------------------------
+| Single Page Application
+|--------------------------------------------------------------------------
+ */
+if (config('app.env') === 'local') {
+    Route::get('/app', App\Http\Controllers\AppController::class)->name('app');
+}
