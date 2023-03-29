@@ -18,4 +18,13 @@ class UserRepository
     {
         return User::query();
     }
+
+    public function create(string $name, string $email, string $password): User
+    {
+        return $this->builder()->create([
+            'name' => $name,
+            'email' => $email,
+            'password' => $password,
+        ]);
+    }
 }

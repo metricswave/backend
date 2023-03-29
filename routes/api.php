@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\Auth\LoginController;
+use App\Http\Controllers\Api\Auth\SignUpController;
 use App\Http\Controllers\Tally\PostTallyController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Auth
+Route::post('/signup', SignUpController::class);
 Route::post('/login', LoginController::class);
 
 // Tally
