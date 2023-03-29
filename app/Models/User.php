@@ -27,4 +27,46 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * @param  string  $deviceName
+     * @return array{token: array{token: string, expires_at: int}, refresh_token: array{token: string, expires_at: int}}
+     */
+    public function createTokens(string $deviceName): array
+    {
+        return [
+            'token' => $this->createAuthToken($deviceName),
+            'refresh_token' => $this->createRefreshToken($deviceName),
+        ];
+    }
+
+    private function createAuthToken(string $deviceName): array
+    {
+        $expiresAt = now()->addDay();
+
+        return [
+            'token' => $this
+                ->createToken(
+                    name: $deviceName,
+                    abilities: ['api'],
+                    expiresAt: $expiresAt
+                )->plainTextToken,
+            'expires_at' => $expiresAt->timestamp,
+        ];
+    }
+
+    private function createRefreshToken(string $deviceName): array
+    {
+        $expiresAt = now()->addWeek();
+
+        return [
+            'token' => $this
+                ->createToken(
+                    name: $deviceName,
+                    abilities: [TokenAbility::REFRESH],
+                    expiresAt: $expiresAt,
+                )->plainTextToken,
+            'expires_at' => $expiresAt->timestamp,
+        ];
+    }
 }
