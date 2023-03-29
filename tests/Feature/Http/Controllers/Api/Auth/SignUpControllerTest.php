@@ -49,7 +49,7 @@ it('validates the email', function () {
             'device_name' => 'test',
         ])
         ->assertInvalid([
-            'email' => 'The email must be a valid email address.',
+            'email' => 'The email field must be a valid email address.',
         ]);
 });
 
