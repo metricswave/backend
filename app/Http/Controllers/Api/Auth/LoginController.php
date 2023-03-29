@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Api\Auth;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\JsonController;
 use App\Http\Requests\LoginRequest;
 use App\Models\User;
 use App\Repositories\UserRepository;
 use Hash;
 use Illuminate\Http\JsonResponse;
 
-class LoginController extends Controller
+class LoginController extends JsonController
 {
     public function __construct(private readonly UserRepository $userRepository)
     {
@@ -20,12 +20,10 @@ class LoginController extends Controller
         $user = $this->userRepository->firstByEmail($request->email);
 
         if (!Hash::check($request->password, $user->password)) {
-            return response()->json([
-                'message' => 'The provided credentials are incorrect.',
-            ], 401);
+            return $this->errorResponse('The provided credentials are incorrect.', 401);
         }
 
-        return response()->json([
+        return $this->response([
             'token' => $this->token($user, $request->device_name),
             'refresh_token' => $this->refreshToken($user, $request->device_name),
         ]);

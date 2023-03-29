@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Tally\PostTallyController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Auth
-Route::post('/login', App\Http\Controllers\Auth\LoginController::class);
+Route::post('/login', LoginController::class);
 
 // Tally
 Route::post('/tally', PostTallyController::class);

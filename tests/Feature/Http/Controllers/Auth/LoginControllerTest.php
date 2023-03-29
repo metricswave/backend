@@ -16,7 +16,12 @@ it("return expected response", function () {
     ])
         ->assertStatus(200)
         ->assertJson(fn(AssertableJson $json) => $json
-            ->hasAll(['token', 'refresh_token'])
+            ->hasAll([
+                'data.token.token',
+                'data.token.expires_at',
+                'data.refresh_token.token',
+                'data.refresh_token.expires_at',
+            ])
         );
 });
 
