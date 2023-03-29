@@ -48,7 +48,7 @@ class User extends Authenticatable
             'token' => $this
                 ->createToken(
                     name: $deviceName,
-                    abilities: ['api'],
+                    abilities: [TokenAbility::API],
                     expiresAt: $expiresAt
                 )->plainTextToken,
             'expires_at' => $expiresAt->timestamp,

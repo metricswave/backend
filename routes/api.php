@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\RefreshTokenController;
 use App\Http\Controllers\Api\Auth\SignUpController;
+use App\Http\Controllers\Api\User\GetUserController;
 use App\Http\Controllers\Tally\PostTallyController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,9 @@ use Illuminate\Support\Facades\Route;
 Route::post('/signup', SignUpController::class);
 Route::post('/login', LoginController::class);
 Route::post('/refresh', RefreshTokenController::class);
+
+// User
+Route::get('/users', GetUserController::class);
 
 // Tally
 Route::post('/tally', PostTallyController::class);
