@@ -10,6 +10,7 @@ class SignUpController extends JsonTokenResponse
 {
     public function __construct(private readonly UserRepository $userRepository)
     {
+        $this->middleware('guest');
     }
 
     public function __invoke(SignUpRequest $request): JsonResponse

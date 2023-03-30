@@ -1,0 +1,37 @@
+<?php
+
+namespace App\Http\Controllers\Api\Auth;
+
+use App\Http\Controllers\Api\JsonController;
+use App\Http\Requests\ForgotPasswordRequest;
+use App\Models\User;
+use App\Notifications\ResetPasswordNotification;
+use App\Repositories\UserRepository;
+use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Password;
+
+class ForgotPasswordController extends JsonController
+{
+    use SendsPasswordResetEmails;
+
+    public function __construct(private readonly UserRepository $userRepository)
+    {
+        $this->middleware('guest');
+    }
+
+    public function __invoke(ForgotPasswordRequest $request): JsonResponse
+    {
+        $user = $this->userRepository->firstByEmail($request->email);
+
+        $status = $this->broker()->sendResetLink(['email' => $user->email], function (User $user, string $token) {
+            $user->notify(new ResetPasswordNotification($token));
+        });
+
+        if ($status === Password::RESET_LINK_SENT) {
+            return $this->response(['message' => 'Reset link sent to your email.']);
+        }
+
+        return $this->errorResponse('Unable to send reset link.', 404);
+    }
+}

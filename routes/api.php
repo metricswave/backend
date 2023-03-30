@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\Auth\ForgotPasswordController;
 use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\RefreshTokenController;
 use App\Http\Controllers\Api\Auth\SignUpController;
@@ -21,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 // Auth
 Route::post('/signup', SignUpController::class);
 Route::post('/login', LoginController::class);
+Route::post('/forgot-password', ForgotPasswordController::class);
 Route::post('/refresh', RefreshTokenController::class);
 
 // User
