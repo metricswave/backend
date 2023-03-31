@@ -4271,6 +4271,18 @@
                         return $instance->macroCall($method, $parameters);
         }
                     /**
+         * 
+         *
+         * @see \Statamic\Providers\CacheServiceProvider::macroRememberWithExpiration()
+         * @param mixed $cacheKey
+         * @param mixed $callback
+         * @static 
+         */ 
+        public static function rememberWithExpiration($cacheKey, $callback)
+        {
+                        return \Illuminate\Cache\Repository::rememberWithExpiration($cacheKey, $callback);
+        }
+                    /**
          * Get a lock instance.
          *
          * @param string $name
@@ -4280,8 +4292,8 @@
          * @static 
          */ 
         public static function lock($name, $seconds = 0, $owner = null)
-        {
-                        /** @var \Illuminate\Cache\FileStore $instance */
+        {            //Method inherited from \Illuminate\Cache\FileStore         
+                        /** @var \Statamic\Extensions\FileStore $instance */
                         return $instance->lock($name, $seconds, $owner);
         }
                     /**
@@ -4293,8 +4305,8 @@
          * @static 
          */ 
         public static function restoreLock($name, $owner)
-        {
-                        /** @var \Illuminate\Cache\FileStore $instance */
+        {            //Method inherited from \Illuminate\Cache\FileStore         
+                        /** @var \Statamic\Extensions\FileStore $instance */
                         return $instance->restoreLock($name, $owner);
         }
                     /**
@@ -4304,8 +4316,8 @@
          * @static 
          */ 
         public static function flush()
-        {
-                        /** @var \Illuminate\Cache\FileStore $instance */
+        {            //Method inherited from \Illuminate\Cache\FileStore         
+                        /** @var \Statamic\Extensions\FileStore $instance */
                         return $instance->flush();
         }
                     /**
@@ -4315,8 +4327,8 @@
          * @static 
          */ 
         public static function getFilesystem()
-        {
-                        /** @var \Illuminate\Cache\FileStore $instance */
+        {            //Method inherited from \Illuminate\Cache\FileStore         
+                        /** @var \Statamic\Extensions\FileStore $instance */
                         return $instance->getFilesystem();
         }
                     /**
@@ -4326,8 +4338,8 @@
          * @static 
          */ 
         public static function getDirectory()
-        {
-                        /** @var \Illuminate\Cache\FileStore $instance */
+        {            //Method inherited from \Illuminate\Cache\FileStore         
+                        /** @var \Statamic\Extensions\FileStore $instance */
                         return $instance->getDirectory();
         }
                     /**
@@ -4337,8 +4349,8 @@
          * @static 
          */ 
         public static function getPrefix()
-        {
-                        /** @var \Illuminate\Cache\FileStore $instance */
+        {            //Method inherited from \Illuminate\Cache\FileStore         
+                        /** @var \Statamic\Extensions\FileStore $instance */
                         return $instance->getPrefix();
         }
          
@@ -6435,6 +6447,18 @@
                         \Illuminate\Events\Dispatcher::flushMacros();
         }
                     /**
+         * 
+         *
+         * @see \Statamic\Providers\EventServiceProvider::boot()
+         * @param mixed $event
+         * @param mixed $handler
+         * @static 
+         */ 
+        public static function forgetListener($event, $handler)
+        {
+                        return \Illuminate\Events\Dispatcher::forgetListener($event, $handler);
+        }
+                    /**
          * Specify the events that should be dispatched instead of faked.
          *
          * @param array|string $eventsToDispatch
@@ -8046,6 +8070,27 @@
      */ 
         class Lang {
                     /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function parseKey($key)
+        {
+                        /** @var \Statamic\Extensions\Translation\Translator $instance */
+                        return $instance->parseKey($key);
+        }
+                    /**
+         * Get the translations in a JSON object suitable for the Control Panel's translator.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function toJson()
+        {
+                        /** @var \Statamic\Extensions\Translation\Translator $instance */
+                        return $instance->toJson();
+        }
+                    /**
          * Determine if a translation exists for a given locale.
          *
          * @param string $key
@@ -8054,8 +8099,8 @@
          * @static 
          */ 
         public static function hasForLocale($key, $locale = null)
-        {
-                        /** @var \Illuminate\Translation\Translator $instance */
+        {            //Method inherited from \Illuminate\Translation\Translator         
+                        /** @var \Statamic\Extensions\Translation\Translator $instance */
                         return $instance->hasForLocale($key, $locale);
         }
                     /**
@@ -8068,8 +8113,8 @@
          * @static 
          */ 
         public static function has($key, $locale = null, $fallback = true)
-        {
-                        /** @var \Illuminate\Translation\Translator $instance */
+        {            //Method inherited from \Illuminate\Translation\Translator         
+                        /** @var \Statamic\Extensions\Translation\Translator $instance */
                         return $instance->has($key, $locale, $fallback);
         }
                     /**
@@ -8083,8 +8128,8 @@
          * @static 
          */ 
         public static function get($key, $replace = [], $locale = null, $fallback = true)
-        {
-                        /** @var \Illuminate\Translation\Translator $instance */
+        {            //Method inherited from \Illuminate\Translation\Translator         
+                        /** @var \Statamic\Extensions\Translation\Translator $instance */
                         return $instance->get($key, $replace, $locale, $fallback);
         }
                     /**
@@ -8098,8 +8143,8 @@
          * @static 
          */ 
         public static function choice($key, $number, $replace = [], $locale = null)
-        {
-                        /** @var \Illuminate\Translation\Translator $instance */
+        {            //Method inherited from \Illuminate\Translation\Translator         
+                        /** @var \Statamic\Extensions\Translation\Translator $instance */
                         return $instance->choice($key, $number, $replace, $locale);
         }
                     /**
@@ -8112,8 +8157,8 @@
          * @static 
          */ 
         public static function addLines($lines, $locale, $namespace = '*')
-        {
-                        /** @var \Illuminate\Translation\Translator $instance */
+        {            //Method inherited from \Illuminate\Translation\Translator         
+                        /** @var \Statamic\Extensions\Translation\Translator $instance */
                         $instance->addLines($lines, $locale, $namespace);
         }
                     /**
@@ -8126,8 +8171,8 @@
          * @static 
          */ 
         public static function load($namespace, $group, $locale)
-        {
-                        /** @var \Illuminate\Translation\Translator $instance */
+        {            //Method inherited from \Illuminate\Translation\Translator         
+                        /** @var \Statamic\Extensions\Translation\Translator $instance */
                         $instance->load($namespace, $group, $locale);
         }
                     /**
@@ -8139,8 +8184,8 @@
          * @static 
          */ 
         public static function addNamespace($namespace, $hint)
-        {
-                        /** @var \Illuminate\Translation\Translator $instance */
+        {            //Method inherited from \Illuminate\Translation\Translator         
+                        /** @var \Statamic\Extensions\Translation\Translator $instance */
                         $instance->addNamespace($namespace, $hint);
         }
                     /**
@@ -8151,21 +8196,9 @@
          * @static 
          */ 
         public static function addJsonPath($path)
-        {
-                        /** @var \Illuminate\Translation\Translator $instance */
+        {            //Method inherited from \Illuminate\Translation\Translator         
+                        /** @var \Statamic\Extensions\Translation\Translator $instance */
                         $instance->addJsonPath($path);
-        }
-                    /**
-         * Parse a key into namespace, group, and item.
-         *
-         * @param string $key
-         * @return array 
-         * @static 
-         */ 
-        public static function parseKey($key)
-        {
-                        /** @var \Illuminate\Translation\Translator $instance */
-                        return $instance->parseKey($key);
         }
                     /**
          * Specify a callback that should be invoked to determined the applicable locale array.
@@ -8175,8 +8208,8 @@
          * @static 
          */ 
         public static function determineLocalesUsing($callback)
-        {
-                        /** @var \Illuminate\Translation\Translator $instance */
+        {            //Method inherited from \Illuminate\Translation\Translator         
+                        /** @var \Statamic\Extensions\Translation\Translator $instance */
                         $instance->determineLocalesUsing($callback);
         }
                     /**
@@ -8186,8 +8219,8 @@
          * @static 
          */ 
         public static function getSelector()
-        {
-                        /** @var \Illuminate\Translation\Translator $instance */
+        {            //Method inherited from \Illuminate\Translation\Translator         
+                        /** @var \Statamic\Extensions\Translation\Translator $instance */
                         return $instance->getSelector();
         }
                     /**
@@ -8198,8 +8231,8 @@
          * @static 
          */ 
         public static function setSelector($selector)
-        {
-                        /** @var \Illuminate\Translation\Translator $instance */
+        {            //Method inherited from \Illuminate\Translation\Translator         
+                        /** @var \Statamic\Extensions\Translation\Translator $instance */
                         $instance->setSelector($selector);
         }
                     /**
@@ -8209,8 +8242,8 @@
          * @static 
          */ 
         public static function getLoader()
-        {
-                        /** @var \Illuminate\Translation\Translator $instance */
+        {            //Method inherited from \Illuminate\Translation\Translator         
+                        /** @var \Statamic\Extensions\Translation\Translator $instance */
                         return $instance->getLoader();
         }
                     /**
@@ -8220,8 +8253,8 @@
          * @static 
          */ 
         public static function locale()
-        {
-                        /** @var \Illuminate\Translation\Translator $instance */
+        {            //Method inherited from \Illuminate\Translation\Translator         
+                        /** @var \Statamic\Extensions\Translation\Translator $instance */
                         return $instance->locale();
         }
                     /**
@@ -8231,8 +8264,8 @@
          * @static 
          */ 
         public static function getLocale()
-        {
-                        /** @var \Illuminate\Translation\Translator $instance */
+        {            //Method inherited from \Illuminate\Translation\Translator         
+                        /** @var \Statamic\Extensions\Translation\Translator $instance */
                         return $instance->getLocale();
         }
                     /**
@@ -8244,8 +8277,8 @@
          * @static 
          */ 
         public static function setLocale($locale)
-        {
-                        /** @var \Illuminate\Translation\Translator $instance */
+        {            //Method inherited from \Illuminate\Translation\Translator         
+                        /** @var \Statamic\Extensions\Translation\Translator $instance */
                         $instance->setLocale($locale);
         }
                     /**
@@ -8255,8 +8288,8 @@
          * @static 
          */ 
         public static function getFallback()
-        {
-                        /** @var \Illuminate\Translation\Translator $instance */
+        {            //Method inherited from \Illuminate\Translation\Translator         
+                        /** @var \Statamic\Extensions\Translation\Translator $instance */
                         return $instance->getFallback();
         }
                     /**
@@ -8267,8 +8300,8 @@
          * @static 
          */ 
         public static function setFallback($fallback)
-        {
-                        /** @var \Illuminate\Translation\Translator $instance */
+        {            //Method inherited from \Illuminate\Translation\Translator         
+                        /** @var \Statamic\Extensions\Translation\Translator $instance */
                         $instance->setFallback($fallback);
         }
                     /**
@@ -8279,8 +8312,8 @@
          * @static 
          */ 
         public static function setLoaded($loaded)
-        {
-                        /** @var \Illuminate\Translation\Translator $instance */
+        {            //Method inherited from \Illuminate\Translation\Translator         
+                        /** @var \Statamic\Extensions\Translation\Translator $instance */
                         $instance->setLoaded($loaded);
         }
                     /**
@@ -8292,8 +8325,8 @@
          * @static 
          */ 
         public static function stringable($class, $handler = null)
-        {
-                        /** @var \Illuminate\Translation\Translator $instance */
+        {            //Method inherited from \Illuminate\Translation\Translator         
+                        /** @var \Statamic\Extensions\Translation\Translator $instance */
                         $instance->stringable($class, $handler);
         }
                     /**
@@ -8306,7 +8339,7 @@
          */ 
         public static function setParsedKey($key, $parsed)
         {            //Method inherited from \Illuminate\Support\NamespacedItemResolver         
-                        /** @var \Illuminate\Translation\Translator $instance */
+                        /** @var \Statamic\Extensions\Translation\Translator $instance */
                         $instance->setParsedKey($key, $parsed);
         }
                     /**
@@ -8317,7 +8350,7 @@
          */ 
         public static function flushParsedKeys()
         {            //Method inherited from \Illuminate\Support\NamespacedItemResolver         
-                        /** @var \Illuminate\Translation\Translator $instance */
+                        /** @var \Statamic\Extensions\Translation\Translator $instance */
                         $instance->flushParsedKeys();
         }
                     /**
@@ -8329,8 +8362,8 @@
          * @static 
          */ 
         public static function macro($name, $macro)
-        {
-                        \Illuminate\Translation\Translator::macro($name, $macro);
+        {            //Method inherited from \Illuminate\Translation\Translator         
+                        \Statamic\Extensions\Translation\Translator::macro($name, $macro);
         }
                     /**
          * Mix another object into the class.
@@ -8342,8 +8375,8 @@
          * @static 
          */ 
         public static function mixin($mixin, $replace = true)
-        {
-                        \Illuminate\Translation\Translator::mixin($mixin, $replace);
+        {            //Method inherited from \Illuminate\Translation\Translator         
+                        \Statamic\Extensions\Translation\Translator::mixin($mixin, $replace);
         }
                     /**
          * Checks if macro is registered.
@@ -8353,8 +8386,8 @@
          * @static 
          */ 
         public static function hasMacro($name)
-        {
-                        return \Illuminate\Translation\Translator::hasMacro($name);
+        {            //Method inherited from \Illuminate\Translation\Translator         
+                        return \Statamic\Extensions\Translation\Translator::hasMacro($name);
         }
                     /**
          * Flush the existing macros.
@@ -8363,8 +8396,8 @@
          * @static 
          */ 
         public static function flushMacros()
-        {
-                        \Illuminate\Translation\Translator::flushMacros();
+        {            //Method inherited from \Illuminate\Translation\Translator         
+                        \Statamic\Extensions\Translation\Translator::flushMacros();
         }
          
     }
@@ -10710,6 +10743,18 @@
         {
                         \Illuminate\Routing\Redirector::flushMacros();
         }
+                    /**
+         * 
+         *
+         * @see \Statamic\Providers\AppServiceProvider::boot()
+         * @param mixed $route
+         * @param mixed $parameters
+         * @static 
+         */ 
+        public static function cpRoute($route, $parameters = [])
+        {
+                        return \Illuminate\Routing\Redirector::cpRoute($route, $parameters);
+        }
          
     }
             /**
@@ -12950,6 +12995,16 @@
         {
                         return \Illuminate\Http\Request::hasValidSignatureWhileIgnoring($ignoreQuery, $absolute);
         }
+                    /**
+         * 
+         *
+         * @see \Statamic\Providers\AppServiceProvider::boot()
+         * @static 
+         */ 
+        public static function statamicToken()
+        {
+                        return \Illuminate\Http\Request::statamicToken();
+        }
          
     }
             /**
@@ -14227,6 +14282,19 @@
         public static function emailVerification()
         {
                         return \Illuminate\Routing\Router::emailVerification();
+        }
+                    /**
+         * 
+         *
+         * @see \Statamic\Mixins\Router::statamic()
+         * @param mixed $uri
+         * @param mixed $view
+         * @param mixed $data
+         * @static 
+         */ 
+        public static function statamic($uri, $view, $data = [])
+        {
+                        return \Illuminate\Routing\Router::statamic($uri, $view, $data);
         }
          
     }
@@ -18106,10 +18174,488 @@
         class Str {
          
     }
+            /**
+     * 
+     *
+     * @template TKey of array-key
+     * @template TValue
+     * @implements \ArrayAccess<TKey, TValue>
+     * @implements \Illuminate\Support\Enumerable<TKey, TValue>
+     */ 
+        class Collection {
+                    /**
+         * 
+         *
+         * @see \Statamic\Providers\CollectionsServiceProvider::keyByWithKey()
+         * @param mixed $keyBy
+         * @static 
+         */ 
+        public static function keyByWithKey($keyBy)
+        {
+                        return \Illuminate\Support\Collection::keyByWithKey($keyBy);
+        }
+                    /**
+         * 
+         *
+         * @see \Statamic\Providers\CollectionsServiceProvider::l10n()
+         * @param mixed $prefix
+         * @static 
+         */ 
+        public static function localize($prefix = null)
+        {
+                        return \Illuminate\Support\Collection::localize($prefix);
+        }
+                    /**
+         * 
+         *
+         * @see \Statamic\Providers\CollectionsServiceProvider::transpose()
+         * @static 
+         */ 
+        public static function transpose()
+        {
+                        return \Illuminate\Support\Collection::transpose();
+        }
+                    /**
+         * 
+         *
+         * @see \Statamic\Providers\CollectionsServiceProvider::toAugmentedArray()
+         * @param mixed $keys
+         * @static 
+         */ 
+        public static function toAugmentedArray($keys = null)
+        {
+                        return \Illuminate\Support\Collection::toAugmentedArray($keys);
+        }
+                    /**
+         * 
+         *
+         * @see \Statamic\Providers\CollectionsServiceProvider::toAugmentedArray()
+         * @param mixed $keys
+         * @static 
+         */ 
+        public static function toAugmentedCollection($keys = null)
+        {
+                        return \Illuminate\Support\Collection::toAugmentedCollection($keys);
+        }
+                    /**
+         * 
+         *
+         * @see \Statamic\Providers\CollectionsServiceProvider::toAugmentedArray()
+         * @param mixed $keys
+         * @static 
+         */ 
+        public static function toEvaluatedAugmentedArray($keys = null)
+        {
+                        return \Illuminate\Support\Collection::toEvaluatedAugmentedArray($keys);
+        }
+         
+    }
      
 }
 
-        namespace Spatie\LaravelIgnition\Facades { 
+        namespace Intervention\Image\Facades { 
+            /**
+     * 
+     *
+     */ 
+        class Image {
+                    /**
+         * Overrides configuration settings
+         *
+         * @param array $config
+         * @return self 
+         * @static 
+         */ 
+        public static function configure($config = [])
+        {
+                        /** @var \Intervention\Image\ImageManager $instance */
+                        return $instance->configure($config);
+        }
+                    /**
+         * Initiates an Image instance from different input types
+         *
+         * @param mixed $data
+         * @return \Intervention\Image\Image 
+         * @static 
+         */ 
+        public static function make($data)
+        {
+                        /** @var \Intervention\Image\ImageManager $instance */
+                        return $instance->make($data);
+        }
+                    /**
+         * Creates an empty image canvas
+         *
+         * @param int $width
+         * @param int $height
+         * @param mixed $background
+         * @return \Intervention\Image\Image 
+         * @static 
+         */ 
+        public static function canvas($width, $height, $background = null)
+        {
+                        /** @var \Intervention\Image\ImageManager $instance */
+                        return $instance->canvas($width, $height, $background);
+        }
+                    /**
+         * Create new cached image and run callback
+         * (requires additional package intervention/imagecache)
+         *
+         * @param \Closure $callback
+         * @param int $lifetime
+         * @param boolean $returnObj
+         * @return \Image 
+         * @static 
+         */ 
+        public static function cache($callback, $lifetime = null, $returnObj = false)
+        {
+                        /** @var \Intervention\Image\ImageManager $instance */
+                        return $instance->cache($callback, $lifetime, $returnObj);
+        }
+         
+    }
+     
+}
+
+    namespace Rebing\GraphQL\Support\Facades { 
+            /**
+     * 
+     *
+     * @method static array<string,object|string> getTypes()
+     */ 
+        class GraphQL {
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function schema($schemaName = null)
+        {
+                        /** @var \Rebing\GraphQL\GraphQL $instance */
+                        return $instance->schema($schemaName);
+        }
+                    /**
+         * 
+         *
+         * @param array<string,mixed>|null $variables Optional GraphQL input variables for your query/mutation
+         * @param array<string,mixed> $opts Additional options, like 'schema', 'context' or 'operationName'
+         * @return array<string,mixed> 
+         * @static 
+         */ 
+        public static function query($query, $variables = null, $opts = [])
+        {
+                        /** @var \Rebing\GraphQL\GraphQL $instance */
+                        return $instance->query($query, $variables, $opts);
+        }
+                    /**
+         * 
+         *
+         * @param array<string,mixed>|null $variables Optional GraphQL input variables for your query/mutation
+         * @param array<string,mixed> $opts Additional options, like 'schema', 'context' or 'operationName'
+         * @static 
+         */ 
+        public static function queryAndReturnResult($query, $variables = null, $opts = [])
+        {
+                        /** @var \Rebing\GraphQL\GraphQL $instance */
+                        return $instance->queryAndReturnResult($query, $variables, $opts);
+        }
+                    /**
+         * 
+         *
+         * @param mixed $rootValue
+         * @param mixed $contextValue
+         * @return array<string,mixed> 
+         * @static 
+         */ 
+        public static function execute($schemaName, $operationParams, $rootValue = null, $contextValue = null)
+        {
+                        /** @var \Rebing\GraphQL\GraphQL $instance */
+                        return $instance->execute($schemaName, $operationParams, $rootValue, $contextValue);
+        }
+                    /**
+         * 
+         *
+         * @param array<int|string,string> $types
+         * @static 
+         */ 
+        public static function addTypes($types)
+        {
+                        /** @var \Rebing\GraphQL\GraphQL $instance */
+                        return $instance->addTypes($types);
+        }
+                    /**
+         * 
+         *
+         * @param object|string $class
+         * @static 
+         */ 
+        public static function addType($class, $name = null)
+        {
+                        /** @var \Rebing\GraphQL\GraphQL $instance */
+                        return $instance->addType($class, $name);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function type($name, $fresh = false)
+        {
+                        /** @var \Rebing\GraphQL\GraphQL $instance */
+                        return $instance->type($name, $fresh);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getType($name, $fresh = false)
+        {
+                        /** @var \Rebing\GraphQL\GraphQL $instance */
+                        return $instance->getType($name, $fresh);
+        }
+                    /**
+         * 
+         *
+         * @param \GraphQL\Type\Definition\ObjectType|array<int|string,class-string|array<string,mixed>>|string $type
+         * @param array<string,string> $opts
+         * @static 
+         */ 
+        public static function objectType($type, $opts = [])
+        {
+                        /** @var \Rebing\GraphQL\GraphQL $instance */
+                        return $instance->objectType($type, $opts);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function addSchema($name, $schema)
+        {
+                        /** @var \Rebing\GraphQL\GraphQL $instance */
+                        return $instance->addSchema($name, $schema);
+        }
+                    /**
+         * 
+         *
+         * @param array<string,mixed> $schemaConfig
+         * @static 
+         */ 
+        public static function buildSchemaFromConfig($schemaConfig)
+        {
+                        /** @var \Rebing\GraphQL\GraphQL $instance */
+                        return $instance->buildSchemaFromConfig($schemaConfig);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function clearType($name)
+        {
+                        /** @var \Rebing\GraphQL\GraphQL $instance */
+                        return $instance->clearType($name);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function clearSchema($name)
+        {
+                        /** @var \Rebing\GraphQL\GraphQL $instance */
+                        return $instance->clearSchema($name);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function clearTypes()
+        {
+                        /** @var \Rebing\GraphQL\GraphQL $instance */
+                        return $instance->clearTypes();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function clearSchemas()
+        {
+                        /** @var \Rebing\GraphQL\GraphQL $instance */
+                        return $instance->clearSchemas();
+        }
+                    /**
+         * 
+         *
+         * @return array<string,object|string> 
+         * @static 
+         */ 
+        public static function getTypes()
+        {
+                        /** @var \Rebing\GraphQL\GraphQL $instance */
+                        return $instance->getTypes();
+        }
+                    /**
+         * 
+         *
+         * @return array<Schema> 
+         * @static 
+         */ 
+        public static function getSchemas()
+        {
+                        /** @var \Rebing\GraphQL\GraphQL $instance */
+                        return $instance->getSchemas();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function paginate($typeName, $customName = null)
+        {
+                        /** @var \Rebing\GraphQL\GraphQL $instance */
+                        return $instance->paginate($typeName, $customName);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function simplePaginate($typeName, $customName = null)
+        {
+                        /** @var \Rebing\GraphQL\GraphQL $instance */
+                        return $instance->simplePaginate($typeName, $customName);
+        }
+                    /**
+         * To add customs result to the query or mutations.
+         *
+         * @param string $typeName The original type name
+         * @param string $customTypeName The new type name
+         * @param \Rebing\GraphQL\class-string<Type> $wrapperTypeClass The class to create the new type
+         * @static 
+         */ 
+        public static function wrapType($typeName, $customTypeName, $wrapperTypeClass)
+        {
+                        /** @var \Rebing\GraphQL\GraphQL $instance */
+                        return $instance->wrapType($typeName, $customTypeName, $wrapperTypeClass);
+        }
+                    /**
+         * 
+         *
+         * @see \GraphQL\Executor\ExecutionResult::setErrorFormatter
+         * @return array<string,mixed> 
+         * @static 
+         */ 
+        public static function formatError($e)
+        {
+                        return \Rebing\GraphQL\GraphQL::formatError($e);
+        }
+                    /**
+         * 
+         *
+         * @param \Error[] $errors
+         * @return \Error[] 
+         * @static 
+         */ 
+        public static function handleErrors($errors, $formatter)
+        {
+                        return \Rebing\GraphQL\GraphQL::handleErrors($errors, $formatter);
+        }
+                    /**
+         * 
+         *
+         * @return array<string,array<string,mixed>> 
+         * @static 
+         */ 
+        public static function getNormalizedSchemasConfiguration()
+        {
+                        return \Rebing\GraphQL\GraphQL::getNormalizedSchemasConfiguration();
+        }
+                    /**
+         * 
+         *
+         * @return array<string,mixed> 
+         * @static 
+         */ 
+        public static function getNormalizedSchemaConfiguration($schemaName)
+        {
+                        return \Rebing\GraphQL\GraphQL::getNormalizedSchemaConfiguration($schemaName);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function decorateExecutionResult($executionResult)
+        {
+                        /** @var \Rebing\GraphQL\GraphQL $instance */
+                        return $instance->decorateExecutionResult($executionResult);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getConfigRepository()
+        {
+                        /** @var \Rebing\GraphQL\GraphQL $instance */
+                        return $instance->getConfigRepository();
+        }
+                    /**
+         * Register a custom macro.
+         *
+         * @param string $name
+         * @param object|callable $macro
+         * @return void 
+         * @static 
+         */ 
+        public static function macro($name, $macro)
+        {
+                        \Rebing\GraphQL\GraphQL::macro($name, $macro);
+        }
+                    /**
+         * Mix another object into the class.
+         *
+         * @param object $mixin
+         * @param bool $replace
+         * @return void 
+         * @throws \ReflectionException
+         * @static 
+         */ 
+        public static function mixin($mixin, $replace = true)
+        {
+                        \Rebing\GraphQL\GraphQL::mixin($mixin, $replace);
+        }
+                    /**
+         * Checks if macro is registered.
+         *
+         * @param string $name
+         * @return bool 
+         * @static 
+         */ 
+        public static function hasMacro($name)
+        {
+                        return \Rebing\GraphQL\GraphQL::hasMacro($name);
+        }
+                    /**
+         * Flush the existing macros.
+         *
+         * @return void 
+         * @static 
+         */ 
+        public static function flushMacros()
+        {
+                        \Rebing\GraphQL\GraphQL::flushMacros();
+        }
+         
+    }
+     
+}
+
+    namespace Spatie\LaravelIgnition\Facades { 
             /**
      * 
      *
@@ -18497,6 +19043,82 @@
      
 }
 
+    namespace Statamic { 
+            /**
+     * 
+     *
+     */ 
+        class Statamic {
+         
+    }
+     
+}
+
+    namespace Wilderborn\Partyline { 
+            /**
+     * 
+     *
+     * @method static \Symfony\Component\Console\Output\OutputInterface getOutput()
+     * @method static void line(string $string, string $style = null, int|string|null $verbosity = null)
+     * @method static bool confirm(string $question, bool $default = false)
+     * @method static mixed ask(string $question, string|null $default = null)
+     * @method static mixed anticipate(string $question, array|callable $choices, string|null $default = null)
+     * @method static mixed askWithCompletion(string $question, array|callable $choices, string|null $default = null)
+     * @method static mixed secret(string $question, bool $fallback = true)
+     * @method static string|array choice(string $question, array $choices, string|int|null $default = null, mixed|null $attempts = null, bool $multiple = false)
+     * @method static void info(string $string, int|string|null $verbosity = null)
+     * @method static void comment(string $string, int|string|null $verbosity = null)
+     * @method static void question(string $string, int|string|null $verbosity = null)
+     * @method static void error(string $string, int|string|null $verbosity = null)
+     * @method static void warn(string $string, int|string|null $verbosity = null)
+     * @method static void alert(string $string)
+     * @method static void newLine(int $count = 1)
+     * @method static void table(array $headers, \Illuminate\Contracts\Support\Arrayable|array $rows, \Symfony\Component\Console\Helper\TableStyle|string $tableStyle = 'default', array $columnStyles = [])
+     * @see \Wilderborn\Partyline\Partyline
+     * @see \Illuminate\Console\Concerns\InteractsWithIO
+     * @see \Illuminate\Console\Command
+     */ 
+        class Facade {
+                    /**
+         * Set the console command instance
+         *
+         * @param \Illuminate\Console\Command $console
+         * @return void 
+         * @static 
+         */ 
+        public static function bind($console)
+        {
+                        /** @var \Wilderborn\Partyline\Partyline $instance */
+                        $instance->bind($console);
+        }
+         
+    }
+     
+}
+
+    namespace Illuminate\Events { 
+            /**
+     * 
+     *
+     */ 
+        class Dispatcher {
+                    /**
+         * 
+         *
+         * @see \Statamic\Providers\EventServiceProvider::boot()
+         * @param mixed $event
+         * @param mixed $handler
+         * @static 
+         */ 
+        public static function forgetListener($event, $handler)
+        {
+                        return \Illuminate\Events\Dispatcher::forgetListener($event, $handler);
+        }
+         
+    }
+     
+}
+
     namespace Illuminate\Http { 
             /**
      * 
@@ -18561,6 +19183,16 @@
         {
                         return \Illuminate\Http\Request::hasValidSignatureWhileIgnoring($ignoreQuery, $absolute);
         }
+                    /**
+         * 
+         *
+         * @see \Statamic\Providers\AppServiceProvider::boot()
+         * @static 
+         */ 
+        public static function statamicToken()
+        {
+                        return \Illuminate\Http\Request::statamicToken();
+        }
          
     }
      
@@ -18613,6 +19245,83 @@
         public static function emailVerification()
         {
                         return \Illuminate\Routing\Router::emailVerification();
+        }
+                    /**
+         * 
+         *
+         * @see \Statamic\Mixins\Router::statamic()
+         * @param mixed $uri
+         * @param mixed $view
+         * @param mixed $data
+         * @static 
+         */ 
+        public static function statamic($uri, $view, $data = [])
+        {
+                        return \Illuminate\Routing\Router::statamic($uri, $view, $data);
+        }
+         
+    }
+            /**
+     * 
+     *
+     */ 
+        class Redirector {
+                    /**
+         * 
+         *
+         * @see \Statamic\Providers\AppServiceProvider::boot()
+         * @param mixed $route
+         * @param mixed $parameters
+         * @static 
+         */ 
+        public static function cpRoute($route, $parameters = [])
+        {
+                        return \Illuminate\Routing\Redirector::cpRoute($route, $parameters);
+        }
+         
+    }
+     
+}
+
+    namespace Illuminate\View { 
+            /**
+     * 
+     *
+     */ 
+        class View {
+                    /**
+         * 
+         *
+         * @see \Statamic\Providers\ViewServiceProvider::boot()
+         * @static 
+         */ 
+        public static function withoutExtractions()
+        {
+                        return \Illuminate\View\View::withoutExtractions();
+        }
+         
+    }
+     
+}
+
+    namespace Illuminate\Cache { 
+            /**
+     * 
+     *
+     * @mixin \Illuminate\Contracts\Cache\Store
+     */ 
+        class Repository {
+                    /**
+         * 
+         *
+         * @see \Statamic\Providers\CacheServiceProvider::macroRememberWithExpiration()
+         * @param mixed $cacheKey
+         * @param mixed $callback
+         * @static 
+         */ 
+        public static function rememberWithExpiration($cacheKey, $callback)
+        {
+                        return \Illuminate\Cache\Repository::rememberWithExpiration($cacheKey, $callback);
         }
          
     }
@@ -22467,7 +23176,11 @@ namespace  {
             class Validator extends \Illuminate\Support\Facades\Validator {}
             class View extends \Illuminate\Support\Facades\View {}
             class Vite extends \Illuminate\Support\Facades\Vite {}
+            class Image extends \Intervention\Image\Facades\Image {}
+            class GraphQL extends \Rebing\GraphQL\Support\Facades\GraphQL {}
             class Flare extends \Spatie\LaravelIgnition\Facades\Flare {}
+            class Statamic extends \Statamic\Statamic {}
+            class Partyline extends \Wilderborn\Partyline\Facade {}
      
 }
 
