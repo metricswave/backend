@@ -12,6 +12,22 @@ tabs:
               validate:
                 - required
           -
+            handle: short_content
+            field:
+              automatic_line_breaks: true
+              automatic_links: false
+              escape_markup: false
+              smartypants: false
+              restrict: false
+              antlers: false
+              display: 'Short Content'
+              type: markdown
+              icon: markdown
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              hide_display: false
+          -
             handle: content
             field:
               type: markdown
