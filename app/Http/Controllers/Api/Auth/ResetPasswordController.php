@@ -10,7 +10,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 
-class ResetPasswordController extends JsonTokenResponse
+class ResetPasswordController extends JsonTokenResponseController
 {
     public function __construct(private readonly UserRepository $userRepository)
     {

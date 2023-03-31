@@ -40,6 +40,28 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\MailLog
+ *
+ * @property int $id
+ * @property string $mail
+ * @property string $type
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Database\Factories\MailLogFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder|MailLog newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|MailLog newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|MailLog query()
+ * @method static \Illuminate\Database\Eloquent\Builder|MailLog whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MailLog whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MailLog whereMail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MailLog whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MailLog whereUpdatedAt($value)
+ */
+	class MailLog extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Price
  *
  * @property int $id
@@ -64,13 +86,40 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Service
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $driver
+ * @property string $description
+ * @property array $scopes
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\UserService> $userServices
+ * @property-read int|null $user_services_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Service newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Service newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Service query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Service whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service whereDriver($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service whereScopes($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service whereUpdatedAt($value)
+ */
+	class Service extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\User
  *
  * @property int $id
  * @property string $name
  * @property string $email
  * @property \Illuminate\Support\Carbon|null $email_verified_at
- * @property string $password
+ * @property string|null $password
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -78,27 +127,61 @@ namespace App\Models{
  * @property string|null $pm_type
  * @property string|null $pm_last_four
  * @property string|null $trial_ends_at
+ * @property int $super
+ * @property string|null $avatar
+ * @property mixed|null $preferences
+ * @property string|null $last_login
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\UserService> $services
+ * @property-read int|null $services_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Laravel\Sanctum\PersonalAccessToken> $tokens
  * @property-read int|null $tokens_count
  * @method static \Database\Factories\UserFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User query()
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereAvatar($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereEmail($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereEmailVerifiedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereLastLogin($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePmLastFour($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePmType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User wherePreferences($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereStripeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereSuper($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereTrialEndsAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  */
 	class User extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\UserService
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property string $service_id
+ * @property array $service_data
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|UserService newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserService newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserService query()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserService whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserService whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserService whereServiceData($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserService whereServiceId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserService whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserService whereUserId($value)
+ */
+	class UserService extends \Eloquent {}
 }
 
