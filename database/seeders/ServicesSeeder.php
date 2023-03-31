@@ -14,7 +14,7 @@ class ServicesSeeder extends Seeder
                 ['driver' => 'github'],
                 [
                     'name' => 'GitHub',
-                    'description' => 'GitHub is a web-based hosting service for version control using Git.',
+                    'description' => 'GitHub is a web-based hosting service for version control.',
                     'scopes' => ['read:user', 'notifications', 'user:email'],
                 ]
             );
