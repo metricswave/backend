@@ -18,7 +18,5 @@
       content="{{ config('app.name') }}"/>
 <meta name="twitter:description"
       content="Real-time notifications for everything that matters to you."/>
-<meta name="twitter:creator"
-      content="@get_monse"/>
 <meta name="twitter:image"
       content="{{ config('app.url') }}/images/notifywave.png?v=20230327173352"/>

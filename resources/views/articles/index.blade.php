@@ -25,8 +25,6 @@
           content="{{$title}} - {{ config('app.name') }}"/>
     <meta name="twitter:description"
           content="{{ $meta_description }}"/>
-    <meta name="twitter:creator"
-          content="@get_monse"/>
     <meta name="twitter:image"
           content="{{ config('app.url') }}{{ $meta_image }}"/>
 @endsection
