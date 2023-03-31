@@ -7,7 +7,6 @@ use App\Models\Service;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Socialite;
-use Str;
 
 class StoreUserServiceController extends JsonTokenResponseController
 {
@@ -15,7 +14,11 @@ class StoreUserServiceController extends JsonTokenResponseController
     {
         /** @var \Laravel\Socialite\Two\User $socialiteUser */
         $socialiteUser = Socialite::driver($service->driver)->stateless()->user();
-        $deviceId = request()->query('device_id') ?? Str::uuid();
+        $deviceName = request()->query('deviceName');
+
+        if ($deviceName === null) {
+            $this->errorResponse('DeviceName is required', 400);
+        }
 
         $user = User::query()
             ->updateOrCreate(
@@ -40,6 +43,6 @@ class StoreUserServiceController extends JsonTokenResponseController
             ]
         );
 
-        return $this->tokenResponse($user, $deviceId, $user->wasRecentlyCreated ? 201 : 200);
+        return $this->tokenResponse($user, $deviceName, $user->wasRecentlyCreated ? 201 : 200);
     }
 }

@@ -17,6 +17,8 @@ class UserService extends Model
     ];
 
     protected $casts = [
+        'user_id' => 'integer',
+        'service_id' => 'integer',
         'service_data' => 'array',
     ];
 
