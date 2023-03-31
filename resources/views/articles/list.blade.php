@@ -52,6 +52,7 @@
 
                     <div class="prose dark:prose-invert mx-auto">
                         {!! $article->short_content !!}
+                        <p><a href="/blog/{{ $article->slug }}">Read more →</a></p>
                     </div>
                 </div>
             @endforeach
