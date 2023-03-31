@@ -2,10 +2,14 @@
 
 use App\Http\Controllers\Api\Auth\ForgotPasswordController;
 use App\Http\Controllers\Api\Auth\LoginController;
-use App\Http\Controllers\Api\Auth\RefreshTokenController;
+use App\Http\Controllers\Api\Auth\RefreshTokenControllerController;
 use App\Http\Controllers\Api\Auth\ResetPasswordController;
 use App\Http\Controllers\Api\Auth\SignUpController;
+use App\Http\Controllers\Api\Services\GetServicesController;
+use App\Http\Controllers\Api\Socialite\RedirectToDriverController;
+use App\Http\Controllers\Api\Socialite\StoreUserServiceController;
 use App\Http\Controllers\Api\User\GetUserController;
+use App\Http\Controllers\Api\UserServices\GetUserServicesController;
 use App\Http\Controllers\Tally\PostTallyController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,10 +29,18 @@ Route::post('/signup', SignUpController::class);
 Route::post('/login', LoginController::class);
 Route::post('/forgot-password', ForgotPasswordController::class);
 Route::post('/reset-password', ResetPasswordController::class);
-Route::post('/refresh', RefreshTokenController::class);
+Route::post('/refresh', RefreshTokenControllerController::class);
 
 // User
 Route::get('/users', GetUserController::class);
+Route::get('/users/services', GetUserServicesController::class);
+
+// Services
+Route::get('/services', GetServicesController::class);
 
 // Tally
 Route::post('/tally', PostTallyController::class);
+
+// Socialite
+Route::get('/auth/{service:driver}/redirect', RedirectToDriverController::class);
+Route::get('/auth/{service:driver}/callback', StoreUserServiceController::class);

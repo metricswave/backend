@@ -6,7 +6,7 @@ use App\Http\Requests\AuthRefreshRequest;
 use App\Models\TokenAbility;
 use Illuminate\Http\JsonResponse;
 
-class RefreshTokenController extends JsonTokenResponse
+class RefreshTokenControllerController extends JsonTokenResponseController
 {
     public function __construct()
     {

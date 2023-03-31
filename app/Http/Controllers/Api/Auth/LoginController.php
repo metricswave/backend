@@ -7,7 +7,7 @@ use App\Repositories\UserRepository;
 use Hash;
 use Illuminate\Http\JsonResponse;
 
-class LoginController extends JsonTokenResponse
+class LoginController extends JsonTokenResponseController
 {
     public function __construct(private readonly UserRepository $userRepository)
     {

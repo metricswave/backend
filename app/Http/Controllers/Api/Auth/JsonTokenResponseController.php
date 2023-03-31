@@ -6,7 +6,7 @@ use App\Http\Controllers\Api\JsonController;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 
-class JsonTokenResponse extends JsonController
+class JsonTokenResponseController extends JsonController
 {
     protected function tokenResponse(User $user, string $deviceName, int $code = 200): JsonResponse
     {

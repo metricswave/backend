@@ -6,7 +6,7 @@ use App\Http\Requests\SignUpRequest;
 use App\Repositories\UserRepository;
 use Illuminate\Http\JsonResponse;
 
-class SignUpController extends JsonTokenResponse
+class SignUpController extends JsonTokenResponseController
 {
     public function __construct(private readonly UserRepository $userRepository)
     {
