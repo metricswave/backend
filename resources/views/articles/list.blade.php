@@ -33,8 +33,8 @@
 
 @section('content')
     <div class="pt-14 mw-landing mx-auto">
-        <h1 class="text-4xl text-center font-bold mb-6">{{ $title }}</h1>
-        <div class="text-center opacity-50 pb-24">
+        <h1 class="text-4xl sm:text-center font-bold mb-6">{{ $title }}</h1>
+        <div class="sm:text-center opacity-50 pb-24">
             Here you can find all the updates and articles about Notifywave.
         </div>
 
