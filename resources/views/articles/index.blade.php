@@ -30,7 +30,7 @@
 @endsection
 
 @section('content')
-    <div class="pt-14 mw-landing mx-auto">
+    <div class="pt-14 max-w-[65ch] mx-auto">
         <h1 class="text-4xl sm:text-center font-bold mb-6">{{ $title }}</h1>
         <div class="sm:text-center opacity-50 mb-12">
             {{ Date::parse($updated_at)->format('F j, Y') }}

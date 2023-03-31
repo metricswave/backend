@@ -32,7 +32,7 @@
 @endsection
 
 @section('content')
-    <div class="pt-14 mw-landing mx-auto">
+    <div class="pt-14 max-w-[65ch] mx-auto">
         <h1 class="text-4xl sm:text-center font-bold mb-6">{{ $title }}</h1>
         <div class="sm:text-center opacity-50 pb-24">
             Here you can find all the updates and articles about Notifywave.
@@ -40,7 +40,7 @@
 
         <div class="flex flex-col space-y-14">
             @foreach($articles as $article)
-                <div class="mx-w-[65ch] mx-auto">
+                <div class="max-w-[65ch] mx-auto">
                     <h2 class="text-2xl font-bold mb-2">
                         <a href="/blog/{{ $article->slug }}">
                             {{ $article->title }}
