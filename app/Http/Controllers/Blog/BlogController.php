@@ -13,7 +13,12 @@ class BlogController extends Controller
         return view('articles.list', [
             'title' => 'Blog',
             'meta_description' => 'A list of articles',
-            'articles' => Entry::query()->where('collection', 'articles')->limit(10)->get(),
+            'articles' => Entry::query()
+                ->where('collection', 'articles')
+                ->where('date', '<=', now())
+                ->orderBy('date', 'desc')
+                ->limit(10)
+                ->get(),
         ]);
     }
 }

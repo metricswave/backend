@@ -35,10 +35,10 @@
     <div class="pt-14 max-w-[65ch] mx-auto">
         <h1 class="text-4xl sm:text-center font-bold mb-6">{{ $title }}</h1>
         <div class="sm:text-center opacity-50 pb-24">
-            Here you can find all the updates and articles about Notifywave.
+            Here you can find all the updates and articles about {{ config('app.name') }}.
         </div>
 
-        <div class="flex flex-col space-y-14">
+        <div class="flex flex-col space-y-14 sm:space-y-20">
             @foreach($articles as $article)
                 <div class="max-w-[65ch] mx-auto">
                     <h2 class="text-2xl font-bold mb-2">
