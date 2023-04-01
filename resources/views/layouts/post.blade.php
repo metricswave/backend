@@ -22,9 +22,7 @@
             <span class="font-bold tracking-tighter">{{ config('app.name') }}</span>
         </a>
 
-        <ul class="flex space-x-4">
-            <li><a href="/blog">Blog</a></li>
-        </ul>
+        <ul class="flex space-x-4"></ul>
     </nav>
 
     <div class="p-app">
