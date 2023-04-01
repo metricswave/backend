@@ -47,7 +47,7 @@
                         </a>
                     </h2>
                     <div class="opacity-50 mb-4">
-                        {{ Date::parse($article->updated_at)->format('F j, Y') }}
+                        {{ Date::parse($article->date)->format('F j, Y') }}
                     </div>
 
                     <div class="prose dark:prose-invert mx-auto">
