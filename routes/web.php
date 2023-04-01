@@ -6,6 +6,7 @@ use App\Http\Controllers\Checkout\GetCheckoutCreatingLeadController;
 use App\Http\Controllers\Lead\GetLeadController;
 use App\Http\Controllers\Lead\PostLeadController;
 use App\Http\Controllers\Open\GetOpenPageController;
+use App\Http\Controllers\Trigger\GetWebhookTriggerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,3 +31,6 @@ Route::post('/leads', PostLeadController::class);
 // Prices
 Route::get('/leads/create/prices/{price}', GetCheckoutCreatingLeadController::class);
 Route::get('/leads/{lead:uuid}/prices/{price}', GetCheckoutController::class);
+
+// Webhooks notification
+Route::get('/webhooks/{trigger:uuid}', GetWebhookTriggerController::class);

@@ -97,6 +97,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\UserService> $userServices
  * @property-read int|null $user_services_count
+ * @method static \Database\Factories\ServiceFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Service newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Service newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Service query()
@@ -109,6 +110,66 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Service whereUpdatedAt($value)
  */
 	class Service extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Trigger
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property int $trigger_type_id
+ * @property string $uuid
+ * @property string $emoji
+ * @property string $title
+ * @property string $content
+ * @property array{version: string, fields: array{name: string, value: string|array|int}} $configuration
+ * @property array $configuration
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\TriggerType $triggerType
+ * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|Trigger newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Trigger newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Trigger query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Trigger whereConfiguration($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Trigger whereContent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Trigger whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Trigger whereEmoji($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Trigger whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Trigger whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Trigger whereTriggerTypeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Trigger whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Trigger whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Trigger whereUuid($value)
+ */
+	class Trigger extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\TriggerType
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $description
+ * @property string $icon
+ * @property array{version: string, fields: array} $configuration
+ * @property array $configuration
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|TriggerType newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|TriggerType newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|TriggerType query()
+ * @method static \Illuminate\Database\Eloquent\Builder|TriggerType whereConfiguration($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TriggerType whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TriggerType whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TriggerType whereIcon($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TriggerType whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TriggerType whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TriggerType whereUpdatedAt($value)
+ */
+	class TriggerType extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -167,11 +228,12 @@ namespace App\Models{
  *
  * @property int $id
  * @property int $user_id
- * @property string $service_id
+ * @property int $service_id
  * @property array $service_data
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\User $user
+ * @method static \Database\Factories\UserServiceFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|UserService newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|UserService newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|UserService query()
