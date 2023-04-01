@@ -38,6 +38,8 @@
 
         <div class="prose dark:prose-invert mx-auto">
             {!! $content !!}
+           
+            <p class="mt-10"><a href="/blog">← Go back to the blog</a></p>
         </div>
     </div>
 @endsection
