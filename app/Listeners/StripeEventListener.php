@@ -10,18 +10,31 @@ class StripeEventListener
 {
     public function handle(WebhookReceived $event): void
     {
-        if ($event->payload['type'] === 'charge.succeeded') {
-            $email = $event->payload['data']['object']['billing_details']['email'];
-            $amount = $event->payload['data']['object']['amount'];
+        if ($event->payload['type'] === 'checkout.session.completed') {
+            $leadUuid = $event->payload['data']['object']['metadata']['lead_uuid'];
+            $priceId = $event->payload['data']['object']['metadata']['price_id'];
+            $createLead = $event->payload['data']['object']['metadata']['create_lead'];
 
-            Lead::where('email', $email)
-                ->update([
-                    'paid_price' => $amount,
-                    'paid_at' => now(),
-                ]);
+            $price = Price::find($priceId);
 
-            $price = Price::where('price', $amount)->first();
-            $price?->update([
+            if ($createLead) {
+                $email = $event->payload['data']['object']['customer_details']['email'];
+
+                Lead::updateOrCreate(
+                    [
+                        'email' => $email,
+                    ],
+                    [
+                        'paid_price' => $price->price,
+                        'paid_at' => now(),
+                    ]
+                );
+            } else {
+                Lead::where('uuid', $leadUuid)
+                    ->update(['paid_price' => $price->price, 'paid_at' => now()]);
+            }
+
+            $price->update([
                 'remaining' => $price->remaining - 1,
             ]);
         }
