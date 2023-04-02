@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\Auth\ForgotPasswordController;
 use App\Http\Controllers\Api\Auth\LoginController;
+use App\Http\Controllers\Api\Auth\LogoutController;
 use App\Http\Controllers\Api\Auth\RefreshTokenControllerController;
 use App\Http\Controllers\Api\Auth\ResetPasswordController;
 use App\Http\Controllers\Api\Auth\SignUpController;
@@ -27,6 +28,7 @@ use Illuminate\Support\Facades\Route;
 // Auth
 Route::post('/signup', SignUpController::class);
 Route::post('/login', LoginController::class);
+Route::post('/logout', LogoutController::class);
 Route::post('/forgot-password', ForgotPasswordController::class);
 Route::post('/reset-password', ResetPasswordController::class);
 Route::post('/refresh', RefreshTokenControllerController::class);
