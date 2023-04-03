@@ -13,9 +13,13 @@ trait HasCheckoutSessions
         if ($lead !== null) {
             $successPage = '/leads/'.$lead->uuid.'/?success=true';
             $cancelPage = '/leads/'.$lead->uuid.'?cancelled=true';
+            $data = [
+                'customer_email' => $lead->email,
+            ];
         } else {
             $successPage = '/payment/success';
             $cancelPage = '/open';
+            $data = [];
         }
 
         return Checkout::guest()
@@ -34,6 +38,7 @@ trait HasCheckoutSessions
                     ],
                 ],
                 [
+                    ...$data,
                     'success_url' => url($successPage),
                     'cancel_url' => url($cancelPage),
                     'mode' => 'payment',
