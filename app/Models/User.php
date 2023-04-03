@@ -75,4 +75,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(UserService::class);
     }
+
+    public function triggers(): HasMany
+    {
+        return $this->hasMany(Trigger::class);
+    }
 }

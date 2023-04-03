@@ -9,7 +9,9 @@ use App\Http\Controllers\Api\Auth\SignUpController;
 use App\Http\Controllers\Api\Services\GetServicesController;
 use App\Http\Controllers\Api\Socialite\RedirectToDriverController;
 use App\Http\Controllers\Api\Socialite\StoreUserServiceController;
-use App\Http\Controllers\Api\User\GetUserController;
+use App\Http\Controllers\Api\Triggers\GetTriggersController;
+use App\Http\Controllers\Api\TriggerTypes\GetTriggerTypesController;
+use App\Http\Controllers\Api\Users\GetUserController;
 use App\Http\Controllers\Api\UserServices\GetUserServicesController;
 use App\Http\Controllers\Tally\PostTallyController;
 use Illuminate\Support\Facades\Route;
@@ -36,6 +38,12 @@ Route::post('/refresh', RefreshTokenControllerController::class);
 // User
 Route::get('/users', GetUserController::class);
 Route::get('/users/services', GetUserServicesController::class);
+
+// Trigger types
+Route::get('/trigger-types', GetTriggerTypesController::class);
+
+// Triggers
+Route::get('/triggers', GetTriggersController::class);
 
 // Services
 Route::get('/services', GetServicesController::class);
