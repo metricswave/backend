@@ -29,7 +29,7 @@
         @yield('content')
     </div>
 
-    <div class="pt-12 sm:pt-44 mw-landing mx-auto">
+    <div class="p-app mt-12 sm:mt-44 mw-landing mx-auto">
         <h2 class="text-4xl sm:text-center font-bold mb-6">Get your lifetime license deal</h2>
         <div class="sm:text-center opacity-50 pb-6 sm:pb-12">
             We are currently selling lifetime licenses at a discounted price while working on the first version
