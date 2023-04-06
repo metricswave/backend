@@ -17,7 +17,7 @@ class StripeEventListener
 
             $price = Price::find($priceId);
 
-            if ($createLead) {
+            if ($createLead === 'true') {
                 $email = $event->payload['data']['object']['customer_details']['email'];
 
                 Lead::updateOrCreate(
