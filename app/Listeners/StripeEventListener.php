@@ -4,10 +4,15 @@ namespace App\Listeners;
 
 use App\Models\Lead;
 use App\Models\Price;
+use App\Services\Leads\FirstOrCreateLeadService;
 use Laravel\Cashier\Events\WebhookReceived;
 
 class StripeEventListener
 {
+    public function __construct(private readonly FirstOrCreateLeadService $firstOrCreateLeadService)
+    {
+    }
+
     public function handle(WebhookReceived $event): void
     {
         if ($event->payload['type'] === 'checkout.session.completed') {
@@ -20,15 +25,8 @@ class StripeEventListener
             if ($createLead === 'true') {
                 $email = $event->payload['data']['object']['customer_details']['email'];
 
-                Lead::updateOrCreate(
-                    [
-                        'email' => $email,
-                    ],
-                    [
-                        'paid_price' => $price->price,
-                        'paid_at' => now(),
-                    ]
-                );
+                $lead = ($this->firstOrCreateLeadService)($email);
+                $lead->update(['paid_price' => $price->price, 'paid_at' => now()]);
             } else {
                 Lead::where('uuid', $leadUuid)
                     ->update(['paid_price' => $price->price, 'paid_at' => now()]);
