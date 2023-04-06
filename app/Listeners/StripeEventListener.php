@@ -33,7 +33,7 @@ class StripeEventListener
             }
 
             $price->update([
-                'remaining' => $price->remaining - 1,
+                'remaining' => max(0, $price->remaining - 1),
             ]);
         }
     }
