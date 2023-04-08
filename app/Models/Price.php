@@ -16,4 +16,9 @@ class Price extends Model
         'remaining' => 'integer',
         'total_available' => 'integer',
     ];
+
+    public function isAvailable(): bool
+    {
+        return $this->remaining > 0;
+    }
 }

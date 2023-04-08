@@ -22,6 +22,10 @@ trait HasCheckoutSessions
             $data = [];
         }
 
+        while ($price->isAvailable() === false) {
+            $price = Price::find($price->id + 1);
+        }
+
         return Checkout::guest()
             ->create(
                 [
