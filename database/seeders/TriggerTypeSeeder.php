@@ -19,7 +19,7 @@ class TriggerTypeSeeder extends Seeder
                     'fields' => [
                         [
                             'name' => 'parameters',
-                            'type' => 'input',
+                            'type' => 'parameters',
                             'label' => 'Parameters',
                             'multiple' => true,
                             'required' => false,

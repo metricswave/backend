@@ -7,11 +7,21 @@ use Illuminate\Http\JsonResponse;
 
 class JsonController extends Controller
 {
-    protected function response(array $data, int $code = 200): JsonResponse
+    protected function createdResponse(): JsonResponse
     {
-        return response()->json([
-            'data' => $data,
-        ], $code);
+        return $this->response(null, 201);
+    }
+
+    protected function response(?array $data, int $code = 200): JsonResponse
+    {
+        return response()->json(
+            $data !== null ?
+                [
+                    'data' => $data,
+                ] :
+                null,
+            $code
+        );
     }
 
     protected function errorResponse(string $message, int $code = 400): JsonResponse
