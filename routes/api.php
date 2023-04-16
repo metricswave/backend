@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\Auth\SignUpController;
 use App\Http\Controllers\Api\Services\GetServicesController;
 use App\Http\Controllers\Api\Socialite\RedirectToDriverController;
 use App\Http\Controllers\Api\Socialite\StoreUserServiceController;
+use App\Http\Controllers\Api\Triggers\DeleteTriggersController;
 use App\Http\Controllers\Api\Triggers\GetTriggersController;
 use App\Http\Controllers\Api\Triggers\PostTriggersController;
 use App\Http\Controllers\Api\Triggers\PutTriggersController;
@@ -47,6 +48,7 @@ Route::get('/trigger-types', GetTriggerTypesController::class);
 // Triggers
 Route::post('/triggers', PostTriggersController::class);
 Route::put('/triggers/{trigger:uuid}', PutTriggersController::class);
+Route::delete('/triggers/{trigger:uuid}', DeleteTriggersController::class);
 Route::get('/triggers', GetTriggersController::class);
 
 // Services
