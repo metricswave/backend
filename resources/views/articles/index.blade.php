@@ -2,7 +2,7 @@
 
 @section('meta')
     <title>{{$title}} - {{ config('app.name') }}</title>
-    <meta content="{{ $meta_description }}"
+    <meta content="{{ $meta_description ?? $short_content }}"
           name="description"/>
 
     {{-- OG Tags --}}
@@ -15,31 +15,44 @@
     <meta property="og:title"
           content="{{$title}} - {{ config('app.name') }}"/>
     <meta property="og:description"
-          content="{{ $meta_description }}"/>
-    <meta property="og:image"
-          content="{{ config('app.url') }}{{ $meta_image }}"/>
+          content="{{ $meta_description ?? $short_content }}"/>
+    @if (isset($meta_image))
+        <meta property="og:image"
+              content="{{ config('app.url') }}{{ $meta_image }}"/>
+    @endif
 
     <meta name="twitter:card"
           content="summary_large_image"/>
     <meta name="twitter:title"
           content="{{$title}} - {{ config('app.name') }}"/>
     <meta name="twitter:description"
-          content="{{ $meta_description }}"/>
-    <meta name="twitter:image"
-          content="{{ config('app.url') }}{{ $meta_image }}"/>
+          content="{{ $meta_description ?? $short_content }}"/>
+    @if (isset($meta_image))
+        <meta name="twitter:image"
+              content="{{ config('app.url') }}{{ $meta_image }}"/>
+    @endif
 @endsection
 
 @section('content')
     <div class="pt-14 max-w-[65ch] mx-auto">
-        <h1 class="text-4xl sm:text-center font-bold mb-6">{{ $title }}</h1>
-        <div class="sm:text-center opacity-50 mb-12">
-            {{ Date::parse($date)->format('F j, Y') }}
-        </div>
+        @if ($blueprint->handle() === 'articles')
+            <h1 class="text-4xl sm:text-center font-bold mb-6">{{ $title }}</h1>
+            <div class="sm:text-center opacity-50 mb-12">
+                {{ Date::parse($date)->format('F j, Y') }}
+            </div>
+        @else
+            <h1 class="text-4xl font-bold mb-6">{{ $title }}</h1>
+            <div class="opacity-50 mb-12">
+                {{ Date::parse($date)->format('F j, Y') }}
+            </div>
+        @endif
 
         <div class="prose dark:prose-invert mx-auto">
             {!! $content !!}
 
-            <p class="mt-10"><a href="/blog">← Go back to the blog</a></p>
+            @if ($blueprint->handle() === 'articles')
+                <p class="mt-10"><a href="/blog">← Go back to the blog</a></p>
+            @endif
         </div>
     </div>
 @endsection

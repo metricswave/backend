@@ -46,6 +46,7 @@
 
         <ul class="flex flex-col space-y-4 tracking-tighter sm:flex-row sm:space-x-8 sm:space-y-0">
             <li><a href="/open">Open Metrics</a></li>
+            <li><a href="/documentation">Documentation</a></li>
             <li><a href="/privacy-policy">Privacy Policy</a></li>
             <li><a href="/terms-and-conditions">Terms of Service</a></li>
         </ul>

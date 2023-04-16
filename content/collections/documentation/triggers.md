@@ -1,0 +1,13 @@
+---
+id: 3826e861-c213-4482-8ab7-0e3add2a4d7f
+blueprint: documentation
+title: Triggers
+short_content: 'Information about how triggers works and different types and configurations.'
+updated_by: 1
+updated_at: 1681671081
+---
+Triggers are the root cause of every notification. They are different, have different configurations and each fits a different use case.
+
+## Types
+
+- [Webhooks](/documentation/triggers/webhooks): connect external applications, devices or scripts easily.

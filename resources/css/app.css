@@ -39,3 +39,7 @@ html {
 .p-app {
     @apply p-[var(--app-padding)];
 }
+
+.prose hr {
+    border: none;
+}
