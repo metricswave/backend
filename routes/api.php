@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\Socialite\RedirectToDriverController;
 use App\Http\Controllers\Api\Socialite\StoreUserServiceController;
 use App\Http\Controllers\Api\Triggers\GetTriggersController;
 use App\Http\Controllers\Api\Triggers\PostTriggersController;
+use App\Http\Controllers\Api\Triggers\PutTriggersController;
 use App\Http\Controllers\Api\TriggerTypes\GetTriggerTypesController;
 use App\Http\Controllers\Api\Users\GetUserController;
 use App\Http\Controllers\Api\UserServices\GetUserServicesController;
@@ -45,6 +46,7 @@ Route::get('/trigger-types', GetTriggerTypesController::class);
 
 // Triggers
 Route::post('/triggers', PostTriggersController::class);
+Route::put('/triggers/{trigger:uuid}', PutTriggersController::class);
 Route::get('/triggers', GetTriggersController::class);
 
 // Services

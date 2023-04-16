@@ -7,9 +7,9 @@ use Illuminate\Http\JsonResponse;
 
 class JsonController extends Controller
 {
-    protected function createdResponse(): JsonResponse
+    protected function noContentResponse(): JsonResponse
     {
-        return $this->response(null, 201);
+        return $this->response(null, 204);
     }
 
     protected function response(?array $data, int $code = 200): JsonResponse
@@ -22,6 +22,11 @@ class JsonController extends Controller
                 null,
             $code
         );
+    }
+
+    protected function createdResponse(): JsonResponse
+    {
+        return $this->response(null, 201);
     }
 
     protected function errorResponse(string $message, int $code = 400): JsonResponse
