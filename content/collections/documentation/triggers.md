@@ -4,10 +4,11 @@ blueprint: documentation
 title: Triggers
 short_content: 'Information about how triggers works and different types and configurations.'
 updated_by: 1
-updated_at: 1681671081
+updated_at: 1681718003
 ---
 Triggers are the root cause of every notification. They are different, have different configurations and each fits a different use case.
 
 ## Types
 
+- [On Time](/documentation/triggers/on-time): receive a notification on an specifict time and week day.
 - [Webhooks](/documentation/triggers/webhooks): connect external applications, devices or scripts easily.
