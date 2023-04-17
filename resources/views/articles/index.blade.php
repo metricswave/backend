@@ -50,7 +50,7 @@
         <div class="prose dark:prose-invert mx-auto">
             {!! $content !!}
 
-            @if ($blueprint->handle() === 'articles')
+            @if ($blueprint->raw()->handle === 'article')
                 <p class="mt-10"><a href="/blog">← Go back to the blog</a></p>
             @endif
         </div>
