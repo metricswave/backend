@@ -9,12 +9,16 @@ class Kernel extends ConsoleKernel
 {
     protected function schedule(Schedule $schedule): void
     {
+        // Mails
         $schedule->command('app:mail:user-lifetime-licence-mail')->twiceDaily(12, 20);
+
+        // Triggers
+        $schedule->command('app:trigger:on-time')->everyMinute();
     }
 
     protected function commands(): void
     {
-        $this->load(__DIR__ . '/Commands');
+        $this->load(__DIR__.'/Commands');
 
         require base_path('routes/console.php');
     }

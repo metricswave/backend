@@ -18317,6 +18317,17 @@
      
 }
 
+    namespace Laravel\Horizon { 
+            /**
+     * 
+     *
+     */ 
+        class Horizon {
+         
+    }
+     
+}
+
     namespace Laravel\Socialite\Facades { 
             /**
      * 
@@ -23309,6 +23320,7 @@ namespace  {
             class View extends \Illuminate\Support\Facades\View {}
             class Vite extends \Illuminate\Support\Facades\Vite {}
             class Image extends \Intervention\Image\Facades\Image {}
+            class Horizon extends \Laravel\Horizon\Horizon {}
             class Socialite extends \Laravel\Socialite\Facades\Socialite {}
             class GraphQL extends \Rebing\GraphQL\Support\Facades\GraphQL {}
             class Flare extends \Spatie\LaravelIgnition\Facades\Flare {}

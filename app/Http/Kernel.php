@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use App\Http\Middleware\Authenticate;
+use App\Http\Middleware\BasicAuthByEnvironmentMiddleware;
 use App\Http\Middleware\EncryptCookies;
 use App\Http\Middleware\PreventRequestsDuringMaintenance;
 use App\Http\Middleware\RedirectIfAuthenticated;
@@ -89,5 +90,6 @@ class Kernel extends HttpKernel
         'abilities' => CheckAbilities::class,
         'ability' => CheckForAnyAbility::class,
         'verified' => EnsureEmailIsVerified::class,
+        'basicEnvironmentAuth' => BasicAuthByEnvironmentMiddleware::class,
     ];
 }

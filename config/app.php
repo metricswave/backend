@@ -8,7 +8,12 @@ return [
 
     'env' => env('APP_ENV', 'production'),
 
-    'debug' => (bool)env('APP_DEBUG', false),
+    'basic_auth' => [
+        'username' => env('BASIC_AUTH_USERNAME', 'admin'),
+        'password' => env('BASIC_AUTH_PASSWORD', 'admin'),
+    ],
+
+    'debug' => (bool) env('APP_DEBUG', false),
 
     'mailto' => env('MAIL_TO', 'hi@notifywave.com'),
 
@@ -96,6 +101,7 @@ return [
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
+        App\Providers\HorizonServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
     ],

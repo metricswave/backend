@@ -11,7 +11,7 @@ class TriggerNotification extends Notification
 {
     use Queueable;
 
-    public function __construct(private readonly Trigger $trigger, private readonly array $params)
+    public function __construct(private readonly Trigger $trigger, private readonly array $params = [])
     {
     }
 
