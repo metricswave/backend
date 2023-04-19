@@ -9,6 +9,9 @@ class Kernel extends ConsoleKernel
 {
     protected function schedule(Schedule $schedule): void
     {
+        // Horizon
+        $schedule->command('horizon:snapshot')->everyFiveMinutes();
+
         // Mails
         $schedule->command('app:mail:user-lifetime-licence-mail')->twiceDaily(12, 20);
 

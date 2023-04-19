@@ -37,7 +37,10 @@ it('return expected trigger list', function () {
     ]);
 
     $result = (new TriggerRepository())
-        ->onTimeFor(new Time('08:00'), new Weekday(Date::now()->startOfWeek()->dayOfWeek));
+        ->onTimeFor(
+            new Time('08:00'),
+            new Weekday(Date::now()->startOfWeek()->dayOfWeek)
+        );
 
     expect($result->count())->toBe(1);
 });
