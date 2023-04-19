@@ -17,10 +17,12 @@ class NotifyOnTimeTriggersCommand extends Command
     {
         $this->info('Triggering on time notifications');
 
-        QueueOnTimeTriggerNotifications::dispatch(
-            Time::fromString(Date::now()->format('H:i')),
-            Weekday::fromDayOfWeek(Date::now()->dayOfWeek)
-        );
+        $time = Time::fromString(Date::now()->format('H:i'));
+        $weekday = Weekday::fromDayOfWeek(Date::now()->dayOfWeek);
+
+        QueueOnTimeTriggerNotifications::dispatch($time, $weekday);
+
+        $this->info("Done (Time: {$time->toString()}, Weekday: {$weekday->toString()})");
 
         return static::SUCCESS;
     }

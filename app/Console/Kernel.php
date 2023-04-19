@@ -13,7 +13,8 @@ class Kernel extends ConsoleKernel
         $schedule->command('app:mail:user-lifetime-licence-mail')->twiceDaily(12, 20);
 
         // Triggers
-        $schedule->command('app:trigger:on-time')->everyMinute();
+        $schedule->command('app:trigger:on-time')->everyMinute()
+            ->appendOutputTo(storage_path('logs/trigger-on-time.log'));
     }
 
     protected function commands(): void
