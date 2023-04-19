@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Jobs\QueueOnTimeTriggerNotifications;
+use App\Jobs\QueueOnTimeTriggerNotificationsJob;
 use App\Transfers\Time;
 use App\Transfers\Weekday;
 use Illuminate\Console\Command;
@@ -20,7 +20,7 @@ class NotifyOnTimeTriggersCommand extends Command
         $time = Time::fromString(Date::now()->format('H:i'));
         $weekday = Weekday::fromDayOfWeek(Date::now()->dayOfWeek);
 
-        QueueOnTimeTriggerNotifications::dispatch($time, $weekday);
+        QueueOnTimeTriggerNotificationsJob::dispatch($time, $weekday);
 
         $this->info("Done (Time: {$time->toString()}, Weekday: {$weekday->toString()})");
 
