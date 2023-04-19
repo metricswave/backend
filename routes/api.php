@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\Auth\LogoutController;
 use App\Http\Controllers\Api\Auth\RefreshTokenControllerController;
 use App\Http\Controllers\Api\Auth\ResetPasswordController;
 use App\Http\Controllers\Api\Auth\SignUpController;
+use App\Http\Controllers\Api\Notifications\GetNotificationsController;
 use App\Http\Controllers\Api\Services\GetServicesController;
 use App\Http\Controllers\Api\Socialite\RedirectToDriverController;
 use App\Http\Controllers\Api\Socialite\StoreUserServiceController;
@@ -41,6 +42,9 @@ Route::post('/refresh', RefreshTokenControllerController::class);
 // User
 Route::get('/users', GetUserController::class);
 Route::get('/users/services', GetUserServicesController::class);
+
+// Notifications
+Route::get('/notifications', GetNotificationsController::class);
 
 // Trigger types
 Route::get('/trigger-types', GetTriggerTypesController::class);

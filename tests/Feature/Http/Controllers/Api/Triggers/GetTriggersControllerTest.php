@@ -13,7 +13,6 @@ it('should be able to get all triggers', function () {
     $this->actingAs($user)
         ->getJson('/api/triggers')
         ->assertSuccessful()
-        ->dump()
         ->assertJson(fn(AssertableJson $json) => $json
             ->count('data.triggers', 3)
             ->has('data.triggers.0', fn(AssertableJson $json) => $json
@@ -27,7 +26,10 @@ it('should be able to get all triggers', function () {
                 ->has('configuration')
                 ->has('trigger_type')
                 ->has('created_at')
+                ->has('deleted_at')
                 ->has('updated_at')
+                ->has('time')
+                ->has('weekdays')
             ));
 });
 
