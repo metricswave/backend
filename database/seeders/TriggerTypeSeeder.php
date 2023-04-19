@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\TriggerType;
+use App\Transfers\TriggerTypeId;
 use Illuminate\Database\Seeder;
 
 class TriggerTypeSeeder extends Seeder
@@ -10,8 +11,9 @@ class TriggerTypeSeeder extends Seeder
     public function run(): void
     {
         TriggerType::updateOrCreate(
-            ['name' => 'Webhook'],
+            ['id' => TriggerTypeId::Webhook],
             [
+                'name' => 'Webhook',
                 'icon' => 'webhook.png',
                 'description' => 'Trigger a task when a webhook is received.',
                 'configuration' => [
@@ -30,8 +32,9 @@ class TriggerTypeSeeder extends Seeder
         );
 
         TriggerType::updateOrCreate(
-            ['name' => 'On Time'],
+            ['id' => TriggerTypeId::OnTime],
             [
+                'name' => 'On Time',
                 'icon' => 'on_time.png',
                 'description' => 'Trigger a task at a specific time and day(s) of the week.',
                 'configuration' => [
