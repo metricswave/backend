@@ -56,6 +56,80 @@ it('creates a trigger', function () {
         'emoji' => '👍',
         'title' => 'Test Trigger',
         'content' => 'This is a test trigger',
+        'configuration' => cast_to_json([
+            'fields' => [
+                'time' => '12:00',
+                'weekdays' => ['monday', 'tuesday'],
+            ],
+        ]),
+    ]);
+});
+
+it('creates a trigger updating time to UTC', function () {
+    $uuid = $this->faker->uuid;
+
+    /** @var User $user */
+    $user = User::factory()->create();
+
+    /** @var TriggerType $triggerType */
+    $triggerType = TriggerType::factory()->create([
+        'name' => 'Test Trigger Type',
+        'description' => 'This is a test trigger type',
+        'configuration' => [
+            'version' => '1.0',
+            'fields' => [
+                [
+                    'name' => 'time',
+                    'type' => 'time',
+                    'label' => 'Time',
+                    'required' => true,
+                ],
+                [
+                    'name' => 'weekdays',
+                    'type' => 'weekdays',
+                    'label' => 'Weekdays',
+                    'required' => true,
+                    'multiple' => true,
+                ]
+            ],
+        ],
+    ]);
+
+    $this
+        ->actingAs($user)
+        ->postJson(
+            '/api/triggers',
+            [
+                'uuid' => $uuid,
+                'trigger_type_id' => $triggerType->id,
+                'emoji' => '👍',
+                'title' => 'Test Trigger',
+                'content' => 'This is a test trigger',
+                'configuration' => [
+                    'fields' => [
+                        'time' => '12:00',
+                        'weekdays' => ['monday', 'tuesday'],
+                    ],
+                ],
+            ],
+            [
+                'x-timezone' => 'Europe/Madrid',
+            ]
+        )->assertCreated();
+
+    $this->assertDatabaseHas('triggers', [
+        'uuid' => $uuid,
+        'user_id' => $user->id,
+        'trigger_type_id' => $triggerType->id,
+        'emoji' => '👍',
+        'title' => 'Test Trigger',
+        'content' => 'This is a test trigger',
+        'configuration' => cast_to_json([
+            'fields' => [
+                'time' => '10:00',
+                'weekdays' => ['monday', 'tuesday'],
+            ],
+        ]),
     ]);
 });
 
