@@ -7,6 +7,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use NotificationChannels\Telegram\TelegramMessage;
 
 class TriggerNotification extends Notification implements ShouldQueue
 {
@@ -18,7 +19,18 @@ class TriggerNotification extends Notification implements ShouldQueue
 
     public function via(object $notifiable): array
     {
-        return ['mail', 'database'];
+        return ['telegram', 'mail', 'database'];
+    }
+
+    public function toTelegram($notifiable)
+    {
+        $emoji = $this->trigger->emoji;
+        $title = $this->trigger->formattedTitle($this->params);
+        $content = $this->trigger->formattedContent($this->params);
+
+        return TelegramMessage::create()
+            ->to(828728306)
+            ->content("*${emoji} ${title}*\n${content}");
     }
 
     public function toMail(object $notifiable): MailMessage
