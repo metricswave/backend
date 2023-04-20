@@ -29,7 +29,7 @@ class TriggerNotification extends Notification implements ShouldQueue
         $content = $this->trigger->formattedContent($this->params);
 
         return TelegramMessage::create()
-            ->to(828728306)
+            ->to('-820462483')
             ->content("*${emoji} ${title}*\n${content}");
     }
 
