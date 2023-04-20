@@ -44,7 +44,7 @@ return [
         'redirect' => env('GOOGLE_REDIRECT_URI', 'http://localhost:3000/auth/google/callback'),
     ],
 
-    'telegram' => [
+    'telegram-bot-api' => [
         'token' => env('TELEGRAM_BOT_TOKEN', '6183664646:AAHMLE4zkKB2KPnpTRJoewYIZ6pYo0yVdR4J'),
     ],
 ];
