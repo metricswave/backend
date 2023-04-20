@@ -16,6 +16,9 @@ class ServicesSeeder extends Seeder
                     'name' => 'GitHub',
                     'description' => 'GitHub is a web-based hosting service for version control.',
                     'scopes' => ['read:user', 'notifications', 'user:email'],
+                    'configuration' => [
+                        'type' => 'oauth',
+                    ]
                 ]
             );
 
@@ -26,6 +29,43 @@ class ServicesSeeder extends Seeder
                     'name' => 'Google',
                     'description' => 'Connect your Google account to your account on this website.',
                     'scopes' => ['profile', 'email', 'calendar.readonly'],
+                    'configuration' => [
+                        'type' => 'oauth',
+                    ]
+                ]
+            );
+
+        Service::query()
+            ->updateOrCreate(
+                ['driver' => 'telegram'],
+                [
+                    'name' => 'Telegram',
+                    'description' => 'Connect a Telegram channel to receive notifications on.',
+                    'scopes' => [],
+                    'multiple' => true,
+                    'configuration' => [
+                        'type' => 'form',
+                        'form' => [
+                            'title' => 'Telegram Channel',
+                            'description' => 'Connect a Telegram channel to receive notifications on.',
+                            'help' => [
+                                'title' => 'How to get a Telegram channel ID?',
+                                'href' => '/documentation/integrations/telegram',
+                            ],
+                            'fields' => [
+                                'channel_id' => [
+                                    'type' => 'input',
+                                    'label' => 'Channel ID',
+                                    'placeholder' => 'Channel ID',
+                                ],
+                                'channel_name' => [
+                                    'type' => 'input',
+                                    'label' => 'Channel Name',
+                                    'placeholder' => 'Channel Name',
+                                ],
+                            ],
+                        ]
+                    ]
                 ]
             );
     }

@@ -15,10 +15,14 @@ class Service extends Model
         'driver',
         'description',
         'scopes',
+        'multiple',
+        'configuration',
     ];
 
     protected $casts = [
         'scopes' => 'array',
+        'multiple' => 'boolean',
+        'configuration' => 'json',
     ];
 
     public function userServices(): HasMany
