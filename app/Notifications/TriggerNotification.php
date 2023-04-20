@@ -29,8 +29,10 @@ class TriggerNotification extends Notification implements ShouldQueue
         $content = $this->trigger->formattedContent($this->params);
 
         return TelegramMessage::create()
+            ->token(config('services.telegram-bot-api.token'))
             ->to('-820462483')
-            ->content("*${emoji} ${title}*\n${content}");
+            ->content("*${emoji} ${title}*\n${content}")
+            ->send();
     }
 
     public function toMail(object $notifiable): MailMessage
