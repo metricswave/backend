@@ -48,7 +48,12 @@ class TriggerNotification extends Notification implements ShouldQueue
         $title = $this->trigger->formattedTitle($this->params);
         $content = $this->trigger->formattedContent($this->params);
 
-        foreach ($this->trigger->via['telegram'] as $chatId) {
+        $telegramChatIds = collect($this->trigger->via)
+            ->filter(fn($via) => $via['checked'] && $via['type'] === 'telegram')
+            ->map(fn($via) => $via['value'])
+            ->toArray();
+
+        foreach ($telegramChatIds as $chatId) {
             TelegramMessage::create()
                 ->token(config('services.telegram-bot-api.token'))
                 ->to($chatId)
