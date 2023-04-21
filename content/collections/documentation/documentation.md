@@ -4,6 +4,9 @@ blueprint: documentation
 title: Documentation
 short_content: 'A collection of good articles about how NotifyWave works.'
 updated_by: 1
-updated_at: 1681672478
+updated_at: 1681997168
 ---
-- [Triggers](/documentation/triggers)
+Choose your topic:
+
+- [Triggers](/documentation/triggers): create triggers to receive notifications about everything that matters to you.
+- [Services](/documentation/services): connect more services to NotifyWave and do more things.

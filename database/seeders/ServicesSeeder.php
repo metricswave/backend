@@ -50,15 +50,17 @@ class ServicesSeeder extends Seeder
                             'description' => 'Connect a Telegram channel to receive notifications on.',
                             'help' => [
                                 'title' => 'How to get a Telegram channel ID?',
-                                'href' => '/documentation/integrations/telegram',
+                                'href' => '/documentation/services/telegram',
                             ],
                             'fields' => [
-                                'channel_id' => [
+                                [
+                                    'name' => 'channel_id',
                                     'type' => 'input',
                                     'label' => 'Channel ID',
                                     'placeholder' => 'Channel ID',
                                 ],
-                                'channel_name' => [
+                                [
+                                    'name' => 'channel_name',
                                     'type' => 'input',
                                     'label' => 'Channel Name',
                                     'placeholder' => 'Channel Name',
