@@ -42,4 +42,5 @@ html {
 
 .prose hr {
     border: none;
+    margin: 1.75rem 0 !important;
 }
