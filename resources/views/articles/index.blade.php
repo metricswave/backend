@@ -37,16 +37,11 @@
     <div class="pt-14 max-w-[65ch] mx-auto">
         @if ($blueprint->handle() === 'articles')
             <h1 class="text-4xl sm:text-center font-bold mb-6">{{ $title }}</h1>
-            @if ($blueprint->raw()->handle === 'article')
-                <div class="sm:text-center opacity-50 mb-12">
-                    {{ Date::parse($date)->format('F j, Y') }}
-                </div>
-            @endif
-        @else
-            <h1 class="text-4xl font-bold mb-6">{{ $title }}</h1>
-            <div class="opacity-50 mb-12">
+            <div class="sm:text-center opacity-50 mb-12">
                 {{ Date::parse($date)->format('F j, Y') }}
             </div>
+        @else
+            <h1 class="text-4xl font-bold mb-6">{{ $title }}</h1>
         @endif
 
         <div class="prose dark:prose-invert mx-auto">
