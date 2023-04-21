@@ -93,6 +93,8 @@ namespace App\Models{
  * @property string $driver
  * @property string $description
  * @property array $scopes
+ * @property bool $multiple
+ * @property array|null $configuration
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\UserService> $userServices
@@ -101,10 +103,12 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Service newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Service newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Service query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Service whereConfiguration($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Service whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Service whereDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Service whereDriver($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Service whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service whereMultiple($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Service whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Service whereScopes($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Service whereUpdatedAt($value)
@@ -116,6 +120,8 @@ namespace App\Models{
 /**
  * App\Models\Trigger
  *
+ * @property array{version: string, fields: array{name: string, value: string|array|int}} $configuration
+ * @property array{email: bool, push: bool, telegram: string[]|false} $via
  * @property int $id
  * @property int $user_id
  * @property int $trigger_type_id
@@ -123,25 +129,36 @@ namespace App\Models{
  * @property string $emoji
  * @property string $title
  * @property string $content
- * @property array{version: string, fields: array{name: string, value: string|array|int}} $configuration
  * @property array $configuration
+ * @property array|null $via
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property string|null $time
+ * @property string|null $weekdays
  * @property-read \App\Models\TriggerType $triggerType
  * @property-read \App\Models\User $user
+ * @method static \Database\Factories\TriggerFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Trigger newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Trigger newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Trigger onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|Trigger query()
  * @method static \Illuminate\Database\Eloquent\Builder|Trigger whereConfiguration($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Trigger whereContent($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Trigger whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Trigger whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Trigger whereEmoji($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Trigger whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Trigger whereTime($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Trigger whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Trigger whereTriggerTypeId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Trigger whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Trigger whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Trigger whereUuid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Trigger whereVia($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Trigger whereWeekdays($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Trigger withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|Trigger withoutTrashed()
  */
 	class Trigger extends \Eloquent {}
 }
@@ -158,6 +175,7 @@ namespace App\Models{
  * @property array $configuration
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Database\Factories\TriggerTypeFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|TriggerType newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|TriggerType newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|TriggerType query()
@@ -198,6 +216,8 @@ namespace App\Models{
  * @property-read int|null $services_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Laravel\Sanctum\PersonalAccessToken> $tokens
  * @property-read int|null $tokens_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Trigger> $triggers
+ * @property-read int|null $triggers_count
  * @method static \Database\Factories\UserFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
@@ -232,17 +252,22 @@ namespace App\Models{
  * @property array $service_data
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property-read \App\Models\User $user
  * @method static \Database\Factories\UserServiceFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|UserService newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|UserService newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserService onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|UserService query()
  * @method static \Illuminate\Database\Eloquent\Builder|UserService whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserService whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|UserService whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|UserService whereServiceData($value)
  * @method static \Illuminate\Database\Eloquent\Builder|UserService whereServiceId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|UserService whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|UserService whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserService withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserService withoutTrashed()
  */
 	class UserService extends \Eloquent {}
 }

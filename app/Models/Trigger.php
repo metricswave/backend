@@ -9,14 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 
 /**
- * @property int $id
- * @property int $user_id
- * @property int $trigger_type_id
- * @property string $uuid
- * @property string $emoji
- * @property string $title
- * @property string $content
  * @property array{version: string, fields: array{name: string, value: string|array|int}} $configuration
+ * @property array{value: string, label: string, checked: bool, type: string} $via
  */
 class Trigger extends Model
 {
@@ -31,12 +25,14 @@ class Trigger extends Model
         'title',
         'content',
         'configuration',
+        'via',
     ];
 
     protected $casts = [
         'user_id' => 'integer',
         'trigger_type_id' => 'integer',
         'configuration' => 'json',
+        'via' => 'array',
     ];
 
     public function user(): BelongsTo

@@ -19,31 +19,16 @@ class TriggerNotification extends Notification implements ShouldQueue
 
     public function via(object $notifiable): array
     {
-        return ['telegram', 'mail', 'database'];
-    }
+        $via = collect($this->trigger->via)
+            ->filter(fn($via) => $via['checked'])
+            ->unique('type')
+            ->map(fn($via) => $via['type'])
+            ->toArray();
 
-    public function toTelegram($notifiable)
-    {
-        $emoji = $this->trigger->emoji;
-        $title = $this->trigger->formattedTitle($this->params);
-        $content = $this->trigger->formattedContent($this->params);
-
-        return TelegramMessage::create()
-            ->token(config('services.telegram-bot-api.token'))
-            ->to('-820462483')
-            ->content("*${emoji} ${title}*\n${content}")
-            ->send();
-    }
-
-    public function toMail(object $notifiable): MailMessage
-    {
-        return (new MailMessage())
-            ->subject($this->trigger->emoji.' '.$this->trigger->formattedTitle($this->params))
-            ->markdown('mail.trigger', [
-                'emoji' => $this->trigger->emoji,
-                'title' => $this->trigger->formattedTitle($this->params),
-                'content' => $this->trigger->formattedContent($this->params),
-            ]);
+        return [
+            'database',
+            ...$via,
+        ];
     }
 
     public function toArray(object $notifiable): array
@@ -55,5 +40,31 @@ class TriggerNotification extends Notification implements ShouldQueue
             'trigger_id' => $this->trigger->id,
             'trigger_type_id' => $this->trigger->trigger_type_id,
         ];
+    }
+
+    public function toTelegram($notifiable)
+    {
+        $emoji = $this->trigger->emoji;
+        $title = $this->trigger->formattedTitle($this->params);
+        $content = $this->trigger->formattedContent($this->params);
+
+        foreach ($this->trigger->via['telegram'] as $chatId) {
+            TelegramMessage::create()
+                ->token(config('services.telegram-bot-api.token'))
+                ->to($chatId)
+                ->content("*${emoji} ${title}*\n${content}")
+                ->send();
+        }
+    }
+
+    public function toMail(object $notifiable): MailMessage
+    {
+        return (new MailMessage())
+            ->subject($this->trigger->emoji.' '.$this->trigger->formattedTitle($this->params))
+            ->markdown('mail.trigger', [
+                'emoji' => $this->trigger->emoji,
+                'title' => $this->trigger->formattedTitle($this->params),
+                'content' => $this->trigger->formattedContent($this->params),
+            ]);
     }
 }

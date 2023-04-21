@@ -19,6 +19,7 @@ class PutTriggerRequest extends FormRequest
             'title' => 'string|max:255',
             'content' => 'string|max:255',
             'configuration' => ['array', new TriggerConfiguration()],
+            'via' => ['array']
         ];
     }
 }
