@@ -41,7 +41,7 @@
                 {{ Date::parse($date)->format('F j, Y') }}
             </div>
         @else
-            <h1 class="text-4xl font-bold mb-6">{{ $title }}</h1>
+            <h1 class="text-4xl font-bold mb-8">{{ $title }}</h1>
         @endif
 
         <div class="prose dark:prose-invert mx-auto">
