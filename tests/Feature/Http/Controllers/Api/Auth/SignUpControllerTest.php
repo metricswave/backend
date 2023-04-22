@@ -1,9 +1,12 @@
 <?php
 
+use App\Models\Lead;
 use App\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
 
 it('return expected response', function () {
+    Lead::factory()->create(['email' => 'victoor89@gmail.com', 'paid_at' => now()]);
+
     $this
         ->postJson('/api/signup', [
             'name' => 'Victor',
@@ -24,6 +27,7 @@ it('return expected response', function () {
 });
 
 it('return error if user is already registered', function () {
+    Lead::factory()->create(['email' => 'victoor89@gmail.com', 'paid_at' => now()]);
     User::factory()->create(['email' => 'victoor89@gmail.com']);
 
     $this
@@ -64,4 +68,16 @@ it('return error if not password confirmation', function () {
         ->assertInvalid([
             'password' => 'The password field confirmation does not match.',
         ]);
+});
+
+it('return error if no payment lead created', function () {
+    $this
+        ->postJson('/api/signup', [
+            'name' => 'Victor',
+            'email' => 'victoor89@gmail.com',
+            'password' => 'password',
+            'password_confirmation' => 'password',
+            'device_name' => 'test',
+        ])
+        ->assertConflict();
 });
