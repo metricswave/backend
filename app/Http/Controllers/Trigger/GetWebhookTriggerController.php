@@ -12,7 +12,7 @@ class GetWebhookTriggerController extends JsonController
 {
     public function __invoke(Trigger $trigger): JsonResponse
     {
-        if ($trigger->trigger_type_id !== TriggerTypeId::Webhook) {
+        if ($trigger->trigger_type_id !== TriggerTypeId::Webhook->value) {
             return $this->errorResponse('Trigger type is not webhook', 400);
         }
 
@@ -32,6 +32,6 @@ class GetWebhookTriggerController extends JsonController
         // Send the webhook notification to user
         $trigger->user->notify(new TriggerNotification($trigger, $params));
 
-        return $this->response([]);
+        return $this->response([], 204);
     }
 }
