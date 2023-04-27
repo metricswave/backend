@@ -35,7 +35,7 @@
 
 @section('content')
     <div class="pt-14 max-w-[65ch] mx-auto">
-        @if ($blueprint->handle() === 'articles')
+        @if ($blueprint->raw()->handle === 'article')
             <h1 class="text-4xl sm:text-center font-bold mb-6">{{ $title }}</h1>
             <div class="sm:text-center opacity-50 mb-12">
                 {{ Date::parse($date)->format('F j, Y') }}

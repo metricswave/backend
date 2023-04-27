@@ -3,15 +3,18 @@
 @section('content')
     <div class="flex flex-col items-center justify-center space-y-14 sm:space-y-32">
         <div class="mw-landing mx-auto my-20 flex flex-col space-y-8 sm:my-40">
-            <h1 class="text-4xl sm:text-5xl leading-tight tracking-tighter">Real-time
-                <br><span class="relative bg-gradient-to-br from-pink-500 to-amber-500 bg-clip-text text-4xl text-transparent after:absolute after:-right-9 after:top-0 after:inline-block after:h-5 after:w-5 after:animate-ping after:rounded-full after:bg-gradient-to-b after:from-pink-500 after:to-amber-500 after:content-[''] sm:text-6xl">notifications</span><br>
-                for everything that matters to you</h1>
+            <h1 class="text-3xl sm:text-6xl leading-[1.3] sm:leading-[1.1] tracking-tighter">
+                <span class="relative bg-gradient-to-br from-pink-500 to-amber-500 bg-clip-text text-transparent">Notifications</span>
+                <br/>for everything that matters to you
+            </h1>
 
-            <p class="text-xl font-light leading-normal sm:text-2xl">&mdash; from your favorites sport events,
+            <p class="text-lg font-light leading-normal sm:text-2xl">
+                &mdash; from your favorites sport events,
                 reminders to leave for appointments, the latest news updates, bank transactions, severe weather alerts,
-                or anything else.</p>
+                or anything else.
+            </p>
 
-            <p class="text-xl font-light leading-normal sm:text-2xl">Never miss a beat and stay on top of your
+            <p class="text-lg font-light leading-normal sm:text-2xl">Never miss a beat and stay on top of your
                 game.</p>
             @include('landing.lead-form')
         </div>
