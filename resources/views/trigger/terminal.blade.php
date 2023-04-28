@@ -53,9 +53,11 @@
                 </h2>
                 <p>
                     Send yourself a notification at any time from the terminal and to as many devices or channels as you
-                    want.
+                    want. It's as simple as running a command.
                 </p>
-                <p>It that's simple.</p>
+                <p>→ <a class="text-blue-500 underline hover:no-underline smooth"
+                        href="/documentation/notifywave-in-your-terminal">How to trigger a notification from your
+                        terminal</a></p>
             </div>
 
             <img src="/images/landings/terminal_notification.png"
