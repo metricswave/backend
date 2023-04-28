@@ -20,7 +20,7 @@ class UserLifetimeLicenceMailCommand extends Command
 
     public function handle(): void
     {
-        $leads = $this->getMailableLeads($this->argument('email'), self::MAIL_TYPE);
+        $leads = $this->getMailableLeadsWithoutLicences($this->argument('email'), self::MAIL_TYPE);
 
         $this->withProgressBar($leads, function (Lead $lead) {
             Mail::send(new LifetimeLicenseDealMail($lead));

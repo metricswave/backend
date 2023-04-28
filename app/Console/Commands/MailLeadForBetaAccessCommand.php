@@ -20,7 +20,7 @@ class MailLeadForBetaAccessCommand extends Command
 
     public function handle(): int
     {
-        $leads = $this->getMailableLeads($this->argument('email'), self::MAIL_TYPE)
+        $leads = $this->getMailableLeadsWithLicences($this->argument('email'), self::MAIL_TYPE)
             ->slice(0, 5);
 
         $this->withProgressBar($leads, function (Lead $lead) {

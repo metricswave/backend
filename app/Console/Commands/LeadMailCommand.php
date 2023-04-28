@@ -14,7 +14,39 @@ trait LeadMailCommand
         if ($email !== null) {
             $leads = Lead::where('email', $email)->get();
         } else {
+            $leads = Lead::all();
+            $mailLogs = MailLog::where('type', $type)->get()->pluck('mail');
+
+            $leads = $leads->filter(function (Lead $lead) use ($mailLogs) {
+                return !$mailLogs->contains($lead->email);
+            });
+        }
+
+        return $leads;
+    }
+
+    private function getMailableLeadsWithoutLicences(?string $email, string $type): Collection|array|EloquentCollection
+    {
+        if ($email !== null) {
+            $leads = Lead::where('email', $email)->get();
+        } else {
             $leads = Lead::whereNull('paid_at')->get();
+            $mailLogs = MailLog::where('type', $type)->get()->pluck('mail');
+
+            $leads = $leads->filter(function (Lead $lead) use ($mailLogs) {
+                return !$mailLogs->contains($lead->email);
+            });
+        }
+
+        return $leads;
+    }
+
+    private function getMailableLeadsWithLicences(?string $email, string $type): Collection|array|EloquentCollection
+    {
+        if ($email !== null) {
+            $leads = Lead::where('email', $email)->get();
+        } else {
+            $leads = Lead::whereNotNull('paid_at')->orderBy('id')->get();
             $mailLogs = MailLog::where('type', $type)->get()->pluck('mail');
 
             $leads = $leads->filter(function (Lead $lead) use ($mailLogs) {
