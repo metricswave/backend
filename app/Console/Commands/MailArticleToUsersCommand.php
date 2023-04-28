@@ -23,7 +23,7 @@ class MailArticleToUsersCommand extends Command
         $article = Entry::query()->where('collection', 'articles')->find($this->argument('articleId'));
 
         $this->withProgressBar($leads, function (Lead $lead) use ($article) {
-            Mail::send(new BlogArticleMail($lead, $article));
+            Mail::queue(new BlogArticleMail($lead, $article));
 
             MailLog::create([
                 'mail' => $lead->email,
