@@ -1,3 +1,7 @@
+<title>{{ isset($title) ? $title . " - " : "" }}{{ config('app.name') }}</title>
+<meta content="{{  $meta_desription ?? 'Real-time notifications for everything that matters to you.'  }}"
+      name="description"/>
+
 {{-- OG Tags --}}
 <meta property="og:url"
       content="{{ config('app.url') }}"/>
@@ -6,9 +10,9 @@
 <meta property="og:type"
       content="article"/>
 <meta property="og:title"
-      content="{{ config('app.name') }}"/>
+      content="{{ isset($title) ? $title . " - " : "" }}{{ config('app.name') }}"/>
 <meta property="og:description"
-      content="Real-time notifications for everything that matters to you."/>
+      content="{{ $meta_desription ?? 'Real-time notifications for everything that matters to you.' }}"/>
 <meta property="og:image"
       content="{{ config('app.url') }}/images/notifywave.png?v=20230327173352"/>
 

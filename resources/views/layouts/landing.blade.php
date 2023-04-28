@@ -5,10 +5,6 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1">
 
-    <title>{{ config('app.name') }}</title>
-    <meta content="Real-time notifications for everything that matters to you."
-          name="description"/>
-
     @include('partials.meta')
     @include('partials.favicon')
 

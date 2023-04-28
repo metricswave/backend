@@ -1,5 +1,8 @@
 @extends('layouts.landing')
 
+@section('meta')
+@endsection
+
 @section('content')
     <div class="flex flex-col items-center justify-center space-y-14 sm:space-y-16">
         <div class="mx-auto flex flex-col space-y-8 mt-20 mb-8 sm:mt-40 sm:mb-8 max-w-[750px]">
