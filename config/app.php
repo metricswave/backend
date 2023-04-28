@@ -6,6 +6,8 @@ return [
 
     'name' => env('APP_NAME', 'NotifyWave'),
 
+    'app_url' => env('APP_URL', 'https://app.notifywave.com/'),
+
     'env' => env('APP_ENV', 'production'),
 
     'basic_auth' => [

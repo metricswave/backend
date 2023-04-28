@@ -14,6 +14,7 @@
 
     /*  Size and spacing */
     --landing-max-width: 768px;
+    --wide-landing-max-width: 868px;
     --app-padding: 1rem;
 }
 
@@ -36,6 +37,10 @@ html {
     @apply max-w-[var(--landing-max-width)];
 }
 
+.mw-wide-landing {
+    @apply max-w-[var(--wide-landing-max-width)];
+}
+
 .p-app {
     @apply p-[var(--app-padding)];
 }
@@ -43,4 +48,8 @@ html {
 .prose hr {
     border: none;
     margin: 1.75rem 0 !important;
+}
+
+.smooth {
+    transition: all 0.2s ease-in-out;
 }

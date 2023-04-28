@@ -16,7 +16,10 @@ class SignUpController extends JsonTokenResponseController
 
     public function __invoke(SignUpRequest $request): JsonResponse
     {
-        if (!Lead::query()->where('email', $request->email)->whereNotNull('paid_at')->exists()) {
+        if (
+            config('feature.sign_up_leads_only')
+            && !Lead::query()->where('email', $request->email)->whereNotNull('paid_at')->exists()
+        ) {
             return $this->errorResponse('Only paid license users can create an account right now.', 409);
         }
 

@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
 Route::view('/roadmap', 'roadmap');
+Route::view('/trigger/terminal', 'trigger.terminal');
 Route::get('/blog', BlogController::class);
 Route::view('/privacy-policy', 'privacy-policy');
 Route::view('/terms-and-conditions', 'terms-and-conditions');
@@ -25,6 +26,7 @@ Route::view('/terms-and-conditions', 'terms-and-conditions');
 Route::get('/open', GetOpenPageController::class);
 
 // Leads
+Route::view('/leads', 'leads');
 Route::get('/leads/{lead:uuid}', GetLeadController::class);
 Route::post('/leads', PostLeadController::class);
 
