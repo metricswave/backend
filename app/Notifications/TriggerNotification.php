@@ -53,13 +53,20 @@ class TriggerNotification extends Notification implements ShouldQueue
             ->map(fn($via) => $via['value'])
             ->toArray();
 
+        $messages = [];
+
         foreach ($telegramChatIds as $chatId) {
-            TelegramMessage::create()
+            $messages[] = TelegramMessage::create()
                 ->token(config('services.telegram-bot-api.token'))
                 ->to($chatId)
-                ->content("*${emoji} ${title}*\n${content}")
-                ->send();
+                ->content("*${emoji} ${title}*\n${content}");
         }
+
+        foreach (array_slice($messages, 0, -1) as $message) {
+            $message->send();
+        }
+
+        return end($messages);
     }
 
     public function toMail(object $notifiable): MailMessage
