@@ -20,7 +20,7 @@
 
             @if(Date::createFromFormat('Y-m-d', '2023-05-03')->isFuture())
                 <a href="/blog/on-may-3rd-we-will-open-the-beta-to-the-first-users"
-                   class="w-full flex items-center rounded-full block bg-yellow-50 py-3 px-5">
+                   class="w-full flex items-center rounded-full block bg-yellow-50 dark:bg-yellow-500/10 py-3 px-5">
                     <div class="mr-4">
                         <svg xmlns="http://www.w3.org/2000/svg"
                              fill="currentColor"
