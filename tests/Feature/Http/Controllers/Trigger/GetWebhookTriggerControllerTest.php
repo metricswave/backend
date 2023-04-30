@@ -12,12 +12,9 @@ it('send expected notification', function () {
         'trigger_type_id' => TriggerTypeId::Webhook->value,
         'configuration' => [
             'fields' => [
-                [
-                    'name' => 'parameters',
-                    'value' => [
-                        'name',
-                        'content',
-                    ]
+                "parameters" => [
+                    'name',
+                    'content',
                 ]
             ]
         ]
@@ -37,12 +34,9 @@ it('error because missing parameters expected notification', function () {
         'trigger_type_id' => TriggerTypeId::Webhook->value,
         'configuration' => [
             'fields' => [
-                [
-                    'name' => 'parameters',
-                    'value' => [
-                        'name',
-                        'content',
-                    ]
+                "parameters" => [
+                    'name',
+                    'content',
                 ]
             ]
         ]

@@ -13,10 +13,9 @@ class SendWebhookTriggerNotification
     public function __invoke(Trigger $trigger, array $params): void
     {
         // Get value key of array where name = parameters
-        $requiredParams = collect($trigger->configuration['fields'])
-            ->firstWhere('name', 'parameters')['value'];
+        $requiredParams = collect($trigger->configuration['fields']['parameters']);
 
-        $missingParams = collect($requiredParams)->diff(array_keys($params));
+        $missingParams = $requiredParams->diff(array_keys($params));
 
         if ($missingParams->isNotEmpty()) {
             throw MissingTriggerParams::with($missingParams);
