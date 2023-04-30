@@ -18,6 +18,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
 Route::view('/roadmap', 'roadmap');
+Route::get('/blog', BlogController::class);
+
+// Use case landings
+Route::view('/trigger/deployments-notification', 'trigger.deployments', [
+    'title' => 'Deployments notifications',
+    'meta_description' => 'Receive a notification when your deployments finish. You can receive a notification in any device or app like Telegram, for example.',
+]);
 Route::view('/trigger/terminal', 'trigger.terminal', [
     'title' => 'Terminal notifications',
     'meta_description' => 'Your terminal has become smarter and more productive. Receive a notification when a long command finish in all your devices.',
@@ -26,7 +33,8 @@ Route::view('/trigger/medication-reminder', 'trigger.medication-reminder', [
     'title' => 'Remember to take your Medication',
     'meta_description' => 'Never forget to take your medication again. Thanks to the on-time notifications you can receive a notification at the exact time, on the days you want.',
 ]);
-Route::get('/blog', BlogController::class);
+
+
 Route::view('/privacy-policy', 'privacy-policy');
 Route::view('/terms-and-conditions', 'terms-and-conditions');
 

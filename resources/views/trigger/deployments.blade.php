@@ -7,12 +7,14 @@
     <div class="flex flex-col items-center justify-center space-y-14 sm:space-y-16">
         <div class="mx-auto flex flex-col space-y-8 mt-20 mb-8 sm:mt-40 sm:mb-8 max-w-[750px]">
             <h1 class="text-4xl sm:text-6xl text-center leading-tight sm:leading-tight tracking-tighter">
-                Notifications<br/>from your
-                <span class="relative bg-gradient-to-br from-pink-500 to-amber-500 bg-clip-text text-transparent">terminal</span>
+                A notifications<br/>for every
+                <span class="relative bg-gradient-to-br from-pink-500 to-amber-500 bg-clip-text text-transparent">deployment</span>
+                you or your team makes
             </h1>
 
             <p class="text-center text-xl sm:text-2xl leading-normal sm:leading-normal opacity-70 sm:pb-6">
-                Execute a long command and receive a notification on all your devices when it is finished.
+                Receive a notification on all your devices when a deployment is finished and get a summary of the
+                deployment.
             </p>
 
             @if(config('feature.sign_up_leads_only'))
@@ -26,22 +28,29 @@
 
         <div class="mw-landing flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
             <div>
-                <video class="w-full rounded-[10px] shadow-xl"
-                       autoplay
-                       muted
-                       loop>
-                    <source src="/videos/terminal_notification.mp4"
-                            type="video/mp4">
-                </video>
-            </div>
-            <div>
-                <video class="w-full rounded-[10px] shadow-xl"
-                       autoplay
-                       muted
-                       loop>
-                    <source src="/videos/telegram_terminal_notification.mp4"
-                            type="video/mp4">
-                </video>
+                <div class="flex flex-row items-center justify-center">
+                    <h2>Customize it as you like </h2>
+                    <svg width="25px"
+                         height="25px"
+                         class="ml-3 mt-1"
+                         viewBox="0 0 24 24"
+                         fill=""
+                         xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier"
+                           stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier"
+                           stroke-linecap="round"
+                           stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M14 20L13.6464 20.3536L14 20.7071L14.3536 20.3536L14 20ZM6 3.5C5.72386 3.5 5.5 3.72386 5.5 4C5.5 4.27614 5.72386 4.5 6 4.5L6 3.5ZM8.64645 15.3536L13.6464 20.3536L14.3536 19.6464L9.35355 14.6464L8.64645 15.3536ZM14.3536 20.3536L19.3536 15.3536L18.6464 14.6464L13.6464 19.6464L14.3536 20.3536ZM14.5 20L14.5 10L13.5 10L13.5 20L14.5 20ZM8 3.5L6 3.5L6 4.5L8 4.5L8 3.5ZM14.5 10C14.5 6.41015 11.5899 3.5 8 3.5L8 4.5C11.0376 4.5 13.5 6.96243 13.5 10L14.5 10Z"
+                                  fill="currentColor"></path>
+                        </g>
+                    </svg>
+                </div>
+
+                <img src="/images/landings/20230430174544_deployment_trigger.png"
+                     class="rounded mt-2 shadow-lg max-w-[450px]"
+                     title="Deployment trigger">
             </div>
         </div>
 
@@ -49,22 +58,22 @@
         <div class="mw-wide-landing flex flex-col-reverse sm:flex-row items-center justify-center sm:space-y-0 sm:space-x-10 py-12 sm:py-24 md:py-36">
             <div class="flex flex-col space-y-2">
                 <h2 class="text-xl sm:text-2xl leading-tight sm:leading-tight tracking-tighter font-bold">
-                    Your terminal just got better
+                    More than just a notification
                 </h2>
                 <p>
-                    Send yourself a notification at any time from the terminal and to as many devices or channels as you
-                    want. It's as simple as running a command.
+                    You can also get a summary of the deployment, including the commit message, the branch, the
+                    environment, the user who triggered the deployment, and what ever you want.
                 </p>
                 <p class="pt-2">
                     → <a class="text-blue-500 underline hover:no-underline smooth"
-                         href="/documentation/notifywave-in-your-terminal">How to trigger a notification from your
-                        terminal</a>
+                         href="/documentation/deployment-notification">How to trigger a notification after a
+                        deployment</a>
                 </p>
             </div>
 
-            <img src="/images/landings/terminal_notification.png"
-                 class="pb-10 sm:pb-0"
-                 alt="Terminal notification">
+            <img src="/images/landings/20230430181658_deployment_notification.png"
+                 class="pb-10 sm:pb-0 max-w-[300px]"
+                 alt="Deployment notification">
         </div>
     </div>
 

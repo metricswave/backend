@@ -29,7 +29,7 @@
                 <h2>Customize it as you like </h2>
                 <svg width="25px"
                      height="25px"
-                     class="ml-3 mt-3"
+                     class="ml-3 mt-1"
                      viewBox="0 0 24 24"
                      fill=""
                      xmlns="http://www.w3.org/2000/svg">
@@ -44,8 +44,8 @@
                     </g>
                 </svg>
             </div>
-            <div>
-                <video class="max-w-full w-auto rounded-[12px] shadow-xl"
+            <div class="mt-2">
+                <video class="max-w-[450px] w-auto rounded-[12px] shadow-xl"
                        autoplay
                        muted
                        loop>
