@@ -9,7 +9,7 @@ use App\Transfers\TriggerTypeId;
 use Exception;
 use Illuminate\Http\JsonResponse;
 
-class GetWebhookTriggerController extends JsonController
+class PostWebhookTriggerController extends JsonController
 {
     public function __construct(private readonly SendWebhookTriggerNotification $webhookNotificationSender)
     {
@@ -21,7 +21,7 @@ class GetWebhookTriggerController extends JsonController
             return $this->errorResponse('Trigger type is not webhook', 400);
         }
 
-        $params = request()->query();
+        $params = request()->all();
 
         try {
             ($this->webhookNotificationSender)($trigger, $params);

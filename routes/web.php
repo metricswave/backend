@@ -7,6 +7,7 @@ use App\Http\Controllers\Lead\GetLeadController;
 use App\Http\Controllers\Lead\PostLeadController;
 use App\Http\Controllers\Open\GetOpenPageController;
 use App\Http\Controllers\Trigger\GetWebhookTriggerController;
+use App\Http\Controllers\Trigger\PostWebhookTriggerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,3 +44,4 @@ Route::get('/leads/{lead:uuid}/prices/{price}', GetCheckoutController::class);
 
 // Webhooks notification
 Route::get('/webhooks/{trigger:uuid}', GetWebhookTriggerController::class);
+Route::post('/webhooks/{trigger:uuid}', PostWebhookTriggerController::class);

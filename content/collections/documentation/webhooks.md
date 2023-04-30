@@ -4,7 +4,7 @@ blueprint: documentation
 title: 'Triggers: Webhooks'
 short_content: 'Webhooks are an special trigger that can be used to connect NotifyWave with other scripts or application in a few minutes.'
 updated_by: 1
-updated_at: 1681672389
+updated_at: 1682869940
 ---
 Webhooks are a special trigger that can be used to connect NotifyWave with other scripts, applications or even devices in a few minutes.
 
@@ -27,6 +27,8 @@ The use case is simple. Every time you generate a webhook we will give you a URL
 For example, imagine you create a webhook with an `email` parameter and where the title is `New lead` and the content is `{email}`.
 
 For this webhook we will give you a URL which could be this `https://notifywave.com/webhooks/fd37c3c1-efed-4545-a75b-d32c7fec525e?email={email}`.
+
+> You can also, if you prefer, send a POST request with the params in a json body. In this case it will be something like this `{email: "any@email.com"}`.
 
 ---
 
