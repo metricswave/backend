@@ -6,7 +6,31 @@ module.exports = {
         "./resources/**/*.vue",
     ],
     theme: {
-        extend: {},
+        extend: {
+            keyframes: {
+                'out': {
+                    from: {
+                        opacity: '0',
+                    },
+                    to: {
+                        opacity: '0',
+                    }
+                },
+                'fade-in-down': {
+                    from: {
+                        opacity: '0',
+                        transform: 'translateY(-25px)'
+                    },
+                    tp: {
+                        opacity: '1',
+                        transform: 'translateY(0)'
+                    },
+                }
+            },
+            animation: {
+                'fade-in-down': 'fade-in-down 0.75s ease-out'
+            },
+        },
     },
     plugins: [
         require('@tailwindcss/typography'),

@@ -6,25 +6,25 @@
 @section('content')
     <div class="flex flex-col items-center justify-center space-y-14 sm:space-y-16">
         <div class="mx-auto flex flex-col space-y-8 mt-20 mb-8 sm:mt-40 sm:mb-8 max-w-[750px]">
-            <h1 class="text-4xl sm:text-6xl text-center leading-tight sm:leading-tight tracking-tighter">
+            <h1 class="animate-[out_1s,_fade-in-down_1.5s_ease-out_1s] text-4xl sm:text-6xl text-center leading-tight sm:leading-tight tracking-tighter">
                 Notifications<br/>from your
                 <span class="relative bg-gradient-to-br from-pink-500 to-amber-500 bg-clip-text text-transparent">terminal</span>
             </h1>
 
-            <p class="text-center text-xl sm:text-2xl leading-normal sm:leading-normal opacity-70 sm:pb-6">
+            <p class="animate-[out_1.25s,_fade-in-down_1.5s_ease-out_1.25s] text-center text-xl sm:text-2xl leading-normal sm:leading-normal opacity-70 sm:pb-6">
                 Execute a long command and receive a notification on all your devices when it is finished.
             </p>
 
             @if(config('feature.sign_up_leads_only'))
-                <a class="py-4 px-6 text-center bg-gradient-to-b from-zinc-800 dark:from-zinc-700 via-black dark:via-zinc-800 to-black dark:to-zinc-800 hover:bg-gradient-to-b hover:from-zinc-700 hover:via-zinc-900 hover:to-black text-white block mx-auto rounded-lg shadow-lg hover:shadow smooth"
+                <a class="animate-[out_1.75s,_fade-in-down_1.5s_ease-out_1.75s] py-4 px-6 text-center bg-gradient-to-b from-zinc-800 dark:from-zinc-700 via-black dark:via-zinc-800 to-black dark:to-zinc-800 hover:bg-gradient-to-b hover:from-zinc-700 hover:via-zinc-900 hover:to-black text-white block mx-auto rounded-lg shadow-lg hover:shadow smooth"
                    href="/leads">Create your notification</a>
             @else
-                <a class="py-4 px-6 text-center bg-gradient-to-b from-slate-800 via-black to-black hover:bg-gradient-to-b hover:from-slate-600 hover:via-slate-900 hover:to-black text-white block mx-auto rounded-lg shadow-lg hover:shadow smooth"
+                <a class="animate-[out_1.75s,_fade-in-down_1.5s_ease-out_1.75s] py-4 px-6 text-center bg-gradient-to-b from-slate-800 via-black to-black hover:bg-gradient-to-b hover:from-slate-600 hover:via-slate-900 hover:to-black text-white block mx-auto rounded-lg shadow-lg hover:shadow smooth"
                    href="{{ config('app.app_url') }}">Create your notification</a>
             @endif
         </div>
 
-        <div class="mw-landing flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+        <div class="animate-[out_2.5s,_fade-in-down_1.5s_ease-out_2.5s] mw-landing flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
             <div>
                 <video class="w-full rounded-[10px] shadow-xl"
                        autoplay
