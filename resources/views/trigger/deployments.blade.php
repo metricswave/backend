@@ -49,7 +49,7 @@
                 </div>
 
                 <img src="/images/landings/20230430174544_deployment_trigger.png"
-                     class="rounded mt-2 mx-2 shadow-lg max-w-[450px]"
+                     class="rounded mt-2 shadow-lg max-w-full w-[450px]"
                      title="Deployment trigger">
             </div>
         </div>
