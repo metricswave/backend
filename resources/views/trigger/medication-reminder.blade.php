@@ -45,7 +45,7 @@
                 </svg>
             </div>
             <div class="mt-2">
-                <video class="max-w-[450px] w-auto rounded-[12px] shadow-xl"
+                <video class="max-w-[450px] mx-2 w-auto rounded-[12px] shadow-xl"
                        autoplay
                        muted
                        loop>
