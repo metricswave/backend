@@ -38,6 +38,7 @@ class WeatherForecast
     ];
 
     public function __construct(
+        public readonly string $key,
         public readonly Location $location,
         public readonly int $code,
         public readonly float $temperature2mMax,

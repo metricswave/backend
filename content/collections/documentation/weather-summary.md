@@ -5,7 +5,7 @@ title: 'Triggers: Weather Summary'
 short_content: "Receive a daily summary of today's weather with all the information. You can configure the notification the way you want."
 parent: 3826e861-c213-4482-8ab7-0e3add2a4d7f
 updated_by: 1
-updated_at: 1683054177
+updated_at: 1683064257
 ---
 **Receive a daily summary of today's weather with all the information. You can configure the notification the way you want.**
 
@@ -13,64 +13,88 @@ updated_at: 1683054177
 
 ### Available data for your title and content
 
-You can add dynamic variables to the title and content of your notification. In this weather trigger we have all of this:
+You can add dynamic variables to the title and content of your notification. 
 
-#### {weather.condition}
-Display current weather condition. Example: "Clear sky", "Rain: Moderate intensity" or "Snow grains".
+You can use `{weather.today.xxx}` or `{weather.tomorrow.xxx}` to get the forecast for the desire day.
 
-#### {weather.temperature2m_max}
-Display current weather max temperature for that day.
+In this weather trigger we have all of this:
 
-#### {weather.temperature2m_min}
-Display current weather min temperature for that day.
+#### {weather.today.condition}
 
-#### {weather.apparent_temperature_max}
-Display current weather apparent max temperature.
+Display current weather.today.condition. Example: "Clear sky", "Rain: Moderate intensity" or "Snow grains".
 
-#### {weather.apparent_temperature_min}
-Display current weather apparent min temperature.
+#### {weather.today.temperature2m_max}
 
-#### {weather.sunrise}
-Display sunrise time. 
+Display current weather.today.max temperature for that day.
 
-#### {weather.sunset}
+#### {weather.today.temperature2m_min}
+
+Display current weather.today.min temperature for that day.
+
+#### {weather.today.apparent_temperature_max}
+
+Display current weather.today.apparent max temperature.
+
+#### {weather.today.apparent_temperature_min}
+
+Display current weather.today.apparent min temperature.
+
+#### {weather.today.sunrise}
+
+Display sunrise time.
+
+#### {weather.today.sunset}
+
 Display sunset time.
 
-#### {weather.uv_index_max}
+#### {weather.today.uv_index_max}
+
 Display max UV index.
 
-#### {weather.uv_index_clear_sky_max}
+#### {weather.today.uv_index_clear_sky_max}
+
 Display min UV index.
 
-#### {weather.precipitation_sum}
-Display total presipitation on current day. 
+#### {weather.today.precipitation_sum}
 
-#### {weather.rain_sum}
-Display current weather rain sum.
+Display total presipitation on current day.
 
-#### {weather.showers_sum}
-Display current weather showers sum.
+#### {weather.today.rain_sum}
 
-#### {weather.snowfall_sum}
-Display current weather snowfall sum.
+Display current weather.today.rain sum.
 
-#### {weather.precipitation_hours}
-Display weather precipitation hours. 
+#### {weather.today.showers_sum}
 
-#### {weather.precipitation_probability_max}
+Display current weather.today.showers sum.
+
+#### {weather.today.snowfall_sum}
+
+Display current weather.today.snowfall sum.
+
+#### {weather.today.precipitation_hours}
+
+Display weather.today.precipitation hours.
+
+#### {weather.today.precipitation_probability_max}
+
 Display max probability of precipitations.
 
-#### {weather.wind_speed10m_max}
-Display max wind speed 
+#### {weather.today.wind_speed10m_max}
 
-#### {weather.wind_gusts10m_max}
-Display max wind gusts. 
+Display max wind speed
 
-#### {weather.wind_direction10m_dominant}
+#### {weather.today.wind_gusts10m_max}
+
+Display max wind gusts.
+
+#### {weather.today.wind_direction10m_dominant}
+
 Display dominant wind direction.
 
-#### {weather.shortwave_radiation_sum}
+#### {weather.today.shortwave_radiation_sum}
+
 Display radiation sum
 
-#### {weather.et0_fao_evapotranspiration}
+#### {weather.today.et0_fao_evapotranspiration}
+
 Display fao evopatranspiration

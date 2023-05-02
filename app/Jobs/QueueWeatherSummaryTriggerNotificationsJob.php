@@ -37,14 +37,14 @@ class QueueWeatherSummaryTriggerNotificationsJob implements ShouldQueue
 
         foreach ($triggers as $trigger) {
             $location = Location::fromLocationField($trigger->configuration['fields']['location']);
-            $forecast = $forecastGetter->daily($location);
+            $forecasts = $forecastGetter->daily($location);
 
             $trigger->user->notify(new TriggerNotification(
                 $trigger,
                 Arr::dot([
                     'time' => $this->time->toString(),
                     'weekday' => $this->weekday->toString(),
-                    'weather' => $forecast->toArray(),
+                    'weather' => $forecasts->toArray(),
                 ])
             ));
         }

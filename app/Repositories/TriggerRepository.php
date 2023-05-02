@@ -30,8 +30,8 @@ class TriggerRepository
     {
         return $this->builder()
             ->where('trigger_type_id', TriggerTypeId::WeatherSummary)
-            ->where('time', $time->toString())
-            ->where('weekdays', 'like', '%'.$weekday->toString().'%')
+//            ->where('time', $time->toString())
+//            ->where('weekdays', 'like', '%'.$weekday->toString().'%')
             ->get();
     }
 }
