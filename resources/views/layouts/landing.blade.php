@@ -21,8 +21,18 @@
             <span class="font-bold tracking-tighter">{{ config('app.name') }}</span>
         </a>
 
-        <ul class="flex space-x-4">
-            <li><a href="/blog">Blog</a></li>
+        <ul class="flex space-x-6">
+            <li>
+                <a href="/blog"
+                   class="hover:underline smooth">Blog</a>
+            </li>
+            @if(Date::createFromFormat('Y-m-d', '2023-05-03')->isPast())
+                <li><a class="hover:underline smooth"
+                       href="https://app.notifywave.com">App 🎉</a></li>
+            @elseif(Date::createFromFormat('Y-m-d', '2023-05-10')->isPast())
+                <li><a class="hover:underline smooth"
+                       href="https://app.notifywave.com">App</a></li>
+            @endif
         </ul>
     </nav>
 
