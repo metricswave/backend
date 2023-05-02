@@ -67,50 +67,47 @@ class TriggerTypeSeeder extends Seeder
             ],
         );
 
-        // Not in production yet
-        if (!app()->environment('production')) {
-            TriggerType::updateOrCreate(
-                ['id' => TriggerTypeId::WeatherSummary],
-                [
-                    'name' => 'Daily Weather Summary',
-                    'icon' => 'weather.png',
-                    'description' => 'Receive a summary of the weather for a location.',
-                    'configuration' => [
-                        'version' => '1.0',
-                        'fields' => [
-                            [
-                                'name' => 'location',
-                                'type' => 'location',
-                                'label' => 'Location',
-                                'required' => true,
-                            ],
-                            [
-                                'name' => 'time',
-                                'type' => 'time',
-                                'label' => 'Time',
-                                'required' => true,
-                                'default' => '08:00',
-                            ],
-                            [
-                                'name' => 'weekdays',
-                                'type' => 'weekdays',
-                                'label' => 'Weekdays',
-                                'required' => true,
-                                'multiple' => true,
-                                'default' => [
-                                    'monday',
-                                    'tuesday',
-                                    'wednesday',
-                                    'thursday',
-                                    'friday',
-                                    'saturday',
-                                    'sunday',
-                                ],
-                            ]
+        TriggerType::updateOrCreate(
+            ['id' => TriggerTypeId::WeatherSummary],
+            [
+                'name' => 'Daily Weather Summary (Beta)',
+                'icon' => 'weather.png',
+                'description' => 'Receive a summary of the weather for a location.',
+                'configuration' => [
+                    'version' => '1.0',
+                    'fields' => [
+                        [
+                            'name' => 'location',
+                            'type' => 'location',
+                            'label' => 'Location',
+                            'required' => true,
                         ],
+                        [
+                            'name' => 'time',
+                            'type' => 'time',
+                            'label' => 'Time',
+                            'required' => true,
+                            'default' => '08:00',
+                        ],
+                        [
+                            'name' => 'weekdays',
+                            'type' => 'weekdays',
+                            'label' => 'Weekdays',
+                            'required' => true,
+                            'multiple' => true,
+                            'default' => [
+                                'monday',
+                                'tuesday',
+                                'wednesday',
+                                'thursday',
+                                'friday',
+                                'saturday',
+                                'sunday',
+                            ],
+                        ]
                     ],
                 ],
-            );
-        }
+            ],
+        );
     }
 }
