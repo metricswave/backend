@@ -40,7 +40,7 @@ class TriggerConfiguration implements ValidationRule, DataAwareRule
     {
         $value = $value['fields'][$field['name']] ?? null;
 
-        if ($field['multiple'] ?? false) {
+        if ($field['type'] === 'location' || ($field['multiple'] ?? false)) {
             return is_array($value) && count($value) > 0;
         }
 
