@@ -20,6 +20,7 @@ it('should return 200', function () {
                 ->whereType('service_data', 'array')
                 ->whereType('created_at', 'string')
                 ->whereType('updated_at', 'string')
+                ->whereType('deleted_at', 'null')
             ));
 });
 

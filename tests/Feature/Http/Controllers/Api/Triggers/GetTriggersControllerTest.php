@@ -25,6 +25,7 @@ it('should be able to get all triggers', function () {
                 ->has('content')
                 ->has('configuration')
                 ->has('trigger_type')
+                ->has('via')
                 ->has('created_at')
                 ->has('deleted_at')
                 ->has('updated_at')

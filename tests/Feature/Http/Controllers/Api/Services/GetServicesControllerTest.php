@@ -19,6 +19,8 @@ it('should return all services', function () {
                 ->whereType('name', 'string')
                 ->whereType('driver', 'string')
                 ->whereType('description', 'string')
+                ->whereType('configuration', 'array')
+                ->whereType('multiple', 'boolean')
                 ->whereType('scopes', 'array')
                 ->whereType('created_at', 'string')
                 ->whereType('updated_at', 'string')

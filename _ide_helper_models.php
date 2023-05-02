@@ -121,7 +121,7 @@ namespace App\Models{
  * App\Models\Trigger
  *
  * @property array{version: string, fields: array{name: string, value: string|array|int}} $configuration
- * @property array{email: bool, push: bool, telegram: string[]|false} $via
+ * @property array{value: string, label: string, checked: bool, type: string} $via
  * @property int $id
  * @property int $user_id
  * @property int $trigger_type_id

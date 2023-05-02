@@ -21,6 +21,7 @@ class ServiceFactory extends Factory
             'name' => $this->faker->unique()->word(),
             'driver' => $this->faker->randomElement(['google', 'github']),
             'description' => $this->faker->sentence(),
+            'configuration' => [],
             'scopes' => [],
         ];
     }

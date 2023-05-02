@@ -13,12 +13,18 @@ class TriggerNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    public function __construct(private readonly Trigger $trigger, private readonly array $params = [])
+    public function __construct(public readonly Trigger $trigger, private readonly array $params = [])
     {
     }
 
     public function via(object $notifiable): array
     {
+        $user = $this->trigger->user;
+
+        if ($user->triggerNotificationVisitsLimitReached()) {
+            return ['database'];
+        }
+
         $via = collect($this->trigger->via)
             ->filter(fn($via) => $via['checked'])
             ->unique('type')

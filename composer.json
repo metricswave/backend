@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
+        "awssat/laravel-visits": "^5.0",
         "guzzlehttp/guzzle": "^7.2",
         "laravel-notification-channels/telegram": "^4.0",
         "laravel/cashier": "^14.9",

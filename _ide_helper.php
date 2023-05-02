@@ -18253,7 +18253,18 @@
      
 }
 
-        namespace Intervention\Image\Facades { 
+        namespace Awssat\Visits { 
+            /**
+     * 
+     *
+     */ 
+        class Visits {
+         
+    }
+     
+}
+
+    namespace Intervention\Image\Facades { 
             /**
      * 
      *
@@ -23319,6 +23330,7 @@ namespace  {
             class Validator extends \Illuminate\Support\Facades\Validator {}
             class View extends \Illuminate\Support\Facades\View {}
             class Vite extends \Illuminate\Support\Facades\Vite {}
+            class Visits extends \Awssat\Visits\Visits {}
             class Image extends \Intervention\Image\Facades\Image {}
             class Horizon extends \Laravel\Horizon\Horizon {}
             class Socialite extends \Laravel\Socialite\Facades\Socialite {}
