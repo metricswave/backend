@@ -8,6 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use NotificationChannels\Telegram\TelegramMessage;
+use Str;
 
 class TriggerNotification extends Notification implements ShouldQueue
 {
@@ -64,10 +65,14 @@ class TriggerNotification extends Notification implements ShouldQueue
 
         foreach ($telegramChatIds as $chatId) {
             $messages[] = TelegramMessage::create()
-                ->options(['parse_mode' => 'MarkdownV2'])
+                ->options(['parse_mode' => 'HTML'])
                 ->token(config('services.telegram-bot-api.token'))
                 ->to($chatId)
-                ->content("*${emoji} ${title}*\n\n${content}");
+                ->content(
+                    Str::of("**${emoji} ${title}**\n\n${content}")
+                        ->inlineMarkdown()
+                        ->toString()
+                );
         }
 
         foreach (array_slice($messages, 0, -1) as $message) {
