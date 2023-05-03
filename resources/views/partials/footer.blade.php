@@ -13,6 +13,10 @@
                href="/open">Open Metrics</a></li>
         <li><a class="hover:underline smooth"
                href="/blog">Blog</a></li>
+        <li><a href="https://twitter.com/notify_wave"
+               target="_blank"
+               title="@notify_wave on Twitter"
+               class="hover:underline smooth">Twitter</a></li>
     </ul>
 
     <ul class="flex space-y-4 tracking-tighter flex-col">
