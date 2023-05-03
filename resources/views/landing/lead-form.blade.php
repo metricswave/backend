@@ -1,4 +1,4 @@
-<div class="flex flex-col space-y-6">
+<div class="flex flex-col space-y-6 w-full">
     <form action="/leads"
           class="flex w-full flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-2"
           method="POST">

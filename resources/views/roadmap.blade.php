@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="flex flex-col items-center justify-center space-y-14 sm:space-y-16">
-        <div class="mw-landing mx-auto flex flex-col space-y-8 sm:mt-40 sm:mb-8">
+        <div class="mw-landing mx-auto flex flex-col space-y-8 mt-10 sm:mt-40 sm:mb-8">
             <h1 class="text-4xl sm:text-5xl leading-tight tracking-tighter">The
                 <span class="relative bg-gradient-to-br from-pink-500 to-amber-500 bg-clip-text text-transparent">Roadmap</span>
             </h1>
@@ -27,7 +27,11 @@
                         class="absolute left-0 flex h-8 w-8 items-center justify-center rounded-full bg-blue-100 ring-8 ring-white dark:bg-blue-900 dark:ring-gray-900 sm:-left-4"
                     ><span>1</span></div>
 
-                    <h3 class="mb-3 text-xl font-bold">🌍 Web Application</h3>
+                    <h3 class="flex flex-col sm:flex-row items-start sm:items-center justify-start space-y-4 sm:space-y-0 sm:space-x-6 mb-4 text-xl font-bold">
+                        <span>🌍 Web Application</span>
+                        <span title="Done on May 3rd, 2023"
+                              class="text-xs py-2 px-4 cursor-help shadow rounded-full bg-green-50 dark:bg-green-500/10 inline-block">✅ Done</span>
+                    </h3>
                     <p class="pb-4 text-lg font-light leading-normal">
                         This is basic. A web application where you can manage and create notifications and see a history
                         of all the notifications you have received.
@@ -43,7 +47,11 @@
                         class="absolute left-0 flex h-8 w-8 items-center justify-center rounded-full bg-blue-100 ring-8 ring-white dark:bg-blue-900 dark:ring-gray-900 sm:-left-4"
                     ><span>2</span></div>
 
-                    <h3 class="mb-3 text-xl font-bold">📱 Android and iOS application</h3>
+                    <h3 class="flex flex-col sm:flex-row items-start sm:items-center justify-start space-y-4 sm:space-y-0 sm:space-x-6 mb-4 text-xl font-bold">
+                        <span>📱 Android and iOS application</span>
+                        <span class="text-xs py-2 px-4 shadow rounded-full bg-yellow-50 dark:bg-yellow-500/10 inline-block">⌛ In-progress</span>
+                    </h3>
+
                     <p class="pb-4 text-lg font-light leading-normal">
                         As on the website, you will be able to create and control your notifications, but it will also
                         help us to send you notifications in real time whenever you want.
@@ -55,7 +63,10 @@
                         class="absolute left-0 flex h-8 w-8 items-center justify-center rounded-full bg-blue-100 ring-8 ring-white dark:bg-blue-900 dark:ring-gray-900 sm:-left-4"
                     ><span>3</span></div>
 
-                    <h3 class="mb-3 text-xl font-bold">🗓️ Google Calendar trigger</h3>
+                    <h3 class="flex flex-col sm:flex-row items-start sm:items-center justify-start space-y-4 sm:space-y-0 sm:space-x-6 mb-4 text-xl font-bold">
+                        <span>🗓️ Google Calendar trigger</span>
+                        <span class="text-xs py-2 px-4 shadow rounded-full bg-yellow-50 dark:bg-yellow-500/10 inline-block">⌛ In-progress</span>
+                    </h3>
                     <p class="pb-4 text-lg font-light leading-normal">This has been the most voted trigger in our
                         poll.</p>
                     <p class="pb-4 text-lg font-light leading-normal">You will be able to connect your Google Calendar
@@ -144,7 +155,11 @@
                         class="absolute left-0 flex h-8 w-8 items-center justify-center rounded-full bg-blue-100 ring-8 ring-white dark:bg-blue-900 dark:ring-gray-900 sm:-left-4"
                     ><span>4</span></div>
 
-                    <h3 class="mb-3 text-xl font-bold">💅 Custom trigger</h3>
+                    <h3 class="flex flex-col sm:flex-row items-start sm:items-center justify-start space-y-4 sm:space-y-0 sm:space-x-6 mb-4 text-xl font-bold">
+                        <span>💅 Custom trigger</span>
+                        <span title="Done on May 3rd, 2023"
+                              class="text-xs py-2 px-4 cursor-help shadow rounded-full bg-green-50 dark:bg-green-500/10 inline-block">✅ Done</span>
+                    </h3>
                     <p class="pb-4 text-lg font-light leading-normal">You will be able to
                         integrate {{ config('app.name') }} with other applications or scripts easily.</p>
                     <p class="pb-4 text-lg font-light leading-normal">You will receive a URL from which you can send
@@ -266,7 +281,11 @@
                         class="absolute left-0 flex h-8 w-8 items-center justify-center rounded-full bg-blue-100 ring-8 ring-white dark:bg-blue-900 dark:ring-gray-900 sm:-left-4"
                     ><span>5</span></div>
 
-                    <h3 class="mb-3 text-xl font-bold">🎉 First public release &mdash; <em>Jun 2023</em></h3>
+                    <h3 class="flex flex-col sm:flex-row items-start sm:items-center justify-start space-y-4 sm:space-y-0 sm:space-x-6 mb-4 text-xl font-bold">
+                        <span>🎉 First public release &mdash; <em class="line-through">Jun</em> <em>May 2023</em></span>
+                        <span title="Done on May 3rd, 2023"
+                              class="text-xs py-2 px-4 cursor-help shadow rounded-full bg-green-50 dark:bg-green-500/10 inline-block">✅ Done</span>
+                    </h3>
                     <p class="pb-4 text-lg font-light leading-normal">We are now ready to launch the first version.</p>
                     <p class="pb-4 text-lg font-light leading-normal">This will help us get up and running, make sure
                         everything is working properly, make sure the notifications are sent at the right time, but this
@@ -281,14 +300,26 @@
                     <h3 class="mb-3 text-xl font-bold">And more trigger…</h3>
                     <p class="pb-4 text-lg font-light leading-normal">This will be followed by tracking of shipments,
                         news, bank transactions, sporting events and more.</p>
+                    <ol class="list-decimal list-inside">
+                        <li class="py-3">
+                            🌤️ Weather Summary released
+                            <span title="Done on May 3rd, 2023"
+                                  class="text-xs py-2 px-4 cursor-help shadow rounded-full bg-green-50 dark:bg-green-500/10 ml-6 sm:ml-2 mt-1.5 sm:mt-0 inline-block">✅ Done</span>
+                        </li>
+                        <li class="py-3">
+                            ⚽ Sport Results
+                            <span class="text-xs py-2 px-4 shadow rounded-full bg-yellow-50 dark:bg-yellow-500/10 ml-6 sm:ml-2 mt-1.5 sm:mt-0 inline-block">⌛ In-progress</span>
+                        </li>
+                        <li class="py-3">… and more.</li>
+                    </ol>
                 </li>
             </ol>
         </div>
     </div>
 
-    <div class="mw-landing m-auto my-20 flex flex-col items-center justify-center space-y-8 sm:my-40">
-        <h2 class="mb-1 text-2xl sm:mb-2 sm:text-3xl">Haven't you signed up yet?</h2>
-        <p class="text-center mb-8 sm:mb-16 max-w-[600px]">
+    <div class="mw-landing m-auto my-20 flex flex-col sm:items-center justify-center space-y-4 sm:space-y-8 sm:my-40">
+        <h2 class="mb-1 text-xl sm:mb-2 sm:text-3xl font-bold">Haven't you signed up yet?</h2>
+        <p class="sm:text-center mb-6 sm:mb-16 max-w-[600px]">
             Leave us your email, and we will notify you of all progress. You can also help us <strong>define the future
                 of {{ config('app.name') }}</strong> and even get a lifetime license at a single price.
         </p>
