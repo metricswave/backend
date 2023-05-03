@@ -19,6 +19,7 @@
         "laravel/socialite": "^5.6",
         "laravel/tinker": "^2.8",
         "laravel/ui": "^4.2",
+        "spatie/laravel-sitemap": "^6.3",
         "statamic/cms": "v4.0.0-alpha.1"
     },
     "require-dev": {
