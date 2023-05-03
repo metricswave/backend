@@ -1,6 +1,8 @@
 title: Articles
 template: articles/index
 layout: articles/index
+taxonomies:
+  - category
 revisions: false
 route: '/blog/{slug}'
 date: true
