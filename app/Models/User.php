@@ -23,6 +23,7 @@ class User extends Authenticatable
     use HasFactory;
     use Notifiable;
 
+    public const TRIGGER_NOTIFICATION = 'trigger-notification';
     protected $fillable = [
         'name',
         'email',
@@ -102,7 +103,7 @@ class User extends Authenticatable
 
     public function triggerNotificationVisits(): Visits
     {
-        return visits($this, 'trigger-notification');
+        return visits($this, self::TRIGGER_NOTIFICATION);
     }
 
     public function triggerNotificationVisitsLimitReached(): bool

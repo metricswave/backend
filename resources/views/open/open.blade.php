@@ -25,6 +25,18 @@
             </div>
         </div>
 
+        <div class="flex flex-col sm:flex-row space-y-10 sm:space-x-10 sm:space-y-0 mt-10">
+            <div class="flex flex-col space-y-3 p-6 border dark:border-zinc-600 rounded-sm w-full aspect-square items-center justify-center">
+                <div class="text-6xl">{{ $triggersCount }}</div>
+                <div>Triggers</div>
+            </div>
+
+            <div class="flex flex-col space-y-3 p-6 border dark:border-zinc-600 rounded-sm w-full aspect-square items-center justify-center">
+                <div class="text-6xl">{{ $notifications['monthly'] }}</div>
+                <div class="text-center">Current Month Notifications</div>
+            </div>
+        </div>
+
         @include('partials.prices')
     </div>
 @endsection
