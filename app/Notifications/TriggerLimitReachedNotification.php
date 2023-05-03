@@ -21,9 +21,10 @@ class TriggerLimitReachedNotification extends Notification implements ShouldQueu
     {
         return (new MailMessage())
             ->subject('🚨 Trigger limit reached')
+            ->greeting('🚨 Trigger limit reached')
             ->line('You have reached your trigger limit. Please upgrade your plan to continue receiving notifications.')
             ->line('You can upgrade your plan by clicking the button below.')
-            ->action('Upgrade your plan', url('/settings/billing'));
+            ->action('Upgrade your plan', config('app.app_url').'settings/billing');
     }
 
     public function toArray(User $notifiable): array

@@ -19,11 +19,12 @@ class TriggerNotification extends Notification implements ShouldQueue
 
     public function via(object $notifiable): array
     {
-        $user = $this->trigger->user;
 
-        if ($user->triggerNotificationVisitsLimitReached()) {
-            return ['database'];
-        }
+        // todo: uncomment this when we have a billing system
+        // $user = $this->trigger->user;
+        // if ($user->triggerNotificationVisitsLimitReached()) {
+        //     return ['database'];
+        // }
 
         $via = collect($this->trigger->via)
             ->filter(fn($via) => $via['checked'])

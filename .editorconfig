@@ -14,5 +14,9 @@ trim_trailing_whitespace = false
 [*.{yml,yaml}]
 indent_size = 2
 
+[*.php]
+ij_php_line_comment_at_first_column = false
+ij_php_line_comment_add_space = true
+
 [docker-compose.yml]
 indent_size = 4
