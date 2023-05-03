@@ -4,7 +4,7 @@ blueprint: documentation
 title: 'Service: Telegram'
 parent: c9609c95-a67d-4a2a-87da-87ee5bdace9a
 updated_by: 1
-updated_at: 1681996740
+updated_at: 1683148169
 short_content: 'Connect a Telegram channel to receive notifications there.'
 ---
 **Telegram groups allow you to receive notifications there in a simple and unobtrusive way.**
@@ -14,7 +14,7 @@ short_content: 'Connect a Telegram channel to receive notifications there.'
 
 If you want to connect a group or channel, simply follow the steps below:
 
-1. Create the channel or group and invite [@NotifyWaveBot](https://t.me/NotifyWaveBot) as an administrator, if necessary.
+1. Create the channel or group and invite [@NotifyWaveBot](https://t.me/NotifyWaveBot) as an administrator, it's mandatory.
 
 2. Invite [@IDBot](https://t.me/myidbot) to the channel. This bot will help you to see the ID of your channel or group, then you can remove it from the group if you want.
 
