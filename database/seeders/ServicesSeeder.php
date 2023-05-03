@@ -58,12 +58,21 @@ class ServicesSeeder extends Seeder
                                     'type' => 'input',
                                     'label' => 'Channel ID',
                                     'placeholder' => 'Channel ID',
+                                    'required' => true,
+                                    'validation' => [
+                                        'type' => 'integer',
+                                        'max_value' => 0,
+                                    ],
                                 ],
                                 [
                                     'name' => 'channel_name',
                                     'type' => 'input',
                                     'label' => 'Channel Name',
                                     'placeholder' => 'Channel Name',
+                                    'required' => true,
+                                    'validation' => [
+                                        'min_length' => 3,
+                                    ],
                                 ],
                             ],
                         ]
