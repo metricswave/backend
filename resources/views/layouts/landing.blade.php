@@ -40,22 +40,6 @@
         @yield('content')
     </div>
 
-    <footer class="mt-16 flex items-start justify-between px-10 pb-10 sm:mt-32 sm:items-center md:mt-64">
-        <ul>
-            <li class="flex">
-                <a class="flex items-center space-x-3 text-zinc-900 dark:text-white"
-                   href="/">
-                    <span class="font-bold tracking-tighter">{{ config('app.name') }} {{ now()->year }}™</span>
-                </a>
-            </li>
-        </ul>
-
-        <ul class="flex flex-col space-y-4 tracking-tighter sm:flex-row sm:space-x-8 sm:space-y-0">
-            <li><a href="/open">Open Metrics</a></li>
-            <li><a href="/documentation">Documentation</a></li>
-            <li><a href="/privacy-policy">Privacy Policy</a></li>
-            <li><a href="/terms-and-conditions">Terms of Service</a></li>
-        </ul>
-    </footer>
+    @include('partials.footer')
 </body>
 </html>
