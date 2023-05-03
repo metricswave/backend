@@ -94,7 +94,7 @@ class User extends Authenticatable
     public function notify($instance)
     {
         if ($instance instanceof TriggerNotification) {
-            $this->triggerNotificationVisits()->increment();
+            $this->triggerNotificationVisits()->forceIncrement();
             TriggerNotificationSent::dispatch($instance);
         }
 
