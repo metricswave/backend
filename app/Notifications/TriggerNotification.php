@@ -3,6 +3,7 @@
 namespace App\Notifications;
 
 use App\Models\Trigger;
+use App\Services\MarkdownSanitizer;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -52,8 +53,8 @@ class TriggerNotification extends Notification implements ShouldQueue
     public function toTelegram($notifiable)
     {
         $emoji = $this->trigger->emoji;
-        $title = $this->trigger->formattedTitle($this->params);
-        $content = $this->trigger->formattedContent($this->params);
+        $title = MarkdownSanitizer::sanitize($this->trigger->formattedTitle($this->params));
+        $content = MarkdownSanitizer::sanitize($this->trigger->formattedContent($this->params));
 
         $telegramChatIds = collect($this->trigger->via)
             ->filter(fn($via) => $via['checked'] && $via['type'] === 'telegram')
