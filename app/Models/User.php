@@ -4,7 +4,7 @@ namespace App\Models;
 
 use App\Events\TriggerNotificationSent;
 use App\Notifications\TriggerNotification;
-use Awssat\Visits\Visits;
+use App\Services\Visits\Visits;
 use Illuminate\Contracts\Notifications\Dispatcher;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -95,7 +95,7 @@ class User extends Authenticatable
     public function notify($instance)
     {
         if ($instance instanceof TriggerNotification) {
-            $this->triggerNotificationVisits()->forceIncrement();
+            $this->triggerNotificationVisits()->increment();
             TriggerNotificationSent::dispatch($instance);
         }
 
@@ -104,7 +104,7 @@ class User extends Authenticatable
 
     public function triggerNotificationVisits(): Visits
     {
-        return visits($this, self::TRIGGER_NOTIFICATION);
+        return visitsService($this, self::TRIGGER_NOTIFICATION);
     }
 
     public function mailLogs(): HasMany

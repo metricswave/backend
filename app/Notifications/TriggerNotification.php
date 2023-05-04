@@ -26,7 +26,7 @@ class TriggerNotification extends Notification implements ShouldQueue
         //     return ['database'];
         // }
 
-        $this->trigger->visits()->forceIncrement();
+        $this->trigger->visits()->increment();
 
         $via = collect($this->trigger->via)
             ->filter(fn($via) => $via['checked'])

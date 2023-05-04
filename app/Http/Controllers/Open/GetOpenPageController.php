@@ -22,8 +22,8 @@ class GetOpenPageController extends Controller
             'leadsCount' => Lead::count(),
             'triggersCount' => Trigger::count(),
             'notifications' => [
-                'weekly' => visits(User::class, User::TRIGGER_NOTIFICATION)->period('week')->count(),
-                'monthly' => visits(User::class, User::TRIGGER_NOTIFICATION)->period('month')->count(),
+                'weekly' => visitsService(User::class, User::TRIGGER_NOTIFICATION)->period('week')->count(),
+                'monthly' => visitsService(User::class, User::TRIGGER_NOTIFICATION)->period('month')->count(),
             ],
             'income' => Lead::sum('paid_price'),
             'prices' => ($this->landingPricesService)(),
