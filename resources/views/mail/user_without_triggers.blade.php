@@ -7,7 +7,7 @@ I saw that you created an account, but you haven't created any trigger yet. I wa
 
 **How about creating a trigger to receive the weather information every morning?** You can do it with the following steps:
 
-- Go to the [triggers page]({{ config('app.web_app_url') }}triggers) and click on the "Add trigger" button.
+- Go to the [triggers page]({{ config('app.web_app_url') }}triggers?utm_source=user_without_triggers_mail) and click on the "Add trigger" button.
 - Select the "Daily Weather Summary" trigger.
 - In the title field, write "Today: {weather.today.condition}"
 - And in the content write something like "Temperature: {weather.today.temperature2m_min}°-{weather.today.temperature2m_max}°"

@@ -11,7 +11,7 @@ Here is the link to access the web application, but **don't forget to reply to t
 
 Tell me what would you like to improve? What do you miss? What do you want to add? Is there anything you don't understand or doesn't work? Whatever it is, reply to this email.
 
-<x-mail::button url="https://app.notifywave.com">
+<x-mail::button url="https://app.notifywave.com?utm_source=beta_access_mail">
 Access {{ config('app.name') }}
 </x-mail::button>
 
