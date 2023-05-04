@@ -20,7 +20,7 @@
                    href="/leads">Create your notification</a>
             @else
                 <a class="animate-[out_1.75s,_fade-in-down_1.5s_ease-out_1.75s] py-4 px-6 text-center bg-gradient-to-b from-slate-800 via-black to-black hover:bg-gradient-to-b hover:from-slate-600 hover:via-slate-900 hover:to-black text-white block mx-auto rounded-lg shadow-lg hover:shadow smooth"
-                   href="{{ config('app.app_url') }}">Create your notification</a>
+                   href="{{ config('app.web_app_url') }}">Create your notification</a>
             @endif
         </div>
 
