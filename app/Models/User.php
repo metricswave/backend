@@ -24,6 +24,7 @@ class User extends Authenticatable
     use Notifiable;
 
     public const TRIGGER_NOTIFICATION = 'trigger-notification';
+
     protected $fillable = [
         'name',
         'email',

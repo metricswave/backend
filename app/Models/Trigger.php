@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Awssat\Visits\Visits;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -43,6 +44,11 @@ class Trigger extends Model
     public function triggerType(): BelongsTo
     {
         return $this->belongsTo(TriggerType::class);
+    }
+
+    public function visits(): Visits
+    {
+        return visits($this);
     }
 
     public function formattedContent(array $params): string
