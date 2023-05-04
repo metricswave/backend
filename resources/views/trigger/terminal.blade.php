@@ -47,7 +47,7 @@
 
 
         <div class="mw-wide-landing flex flex-col-reverse sm:flex-row items-center justify-center sm:space-y-0 sm:space-x-10 py-12 sm:py-24 md:py-36">
-            <div class="flex flex-col space-y-2">
+            <div class="flex flex-col space-y-3">
                 <h2 class="text-xl sm:text-2xl leading-tight sm:leading-tight tracking-tighter font-bold">
                     Your terminal just got better
                 </h2>

@@ -7,12 +7,13 @@
     <div class="flex flex-col items-center justify-center space-y-14 sm:space-y-16">
         <div class="mx-auto flex flex-col space-y-8 mt-20 mb-8 sm:mt-40 sm:mb-8 max-w-[750px]">
             <h1 class="animate-[out_1s,_fade-in-down_1.5s_ease-out_1s] text-4xl sm:text-6xl text-center leading-tight sm:leading-tight tracking-tighter">
-                Remeber to take <br/>your
-                <span class="relative bg-gradient-to-br from-pink-500 to-amber-500 bg-clip-text text-transparent">medication</span>
+                Avoid getting wet<br/>in the rain with<br/>
+                <span class="relative bg-gradient-to-br from-pink-500 to-amber-500 bg-clip-text text-transparent">Daily Weather</span>
+                notification
             </h1>
 
             <p class="animate-[out_1.25s,_fade-in-down_1.5s_ease-out_1.25s] text-center text-xl sm:text-2xl leading-normal sm:leading-normal opacity-70 sm:pb-6">
-                Receive a notification on all your devices when it is time to take your medication.
+                Receive a notification every morning with your location weather summary for the day.
             </p>
 
             @if(config('feature.sign_up_leads_only'))
@@ -49,12 +50,29 @@
                        autoplay
                        muted
                        loop>
-                    <source src="/videos/medication_trigger.mp4"
+                    <source src="/videos/20230504111915_trigger_weather_summary.mp4"
                             type="video/mp4">
                 </video>
             </div>
         </div>
 
+        <div class="mw-landing flex flex-col sm:flex-row items-start justify-center space-y-12 sm:space-y-0 sm:space-x-32 py-12 sm:py-24 sm:text-center">
+            <div class="flex flex-col space-y-3">
+                <h2 class="text-xl sm:text-2xl leading-tight sm:leading-tight tracking-tighter font-bold">
+                    Customize the notification
+                </h2>
+                <p>
+                    You can customize the notification as you like. You can set a custom message, a custom icon, and
+                    content with +22 variables for today's or tomorrow's weather.
+                </p>
+                <p class="pt-2">
+                    <a href="/documentation/triggers/weather-summary"
+                       target="_blank"
+                       class="hover:text-blue-500 underline smooth">Check
+                        out all the available variables →</a>
+                </p>
+            </div>
+        </div>
 
         <div class="mw-wide-landing flex flex-col sm:flex-row items-start justify-center space-y-12 sm:space-y-0 sm:space-x-32 py-12 sm:py-24 md:py-36 sm:text-center">
             <div class="flex flex-col space-y-3">
@@ -77,20 +95,7 @@
                 </p>
             </div>
         </div>
-
-        <div class="mw-landing flex flex-col sm:flex-row items-start justify-center space-y-12 sm:space-y-0 sm:space-x-32 py-12 sm:py-24 md:py-36 sm:text-center">
-            <div class="flex flex-col space-y-3">
-                <h2 class="text-xl sm:text-2xl leading-tight sm:leading-tight tracking-tighter font-bold">
-                    More than just medication
-                </h2>
-                <p>
-                    You can use it for any other reminder. Do you want to remember to drink water? Do you want to
-                    remember to take a break? Do you want to remember to do some exercise? You can use it for anything.
-                </p>
-            </div>
-        </div>
     </div>
-
 
     <div class="mw-landing m-auto my-20 flex flex-col sm:items-center justify-center space-y-4 sm:space-y-8 sm:my-40">
         <h2 class="mb-0 text-xl sm:mb-2 sm:text-3xl font-bold">Haven't you signed up yet?</h2>

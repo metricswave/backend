@@ -33,6 +33,10 @@ Route::view('/trigger/medication-reminder', 'trigger.medication-reminder', [
     'title' => 'Remember to take your Medication',
     'meta_description' => 'Never forget to take your medication again. Thanks to the on-time notifications you can receive a notification at the exact time, on the days you want.',
 ]);
+Route::view('/trigger/weather-summary', 'trigger.weather-summary', [
+    'title' => 'Weather Summary notifications',
+    'meta_description' => 'Receive a summary of the weather forecast for the next day. You can receive a notification in any device or app like Telegram, for example.',
+]);
 
 
 Route::view('/privacy-policy', 'privacy-policy');
