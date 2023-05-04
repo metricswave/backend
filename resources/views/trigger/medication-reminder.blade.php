@@ -45,7 +45,7 @@
                 </svg>
             </div>
             <div class="mt-2">
-                <video class="shadow dark:border dark:border-zinc-800 dark:shadow-zinc-800 max-w-full w-[350px] w-auto rounded-[12px] shadow-xl"
+                <video class="shadow dark:border dark:border-zinc-800 dark:shadow-zinc-800 max-w-full w-[350px] rounded-[12px] shadow-xl"
                        autoplay
                        muted
                        loop>
