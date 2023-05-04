@@ -16,8 +16,7 @@ class CheckUsageLimitOnTriggerNotificationSent
 
         if ($user->triggerNotificationVisitsLimitReached() && !Cache::has($key)) {
             $user->notify(new TriggerLimitReachedNotification());
-
-            Cache::put($key, true, now()->addDays(3));
+            Cache::put($key, "1", now()->addDays(3));
         }
     }
 }
