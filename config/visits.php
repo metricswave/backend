@@ -1,6 +1,6 @@
 <?php
 
-use Awssat\Visits\DataEngines\EloquentEngine;
+use App\Services\Visits\PermanentEloquentEngine;
 
 return [
     /*
@@ -12,7 +12,7 @@ return [
     | Connection Name: see config/database.php
     |
     */
-    'engine' => EloquentEngine::class,
+    'engine' => PermanentEloquentEngine::class,
 
     'connection' => 'mysql',
 
