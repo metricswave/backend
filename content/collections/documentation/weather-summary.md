@@ -5,7 +5,7 @@ title: 'Triggers: Weather Summary'
 short_content: "Receive a daily summary of today's weather with all the information. You can configure the notification the way you want."
 parent: 3826e861-c213-4482-8ab7-0e3add2a4d7f
 updated_by: 1
-updated_at: 1683064257
+updated_at: 1683196702
 ---
 **Receive a daily summary of today's weather with all the information. You can configure the notification the way you want.**
 
@@ -98,3 +98,7 @@ Display radiation sum
 #### {weather.today.et0_fao_evapotranspiration}
 
 Display fao evopatranspiration
+
+---
+
+[← More about triggers](/documentation/triggers/)
