@@ -17,10 +17,8 @@ class Kernel extends ConsoleKernel
         $schedule->command('app:mail-users-without-triggers-command')->twiceDaily(12, 20);
 
         // Triggers
-        $schedule->command('app:trigger:weather-summary')->everyMinute()
-            ->appendOutputTo(storage_path('logs/trigger-weather-summary.log'));
-        $schedule->command('app:trigger:on-time')->everyMinute()
-            ->appendOutputTo(storage_path('logs/trigger-on-time.log'));
+        $schedule->command('app:trigger:weather-summary')->everyMinute();
+        $schedule->command('app:trigger:on-time')->everyMinute();
     }
 
     protected function commands(): void
