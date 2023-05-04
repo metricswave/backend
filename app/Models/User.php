@@ -106,6 +106,11 @@ class User extends Authenticatable
         return visits($this, self::TRIGGER_NOTIFICATION);
     }
 
+    public function mailLogs(): HasMany
+    {
+        return $this->hasMany(MailLog::class, 'mail', 'email');
+    }
+
     public function triggerNotificationVisitsLimitReached(): bool
     {
         return $this->triggerNotificationVisits()->period('month')->count() > $this->triggerMonthlyLimit();

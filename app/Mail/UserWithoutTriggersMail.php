@@ -2,19 +2,19 @@
 
 namespace App\Mail;
 
-use App\Models\Lead;
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class BetaAccessMail extends Mailable
+class UserWithoutTriggersMail extends Mailable
 {
     use Queueable;
     use SerializesModels;
 
-    public function __construct(private readonly Lead $lead)
+    public function __construct(private readonly User $user)
     {
     }
 
@@ -22,18 +22,15 @@ class BetaAccessMail extends Mailable
     {
         return new Envelope(
             from: 'victor@notifywave.com',
-            to: $this->lead->email,
-            subject: 'You can access now to our beta version! 🎉',
+            to: $this->user->email,
+            subject: 'You have not created any trigger yet! 😱',
         );
     }
 
     public function content(): Content
     {
         return new Content(
-            markdown: 'mail.beta_access',
-            with: [
-                'leadUuid' => $this->lead->uuid,
-            ],
+            markdown: 'mail.user_without_triggers',
         );
     }
 }
