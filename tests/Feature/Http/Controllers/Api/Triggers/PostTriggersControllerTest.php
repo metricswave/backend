@@ -47,6 +47,14 @@ it('creates a trigger', function () {
                     'weekdays' => ['monday', 'tuesday'],
                 ],
             ],
+            'via' => [
+                [
+                    'value' => 'mail',
+                    'label' => 'Mail',
+                    'checked' => true,
+                    'type' => 'mail',
+                ]
+            ],
         ])->assertCreated();
 
     $this->assertDatabaseHas('triggers', [
@@ -62,6 +70,7 @@ it('creates a trigger', function () {
                 'weekdays' => ['monday', 'tuesday'],
             ],
         ]),
+        'via' => "[{\"value\":\"mail\",\"label\":\"Mail\",\"checked\":true,\"type\":\"mail\"}]",
     ]);
 });
 

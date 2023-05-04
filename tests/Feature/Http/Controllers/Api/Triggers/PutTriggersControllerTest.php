@@ -16,6 +16,14 @@ it('updates a trigger', function () {
             'emoji' => '👍',
             'title' => 'Test Trigger',
             'content' => 'This is a test trigger',
+            'via' => [
+                [
+                    'value' => 'mail',
+                    'label' => 'Mail',
+                    'checked' => true,
+                    'type' => 'mail',
+                ]
+            ],
         ])->assertNoContent();
 
     $this->assertDatabaseHas('triggers', [
@@ -24,6 +32,7 @@ it('updates a trigger', function () {
         'emoji' => '👍',
         'title' => 'Test Trigger',
         'content' => 'This is a test trigger',
+        'via' => "[{\"value\":\"mail\",\"label\":\"Mail\",\"checked\":true,\"type\":\"mail\"}]",
     ]);
 });
 

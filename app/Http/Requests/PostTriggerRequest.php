@@ -22,6 +22,7 @@ class PostTriggerRequest extends FormRequest
             'title' => 'required|string|max:255',
             'content' => 'required|string|max:255',
             'configuration' => ['required', 'array', new TriggerConfiguration()],
+            'via' => ['array']
         ];
     }
 
