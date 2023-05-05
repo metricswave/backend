@@ -9,6 +9,6 @@ class CacheKey
 {
     public static function generate(Model $model, string $key): string
     {
-        return $model->getTable().':'.$model->id.'--'.Str::of($key)->camel()->toString();
+        return $model->getTable().'::'.$model->id.'::'.Str::of($key)->snake()->toString();
     }
 }
