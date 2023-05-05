@@ -10,7 +10,7 @@
         <div class="flex flex-col sm:flex-row space-y-10 sm:space-x-10 sm:space-y-0">
             <div class="flex flex-col space-y-3 p-6 border dark:border-zinc-600 rounded-sm w-full aspect-square items-center justify-center">
                 <div class="text-6xl">{{ $leadsCount }}</div>
-                <div>Users</div>
+                <div>Users in Waiting List</div>
             </div>
 
             <div class="flex flex-col space-y-3 p-6 border dark:border-zinc-600 rounded-sm w-full aspect-square items-center justify-center">
@@ -21,19 +21,21 @@
                         explode('.', number_format($income/100, 2))[1]
                     }}</span>
                 </div>
-                <div>Income</div>
+                <div>In Licenses Sold</div>
             </div>
         </div>
 
         <div class="flex flex-col sm:flex-row space-y-10 sm:space-x-10 sm:space-y-0 mt-10">
             <div class="flex flex-col space-y-3 p-6 border dark:border-zinc-600 rounded-sm w-full aspect-square items-center justify-center">
                 <div class="text-6xl">{{ $triggersCount }}</div>
-                <div>Triggers</div>
+                <div>Triggers Created</div>
+                <div class="opacity-60 text-center text-xs">(under private beta with a few users only)</div>
             </div>
 
             <div class="flex flex-col space-y-3 p-6 border dark:border-zinc-600 rounded-sm w-full aspect-square items-center justify-center">
                 <div class="text-6xl">{{ $notifications['monthly'] }}</div>
                 <div class="text-center">Current Month Notifications</div>
+                <div class="opacity-60 text-center text-xs">(under private beta with a few users only)</div>
             </div>
         </div>
 
