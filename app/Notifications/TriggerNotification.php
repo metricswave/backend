@@ -9,6 +9,7 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use NotificationChannels\Telegram\TelegramMessage;
 use Str;
+use function Emoji\is_single_emoji;
 
 class TriggerNotification extends Notification implements ShouldQueue
 {
@@ -45,15 +46,24 @@ class TriggerNotification extends Notification implements ShouldQueue
         return [
             'title' => $this->trigger->formattedTitle($this->params),
             'content' => $this->trigger->formattedContent($this->params),
-            'emoji' => $this->trigger->emoji,
+            'emoji' => $this->emoji(),
             'trigger_id' => $this->trigger->id,
             'trigger_type_id' => $this->trigger->trigger_type_id,
         ];
     }
 
+    private function emoji(): string
+    {
+        if (is_single_emoji($this->params['emoji'] ?? null)) {
+            return $this->params['emoji'];
+        }
+
+        return $this->trigger->emoji;
+    }
+
     public function toTelegram($notifiable)
     {
-        $emoji = $this->trigger->emoji;
+        $emoji = $this->emoji();
         $title = $this->trigger->formattedTitle($this->params);
         $content = $this->trigger->formattedContent($this->params);
 
@@ -88,7 +98,7 @@ class TriggerNotification extends Notification implements ShouldQueue
         return (new MailMessage())
             ->subject($this->trigger->emoji.' '.$this->trigger->formattedTitle($this->params))
             ->markdown('mail.trigger', [
-                'emoji' => $this->trigger->emoji,
+                'emoji' => $this->emoji(),
                 'title' => $this->trigger->formattedTitle($this->params),
                 'content' => $this->trigger->formattedContent($this->params),
             ]);

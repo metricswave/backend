@@ -4,7 +4,7 @@ blueprint: documentation
 title: 'Triggers: Webhooks'
 short_content: 'Webhooks are an special trigger that can be used to connect NotifyWave with other scripts or application in a few minutes.'
 updated_by: 1
-updated_at: 1682869940
+updated_at: 1683276423
 ---
 Webhooks are a special trigger that can be used to connect NotifyWave with other scripts, applications or even devices in a few minutes.
 
@@ -17,6 +17,7 @@ The use case is simple. Every time you generate a webhook we will give you a URL
 - [How they work](#how-they-work)
 - [Trigger a notification](#trigger-a-notification)
 - [Trigger a notification Programatically](#trigger-a-notification-programatically)
+- [Dynamic Emoji](#dynamic-emoji)
 
 ---
 
@@ -60,6 +61,18 @@ With PHP, it will be something like this:
 $email = "hi@notifywave.com";
 file_get_contents("https://notifywave.com/webhooks/fd37c3c1-efed-4545-a75b-d32c7fec525e?email=${email}");
 ```
+
+---
+
+<div style="scroll-margin-top: 40px" id="dynamic-emoji"></div>
+
+### Dynamic Emoji
+
+![Same trigger with different emojis](/images/documentation/20230505094536_webhook_trigger_dynamic_emoji.png)
+
+All webhooks have a hidden `emoji` parameter. This parameter gives you the option to dynamically change the emoji.
+
+Just add the param `&emoji=😍` at the end of your GET request, or as a param in your POST, and the notification will be triggered with this emoji instead of the one configured in the Trigger.
 
 ---
 

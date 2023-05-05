@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "71161286aca117ee06f00ddcc56b5f36",
+    "content-hash": "9e9fb5ce8960311af12f6c48485ae8f9",
     "packages": [
         {
             "name": "ajthinking/archetype",
@@ -4415,6 +4415,52 @@
                 }
             ],
             "time": "2023-02-08T01:06:31+00:00"
+        },
+        {
+            "name": "p3k/emoji-detector",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/aaronpk/emoji-detector-php.git",
+                "reference": "cb7234db0bbfbdb7c79700288c49a810a13ef578"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/aaronpk/emoji-detector-php/zipball/cb7234db0bbfbdb7c79700288c49a810a13ef578",
+                "reference": "cb7234db0bbfbdb7c79700288c49a810a13ef578",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8.5"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/Emoji.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aaron Parecki",
+                    "email": "aaron@parecki.com",
+                    "homepage": "https://aaronparecki.com/"
+                }
+            ],
+            "description": "Detect and return all emoji found in a string",
+            "homepage": "https://github.com/aaronpk/emoji-detector-php",
+            "support": {
+                "issues": "https://github.com/aaronpk/emoji-detector-php/issues",
+                "source": "https://github.com/aaronpk/emoji-detector-php/tree/1.0.0"
+            },
+            "time": "2022-08-30T22:08:18+00:00"
         },
         {
             "name": "phpoption/phpoption",
