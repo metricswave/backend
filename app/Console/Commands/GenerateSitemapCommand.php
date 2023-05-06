@@ -25,6 +25,7 @@ class GenerateSitemapCommand extends Command
             ->add($this->url('/trigger/weather-summary', 0.8))
             ->add($this->url('/roadmap', 0.8))
             ->add($this->url('/blog', 0.8, Url::CHANGE_FREQUENCY_DAILY))
+            ->add($this->url('/blog/category/changelog', 0.8, Url::CHANGE_FREQUENCY_DAILY))
             ->add($this->url('/open', 0.8))
             ->add($this->url('/documentation', 0.7))
             ->add($this->url('/terms-and-conditions', 0.1))

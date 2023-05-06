@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Blog\BlogController;
+use App\Http\Controllers\Blog\CategoryController;
 use App\Http\Controllers\Checkout\GetCheckoutController;
 use App\Http\Controllers\Checkout\GetCheckoutCreatingLeadController;
 use App\Http\Controllers\Lead\GetLeadController;
@@ -19,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'welcome');
 Route::view('/roadmap', 'roadmap');
 Route::get('/blog', BlogController::class);
+Route::get('/blog/category/{slug}', CategoryController::class);
 
 // Use case landings
 Route::view('/trigger/deployments-notification', 'trigger.deployments', [

@@ -24,6 +24,8 @@
                href="/roadmap">Roadmap</a></li>
         <li><a class="hover:underline smooth"
                href="/documentation">Documentation</a></li>
+        <li><a class="hover:underline smooth"
+               href="/blog/category/changelog">Changelog</a></li>
     </ul>
 
     <ul class="flex space-y-4 tracking-tighter flex-col">
