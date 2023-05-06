@@ -27,8 +27,8 @@
 
         <div class="flex flex-col sm:flex-row space-y-10 sm:space-x-10 sm:space-y-0 mt-10">
             <div class="flex flex-col space-y-3 p-6 border dark:border-zinc-600 rounded-sm w-full aspect-square items-center justify-center">
-                <div class="text-6xl">{{ $triggersCount }}</div>
-                <div>Triggers Created</div>
+                <div class="text-6xl">{{ $notifications['weekly'] }}</div>
+                <div class="text-center">Current Week Notifications</div>
                 <div class="opacity-60 text-center text-xs">(under private beta with a few users only)</div>
             </div>
 
