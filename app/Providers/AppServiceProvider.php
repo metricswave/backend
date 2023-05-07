@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Console\Commands\StatamicInstallCommand;
+use App\Services\TravelDistance\GoogleTravelDistanceCalculator;
+use App\Services\TravelDistance\TravelDistanceCalculator;
 use App\Services\Weather\OpenMeteoWeatherForecastGetter;
 use App\Services\Weather\WeatherForecastGetter;
 use Illuminate\Support\ServiceProvider;
@@ -21,6 +23,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             WeatherForecastGetter::class,
             OpenMeteoWeatherForecastGetter::class,
+        );
+
+        $this->app->bind(
+            TravelDistanceCalculator::class,
+            GoogleTravelDistanceCalculator::class,
         );
     }
 
