@@ -7,6 +7,9 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Illuminate\Queue\Middleware\ThrottlesExceptions;
+use Illuminate\Queue\Middleware\WithoutOverlapping;
+use Illuminate\Support\Carbon;
 use NotificationChannels\Telegram\TelegramMessage;
 use Str;
 use function Emoji\is_single_emoji;
@@ -102,5 +105,18 @@ class TriggerNotification extends Notification implements ShouldQueue
                 'title' => $this->trigger->formattedTitle($this->params),
                 'content' => $this->trigger->formattedContent($this->params),
             ]);
+    }
+
+    public function middleware(): array
+    {
+        return [
+            (new ThrottlesExceptions(10, 1))->backoff(1),
+            (new WithoutOverlapping($this->trigger->user->id))->releaseAfter(1),
+        ];
+    }
+
+    public function retryUntil(): Carbon
+    {
+        return now()->addMinutes(15);
     }
 }
