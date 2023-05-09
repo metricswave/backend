@@ -3,7 +3,7 @@
 <div class="relative">
     <div class="absolute bottom-2 left-10 h-48 w-48 animate-blob rounded-full bg-pink-500/30 blur-3xl"></div>
     <div class="absolute top-64 left-0 h-48 w-48 animate-blob rounded-full bg-cyan-500/30 blur-3xl"></div>
-    <div class="absolute bottom-12 right-0 h-48 w-48 animate-blob rounded-full bg-blue-500/30 blur-3xl"></div>
+    <div class="absolute bottom-12 right-10 h-48 w-48 animate-blob rounded-full bg-blue-500/30 blur-3xl"></div>
     <div class="absolute top-24 right-36 h-48 w-48 animate-blob rounded-full bg-pink-500/30 blur-3xl"></div>
 
     <div class="p-app mt-12 sm:mt-44 mw-landing mx-auto">
