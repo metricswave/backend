@@ -44,6 +44,10 @@ class TriggerConfiguration implements ValidationRule, DataAwareRule
             return is_array($value) && count($value) > 0;
         }
 
+        if (is_array($value)) {
+            return false;
+        }
+
         return $value !== null && strlen($value) > 0;
     }
 
