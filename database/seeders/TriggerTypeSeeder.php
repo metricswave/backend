@@ -110,10 +110,6 @@ class TriggerTypeSeeder extends Seeder
             ],
         );
 
-        if (app()->environment('production')) {
-            return;
-        }
-
         TriggerType::updateOrCreate(
             ['id' => TriggerTypeId::TimeToLeave],
             [
