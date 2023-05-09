@@ -33,7 +33,10 @@ class QueueOnTimeTriggerNotificationsJob implements ShouldQueue
         $triggers = $repository->onTimeFor($this->time, $this->weekday);
 
         foreach ($triggers as $trigger) {
-            $trigger->user->notify(new TriggerNotification($trigger));
+            UserTriggerNotificationJob::dispatch(
+                $trigger->user,
+                new TriggerNotification($trigger)
+            );
         }
     }
 }

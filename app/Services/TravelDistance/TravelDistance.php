@@ -13,4 +13,18 @@ class TravelDistance
         public readonly Duration $duration,
     ) {
     }
+
+    public function toArray(): array
+    {
+        return [
+            'origin' => $this->origin,
+            'destination' => $this->destination,
+            'travel_mode' => $this->travelMode->value,
+            'arrival_time' => $this->arrivalTime->timeFormatted(),
+            'distance' => $this->distance->distance,
+            'meters' => $this->distance->meters,
+            'duration' => $this->duration->duration,
+            'seconds' => $this->duration->seconds,
+        ];
+    }
 }

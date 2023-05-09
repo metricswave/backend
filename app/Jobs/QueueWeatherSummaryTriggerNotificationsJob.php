@@ -39,14 +39,17 @@ class QueueWeatherSummaryTriggerNotificationsJob implements ShouldQueue
             $location = Location::fromLocationField($trigger->configuration['fields']['location']);
             $forecasts = $forecastGetter->daily($location);
 
-            $trigger->user->notify(new TriggerNotification(
-                $trigger,
-                Arr::dot([
-                    'time' => $this->time->toString(),
-                    'weekday' => $this->weekday->toString(),
-                    'weather' => $forecasts->toArray(),
-                ])
-            ));
+            UserTriggerNotificationJob::dispatch(
+                $trigger->user,
+                new TriggerNotification(
+                    $trigger,
+                    Arr::dot([
+                        'time' => $this->time->toString(),
+                        'weekday' => $this->weekday->toString(),
+                        'weather' => $forecasts->toArray(),
+                    ])
+                )
+            );
         }
     }
 }

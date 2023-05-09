@@ -12,10 +12,20 @@ use Illuminate\Support\Collection;
 
 class TriggerRepository
 {
-    public function onTimeFor(Time $time, Weekday $weekday): Collection
+    /**
+     * @param  Time  $time
+     * @param  Weekday  $weekday
+     * @return Collection<Trigger>
+     */
+    public function timeToLeaveFor(Time $time, Weekday $weekday): Collection
+    {
+        return $this->byType(TriggerTypeId::TimeToLeave, $time, $weekday);
+    }
+
+    private function byType(TriggerTypeId $type, Time $time, Weekday $weekday): Collection
     {
         return $this->builder()
-            ->where('trigger_type_id', TriggerTypeId::OnTime)
+            ->where('trigger_type_id', $type)
             ->where('time', $time->toString())
             ->where('weekdays', 'like', '%'.$weekday->toString().'%')
             ->get();
@@ -26,12 +36,23 @@ class TriggerRepository
         return Trigger::query();
     }
 
+    /**
+     * @param  Time  $time
+     * @param  Weekday  $weekday
+     * @return Collection<Trigger>
+     */
+    public function onTimeFor(Time $time, Weekday $weekday): Collection
+    {
+        return $this->byType(TriggerTypeId::OnTime, $time, $weekday);
+    }
+
+    /**
+     * @param  Time  $time
+     * @param  Weekday  $weekday
+     * @return Collection<Trigger>
+     */
     public function weatherSummaryFor(Time $time, Weekday $weekday): Collection
     {
-        return $this->builder()
-            ->where('trigger_type_id', TriggerTypeId::WeatherSummary)
-            ->where('time', $time->toString())
-            ->where('weekdays', 'like', '%'.$weekday->toString().'%')
-            ->get();
+        return $this->byType(TriggerTypeId::WeatherSummary, $time, $weekday);
     }
 }

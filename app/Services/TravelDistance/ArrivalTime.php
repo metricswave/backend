@@ -10,6 +10,16 @@ class ArrivalTime
     {
     }
 
+    public static function fromTimeFormatted(string $time): self
+    {
+        return new self(
+            Carbon::now()->setTime(
+                (int) substr($time, 0, 2),
+                (int) substr($time, 3, 2)
+            )
+        );
+    }
+
     public static function now(): self
     {
         return new self(Carbon::now());
@@ -18,5 +28,10 @@ class ArrivalTime
     public function timestamp(): int
     {
         return $this->date->timestamp;
+    }
+
+    public function timeFormatted(): string
+    {
+        return $this->date->toTimeString('minute');
     }
 }
