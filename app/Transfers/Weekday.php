@@ -8,6 +8,19 @@ class Weekday
     {
     }
 
+    public static function fromString(string $weekDay): static
+    {
+        return new static([
+            'sunday' => 0,
+            'monday' => 1,
+            'tuesday' => 2,
+            'wednesday' => 3,
+            'thursday' => 4,
+            'friday' => 5,
+            'saturday' => 6,
+        ][$weekDay]);
+    }
+
     public static function fromDayOfWeek(int $dayOfWeek): static
     {
         return new static($dayOfWeek);
