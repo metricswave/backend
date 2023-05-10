@@ -17,8 +17,8 @@ class TravelDistance
     public function toArray(): array
     {
         return [
-            'origin' => $this->origin,
-            'destination' => $this->destination,
+            'origin' => $this->origin->address,
+            'destination' => $this->destination->address,
             'travel_mode' => $this->travelMode->value,
             'arrival_time' => $this->arrivalTime->timeFormatted(),
             'distance' => $this->distance->distance,
