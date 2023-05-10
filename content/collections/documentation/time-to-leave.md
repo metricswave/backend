@@ -4,7 +4,7 @@ blueprint: documentation
 title: 'Triggers: Time To Leave'
 parent: c46aafa5-b49b-4019-a55d-2074ae56570d
 updated_by: 1
-updated_at: 1683634420
+updated_at: 1683696540
 short_content: 'Receive a notification 15 min before departure time to arrive at your destination on time.'
 ---
 Never be late to your destination, receive a notification 15 minutes before departure time so you can leave and arrive at your destination on time.
