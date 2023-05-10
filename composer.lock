@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9e9fb5ce8960311af12f6c48485ae8f9",
+    "content-hash": "237c188caa34d5d144cb0c50ef904129",
     "packages": [
         {
             "name": "ajthinking/archetype",
@@ -6392,16 +6392,16 @@
         },
         {
             "name": "statamic/cms",
-            "version": "v4.0.0-alpha.1",
+            "version": "v4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/statamic/cms.git",
-                "reference": "06ec2b3980a1f8e0942210d2b2b62a5ea5d3e4bb"
+                "reference": "79f5628550a21c4a02c2787f81fbfc165a1c97fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/statamic/cms/zipball/06ec2b3980a1f8e0942210d2b2b62a5ea5d3e4bb",
-                "reference": "06ec2b3980a1f8e0942210d2b2b62a5ea5d3e4bb",
+                "url": "https://api.github.com/repos/statamic/cms/zipball/79f5628550a21c4a02c2787f81fbfc165a1c97fe",
+                "reference": "79f5628550a21c4a02c2787f81fbfc165a1c97fe",
                 "shasum": ""
             },
             "require": {
@@ -6424,7 +6424,7 @@
                 "spatie/blink": "^1.1.2",
                 "statamic/stringy": "^3.1.2",
                 "symfony/http-foundation": "^4.3.3 || ^5.1.4 || ^6.0",
-                "symfony/lock": "^5.1",
+                "symfony/lock": "^5.4",
                 "symfony/var-exporter": "^4.3 || ^5.1 || ^6.0",
                 "symfony/yaml": "^4.1 || ^5.1 || ^6.0",
                 "ueberdosis/tiptap-php": "^1.1",
@@ -6481,7 +6481,7 @@
             ],
             "support": {
                 "issues": "https://github.com/statamic/cms/issues",
-                "source": "https://github.com/statamic/cms/tree/v4.0.0-alpha.1"
+                "source": "https://github.com/statamic/cms/tree/v4.0.0"
             },
             "funding": [
                 {
@@ -6489,7 +6489,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-03-27T18:58:40+00:00"
+            "time": "2023-05-09T17:55:10+00:00"
         },
         {
             "name": "statamic/stringy",
@@ -13746,9 +13746,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "statamic/cms": 15
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

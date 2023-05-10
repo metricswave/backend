@@ -11,6 +11,7 @@ namespace PHPSTORM_META {
     */
     override(new \Illuminate\Contracts\Container\Container, map([
         '' => '@',
+            'App\Services\TravelDistance\TravelDistanceCalculator' => \App\Services\TravelDistance\GoogleTravelDistanceCalculator::class,
             'App\Services\Weather\WeatherForecastGetter' => \App\Services\Weather\OpenMeteoWeatherForecastGetter::class,
             'Illuminate\Auth\Console\ClearResetsCommand' => \Illuminate\Auth\Console\ClearResetsCommand::class,
             'Illuminate\Auth\Middleware\RequirePassword' => \Illuminate\Auth\Middleware\RequirePassword::class,
@@ -310,6 +311,7 @@ namespace PHPSTORM_META {
         ]));
     override(\Illuminate\Container\Container::makeWith(0), map([
         '' => '@',
+            'App\Services\TravelDistance\TravelDistanceCalculator' => \App\Services\TravelDistance\GoogleTravelDistanceCalculator::class,
             'App\Services\Weather\WeatherForecastGetter' => \App\Services\Weather\OpenMeteoWeatherForecastGetter::class,
             'Illuminate\Auth\Console\ClearResetsCommand' => \Illuminate\Auth\Console\ClearResetsCommand::class,
             'Illuminate\Auth\Middleware\RequirePassword' => \Illuminate\Auth\Middleware\RequirePassword::class,
@@ -609,6 +611,7 @@ namespace PHPSTORM_META {
         ]));
     override(\Illuminate\Contracts\Container\Container::get(0), map([
         '' => '@',
+            'App\Services\TravelDistance\TravelDistanceCalculator' => \App\Services\TravelDistance\GoogleTravelDistanceCalculator::class,
             'App\Services\Weather\WeatherForecastGetter' => \App\Services\Weather\OpenMeteoWeatherForecastGetter::class,
             'Illuminate\Auth\Console\ClearResetsCommand' => \Illuminate\Auth\Console\ClearResetsCommand::class,
             'Illuminate\Auth\Middleware\RequirePassword' => \Illuminate\Auth\Middleware\RequirePassword::class,
@@ -908,6 +911,7 @@ namespace PHPSTORM_META {
         ]));
     override(\Illuminate\Contracts\Container\Container::make(0), map([
         '' => '@',
+            'App\Services\TravelDistance\TravelDistanceCalculator' => \App\Services\TravelDistance\GoogleTravelDistanceCalculator::class,
             'App\Services\Weather\WeatherForecastGetter' => \App\Services\Weather\OpenMeteoWeatherForecastGetter::class,
             'Illuminate\Auth\Console\ClearResetsCommand' => \Illuminate\Auth\Console\ClearResetsCommand::class,
             'Illuminate\Auth\Middleware\RequirePassword' => \Illuminate\Auth\Middleware\RequirePassword::class,
@@ -1207,6 +1211,7 @@ namespace PHPSTORM_META {
         ]));
     override(\Illuminate\Contracts\Container\Container::makeWith(0), map([
         '' => '@',
+            'App\Services\TravelDistance\TravelDistanceCalculator' => \App\Services\TravelDistance\GoogleTravelDistanceCalculator::class,
             'App\Services\Weather\WeatherForecastGetter' => \App\Services\Weather\OpenMeteoWeatherForecastGetter::class,
             'Illuminate\Auth\Console\ClearResetsCommand' => \Illuminate\Auth\Console\ClearResetsCommand::class,
             'Illuminate\Auth\Middleware\RequirePassword' => \Illuminate\Auth\Middleware\RequirePassword::class,
@@ -1506,6 +1511,7 @@ namespace PHPSTORM_META {
         ]));
     override(\App::get(0), map([
         '' => '@',
+            'App\Services\TravelDistance\TravelDistanceCalculator' => \App\Services\TravelDistance\GoogleTravelDistanceCalculator::class,
             'App\Services\Weather\WeatherForecastGetter' => \App\Services\Weather\OpenMeteoWeatherForecastGetter::class,
             'Illuminate\Auth\Console\ClearResetsCommand' => \Illuminate\Auth\Console\ClearResetsCommand::class,
             'Illuminate\Auth\Middleware\RequirePassword' => \Illuminate\Auth\Middleware\RequirePassword::class,
@@ -1805,6 +1811,7 @@ namespace PHPSTORM_META {
         ]));
     override(\App::make(0), map([
         '' => '@',
+            'App\Services\TravelDistance\TravelDistanceCalculator' => \App\Services\TravelDistance\GoogleTravelDistanceCalculator::class,
             'App\Services\Weather\WeatherForecastGetter' => \App\Services\Weather\OpenMeteoWeatherForecastGetter::class,
             'Illuminate\Auth\Console\ClearResetsCommand' => \Illuminate\Auth\Console\ClearResetsCommand::class,
             'Illuminate\Auth\Middleware\RequirePassword' => \Illuminate\Auth\Middleware\RequirePassword::class,
@@ -2104,6 +2111,7 @@ namespace PHPSTORM_META {
         ]));
     override(\App::makeWith(0), map([
         '' => '@',
+            'App\Services\TravelDistance\TravelDistanceCalculator' => \App\Services\TravelDistance\GoogleTravelDistanceCalculator::class,
             'App\Services\Weather\WeatherForecastGetter' => \App\Services\Weather\OpenMeteoWeatherForecastGetter::class,
             'Illuminate\Auth\Console\ClearResetsCommand' => \Illuminate\Auth\Console\ClearResetsCommand::class,
             'Illuminate\Auth\Middleware\RequirePassword' => \Illuminate\Auth\Middleware\RequirePassword::class,
@@ -2403,6 +2411,7 @@ namespace PHPSTORM_META {
         ]));
     override(\app(0), map([
         '' => '@',
+            'App\Services\TravelDistance\TravelDistanceCalculator' => \App\Services\TravelDistance\GoogleTravelDistanceCalculator::class,
             'App\Services\Weather\WeatherForecastGetter' => \App\Services\Weather\OpenMeteoWeatherForecastGetter::class,
             'Illuminate\Auth\Console\ClearResetsCommand' => \Illuminate\Auth\Console\ClearResetsCommand::class,
             'Illuminate\Auth\Middleware\RequirePassword' => \Illuminate\Auth\Middleware\RequirePassword::class,
@@ -2702,6 +2711,7 @@ namespace PHPSTORM_META {
         ]));
     override(\resolve(0), map([
         '' => '@',
+            'App\Services\TravelDistance\TravelDistanceCalculator' => \App\Services\TravelDistance\GoogleTravelDistanceCalculator::class,
             'App\Services\Weather\WeatherForecastGetter' => \App\Services\Weather\OpenMeteoWeatherForecastGetter::class,
             'Illuminate\Auth\Console\ClearResetsCommand' => \Illuminate\Auth\Console\ClearResetsCommand::class,
             'Illuminate\Auth\Middleware\RequirePassword' => \Illuminate\Auth\Middleware\RequirePassword::class,
@@ -3001,6 +3011,7 @@ namespace PHPSTORM_META {
         ]));
     override(\Psr\Container\ContainerInterface::get(0), map([
         '' => '@',
+            'App\Services\TravelDistance\TravelDistanceCalculator' => \App\Services\TravelDistance\GoogleTravelDistanceCalculator::class,
             'App\Services\Weather\WeatherForecastGetter' => \App\Services\Weather\OpenMeteoWeatherForecastGetter::class,
             'Illuminate\Auth\Console\ClearResetsCommand' => \Illuminate\Auth\Console\ClearResetsCommand::class,
             'Illuminate\Auth\Middleware\RequirePassword' => \Illuminate\Auth\Middleware\RequirePassword::class,
