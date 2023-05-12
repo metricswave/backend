@@ -172,5 +172,13 @@ class TriggerTypeSeeder extends Seeder
                 ],
             ],
         );
+
+        if (app()->environment('local')) {
+            $this->seedForLocalEnvironment();
+        }
+    }
+
+    private function seedForLocalEnvironment(): void
+    {
     }
 }

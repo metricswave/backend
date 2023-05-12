@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\TriggerCreated;
 use App\Services\Visits\Visits;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -34,6 +35,10 @@ class Trigger extends Model
         'trigger_type_id' => 'integer',
         'configuration' => 'json',
         'via' => 'array',
+    ];
+
+    protected $dispatchesEvents = [
+        'created' => TriggerCreated::class,
     ];
 
     public function user(): BelongsTo

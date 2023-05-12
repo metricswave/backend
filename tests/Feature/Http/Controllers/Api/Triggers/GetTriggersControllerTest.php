@@ -31,6 +31,7 @@ it('should be able to get all triggers', function () {
                 ->has('updated_at')
                 ->has('time')
                 ->has('weekdays')
+                ->has('arrival_time')
             ));
 });
 
