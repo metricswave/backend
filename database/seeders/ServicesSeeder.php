@@ -28,7 +28,7 @@ class ServicesSeeder extends Seeder
                 [
                     'name' => 'Google',
                     'description' => 'Connect your Google account to your account on this website.',
-                    'scopes' => ['profile', 'email', 'calendar.readonly'],
+                    'scopes' => ['profile', 'email'],
                     'configuration' => [
                         'type' => 'oauth',
                     ]
