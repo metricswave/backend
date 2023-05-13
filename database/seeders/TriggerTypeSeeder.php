@@ -113,7 +113,7 @@ class TriggerTypeSeeder extends Seeder
         TriggerType::updateOrCreate(
             ['id' => TriggerTypeId::TimeToLeave],
             [
-                'name' => 'Time to Leave (Beta)',
+                'name' => 'Time to Leave',
                 'icon' => 'live_transit.png',
                 'description' => 'Receive a notification when it\'s time to leave based on live transit data.',
                 'configuration' => [
