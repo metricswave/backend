@@ -59,6 +59,7 @@ Route::post('/leads', PostLeadController::class);
 // Prices
 Route::get('/leads/create/prices/{price}', GetCheckoutCreatingLeadController::class);
 Route::get('/leads/{lead:uuid}/prices/{price}', GetCheckoutController::class);
+Route::view('/payment/success', 'payment.success');
 
 // Webhooks notification
 Route::get('/webhooks/{trigger:uuid}', GetWebhookTriggerController::class);
