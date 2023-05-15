@@ -29,7 +29,7 @@ class TimeToLeaveTriggersProcessor
 
         $arrivalTime = ArrivalTime::fromTimeFormatted($trigger->configuration['fields']['arrival_time']);
 
-        if ($arrivalTime->date->addHours(self::HOURS_BEFORE)->endOfMinute()->isPast()) {
+        if ($arrivalTime->date()->addHours(self::HOURS_BEFORE)->endOfMinute()->isPast()) {
             return;
         }
 
@@ -44,7 +44,7 @@ class TimeToLeaveTriggersProcessor
 
         UserTriggerNotificationJob::dispatch($trigger->user, $notification)
             ->delay(
-                $arrivalTime->date
+                $arrivalTime->date()
                     ->subSeconds($travelDistance->duration->seconds)
                     ->subMinutes(self::MINUTES_BEFORE)
             );

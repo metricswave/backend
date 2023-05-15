@@ -6,7 +6,7 @@ use Illuminate\Support\Carbon;
 
 class ArrivalTime
 {
-    public function __construct(public readonly Carbon $date)
+    public function __construct(private readonly Carbon $date)
     {
     }
 
@@ -23,6 +23,11 @@ class ArrivalTime
     public static function now(): self
     {
         return new self(Carbon::now());
+    }
+
+    public function date(): Carbon
+    {
+        return $this->date->clone();
     }
 
     public function timestamp(): int
