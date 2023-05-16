@@ -28,7 +28,6 @@ class TimeToLeaveTriggersProcessor
             return;
         }
 
-        // If the trigger weekday doesn't match today weekday, don't process it
         $weekday = Weekday::fromDayOfWeek(now()->dayOfWeek);
         if (!in_array($weekday->toString(), $trigger->configuration['fields']['weekdays'])) {
             return;
