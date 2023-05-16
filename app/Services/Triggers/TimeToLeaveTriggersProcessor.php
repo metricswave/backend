@@ -10,6 +10,7 @@ use App\Services\TravelDistance\ArrivalTime;
 use App\Services\TravelDistance\TravelDistanceCalculator;
 use App\Services\TravelDistance\TravelMode;
 use App\Transfers\TriggerTypeId;
+use App\Transfers\Weekday;
 use Arr;
 
 class TimeToLeaveTriggersProcessor
@@ -24,6 +25,12 @@ class TimeToLeaveTriggersProcessor
     public function __invoke(Trigger $trigger): void
     {
         if ($trigger->trigger_type_id !== TriggerTypeId::TimeToLeave->value) {
+            return;
+        }
+
+        // If the trigger weekday doesn't match today weekday, don't process it
+        $weekday = Weekday::fromDayOfWeek(now()->dayOfWeek);
+        if (!in_array($weekday->toString(), $trigger->configuration['fields']['weekdays'])) {
             return;
         }
 
