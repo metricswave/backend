@@ -54,7 +54,7 @@ class User extends Authenticatable
 
     private function createAuthToken(string $deviceName): array
     {
-        $expiresAt = now()->addYears(10);
+        $expiresAt = now()->addYear();
 
         return [
             'token' => $this
@@ -69,7 +69,7 @@ class User extends Authenticatable
 
     private function createRefreshToken(string $deviceName): array
     {
-        $expiresAt = now()->addYears(20);
+        $expiresAt = now()->addYears(2);
 
         return [
             'token' => $this
