@@ -37,7 +37,7 @@
                     </div>
 
                     <div>
-                        <span>Since May 3rd, we are inviting users with licences</span>
+                        <span>Since May 3rd, we are inviting users with licences.</span>
                         <span class="text-blue-500 underline hover:no-underline smooth">Read more →</span>
                     </div>
                 </a>
