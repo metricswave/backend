@@ -82,11 +82,6 @@ class User extends Authenticatable
         ];
     }
 
-    public function services(): HasMany
-    {
-        return $this->hasMany(UserService::class);
-    }
-
     public function triggers(): HasMany
     {
         return $this->hasMany(Trigger::class);
@@ -124,5 +119,17 @@ class User extends Authenticatable
         }
 
         return 99999;
+    }
+
+    public function serviceToken(string $driver): string
+    {
+        $service = Service::query()->where('driver', $driver)->firstOrFail();
+
+        return $this->services()->where('service_id', $service->id)->first()->service_data['token'];
+    }
+
+    public function services(): HasMany
+    {
+        return $this->hasMany(UserService::class);
     }
 }

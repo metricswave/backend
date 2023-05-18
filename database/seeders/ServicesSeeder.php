@@ -26,10 +26,16 @@ class ServicesSeeder extends Seeder
             ->updateOrCreate(
                 ['driver' => 'google'],
                 [
-                    'name' => 'Google',
-                    'description' => 'Connect your Google account to your account on this website.',
-                    'scopes' => ['profile', 'email'],
+                    'name' => 'Google Calendar',
+                    'description' => 'Connect your calendar to receive notifications on incoming events or time to leave.',
+                    'scopes' => [
+                        'profile',
+                        'email',
+                        'https://www.googleapis.com/auth/calendar.readonly',
+                        'https://www.googleapis.com/auth/calendar.events.readonly',
+                    ],
                     'configuration' => [
+                        'version' => '1.0',
                         'type' => 'oauth',
                     ]
                 ]

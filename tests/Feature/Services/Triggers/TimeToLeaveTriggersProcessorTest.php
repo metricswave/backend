@@ -22,7 +22,7 @@ it('should process time to leave trigger', function () {
                     'destination' => 'San Pantaleón 5, Madrid, España',
                     'mode' => TravelMode::DRIVING->value,
                     'arrival_time' => now()->subHours(TimeToLeaveTriggersProcessor::HOURS_BEFORE)->format('H:i'),
-                    'weekday' => Weekday::fromDayOfWeek(now()->dayOfWeek)->toString(),
+                    'weekdays' => [Weekday::fromDayOfWeek(now()->dayOfWeek)->toString()],
                 ],
             ],
         ]);
@@ -47,7 +47,7 @@ it('should not enqueue the trigger notification job is arrival time is before 4 
                     'destination' => 'San Pantaleón 5, Madrid, España',
                     'mode' => TravelMode::DRIVING->value,
                     'arrival_time' => now()->subHours(TimeToLeaveTriggersProcessor::HOURS_BEFORE)->subMinutes(1)->format('H:i'),
-                    'weekday' => Weekday::fromDayOfWeek(now()->dayOfWeek)->toString(),
+                    'weekdays' => [Weekday::fromDayOfWeek(now()->dayOfWeek)->toString()],
                 ],
             ],
         ]);

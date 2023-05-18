@@ -3,6 +3,10 @@
 namespace App\Providers;
 
 use App\Console\Commands\StatamicInstallCommand;
+use App\Services\Calendar\CalendarGetter;
+use App\Services\Calendar\EventsGetter;
+use App\Services\Calendar\GoogleCalendarEventsGetter;
+use App\Services\Calendar\GoogleCalendarGetter;
 use App\Services\TravelDistance\GoogleTravelDistanceCalculator;
 use App\Services\TravelDistance\TravelDistanceCalculator;
 use App\Services\Weather\OpenMeteoWeatherForecastGetter;
@@ -28,6 +32,16 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             TravelDistanceCalculator::class,
             GoogleTravelDistanceCalculator::class,
+        );
+
+        $this->app->bind(
+            CalendarGetter::class,
+            GoogleCalendarGetter::class,
+        );
+
+        $this->app->bind(
+            EventsGetter::class,
+            GoogleCalendarEventsGetter::class,
         );
     }
 
