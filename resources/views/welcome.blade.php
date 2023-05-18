@@ -22,7 +22,7 @@
                 @include('landing.lead-form')
             </div>
 
-            @if(Date::createFromFormat('Y-m-d', '2023-05-03')->isFuture())
+            @if(Date::createFromFormat('Y-m-d', '2023-05-29')->isFuture())
                 <a href="/blog/on-may-3rd-we-will-open-the-beta-to-the-first-users"
                    class="animate-[out_2s,_fade-in-down_1.5s_ease-out_2s] w-full flex items-center rounded-full block bg-yellow-50 dark:bg-yellow-500/10 py-3 px-5">
                     <div class="mr-4">
@@ -37,7 +37,7 @@
                     </div>
 
                     <div>
-                        <span>First beta access on May 3rd.</span>
+                        <span>Since May 3rd, we are inviting users with licences</span>
                         <span class="text-blue-500 underline hover:no-underline smooth">Read more →</span>
                     </div>
                 </a>

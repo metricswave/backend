@@ -26,13 +26,10 @@
                 <a href="/blog"
                    class="hover:underline smooth">Blog</a>
             </li>
-            @if(Date::createFromFormat('Y-m-d', '2023-05-03')->isPast())
-                <li><a class="hover:underline smooth"
-                       href="https://app.notifywave.com">App 🎉</a></li>
-            @elseif(Date::createFromFormat('Y-m-d', '2023-05-10')->isPast())
-                <li><a class="hover:underline smooth"
-                       href="https://app.notifywave.com">App</a></li>
-            @endif
+            <li>
+                <a class="hover:underline smooth"
+                   href="https://app.notifywave.com">App</a>
+            </li>
         </ul>
     </nav>
 
