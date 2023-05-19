@@ -14,6 +14,7 @@ use Illuminate\Queue\SerializesModels;
 
 /**
  * @method static void dispatch(Time $time, Weekday $weekday)
+ * @method static void dispatchSync(Time $time, Weekday $weekday)
  */
 class QueueOnTimeTriggerNotificationsJob implements ShouldQueue
 {

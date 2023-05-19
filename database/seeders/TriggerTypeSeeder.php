@@ -180,5 +180,38 @@ class TriggerTypeSeeder extends Seeder
 
     private function seedForLocalEnvironment(): void
     {
+        TriggerType::updateOrCreate(
+            ['id' => TriggerTypeId::CalendarTimeToLeave],
+            [
+                'name' => 'Calendar Event: Time to Leave',
+                'icon' => 'live_transit.png',
+                'description' => 'Receive a notification when it\'s time to leave to the next event with location in your calendar.',
+                'configuration' => [
+                    'version' => '1.0',
+                    'fields' => [
+                        [
+                            'name' => 'origin',
+                            'type' => 'address',
+                            'label' => 'Origin',
+                            'required' => true,
+                        ],
+                        [
+                            'name' => 'mode',
+                            'type' => 'select',
+                            'label' => 'Mode',
+                            'required' => true,
+                            'multiple' => false,
+                            'default' => 'driving',
+                            'options' => [
+                                ['value' => 'driving', 'label' => 'Driving'],
+                                ['value' => 'walking', 'label' => 'Walking'],
+                                ['value' => 'bicycling', 'label' => 'Bicycling'],
+                                ['value' => 'transit', 'label' => 'Transit'],
+                            ]
+                        ],
+                    ],
+                ],
+            ],
+        );
     }
 }

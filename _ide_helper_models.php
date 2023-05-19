@@ -136,6 +136,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property string|null $time
  * @property string|null $weekdays
+ * @property string|null $arrival_time
  * @property-read \App\Models\TriggerType $triggerType
  * @property-read \App\Models\User $user
  * @method static \Database\Factories\TriggerFactory factory($count = null, $state = [])
@@ -143,6 +144,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Trigger newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Trigger onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|Trigger query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Trigger whereArrivalTime($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Trigger whereConfiguration($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Trigger whereContent($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Trigger whereCreatedAt($value)
@@ -210,6 +212,10 @@ namespace App\Models{
  * @property string|null $avatar
  * @property mixed|null $preferences
  * @property string|null $last_login
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\UserCalendar> $calendars
+ * @property-read int|null $calendars_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\MailLog> $mailLogs
+ * @property-read int|null $mail_logs_count
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\UserService> $services
@@ -240,6 +246,24 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  */
 	class User extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\UserCalendar
+ *
+ * @property \App\Transfers\ServiceId $service_id
+ * @property-read \App\Models\UserService|null $service
+ * @property-read \App\Models\User $user
+ * @method static \Database\Factories\UserCalendarFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar query()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar withoutTrashed()
+ */
+	class UserCalendar extends \Eloquent {}
 }
 
 namespace App\Models{

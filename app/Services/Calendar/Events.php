@@ -21,7 +21,7 @@ class Events
     }
 
     /**
-     * @return Collection<Calendars>
+     * @return Collection<Event>
      */
     public function items(): Collection
     {

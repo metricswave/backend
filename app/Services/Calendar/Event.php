@@ -2,15 +2,29 @@
 
 namespace App\Services\Calendar;
 
-use Carbon\Carbon;
+use Illuminate\Support\Carbon;
+use Spatie\LaravelData\Data;
 
-class Event
+class Event extends Data
 {
     public function __construct(
         public readonly string $id,
         public readonly string $summary,
         public readonly ?string $location,
-        public readonly Carbon $startAt,
+        private readonly Carbon $startAt,
+        public readonly bool $isAllDay,
     ) {
+    }
+
+    public function notificationData(): array
+    {
+        return [
+            'title' => $this->summary,
+        ];
+    }
+
+    public function startAt(): Carbon
+    {
+        return $this->startAt->clone();
     }
 }

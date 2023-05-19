@@ -8,4 +8,5 @@ enum TriggerTypeId: int
     case OnTime = 2;
     case WeatherSummary = 3;
     case TimeToLeave = 4;
+    case CalendarTimeToLeave = 5;
 }

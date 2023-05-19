@@ -16,7 +16,7 @@ use Arr;
 class TimeToLeaveTriggersProcessor
 {
     public const HOURS_BEFORE = 4;
-    private const MINUTES_BEFORE = 15;
+    public const MINUTES_BEFORE = 15;
 
     public function __construct(private readonly TravelDistanceCalculator $calculator)
     {
