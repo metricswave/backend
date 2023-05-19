@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Service;
+use App\Transfers\ServiceId;
 use Illuminate\Database\Seeder;
 
 class ServicesSeeder extends Seeder
@@ -11,7 +12,10 @@ class ServicesSeeder extends Seeder
     {
         Service::query()
             ->updateOrCreate(
-                ['driver' => 'github'],
+                [
+                    'id' => ServiceId::Github->value,
+                    'driver' => 'github',
+                ],
                 [
                     'name' => 'GitHub',
                     'description' => 'GitHub is a web-based hosting service for version control.',
@@ -24,7 +28,10 @@ class ServicesSeeder extends Seeder
 
         Service::query()
             ->updateOrCreate(
-                ['driver' => 'google'],
+                [
+                    'id' => ServiceId::Google->value,
+                    'driver' => 'google',
+                ],
                 [
                     'name' => 'Google Calendar',
                     'description' => 'Connect your calendar to receive notifications on incoming events or time to leave.',
@@ -43,7 +50,10 @@ class ServicesSeeder extends Seeder
 
         Service::query()
             ->updateOrCreate(
-                ['driver' => 'telegram'],
+                [
+                    'id' => ServiceId::Telegram->value,
+                    'driver' => 'telegram',
+                ],
                 [
                     'name' => 'Telegram',
                     'description' => 'Connect a Telegram channel to receive notifications on.',

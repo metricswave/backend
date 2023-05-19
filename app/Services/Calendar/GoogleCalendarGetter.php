@@ -3,6 +3,7 @@
 namespace App\Services\Calendar;
 
 use App\Models\User;
+use App\Transfers\ServiceId;
 use Illuminate\Support\Facades\Http;
 
 class GoogleCalendarGetter implements CalendarGetter
@@ -33,9 +34,10 @@ class GoogleCalendarGetter implements CalendarGetter
     private function calendars(array $items): Calendars
     {
         $calendars = collect($items)
-            ->map(fn(array $item) => new Calendar(
+            ->map(fn(array $item) => new CalendarTransfer(
                 $item['id'],
                 $item['summaryOverride'] ?? $item['summary'],
+                ServiceId::Google,
                 $item['description'] ?? null,
                 $item['foregroundColor'] ?? null,
                 $item['backgroundColor'] ?? null,

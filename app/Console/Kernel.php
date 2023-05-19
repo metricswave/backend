@@ -20,6 +20,9 @@ class Kernel extends ConsoleKernel
         $schedule->command('app:trigger:time-to-leave')->everyMinute();
         $schedule->command('app:trigger:weather-summary')->everyMinute();
         $schedule->command('app:trigger:on-time')->everyMinute();
+
+        // Calendar
+        $schedule->command('app:user:get-calendars')->dailyAt('02:00');
     }
 
     protected function commands(): void

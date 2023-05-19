@@ -7,12 +7,12 @@ use Illuminate\Support\Collection;
 class Calendars
 {
     /**
-     * @var Collection<Calendar> $calendars
+     * @var Collection<CalendarTransfer> $calendars
      */
     private Collection $calendars;
 
     /**
-     * @param  array<Calendar>  $calendars
+     * @param  array<CalendarTransfer>  $calendars
      */
     public function __construct(
         array $calendars,
