@@ -64,7 +64,7 @@ class EnqueueCalendarTimeToLeaveEventNotificationsJob implements ShouldQueue
                     continue;
                 }
 
-                TimeToLeaveTriggerNotificationJob::dispatch(
+                CalendarTimeToLeaveTriggerNotificationJob::dispatch(
                     $this->trigger,
                     $calendar,
                     $event,

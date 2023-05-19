@@ -15,7 +15,7 @@ class CacheKey
     public static function generate(string $type, string $id, array|string $params = []): string
     {
         if (is_array($params)) {
-            $params = implode(' ', $params);
+            $params = implode('_', $params);
         }
 
         return $type.'::'.$id.'::'.Str::of($params)->snake()->toString();

@@ -1,6 +1,6 @@
 <?php
 
-function get_private_property($object, $property): mixed
+function get_private_property($object, string $property): mixed
 {
     $reflection = new ReflectionClass($object);
     $property = $reflection->getProperty($property);

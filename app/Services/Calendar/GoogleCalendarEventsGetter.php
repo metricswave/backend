@@ -27,7 +27,7 @@ class GoogleCalendarEventsGetter implements EventsGetter
             isset($event['start']['dateTime']) ?
                 Carbon::parse($event['start']['dateTime']) :
                 Carbon::parse($event['start']['date']),
-            isset($event['start']['dateTime']),
+            !isset($event['start']['dateTime']),
         );
     }
 
@@ -53,6 +53,6 @@ class GoogleCalendarEventsGetter implements EventsGetter
     {
         $events = collect($events)->map(fn(array $event) => $this->event($event));
 
-        return new Events($events->toArray());
+        return new Events($events->all());
     }
 }

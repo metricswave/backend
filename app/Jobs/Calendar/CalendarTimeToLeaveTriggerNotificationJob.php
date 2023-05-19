@@ -26,7 +26,7 @@ use Throwable;
  * @method static PendingDispatch dispatch(Trigger $trigger, UserCalendar $calendar, Event $event)
  * @method static PendingDispatch dispatchSync(Trigger $trigger, UserCalendar $calendar, Event $event)
  */
-class TimeToLeaveTriggerNotificationJob implements ShouldQueue
+class CalendarTimeToLeaveTriggerNotificationJob implements ShouldQueue
 {
     use Dispatchable;
     use InteractsWithQueue;
@@ -53,6 +53,10 @@ class TimeToLeaveTriggerNotificationJob implements ShouldQueue
         }
 
         if (!$event->startAt()->equalTo($this->event->startAt())) {
+            return;
+        }
+
+        if ($event->location === null) {
             return;
         }
 
