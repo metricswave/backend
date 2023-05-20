@@ -18,9 +18,9 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Foundation\Bus\PendingDispatch;
+use Illuminate\Http\Client\RequestException;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Throwable;
 
 /**
  * @method static PendingDispatch dispatch(Trigger $trigger, UserCalendar $calendar, Event $event)
@@ -48,7 +48,7 @@ class CalendarTimeToLeaveTriggerNotificationJob implements ShouldQueue
                 $this->calendar->calendar_id,
                 $this->event->id,
             );
-        } catch (Throwable) {
+        } catch (RequestException) {
             return;
         }
 
@@ -73,7 +73,7 @@ class CalendarTimeToLeaveTriggerNotificationJob implements ShouldQueue
             $this->trigger,
             Arr::dot([
                 ...$travelDistance->toArray(),
-                'event' => $event->toArray(),
+                'event' => $event->notificationData(),
             ])
         );
 

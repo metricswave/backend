@@ -28,6 +28,7 @@ class GoogleCalendarEventsGetter implements EventsGetter
                 Carbon::parse($event['start']['dateTime']) :
                 Carbon::parse($event['start']['date']),
             !isset($event['start']['dateTime']),
+            $event['status'] === 'confirmed',
         );
     }
 

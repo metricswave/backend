@@ -11,8 +11,9 @@ class Event extends Data
         public readonly string $id,
         public readonly string $summary,
         public readonly ?string $location,
-        private readonly Carbon $startAt,
+        public readonly Carbon $startAt,
         public readonly bool $isAllDay,
+        public readonly bool $isConfirmed,
     ) {
     }
 
@@ -20,6 +21,8 @@ class Event extends Data
     {
         return [
             'title' => $this->summary,
+            'date' => $this->startAt()->format('d/m.Y'),
+            'time' => $this->startAt()->format('H:i'),
         ];
     }
 
