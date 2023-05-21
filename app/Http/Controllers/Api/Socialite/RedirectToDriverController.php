@@ -12,10 +12,13 @@ class RedirectToDriverController extends JsonController
 {
     public function __invoke(Service $service): JsonResponse
     {
+        $creating = null === request()->header('Authorization');
+        $scopes = $service->scopesFor($creating);
+
         /** @var RedirectResponse $path */
         $path = Socialite::driver($service->driver)
             ->stateless()
-            ->scopes($service->scopes)
+            ->scopes($scopes)
             ->redirect();
 
         return $this->response([

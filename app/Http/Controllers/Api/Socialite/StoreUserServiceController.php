@@ -39,7 +39,7 @@ class StoreUserServiceController extends JsonTokenResponseController
                     'expiresIn' => $socialiteUser->expiresIn,
                     'user' => $socialiteUser->user,
                     'attributes' => $socialiteUser->attributes,
-                    'scope' => $service->scopes,
+                    'scope' => $socialiteUser->approvedScopes,
                 ],
             ]
         );
