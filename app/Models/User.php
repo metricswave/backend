@@ -132,4 +132,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(UserService::class);
     }
+
+    public function calendars(): HasMany
+    {
+        return $this->hasMany(UserCalendar::class);
+    }
 }

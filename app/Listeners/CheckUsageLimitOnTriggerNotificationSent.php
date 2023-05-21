@@ -12,7 +12,7 @@ class CheckUsageLimitOnTriggerNotificationSent
     public function handle(TriggerNotificationSent $event): void
     {
         $user = $event->notification->trigger->user;
-        $key = CacheKey::generate($user, 'trigger_notification_sent');
+        $key = CacheKey::generateForModel($user, 'trigger_notification_sent');
 
         if ($user->triggerNotificationVisitsLimitReached() && !Cache::has($key)) {
             $user->notify(new TriggerLimitReachedNotification());

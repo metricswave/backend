@@ -12,6 +12,18 @@ use Illuminate\Support\Collection;
 
 class TriggerRepository
 {
+    public function calendarTimeToLeave(): Collection
+    {
+        return $this->builder()
+            ->where('trigger_type_id', TriggerTypeId::CalendarTimeToLeave)
+            ->get();
+    }
+
+    private function builder(): Builder|User
+    {
+        return Trigger::query();
+    }
+
     /**
      * @param  Time  $time
      * @param  Weekday  $weekday
@@ -26,11 +38,6 @@ class TriggerRepository
             ->get();
     }
 
-    private function builder(): Builder|User
-    {
-        return Trigger::query();
-    }
-
     /**
      * @param  Time  $time
      * @param  Weekday  $weekday
@@ -38,10 +45,10 @@ class TriggerRepository
      */
     public function onTimeFor(Time $time, Weekday $weekday): Collection
     {
-        return $this->byType(TriggerTypeId::OnTime, $time, $weekday);
+        return $this->byTypeAndTime(TriggerTypeId::OnTime, $time, $weekday);
     }
 
-    private function byType(TriggerTypeId $type, Time $time, Weekday $weekday): Collection
+    private function byTypeAndTime(TriggerTypeId $type, Time $time, Weekday $weekday): Collection
     {
         return $this->builder()
             ->where('trigger_type_id', $type)
@@ -57,6 +64,6 @@ class TriggerRepository
      */
     public function weatherSummaryFor(Time $time, Weekday $weekday): Collection
     {
-        return $this->byType(TriggerTypeId::WeatherSummary, $time, $weekday);
+        return $this->byTypeAndTime(TriggerTypeId::WeatherSummary, $time, $weekday);
     }
 }

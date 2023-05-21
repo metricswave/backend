@@ -13,6 +13,7 @@ use Illuminate\Queue\SerializesModels;
 
 /**
  * @method static PendingDispatch dispatch(User $user, TriggerNotification $notification)
+ * @method static PendingDispatch dispatchSync(User $user, TriggerNotification $notification)
  */
 class UserTriggerNotificationJob implements ShouldQueue
 {
