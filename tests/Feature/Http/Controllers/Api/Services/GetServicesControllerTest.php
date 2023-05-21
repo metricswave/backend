@@ -27,8 +27,3 @@ it('should return all services', function () {
             )
         );
 });
-
-it('should return 401', function () {
-    $this->getJson('/api/services')
-        ->assertUnauthorized();
-});

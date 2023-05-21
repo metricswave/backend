@@ -25,5 +25,5 @@ it('return expected Events', function () {
         ->id->toBe('_611k2e9m84q46ba484sk6b9k88ok8b9o6or3ab9i8d14agi568s32dhg84')
         ->summary->toBe('Padel ')
         ->location->toBe('Euroindoor Alcorcón')
-        ->startAt()->toAtomString()->toBe('2023-05-20T12:30:00+00:00');
+        ->startAt()->toAtomString()->toBe(now()->setTime(12, 30)->toIso8601String());
 });
