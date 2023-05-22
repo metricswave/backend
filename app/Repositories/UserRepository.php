@@ -24,8 +24,12 @@ class UserRepository
 
     public function updateOrCreate(string $email, array $data): User
     {
-        if (config('feature.sign_up_leads_only')
-            && !Lead::query()->where('email', $email)->whereNotNull('paid_at')->exists()
+        if (
+            (
+                config('feature.sign_up_leads_only')
+                && !Lead::query()->where('email', $email)->whereNotNull('paid_at')->exists()
+            )
+            || $this->builder()->where('email', $email)->exists()
         ) {
             throw new CanNotCreateUserBecauseNoPaidLicence();
         }
