@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api\Auth;
 
+use App\Exceptions\CanNotCreateUserBecauseNoPaidLicence;
 use App\Http\Requests\SignUpRequest;
-use App\Models\Lead;
 use App\Repositories\UserRepository;
 use Illuminate\Http\JsonResponse;
 
@@ -16,14 +16,11 @@ class SignUpController extends JsonTokenResponseController
 
     public function __invoke(SignUpRequest $request): JsonResponse
     {
-        if (
-            config('feature.sign_up_leads_only')
-            && !Lead::query()->where('email', $request->email)->whereNotNull('paid_at')->exists()
-        ) {
+        try {
+            $user = $this->userRepository->create($request->name, $request->email, $request->password);
+        } catch (CanNotCreateUserBecauseNoPaidLicence) {
             return $this->errorResponse('Only paid license users can create an account right now.', 409);
         }
-
-        $user = $this->userRepository->create($request->name, $request->email, $request->password);
 
         return $this->tokenResponse($user, $request->device_name, 201);
     }

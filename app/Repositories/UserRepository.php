@@ -2,6 +2,8 @@
 
 namespace App\Repositories;
 
+use App\Exceptions\CanNotCreateUserBecauseNoPaidLicence;
+use App\Models\Lead;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Hash;
@@ -20,8 +22,27 @@ class UserRepository
         return User::query();
     }
 
+    public function updateOrCreate(string $email, array $data): User
+    {
+        if (config('feature.sign_up_leads_only')
+            && !Lead::query()->where('email', $email)->whereNotNull('paid_at')->exists()
+        ) {
+            throw new CanNotCreateUserBecauseNoPaidLicence();
+        }
+
+        return $this->builder()
+            ->updateOrCreate(['email' => $email], $data);
+    }
+
     public function create(string $name, string $email, string $password): User
     {
+        if (
+            config('feature.sign_up_leads_only')
+            && !Lead::query()->where('email', $email)->whereNotNull('paid_at')->exists()
+        ) {
+            throw new CanNotCreateUserBecauseNoPaidLicence();
+        }
+
         return $this->builder()->create([
             'name' => $name,
             'email' => $email,
