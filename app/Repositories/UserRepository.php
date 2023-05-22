@@ -29,7 +29,7 @@ class UserRepository
                 config('feature.sign_up_leads_only')
                 && !Lead::query()->where('email', $email)->whereNotNull('paid_at')->exists()
             )
-            || $this->builder()->where('email', $email)->exists()
+            && !$this->builder()->where('email', $email)->exists()
         ) {
             throw new CanNotCreateUserBecauseNoPaidLicence();
         }
