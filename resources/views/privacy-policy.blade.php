@@ -4,1708 +4,379 @@
     <div class="mw-landing prose prose-zinc mx-auto dark:prose-invert mt-20"
          data-custom-class="body">
         <div>
-            <strong><span style="font-size: 26px;"><span data-custom-class="title">PRIVACY NOTICE</span></span></strong>
-        </div>
-        <div><br></div>
-        <div><span style=""><strong><span style="font-size: 15px;"><span data-custom-class="subtitle">Last updated February 13, 2023</span></span></strong></span>
-        </div>
-        <div><br></div>
-        <div><br></div>
-        <div><br></div>
-        <div style="line-height: 1.5;"><span style=""><span style="font-size: 15px;"><span data-custom-class="body_text">This privacy notice for NotifyWave ("<strong>Company</strong>," "<strong>we</strong>," "<strong>us</strong>," or "<strong>our</strong>"</span><span data-custom-class="body_text">), describes how and why we might collect, store, use, and/or share ("<strong>process</strong>") your
-					information when you use our services ("<strong>Services</strong>"), such as when you:</span></span></span>
-        </div>
-        <ul>
-            <li style="line-height: 1.5;">
-                <span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">Visit our website at notifywave.com<span style="font-size: 15px;"><span style=""><span data-custom-class="body_text"><span style="font-size: 15px;"><span style="">, or any website of ours that links to this privacy notice</span></span></span></span></span></span></span></span>
-            </li>
-        </ul>
-        <div>
-            <div style="line-height: 1.5;"></div>
-            <ul>
-                <li style="line-height: 1.5;">
-                    <span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">Engage with us in other related ways, including any sales, marketing, or events</span></span></span>
-                </li>
-            </ul>
-            <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style=""><span data-custom-class="body_text"><strong>Questions or concerns?&nbsp;</strong>Reading this privacy notice will help you understand your
-						privacy rights and choices. If you do not agree with our policies and practices, please do not use our
-						Services. If you still have any questions or concerns, please contact us at victorfalcon@duck.com.</span></span></span>
-            </div>
-            <div style="line-height: 1.5;"><br></div>
-            <div style="line-height: 1.5;"><br></div>
-            <div style="line-height: 1.5;"><strong><span style="font-size: 15px;"><span data-custom-class="heading_1">SUMMARY OF KEY POINTS</span></span></strong>
-            </div>
-            <div style="line-height: 1.5;"><br></div>
-            <div style="line-height: 1.5;"><span style="font-size: 15px;"><span data-custom-class="body_text"><strong><em>This summary provides key points from our privacy notice, but you can find out more details about
-							any of these topics by clicking the link following each key point or by using our table of contents
-							below to find the section you are looking for. You can also click&nbsp;</em></strong></span></span><a data-custom-class="link"
-                                                                                                                                  href="#toc"><span style="font-size: 15px;"><span data-custom-class="body_text"><strong><em>here</em></strong></span></span></a><span style="font-size: 15px;"><span data-custom-class="body_text"><strong><em>&nbsp;to go directly to our table of contents.</em></strong></span></span>
-            </div>
-            <div style="line-height: 1.5;"><br></div>
-            <div style="line-height: 1.5;"><span style="font-size: 15px;"><span data-custom-class="body_text"><strong>What personal information do we process?</strong> When you visit, use, or navigate our Services,
-					we may process personal information depending on how you interact with NotifyWave and the Services, the
-					choices you make, and the products and features you use. Click&nbsp;</span></span><a data-custom-class="link"
-                                                                                                         href="#personalinfo"><span style="font-size: 15px;"><span data-custom-class="body_text">here</span></span></a><span style="font-size: 15px;"><span data-custom-class="body_text">&nbsp;to learn more.</span></span>
-            </div>
-            <div style="line-height: 1.5;"><br></div>
-            <div style="line-height: 1.5;"><span style="font-size: 15px;"><span data-custom-class="body_text"><strong>Do we process any sensitive personal information?</strong> We do not process sensitive personal information.</span></span>
-            </div>
-            <div style="line-height: 1.5;"><br></div>
-            <div style="line-height: 1.5;"><span style="font-size: 15px;"><span data-custom-class="body_text"><strong>Do we receive any information from third parties?</strong> We do not receive any information from
-					third parties.</span></span></div>
-            <div style="line-height: 1.5;"><br></div>
-            <div style="line-height: 1.5;"><span style="font-size: 15px;"><span data-custom-class="body_text"><strong>How do we process your information?</strong> We process your information to provide, improve, and
-					administer our Services, communicate with you, for security and fraud prevention, and to comply with law.
-					We may also process your information for other purposes with your consent. We process your information only
-					when we have a valid legal reason to do so. Click&nbsp;</span></span><a data-custom-class="link"
-                                                                                            href="#infouse"><span style="font-size: 15px;"><span data-custom-class="body_text">here</span></span></a><span style="font-size: 15px;"><span data-custom-class="body_text">&nbsp;to learn more.</span></span>
-            </div>
-            <div style="line-height: 1.5;"><br></div>
-            <div style="line-height: 1.5;"><span style="font-size: 15px;"><span data-custom-class="body_text"><strong>In what situations and with which parties do we share personal information?</strong> We may share
-					information in specific situations and with specific third parties. Click&nbsp;</span></span><a data-custom-class="link"
-                                                                                                                    href="#whoshare"><span style="font-size: 15px;"><span data-custom-class="body_text">here</span></span></a><span style="font-size: 15px;"><span data-custom-class="body_text">&nbsp;to learn more.</span></span>
-            </div>
-            <div style="line-height: 1.5;"><br></div>
-            <div style="line-height: 1.5;"><span style="font-size: 15px;"><span data-custom-class="body_text"><strong>How do we keep your information safe?</strong> We have organizational and technical processes and
-					procedures in place to protect your personal information. However, no electronic transmission over the internet
-					or information storage technology can be guaranteed to be 100% secure, so we cannot promise or guarantee that
-					hackers, cybercriminals, or other unauthorized third parties will not be able to defeat our security and improperly
-					collect, access, steal, or modify your information. Click&nbsp;</span></span><a data-custom-class="link"
-                                                                                                    href="#infosafe"><span style="font-size: 15px;"><span data-custom-class="body_text">here</span></span></a><span style="font-size: 15px;"><span data-custom-class="body_text">&nbsp;to learn more.</span></span>
-            </div>
-            <div style="line-height: 1.5;"><br></div>
-            <div style="line-height: 1.5;"><span style="font-size: 15px;"><span data-custom-class="body_text"><strong>What are your rights?</strong> Depending on where you are located geographically, the applicable
-					privacy law may mean you have certain rights regarding your personal information. Click&nbsp;</span></span><a data-custom-class="link"
-                                                                                                                                  href="#privacyrights"><span style="font-size: 15px;"><span data-custom-class="body_text">here</span></span></a><span style="font-size: 15px;"><span data-custom-class="body_text">&nbsp;to learn more.</span></span>
-            </div>
-            <div style="line-height: 1.5;"><br></div>
-            <div style="line-height: 1.5;"><span style="font-size: 15px;"><span data-custom-class="body_text"><strong>How do you exercise your rights?</strong> The easiest way to exercise your rights is by filling
-					out our data subject request form available here: notifywave.com, or by contacting us. We will consider
-					and act upon any request in accordance with applicable data protection laws.</span></span></div>
-            <div style="line-height: 1.5;"><br></div>
-            <div style="line-height: 1.5;"><span style="font-size: 15px;"><span data-custom-class="body_text">Want to learn more about what NotifyWave does with any information we collect? Click&nbsp;</span></span><a data-custom-class="link"
-                                                                                                                                                                                                                         href="#toc"><span style="font-size: 15px;"><span data-custom-class="body_text">here</span></span></a><span style="font-size: 15px;"><span data-custom-class="body_text">&nbsp;to review the notice in full.</span></span>
-            </div>
-            <div style="line-height: 1.5;"><br></div>
-            <div style="line-height: 1.5;"><br></div>
-            <div id="toc"
-                 style="line-height: 1.5;">
-                <span style="font-size: 15px;"><span style=""><span style=""><strong><span data-custom-class="heading_1">TABLE OF CONTENTS</span></strong></span></span></span>
-            </div>
-            <div style="line-height: 1.5;"><br></div>
-            <div style="line-height: 1.5;"><span style="font-size: 15px;"><a data-custom-class="link"
-                                                                             href="#infocollect"><span style="">1. WHAT INFORMATION DO WE COLLECT?</span></a></span>
-            </div>
-            <div style="line-height: 1.5;"><span style="font-size: 15px;"><a data-custom-class="link"
-                                                                             href="#infouse"><span style="">2. HOW DO WE PROCESS YOUR INFORMATION?</span></a></span>
-            </div>
-            <div style="line-height: 1.5;"><span style="font-size: 15px;"><a data-custom-class="link"
-                                                                             href="#legalbases"><span style="">3. <span style="font-size: 15px;"><span style="">WHAT LEGAL BASES DO WE RELY ON TO PROCESS YOUR PERSONAL INFORMATION?</span></span></span></a></span>
-            </div>
-            <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style=""><a data-custom-class="link"
-                                                                                            href="#whoshare">4. WHEN AND WITH WHOM DO WE SHARE YOUR PERSONAL INFORMATION?</a></span></span>
-            </div>
-            <div style="line-height: 1.5;"><span style="font-size: 15px;"><a data-custom-class="link"
-                                                                             href="#inforetain"><span style="">5. HOW LONG DO WE KEEP YOUR INFORMATION?</span></a></span>
-            </div>
-            <div style="line-height: 1.5;"><span style="font-size: 15px;"><a data-custom-class="link"
-                                                                             href="#infosafe"><span style="">6. HOW DO WE KEEP YOUR INFORMATION SAFE?</span></a></span>
-            </div>
-            <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style=""><a data-custom-class="link"
-                                                                                            href="#privacyrights">7. WHAT ARE YOUR PRIVACY RIGHTS?</a></span></span>
-            </div>
-            <div style="line-height: 1.5;"><span style="font-size: 15px;"><a data-custom-class="link"
-                                                                             href="#DNT"><span style="">8. CONTROLS FOR DO-NOT-TRACK FEATURES</span></a></span>
-            </div>
-            <div style="line-height: 1.5;"><span style="font-size: 15px;"><a data-custom-class="link"
-                                                                             href="#caresidents"><span style="">9. DO CALIFORNIA RESIDENTS HAVE SPECIFIC PRIVACY RIGHTS?</span></a></span>
-            </div>
-            <div style="line-height: 1.5;"><a data-custom-class="link"
-                                              href="#virginia"><span style="font-size: 15px;">10. DO VIRGINIA RESIDENTS HAVE SPECIFIC PRIVACY RIGHTS?</span></a>
-            </div>
-            <div style="line-height: 1.5;"><span style="font-size: 15px;"><a data-custom-class="link"
-                                                                             href="#policyupdates"><span style="">11. DO WE MAKE UPDATES TO THIS NOTICE?</span></a></span>
-            </div>
-            <div style="line-height: 1.5;"><a data-custom-class="link"
-                                              href="#contact"><span style="font-size: 15px;">12. HOW CAN YOU CONTACT US ABOUT THIS NOTICE?</span></a>
-            </div>
-            <div style="line-height: 1.5;"><a data-custom-class="link"
-                                              href="#request"><span style="">13. HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM YOU?</span></a>
-            </div>
-            <div style="line-height: 1.5;"><br></div>
-            <div style="line-height: 1.5;"><br></div>
-            <div id="infocollect"
-                 style="line-height: 1.5;"><span style=""><span style="font-size: 15px;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span id="control"
-                                                                                                                                                             style=""><strong><span data-custom-class="heading_1">1. WHAT INFORMATION DO WE COLLECT?</span></strong></span></span></span></span></span>
-            </div>
-            <div style="line-height: 1.5;"><br></div>
-            <div id="personalinfo"
-                 style="line-height: 1.5;"><span data-custom-class="heading_2"
-                                                 style=""><span style="font-size: 15px;"><strong>Personal information you disclose to us</strong></span></span>
-            </div>
-            <div>
-                <div><br></div>
-                <div style="line-height: 1.5;">
-                    <span style=""><span style="font-size: 15px;"><span data-custom-class="body_text"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text"><strong><em>In Short:</em></strong></span></span></span></span><span data-custom-class="body_text"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text"><strong><em>&nbsp;</em></strong><em>We collect personal information that you provide to us.</em></span></span></span></span></span></span>
+            <div class="iub_content legal_pp">
+                <div class="iub_header">
+
+                    <h1>Privacy Policy</h1>
+
+                    <p>This Application collects some Personal Data from its Users.</p><br>
+                    <p>This document can be printed for reference by using the print command in the settings of any
+                        browser.</p>
+                </div> <!-- /header -->
+
+                <div class="one_line_col">
+                    <h2 id="owner_of_the_data">
+                        Owner and Data Controller
+                    </h2>
+                    <p>NotifyWave - Oca 21 Madrid, 20819</p>
+                    <p><strong>Owner contact email:</strong> info@notifywave.com</p>
                 </div>
-            </div>
-            <div style="line-height: 1.5;"><br></div>
-            <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">We collect personal information that you voluntarily provide to us when you register on the
-						Services,&nbsp;</span><span style="font-size: 15px;"><span data-custom-class="body_text">express an interest in obtaining information about us or our products and Services, when you
-							participate in activities on the Services, or otherwise when you contact us.</span></span></span></span>
-            </div>
-            <div style="line-height: 1.5;"><br></div>
-            <div style="line-height: 1.5;"></div>
-            <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text"><strong>Personal Information Provided by You.</strong> The personal information that we collect depends
-						on the context of your interactions with us and the Services, the choices you make, and the products and
-						features you use. The personal information we collect may include the following:</span></span></span>
-            </div>
-            <ul>
-                <li style="line-height: 1.5;">
-                    <span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text"><span style="font-size: 15px;"><span data-custom-class="body_text">email addresses</span></span></span></span></span>
-                </li>
-            </ul>
-            <div style="line-height: 1.5;"></div>
-            <div id="sensitiveinfo"
-                 style="line-height: 1.5;"><span style="font-size: 15px;"><span data-custom-class="body_text"><strong>Sensitive Information.</strong> We do not process sensitive information.</span></span>
-            </div>
-            <div style="line-height: 1.5;"><br></div>
-            <div style="line-height: 1.5;"></div>
-            <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">All personal information that you provide to us must be true, complete, and accurate, and you must
-						notify us of any changes to such personal information.</span></span></span></div>
-            <div style="line-height: 1.5;"><br></div>
-            <div style="line-height: 1.5;"></div>
-            <div id="infouse"
-                 style="line-height: 1.5;"><span style=""><span style="font-size: 15px;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span id="control"
-                                                                                                                                                             style=""><strong><span data-custom-class="heading_1">2. HOW DO WE PROCESS YOUR INFORMATION?</span></strong></span></span></span></span></span>
-            </div>
-            <div>
-                <div style="line-height: 1.5;"><br></div>
-                <div style="line-height: 1.5;"><span style=""><span style="font-size: 15px;"><span data-custom-class="body_text"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text"><strong><em>In Short:&nbsp;</em></strong><em>We process your information to provide, improve, and administer our Services, communicate
-											with you, for security and fraud prevention, and to comply with law. We may also process your
-											information for other purposes with your consent.</em></span></span></span></span></span></span>
+
+                <div class="one_line_col">
+                    <h2 id="types_of_data">
+                        Types of Data collected
+                    </h2>
+
+
+                    <p>The owner does not provide a list of Personal Data types collected.</p>
+
+                    <p>Complete details on each type of Personal Data collected are provided in the dedicated
+                        sections of this privacy policy or by specific explanation texts displayed prior to the Data
+                        collection.<br>Personal Data may be freely provided by the User, or, in case of Usage Data,
+                        collected automatically when using this Application.<br>Unless specified otherwise, all Data
+                        requested by this Application is mandatory and failure to provide this Data may make it
+                        impossible for this Application to provide its services. In cases where this Application
+                        specifically states that some Data is not mandatory, Users are free not to communicate this
+                        Data without consequences to the availability or the functioning of the Service.<br>Users
+                        who are uncertain about which Personal Data is mandatory are welcome to contact the
+                        Owner.<br>Any use of Cookies – or of other tracking tools — by this Application or by the
+                        owners of third-party services used by this Application serves the purpose of providing the
+                        Service required by the User, in addition to any other purposes described in the present
+                        document and in the Cookie Policy, if available.</p>
+                    <p>Users are responsible for any third-party Personal Data obtained, published or shared through
+                        this Application and confirm that they have the third party's consent to provide the Data to
+                        the Owner.</p>
                 </div>
-            </div>
-            <div style="line-height: 1.5;"><br></div>
-            <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text"><strong>We process your personal information for a variety of reasons, depending on how you interact with
-							our Services, including:</strong></span></span></span></div>
-            <ul>
-                <li style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text"><strong>To facilitate account creation and authentication and otherwise manage user accounts.&nbsp;</strong>We may process your information so you can create and log in to your account, as well as keep your
-							account in working order.</span></span></span></li>
-            </ul>
-            <div style="line-height: 1.5;">
-                <div style="line-height: 1.5;">
-                    <div style="line-height: 1.5;">
-                        <div style="line-height: 1.5;">
-                            <div style="line-height: 1.5;">
-                                <div style="line-height: 1.5;">
-                                    <div style="line-height: 1.5;">
-                                        <div style="line-height: 1.5;">
-                                            <p style="font-size: 15px; line-height: 1.5;"></p>
-                                            <p style="font-size: 15px; line-height: 1.5;"></p>
-                                            <p style="font-size: 15px; line-height: 1.5;"></p>
-                                            <p style="font-size: 15px; line-height: 1.5;"></p>
-                                            <div style="line-height: 1.5;">
-                                                <div style="line-height: 1.5;">
-                                                    <div style="line-height: 1.5;">
-                                                        <div style="line-height: 1.5;">
-                                                            <div style="line-height: 1.5;">
-                                                                <div style="line-height: 1.5;">
-                                                                    <div style="line-height: 1.5;">
-                                                                        <div style="line-height: 1.5;">
-                                                                            <div style="line-height: 1.5;">
-                                                                                <div style="line-height: 1.5;">
-                                                                                    <div style="line-height: 1.5;">
-                                                                                        <div style="line-height: 1.5;">
-                                                                                            <div style="line-height: 1.5;">
-                                                                                                <div style="line-height: 1.5;">
-                                                                                                    <div style="line-height: 1.5;"></div>
-                                                                                                    <ul>
-                                                                                                        <li style="line-height: 1.5;"><span data-custom-class="body_text"><span style="font-size: 15px;"><strong>To save or protect an individual's vital interest.</strong>
-																												We may process your information when necessary to save or protect
-																												an individual’s vital interest, such as to prevent harm.</span></span>
-                                                                                                        </li>
-                                                                                                    </ul>
-                                                                                                    <div style="line-height: 1.5;"></div>
-                                                                                                    <div style="line-height: 1.5;">
-                                                                                                        <br></div>
-                                                                                                    <div id="legalbases"
-                                                                                                         style="line-height: 1.5;">
-                                                                                                        <strong><span style="font-size: 15px;"><span data-custom-class="heading_1">3. WHAT LEGAL BASES DO WE RELY ON TO PROCESS YOUR
-																												INFORMATION?</span></span></strong>
-                                                                                                    </div>
-                                                                                                    <div style="line-height: 1.5;">
-                                                                                                        <br></div>
-                                                                                                    <div style="line-height: 1.5;">
-                                                                                                        <em><span style="font-size: 15px;"><span data-custom-class="body_text"><strong>In Short:&nbsp;</strong>We only process your
-																												personal information when we believe it is necessary and we
-																												have a valid legal reason (i.e., legal basis) to do so
-																												under applicable law, like with your consent, to comply
-																												with laws, to provide you with services to enter into or
-																												fulfill our contractual obligations, to protect your
-																												rights, or to fulfill our legitimate business interests.</span></span></em>
-                                                                                                    </div>
-                                                                                                    <div style="line-height: 1.5;">
-                                                                                                        <br></div>
-                                                                                                    <div style="line-height: 1.5;">
-                                                                                                        <em><span style="font-size: 15px;"><span data-custom-class="body_text"><strong><u>If you are located in the EU or UK, this section
-																														applies to you.</u></strong></span></span></em>
-                                                                                                    </div>
-                                                                                                    <div style="line-height: 1.5;">
-                                                                                                        <br></div>
-                                                                                                    <div style="line-height: 1.5;"><span style="font-size: 15px;"><span data-custom-class="body_text">The General Data Protection Regulation (GDPR) and UK GDPR
-																											require us to explain the valid legal bases we rely on in
-																											order to process your personal information. As such, we may
-																											rely on the following legal bases to process your personal
-																											information:</span></span>
-                                                                                                    </div>
-                                                                                                    <ul>
-                                                                                                        <li style="line-height: 1.5;"><span style="font-size: 15px;"><span data-custom-class="body_text"><strong>Consent.&nbsp;</strong>We may process your
-																												information if you have given us permission (i.e., consent)
-																												to use your personal information for a specific purpose.
-																												You can withdraw your consent at any time. Click&nbsp;</span></span><a data-custom-class="link"
-                                                                                                                                                                                       href="#withdrawconsent"><span style="font-size: 15px;"><span data-custom-class="body_text">here</span></span></a><span style="font-size: 15px;"><span data-custom-class="body_text">&nbsp;to learn more.</span></span>
-                                                                                                        </li>
-                                                                                                    </ul>
-                                                                                                    <div style="line-height: 1.5;">
-                                                                                                        <div style="line-height: 1.5;"></div>
-                                                                                                        <ul>
-                                                                                                            <li style="line-height: 1.5;"><span data-custom-class="body_text"><span style="font-size: 15px;"><strong>Legal Obligations.</strong> We may process your
-																													information where we believe it is necessary for
-																													compliance with our legal obligations, such as to
-																													cooperate with a law enforcement body or regulatory
-																													agency, exercise or defend our legal rights, or disclose
-																													your information as evidence in litigation in which we
-																													are involved.<br></span></span>
-                                                                                                            </li>
-                                                                                                        </ul>
-                                                                                                        <div style="line-height: 1.5;"></div>
-                                                                                                        <ul>
-                                                                                                            <li style="line-height: 1.5;"><span data-custom-class="body_text"><span style="font-size: 15px;"><strong>Vital Interests.</strong> We may process your information
-																													where we believe it is necessary to protect your vital interests
-																													or the vital interests of a third party, such as situations
-																													involving potential threats to the safety of any person.</span></span>
-                                                                                                            </li>
-                                                                                                        </ul>
-                                                                                                        <div style="line-height: 1.5;"></div>
-                                                                                                        <div style="line-height: 1.5;">
-                                                                                                            <br></div>
-                                                                                                        <div style="line-height: 1.5;"><span data-custom-class="body_text"><span style="font-size: 15px;"><strong><u><em>If you are located in Canada, this section applies
-																															to you.</em></u></strong></span></span>
-                                                                                                        </div>
-                                                                                                        <div style="line-height: 1.5;">
-                                                                                                            <br></div>
-                                                                                                        <div style="line-height: 1.5;"><span data-custom-class="body_text"><span style="font-size: 15px;">We may process your information if you have given us
-																												specific permission (i.e., express consent) to use your
-																												personal information for a specific purpose, or in
-																												situations where your permission can be inferred (i.e.,
-																												implied consent). You can withdraw your consent at any
-																												time. Click&nbsp;</span></span><a data-custom-class="link"
-                                                                                                                                                  href="#withdrawconsent"><span data-custom-class="body_text"><span style="font-size: 15px;">here</span></span></a><span data-custom-class="body_text"><span style="font-size: 15px;">&nbsp;to learn more.</span></span>
-                                                                                                        </div>
-                                                                                                        <div style="line-height: 1.5;">
-                                                                                                            <br></div>
-                                                                                                        <div style="line-height: 1.5;"><span data-custom-class="body_text"><span style="font-size: 15px;">In some exceptional cases, we may be legally permitted
-																												under applicable law to process your information without
-																												your consent, including, for example:</span></span>
-                                                                                                        </div>
-                                                                                                        <ul>
-                                                                                                            <li style="line-height: 1.5;"><span data-custom-class="body_text"><span style="font-size: 15px;">If collection is clearly in the interests of an
-																													individual and consent cannot be obtained in a timely way</span></span>
-                                                                                                            </li>
-                                                                                                        </ul>
-                                                                                                        <div style="line-height: 1.5;"></div>
-                                                                                                        <ul>
-                                                                                                            <li style="line-height: 1.5;">
-                                                                                                                <span data-custom-class="body_text"><span style="font-size: 15px;">For investigations and fraud detection and prevention</span></span>
-                                                                                                            </li>
-                                                                                                        </ul>
-                                                                                                        <div style="line-height: 1.5;"></div>
-                                                                                                        <ul>
-                                                                                                            <li style="line-height: 1.5;"><span data-custom-class="body_text"><span style="font-size: 15px;">For business transactions provided certain conditions
-																													are met</span></span>
-                                                                                                            </li>
-                                                                                                        </ul>
-                                                                                                        <div style="line-height: 1.5;"></div>
-                                                                                                        <ul>
-                                                                                                            <li style="line-height: 1.5;"><span data-custom-class="body_text"><span style="font-size: 15px;">If it is contained in a witness statement and the
-																													collection is necessary to assess, process, or settle an
-																													insurance claim</span></span>
-                                                                                                            </li>
-                                                                                                        </ul>
-                                                                                                        <div style="line-height: 1.5;"></div>
-                                                                                                        <ul>
-                                                                                                            <li style="line-height: 1.5;"><span data-custom-class="body_text"><span style="font-size: 15px;">For identifying injured, ill, or deceased persons and
-																													communicating with next of kin</span></span>
-                                                                                                            </li>
-                                                                                                        </ul>
-                                                                                                        <div style="line-height: 1.5;"></div>
-                                                                                                        <ul>
-                                                                                                            <li style="line-height: 1.5;"><span data-custom-class="body_text"><span style="font-size: 15px;">If we have reasonable grounds to believe an individual
-																													has been, is, or may be victim of financial abuse</span></span>
-                                                                                                            </li>
-                                                                                                        </ul>
-                                                                                                        <div style="line-height: 1.5;"></div>
-                                                                                                        <ul>
-                                                                                                            <li style="line-height: 1.5;"><span data-custom-class="body_text"><span style="font-size: 15px;">If it is reasonable to expect collection and use with
-																													consent would compromise the availability or the accuracy
-																													of the information and the collection is reasonable for
-																													purposes related to investigating a breach of an
-																													agreement or a contravention of the laws of Canada or a
-																													province</span></span>
-                                                                                                            </li>
-                                                                                                        </ul>
-                                                                                                        <div style="line-height: 1.5;"></div>
-                                                                                                        <ul>
-                                                                                                            <li style="line-height: 1.5;"><span data-custom-class="body_text"><span style="font-size: 15px;">If disclosure is required to comply with a subpoena,
-																													warrant, court order, or rules of the court relating to
-																													the production of records</span></span>
-                                                                                                            </li>
-                                                                                                        </ul>
-                                                                                                        <div style="line-height: 1.5;"></div>
-                                                                                                        <ul>
-                                                                                                            <li style="line-height: 1.5;"><span style="font-size: 15px;"><span data-custom-class="body_text">If it was produced by an individual in the course of
-																													their employment, business, or profession and the
-																													collection is consistent with the purposes for which the
-																													information was produced</span></span>
-                                                                                                            </li>
-                                                                                                        </ul>
-                                                                                                        <div style="line-height: 1.5;"></div>
-                                                                                                        <ul>
-                                                                                                            <li style="line-height: 1.5;"><span style="font-size: 15px;"><span data-custom-class="body_text">If the collection is solely for journalistic, artistic,
-																													or literary purposes</span></span>
-                                                                                                            </li>
-                                                                                                        </ul>
-                                                                                                        <div style="line-height: 1.5;"></div>
-                                                                                                        <ul>
-                                                                                                            <li style="line-height: 1.5;"><span style="font-size: 15px;"><span data-custom-class="body_text">If the information is publicly available and is
-																													specified by the regulations</span></span>
-                                                                                                            </li>
-                                                                                                        </ul>
-                                                                                                        <div style="line-height: 1.5;"></div>
-                                                                                                        <div style="line-height: 1.5;">
-                                                                                                            <br></div>
-                                                                                                        <div id="whoshare"
-                                                                                                             style="line-height: 1.5;"><span style=""><span style="font-size: 15px;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span id="control"
-                                                                                                                                                                                                                                                         style=""><strong><span data-custom-class="heading_1">4. WHEN AND WITH WHOM DO WE SHARE YOUR PERSONAL
-																																	INFORMATION?</span></strong></span></span></span></span></span>
-                                                                                                        </div>
-                                                                                                        <div style="line-height: 1.5;">
-                                                                                                            <br></div>
-                                                                                                        <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text"><strong><em>In Short:</em></strong><em>&nbsp;We may share information in specific situations
-																														described in this section and/or with the following
-																														third parties.</em></span></span></span>
-                                                                                                        </div>
-                                                                                                        <div style="line-height: 1.5;"></div>
-                                                                                                        <div style="line-height: 1.5;">
-                                                                                                            <br></div>
-                                                                                                        <div style="line-height: 1.5;"><span style="font-size: 15px;"><span data-custom-class="body_text">We may need to share your personal information in the
-																												following situations:</span></span>
-                                                                                                        </div>
-                                                                                                        <ul>
-                                                                                                            <li style="line-height: 1.5;"><span style="font-size: 15px;"><span data-custom-class="body_text"><strong>Business Transfers.</strong> We may share or transfer
-																													your information in connection with, or during negotiations
-																													of, any merger, sale of company assets, financing, or acquisition
-																													of all or a portion of our business to another company.</span></span>
-                                                                                                            </li>
-                                                                                                        </ul>
-                                                                                                        <div style="line-height: 1.5;">
-                                                                                                            <div style="line-height: 1.5;">
-                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                    <div style="line-height: 1.5;">
-                                                                                                                        <div style="line-height: 1.5;">
-                                                                                                                            <div style="line-height: 1.5;"></div>
-                                                                                                                            <div style="line-height: 1.5;">
-                                                                                                                                <br>
-                                                                                                                            </div>
-                                                                                                                            <div id="inforetain"
-                                                                                                                                 style="line-height: 1.5;"><span style=""><span style="font-size: 15px;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span id="control"
-                                                                                                                                                                                                                                                                             style=""><strong><span data-custom-class="heading_1">5. HOW LONG DO WE KEEP YOUR
-																																						INFORMATION?</span></strong></span></span></span></span></span>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;">
-                                                                                                                                <br>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text"><strong><em>In Short:&nbsp;</em></strong><em>We keep your information for as long as
-																																			necessary to fulfill the purposes outlined in
-																																			this privacy notice unless otherwise required
-																																			by law.</em></span></span></span>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;">
-                                                                                                                                <br>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">We will only keep your personal information
-																																		for as long as it is necessary for the purposes
-																																		set out in this privacy notice, unless a longer
-																																		retention period is required or permitted by
-																																		law (such as tax, accounting, or other legal
-																																		requirements). No purpose in this notice will
-																																		require us keeping your personal information
-																																		for longer than the period of time in which
-																																		users have an account with us.</span></span></span>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;">
-                                                                                                                                <br>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">When we have no ongoing legitimate business
-																																		need to process your personal information, we
-																																		will either delete or anonymize such
-																																		information, or, if this is not possible (for
-																																		example, because your personal information has
-																																		been stored in backup archives), then we will
-																																		securely store your personal information and
-																																		isolate it from any further processing until
-																																		deletion is possible.</span></span></span>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;">
-                                                                                                                                <br>
-                                                                                                                            </div>
-                                                                                                                            <div id="infosafe"
-                                                                                                                                 style="line-height: 1.5;"><span style=""><span style="font-size: 15px;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span id="control"
-                                                                                                                                                                                                                                                                             style=""><strong><span data-custom-class="heading_1">6. HOW DO WE KEEP YOUR INFORMATION
-																																						SAFE?</span></strong></span></span></span></span></span>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;">
-                                                                                                                                <br>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text"><strong><em>In Short:&nbsp;</em></strong><em>We aim to protect your personal information
-																																			through a system of organizational and
-																																			technical security measures.</em></span></span></span>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;">
-                                                                                                                                <br>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">We have implemented appropriate and reasonable
-																																		technical and organizational security measures
-																																		designed to protect the security of any
-																																		personal information we process. However,
-																																		despite our safeguards and efforts to secure
-																																		your information, no electronic transmission
-																																		over the Internet or information storage
-																																		technology can be guaranteed to be 100% secure,
-																																		so we cannot promise or guarantee that hackers,
-																																		cybercriminals, or other unauthorized third
-																																		parties will not be able to defeat our security
-																																		and improperly collect, access, steal, or
-																																		modify your information. Although we will do
-																																		our best to protect your personal information,
-																																		transmission of personal information to and
-																																		from our Services is at your own risk. You
-																																		should only access the Services within a secure
-																																		environment.</span></span></span>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;">
-                                                                                                                                <br>
-                                                                                                                            </div>
-                                                                                                                            <div id="privacyrights"
-                                                                                                                                 style="line-height: 1.5;">
-                                                                                                                                <span style=""><span style="font-size: 15px;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span id="control"
-                                                                                                                                                                                                                                                  style=""><strong><span data-custom-class="heading_1">7. WHAT ARE YOUR PRIVACY RIGHTS?</span></strong></span></span></span></span></span>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;">
-                                                                                                                                <br>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text"><strong><em>In Short:</em></strong><em>&nbsp;In some regions, such as the European
-																																			Economic Area (EEA), United Kingdom (UK), and
-																																			Canada, you have rights that allow you
-																																			greater access to and control over your
-																																			personal information.<span style="">&nbsp;</span>You may review, change, or terminate your
-																																			account at any time.</em></span></span></span>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;">
-                                                                                                                                <br>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">In some regions (like the EEA, UK, and
-																																		Canada), you have certain rights under
-																																		applicable data protection laws. These may
-																																		include the right (i) to request access and
-																																		obtain a copy of your personal information,
-																																		(ii) to request rectification or erasure; (iii)
-																																		to restrict the processing of your personal
-																																		information; and (iv) if applicable, to data
-																																		portability. In certain circumstances, you may
-																																		also have the right to object to the processing
-																																		of your personal information. You can make such
-																																		a request by contacting us by using the contact
-																																		details provided in the section "</span></span></span><a data-custom-class="link"
-                                                                                                                                                                                                 href="#contact"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">HOW CAN YOU CONTACT US ABOUT THIS NOTICE?</span></span></span></a><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">" below.</span></span></span>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;">
-                                                                                                                                <br>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">We will consider and act upon any request in
-																																		accordance with applicable data protection
-																																		laws.</span></span></span>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;">
-                                                                                                                                <span style="font-size: 15px;">&nbsp;</span>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">If you are located in the EEA or UK and you
-																																		believe we are unlawfully processing your
-																																		personal information, you also have the right
-																																		to complain to your local data protection
-																																		supervisory authority. You can find their
-																																		contact details here: <span style="font-size: 15px;"><span style=""><span data-custom-class="body_text"><span style="color: rgb(48, 48, 241);"><span data-custom-class="body_text"><a data-custom-class="link"
-                                                                                                                                                                                                                                                                                                                              href="https://ec.europa.eu/justice/data-protection/bodies/authorities/index_en.htm"
-                                                                                                                                                                                                                                                                                                                              rel="noopener noreferrer"
-                                                                                                                                                                                                                                                                                                                              target="_blank"><span style="font-size: 15px;">https://ec.europa.eu/justice/data-protection/bodies/authorities/index_en.htm</span></a></span></span></span></span></span>.</span></span></span>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;">
-                                                                                                                                <br>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">If you are located in Switzerland, the contact
-																																		details for the data protection authorities are
-																																		available here: <span style="font-size: 15px;"><span style=""><span data-custom-class="body_text"><span style="color: rgb(48, 48, 241);"><span data-custom-class="body_text"><span style="font-size: 15px;"><a data-custom-class="link"
-                                                                                                                                                                                                                                                                                                                                                       href="https://www.edoeb.admin.ch/edoeb/en/home.html"
-                                                                                                                                                                                                                                                                                                                                                       rel="noopener noreferrer"
-                                                                                                                                                                                                                                                                                                                                                       target="_blank">https://www.edoeb.admin.ch/edoeb/en/home.html</a></span></span></span></span></span></span>.</span></span></span>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;">
-                                                                                                                                <br>
-                                                                                                                            </div>
-                                                                                                                            <div id="withdrawconsent"
-                                                                                                                                 style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text"><strong><u>Withdrawing your consent:</u></strong> If
-																																		we are relying on your consent to process your personal
-																																		information, which may be express and/or implied
-																																		consent depending on the applicable law, you have
-																																		the right to withdraw your consent at any time.
-																																		You can withdraw your consent at any time by contacting
-																																		us by using the contact details provided in the
-																																		section "</span></span></span><a data-custom-class="link"
-                                                                                                                                                                         href="#contact"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">HOW CAN YOU CONTACT US ABOUT THIS NOTICE?</span></span></span></a><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">" below.</span></span></span>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;">
-                                                                                                                                <br>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;"><span style="font-size: 15px;"><span data-custom-class="body_text">However, please note that this will not affect
-																																	the lawfulness of the processing before its
-																																	withdrawal nor, when applicable law allows, will
-																																	it affect the processing of your personal
-																																	information conducted in reliance on lawful
-																																	processing grounds other than consent.</span></span>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;">
-                                                                                                                                <br>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;"><span style="font-size: 15px;"><span data-custom-class="body_text"><strong><u>Opting out of marketing and promotional
-																																			communications:</u></strong><strong><u>&nbsp;</u></strong>You can
-																																	unsubscribe from our marketing and promotional
-																																	communications at any time by replying "STOP" or
-																																	"UNSUBSCRIBE" to the SMS messages that we send,
-																																	or by contacting us using the details provided in
-																																	the section "</span></span><a data-custom-class="link"
-                                                                                                                                                                  href="#contact"><span style="font-size: 15px;"><span data-custom-class="body_text">HOW CAN YOU CONTACT US ABOUT THIS NOTICE?</span></span></a><span style="font-size: 15px;"><span data-custom-class="body_text">" below. You will then be removed from the
-																																	marketing lists. However, we may still
-																																	communicate with you — for example, to send you
-																																	service-related messages that are necessary for
-																																	the administration and use of your account, to
-																																	respond to service requests, or for other
-																																	non-marketing purposes.</span></span>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;">
-                                                                                                                                <br>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;">
-                                                                                                                                <span style="font-size: 15px;"><span data-custom-class="heading_2"><strong>Account Information</strong></span></span>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;">
-                                                                                                                                <br>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;"><span data-custom-class="body_text"><span style="font-size: 15px;">If you would at any time like to review or
-																																	change the information in your account or
-																																	terminate your account, you can:</span></span>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;"><span style="font-size: 15px;"><span data-custom-class="body_text">Upon your request to terminate your account, we
-																																	will deactivate or delete your account and
-																																	information from our active databases. However,
-																																	we may retain some information in our files to
-																																	prevent fraud, troubleshoot problems, assist with
-																																	any investigations, enforce our legal terms
-																																	and/or comply with applicable legal requirements.</span></span>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;">
-                                                                                                                                <br>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;"><span data-custom-class="body_text"><span style="font-size: 15px;">If you have questions or comments about your
-																																	privacy rights, you may email us at
-																																	victorfalcon@duck.com.</span></span>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;">
-                                                                                                                                <br>
-                                                                                                                            </div>
-                                                                                                                            <div id="DNT"
-                                                                                                                                 style="line-height: 1.5;">
-                                                                                                                                <span style=""><span style="font-size: 15px;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span id="control"
-                                                                                                                                                                                                                                                  style=""><strong><span data-custom-class="heading_1">8. CONTROLS FOR DO-NOT-TRACK FEATURES</span></strong></span></span></span></span></span>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;">
-                                                                                                                                <br>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">Most web browsers and some mobile operating
-																																		systems and mobile applications include a
-																																		Do-Not-Track ("DNT") feature or setting you can
-																																		activate to signal your privacy preference not
-																																		to have data about your online browsing
-																																		activities monitored and collected. At this
-																																		stage no uniform technology standard for
-																																		recognizing and implementing DNT signals has
-																																		been finalized. As such, we do not currently
-																																		respond to DNT browser signals or any other
-																																		mechanism that automatically communicates your
-																																		choice not to be tracked online. If a standard
-																																		for online tracking is adopted that we must
-																																		follow in the future, we will inform you about
-																																		that practice in a revised version of this
-																																		privacy notice.</span></span></span>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;">
-                                                                                                                                <br>
-                                                                                                                            </div>
-                                                                                                                            <div id="caresidents"
-                                                                                                                                 style="line-height: 1.5;"><span style=""><span style="font-size: 15px;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span id="control"
-                                                                                                                                                                                                                                                                             style=""><strong><span data-custom-class="heading_1">9. DO CALIFORNIA RESIDENTS HAVE
-																																						SPECIFIC PRIVACY RIGHTS?</span></strong></span></span></span></span></span>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;">
-                                                                                                                                <br>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text"><strong><em>In Short:&nbsp;</em></strong><em>Yes, if you are a resident of California,
-																																			you are granted specific rights regarding
-																																			access to your personal information.</em></span></span></span>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;">
-                                                                                                                                <br>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">California Civil Code Section 1798.83, also
-																																		known as the "Shine The Light" law, permits our
-																																		users who are California residents to request
-																																		and obtain from us, once a year and free of
-																																		charge, information about categories of
-																																		personal information (if any) we disclosed to
-																																		third parties for direct marketing purposes and
-																																		the names and addresses of all third parties
-																																		with which we shared personal information in
-																																		the immediately preceding calendar year. If you
-																																		are a California resident and would like to
-																																		make such a request, please submit your request
-																																		in writing to us using the contact information
-																																		provided below.</span></span></span>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;">
-                                                                                                                                <br>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">If you are under 18 years of age, reside in
-																																		California, and have a registered account with
-																																		Services, you have the right to request removal
-																																		of unwanted data that you publicly post on the
-																																		Services. To request removal of such data,
-																																		please contact us using the contact information
-																																		provided below and include the email address
-																																		associated with your account and a statement
-																																		that you reside in California. We will make
-																																		sure the data is not publicly displayed on the
-																																		Services, but please be aware that the data may
-																																		not be completely or comprehensively removed
-																																		from all our systems (e.g., backups, etc.).</span></span></span>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;">
-                                                                                                                                <br>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;">
-                                                                                                                                <span data-custom-class="heading_2"
-                                                                                                                                      style=""><span style="font-size: 15px;"><strong>CCPA Privacy Notice</strong></span></span>
-                                                                                                                            </div>
-                                                                                                                            <div>
-                                                                                                                                <div>
-                                                                                                                                    <br>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;"><span style=""><span style="font-size: 15px;"><span data-custom-class="body_text"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">The California Code of Regulations
-																																						defines a "resident" as:</span></span></span></span></span></span>
-                                                                                                                                </div>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;">
-                                                                                                                                <br>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5; margin-left: 20px;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">(1) every individual who is in the State of
-																																		California for other than a temporary or
-																																		transitory purpose and</span></span></span>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5; margin-left: 20px;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">(2) every individual who is domiciled in the
-																																		State of California who is outside the State of
-																																		California for a temporary or transitory
-																																		purpose</span></span></span>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;">
-                                                                                                                                <br>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">All other individuals are defined as
-																																		"non-residents."</span></span></span>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;">
-                                                                                                                                <br>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">If this definition of "resident" applies to
-																																		you, we must adhere to certain rights and
-																																		obligations regarding your personal
-																																		information.</span></span></span>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;">
-                                                                                                                                <br>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text"><strong>What categories of personal information do
-																																			we collect?</strong></span></span></span>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;">
-                                                                                                                                <br>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">We have collected the following categories of
-																																		personal information in the past twelve (12)
-																																		months:</span></span></span>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;">
-                                                                                                                                <br>
-                                                                                                                            </div>
-                                                                                                                            <table style="width: 100%;">
-                                                                                                                                <tbody>
-                                                                                                                                <tr>
-                                                                                                                                    <td style="width: 33.8274%; border-left-width: 1px; border-left-style: solid; border-left-color: black; border-right-width: 1px; border-right-style: solid; border-right-color: black; border-top-width: 1px; border-top-style: solid; border-top-color: black;">
-                                                                                                                                        <span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text"><strong>Category</strong></span></span></span>
-                                                                                                                                    </td>
-                                                                                                                                    <td style="width: 51.4385%; border-top-width: 1px; border-top-style: solid; border-top-color: black; border-right-width: 1px; border-right-style: solid; border-right-color: black;">
-                                                                                                                                        <span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text"><strong>Examples</strong></span></span></span>
-                                                                                                                                    </td>
-                                                                                                                                    <td style="width: 14.9084%; border-right-width: 1px; border-right-style: solid; border-right-color: black; border-top-width: 1px; border-top-style: solid; border-top-color: black; text-align: center;">
-                                                                                                                                        <span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text"><strong>Collected</strong></span></span></span>
-                                                                                                                                    </td>
-                                                                                                                                </tr>
-                                                                                                                                <tr>
-                                                                                                                                    <td style="width: 33.8274%; border-left-width: 1px; border-left-style: solid; border-left-color: black; border-right-width: 1px; border-right-style: solid; border-right-color: black; border-top-width: 1px; border-top-style: solid; border-top-color: black;">
-                                                                                                                                        <div style="line-height: 1.5;">
-                                                                                                                                            <span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">A. Identifiers</span></span></span>
-                                                                                                                                        </div>
-                                                                                                                                    </td>
-                                                                                                                                    <td style="width: 51.4385%; border-top-width: 1px; border-top-style: solid; border-top-color: black; border-right-width: 1px; border-right-style: solid; border-right-color: black;">
-                                                                                                                                        <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">Contact details, such as real name,
-																																						alias, postal address, telephone or
-																																						mobile contact number, unique personal
-																																						identifier, online identifier, Internet
-																																						Protocol address, email address, and
-																																						account name</span></span></span>
-                                                                                                                                        </div>
-                                                                                                                                    </td>
-                                                                                                                                    <td style="width: 14.9084%; text-align: center; vertical-align: middle; border-right-width: 1px; border-right-style: solid; border-right-color: black; border-top-width: 1px; border-top-style: solid; border-top-color: black;">
-                                                                                                                                        <div style="line-height: 1.5;">
-                                                                                                                                            <br>
-                                                                                                                                        </div>
-                                                                                                                                        <div style="line-height: 1.5;">
-                                                                                                                                            <span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">NO</span></span></span>
-                                                                                                                                        </div>
-                                                                                                                                        <div style="line-height: 1.5;">
-                                                                                                                                            <br>
-                                                                                                                                        </div>
-                                                                                                                                    </td>
-                                                                                                                                </tr>
-                                                                                                                                <tr>
-                                                                                                                                    <td style="width: 33.8274%; border-left-width: 1px; border-left-style: solid; border-left-color: black; border-right-width: 1px; border-right-style: solid; border-right-color: black; border-top-width: 1px; border-top-style: solid; border-top-color: black;">
-                                                                                                                                        <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">B. Personal information categories
-																																						listed in the California Customer
-																																						Records statute</span></span></span>
-                                                                                                                                        </div>
-                                                                                                                                    </td>
-                                                                                                                                    <td style="width: 51.4385%; border-right-width: 1px; border-right-style: solid; border-right-color: black; border-top-width: 1px; border-top-style: solid; border-top-color: black;">
-                                                                                                                                        <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">Name, contact information, education,
-																																						employment, employment history, and
-																																						financial information</span></span></span>
-                                                                                                                                        </div>
-                                                                                                                                    </td>
-                                                                                                                                    <td style="width: 14.9084%; text-align: center; border-right-width: 1px; border-right-style: solid; border-right-color: black; border-top-width: 1px; border-top-style: solid; border-top-color: black;">
-                                                                                                                                        <div style="line-height: 1.5;">
-                                                                                                                                            <br>
-                                                                                                                                        </div>
-                                                                                                                                        <div style="line-height: 1.5;">
-                                                                                                                                            <span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">NO</span></span></span>
-                                                                                                                                        </div>
-                                                                                                                                        <div style="line-height: 1.5;">
-                                                                                                                                            <br>
-                                                                                                                                        </div>
-                                                                                                                                    </td>
-                                                                                                                                </tr>
-                                                                                                                                <tr>
-                                                                                                                                    <td style="width: 33.8274%; border-left-width: 1px; border-left-style: solid; border-left-color: black; border-right-width: 1px; border-right-style: solid; border-right-color: black; border-top-width: 1px; border-top-style: solid; border-top-color: black;">
-                                                                                                                                        <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">C. Protected classification
-																																						characteristics under California or
-																																						federal law</span></span></span>
-                                                                                                                                        </div>
-                                                                                                                                    </td>
-                                                                                                                                    <td style="width: 51.4385%; border-right-width: 1px; border-right-style: solid; border-right-color: black; border-top-width: 1px; border-top-style: solid; border-top-color: black;">
-                                                                                                                                        <div style="line-height: 1.5;">
-                                                                                                                                            <span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">Gender and date of birth</span></span></span>
-                                                                                                                                        </div>
-                                                                                                                                    </td>
-                                                                                                                                    <td style="width: 14.9084%; text-align: center; border-right-width: 1px; border-right-style: solid; border-right-color: black; border-top-width: 1px; border-top-style: solid; border-top-color: black;">
-                                                                                                                                        <div style="line-height: 1.5;">
-                                                                                                                                            <br>
-                                                                                                                                        </div>
-                                                                                                                                        <div style="line-height: 1.5;">
-                                                                                                                                            <span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">NO</span></span></span>
-                                                                                                                                        </div>
-                                                                                                                                        <div style="line-height: 1.5;">
-                                                                                                                                            <br>
-                                                                                                                                        </div>
-                                                                                                                                    </td>
-                                                                                                                                </tr>
-                                                                                                                                <tr>
-                                                                                                                                    <td style="width: 33.8274%; border-left-width: 1px; border-left-style: solid; border-left-color: black; border-right-width: 1px; border-right-style: solid; border-right-color: black; border-top-width: 1px; border-top-style: solid; border-top-color: black;">
-                                                                                                                                        <div style="line-height: 1.5;">
-                                                                                                                                            <span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">D. Commercial information</span></span></span>
-                                                                                                                                        </div>
-                                                                                                                                    </td>
-                                                                                                                                    <td style="width: 51.4385%; border-right-width: 1px; border-right-style: solid; border-right-color: black; border-top-width: 1px; border-top-style: solid; border-top-color: black;">
-                                                                                                                                        <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">Transaction information, purchase
-																																						history, financial details, and payment
-																																						information</span></span></span>
-                                                                                                                                        </div>
-                                                                                                                                    </td>
-                                                                                                                                    <td style="width: 14.9084%; text-align: center; border-right-width: 1px; border-right-style: solid; border-right-color: black; border-top-width: 1px; border-top-style: solid; border-top-color: black;">
-                                                                                                                                        <div style="line-height: 1.5;">
-                                                                                                                                            <br>
-                                                                                                                                        </div>
-                                                                                                                                        <div style="line-height: 1.5;">
-                                                                                                                                            <span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">NO</span></span></span>
-                                                                                                                                        </div>
-                                                                                                                                        <div style="line-height: 1.5;">
-                                                                                                                                            <br>
-                                                                                                                                        </div>
-                                                                                                                                    </td>
-                                                                                                                                </tr>
-                                                                                                                                <tr>
-                                                                                                                                    <td style="width: 33.8274%; border-left-width: 1px; border-left-style: solid; border-left-color: black; border-right-width: 1px; border-right-style: solid; border-right-color: black; border-top-width: 1px; border-top-style: solid; border-top-color: black;">
-                                                                                                                                        <div style="line-height: 1.5;">
-                                                                                                                                            <span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">E. Biometric information</span></span></span>
-                                                                                                                                        </div>
-                                                                                                                                    </td>
-                                                                                                                                    <td style="width: 51.4385%; border-right-width: 1px; border-right-style: solid; border-right-color: black; border-top-width: 1px; border-top-style: solid; border-top-color: black;">
-                                                                                                                                        <div style="line-height: 1.5;">
-                                                                                                                                            <span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">Fingerprints and voiceprints</span></span></span>
-                                                                                                                                        </div>
-                                                                                                                                    </td>
-                                                                                                                                    <td style="width: 14.9084%; text-align: center; border-right-width: 1px; border-right-style: solid; border-right-color: black; border-top-width: 1px; border-top-style: solid; border-top-color: black;">
-                                                                                                                                        <div style="line-height: 1.5;">
-                                                                                                                                            <br>
-                                                                                                                                        </div>
-                                                                                                                                        <div style="line-height: 1.5;">
-                                                                                                                                            <span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">NO</span></span></span>
-                                                                                                                                        </div>
-                                                                                                                                        <div style="line-height: 1.5;">
-                                                                                                                                            <br>
-                                                                                                                                        </div>
-                                                                                                                                    </td>
-                                                                                                                                </tr>
-                                                                                                                                <tr>
-                                                                                                                                    <td style="width: 33.8274%; border-left-width: 1px; border-left-style: solid; border-left-color: black; border-right-width: 1px; border-right-style: solid; border-right-color: black; border-top-width: 1px; border-top-style: solid; border-top-color: black;">
-                                                                                                                                        <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">F. Internet or other similar network
-																																						activity</span></span></span>
-                                                                                                                                        </div>
-                                                                                                                                    </td>
-                                                                                                                                    <td style="width: 51.4385%; border-right-width: 1px; border-right-style: solid; border-right-color: black; border-top-width: 1px; border-top-style: solid; border-top-color: black;">
-                                                                                                                                        <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">Browsing history, search history,
-																																						online behavior, interest data, and
-																																						interactions with our and other
-																																						websites, applications, systems, and
-																																						advertisements</span></span></span>
-                                                                                                                                        </div>
-                                                                                                                                    </td>
-                                                                                                                                    <td style="width: 14.9084%; text-align: center; border-right-width: 1px; border-right-style: solid; border-right-color: black; border-top-width: 1px; border-top-style: solid; border-top-color: black;">
-                                                                                                                                        <div style="line-height: 1.5;">
-                                                                                                                                            <br>
-                                                                                                                                        </div>
-                                                                                                                                        <div style="line-height: 1.5;">
-                                                                                                                                            <span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">NO</span></span></span>
-                                                                                                                                        </div>
-                                                                                                                                        <div style="line-height: 1.5;">
-                                                                                                                                            <br>
-                                                                                                                                        </div>
-                                                                                                                                    </td>
-                                                                                                                                </tr>
-                                                                                                                                <tr>
-                                                                                                                                    <td style="width: 33.8274%; border-left-width: 1px; border-left-style: solid; border-left-color: black; border-right-width: 1px; border-right-style: solid; border-right-color: black; border-top-width: 1px; border-top-style: solid; border-top-color: black;">
-                                                                                                                                        <div style="line-height: 1.5;">
-                                                                                                                                            <span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">G. Geolocation data</span></span></span>
-                                                                                                                                        </div>
-                                                                                                                                    </td>
-                                                                                                                                    <td style="width: 51.4385%; border-right-width: 1px; border-right-style: solid; border-right-color: black; border-top-width: 1px; border-top-style: solid; border-top-color: black;">
-                                                                                                                                        <div style="line-height: 1.5;">
-                                                                                                                                            <span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">Device location</span></span></span>
-                                                                                                                                        </div>
-                                                                                                                                    </td>
-                                                                                                                                    <td style="width: 14.9084%; text-align: center; border-right-width: 1px; border-right-style: solid; border-right-color: black; border-top-width: 1px; border-top-style: solid; border-top-color: black;">
-                                                                                                                                        <div style="line-height: 1.5;">
-                                                                                                                                            <br>
-                                                                                                                                        </div>
-                                                                                                                                        <div style="line-height: 1.5;">
-                                                                                                                                            <span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">NO</span></span></span>
-                                                                                                                                        </div>
-                                                                                                                                        <div style="line-height: 1.5;">
-                                                                                                                                            <br>
-                                                                                                                                        </div>
-                                                                                                                                    </td>
-                                                                                                                                </tr>
-                                                                                                                                <tr>
-                                                                                                                                    <td style="width: 33.8274%; border-left-width: 1px; border-left-style: solid; border-left-color: black; border-right-width: 1px; border-right-style: solid; border-right-color: black; border-top-width: 1px; border-top-style: solid; border-top-color: black;">
-                                                                                                                                        <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">H. Audio, electronic, visual, thermal,
-																																						olfactory, or similar information</span></span></span>
-                                                                                                                                        </div>
-                                                                                                                                    </td>
-                                                                                                                                    <td style="width: 51.4385%; border-right-width: 1px; border-right-style: solid; border-right-color: black; border-top-width: 1px; border-top-style: solid; border-top-color: black;">
-                                                                                                                                        <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">Images and audio, video or call
-																																						recordings created in connection with
-																																						our business activities</span></span></span>
-                                                                                                                                        </div>
-                                                                                                                                    </td>
-                                                                                                                                    <td style="width: 14.9084%; text-align: center; border-right-width: 1px; border-right-style: solid; border-right-color: black; border-top-width: 1px; border-top-style: solid; border-top-color: black;">
-                                                                                                                                        <div style="line-height: 1.5;">
-                                                                                                                                            <br>
-                                                                                                                                        </div>
-                                                                                                                                        <div style="line-height: 1.5;">
-                                                                                                                                            <span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">NO</span></span></span>
-                                                                                                                                        </div>
-                                                                                                                                        <div style="line-height: 1.5;">
-                                                                                                                                            <br>
-                                                                                                                                        </div>
-                                                                                                                                    </td>
-                                                                                                                                </tr>
-                                                                                                                                <tr>
-                                                                                                                                    <td style="width: 33.8274%; border-left-width: 1px; border-left-style: solid; border-left-color: black; border-right-width: 1px; border-right-style: solid; border-right-color: black; border-top-width: 1px; border-top-style: solid; border-top-color: black;">
-                                                                                                                                        <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">I. Professional or employment-related
-																																						information</span></span></span>
-                                                                                                                                        </div>
-                                                                                                                                    </td>
-                                                                                                                                    <td style="width: 51.4385%; border-right-width: 1px; border-right-style: solid; border-right-color: black; border-top-width: 1px; border-top-style: solid; border-top-color: black;">
-                                                                                                                                        <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">Business contact details in order to
-																																						provide you our Services at a business
-																																						level or job title, work history, and
-																																						professional qualifications if you
-																																						apply for a job with us</span></span></span>
-                                                                                                                                        </div>
-                                                                                                                                    </td>
-                                                                                                                                    <td style="width: 14.9084%; text-align: center; border-right-width: 1px; border-right-style: solid; border-right-color: black; border-top-width: 1px; border-top-style: solid; border-top-color: black;">
-                                                                                                                                        <div style="line-height: 1.5;">
-                                                                                                                                            <br>
-                                                                                                                                        </div>
-                                                                                                                                        <div style="line-height: 1.5;">
-                                                                                                                                            <span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">NO</span></span></span>
-                                                                                                                                        </div>
-                                                                                                                                        <div style="line-height: 1.5;">
-                                                                                                                                            <br>
-                                                                                                                                        </div>
-                                                                                                                                    </td>
-                                                                                                                                </tr>
-                                                                                                                                <tr>
-                                                                                                                                    <td style="border-left-width: 1px; border-left-style: solid; border-left-color: black; border-right-width: 1px; border-right-style: solid; border-right-color: black; border-top-width: 1px; border-top-style: solid; border-top-color: black; width: 33.8274%;">
-                                                                                                                                        <div style="line-height: 1.5;">
-                                                                                                                                            <span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">J. Education Information</span></span></span>
-                                                                                                                                        </div>
-                                                                                                                                    </td>
-                                                                                                                                    <td style="border-right-width: 1px; border-right-style: solid; border-right-color: black; border-top-width: 1px; border-top-style: solid; border-top-color: black; width: 51.4385%;">
-                                                                                                                                        <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">Student records and directory
-																																						information</span></span></span>
-                                                                                                                                        </div>
-                                                                                                                                    </td>
-                                                                                                                                    <td style="text-align: center; border-right-width: 1px; border-right-style: solid; border-right-color: black; border-top-width: 1px; border-top-style: solid; border-top-color: black; width: 14.9084%;">
-                                                                                                                                        <div style="line-height: 1.5;">
-                                                                                                                                            <br>
-                                                                                                                                        </div>
-                                                                                                                                        <div style="line-height: 1.5;">
-                                                                                                                                            <span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">NO</span></span></span>
-                                                                                                                                        </div>
-                                                                                                                                        <div style="line-height: 1.5;">
-                                                                                                                                            <br>
-                                                                                                                                        </div>
-                                                                                                                                    </td>
-                                                                                                                                </tr>
-                                                                                                                                <tr>
-                                                                                                                                    <td style="border: 1px solid black; width: 33.8274%;">
-                                                                                                                                        <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">K. Inferences drawn from other
-																																						personal information</span></span></span>
-                                                                                                                                        </div>
-                                                                                                                                    </td>
-                                                                                                                                    <td style="border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: black; border-top-width: 1px; border-top-style: solid; border-top-color: black; border-right-width: 1px; border-right-style: solid; border-right-color: black; width: 51.4385%;">
-                                                                                                                                        <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">Inferences drawn from any of the
-																																						collected personal information listed
-																																						above to create a profile or summary
-																																						about, for example, an individual’s
-																																						preferences and characteristics</span></span></span>
-                                                                                                                                        </div>
-                                                                                                                                    </td>
-                                                                                                                                    <td style="text-align: center; border-right-width: 1px; border-right-style: solid; border-right-color: black; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: black; border-top-width: 1px; border-top-style: solid; border-top-color: black; width: 14.9084%;">
-                                                                                                                                        <div style="line-height: 1.5;">
-                                                                                                                                            <br>
-                                                                                                                                        </div>
-                                                                                                                                        <div style="line-height: 1.5;">
-                                                                                                                                            <span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">NO</span></span></span>
-                                                                                                                                        </div>
-                                                                                                                                        <div style="line-height: 1.5;">
-                                                                                                                                            <br>
-                                                                                                                                        </div>
-                                                                                                                                    </td>
-                                                                                                                                </tr>
-                                                                                                                                <tr>
-                                                                                                                                    <td style="border-left-width: 1px; border-left-style: solid; border-left-color: black; border-right-width: 1px; border-right-style: solid; border-right-color: black; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: black;">
-                                                                                                                                        <span data-custom-class="body_text">L. Sensitive Personal Information</span>
-                                                                                                                                    </td>
-                                                                                                                                    <td style="border-right-width: 1px; border-right-style: solid; border-right-color: black; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: black; line-height: 1.5;"></td>
-                                                                                                                                    <td data-custom-class="body_text"
-                                                                                                                                        style="border-right-width: 1px; border-right-style: solid; border-right-color: black; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: black; text-align: center; line-height: 1.5;">
-                                                                                                                                        <br>
-                                                                                                                                        <span data-custom-class="body_text">NO</span><br>
-                                                                                                                                        <br>
-                                                                                                                                    </td>
-                                                                                                                                </tr>
-                                                                                                                                </tbody>
-                                                                                                                            </table>
-                                                                                                                            <div style="line-height: 1.5;"></div>
-                                                                                                                            <div style="line-height: 1.5;">
-                                                                                                                                <br>
-                                                                                                                            </div>
-                                                                                                                            <div style="line-height: 1.5;">
-                                                                                                                                <div style="line-height: 1.5;"></div>
-                                                                                                                                <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">We may also collect other personal
-																																			information outside of these categories
-																																			through instances where you interact with us
-																																			in person, online, or by phone or mail in the
-																																			context of:</span></span></span>
-                                                                                                                                </div>
-                                                                                                                                <ul>
-                                                                                                                                    <li style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">Receiving help through our customer
-																																				support channels;</span></span></span>
-                                                                                                                                    </li>
-                                                                                                                                </ul>
-                                                                                                                                <ul>
-                                                                                                                                    <li style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">Participation in customer surveys or
-																																				contests; and</span></span></span>
-                                                                                                                                    </li>
-                                                                                                                                </ul>
-                                                                                                                                <ul>
-                                                                                                                                    <li style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">Facilitation in the delivery of our
-																																				Services and to respond to your inquiries.</span></span></span>
-                                                                                                                                    </li>
-                                                                                                                                </ul>
-                                                                                                                                <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text"><strong>How do we use and share your personal
-																																				information?</strong></span></span></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <br>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">More information about our data
-																																						collection and sharing practices can be
-																																						found in this privacy notice.</span></span></span></span></span></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <br>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">You may contact us by email at&nbsp;</span><span style="font-size: 15px;"><span data-custom-class="body_text">victorfalcon@duck.com,</span></span></span></span>
-                                                                                                                                    <span data-custom-class="body_text">or by referring to the contact details at the
-																																	bottom of this document.</span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <br>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">If you are using an authorized agent to
-																																			exercise your right to opt out we may deny a
-																																			request if the authorized agent does not
-																																			submit proof that they have been validly
-																																			authorized to act on your behalf.</span></span></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <br>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text"><strong>Will your information be shared with
-																																				anyone else?</strong></span></span></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <br>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">We may disclose your personal information
-																																			with our service providers pursuant to a
-																																			written contract between us and each service
-																																			provider. Each service provider is a
-																																			for-profit entity that processes the
-																																			information on our behalf, following the same
-																																			strict privacy protection obligations
-																																			mandated by the CCPA.</span></span></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <br>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">We may use your personal information for our
-																																			own business purposes, such as for
-																																			undertaking internal research for
-																																			technological development and demonstration.
-																																			This is not considered to be "selling" of
-																																			your personal information.</span></span></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <br>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">NotifyWave</span><span data-custom-class="body_text">&nbsp;has not disclosed, sold, or shared any
-																																			personal information to third parties for a
-																																			business or commercial purpose in the
-																																			preceding twelve (12) months. <span style=""><span style=""><span data-custom-class="body_text">NotifyWave</span></span>&nbsp;</span>will not sell or share personal information
-																																			in the future belonging to website visitors,
-																																			users, and other consumers.</span></span></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <br>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text"><strong>Your rights with respect to your personal
-																																				data</strong></span></span></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <br>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text"><u>Right to request deletion of the data —
-																																				Request to delete</u></span></span></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <br>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">You can ask for the deletion of your
-																																			personal information. If you ask us to delete
-																																			your personal information, we will respect
-																																			your request and delete your personal
-																																			information, subject to certain exceptions
-																																			provided by law, such as (but not limited to)
-																																			the exercise by another consumer of his or
-																																			her right to free speech, our compliance
-																																			requirements resulting from a legal
-																																			obligation, or any processing that may be
-																																			required to protect against illegal
-																																			activities.</span></span></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <br>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text"><u>Right to be informed — Request to know</u></span></span></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <br>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">Depending on the circumstances, you have a
-																																			right to know:</span></span></span>
-                                                                                                                                </div>
-                                                                                                                                <ul>
-                                                                                                                                    <li style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">whether we collect and use your personal
-																																				information;</span></span></span>
-                                                                                                                                    </li>
-                                                                                                                                </ul>
-                                                                                                                                <ul>
-                                                                                                                                    <li style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">the categories of personal information
-																																				that we collect;</span></span></span>
-                                                                                                                                    </li>
-                                                                                                                                </ul>
-                                                                                                                                <ul>
-                                                                                                                                    <li style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">the purposes for which the collected
-																																				personal information is used;</span></span></span>
-                                                                                                                                    </li>
-                                                                                                                                </ul>
-                                                                                                                                <ul>
-                                                                                                                                    <li style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">whether we sell or share personal
-																																				information to third parties;</span></span></span>
-                                                                                                                                    </li>
-                                                                                                                                </ul>
-                                                                                                                                <ul>
-                                                                                                                                    <li style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">the categories of personal information
-																																				that we sold, shared, or disclosed for a
-																																				business purpose;</span></span></span>
-                                                                                                                                    </li>
-                                                                                                                                </ul>
-                                                                                                                                <ul>
-                                                                                                                                    <li style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">the categories of third parties to whom
-																																				the personal information was sold, shared,
-																																				or disclosed for a business purpose;</span></span></span>
-                                                                                                                                    </li>
-                                                                                                                                </ul>
-                                                                                                                                <ul>
-                                                                                                                                    <li style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">the business or commercial purpose for
-																																				collecting, selling, or sharing personal
-																																				information; and</span></span></span>
-                                                                                                                                    </li>
-                                                                                                                                </ul>
-                                                                                                                                <div style="line-height: 1.5;"></div>
-                                                                                                                                <ul>
-                                                                                                                                    <li style="line-height: 1.5;"><span data-custom-class="body_text">the specific pieces of personal information we
-																																		collected about you.</span>
-                                                                                                                                    </li>
-                                                                                                                                </ul>
-                                                                                                                                <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">In accordance with applicable law, we are
-																																			not obligated to provide or delete consumer
-																																			information that is de-identified in response
-																																			to a consumer request or to re-identify
-																																			individual data to verify a consumer request.</span></span></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <br>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text"><u>Right to Non-Discrimination for the
-																																				Exercise of a Consumer’s Privacy Rights</u></span></span></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <br>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">We will not discriminate against you if you
-																																			exercise your privacy rights.</span></span></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <br>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <u><span data-custom-class="body_text">Right to Limit Use and Disclosure of Sensitive
-																																		Personal Information</span></u>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;"></div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <br>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;"><span data-custom-class="body_text">We do not process consumer's sensitive personal
-																																	information.</span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <br>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;"></div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text"><u>Verification process</u></span></span></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <br>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">Upon receiving your request, we will need to
-																																			verify your identity to determine you are the
-																																			same person about whom we have the
-																																			information in our system. These verification
-																																			efforts require us to ask you to provide
-																																			information so that we can match it with
-																																			information you have previously provided us.
-																																			For instance, depending on the type of
-																																			request you submit, we may ask you to provide
-																																			certain information so that we can match the
-																																			information you provide with the information
-																																			we already have on file, or we may contact
-																																			you through a communication method (e.g.,
-																																			phone or email) that you have previously
-																																			provided to us. We may also use other
-																																			verification methods as the circumstances
-																																			dictate.</span></span></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <br>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">We will only use personal information
-																																			provided in your request to verify your
-																																			identity or authority to make the request. To
-																																			the extent possible, we will avoid requesting
-																																			additional information from you for the
-																																			purposes of verification. However, if we
-																																			cannot verify your identity from the
-																																			information already maintained by us, we may
-																																			request that you provide additional
-																																			information for the purposes of verifying
-																																			your identity and for security or
-																																			fraud-prevention purposes. We will delete
-																																			such additionally provided information as
-																																			soon as we finish verifying you.</span></span></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <br>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text"><u>Other privacy rights</u></span></span></span>
-                                                                                                                                </div>
-                                                                                                                                <ul>
-                                                                                                                                    <li style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">You may object to the processing of your
-																																				personal information.</span></span></span>
-                                                                                                                                    </li>
-                                                                                                                                </ul>
-                                                                                                                                <ul>
-                                                                                                                                    <li style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">You may request correction of your
-																																				personal data if it is incorrect or no
-																																				longer relevant, or ask to restrict the
-																																				processing of the information.</span></span></span>
-                                                                                                                                    </li>
-                                                                                                                                </ul>
-                                                                                                                                <ul>
-                                                                                                                                    <li style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">You can designate an authorized agent to
-																																				make a request under the CCPA on your
-																																				behalf. We may deny a request from an
-																																				authorized agent that does not submit proof
-																																				that they have been validly authorized to
-																																				act on your behalf in accordance with the
-																																				CCPA.</span></span></span>
-                                                                                                                                    </li>
-                                                                                                                                </ul>
-                                                                                                                                <ul>
-                                                                                                                                    <li style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">You may request to opt out from future
-																																				selling or sharing of your personal
-																																				information to third parties. Upon
-																																				receiving an opt-out request, we will act
-																																				upon the request as soon as feasibly
-																																				possible, but no later than fifteen (15)
-																																				days from the date of the request
-																																				submission.</span></span></span>
-                                                                                                                                    </li>
-                                                                                                                                </ul>
-                                                                                                                                <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">To exercise these rights, you can contact
-																																			us&nbsp;</span><span style="font-size: 15px;"><span data-custom-class="body_text"><span style="font-size: 15px;"><span data-custom-class="body_text">by email at victorfalcon@duck.com,</span></span></span></span></span></span>
-                                                                                                                                    <span data-custom-class="body_text">or by referring to the contact details at the
-																																	bottom of this document. If you have a complaint
-																																	about how we handle your data, we would like to
-																																	hear from you.</span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <span style="font-size: 15px;"><br></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;"><span id="virginia"
-                                                                                                                                                                     style="font-size: 15px;"><strong><span data-custom-class="heading_1">10. DO VIRGINIA RESIDENTS HAVE SPECIFIC
-																																			PRIVACY RIGHTS?</span></strong></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <span style="font-size: 15px;"><br></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;"><span style="font-size: 15px;"><em><strong><span data-custom-class="body_text">In Short:</span></strong><span data-custom-class="body_text">&nbsp;Yes, if you are a resident of
-																																			Virginia, you may be granted specific rights
-																																			regarding access to and use of your personal
-																																			information.</span></em></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <span style="font-size: 15px;"><br></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <span style="font-size: 15px;"><strong><span data-custom-class="heading_2">Virginia CDPA Privacy Notice</span></strong></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <span style="font-size: 15px;"><br></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;"><span style="font-size: 15px;"><span data-custom-class="body_text">Under the Virginia Consumer Data Protection
-																																		Act (CDPA):</span></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <span style="font-size: 15px;"><br></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;"><span style="font-size: 15px;"><span data-custom-class="body_text">"Consumer" means a natural person who is a
-																																		resident of the Commonwealth acting only in an
-																																		individual or household context. It does not
-																																		include a natural person acting in a commercial
-																																		or employment context.</span></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <span style="font-size: 15px;"><br></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;"><span style="font-size: 15px;"><span data-custom-class="body_text">"Personal data" means any information that is
-																																		linked or reasonably linkable to an identified
-																																		or identifiable natural person. "Personal data"
-																																		does not include de-identified data or publicly
-																																		available information.</span></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <span style="font-size: 15px;"><br></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;"><span style="font-size: 15px;"><span data-custom-class="body_text">"Sale of personal data" means the exchange of
-																																		personal data for monetary consideration.</span></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <span style="font-size: 15px;"><br></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;"><span style="font-size: 15px;"><span data-custom-class="body_text">If this definition "consumer" applies to you,
-																																		we must adhere to certain rights and
-																																		obligations regarding your personal data.</span></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <br>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;"><span style="font-size: 15px;"><span data-custom-class="body_text">The information we collect, use, and disclose
-																																		about you will vary depending on how you
-																																		interact with NotifyWave and our Services. To
-																																		find out more, please visit the following links:</span></span>
-                                                                                                                                </div>
-                                                                                                                                <ul>
-                                                                                                                                    <li style="line-height: 1.5;">
-                                                                                                                                        <span style="font-size: 15px;"><a data-custom-class="link"
-                                                                                                                                                                          href="#infocollect">Personal data we collect</a></span>
-                                                                                                                                    </li>
-                                                                                                                                </ul>
-                                                                                                                                <div style="line-height: 1.5;"></div>
-                                                                                                                                <ul>
-                                                                                                                                    <li style="line-height: 1.5;">
-                                                                                                                                        <span style="font-size: 15px;"><a data-custom-class="link"
-                                                                                                                                                                          href="#infouse">How we use your personal data</a></span>
-                                                                                                                                    </li>
-                                                                                                                                </ul>
-                                                                                                                                <div style="line-height: 1.5;"></div>
-                                                                                                                                <ul>
-                                                                                                                                    <li style="line-height: 1.5;"><span style="font-size: 15px;"><a data-custom-class="link"
-                                                                                                                                                                                                    href="#whoshare">When and with whom we share your personal
-																																			data</a></span>
-                                                                                                                                    </li>
-                                                                                                                                </ul>
-                                                                                                                                <div style="line-height: 1.5;"><span style="font-size: 15px;"><u><span data-custom-class="body_text">Your rights with respect to your personal
-																																			data</span></u></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;"></div>
-                                                                                                                                <ul>
-                                                                                                                                    <li style="line-height: 1.5;"><span style="font-size: 15px;"><span data-custom-class="body_text">Right to be informed whether or not we are
-																																			processing your personal data</span></span>
-                                                                                                                                    </li>
-                                                                                                                                </ul>
-                                                                                                                                <div style="line-height: 1.5;"></div>
-                                                                                                                                <ul>
-                                                                                                                                    <li style="line-height: 1.5;">
-                                                                                                                                        <span style="font-size: 15px;"><span data-custom-class="body_text">Right to access your personal data</span></span>
-                                                                                                                                    </li>
-                                                                                                                                </ul>
-                                                                                                                                <div style="line-height: 1.5;"></div>
-                                                                                                                                <ul>
-                                                                                                                                    <li style="line-height: 1.5;"><span style="font-size: 15px;"><span data-custom-class="body_text">Right to correct inaccuracies in your
-																																			personal data</span></span>
-                                                                                                                                    </li>
-                                                                                                                                </ul>
-                                                                                                                                <div style="line-height: 1.5;"></div>
-                                                                                                                                <ul>
-                                                                                                                                    <li style="line-height: 1.5;"><span style="font-size: 15px;"><span data-custom-class="body_text">Right to request deletion of your personal
-																																			data</span></span>
-                                                                                                                                    </li>
-                                                                                                                                </ul>
-                                                                                                                                <div style="line-height: 1.5;"></div>
-                                                                                                                                <ul>
-                                                                                                                                    <li style="line-height: 1.5;"><span style="font-size: 15px;"><span data-custom-class="body_text">Right to obtain a copy of the personal data
-																																			you previously shared with us</span></span>
-                                                                                                                                    </li>
-                                                                                                                                </ul>
-                                                                                                                                <div style="line-height: 1.5;"></div>
-                                                                                                                                <ul>
-                                                                                                                                    <li style="line-height: 1.5;"><span style="font-size: 15px;"><span data-custom-class="body_text">Right to opt out of the processing of your
-																																			personal data if it is used for targeted
-																																			advertising, the sale of personal data, or
-																																			profiling in furtherance of decisions that
-																																			produce legal or similarly significant
-																																			effects ("profiling")</span></span>
-                                                                                                                                    </li>
-                                                                                                                                </ul>
-                                                                                                                                <div data-custom-class="body_text"
-                                                                                                                                     style="line-height: 1.5;"><span data-custom-class="body_text"
-                                                                                                                                                                     style="font-size: 15px;">NotifyWave sells personal data to third parties
-																																	or processes personal data for targeted advertising.
-																																	Please see the following section to find out how you
-																																	can opt out from further selling or sharing of your
-																																	personal data for targeted advertising or profiling
-																																	purposes.</span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <br>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <u><span data-custom-class="body_text"
-                                                                                                                                             style="font-size: 15px;">Exercise your rights provided under the
-																																		Virginia CDPA</span></u>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <br>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;"><span data-custom-class="body_text"
-                                                                                                                                                                     style="font-size: 15px;">More information about our data collection and
-																																	sharing practices can be found in this privacy
-																																	notice.</span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <br>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;"><span style="font-size: 15px;"><span data-custom-class="body_text">You may contact us by email at
-																																		victorfalcon@duck.com, by visiting
-																																		notifywave.com, or by referring to the contact
-																																		details at the bottom of this document.</span></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <br>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;"><span style="font-size: 15px;"><span data-custom-class="body_text">If you are using an authorized agent to
-																																		exercise your rights, we may deny a request if
-																																		the authorized agent does not submit proof that
-																																		they have been validly authorized to act on
-																																		your behalf.</span></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <br>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <u><span style="font-size: 15px;"><span data-custom-class="body_text">Verification process</span></span></u>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <br>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;"><span style="font-size: 15px;"><span data-custom-class="body_text">We may request that you provide additional
-																																		information reasonably necessary to verify you
-																																		and your consumer's request. If you submit the
-																																		request through an authorized agent, we may
-																																		need to collect additional information to
-																																		verify your identity before processing your
-																																		request.</span></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <br>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;"><span style="font-size: 15px;"><span data-custom-class="body_text">Upon receiving your request, we will respond
-																																		without undue delay, but in all cases, within
-																																		forty-five (45) days of receipt. The response
-																																		period may be extended once by forty-five (45)
-																																		additional days when reasonably necessary. We
-																																		will inform you of any such extension within
-																																		the initial 45-day response period, together
-																																		with the reason for the extension.</span></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <br>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <span style="font-size: 15px;"><u><span data-custom-class="body_text">Right to appeal</span></u></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <span style="font-size: 15px;"><br></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;"><span style="font-size: 15px;"><span data-custom-class="body_text">If we decline to take action regarding your
-																																		request, we will inform you of our decision and
-																																		reasoning behind it.&nbsp;</span><span data-custom-class="body_text">If you wish to appeal our decision, please
-																																		email us at victorfalcon@duck.com. Within sixty (60)
-																																		days of receipt of an appeal, we will inform
-																																		you in writing of any action taken or not taken
-																																		in response to the appeal, including a written
-																																		explanation of the reasons for the decisions.
-																																		If your appeal if denied, you may contact the
-																																		Attorney General to&nbsp;</span></span><a href="https://www.oag.state.va.us/consumer-protection/index.php/file-a-complaint"
-                                                                                                                                                                                  rel="noopener noreferrer"
-                                                                                                                                                                                  target="_blank"><span style="font-size: 15px;"><span data-custom-class="link">submit a complaint</span></span></a><span style="font-size: 15px;"><span data-custom-class="body_text">.</span></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <br>
-                                                                                                                                </div>
-                                                                                                                                <div id="policyupdates"
-                                                                                                                                     style="line-height: 1.5;"><span style=""><span style="font-size: 15px;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span id="control"
-                                                                                                                                                                                                                                                                                 style=""><strong><span data-custom-class="heading_1">11. DO WE MAKE UPDATES TO THIS
-																																							NOTICE?</span></strong></span></span></span></span></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <br>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text"><em><strong>In Short:&nbsp;</strong>Yes, we
-																																				will update this notice as necessary to
-																																				stay compliant with relevant laws.</em></span></span></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <br>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">We may update this privacy notice from time
-																																			to time. The updated version will be
-																																			indicated by an updated "Revised" date and
-																																			the updated version will be effective as soon
-																																			as it is accessible. If we make material
-																																			changes to this privacy notice, we may notify
-																																			you either by prominently posting a notice of
-																																			such changes or by directly sending you a
-																																			notification. We encourage you to review this
-																																			privacy notice frequently to be informed of
-																																			how we are protecting your information.</span></span></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <br>
-                                                                                                                                </div>
-                                                                                                                                <div id="contact"
-                                                                                                                                     style="line-height: 1.5;"><span style=""><span style="font-size: 15px;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span id="control"
-                                                                                                                                                                                                                                                                                 style=""><strong><span data-custom-class="heading_1">12. HOW CAN YOU CONTACT US ABOUT
-																																							THIS NOTICE?</span></strong></span></span></span></span></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <br>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">If you have questions or comments about this
-																																			notice, you may <span style="font-size: 15px;"><span data-custom-class="body_text">email us at __________</span></span><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">&nbsp;or by post to:</span></span></span></span></span></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <br>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text"><span style="font-size: 15px;"><span style=""><span style=""><span data-custom-class="body_text">NotifyWave</span></span></span></span></span></span></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <span style="font-size: 15px;"><span data-custom-class="body_text">Calle Oca</span></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <span style="font-size: 15px;"><span data-custom-class="body_text">Madrid<span style=""><span style="font-size: 15px;">, Spain 28025</span></span></span></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <span style="font-size: 15px;"><span data-custom-class="body_text">Spain</span></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <br>
-                                                                                                                                </div>
-                                                                                                                                <div id="request"
-                                                                                                                                     style="line-height: 1.5;"><span style=""><span style="font-size: 15px;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span id="control"
-                                                                                                                                                                                                                                                                                 style=""><strong><span data-custom-class="heading_1">13. HOW CAN YOU REVIEW, UPDATE, OR
-																																							DELETE THE DATA WE COLLECT FROM YOU?</span></strong></span></span></span></span></span>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;">
-                                                                                                                                    <br>
-                                                                                                                                </div>
-                                                                                                                                <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="font-size: 15px;"><span data-custom-class="body_text">Based on the applicable laws of your
-																																			country, you may have the right to request
-																																			access to the personal information we collect
-																																			from you, change that information, or delete
-																																			it. To request to review, update, or delete
-																																			your personal information, please</span> <span data-custom-class="body_text">visit: notifywave.com</span></span><span data-custom-class="body_text">.</span></span>
-                                                                                                                                </div>
-                                                                                                                                <style>ul {
-                                                                                                                                        list-style-type: square;
-                                                                                                                                    }
 
-                                                                                                                                    ul > li > ul {
-                                                                                                                                        list-style-type: circle;
-                                                                                                                                    }
+                <div class="one_line_col">
+                    <h2 id="place_of_processing">Mode and place of processing the Data</h2>
+                    <h3 class="iub-subheading iub-subheading-legal-mode-processing">
+                        Methods of processing
+                    </h3>
+                    <p>The Owner takes appropriate security measures to prevent unauthorized access, disclosure,
+                        modification, or unauthorized destruction of the Data.<br>The Data processing is carried out
+                        using computers and/or IT enabled tools, following organizational procedures and modes
+                        strictly related to the purposes indicated. In addition to the Owner, in some cases, the
+                        Data may be accessible to certain types of persons in charge, involved with the operation of
+                        this Application (administration, sales, marketing, legal, system administration) or
+                        external parties (such as third-party technical service providers, mail carriers, hosting
+                        providers, IT companies, communications agencies) appointed, if necessary, as Data
+                        Processors by the Owner. The updated list of these parties may be requested from the Owner
+                        at any time.</p>
+                    <h3 class="iub-subheading iub-subheading-legal-basis-of-processing">
+                        Legal basis of processing
+                    </h3>
+                    <p>The Owner may process Personal Data relating to Users if one of the following applies:</p>
+                    <ul>
+                        <li>Users have given their consent for one or more specific purposes. Note: Under some
+                            legislations the Owner may be allowed to process Personal Data until the User objects to
+                            such processing (“opt-out”), without having to rely on consent or any other of the
+                            following legal bases. This, however, does not apply, whenever the processing of
+                            Personal Data is subject to European data protection law;
+                        </li>
+                        <li>provision of Data is necessary for the performance of an agreement with the User and/or
+                            for any pre-contractual obligations thereof;
+                        </li>
+                        <li>processing is necessary for compliance with a legal obligation to which the Owner is
+                            subject;
+                        </li>
+                        <li>processing is related to a task that is carried out in the public interest or in the
+                            exercise of official authority vested in the Owner;
+                        </li>
+                        <li>processing is necessary for the purposes of the legitimate interests pursued by the
+                            Owner or by a third party.
+                        </li>
+                    </ul>
+                    <p>In any case, the Owner will gladly help to clarify the specific legal basis that applies to
+                        the processing, and in particular whether the provision of Personal Data is a statutory or
+                        contractual requirement, or a requirement necessary to enter into a contract. </p>
+                    <h3 class="iub-subheading iub-subheading-legal-place">
+                        Place
+                    </h3>
+                    <p>The Data is processed at the Owner's operating offices and in any other places where the
+                        parties involved in the processing are located.<br><br>
+                        Depending on the User's location, data transfers may involve transferring the User's Data to
+                        a country other than their own. To find out more about the place of processing of such
+                        transferred Data, Users can check the section containing details about the processing of
+                        Personal Data.</p>
+                    <p>Users are also entitled to learn about the legal basis of Data transfers to a country outside
+                        the European Union or to any international organization governed by public international law
+                        or set up by two or more countries, such as the UN, and about the security measures taken by
+                        the Owner to safeguard their Data.<br><br>
+                        If any such transfer takes place, Users can find out more by checking the relevant sections
+                        of this document or inquire with the Owner using the information provided in the contact
+                        section.</p>
+                    <h3 class="iub-subheading iub-subheading-legal-time">
+                        Retention time
+                    </h3>
+                    <p>Personal Data shall be processed and stored for as long as required by the purpose they have
+                        been collected for.</p>
+                    <p>Therefore:</p>
+                    <ul>
+                        <li>Personal Data collected for purposes related to the performance of a contract between
+                            the Owner and the User shall be retained until such contract has been fully performed.
+                        </li>
+                        <li>Personal Data collected for the purposes of the Owner’s legitimate interests shall be
+                            retained as long as needed to fulfill such purposes. Users may find specific information
+                            regarding the legitimate interests pursued by the Owner within the relevant sections of
+                            this document or by contacting the Owner.
+                        </li>
+                    </ul>
+                    <p>The Owner may be allowed to retain Personal Data for a longer period whenever the User has
+                        given consent to such processing, as long as such consent is not withdrawn. Furthermore, the
+                        Owner may be obliged to retain Personal Data for a longer period whenever required to do so
+                        for the performance of a legal obligation or upon order of an authority.<br><br>
+                        Once the retention period expires, Personal Data shall be deleted. Therefore, the right of
+                        access, the right to erasure, the right to rectification and the right to data portability
+                        cannot be enforced after expiration of the retention period.</p>
+                </div>
 
-                                                                                                                                    ul > li > ul > li > ul {
-                                                                                                                                        list-style-type: square;
-                                                                                                                                    }
+                <div class="one_line_col">
+                    <h2 id="use_collected_data">The purposes of processing</h2>
+                    <p>
+                        The Data concerning the User is collected to allow the Owner to provide its Service, comply
+                        with its legal obligations, respond to enforcement requests, protect its rights and
+                        interests (or those of its Users or third parties), detect any malicious or fraudulent
+                        activity, as well as the following:
+                        Registration and authentication.
+                    </p>
 
-                                                                                                                                    ol li {
-                                                                                                                                        font-family: Arial;
-                                                                                                                                    }</style>
-                                                                                                                            </div>
-                                                                                                                        </div>
-                                                                                                                    </div>
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                    <p>For specific information about the Personal Data used for each purpose, the User may refer to
+                        the section “Detailed information on the processing of Personal Data”.</p>
+                </div>
+
+                <div class="one_line_col">
+                    <h2 id="data_processing_detailed_info">Detailed information on the processing of Personal
+                        Data</h2>
+                    <p>Personal Data is collected for the following purposes and using the following services:</p>
+                    <ul class="for_boxes"
+                        style="list-style: none; padding-left: 0">
+                        <li>
+                            <div class="box_primary box_10 expand collapsed">
+                                <h3 class="expand-click w_icon_24 policyicon_purpose_11103059 iub-purpose iub-purpose-11103059">
+                                    Registration and authentication
+                                </h3>
+                                <div class="expand-content">
+                                    <p>By registering or authenticating, Users allow this Application to identify
+                                        them and give them access to dedicated services.<br>
+                                        Depending on what is described below, third parties may provide registration
+                                        and authentication services. In this case, this Application will be able to
+                                        access some Data, stored by these third-party services, for registration or
+                                        identification purposes. <br>
+                                        Some of the services listed below may also collect Personal Data for
+                                        targeting and profiling purposes; to find out more, please refer to the
+                                        description of each service.</p>
+
+
+                                    <h4 class="iub-service iub-service-9514862">Google OAuth (Google LLC)</h4>
+                                    <div class="wrap">
+                                        <p>Google OAuth is a registration and authentication service provided by
+                                            Google LLC and is connected to the Google network.</p>
                                     </div>
+
+                                    <p>Personal Data processed: various types of Data as specified in the privacy
+                                        policy of the service.</p>
+
+
+                                    <p>Place of processing: United States –
+                                        <a href="https://policies.google.com/privacy"
+                                           target="_blank"
+                                           rel="noopener noreferrer">Privacy Policy</a>. </p>
+
+
                                 </div>
                             </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="one_line_col">
+                    <h2 id="rights_subjects">The rights of Users</h2>
+                    <p>Users may exercise certain rights regarding their Data processed by the Owner.</p>
+                    <p>In particular, Users have the right to do the following, to the extent permitted by law:</p>
+
+                    <ul>
+                        <li><strong>Withdraw their consent at any time.</strong> Users have the right to withdraw
+                            consent where they have previously given their consent to the processing of their
+                            Personal Data.
+                        </li>
+                        <li><strong>Object to processing of their Data.</strong> Users have the right to object to
+                            the processing of their Data if the processing is carried out on a legal basis other
+                            than consent. Further details are provided in the dedicated section below.
+                        </li>
+                        <li><strong>Access their Data.</strong> Users have the right to learn if Data is being
+                            processed by the Owner, obtain disclosure regarding certain aspects of the processing
+                            and obtain a copy of the Data undergoing processing.
+                        </li>
+                        <li><strong>Verify and seek rectification.</strong> Users have the right to verify the
+                            accuracy of their Data and ask for it to be updated or corrected.
+                        </li>
+                        <li><strong>Restrict the processing of their Data.</strong> Users have the right to restrict
+                            the processing of their Data. In this case, the Owner will not process their Data for
+                            any purpose other than storing it.
+                        </li>
+                        <li><strong>Have their Personal Data deleted or otherwise removed.</strong> Users have the
+                            right to obtain the erasure of their Data from the Owner.
+                        </li>
+                        <li><strong>Receive their Data and have it transferred to another controller.</strong> Users
+                            have the right to receive their Data in a structured, commonly used and machine readable
+                            format and, if technically feasible, to have it transmitted to another controller
+                            without any hindrance.
+                        </li>
+                        <li><strong>Lodge a complaint.</strong> Users have the right to bring a claim before their
+                            competent data protection authority.
+                        </li>
+                    </ul>
+
+                    <h3 class="iub-subheading iub-subheading-legal-right-to-object">
+                        Details about the right to object to processing
+                    </h3>
+                    <p>Where Personal Data is processed for a public interest, in the exercise of an official
+                        authority vested in the Owner or for the purposes of the legitimate interests pursued by the
+                        Owner, Users may object to such processing by providing a ground related to their particular
+                        situation to justify the objection.</p>
+                    <p>Users must know that, however, should their Personal Data be processed for direct marketing
+                        purposes, they can object to that processing at any time, free of charge and without
+                        providing any justification. Where the User objects to processing for direct marketing
+                        purposes, the Personal Data will no longer be processed for such purposes. To learn whether
+                        the Owner is processing Personal Data for direct marketing purposes, Users may refer to the
+                        relevant sections of this document. </p>
+
+                    <h3 class="iub-subheading iub-subheading-legal-how-to-exercise">
+                        How to exercise these rights
+                    </h3>
+                    <p>Any requests to exercise User rights can be directed to the Owner through the contact details
+                        provided in this document. These requests can be exercised free of charge and will be
+                        answered by the Owner as early as possible and always within one month, providing Users with
+                        the information required by law. Any rectification or erasure of Personal Data or
+                        restriction of processing will be communicated by the Owner to each recipient, if any, to
+                        whom the Personal Data has been disclosed unless this proves impossible or involves
+                        disproportionate effort. At the Users’ request, the Owner will inform them about those
+                        recipients.</p>
+                </div>
+
+                <div class="one_line_col">
+                    <h2 id="further_data_processing_info">Additional information about Data collection and
+                        processing</h2>
+                    <h3 class="iub-subheading iub-subheading-legal-protection">
+                        Legal action
+                    </h3>
+                    <p>The User's Personal Data may be used for legal purposes by the Owner in Court or in the
+                        stages leading to possible legal action arising from improper use of this Application or the
+                        related Services.<br>The User declares to be aware that the Owner may be required to reveal
+                        personal data upon request of public authorities.</p>
+                    <h3 class="iub-subheading iub-subheading-legal-specific-info">
+                        Additional information about User's Personal Data
+                    </h3>
+                    <p>In addition to the information contained in this privacy policy, this Application may provide
+                        the User with additional and contextual information concerning particular Services or the
+                        collection and processing of Personal Data upon request.</p>
+                    <h3 class="iub-subheading iub-subheading-legal-maintenance">
+                        System logs and maintenance
+                    </h3>
+                    <p>For operation and maintenance purposes, this Application and any third-party services may
+                        collect files that record interaction with this Application (System logs) or use other
+                        Personal Data (such as the IP Address) for this purpose.</p>
+                    <h3 class="iub-subheading iub-subheading-legal-information-not-contained">
+                        Information not contained in this policy
+                    </h3>
+                    <p>More details concerning the collection or processing of Personal Data may be requested from
+                        the Owner at any time. Please see the contact information at the beginning of this
+                        document.</p>
+
+                    <h3 class="iub-subheading iub-subheading-legal-how-do-not-track">
+                        How “Do Not Track” requests are handled
+                    </h3>
+                    <p>This Application does not support “Do Not Track” requests.<br>To determine whether any of the
+                        third-party services it uses honor the “Do Not Track” requests, please read their privacy
+                        policies.</p>
+
+                    <h3 class="iub-subheading iub-subheading-legal-changes-to-this-privacy-policy">
+                        Changes to this privacy policy
+                    </h3>
+                    <p>The Owner reserves the right to make changes to this privacy policy at any time by notifying
+                        its Users on this page and possibly within this Application and/or - as far as technically
+                        and legally feasible - sending a notice to Users via any contact information available to
+                        the Owner. It is strongly recommended to check this page often, referring to the date of the
+                        last modification listed at the bottom. <br><br>
+                        Should the changes affect processing activities performed on the basis of the User’s
+                        consent, the Owner shall collect new consent from the User, where required.</p>
+                </div>
+
+                <div class="one_line_col">
+                    <div class="box_primary box_10 definitions expand expanded">
+                        <h3 id="definitions_and_legal_references"
+                            class="expand-click w_icon_24 icon_ribbon">
+                            Definitions and legal references
+                        </h3>
+                        <div class="expand-content"
+                             style="">
+                            <h4>Personal Data (or Data)</h4>
+                            <p>Any information that directly, indirectly, or in connection with other information —
+                                including a personal identification number — allows for the identification or
+                                identifiability of a natural person.</p>
+
+                            <h4>Usage Data</h4>
+                            <p>Information collected automatically through this Application (or third-party services
+                                employed in this Application), which can include: the IP addresses or domain names
+                                of the computers utilized by the Users who use this Application, the URI addresses
+                                (Uniform Resource Identifier), the time of the request, the method utilized to
+                                submit the request to the server, the size of the file received in response, the
+                                numerical code indicating the status of the server's answer (successful outcome,
+                                error, etc.), the country of origin, the features of the browser and the operating
+                                system utilized by the User, the various time details per visit (e.g., the time
+                                spent on each page within the Application) and the details about the path followed
+                                within the Application with special reference to the sequence of pages visited, and
+                                other parameters about the device operating system and/or the User's IT
+                                environment.</p>
+
+                            <h4>User</h4>
+                            <p>The individual using this Application who, unless otherwise specified, coincides with
+                                the Data Subject.</p>
+
+                            <h4>Data Subject</h4>
+                            <p>The natural person to whom the Personal Data refers.</p>
+
+                            <h4>Data Processor (or Data Supervisor)</h4>
+                            <p>The natural or legal person, public authority, agency or other body which processes
+                                Personal Data on behalf of the Controller, as described in this privacy policy.</p>
+
+                            <h4>Data Controller (or Owner)</h4>
+                            <p>The natural or legal person, public authority, agency or other body which, alone or
+                                jointly with others, determines the purposes and means of the processing of Personal
+                                Data, including the security measures concerning the operation and use of this
+                                Application. The Data Controller, unless otherwise specified, is the Owner of this
+                                Application.</p>
+
+                            <h4>This Application</h4>
+                            <p>The means by which the Personal Data of the User is collected and processed.</p>
+
+                            <h4>Service</h4>
+                            <p>The service provided by this Application as described in the relative terms (if
+                                available) and on this site/application.</p>
+
+                            <h4>European Union (or EU)</h4>
+                            <p>Unless otherwise specified, all references made within this document to the European
+                                Union include all current member states to the European Union and the European
+                                Economic Area.</p>
+
+                            <hr>
+                            <h4>Legal information</h4>
+                            <p>This privacy statement has been prepared based on provisions of multiple
+                                legislations, including Art. 13/14 of Regulation (EU) 2016/679 (General Data
+                                Protection Regulation).</p>
+                            <p>This privacy policy relates solely to this Application, if not stated otherwise
+                                within this document.</p>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+
+                <div class="iub_footer">
+                    <p>
+                        Latest update: May 22, 2023
+                    </p>
+                </div> <!-- /footer -->
+            </div> <!-- /content -->
+        </div> <!-- /wbars -->
     </div>
 @endsection
