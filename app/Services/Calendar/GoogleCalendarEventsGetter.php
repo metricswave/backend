@@ -41,7 +41,7 @@ class GoogleCalendarEventsGetter implements EventsGetter
                     'timeMin' => now()->subMinutes(5)->toRfc3339String(),
                     'maxResults' => 50,
                     'orderBy' => 'startTime',
-                    'singleEvents' => true,
+                    'singleEvents' => "true",
                 ]
             )
             ->throw()
