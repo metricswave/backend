@@ -172,7 +172,7 @@ class TriggerTypeSeeder extends Seeder
                 ],
             ],
         );
-       
+
         TriggerType::updateOrCreate(
             ['id' => TriggerTypeId::CalendarTimeToLeave],
             [
