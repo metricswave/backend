@@ -172,14 +172,7 @@ class TriggerTypeSeeder extends Seeder
                 ],
             ],
         );
-
-        if (app()->environment('local')) {
-            $this->seedForLocalEnvironment();
-        }
-    }
-
-    private function seedForLocalEnvironment(): void
-    {
+       
         TriggerType::updateOrCreate(
             ['id' => TriggerTypeId::CalendarTimeToLeave],
             [
@@ -213,5 +206,14 @@ class TriggerTypeSeeder extends Seeder
                 ],
             ],
         );
+
+        if (app()->environment('local')) {
+            $this->seedForLocalEnvironment();
+        }
+    }
+
+    private function seedForLocalEnvironment(): void
+    {
+
     }
 }
