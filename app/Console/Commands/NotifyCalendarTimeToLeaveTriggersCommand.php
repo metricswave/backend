@@ -7,7 +7,7 @@ use Illuminate\Console\Command;
 
 class NotifyCalendarTimeToLeaveTriggersCommand extends Command
 {
-    protected $signature = 'app:trigger:calendar-time-to-leave ';
+    protected $signature = 'app:trigger:calendar-time-to-leave';
     protected $description = 'Check calendar time to leave triggers to queue a notification for events on time.';
 
     public function handle(): int
