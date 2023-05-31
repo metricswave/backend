@@ -23,7 +23,7 @@ class Kernel extends ConsoleKernel
 
         // Calendar
         $schedule->command('app:user:get-calendars')->dailyAt('02:00');
-        $schedule->command('app:trigger:calendar-time-to-leave')->everyThreeHours();
+        $schedule->command('app:trigger:calendar-time-to-leave')->hourly();
     }
 
     protected function commands(): void
