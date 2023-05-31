@@ -30,6 +30,19 @@ class UserTriggerNotificationJob implements ShouldQueue
 
     public function handle(): void
     {
+        // Enqueue telegram notifications in another job
+        $telegramChatIds = collect($this->notification->trigger->via)
+            ->filter(fn($via) => $via['checked'] && $via['type'] === 'telegram')
+            ->map(fn($via) => $via['value']);
+
+        foreach ($telegramChatIds as $telegramChatId) {
+            UserTriggerTelegramNotificationJob::dispatch(
+                $this->notification,
+                $telegramChatId,
+            );
+        }
+
+
         $this->user->notify($this->notification);
     }
 }

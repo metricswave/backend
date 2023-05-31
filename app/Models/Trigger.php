@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
+use function Emoji\is_single_emoji;
 
 /**
  * @property array{version: string, fields: array{name: string, value: string|array|int}} $configuration
@@ -68,6 +69,15 @@ class Trigger extends Model
         }
 
         return $content;
+    }
+
+    public function formattedEmoji(array $params): string
+    {
+        if (is_single_emoji($this->params['emoji'] ?? null)) {
+            return $this->params['emoji'];
+        }
+
+        return $this->emoji;
     }
 
     public function formattedTitle(array $params): string
