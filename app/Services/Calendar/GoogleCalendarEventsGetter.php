@@ -47,6 +47,8 @@ class GoogleCalendarEventsGetter implements EventsGetter
             ->throw()
             ->json();
 
+        // Todo: When it returns 404, return empty events and log it
+
         return $this->events($response['items']);
     }
 

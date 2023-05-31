@@ -22,8 +22,13 @@ it('send expected notification', function () {
 
     Notification::fake();
 
-    postJson('/webhooks/'.$t->uuid.'?name=Victor&content=Hola')
-        ->assertSuccessful();
+    postJson(
+        '/webhooks/'.$t->uuid,
+        [
+            'name' => 'Victor',
+            'content' => 'Hola',
+        ]
+    )->assertSuccessful();
 
     Notification::assertCount(1);
 });

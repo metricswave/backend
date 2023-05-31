@@ -21,7 +21,7 @@ class PostWebhookTriggerController extends JsonController
             return $this->errorResponse('Trigger type is not webhook', 400);
         }
 
-        $params = request()->all();
+        $params = request()->post();
 
         try {
             ($this->webhookNotificationSender)($trigger, $params);
