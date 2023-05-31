@@ -4,7 +4,7 @@ blueprint: documentation
 title: 'Triggers: Webhooks'
 short_content: 'Webhooks are an special trigger that can be used to connect NotifyWave with other scripts or application in a few minutes.'
 updated_by: 1
-updated_at: 1683277015
+updated_at: 1685537005
 ---
 Webhooks are a special trigger that can be used to connect NotifyWave with other scripts, applications or even devices in a few minutes.
 
@@ -15,6 +15,7 @@ The use case is simple. Every time you generate a webhook we will give you a URL
 #### Table of Content
 
 - [❓ How they work](#how-they-work)
+	- [Using a POST request](#using-post-request) 
 - [🪵 Trigger a notification](#trigger-a-notification)
 - [💻 Trigger a notification Programatically](#trigger-a-notification-programatically)
 - [😍 Dynamic Emoji](#dynamic-emoji)
@@ -29,7 +30,21 @@ For example, imagine you create a webhook with an `email` parameter and where th
 
 For this webhook we will give you a URL which could be this `https://notifywave.com/webhooks/fd37c3c1-efed-4545-a75b-d32c7fec525e?email={email}`.
 
-> You can also, if you prefer, send a POST request with the params in a json body. In this case it will be something like this `{email: "any@email.com"}`.
+<div style="scroll-margin-top: 40px" id="using-post-request"></div>
+
+#### Using a POST request
+
+You can also, if you prefer, send a POST request with the params in a json body. In this case it will be something like this `{email: "any@email.com"}`.
+
+With POST request is important to set `Content-Type: application/json` and `Accept: application/json` headers. Here you can find an example of a request made from bash terminal.
+
+```bash
+BODY='{"email": "my@email.com"}'
+curl -X POST https://notifywave.com/webhooks/fd37c3c1-efed-4545-a75b-d32c7fec525e \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d "$BODY"
+```
 
 ---
 
