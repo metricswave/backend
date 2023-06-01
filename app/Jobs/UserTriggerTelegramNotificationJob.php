@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Exceptions\TelegramUserServiceNotFound;
 use App\Models\UserService;
 use App\Notifications\TriggerNotification;
 use Http;
@@ -66,6 +67,15 @@ class UserTriggerTelegramNotificationJob implements ShouldQueue
                         return isset($userService->service_data['configuration']['channel_id'])
                             && $userService->service_data['configuration']['channel_id'] === $this->telegramChatId;
                     });
+
+                if ($userService === null) {
+                    throw new TelegramUserServiceNotFound(
+                        "Telegram user service not found for user {$this->notification->trigger->user->id} and chat id {$this->telegramChatId}",
+                        null,
+                        $e
+                    );
+                }
+
                 $data = $userService->service_data;
                 $data['configuration']['channel_id'] = $migrateToChatId;
                 $userService->service_data = $data;
