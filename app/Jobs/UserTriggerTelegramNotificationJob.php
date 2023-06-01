@@ -58,9 +58,9 @@ class UserTriggerTelegramNotificationJob implements ShouldQueue
                 $response = json_decode($e->getResponse()->getBody()->getContents(), true);
                 $migrateToChatId = $response['parameters']['migrate_to_chat_id'];
 
-                UserService::query()->where('channel_id', $this->telegramChatId)->update([
-                    'channel_id' => $migrateToChatId,
-                ]);
+                $userService = UserService::query()->where('channel_id', $this->telegramChatId)->first();
+                $userService->service_data['configuration']['channel_id'] = $migrateToChatId;
+                $userService->save();
 
                 $this->sendTelegramMessageTo(
                     $migrateToChatId,
