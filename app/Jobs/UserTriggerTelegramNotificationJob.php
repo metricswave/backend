@@ -4,14 +4,14 @@ namespace App\Jobs;
 
 use App\Models\UserService;
 use App\Notifications\TriggerNotification;
-use GuzzleHttp\Exception\ClientException;
+use Http;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Foundation\Bus\PendingDispatch;
+use Illuminate\Http\Client\RequestException;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use NotificationChannels\Telegram\TelegramMessage;
 use Str;
 
 /**
@@ -50,8 +50,8 @@ class UserTriggerTelegramNotificationJob implements ShouldQueue
                 $title,
                 $content
             );
-        } catch (ClientException $e) {
-            $response = json_decode($e->getResponse()->getBody()->getContents(), true);
+        } catch (RequestException $e) {
+            $response = $e->response->json();
 
             if (
                 $response['ok'] === false
@@ -61,8 +61,14 @@ class UserTriggerTelegramNotificationJob implements ShouldQueue
             ) {
                 $migrateToChatId = $response['parameters']['migrate_to_chat_id'];
 
-                $userService = UserService::query()->where('channel_id', $this->telegramChatId)->first();
-                $userService->service_data['configuration']['channel_id'] = $migrateToChatId;
+                $userService = UserService::query()->where('user_id', $this->notification->trigger->user->id)->get()
+                    ->firstWhere(function (UserService $userService) {
+                        return isset($userService->service_data['configuration']['channel_id'])
+                            && $userService->service_data['configuration']['channel_id'] === $this->telegramChatId;
+                    });
+                $data = $userService->service_data;
+                $data['configuration']['channel_id'] = $migrateToChatId;
+                $userService->service_data = $data;
                 $userService->save();
 
                 $this->sendTelegramMessageTo(
@@ -85,14 +91,12 @@ class UserTriggerTelegramNotificationJob implements ShouldQueue
         string $title,
         string $content
     ): void {
-        TelegramMessage::create()
-            ->options(['parse_mode' => 'HTML'])
-            ->token(config('services.telegram-bot-api.token'))
-            ->to($telegramChannelId)
-            ->content(
-                Str::of("**${emoji} ${title}**\n\n${content}")
-                    ->inlineMarkdown()
-                    ->toString()
-            )->send();
+        Http::post("https://api.telegram.org/bot".config('services.telegram-bot-api.token')."/sendMessage", [
+            'chat_id' => $telegramChannelId,
+            'text' => Str::of("**${emoji} ${title}**\n\n${content}")
+                ->inlineMarkdown()
+                ->toString(),
+            'parse_mode' => 'HTML',
+        ])->throw();
     }
 }
