@@ -24,6 +24,9 @@ class Kernel extends ConsoleKernel
         // Calendar
         $schedule->command('app:user:get-calendars')->dailyAt('02:00');
         $schedule->command('app:trigger:calendar-time-to-leave')->hourly();
+
+        // Telegram Bot
+        $schedule->command('telegram:reply-with-group-id')->everyMinute();
     }
 
     protected function commands(): void
