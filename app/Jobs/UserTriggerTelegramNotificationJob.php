@@ -51,11 +51,14 @@ class UserTriggerTelegramNotificationJob implements ShouldQueue
                 $content
             );
         } catch (ClientException $e) {
+            $response = json_decode($e->getResponse()->getBody()->getContents(), true);
+
             if (
-                $e->getCode() === 400
-                && $e->getMessage() === 'Bad Request: group chat was upgraded to a supergroup chat'
+                $response['ok'] === false
+                && $response['error_code'] === 400
+                && $response['description'] === 'Bad Request: group chat was upgraded to a supergroup chat'
+                && isset($response['parameters']['migrate_to_chat_id'])
             ) {
-                $response = json_decode($e->getResponse()->getBody()->getContents(), true);
                 $migrateToChatId = $response['parameters']['migrate_to_chat_id'];
 
                 $userService = UserService::query()->where('channel_id', $this->telegramChatId)->first();
