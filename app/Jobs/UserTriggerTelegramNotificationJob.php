@@ -2,9 +2,8 @@
 
 namespace App\Jobs;
 
-use App\Notifications\TelegramErrorNotification;
+use App\Models\UserService;
 use App\Notifications\TriggerNotification;
-use App\Transfers\TelegramChannelErrors;
 use GuzzleHttp\Exception\ClientException;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -45,29 +44,50 @@ class UserTriggerTelegramNotificationJob implements ShouldQueue
         $content = $this->notification->content;
 
         try {
-            TelegramMessage::create()
-                ->options(['parse_mode' => 'HTML'])
-                ->token(config('services.telegram-bot-api.token'))
-                ->to($this->telegramChatId)
-                ->content(
-                    Str::of("**${emoji} ${title}**\n\n${content}")
-                        ->inlineMarkdown()
-                        ->toString()
-                )->send();
+            $this->sendTelegramMessageTo(
+                $this->telegramChatId,
+                $emoji,
+                $title,
+                $content
+            );
         } catch (ClientException $e) {
             if (
                 $e->getCode() === 400
                 && $e->getMessage() === 'Bad Request: group chat was upgraded to a supergroup chat'
             ) {
-                $this->notification->trigger->user->notify(
-                    new TelegramErrorNotification(
-                        $this->telegramChatId,
-                        TelegramChannelErrors::GROUP_CHAT_UPGRADED_TO_SUPERGROUP_CHAT,
-                    )
+                $response = json_decode($e->getResponse()->getBody()->getContents(), true);
+                $migrateToChatId = $response['parameters']['migrate_to_chat_id'];
+
+                UserService::query()->where('channel_id', $this->telegramChatId)->update([
+                    'channel_id' => $migrateToChatId,
+                ]);
+
+                $this->sendTelegramMessageTo(
+                    $migrateToChatId,
+                    $emoji,
+                    $title,
+                    $content
                 );
             }
 
             throw $e;
         }
+    }
+
+    private function sendTelegramMessageTo(
+        string $telegramChannelId,
+        string $emoji,
+        string $title,
+        string $content
+    ): void {
+        TelegramMessage::create()
+            ->options(['parse_mode' => 'HTML'])
+            ->token(config('services.telegram-bot-api.token'))
+            ->to($telegramChannelId)
+            ->content(
+                Str::of("**${emoji} ${title}**\n\n${content}")
+                    ->inlineMarkdown()
+                    ->toString()
+            )->send();
     }
 }

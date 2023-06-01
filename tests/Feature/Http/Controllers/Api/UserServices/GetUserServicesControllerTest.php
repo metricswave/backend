@@ -21,6 +21,7 @@ it('should return 200', function () {
                 ->whereType('created_at', 'string')
                 ->whereType('updated_at', 'string')
                 ->whereType('deleted_at', 'null')
+                ->etc()
             ));
 });
 
