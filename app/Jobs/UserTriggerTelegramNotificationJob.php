@@ -68,6 +68,8 @@ class UserTriggerTelegramNotificationJob implements ShouldQueue
                     $title,
                     $content
                 );
+
+                return;
             }
 
             throw $e;
