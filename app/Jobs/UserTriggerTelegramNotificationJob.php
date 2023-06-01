@@ -2,7 +2,10 @@
 
 namespace App\Jobs;
 
+use App\Notifications\TelegramErrorNotification;
 use App\Notifications\TriggerNotification;
+use App\Transfers\TelegramChannelErrors;
+use GuzzleHttp\Exception\ClientException;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -41,14 +44,30 @@ class UserTriggerTelegramNotificationJob implements ShouldQueue
         $title = $this->notification->title;
         $content = $this->notification->content;
 
-        TelegramMessage::create()
-            ->options(['parse_mode' => 'HTML'])
-            ->token(config('services.telegram-bot-api.token'))
-            ->to($this->telegramChatId)
-            ->content(
-                Str::of("**${emoji} ${title}**\n\n${content}")
-                    ->inlineMarkdown()
-                    ->toString()
-            )->send();
+        try {
+            TelegramMessage::create()
+                ->options(['parse_mode' => 'HTML'])
+                ->token(config('services.telegram-bot-api.token'))
+                ->to($this->telegramChatId)
+                ->content(
+                    Str::of("**${emoji} ${title}**\n\n${content}")
+                        ->inlineMarkdown()
+                        ->toString()
+                )->send();
+        } catch (ClientException $e) {
+            if (
+                $e->getCode() === 400
+                && $e->getMessage() === 'Bad Request: group chat was upgraded to a supergroup chat'
+            ) {
+                $this->notification->trigger->user->notify(
+                    new TelegramErrorNotification(
+                        $this->telegramChatId,
+                        TelegramChannelErrors::GROUP_CHAT_UPGRADED_TO_SUPERGROUP_CHAT,
+                    )
+                );
+            }
+
+            throw $e;
+        }
     }
 }
