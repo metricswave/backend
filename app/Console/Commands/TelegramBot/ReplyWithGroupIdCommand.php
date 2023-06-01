@@ -53,7 +53,7 @@ class ReplyWithGroupIdCommand extends Command
                     'reply_to_message_id' => $messageId,
                 ]);
 
-                Cache::put($cacheKey, true, 60 * 60 * 24 * 7);
+                Cache::put($cacheKey, true, now()->addWeek());
             }
         }
     }
