@@ -13,6 +13,7 @@ use Illuminate\Foundation\Bus\PendingDispatch;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Cache;
+use Str;
 
 /**
  * @method static PendingDispatch dispatch(Trigger $trigger)
@@ -42,6 +43,10 @@ class EnqueueCalendarTimeToLeaveEventNotificationsJob implements ShouldQueue
 
             foreach ($events->items() as $event) {
                 if ($event->location === null) {
+                    continue;
+                }
+
+                if (Str::of($event->location)->contains("Google Meet")) {
                     continue;
                 }
 
