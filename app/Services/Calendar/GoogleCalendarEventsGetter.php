@@ -4,6 +4,7 @@ namespace App\Services\Calendar;
 
 use App\Models\User;
 use Http;
+use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Carbon;
 
 class GoogleCalendarEventsGetter implements EventsGetter
@@ -34,20 +35,32 @@ class GoogleCalendarEventsGetter implements EventsGetter
 
     public function incoming(User $user, string $calendarId): Events
     {
-        $response = Http::withHeaders(['Authorization' => 'Bearer '.$user->serviceToken('google')])
-            ->get(
-                "https://www.googleapis.com/calendar/v3/calendars/{$calendarId}/events",
-                [
-                    'timeMin' => now()->subMinutes(5)->toRfc3339String(),
-                    'maxResults' => 50,
-                    'orderBy' => 'startTime',
-                    'singleEvents' => "true",
-                ]
-            )
-            ->throw()
-            ->json();
+        try {
+            $response = Http::withHeaders(['Authorization' => 'Bearer '.$user->serviceToken('google')])
+                ->get(
+                    "https://www.googleapis.com/calendar/v3/calendars/{$calendarId}/events",
+                    [
+                        'timeMin' => now()->subMinutes(5)->toRfc3339String(),
+                        'maxResults' => 50,
+                        'orderBy' => 'startTime',
+                        'singleEvents' => "true",
+                    ]
+                )
+                ->throw()
+                ->json();
+        } catch (RequestException $e) {
+            if ($e->response->status() === 404) {
+                Http::post(
+                    'https://notifywave.com/webhooks/842e2f48-4c9f-436f-bb88-c00266496f10',
+                    [
+                        'message' => "Google Calendar Not Found: {$calendarId} (User ID: {$user->id})",
+                        'description' => $e->response->json(),
+                    ]
+                );
 
-        // Todo: When it returns 404, return empty events and log it
+                return new Events([]);
+            }
+        }
 
         return $this->events($response['items']);
     }
