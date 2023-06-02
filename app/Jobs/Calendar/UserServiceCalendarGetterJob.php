@@ -36,6 +36,7 @@ class UserServiceCalendarGetterJob implements ShouldQueue
                     'user_id' => $this->userService->user->id,
                     'service_id' => $this->userService->service_id,
                     'calendar_id' => $calendar->id,
+                    'deleted_at' => null,
                 ],
                 [
                     'name' => $calendar->name,
@@ -43,6 +44,7 @@ class UserServiceCalendarGetterJob implements ShouldQueue
                     'background_color' => $calendar->backgroundColor,
                     'foreground_color' => $calendar->foregroundColor,
                     'time_zone' => $calendar->timeZone,
+                    'updated_at' => now(),
                 ]
             );
         }
