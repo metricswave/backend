@@ -73,8 +73,8 @@ class Trigger extends Model
 
     public function formattedEmoji(array $params): string
     {
-        if (is_single_emoji($this->params['emoji'] ?? null)) {
-            return $this->params['emoji'];
+        if (is_single_emoji($params['emoji'] ?? null)) {
+            return $params['emoji'];
         }
 
         return $this->emoji;
