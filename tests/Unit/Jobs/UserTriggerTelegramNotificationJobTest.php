@@ -31,7 +31,7 @@ it('catch error 400 when group changed to supergroup and change channel_id', fun
         ->for(User::factory()->create())
         ->for(TriggerType::factory()->create())
         ->create();
-    UserService::factory()->create([
+    $userService = UserService::factory()->create([
         'user_id' => $trigger->user_id,
         'service_id' => 1,
         'service_data' => [
@@ -41,11 +41,12 @@ it('catch error 400 when group changed to supergroup and change channel_id', fun
         ]
     ]);
 
-    UserTriggerTelegramNotificationJob::dispatchSync(new TriggerNotification($trigger, []), '-111111');
+    UserTriggerTelegramNotificationJob::dispatchSync(new TriggerNotification($trigger, []), $userService);
 
     Http::assertSent(function (Illuminate\Http\Client\Request $request) {
         return $request->url() === 'https://api.telegram.org/bot'.config('services.telegram-bot-api.token').'/sendMessage' && $request['chat_id'] === '-111111';
     });
+
     Http::assertSent(function (Illuminate\Http\Client\Request $request) {
         return $request->url() === 'https://api.telegram.org/bot'.config('services.telegram-bot-api.token').'/sendMessage' && $request['chat_id'] === '-222222';
     });

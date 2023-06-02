@@ -13,7 +13,7 @@ use function Emoji\is_single_emoji;
 
 /**
  * @property array{version: string, fields: array{name: string, value: string|array|int}} $configuration
- * @property array{value: string, label: string, checked: bool, type: string} $via
+ * @property array{id: string, label: string, checked: bool, type: string} $via
  */
 class Trigger extends Model
 {

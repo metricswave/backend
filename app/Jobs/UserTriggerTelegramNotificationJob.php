@@ -2,7 +2,6 @@
 
 namespace App\Jobs;
 
-use App\Exceptions\TelegramUserServiceNotFound;
 use App\Models\UserService;
 use App\Notifications\TriggerNotification;
 use Http;
@@ -16,8 +15,8 @@ use Illuminate\Queue\SerializesModels;
 use Str;
 
 /**
- * @method static PendingDispatch dispatch(TriggerNotification $notification, string $telegramChatId)
- * @method static PendingDispatch dispatchSync(TriggerNotification $notification, string $telegramChatId)
+ * @method static PendingDispatch dispatch(TriggerNotification $notification, UserService $userService)
+ * @method static PendingDispatch dispatchSync(TriggerNotification $notification, UserService $userService)
  */
 class UserTriggerTelegramNotificationJob implements ShouldQueue
 {
@@ -28,7 +27,7 @@ class UserTriggerTelegramNotificationJob implements ShouldQueue
 
     public function __construct(
         private readonly TriggerNotification $notification,
-        private readonly string $telegramChatId,
+        private readonly UserService $userService
     ) {
     }
 
@@ -44,13 +43,10 @@ class UserTriggerTelegramNotificationJob implements ShouldQueue
         $title = $this->notification->title;
         $content = $this->notification->content;
 
+        $chatId = $this->userService->service_data['configuration']['channel_id'];
+
         try {
-            $this->sendTelegramMessageTo(
-                $this->telegramChatId,
-                $emoji,
-                $title,
-                $content
-            );
+            $this->sendTelegramMessageTo($chatId, $emoji, $title, $content);
         } catch (RequestException $e) {
             $response = $e->response->json();
 
@@ -62,24 +58,10 @@ class UserTriggerTelegramNotificationJob implements ShouldQueue
             ) {
                 $migrateToChatId = $response['parameters']['migrate_to_chat_id'];
 
-                $userService = UserService::query()->where('user_id', $this->notification->trigger->user->id)->get()
-                    ->firstWhere(function (UserService $userService) {
-                        return isset($userService->service_data['configuration']['channel_id'])
-                            && $userService->service_data['configuration']['channel_id'] === $this->telegramChatId;
-                    });
-
-                if ($userService === null) {
-                    throw new TelegramUserServiceNotFound(
-                        "Telegram user service not found for user {$this->notification->trigger->user->id} and chat id {$this->telegramChatId}",
-                        null,
-                        $e
-                    );
-                }
-
-                $data = $userService->service_data;
+                $data = $this->userService->service_data;
                 $data['configuration']['channel_id'] = $migrateToChatId;
-                $userService->service_data = $data;
-                $userService->save();
+                $this->userService->service_data = $data;
+                $this->userService->save();
 
                 $this->sendTelegramMessageTo(
                     $migrateToChatId,
