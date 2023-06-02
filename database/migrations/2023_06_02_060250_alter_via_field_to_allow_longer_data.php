@@ -8,7 +8,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::table('triggers', function (Blueprint $table) {
-            $table->json('via')->change();
+            $table->json('via')->nullable()->change();
         });
     }
 
