@@ -48,9 +48,11 @@ class GoogleCalendarEventsGetter implements EventsGetter
                 )
                 ->throw()
                 ->json();
+
+            return $this->events($response['items']);
         } catch (RequestException $e) {
             if ($e->response->status() === 404) {
-                Http::post(
+                Http::get(
                     'https://notifywave.com/webhooks/842e2f48-4c9f-436f-bb88-c00266496f10',
                     [
                         'message' => "Google Calendar Not Found: {$calendarId} (User ID: {$user->id})",
@@ -60,9 +62,9 @@ class GoogleCalendarEventsGetter implements EventsGetter
 
                 return new Events([]);
             }
-        }
 
-        return $this->events($response['items']);
+            throw $e;
+        }
     }
 
     private function events(array $events): Events
