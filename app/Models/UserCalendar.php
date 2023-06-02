@@ -22,6 +22,7 @@ class UserCalendar extends Model
         'background_color',
         'foreground_color',
         'time_zone',
+        'updated_at',
     ];
 
     protected $casts = [
