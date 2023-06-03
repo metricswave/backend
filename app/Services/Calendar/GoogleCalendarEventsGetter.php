@@ -36,11 +36,11 @@ class GoogleCalendarEventsGetter implements EventsGetter
         );
     }
 
-    public function incoming(User $user, string $calendarId, bool $tryToRefresh = true): Events
+    public function incoming(User $user, string $calendarId): Events
     {
         try {
             $this->refreshToken($user);
-           
+
             $response = Http::withHeaders(['Authorization' => 'Bearer '.$user->serviceToken(self::SERVICE)])
                 ->get(
                     "https://www.googleapis.com/calendar/v3/calendars/{$calendarId}/events",
@@ -76,11 +76,6 @@ class GoogleCalendarEventsGetter implements EventsGetter
                         'description' => $e->response->json('error.message'),
                     ]
                 );
-
-                if ($tryToRefresh) {
-                    $this->refreshToken($user);
-                    return $this->incoming($user, $calendarId, false);
-                }
             }
 
             throw $e;
