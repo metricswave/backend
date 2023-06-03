@@ -108,9 +108,14 @@ class GoogleCalendarEventsGetter implements EventsGetter
             ->throw()
             ->json();
 
-        $user->userServiceById(self::SERVICE)->update([
-            'token' => $response['access_token'],
-            'refresh_token' => $response['refresh_token'] ?? $refreshToken,
-        ]);
+        $userService = $user->userServiceById(self::SERVICE);
+        $data = $userService->service_data;
+        $data['token'] = $response['access_token'];
+        if (isset($response['refresh_token'])) {
+            $data['refreshToken'] = $response['refresh_token'];
+        }
+
+        $userService->service_data = $data;
+        $userService->save();
     }
 }
