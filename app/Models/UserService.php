@@ -16,6 +16,7 @@ class UserService extends Model
     protected $fillable = [
         'user_id',
         'service_id',
+        'reconectable',
         'service_data',
     ];
 

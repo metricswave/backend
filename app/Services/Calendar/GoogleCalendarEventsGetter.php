@@ -76,6 +76,8 @@ class GoogleCalendarEventsGetter implements EventsGetter
                         'description' => $e->response->json('error.message'),
                     ]
                 );
+
+                $user->userServiceById(self::SERVICE)->update(['reconectable' => true]);
             }
 
             throw $e;
