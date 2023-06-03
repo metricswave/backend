@@ -176,7 +176,7 @@ class TriggerTypeSeeder extends Seeder
         TriggerType::updateOrCreate(
             ['id' => TriggerTypeId::CalendarTimeToLeave],
             [
-                'name' => 'Calendar Event: Time to Leave',
+                'name' => 'Calendar Event: Time to Leave (Beta)',
                 'icon' => 'live_transit.png',
                 'description' => 'Receive a notification when it\'s time to leave to the next event with location in your calendar.',
                 'configuration' => [
