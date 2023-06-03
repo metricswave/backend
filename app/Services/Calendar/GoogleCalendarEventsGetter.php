@@ -110,7 +110,6 @@ class GoogleCalendarEventsGetter implements EventsGetter
 
         $user->serviceById(self::SERVICE)->update([
             'token' => $response['access_token'],
-            'refresh_token' => $response['refresh_token'] ?? $refreshToken,
         ]);
     }
 }
