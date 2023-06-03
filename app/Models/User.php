@@ -124,10 +124,10 @@ class User extends Authenticatable
 
     public function serviceToken(ServiceId $serviceId): string
     {
-        return $this->serviceById($serviceId)->service_data['token'];
+        return $this->userServiceById($serviceId)->service_data['token'];
     }
 
-    public function serviceById(ServiceId $serviceId): ?UserService
+    public function userServiceById(ServiceId $serviceId): ?UserService
     {
         /** @var UserService|null $service */
         $service = $this->services()->where('service_id', $serviceId->value)->first();
@@ -142,7 +142,7 @@ class User extends Authenticatable
 
     public function serviceRefreshToken(ServiceId $serviceId): string
     {
-        return $this->serviceById($serviceId)->service_data['refresh_token'];
+        return $this->userServiceById($serviceId)->service_data['refreshToken'];
     }
 
     public function calendars(): HasMany
