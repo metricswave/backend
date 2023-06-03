@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Events\TriggerNotificationSent;
 use App\Notifications\TriggerNotification;
 use App\Services\Visits\Visits;
+use App\Transfers\ServiceId;
 use Illuminate\Contracts\Notifications\Dispatcher;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -121,16 +122,27 @@ class User extends Authenticatable
         return 99999;
     }
 
-    public function serviceToken(string $driver): string
+    public function serviceToken(ServiceId $serviceId): string
     {
-        $service = Service::query()->where('driver', $driver)->firstOrFail();
+        return $this->serviceById($serviceId)->service_data['token'];
+    }
 
-        return $this->services()->where('service_id', $service->id)->first()->service_data['token'];
+    public function serviceById(ServiceId $serviceId): ?UserService
+    {
+        /** @var UserService|null $service */
+        $service = $this->services()->where('service_id', $serviceId->value)->first();
+
+        return $service;
     }
 
     public function services(): HasMany
     {
         return $this->hasMany(UserService::class);
+    }
+
+    public function serviceRefreshToken(ServiceId $serviceId): string
+    {
+        return $this->serviceById($serviceId)->service_data['refresh_token'];
     }
 
     public function calendars(): HasMany

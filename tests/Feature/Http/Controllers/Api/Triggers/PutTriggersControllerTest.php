@@ -18,7 +18,7 @@ it('updates a trigger', function () {
             'content' => 'This is a test trigger',
             'via' => [
                 [
-                    'value' => 'mail',
+                    'id' => 0,
                     'label' => 'Mail',
                     'checked' => true,
                     'type' => 'mail',
@@ -32,7 +32,14 @@ it('updates a trigger', function () {
         'emoji' => '👍',
         'title' => 'Test Trigger',
         'content' => 'This is a test trigger',
-        'via' => "[{\"value\":\"mail\",\"label\":\"Mail\",\"checked\":true,\"type\":\"mail\"}]",
+        'via' => cast_to_json([
+            [
+                'id' => 0,
+                'label' => 'Mail',
+                'checked' => true,
+                'type' => 'mail',
+            ]
+        ]),
     ]);
 });
 

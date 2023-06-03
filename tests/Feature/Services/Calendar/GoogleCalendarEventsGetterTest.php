@@ -5,12 +5,13 @@ use App\Models\User;
 use App\Models\UserService;
 use App\Services\Calendar\Events;
 use App\Services\Calendar\GoogleCalendarEventsGetter;
+use App\Transfers\ServiceId;
 use Tests\Feature\Services\Calendar\GoogleCalendarUpcomingEvents;
 
 it('return expected Events', function () {
     $user = User::factory()->create();
-    $service = Service::factory()->create(['driver' => 'google']);
-    UserService::factory()->for($user)->create([
+    $service = Service::factory()->create(['id' => ServiceId::Google->value, 'driver' => 'google']);
+    UserService::factory()->for($user)->createQuietly([
         'service_id' => $service->id,
         'service_data' => ['token' => 'random valid token']
     ]);

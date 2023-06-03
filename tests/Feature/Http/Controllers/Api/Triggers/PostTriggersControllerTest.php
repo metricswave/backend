@@ -49,7 +49,7 @@ it('creates a trigger', function () {
             ],
             'via' => [
                 [
-                    'value' => 'mail',
+                    'id' => 0,
                     'label' => 'Mail',
                     'checked' => true,
                     'type' => 'mail',
@@ -70,7 +70,14 @@ it('creates a trigger', function () {
                 'weekdays' => ['monday', 'tuesday'],
             ],
         ]),
-        'via' => "[{\"value\":\"mail\",\"label\":\"Mail\",\"checked\":true,\"type\":\"mail\"}]",
+        'via' => cast_to_json([
+            [
+                'id' => 0,
+                'label' => 'Mail',
+                'checked' => true,
+                'type' => 'mail',
+            ]
+        ]),
     ]);
 });
 

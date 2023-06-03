@@ -10,7 +10,7 @@ class GoogleCalendarGetter implements CalendarGetter
 {
     public function all(User $user): Calendars
     {
-        $response = Http::withHeaders(['Authorization' => 'Bearer '.$user->serviceToken('google')])
+        $response = Http::withHeaders(['Authorization' => 'Bearer '.$user->serviceToken(ServiceId::Google)])
             ->get(
                 'https://www.googleapis.com/calendar/v3/users/me/calendarList'
             )

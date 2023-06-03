@@ -10,14 +10,15 @@ use App\Models\UserCalendar;
 use App\Models\UserService;
 use App\Notifications\TriggerNotification;
 use App\Services\Calendar\Event;
+use App\Transfers\ServiceId;
 use App\Transfers\TriggerTypeId;
 use Illuminate\Support\Carbon;
 use Tests\Feature\Services\Calendar\GoogleCalendarEventFind;
 
 it('enqueue UserTriggerNotificationJob', function () {
     $user = User::factory()->create();
-    $service = Service::factory()->create(['driver' => 'google']);
-    UserService::factory()->for($user)->create([
+    $service = Service::factory()->create(['id' => ServiceId::Google->value, 'driver' => 'google']);
+    UserService::factory()->for($user)->createQuietly([
         'service_id' => $service->id,
         'service_data' => ['token' => 'random valid token']
     ]);
@@ -47,8 +48,8 @@ it('enqueue UserTriggerNotificationJob', function () {
 
 it("don't enqueue UserTriggerNotificationJob because event was deleted", function () {
     $user = User::factory()->create();
-    $service = Service::factory()->create(['driver' => 'google']);
-    UserService::factory()->for($user)->create([
+    $service = Service::factory()->create(['id' => ServiceId::Google->value, 'driver' => 'google']);
+    UserService::factory()->for($user)->createQuietly([
         'service_id' => $service->id,
         'service_data' => ['token' => 'random valid token']
     ]);
@@ -74,8 +75,8 @@ it("don't enqueue UserTriggerNotificationJob because event was deleted", functio
 
 it("don't enqueue UserTriggerNotificationJob because location was deleted", function () {
     $user = User::factory()->create();
-    $service = Service::factory()->create(['driver' => 'google']);
-    UserService::factory()->for($user)->create([
+    $service = Service::factory()->create(['id' => ServiceId::Google->value, 'driver' => 'google']);
+    UserService::factory()->for($user)->createQuietly([
         'service_id' => $service->id,
         'service_data' => ['token' => 'random valid token']
     ]);
@@ -108,8 +109,8 @@ it("don't enqueue UserTriggerNotificationJob because location was deleted", func
 
 it("don't enqueue UserTriggerNotificationJob because start at time changed", function () {
     $user = User::factory()->create();
-    $service = Service::factory()->create(['driver' => 'google']);
-    UserService::factory()->for($user)->create([
+    $service = Service::factory()->create(['id' => ServiceId::Google->value, 'driver' => 'google']);
+    UserService::factory()->for($user)->createQuietly([
         'service_id' => $service->id,
         'service_data' => ['token' => 'random valid token']
     ]);

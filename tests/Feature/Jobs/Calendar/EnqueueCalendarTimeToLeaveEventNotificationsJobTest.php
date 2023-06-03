@@ -8,13 +8,14 @@ use App\Models\TriggerType;
 use App\Models\User;
 use App\Models\UserCalendar;
 use App\Models\UserService;
+use App\Transfers\ServiceId;
 use App\Transfers\TriggerTypeId;
 use Tests\Feature\Services\Calendar\GoogleCalendarUpcomingEvents;
 
 it('should enqueue CalendarTimeToLeaveTriggerNotificationJob', function () {
     $user = User::factory()->create();
-    $service = Service::factory()->create(['driver' => 'google']);
-    UserService::factory()->for($user)->create([
+    $service = Service::factory()->create(['id' => ServiceId::Google->value, 'driver' => 'google']);
+    UserService::factory()->for($user)->createQuietly([
         'service_id' => $service->id,
         'service_data' => ['token' => 'random valid token']
     ]);

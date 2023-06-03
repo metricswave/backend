@@ -5,13 +5,14 @@ use App\Models\User;
 use App\Models\UserService;
 use App\Services\Calendar\Calendars;
 use App\Services\Calendar\GoogleCalendarGetter;
+use App\Transfers\ServiceId;
 use Tests\Feature\Services\Calendar\GoogleCalendarList;
 use function Tests\Feature\Services\Calendar\fakeGoogleCalendarListApiCall;
 
 it('return expected Calendars', function () {
     $user = User::factory()->create();
-    $service = Service::factory()->create(['driver' => 'google']);
-    UserService::factory()->for($user)->create([
+    $service = Service::factory()->create(['id' => ServiceId::Google->value, 'driver' => 'google']);
+    UserService::factory()->for($user)->createQuietly([
         'service_id' => $service->id,
         'service_data' => ['token' => 'random valid token']
     ]);
