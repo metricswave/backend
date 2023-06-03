@@ -39,6 +39,8 @@ class GoogleCalendarEventsGetter implements EventsGetter
     public function incoming(User $user, string $calendarId, bool $tryToRefresh = true): Events
     {
         try {
+            $this->refreshToken($user);
+           
             $response = Http::withHeaders(['Authorization' => 'Bearer '.$user->serviceToken(self::SERVICE)])
                 ->get(
                     "https://www.googleapis.com/calendar/v3/calendars/{$calendarId}/events",
@@ -85,13 +87,6 @@ class GoogleCalendarEventsGetter implements EventsGetter
         }
     }
 
-    private function events(array $events): Events
-    {
-        $events = collect($events)->map(fn(array $event) => $this->event($event));
-
-        return new Events($events->all());
-    }
-
     public function refreshToken(User $user): void
     {
         $refreshToken = $user->serviceRefreshToken(self::SERVICE);
@@ -117,5 +112,12 @@ class GoogleCalendarEventsGetter implements EventsGetter
 
         $userService->service_data = $data;
         $userService->save();
+    }
+
+    private function events(array $events): Events
+    {
+        $events = collect($events)->map(fn(array $event) => $this->event($event));
+
+        return new Events($events->all());
     }
 }
