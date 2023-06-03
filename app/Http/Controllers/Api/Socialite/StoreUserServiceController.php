@@ -27,9 +27,12 @@ class StoreUserServiceController extends JsonTokenResponseController
         }
 
         try {
-            $user = $this->userRepository->updateOrCreate($socialiteUser->email, [
-                'name' => $socialiteUser->name,
-            ]);
+            $user = $this->userRepository->updateOrCreate(
+                $socialiteUser->email,
+                [
+                    'name' => $socialiteUser->name,
+                ]
+            );
         } catch (CanNotCreateUserBecauseNoPaidLicence) {
             return $this->errorResponse('Only paid license users can create an account right now.', 409);
         }
@@ -40,6 +43,7 @@ class StoreUserServiceController extends JsonTokenResponseController
                 'user_id' => $user->id
             ],
             [
+                'reconectable' => false,
                 'service_data' => [
                     'id' => $socialiteUser->id,
                     'token' => $socialiteUser->token,
