@@ -4,7 +4,7 @@ blueprint: documentation
 title: Triggers
 short_content: 'Information about how triggers works and different types and configurations.'
 updated_by: 1
-updated_at: 1683633963
+updated_at: 1685869644
 ---
 Triggers are the root cause of every notification. They are different, have different configurations and each fits a different use case.
 
@@ -14,6 +14,7 @@ Triggers are the root cause of every notification. They are different, have diff
 - [Webhooks](/documentation/triggers/webhooks): connect external applications, devices or scripts easily.
 - [Weather Summary](/documentation/triggers/weather-summary): receive today's or tomorrow's weather forecast in for your location.
 - [Time To Leave](/documentation/triggers/time-to-leave): receive a notification 15 min before departure time to arrive at your destination on time.
+- [Calendar Time To Leave](/documentation/triggers/calendar-time-to-leave): receive a notoification 15 min before departure time for all you events in your calendar with a location.
 
 ---
 
