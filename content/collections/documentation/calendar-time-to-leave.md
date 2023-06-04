@@ -4,7 +4,7 @@ blueprint: documentation
 title: 'Triggers: Calendar Time To Leave'
 parent: 3826e861-c213-4482-8ab7-0e3add2a4d7f
 updated_by: 1
-updated_at: 1685870859
+updated_at: 1685871127
 short_content: 'This trigger will send you a notification at departure time so that you arrive on time to all the events in your calendar.'
 ---
 Receive a Time To Leave notification for each event with a location in your calendar.
