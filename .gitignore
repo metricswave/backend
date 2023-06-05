@@ -1,3 +1,4 @@
+/mysql_backup
 /.phpunit.cache
 /node_modules
 /public/build
