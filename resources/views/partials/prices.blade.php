@@ -37,11 +37,20 @@
                         <span class="-ml-1 text-3xl opacity-80">.{{ explode(',', number_format($price->price/100, 2, ',', '.'))[1] }}</span>
                     </h3>
 
-                    <p class="mt-2 opacity-80 text-center text-xs leading-relaxed {{ $price->remaining === 0 ? 'text-red-500' : '' }} {{ $price->remaining > 0 && $price->remaining < 7 ? 'text-yellow-500' : '' }}">
+                    @php
+                        $percentage = $price->remaining / $price->total_available;
+                        $color = match (true) {
+                            $percentage < 0.5 && $percentage > 0.25 => 'text-yellow-500',
+                            $percentage < 0.25 => 'text-red-500',
+                            default => ''
+                        }
+                    @endphp
+
+                    <p class="mt-2 opacity-80 text-center text-xs leading-relaxed {{$color}}">
                         {{ $price->remaining }} of {{ $price->total_available }} remaining.
                     </p>
 
-                    <p class="mt-0 opacity-80 text-center text-xs leading-relaxed {{ $price->remaining === 0 ? 'text-red-500' : '' }} {{ $price->remaining > 0 && $price->remaining < 7 ? 'text-yellow-500' : '' }}">
+                    <p class="mt-0 opacity-80 text-center text-xs leading-relaxed {{ $color }}">
                         Next price will be <strong>30% higher</strong>!
                     </p>
 
