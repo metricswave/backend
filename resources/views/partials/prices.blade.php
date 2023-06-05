@@ -1,4 +1,7 @@
-@php use App\Services\Prices\GetLandingPricesService;use App\Transfers\PriceType; @endphp
+@php
+    use App\Services\Prices\GetLandingPricesService;use App\Transfers\PriceType;
+    $withoutTitle = $withoutTitle ?? false;
+@endphp
 
 <div class="relative">
     <div class="absolute bottom-2 left-10 h-48 w-48 animate-blob rounded-full bg-pink-500/30 blur-3xl"></div>
@@ -6,19 +9,21 @@
     <div class="absolute bottom-12 right-10 h-48 w-48 animate-blob rounded-full bg-blue-500/30 blur-3xl"></div>
     <div class="absolute top-24 right-36 h-48 w-48 animate-blob rounded-full bg-pink-500/30 blur-3xl"></div>
 
-    <div class="p-app mt-12 sm:mt-44 mw-landing mx-auto">
-        <h2 class="text-4xl sm:text-center font-bold mb-6">Get your lifetime license deal</h2>
-        <div class="sm:text-center opacity-50 pb-6 flex flex-col space-y-3 md:px-10">
-            <p>We are currently selling lifetime licenses and monthly subsciptions at a discounted price. It will
-                increase soon.</p>
-            <p class="font-bold">Users who buy any of them will receive and invitation inmediately.</p>
-        </div>
-
-        <div class="sm:text-center">
-            <div class="opacity-70 smooth mb-6 sm:mb-12 mx-auto inline-block bg-gradient-to-r from-yellow-200 to-yellow-200 bg-no-repeat [background-position:0_88%] hover:opacity-75 [background-size:100%_0.2em] motion-safe:transition-all motion-safe:duration-200 hover:[background-size:100%_100%] focus:[background-size:100%_100%]">
-                +500 users are trusting us!
+    <div class="p-app mt-12 {{!$withoutTitle ? 'sm:mt-44' : ''}} mw-landing mx-auto">
+        @if (!$withoutTitle)
+            <h2 class="text-4xl sm:text-center font-bold mb-6">Get your lifetime license deal</h2>
+            <div class="sm:text-center opacity-50 pb-6 flex flex-col space-y-3 md:px-10">
+                <p>We are currently selling lifetime licenses and monthly subsciptions at a discounted price. It will
+                    increase soon.</p>
+                <p class="font-bold">Users who buy any of them will receive and invitation inmediately.</p>
             </div>
-        </div>
+
+            <div class="sm:text-center">
+                <div class="opacity-70 smooth mb-6 sm:mb-12 mx-auto inline-block bg-gradient-to-r from-yellow-200 to-yellow-200 bg-no-repeat [background-position:0_88%] hover:opacity-75 [background-size:100%_0.2em] motion-safe:transition-all motion-safe:duration-200 hover:[background-size:100%_100%] focus:[background-size:100%_100%]">
+                    +500 users are trusting us!
+                </div>
+            </div>
+        @endif
 
         <div class="mw-landing mx-auto flex flex-col space-y-6 sm:flex-row sm:space-y-0 sm:space-x-6">
             @foreach(app(GetLandingPricesService::class)() as $price)
