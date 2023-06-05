@@ -27,6 +27,10 @@ class TelegramErrorNotification extends Notification implements ShouldQueue
 
     public function via(User $notifiable): array
     {
+        if (TelegramChannelErrors::GROUP_CHAT_UPGRADED_TO_SUPERGROUP_CHAT !== $this->error) {
+            return [];
+        }
+
         $key = CacheKey::generate('telegram_error_notification', $this->channelId);
         if (Cache::has($key)) {
             return [];
@@ -39,10 +43,6 @@ class TelegramErrorNotification extends Notification implements ShouldQueue
 
     public function toMail(User $notifiable): MailMessage
     {
-        if (TelegramChannelErrors::GROUP_CHAT_UPGRADED_TO_SUPERGROUP_CHAT !== $this->error) {
-            return;
-        }
-
         $channelName = $this->userService->service_data['configuration']['channel_name'] ?? null;
         if ($channelName) {
             $subject = "🚨 We can't send your Telegram channel '{$channelName}'";

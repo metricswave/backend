@@ -5,7 +5,9 @@ namespace App\Models;
 use App\Events\TriggerNotificationSent;
 use App\Notifications\TriggerNotification;
 use App\Services\Visits\Visits;
+use App\Transfers\PriceType;
 use App\Transfers\ServiceId;
+use App\Transfers\SubscriptionType;
 use Illuminate\Contracts\Notifications\Dispatcher;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -43,6 +45,7 @@ class User extends Authenticatable
 
     protected $appends = [
         'subscription_status',
+        'subscription_type',
     ];
 
     /**
@@ -134,7 +137,23 @@ class User extends Authenticatable
             return false;
         }
 
-        return $lead->paid_at !== null;
+        return $lead->price_id !== null;
+    }
+
+    public function getSubscriptionTypeAttribute(): ?SubscriptionType
+    {
+        if ($this->subscription_status === false) {
+            return SubscriptionType::Free;
+        }
+
+        $paidPriceId = Lead::query()->where('email', $this->email)->first()->price_id;
+        $price = Price::query()->find($paidPriceId);
+
+        if ($price->type === PriceType::Lifetime) {
+            return SubscriptionType::Lifetime;
+        }
+
+        return SubscriptionType::Monthly;
     }
 
     public function serviceToken(ServiceId $serviceId): string

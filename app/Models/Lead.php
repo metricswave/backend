@@ -9,7 +9,7 @@ class Lead extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['uuid', 'email', 'paid_price', 'paid_at', 'form_filled'];
+    protected $fillable = ['uuid', 'email', 'price_id', 'paid_price', 'paid_at', 'form_filled'];
 
     protected $casts = [
         'paid_at' => 'datetime',

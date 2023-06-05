@@ -26,11 +26,15 @@ class StripeEventListener
                 $email = $event->payload['data']['object']['customer_details']['email'];
 
                 $lead = ($this->firstOrCreateLeadService)($email);
-                $lead->update(['paid_price' => $price->price, 'paid_at' => now()]);
             } else {
-                Lead::where('uuid', $leadUuid)
-                    ->update(['paid_price' => $price->price, 'paid_at' => now()]);
+                $lead = Lead::where('uuid', $leadUuid)->first();
             }
+
+            $lead->update([
+                'price_id' => $price->id,
+                'paid_price' => $price->price,
+                'paid_at' => now()
+            ]);
 
             $price->update([
                 'remaining' => max(0, $price->remaining - 1),

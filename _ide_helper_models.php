@@ -17,6 +17,7 @@ namespace App\Models{
  * @property int $id
  * @property string $uuid
  * @property string $email
+ * @property int|null $price_id
  * @property int $paid_price
  * @property \Illuminate\Support\Carbon|null $paid_at
  * @property bool $form_filled
@@ -32,6 +33,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Lead whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Lead wherePaidAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Lead wherePaidPrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Lead wherePriceId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Lead whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Lead whereUuid($value)
  */
@@ -67,6 +69,7 @@ namespace App\Models{
  * @property int $id
  * @property int $price
  * @property int $remaining
+ * @property \App\Transfers\PriceType $type
  * @property int $total_available
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -79,6 +82,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Price wherePrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Price whereRemaining($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Price whereTotalAvailable($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Price whereType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Price whereUpdatedAt($value)
  */
 	class Price extends \Eloquent {}
@@ -103,6 +107,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Service newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Service newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Service query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Service sFor()
  * @method static \Illuminate\Database\Eloquent\Builder|Service whereConfiguration($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Service whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Service whereDescription($value)
@@ -121,7 +126,7 @@ namespace App\Models{
  * App\Models\Trigger
  *
  * @property array{version: string, fields: array{name: string, value: string|array|int}} $configuration
- * @property array{value: string, label: string, checked: bool, type: string} $via
+ * @property array{id: string, label: string, checked: bool, type: string} $via
  * @property int $id
  * @property int $user_id
  * @property int $trigger_type_id
@@ -214,6 +219,8 @@ namespace App\Models{
  * @property string|null $last_login
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\UserCalendar> $calendars
  * @property-read int|null $calendars_count
+ * @property-read bool $subscription_status
+ * @property-read \App\Transfers\SubscriptionType|null $subscription_type
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\MailLog> $mailLogs
  * @property-read int|null $mail_logs_count
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
@@ -252,7 +259,18 @@ namespace App\Models{
 /**
  * App\Models\UserCalendar
  *
+ * @property int $id
+ * @property int $user_id
  * @property \App\Transfers\ServiceId $service_id
+ * @property string $calendar_id
+ * @property string $name
+ * @property string|null $description
+ * @property string|null $background_color
+ * @property string|null $foreground_color
+ * @property string $time_zone
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\UserService|null $service
  * @property-read \App\Models\User $user
  * @method static \Database\Factories\UserCalendarFactory factory($count = null, $state = [])
@@ -260,6 +278,18 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar query()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar whereBackgroundColor($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar whereCalendarId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar whereForegroundColor($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar whereServiceId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar whereTimeZone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar withoutTrashed()
  */
@@ -273,19 +303,23 @@ namespace App\Models{
  * @property int $id
  * @property int $user_id
  * @property int $service_id
+ * @property int $reconectable
  * @property array $service_data
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property string|null $channel_id
  * @property-read \App\Models\User $user
  * @method static \Database\Factories\UserServiceFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|UserService newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|UserService newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|UserService onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|UserService query()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserService whereChannelId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|UserService whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|UserService whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|UserService whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserService whereReconectable($value)
  * @method static \Illuminate\Database\Eloquent\Builder|UserService whereServiceData($value)
  * @method static \Illuminate\Database\Eloquent\Builder|UserService whereServiceId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|UserService whereUpdatedAt($value)
