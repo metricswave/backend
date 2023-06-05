@@ -13,6 +13,10 @@ class Kernel extends ConsoleKernel
         $schedule->command('horizon:snapshot')->everyFiveMinutes();
 
         // Mails
+        $schedule->command('app:mail:lead-beta-access --free-users --count=1')
+            ->emailOutputTo('victoor89@gmail.com')
+            ->dailyAt(8);
+        $schedule->command('app:mail:lead-beta-access')->everyMinute();
         $schedule->command('app:mail:user-lifetime-licence-mail')->twiceDaily(12, 20);
         $schedule->command('app:mail-users-without-triggers-command')->twiceDaily(12, 20);
 

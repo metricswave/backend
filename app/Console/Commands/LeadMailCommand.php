@@ -30,7 +30,7 @@ trait LeadMailCommand
         if ($email !== null) {
             $leads = Lead::where('email', $email)->get();
         } else {
-            $leads = Lead::whereNull('paid_at')->get();
+            $leads = Lead::whereNull('paid_at')->orderBy('id')->get();
             $mailLogs = MailLog::where('type', $type)->get()->pluck('mail');
 
             $leads = $leads->filter(function (Lead $lead) use ($mailLogs) {
