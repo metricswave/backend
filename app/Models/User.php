@@ -41,6 +41,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected $appends = [
+        'subscription_status',
+    ];
+
     /**
      * @param  string  $deviceName
      * @return array{token: array{token: string, expires_at: int}, refresh_token: array{token: string, expires_at: int}}
@@ -115,11 +119,22 @@ class User extends Authenticatable
 
     public function triggerMonthlyLimit(): int
     {
-        if ($this->email === 'victoor89@gmail.com') {
-            return 10;
+        if ($this->subscription_status) {
+            return 30;
         }
 
         return 99999;
+    }
+
+    public function getSubscriptionStatusAttribute(): bool
+    {
+        $lead = Lead::query()->where('email', $this->email)->first();
+
+        if ($lead === null) {
+            return false;
+        }
+
+        return $lead->paid_at !== null;
     }
 
     public function serviceToken(ServiceId $serviceId): string
