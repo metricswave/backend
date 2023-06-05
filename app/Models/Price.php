@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Transfers\PriceType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -9,12 +10,13 @@ class Price extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['price', 'remaining', 'total_available'];
+    protected $fillable = ['price', 'remaining', 'total_available', 'type'];
 
     protected $casts = [
         'price' => 'integer',
         'remaining' => 'integer',
         'total_available' => 'integer',
+        'type' => PriceType::class,
     ];
 
     public function isAvailable(): bool

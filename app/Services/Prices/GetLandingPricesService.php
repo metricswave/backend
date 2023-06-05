@@ -3,29 +3,33 @@
 namespace App\Services\Prices;
 
 use App\Models\Price;
-use Illuminate\Support\Collection;
+use App\Transfers\PriceType;
 
 class GetLandingPricesService
 {
-    /**
-     * @return Collection<Price>
-     */
-    public function __invoke(): Collection
+    public function __invoke(): LandingPrices
     {
-        $prices = Price::query()->orderBy('price')->get();
-        $grouped = $prices->groupBy(fn(Price $price) => $price->remaining === 0 ? 'sold' : 'available');
+        return new LandingPrices(
+            $this->getMonthlyPrices(),
+            $this->getLifetimePrices(),
+        );
+    }
 
-        if ($prices->count() === 0) {
-            return collect();
-        }
+    private function getMonthlyPrices(): Price
+    {
+        return Price::query()
+            ->where('type', PriceType::Monthly)
+            ->where('remaining', '>', 0)
+            ->orderBy('price')
+            ->firstOrFail();
+    }
 
-        if (isset($grouped['sold'])) {
-            return collect([
-                $grouped['sold']->last(),
-                ...$grouped['available']->slice(0, 2)->all(),
-            ]);
-        }
-
-        return $grouped['available']->slice(0, 3);
+    private function getLifetimePrices(): Price
+    {
+        return Price::query()
+            ->where('type', PriceType::Lifetime)
+            ->where('remaining', '>', 0)
+            ->orderBy('price')
+            ->firstOrFail();
     }
 }

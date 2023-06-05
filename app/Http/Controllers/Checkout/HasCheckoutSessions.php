@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Checkout;
 
 use App\Models\Lead;
 use App\Models\Price;
+use App\Transfers\PriceType;
 use Laravel\Cashier\Checkout;
 
 trait HasCheckoutSessions
@@ -26,6 +27,26 @@ trait HasCheckoutSessions
             $price = Price::find($price->id + 1);
         }
 
+        $interval = [];
+        $mode = 'payment';
+        $productData = [
+            'name' => 'Lifetime license',
+            'description' => 'Lifetime license to '.config('app.name'),
+        ];
+
+        if ($price->type === PriceType::Monthly) {
+            $mode = 'subscription';
+            $interval = [
+                'recurring' => [
+                    'interval' => 'month',
+                ],
+            ];
+            $productData = [
+                'name' => 'StartUp Plan',
+                'description' => 'Monthly subscription to '.config('app.name'),
+            ];
+        }
+
         return Checkout::guest()
             ->create(
                 [
@@ -33,10 +54,8 @@ trait HasCheckoutSessions
                         'price_data' => [
                             'currency' => 'usd',
                             'unit_amount' => $price->price,
-                            'product_data' => [
-                                'name' => 'Lifetime license',
-                                'description' => 'Lifetime license to '.config('app.name'),
-                            ],
+                            'product_data' => $productData,
+                            ...$interval,
                         ],
                         'quantity' => 1,
                     ],
@@ -45,7 +64,7 @@ trait HasCheckoutSessions
                     ...$data,
                     'success_url' => url($successPage),
                     'cancel_url' => url($cancelPage),
-                    'mode' => 'payment',
+                    'mode' => $mode,
                     'metadata' => [
                         'lead_uuid' => $lead?->uuid,
                         'create_lead' => $lead === null,
