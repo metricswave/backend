@@ -9,20 +9,25 @@ use Laravel\Cashier\Checkout;
 
 trait HasCheckoutSessions
 {
-    public function checkout(Price $price, Lead $lead = null): Checkout
+    public function authCheckout(Price $price): Checkout
     {
-        if ($lead !== null) {
-            $successPage = '/leads/'.$lead->uuid.'/?success=true';
-            $cancelPage = '/leads/'.$lead->uuid.'?cancelled=true';
-            $data = [
-                'customer_email' => $lead->email,
-            ];
-        } else {
-            $successPage = '/payment/success';
-            $cancelPage = '/open';
-            $data = [];
-        }
+        $redirectTo = config('app.web_app_url').'/settings/billing?fromBillingPortal=true';
+        $successPage = $redirectTo.'&success=true';
+        $cancelPage = $redirectTo.'&cancelled=true';
+        $data = [
+            'customer_email' => $this->user()->email,
+        ];
 
+        return $this->createCheckoutSession($price, $data, $successPage, $cancelPage, null);
+    }
+
+    private function createCheckoutSession(
+        Price $price,
+        array $data,
+        string $successPage,
+        string $cancelPage,
+        ?Lead $lead
+    ): Checkout {
         while ($price->isAvailable() === false) {
             $price = Price::find($price->id + 1);
         }
@@ -72,5 +77,22 @@ trait HasCheckoutSessions
                     ],
                 ],
             );
+    }
+
+    public function checkout(Price $price, Lead $lead = null): Checkout
+    {
+        if ($lead !== null) {
+            $successPage = '/leads/'.$lead->uuid.'/?success=true';
+            $cancelPage = '/leads/'.$lead->uuid.'?cancelled=true';
+            $data = [
+                'customer_email' => $lead->email,
+            ];
+        } else {
+            $successPage = '/payment/success';
+            $cancelPage = '/open';
+            $data = [];
+        }
+
+        return $this->createCheckoutSession($price, $data, $successPage, $cancelPage, $lead);
     }
 }

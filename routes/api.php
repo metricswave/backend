@@ -6,6 +6,9 @@ use App\Http\Controllers\Api\Auth\LogoutController;
 use App\Http\Controllers\Api\Auth\RefreshTokenControllerController;
 use App\Http\Controllers\Api\Auth\ResetPasswordController;
 use App\Http\Controllers\Api\Auth\SignUpController;
+use App\Http\Controllers\Api\Checkout\GetPortalPathController;
+use App\Http\Controllers\Api\Checkout\GetPriceCheckoutPathController;
+use App\Http\Controllers\Api\Checkout\GetPricesController;
 use App\Http\Controllers\Api\Notifications\GetNotificationsController;
 use App\Http\Controllers\Api\Services\GetServicesController;
 use App\Http\Controllers\Api\Socialite\RedirectToDriverController;
@@ -16,6 +19,7 @@ use App\Http\Controllers\Api\Triggers\PostTriggersController;
 use App\Http\Controllers\Api\Triggers\PutTriggersController;
 use App\Http\Controllers\Api\TriggerTypes\GetTriggerTypesController;
 use App\Http\Controllers\Api\Users\GetUserController;
+use App\Http\Controllers\Api\Users\GetUserUsageController;
 use App\Http\Controllers\Api\UserServices\DeleteUserServiceController;
 use App\Http\Controllers\Api\UserServices\GetUserServicesController;
 use App\Http\Controllers\Api\UserServices\PostServiceController;
@@ -46,6 +50,14 @@ Route::get('/users', GetUserController::class);
 Route::get('/users/services', GetUserServicesController::class);
 Route::post('/users/services', PostServiceController::class);
 Route::delete('/users/services/{userService}', DeleteUserServiceController::class);
+
+// Usage
+Route::get('/users/usage', GetUserUsageController::class);
+
+// Checkout
+Route::get('/checkout/prices', GetPricesController::class);
+Route::get('/checkout/portal-path', GetPortalPathController::class);
+Route::get('/checkout/prices/{price}', GetPriceCheckoutPathController::class);
 
 // Notifications
 Route::get('/notifications', GetNotificationsController::class);
