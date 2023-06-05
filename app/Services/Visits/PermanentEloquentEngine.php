@@ -82,6 +82,25 @@ class PermanentEloquentEngine implements DataEngine
         }
     }
 
+    public function all(string $period, string $key, $member = null)
+    {
+        if (!empty($member) || is_numeric($member)) {
+            $query = $this->model->where(['primary_key' => $this->prefix.$key, 'secondary_key' => $member]);
+        } else {
+            $query = $this->model->where(['primary_key' => $this->prefix.$key, 'secondary_key' => null]);
+        }
+
+        return $query
+            ->orderByDesc('expired_at')
+            ->when($period === 'day', function ($q) {
+                return $q->whereDate('expired_at', '>', Carbon::now()->subDays(30));
+            })
+            ->when($period === 'month', function ($q) {
+                return $q->whereDate('expired_at', '>', Carbon::now()->months(12));
+            })
+            ->get(['score', 'expired_at']);
+    }
+
     public function get(string $key, $member = null)
     {
         if (!empty($member) || is_numeric($member)) {

@@ -3,14 +3,37 @@
 namespace App\Services\Visits;
 
 use Awssat\Visits\Visits as AwssatVisits;
+use Illuminate\Database\Eloquent\Collection;
 
 class Visits extends AwssatVisits
 {
+    private string $period;
+
+    public function period($period): Visits|static
+    {
+        if (in_array($period, $this->periods)) {
+            $this->keys->visits = $this->keys->period($period);
+            $this->period = $period;
+        } else {
+            throw new InvalidPeriod($period);
+        }
+
+        return $this;
+    }
+
     public function increment($inc = 1, $force = true, $ignore = []): bool
     {
         $response = parent::increment($inc, $force, $ignore);
         $this->periodsSync();
 
         return $response;
+    }
+
+    public function countAll(): Collection
+    {
+        $key = $this->keys->visits;
+        $id = $this->keys->id;
+
+        return $this->connection->all($this->period, $key, $id);
     }
 }
