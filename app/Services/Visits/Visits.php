@@ -4,7 +4,7 @@ namespace App\Services\Visits;
 
 use Awssat\Visits\Keys;
 use Awssat\Visits\Visits as AwssatVisits;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Collection;
 
 class Visits extends AwssatVisits
 {

@@ -98,7 +98,13 @@ class PermanentEloquentEngine implements DataEngine
                 return $q->whereDate('expired_at', '>', Carbon::now()->subMonths(12));
             })
             ->orderByDesc('expired_at')
-            ->get(['score', 'expired_at']);
+            ->get(['score', 'expired_at'])
+            ->map(function ($item) {
+                return [
+                    'score' => $item->score,
+                    'date' => $item->expired_at,
+                ];
+            });
     }
 
     public function get(string $key, $member = null)
