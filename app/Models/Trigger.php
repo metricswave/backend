@@ -65,6 +65,10 @@ class Trigger extends Model
     private function replaceVariables(string $content, array $params): string
     {
         foreach ($params as $key => $value) {
+            if ($value === null || is_array($value)) {
+                continue;
+            }
+            
             $content = Str::replace('{'.$key.'}', $value, $content);
         }
 
