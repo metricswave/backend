@@ -32,6 +32,10 @@ class ReplyWithGroupIdCommand extends Command
         $messages = Http::get("https://api.telegram.org/bot{$telegramBotToken}/getUpdates")
             ->json('result');
 
+        if (empty($messages)) {
+            return;
+        }
+
         foreach ($messages as $message) {
             if (isset($message['message']['chat']['type']) && $message['message']['chat']['type'] === 'group' && isset($message['message']['text']) && $message['message']['text'] === '/connect@NotifyWaveBot') {
                 $cacheKey = CacheKey::generate(
