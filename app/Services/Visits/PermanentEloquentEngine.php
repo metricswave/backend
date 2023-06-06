@@ -94,17 +94,25 @@ class PermanentEloquentEngine implements DataEngine
 
         return $query
             ->when($period === 'day', function ($q) {
-                return $q->whereDate('expired_at', '>', Carbon::now()->subDays(30));
+                return $q->where(function ($q) {
+                    return $q->whereDate('expired_at', '>',
+                        Carbon::now()->subDays(30)->startOfDay())->orWhereNull('expired_at');
+                });
             })
             ->when($period === 'month', function ($q) {
-                return $q->whereDate('expired_at', '>', Carbon::now()->subMonths(12));
+                return $q->where(function ($q) {
+                    return $q->whereDate('expired_at', '>',
+                        Carbon::now()->subMonths(12)->startOfMonth())->orWhereNull('expired_at');
+                });
             })
             ->orderByDesc('expired_at')
             ->get(['score', 'expired_at'])
-            ->map(function ($item) {
+            ->map(function ($item) use ($period) {
                 return [
                     'score' => $item->score,
-                    'date' => $item->expired_at,
+                    'date' => $item->expired_at === null ?
+                        ($period === 'day' ? now()->startOfDay() : now()->startOfMonth()) :
+                        $item->expired_at,
                 ];
             });
     }
