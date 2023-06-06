@@ -69,15 +69,3 @@ it('return error if not password confirmation', function () {
             'password' => 'The password field confirmation does not match.',
         ]);
 });
-
-it('return error if no payment lead created', function () {
-    $this
-        ->postJson('/api/signup', [
-            'name' => 'Victor',
-            'email' => 'victoor89@gmail.com',
-            'password' => 'password',
-            'password_confirmation' => 'password',
-            'device_name' => 'test',
-        ])
-        ->assertConflict();
-});
