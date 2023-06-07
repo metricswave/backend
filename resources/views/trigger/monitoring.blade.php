@@ -20,7 +20,7 @@
                 @include('landing.lead-form')
             @else
                 <a class="animate-[out_1.75s,_fade-in-down_1.5s_ease-out_1.75s] py-4 px-6 text-center bg-gradient-to-b from-slate-800 via-black to-black hover:bg-gradient-to-b hover:from-slate-600 hover:via-slate-900 hover:to-black text-white block mx-auto rounded-lg shadow-lg hover:shadow smooth"
-                   href="{{ config('app.web_app_url') }}?utm_source=calendar_ttl_landing">Start tracking my business</a>
+                   href="{{ config('app.web_app_url') }}?utm_source=monitoring_landing">Start tracking my business</a>
             @endif
         </div>
 
