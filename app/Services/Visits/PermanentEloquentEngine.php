@@ -94,7 +94,7 @@ class PermanentEloquentEngine implements DataEngine
                 return [
                     'score' => $item->score,
                     'date' => $item->expired_at === null ?
-                        ($period === 'day' ? now()->startOfDay() : now()->startOfMonth()) :
+                        ($period === 'day' ? now()->subDay()->startOfDay() : now()->subMonthNoOverflow()->startOfMonth()) :
                         $item->expired_at,
                 ];
             });
