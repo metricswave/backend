@@ -19,6 +19,7 @@ class GenerateSitemapCommand extends Command
     {
         $sitemap = Sitemap::create()
             ->add($this->url('', 1))
+            ->add($this->url('/trigger/monitoring', 0.8))
             ->add($this->url('/trigger/calendar-time-to-leave', 0.8))
             ->add($this->url('/trigger/deployments-notification', 0.8))
             ->add($this->url('/trigger/terminal', 0.8))

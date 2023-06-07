@@ -23,6 +23,10 @@ Route::get('/blog', BlogController::class);
 Route::get('/blog/category/{slug}', CategoryController::class);
 
 // Use case landings
+Route::view('/trigger/monitoring', 'trigger.monitoring', [
+    'title' => 'Real-time monitoring for your apps',
+    'meta_description' => 'Track every inch of your product, monitor potential issues or opportunities, and respond by making data-driven decisions.',
+]);
 Route::view('/trigger/calendar-time-to-leave', 'trigger.calendar-ttl', [
     'title' => 'Calendar Time To Leave notifications',
     'meta_description' => 'Receive a notification when it is time to leave for your next event. You can receive a notification in any device or app like Telegram, for example.',
