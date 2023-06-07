@@ -93,9 +93,7 @@ class PermanentEloquentEngine implements DataEngine
             ->map(function ($item) use ($period) {
                 return [
                     'score' => $item->score,
-                    'date' => $item->expired_at === null ?
-                        ($period === 'day' ? now()->subDay()->startOfDay() : now()->subMonthNoOverflow()->startOfMonth()) :
-                        $item->expired_at,
+                    'date' => $this->extractedDate($item, $period),
                 ];
             });
     }
@@ -115,6 +113,18 @@ class PermanentEloquentEngine implements DataEngine
                 })
                 ->value('score');
         }
+    }
+
+    private function extractedDate($item, string $period): Carbon
+    {
+        if ($item->expired_at === null) {
+            return now()->startOf($period);
+        }
+
+        /** @var Carbon $date */
+        $date = $item->expired_at;
+
+        return $date->sub($period, 1, false);
     }
 
     public function set(string $key, $value, $member = null): bool
