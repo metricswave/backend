@@ -36,12 +36,10 @@ class PermanentEloquentEngine implements DataEngine
 
     public function increment(string $key, int $value, $member = null): bool
     {
-        $date = now()->startOfDay();
-
         if (!empty($member) || is_numeric($member)) {
             $row = $this->model
                 ->where(fn(Builder $query) => $query
-                    ->whereDate('expired_at', '>=', $date)
+                    ->whereDate('expired_at', '>', now())
                     ->orWhereNull('expired_at')
                 )
                 ->firstOrNew([
@@ -50,7 +48,7 @@ class PermanentEloquentEngine implements DataEngine
         } else {
             $row = $this->model
                 ->where(fn(Builder $query) => $query
-                    ->whereDate('expired_at', '>=', $date)
+                    ->whereDate('expired_at', '>', now())
                     ->orWhereNull('expired_at')
                 )
                 ->firstOrNew([
@@ -58,7 +56,7 @@ class PermanentEloquentEngine implements DataEngine
                 ]);
         }
 
-        if ($row->expired_at !== null && $date->gt($row->expired_at)) {
+        if ($row->expired_at !== null && Carbon::now()->gt($row->expired_at)) {
             $row->score = $value;
             $row->expired_at = null;
         } else {
@@ -249,7 +247,7 @@ class PermanentEloquentEngine implements DataEngine
         return $this->model
             ->where(['primary_key' => $this->prefix.$key])
             ->where(function ($q) {
-                return $q->where('expired_at', '>', Carbon::now());
+                return $q->where('expired_at', '>', Carbon::now())->orWhereNull('expired_at');
             })
             ->update([
                 'expired_at' => Carbon::now()->addSeconds($time)
