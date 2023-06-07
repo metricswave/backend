@@ -6,6 +6,7 @@ use Awssat\Visits\DataEngines\DataEngine;
 use Awssat\Visits\Models\Visit as Model;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\QueryException;
 use Illuminate\Support\Collection;
 
 class PermanentEloquentEngine implements DataEngine
@@ -64,22 +65,6 @@ class PermanentEloquentEngine implements DataEngine
         }
 
         return $row->save();
-    }
-
-    public function delete($key, $member = null): bool
-    {
-        if (is_array($key)) {
-            array_walk($key, function ($item) {
-                $this->delete($item);
-            });
-            return true;
-        }
-
-        if (!empty($member) || is_numeric($member)) {
-            return $this->model->where(['primary_key' => $this->prefix.$key, 'secondary_key' => $member])->delete();
-        } else {
-            return $this->model->where(['primary_key' => $this->prefix.$key])->delete();
-        }
     }
 
     public function all(string $period, string $key, $member = null)
@@ -244,13 +229,55 @@ class PermanentEloquentEngine implements DataEngine
 
     public function setExpiration(string $key, int $time): bool
     {
-        return $this->model
-            ->where(['primary_key' => $this->prefix.$key])
-            ->where(function ($q) {
-                return $q->where('expired_at', '>', Carbon::now())->orWhereNull('expired_at');
-            })
-            ->update([
-                'expired_at' => Carbon::now()->addSeconds($time)
-            ]);
+        try {
+            return $this->model
+                ->where(['primary_key' => $this->prefix.$key])
+                ->where(function ($q) {
+                    return $q->where('expired_at', '>', Carbon::now())->orWhereNull('expired_at');
+                })
+                ->update([
+                    'expired_at' => Carbon::now()->addSeconds($time)
+                ]);
+        } catch (QueryException $exception) {
+            if ($exception->getCode() == 23000) {
+                $visits = $this->model
+                    ->where(['primary_key' => $this->prefix.$key])
+                    ->where(function ($q) {
+                        return $q->where('expired_at', '>', Carbon::now())->orWhereNull('expired_at');
+                    })
+                    ->get();
+
+                $visits->groupBy('secondary_key')->each(function ($item) use ($time) {
+                    $totalScore = $item->sum('score');
+
+                    $item->slice(1)->each(function ($item) {
+                        $item->delete();
+                    });
+
+                    $item->first()->update([
+                        'score' => $totalScore,
+                        'expired_at' => Carbon::now()->addSeconds($time)
+                    ]);
+                });
+
+                return true;
+            }
+        }
+    }
+
+    public function delete($key, $member = null): bool
+    {
+        if (is_array($key)) {
+            array_walk($key, function ($item) {
+                $this->delete($item);
+            });
+            return true;
+        }
+
+        if (!empty($member) || is_numeric($member)) {
+            return $this->model->where(['primary_key' => $this->prefix.$key, 'secondary_key' => $member])->delete();
+        } else {
+            return $this->model->where(['primary_key' => $this->prefix.$key])->delete();
+        }
     }
 }
