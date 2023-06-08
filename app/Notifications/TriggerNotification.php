@@ -33,8 +33,9 @@ class TriggerNotification extends Notification implements ShouldQueue
 
         $this->trigger->visits()->increment();
 
-        foreach ($this->params as $param) {
-            $this->trigger->visits($param)->increment();
+        foreach ($this->params as $param => $value) {
+            $key = implode('__', [$param, $value]);
+            $this->trigger->visits($key)->increment();
         }
 
         $via = collect($this->trigger->via)
