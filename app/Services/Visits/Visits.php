@@ -27,6 +27,8 @@ class Visits extends AwssatVisits
                 $this->connection->increment($periodKey.'_total', $inc, $value);
             }
         }
+
+        $this->periodsParamsSync($params);
     }
 
     public function period($period): Visits|static
@@ -41,6 +43,30 @@ class Visits extends AwssatVisits
         $this->periodsSync();
 
         return $response;
+    }
+
+    private function periodsParamsSync(array $params): void
+    {
+        foreach ($params as $param => $value) {
+            if (Str::of($value)->length() > 255) {
+                continue;
+            }
+
+            $key = Str::of($param)->snake();
+
+            foreach ($this->periods as $period) {
+                $periodKey = $this->keys->period($period);
+                $periodKey = "{$periodKey}_{$key}:{$this->keys->id}";
+
+                if ($this->noExpiration($periodKey)) {
+                    $expireInSeconds = $this->newExpiration($period);
+                    $this->connection->increment($periodKey.'_total', 0);
+                    $this->connection->increment($periodKey, 0, 0);
+                    $this->connection->setExpiration($periodKey, $expireInSeconds);
+                    $this->connection->setExpiration($periodKey.'_total', $expireInSeconds);
+                }
+            }
+        }
     }
 
     public function countAll(): Collection
