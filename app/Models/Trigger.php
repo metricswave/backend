@@ -52,9 +52,9 @@ class Trigger extends Model
         return $this->belongsTo(TriggerType::class);
     }
 
-    public function visits(): Visits
+    public function visits($tag = 'visits'): Visits
     {
-        return visitsService($this);
+        return visitsService($this, $tag);
     }
 
     public function formattedContent(array $params): string
@@ -68,7 +68,7 @@ class Trigger extends Model
             if ($value === null || is_array($value)) {
                 continue;
             }
-            
+
             $content = Str::replace('{'.$key.'}', $value, $content);
         }
 
