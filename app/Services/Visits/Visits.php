@@ -10,12 +10,6 @@ class Visits extends AwssatVisits
 {
     private string $period;
 
-    public function period($period): Visits|static
-    {
-        $this->period = $period;
-        return parent::period($period);
-    }
-
     public function recordParams(array $params, int $inc = 1): void
     {
         foreach ($params as $param => $value) {
@@ -24,12 +18,21 @@ class Visits extends AwssatVisits
             }
 
             $key = Str::of($param)->snake();
-            $this->connection->increment(
-                $this->keys->visits."_{$key}:{$this->keys->id}",
-                $inc,
-                $value,
-            );
+
+            foreach ($this->periods as $period) {
+                $periodKey = $this->keys->period($period);
+                $periodKey = "{$periodKey}_{$key}:{$this->keys->id}";
+
+                $this->connection->increment($periodKey, $inc, $value);
+                $this->connection->increment($periodKey.'_total', $inc, $value);
+            }
         }
+    }
+
+    public function period($period): Visits|static
+    {
+        $this->period = $period;
+        return parent::period($period);
     }
 
     public function increment($inc = 1, $force = true, $ignore = []): bool
