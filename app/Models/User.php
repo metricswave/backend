@@ -97,7 +97,7 @@ class User extends Authenticatable
         return $this->hasMany(Trigger::class);
     }
 
-    public function notify($instance)
+    public function notify($instance): void
     {
         if ($instance instanceof TriggerNotification) {
             $this->triggerNotificationVisits()->increment();
