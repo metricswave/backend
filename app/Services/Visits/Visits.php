@@ -4,6 +4,7 @@ namespace App\Services\Visits;
 
 use Awssat\Visits\Visits as AwssatVisits;
 use Illuminate\Support\Collection;
+use Str;
 
 class Visits extends AwssatVisits
 {
@@ -13,6 +14,22 @@ class Visits extends AwssatVisits
     {
         $this->period = $period;
         return parent::period($period);
+    }
+
+    public function recordParams(array $params, int $inc = 1): void
+    {
+        foreach ($params as $param => $value) {
+            if (Str::of($value)->length() > 255) {
+                continue;
+            }
+
+            $key = Str::of($param)->snake();
+            $this->connection->increment(
+                $this->keys->visits."_{$key}:{$this->keys->id}",
+                $inc,
+                $value,
+            );
+        }
     }
 
     public function increment($inc = 1, $force = true, $ignore = []): bool

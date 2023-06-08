@@ -32,6 +32,7 @@ class TriggerNotification extends Notification implements ShouldQueue
         // }
 
         $this->trigger->visits()->increment();
+        $this->trigger->visits()->recordParams($this->params);
 
         $via = collect($this->trigger->via)
             ->filter(fn($via) => $via['checked'] && $via['type'] !== 'telegram')
