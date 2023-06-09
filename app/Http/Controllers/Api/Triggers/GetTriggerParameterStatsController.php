@@ -15,10 +15,7 @@ class GetTriggerParameterStatsController extends ApiAuthJsonController
             abort(404);
         }
 
-        if (!isset($trigger->configuration['parameters'])) {
-            return $this->response([]);
-        }
-
+        $parameters = $trigger->configuration['fields']['parameters'] ?? [];
         $period = request()->query('period') ?? 'day';
 
         if (request()->query('date')) {
@@ -28,7 +25,7 @@ class GetTriggerParameterStatsController extends ApiAuthJsonController
         }
 
         $response = [];
-        foreach ($trigger->configuration['parameters'] as $parameter) {
+        foreach ($parameters as $parameter) {
             $response[$parameter] = $trigger->visits()->period($period)->countAllByParam($parameter, $date);
         }
 

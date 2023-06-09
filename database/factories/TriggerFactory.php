@@ -23,15 +23,12 @@ class TriggerFactory extends Factory
             'emoji' => fake()->emoji,
             'title' => fake()->word,
             'content' => fake()->sentence,
-            'configuration' => json_encode([
+            'configuration' => [
                 'version' => '1.0.0',
                 'fields' => [
-                    [
-                        'name' => 'message',
-                        'value' => fake()->sentence,
-                    ],
+                    'name' => fake()->word,
                 ],
-            ]),
+            ],
         ];
     }
 

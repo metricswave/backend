@@ -34,7 +34,7 @@ it('return expected parameters stats', function () use ($visits) {
         ->create([
             'id' => 48,
             'configuration' => [
-                'parameters' => ['path'],
+                'fields' => ['parameters' => ['path']],
             ],
         ]);
 
