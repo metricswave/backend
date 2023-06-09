@@ -81,7 +81,7 @@ class Visits extends AwssatVisits
         return $this->connection->all($this->period, $key, $id);
     }
 
-    public function countAllByParam(string $param, ?Carbon $date): Collection
+    public function countAllByParam(string $param, Carbon $date): Collection
     {
         $param = Str::of($param)->snake();
         $key = "{$this->keys->visits}_{$param}:{$this->keys->id}";

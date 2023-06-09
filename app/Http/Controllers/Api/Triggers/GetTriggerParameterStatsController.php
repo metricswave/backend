@@ -21,7 +21,7 @@ class GetTriggerParameterStatsController extends ApiAuthJsonController
         if (request()->query('date')) {
             $date = Carbon::createFromFormat('Y-m-d', request()->query('date'))->startOfDay();
         } else {
-            $date = null;
+            $date = Carbon::now()->startOfDay();
         }
 
         $response = [];

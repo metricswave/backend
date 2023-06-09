@@ -127,7 +127,7 @@ class PermanentEloquentEngine implements DataEngine
         return $date->sub($period, 1, false);
     }
 
-    public function allByParam(string $key, ?Carbon $date): Collection
+    public function allByParam(string $key, Carbon $date): Collection
     {
         return $this->model
             ->where(['primary_key' => $this->prefix.$key])
