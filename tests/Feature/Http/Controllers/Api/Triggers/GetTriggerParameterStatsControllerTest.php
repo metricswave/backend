@@ -53,7 +53,7 @@ it('return expected parameters stats', function () use ($visits) {
     }
 
     actingAs($trigger->user)
-        ->getJson('/api/triggers/'.$trigger->uuid.'/parameters-stats?date=2023-06-09')
+        ->getJson('/api/triggers/'.$trigger->uuid.'/parameters-stats?date=2023-06-08')
         ->assertJson(fn(AssertableJson $json) => $json
             ->has('data.path')
             ->count('data.path', 7)
@@ -72,7 +72,7 @@ it('return expected parameters stats without any date param', function () use ($
             ],
         ]);
 
-    Carbon::setTestNow('2023-06-09');
+    Carbon::setTestNow('2023-06-08');
 
     foreach ($visits() as $row) {
         if (count($row) === 1) {
