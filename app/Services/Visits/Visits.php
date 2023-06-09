@@ -86,6 +86,6 @@ class Visits extends AwssatVisits
         $param = Str::of($param)->snake();
         $key = "{$this->keys->visits}_{$param}:{$this->keys->id}";
 
-        return $this->connection->allByParam($key, $date)->sortByDesc('score');
+        return $this->connection->allByParam($key, $date)->sortByDesc('score', SORT_NUMERIC);
     }
 }
