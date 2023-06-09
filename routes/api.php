@@ -14,6 +14,7 @@ use App\Http\Controllers\Api\Services\GetServicesController;
 use App\Http\Controllers\Api\Socialite\RedirectToDriverController;
 use App\Http\Controllers\Api\Socialite\StoreUserServiceController;
 use App\Http\Controllers\Api\Triggers\DeleteTriggersController;
+use App\Http\Controllers\Api\Triggers\GetTriggerParameterStatsController;
 use App\Http\Controllers\Api\Triggers\GetTriggersController;
 use App\Http\Controllers\Api\Triggers\GetTriggerStatsController;
 use App\Http\Controllers\Api\Triggers\PostTriggersController;
@@ -72,6 +73,7 @@ Route::put('/triggers/{trigger:uuid}', PutTriggersController::class);
 Route::delete('/triggers/{trigger:uuid}', DeleteTriggersController::class);
 Route::get('/triggers', GetTriggersController::class);
 Route::get('/triggers/{trigger:uuid}/stats', GetTriggerStatsController::class);
+Route::get('/triggers/{trigger:uuid}/parameters-stats', GetTriggerParameterStatsController::class);
 
 // Services
 Route::get('/services', GetServicesController::class);

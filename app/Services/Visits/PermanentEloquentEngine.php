@@ -72,7 +72,7 @@ class PermanentEloquentEngine implements DataEngine
         if (!empty($member) || is_numeric($member)) {
             $query = $this->model->where(['primary_key' => $this->prefix.$key, 'secondary_key' => $member]);
         } else {
-            $query = $this->model->where(['primary_key' => $this->prefix.$key, 'secondary_key' => null]);
+            $query = $this->model->where(['primary_key' => $this->prefix.$key]);
         }
 
         return $query
@@ -125,6 +125,21 @@ class PermanentEloquentEngine implements DataEngine
         $date = $item->expired_at;
 
         return $date->sub($period, 1, false);
+    }
+
+    public function allByParam(string $key, ?Carbon $date): Collection
+    {
+        return $this->model
+            ->where(['primary_key' => $this->prefix.$key])
+            ->whereDate('expired_at', $date)
+            ->orderByDesc('expired_at')
+            ->get(['secondary_key', 'score', 'expired_at'])
+            ->map(function ($item) {
+                return [
+                    'param' => $item->secondary_key,
+                    'score' => $item->score,
+                ];
+            });
     }
 
     public function set(string $key, $value, $member = null): bool

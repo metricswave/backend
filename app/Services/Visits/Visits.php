@@ -3,9 +3,13 @@
 namespace App\Services\Visits;
 
 use Awssat\Visits\Visits as AwssatVisits;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use Str;
 
+/**
+ * @property PermanentEloquentEngine $connection
+ */
 class Visits extends AwssatVisits
 {
     private string $period;
@@ -75,5 +79,13 @@ class Visits extends AwssatVisits
         $id = $this->keys->id;
 
         return $this->connection->all($this->period, $key, $id);
+    }
+
+    public function countAllByParam(string $param, ?Carbon $date): Collection
+    {
+        $param = Str::of($param)->snake();
+        $key = "{$this->keys->visits}_{$param}:{$this->keys->id}";
+
+        return $this->connection->allByParam($key, $date)->sortByDesc('score');
     }
 }
