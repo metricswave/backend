@@ -4,7 +4,7 @@ blueprint: documentation
 title: 'Service: Telegram'
 parent: c9609c95-a67d-4a2a-87da-87ee5bdace9a
 updated_by: 1
-updated_at: 1685696725
+updated_at: 1686502994
 short_content: 'Connect a Telegram channel to receive notifications there.'
 ---
 **Telegram groups allow you to receive notifications there in a simple and unobtrusive way.**
@@ -29,4 +29,4 @@ Mail us at [info@notifywave.com](mailto:info@notifywave.com).
 
 ---
 
-[← More about services](/documentation/services)
+[← Go back to documentation](/documentation)
