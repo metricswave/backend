@@ -185,4 +185,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(UserCalendar::class);
     }
+
+    public function dashboards(): HasMany
+    {
+        return $this->hasMany(Dashboard::class);
+    }
 }

@@ -9,6 +9,8 @@ use App\Http\Controllers\Api\Auth\SignUpController;
 use App\Http\Controllers\Api\Checkout\GetPortalPathController;
 use App\Http\Controllers\Api\Checkout\GetPriceCheckoutPathController;
 use App\Http\Controllers\Api\Checkout\GetPricesController;
+use App\Http\Controllers\Api\Dashboard\GetDashboardsController;
+use App\Http\Controllers\Api\Dashboard\PutDashboardsController;
 use App\Http\Controllers\Api\Notifications\GetNotificationsController;
 use App\Http\Controllers\Api\Services\GetServicesController;
 use App\Http\Controllers\Api\Socialite\RedirectToDriverController;
@@ -74,6 +76,10 @@ Route::delete('/triggers/{trigger:uuid}', DeleteTriggersController::class);
 Route::get('/triggers', GetTriggersController::class);
 Route::get('/triggers/{trigger:uuid}/stats', GetTriggerStatsController::class);
 Route::get('/triggers/{trigger:uuid}/parameters-stats', GetTriggerParameterStatsController::class);
+
+// Dashboard
+Route::get('/dashboards', GetDashboardsController::class);
+Route::put('/dashboards/{dashboard}', PutDashboardsController::class);
 
 // Services
 Route::get('/services', GetServicesController::class);
