@@ -62,7 +62,7 @@ class GoogleCalendarEventsGetter implements EventsGetter
 
             if ($e->response->status() === 401) {
                 Http::get(
-                    'https://notifywave.com/webhooks/842e2f48-4c9f-436f-bb88-c00266496f10',
+                    'https://metricswave.com/webhooks/842e2f48-4c9f-436f-bb88-c00266496f10',
                     [
                         'message' => "Google Oauth Token expired (User ID: {$user->id})",
                         'description' => $e->response->json('error.message'),

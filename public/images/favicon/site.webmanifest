@@ -1,6 +1,6 @@
 {
-    "name": "NotifyWave",
-    "short_name": "NotifyWave",
+    "name": "MetricsWave",
+    "short_name": "MetricsWave",
     "icons": [
         {
             "src": "/android-chrome-72x72.png",

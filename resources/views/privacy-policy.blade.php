@@ -18,8 +18,8 @@
                     <h2 id="owner_of_the_data">
                         Owner and Data Controller
                     </h2>
-                    <p>NotifyWave - Oca 21 Madrid, 20819</p>
-                    <p><strong>Owner contact email:</strong> info@notifywave.com</p>
+                    <p>MetricsWave - Oca 21 Madrid, 20819</p>
+                    <p><strong>Owner contact email:</strong> info@metricswave.com</p>
                 </div>
 
                 <div class="one_line_col">
@@ -174,7 +174,7 @@
                                             Google LLC and is connected to the Google network.</p>
                                     </div>
 
-                                    <p>NotifyWave use and transfer to any other app of information received from Google
+                                    <p>MetricsWave use and transfer to any other app of information received from Google
                                         APIs will adhere to
                                         <a href=" https://developers.google.com/terms/api-services-user-data-policy#additional_requirements_for_specific_api_scopes"
                                            target="_blank">Google API Services User Data Policy</a>, including the

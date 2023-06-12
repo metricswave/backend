@@ -33,10 +33,12 @@
         </ul>
     </nav>
 
-    <div class="p-app">
+    <div>
         @yield('content')
     </div>
 
     @include('partials.footer')
+
+    @yield('scripts')
 </body>
 </html>

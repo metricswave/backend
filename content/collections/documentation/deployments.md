@@ -7,7 +7,9 @@ updated_by: 1
 updated_at: 1686501654
 short_content: 'You can track each deploy and also send a message to your channels.'
 ---
-With webhooks triggers you can connect any application or process with NotifyWave and receive a notification when something happens and also get useful stats about them.
+
+With webhooks triggers you can connect any application or process with MetricsWave and receive a notification when
+something happens and also get useful stats about them.
 
 ## Event to Track your Deployments
 
@@ -22,7 +24,7 @@ The you can simply trigger this bash command in your deployment script to receiv
 ```bash
 BODY='{"version":"'$(git log --pretty=format:'%h' -n 1)'", "message":"'$(git log --pretty=format:'%s' -n 1)'","author":"'$(git log --pretty=format:'%an' -n 1)'", "service":"Backend"}'
 
-curl -X POST https://notifywave.com/webhooks/00000000-0000-0000-0000-000000000000 \
+curl -X POST https://metricswave.com/webhooks/00000000-0000-0000-0000-000000000000 \
   -H "Content-Type: application/json" \
   -H "Accept: application/json" \
   -d "$BODY"
@@ -36,9 +38,11 @@ That's all. You can add more parameters and data if you want.
 
 ## 🔔 Share every deploy on Telegram
 
-Remember that in each event you have the option to send a notification to a connected channel every time an event is received.
+Remember that in each event you have the option to send a notification to a connected channel every time an event is
+received.
 
-So, you can [connect a Telegram channel](/documentation/services/telegram) a share a custom notification automatically after each deploy.
+So, you can [connect a Telegram channel](/documentation/services/telegram) a share a custom notification automatically
+after each deploy.
 
 You can use this title and description configuration as an example:
 

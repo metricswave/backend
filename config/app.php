@@ -4,9 +4,9 @@ use Illuminate\Support\Facades\Facade;
 
 return [
 
-    'name' => env('APP_NAME', 'NotifyWave'),
+    'name' => env('APP_NAME', 'MetricsWave'),
 
-    'web_app_url' => env('WEB_APP_URL', 'https://app.notifywave.com/'),
+    'web_app_url' => env('WEB_APP_URL', 'https://app.metricswave.com/'),
 
     'env' => env('APP_ENV', 'production'),
 
@@ -17,7 +17,7 @@ return [
 
     'debug' => (bool) env('APP_DEBUG', false),
 
-    'mailto' => env('MAIL_TO', 'hi@notifywave.com'),
+    'mailto' => env('MAIL_TO', 'hi@metricswave.com'),
 
     'url' => env('APP_URL', 'http://localhost'),
 

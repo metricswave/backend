@@ -27,7 +27,7 @@ class FirstOrCreateLeadService
     private function notify(): void
     {
         Http::get(
-            'https://notifywave.com/webhooks/29c31fab-a1c6-491d-92ff-081e69744651',
+            'https://metricswave.com/webhooks/29c31fab-a1c6-491d-92ff-081e69744651',
             [
                 'count' => Lead::query()->count(),
             ]
