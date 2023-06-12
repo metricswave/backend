@@ -37,7 +37,10 @@
                 <h2 class="text-3xl">No cookies, fully compliant with GDPR, CCPA and PECR.</h2>
                 <p class="text-lg pt-5 max-w-[568px]">
                     We don't use cookies, we don't store any personal data, and we don't track your users across
-                    websites. Made and hosted in the EU 🇪🇺.
+                    websites.
+                </p>
+                <p class="pt-5">
+                    Made and hosted in the EU 🇪🇺.
                 </p>
             </div>
         </div>
