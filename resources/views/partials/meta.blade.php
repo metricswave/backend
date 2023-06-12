@@ -14,7 +14,7 @@
 <meta property="og:description"
       content="{{ $meta_desription ?? 'Real-time notifications for everything that matters to you.' }}"/>
 <meta property="og:image"
-      content="{{ config('app.url') }}/images/notifywave.png?v=20230327173352"/>
+      content="{{ config('app.url') }}/images/metricswave.png?v=20230612161011"/>
 
 <meta name="twitter:card"
       content="summary_large_image"/>
@@ -23,4 +23,4 @@
 <meta name="twitter:description"
       content="Real-time notifications for everything that matters to you."/>
 <meta name="twitter:image"
-      content="{{ config('app.url') }}/images/notifywave.png?v=20230327173352"/>
+      content="{{ config('app.url') }}/images/metricswave.png?v=20230612161011"/>

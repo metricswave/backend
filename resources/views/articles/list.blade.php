@@ -17,7 +17,7 @@
     <meta property="og:description"
           content="{{ $meta_description }}"/>
     <meta property="og:image"
-          content="{{ config('app.url') }}/images/notifywave.png?v=20230327173352"/>
+          content="{{ config('app.url') }}/images/metricswave.png?v=20230612161011"/>
 
     <meta name="twitter:card"
           content="summary_large_image"/>
@@ -28,7 +28,7 @@
     <meta name="twitter:creator"
           content="@get_monse"/>
     <meta name="twitter:image"
-          content="{{ config('app.url') }}/images/notifywave.png?v=20230327173352"/>
+          content="{{ config('app.url') }}/images/metricswave.png?v=20230612161011"/>
 @endsection
 
 @section('content')
