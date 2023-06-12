@@ -125,7 +125,7 @@ class User extends Authenticatable
     public function triggerMonthlyLimit(): int
     {
         if ($this->subscription_status === false) {
-            return 30;
+            return 500;
         }
 
         return 99999;
