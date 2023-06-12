@@ -28,17 +28,15 @@
             </li>
             <li>
                 <a class="hover:underline smooth"
-                   href="https://app.notifywave.com">App</a>
+                   href="https://app.metricswave.com">App</a>
             </li>
         </ul>
     </nav>
 
-    <div>
+    <div class="p-app">
         @yield('content')
     </div>
 
     @include('partials.footer')
-
-    @yield('scripts')
 </body>
 </html>
