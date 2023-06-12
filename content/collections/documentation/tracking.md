@@ -1,13 +1,12 @@
 ---
-id: c46aafa5-b49b-4019-a55d-2074ae56570d
+id: f3552167-30d1-442f-8dc1-1bfbaa5c032a
 blueprint: documentation
-title: Documentation
-short_content: 'A collection of good articles about how MetricsWave works.'
+title: Tracking
+short_content: 'Here you can find how to track everything around your application with MetricsWave.'
+parent: c46aafa5-b49b-4019-a55d-2074ae56570d
 updated_by: 1
-updated_at: 1686501984
+updated_at: 1686501976
 ---
-
-### 💎 Main topics
 
 - [Register your Traffic and Referrals](/documentation/analytics): start registering all your traffic and referrals to
   get basic insights about how people are using your product.
@@ -18,14 +17,4 @@ updated_at: 1686501984
 
 ---
 
-### 📤 Services
-
-Services are different applications that you can connect and integrate inside MetricsWave to share events as you want.
-
-- [Telegram](/documentation/services/telegram): Connect a Telegram Channel or Group to receive notifications there.
-
----
-
-### 💭 Other topics
-
-- [Closed beta](/documentation/closed-beta)
+[← Go back to documentation](/documentation)

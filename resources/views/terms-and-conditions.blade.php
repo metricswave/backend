@@ -36,7 +36,7 @@
                                  style="text-align: left; line-height: 1.5;">
                                 <span style="font-size: 14.6667px; text-align: justify;"><strong>Last updated <bdt class="block-container question question-in-editor"
                                                                                                                    data-id="e2088df5-25ea-aec9-83d4-6284f5a7e043"
-                                                                                                                   data-type="question">NotifyWave</bdt></strong></span>
+                                                                                                                   data-type="question">MetricsWave</bdt></strong></span>
                             </div>
                         </div>
                     </div>
@@ -246,11 +246,11 @@
                      style="line-height: 1.5;"><span style="font-size:11.0pt;line-height:115%; Arial;mso-fareast-font-family:Calibri;mso-themecolor:text1; mso-themetint:166;">These Terms of Use constitute a legally binding agreement made between you, whether personally or on
 					behalf of an entity (“you”) and <bdt class="block-container question question-in-editor"
                                                          data-id="4ab94aa9-19d1-61e0-711e-42c7d186232b"
-                                                         data-type="question">NotifyWave</bdt><bdt class="block-component"></bdt> ("<bdt class="block-component"></bdt><strong>Company</strong><bdt class="statement-end-if-in-editor"></bdt>," “<strong>we</strong>," “<strong>us</strong>," or “<strong>our</strong>”), concerning your access to
+                                                         data-type="question">MetricsWave</bdt><bdt class="block-component"></bdt> ("<bdt class="block-component"></bdt><strong>Company</strong><bdt class="statement-end-if-in-editor"></bdt>," “<strong>we</strong>," “<strong>us</strong>," or “<strong>our</strong>”), concerning your access to
 					and use of the
 					<bdt class="block-container question question-in-editor"
                          data-id="92c3b320-1d8b-c74c-db68-d12810736807"
-                         data-type="question">NotifyWave</bdt>
+                         data-type="question">MetricsWave</bdt>
 					website as well as any other media form, media channel, mobile website or mobile application related, linked,
 					or otherwise connected thereto (collectively, the “Site”).<span style="font-size:11.0pt;line-height:115%; Arial;mso-fareast-font-family:Calibri;mso-themecolor:text1; mso-themetint:166;"><span style="font-size:11.0pt;line-height:115%; Arial;mso-fareast-font-family:Calibri;mso-themecolor:text1; mso-themetint:166;"><bdt class="question"><bdt class="block-component"></bdt></bdt></span><bdt class="block-component"></bdt></span></span>
                     You agree that by accessing the Site, you have read, understood, and agreed to be bound by all of
@@ -992,10 +992,10 @@
                     <div class="MsoNormal"
                          data-custom-class="body_text"
                          style="line-height: 1.5;">
-                        <span style="font-size: 11pt; line-height: 16.8667px;"><span style="font-size: 11pt; line-height: 16.8667px;">These Terms shall be governed by and defined following the laws of <span style="font-size: 11pt; line-height: 16.8667px;"><span style="font-size: 11pt; line-height: 16.8667px;"><span style="font-size: 11pt; line-height: 16.8667px;"><span style="font-size: 11pt; line-height: 16.8667px;"><bdt class="block-component"></bdt><span style="font-size: 11pt; line-height: 16.8667px;"><span style="font-size: 11pt; line-height: 16.8667px;"><bdt class="question">NotifyWave</bdt></span></span><bdt class="statement-end-if-in-editor"></bdt></span></span></span></span></span></span>.
-                        <bdt class="question">NotifyWave</bdt>
+                        <span style="font-size: 11pt; line-height: 16.8667px;"><span style="font-size: 11pt; line-height: 16.8667px;">These Terms shall be governed by and defined following the laws of <span style="font-size: 11pt; line-height: 16.8667px;"><span style="font-size: 11pt; line-height: 16.8667px;"><span style="font-size: 11pt; line-height: 16.8667px;"><span style="font-size: 11pt; line-height: 16.8667px;"><bdt class="block-component"></bdt><span style="font-size: 11pt; line-height: 16.8667px;"><span style="font-size: 11pt; line-height: 16.8667px;"><bdt class="question">MetricsWave</bdt></span></span><bdt class="statement-end-if-in-editor"></bdt></span></span></span></span></span></span>.
+                        <bdt class="question">MetricsWave</bdt>
                         and yourself irrevocably consent that the courts of
-                        <span style="font-size: 11pt; line-height: 16.8667px;"><span style="font-size: 11pt; line-height: 16.8667px;"><bdt class="block-component"></bdt><span style="font-size: 11pt; line-height: 16.8667px;"><span style="font-size: 11pt; line-height: 16.8667px;"><bdt class="question">NotifyWave</bdt></span></span><bdt class="statement-end-if-in-editor"></bdt></span></span>&nbsp;shall
+                        <span style="font-size: 11pt; line-height: 16.8667px;"><span style="font-size: 11pt; line-height: 16.8667px;"><bdt class="block-component"></bdt><span style="font-size: 11pt; line-height: 16.8667px;"><span style="font-size: 11pt; line-height: 16.8667px;"><bdt class="question">MetricsWave</bdt></span></span><bdt class="statement-end-if-in-editor"></bdt></span></span>&nbsp;shall
                         have exclusive jurisdiction to resolve any dispute which may arise in connection with these
                         terms.
                     </div>
@@ -1054,12 +1054,12 @@
 											existence, validity or termination, shall be referred to and finally resolved by the
 											International Commercial Arbitration Court under the European Arbitration Chamber (Belgium,
 											Brussels, Avenue Louise, 146) according to the Rules of this ICAC, which, as a result of
-											referring to it, is considered as the part of this clause. The number of arbitrators shall be <bdt class="question">NotifyWave</bdt>.
-											<span style="font-size: 11pt; line-height: 16.8667px;">The seat, or legal place, of arbitration shall be <span style="font-size: 11pt; line-height: 16.8667px;"><bdt class="block-component"></bdt><span style="font-size: 11pt; line-height: 16.8667px;"><span style="font-size: 11pt; line-height: 16.8667px;"><span style="font-size: 11pt; line-height: 16.8667px;"><bdt class="block-component"></bdt><span style="font-size: 11pt; line-height: 16.8667px;"><span style="font-size: 11pt; line-height: 16.8667px;"><bdt class="block-component"></bdt><bdt class="question">NotifyWave</bdt><bdt class="statement-end-if-in-editor"></bdt></span></span></span></span></span></span></span><bdt class="statement-end-if-in-editor"></bdt></span></span>
+											referring to it, is considered as the part of this clause. The number of arbitrators shall be <bdt class="question">MetricsWave</bdt>.
+											<span style="font-size: 11pt; line-height: 16.8667px;">The seat, or legal place, of arbitration shall be <span style="font-size: 11pt; line-height: 16.8667px;"><bdt class="block-component"></bdt><span style="font-size: 11pt; line-height: 16.8667px;"><span style="font-size: 11pt; line-height: 16.8667px;"><span style="font-size: 11pt; line-height: 16.8667px;"><bdt class="block-component"></bdt><span style="font-size: 11pt; line-height: 16.8667px;"><span style="font-size: 11pt; line-height: 16.8667px;"><bdt class="block-component"></bdt><bdt class="question">MetricsWave</bdt><bdt class="statement-end-if-in-editor"></bdt></span></span></span></span></span></span></span><bdt class="statement-end-if-in-editor"></bdt></span></span>
                                         <bdt class="statement-end-if-in-editor"></bdt>
-                                        .<span style="font-size: 11pt; line-height: 16.8667px;"><span style="font-size: 11pt; line-height: 16.8667px;">&nbsp;The language of the proceedings shall be <bdt class="question">NotifyWave</bdt>.</span></span>
+                                        .<span style="font-size: 11pt; line-height: 16.8667px;"><span style="font-size: 11pt; line-height: 16.8667px;">&nbsp;The language of the proceedings shall be <bdt class="question">MetricsWave</bdt>.</span></span>
                                         The governing law of the contract shall be the substantive law of
-                                        <span style="font-size: 11pt; line-height: 16.8667px;"><span style="font-size: 11pt; line-height: 16.8667px;"><bdt class="block-component"></bdt><span style="font-size: 11pt; line-height: 16.8667px;"><span style="font-size: 11pt; line-height: 16.8667px;"><bdt class="block-component"></bdt><bdt class="question">NotifyWave</bdt><bdt class="statement-end-if-in-editor"></bdt></span></span></span></span>
+                                        <span style="font-size: 11pt; line-height: 16.8667px;"><span style="font-size: 11pt; line-height: 16.8667px;"><bdt class="block-component"></bdt><span style="font-size: 11pt; line-height: 16.8667px;"><span style="font-size: 11pt; line-height: 16.8667px;"><bdt class="block-component"></bdt><bdt class="question">MetricsWave</bdt><bdt class="statement-end-if-in-editor"></bdt></span></span></span></span>
                                         <bdt class="statement-end-if-in-editor"></bdt>
                                         .
                                     </div>
@@ -1247,8 +1247,8 @@
 												OR
 												<bdt class="block-container question question-in-editor"
                                                      data-id="243ad246-9e92-b24d-beee-940be6aa7854"
-                                                     data-type="question">NotifyWave</bdt></bdt></bdt><bdt class="statement-end-if-in-editor"
-                                                                                                           data-type="close"></bdt></bdt>. CERTAIN US STATE LAWS AND INTERNATIONAL LAWS DO NOT ALLOW LIMITATIONS ON IMPLIED WARRANTIES OR
+                                                     data-type="question">MetricsWave</bdt></bdt></bdt><bdt class="statement-end-if-in-editor"
+                                                                                                            data-type="close"></bdt></bdt>. CERTAIN US STATE LAWS AND INTERNATIONAL LAWS DO NOT ALLOW LIMITATIONS ON IMPLIED WARRANTIES OR
 									THE EXCLUSION OR LIMITATION OF CERTAIN DAMAGES. IF THESE LAWS APPLY TO YOU, SOME OR ALL OF THE
 									ABOVE DISCLAIMERS OR LIMITATIONS MAY NOT APPLY TO YOU, AND YOU MAY HAVE ADDITIONAL RIGHTS.</bdt></bdt><bdt class="statement-end-if-in-editor"
                                                                                                                                                data-type="close"></bdt></bdt></bdt></span>
@@ -1413,7 +1413,7 @@
                          style="line-height: 1.5;">
                         <span style="font-size: 15px; line-height: 115%; font-family: Arial;"><bdt class="block-container question question-in-editor"
                                                                                                    data-id="8a6919c4-2010-e7d6-2305-d74dfb08909d"
-                                                                                                   data-type="question"><strong>NotifyWave</strong></bdt></span>
+                                                                                                   data-type="question"><strong>MetricsWave</strong></bdt></span>
                     </div>
                     <div class="MsoNormal"
                          data-custom-class="body_text"
@@ -1426,7 +1426,7 @@
                     <div class="MsoNormal"
                          data-custom-class="body_text"
                          style="line-height: 1.5;">
-                        <strong><strong><span style=""><strong><span style="font-size: 15px;"><bdt class="question">NotifyWave</bdt><bdt class="block-component"></bdt></span></strong><strong><span style="font-size: 15px;"><bdt class="block-component"></bdt></span></strong></span></strong></strong>
+                        <strong><strong><span style=""><strong><span style="font-size: 15px;"><bdt class="question">MetricsWave</bdt><bdt class="block-component"></bdt></span></strong><strong><span style="font-size: 15px;"><bdt class="block-component"></bdt></span></strong></span></strong></strong>
                     </div>
                     <div class="MsoNormal"
                          style="line-height: 1.5;">
@@ -1446,7 +1446,7 @@
                          style="line-height: 1.5;">
                         <strong><strong><span style="font-size: 15px; line-height: 115%; font-family: Arial;"><bdt class="block-container question question-in-editor"
                                                                                                                    data-id="fdc2b5b8-c95f-244b-23a7-287f82541348"
-                                                                                                                   data-type="question"><strong>NotifyWave</strong></bdt></span></strong></strong>
+                                                                                                                   data-type="question"><strong>MetricsWave</strong></bdt></span></strong></strong>
                     </div>
                 </div>
                 <style>ul {

@@ -21,7 +21,7 @@ class UserWithoutTriggersMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: 'victor@notifywave.com',
+            from: 'victor@metricswave.com',
             to: $this->user->email,
             subject: 'You have not created any trigger yet! 😱',
         );

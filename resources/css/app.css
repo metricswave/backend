@@ -45,6 +45,10 @@ html {
     @apply p-[var(--app-padding)];
 }
 
+.px-app {
+    @apply px-[var(--app-padding)];
+}
+
 .prose hr {
     border: none;
     margin: 1.75rem 0 !important;
@@ -52,4 +56,8 @@ html {
 
 .smooth {
     transition: all 0.2s ease-in-out;
+}
+
+.soft-border {
+    @apply border-zinc-400/20 dark:border-zinc-800;
 }

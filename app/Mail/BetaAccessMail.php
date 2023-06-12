@@ -21,7 +21,7 @@ class BetaAccessMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: 'victor@notifywave.com',
+            from: 'victor@metricswave.com',
             to: $this->lead->email,
             subject: 'You can access now to our beta version! 🎉',
         );
