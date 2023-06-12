@@ -21,13 +21,13 @@ class Kernel extends ConsoleKernel
         $schedule->command('app:mail-users-without-triggers-command')->twiceDaily(12, 20);
 
         // Triggers
-        $schedule->command('app:trigger:time-to-leave')->everyMinute();
-        $schedule->command('app:trigger:weather-summary')->everyMinute();
-        $schedule->command('app:trigger:on-time')->everyMinute();
+        // $schedule->command('app:trigger:time-to-leave')->everyMinute();
+        // $schedule->command('app:trigger:weather-summary')->everyMinute();
+        // $schedule->command('app:trigger:on-time')->everyMinute();
 
         // Calendar
-        $schedule->command('app:user:get-calendars')->dailyAt('02:00');
-        $schedule->command('app:trigger:calendar-time-to-leave')->hourly();
+        // $schedule->command('app:user:get-calendars')->dailyAt('02:00');
+        // $schedule->command('app:trigger:calendar-time-to-leave')->hourly();
 
         // Telegram Bot
         $schedule->command('telegram:reply-with-group-id')->everyMinute();
