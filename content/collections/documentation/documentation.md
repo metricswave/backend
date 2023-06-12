@@ -4,9 +4,8 @@ blueprint: documentation
 title: Documentation
 short_content: 'A collection of good articles about how MetricsWave works.'
 updated_by: 1
-updated_at: 1686501984
+updated_at: 1686566689
 ---
-
 ### 💎 Main topics
 
 - [Register your Traffic and Referrals](/documentation/analytics): start registering all your traffic and referrals to
