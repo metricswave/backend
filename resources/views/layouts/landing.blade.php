@@ -33,7 +33,7 @@
         </ul>
     </nav>
 
-    <div class="p-app">
+    <div>
         @yield('content')
     </div>
 

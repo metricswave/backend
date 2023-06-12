@@ -1,7 +1,7 @@
 @extends('layouts.landing')
 
 @section('content')
-    <div class="mx-auto mw-landing py-16 sm:py-24">
+    <div class="p-app mx-auto mw-landing py-16 sm:py-24">
         <h1 class="text-4xl sm:text-center font-bold mb-6">Open Metrics</h1>
         <div class="sm:text-center opacity-50 pb-12">
             Here you can find all the metrics about {{ config('app.name') }}.

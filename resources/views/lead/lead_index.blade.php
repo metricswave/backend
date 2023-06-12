@@ -2,7 +2,7 @@
 
 @section('content')
     @if(request()->query('success'))
-        <div class="mw-landing mt-20 mb-10 mx-auto">
+        <div class="p-app mw-landing mt-20 mb-10 mx-auto">
             <div class="p-4 rounded bg-green-50 dark:bg-green-500/10">
                 <p><strong>Thanks for purchasing a lifetime license 🥰.</strong> Just one more thing, <a
                         class="text-blue-500 hover:underline"
