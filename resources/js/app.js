@@ -14,3 +14,25 @@ if (window.location.hostname !== 'localhost' && window.location.hostname !== 'no
 } else {
     console.log('Tracking visit', {path: window.location.pathname})
 }
+
+const urlRef = (new URLSearchParams(window.location.search)).get("utm_source")
+if (urlRef !== null) {
+    localStorage.setItem("nw:referrer", urlRef)
+} else if (
+    document.referrer
+    && document.referrer !== window.location.hostname
+    && localStorage.getItem("nw:referrer") === null
+) {
+    localStorage.setItem("nw:referrer", document.referrer)
+}
+
+const goToApp = () => {
+    window.location.href = 'https://app.metricswave.com?utm_source=' + localStorage.getItem("nw:referrer")
+}
+
+document.querySelectorAll('.linkToApp').forEach((el) => {
+    el.addEventListener('click', function (e) {
+        e.preventDefault();
+        goToApp()
+    });
+})

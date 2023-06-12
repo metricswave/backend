@@ -20,7 +20,6 @@
                 @else
                     @include('partials.sign-up-button', [
                         'buttonText' => 'Start Tracking my Product →',
-                        'utmSource' => 'landing',
                     ])
                 @endif
 
@@ -124,7 +123,6 @@
 
         @include('partials.sign-up-button', [
             'buttonText' => 'Create Your Account →',
-            'utmSource' => 'landing-footer',
         ])
     </div>
 @endsection

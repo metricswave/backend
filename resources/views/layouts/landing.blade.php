@@ -27,7 +27,7 @@
                    class="hover:underline smooth">Blog</a>
             </li>
             <li>
-                <a class="hover:underline smooth"
+                <a class="hover:underline smooth linkToApp"
                    href="https://app.metricswave.com">App</a>
             </li>
         </ul>
