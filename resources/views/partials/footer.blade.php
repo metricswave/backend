@@ -13,9 +13,9 @@
                href="/open">Open Metrics</a></li>
         <li><a class="hover:underline smooth"
                href="/blog">Blog</a></li>
-        <li><a href="https://twitter.com/notify_wave"
+        <li><a href="https://twitter.com/metricswave"
                target="_blank"
-               title="@notify_wave on Twitter"
+               title="@metricswave on Twitter"
                class="hover:underline smooth">Twitter</a></li>
     </ul>
 
