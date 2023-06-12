@@ -24,6 +24,7 @@ use App\Http\Controllers\Api\Triggers\PutTriggersController;
 use App\Http\Controllers\Api\TriggerTypes\GetTriggerTypesController;
 use App\Http\Controllers\Api\Users\GetUserController;
 use App\Http\Controllers\Api\Users\GetUserUsageController;
+use App\Http\Controllers\Api\Users\PostUserDefaultsController;
 use App\Http\Controllers\Api\UserServices\DeleteUserServiceController;
 use App\Http\Controllers\Api\UserServices\GetUserServicesController;
 use App\Http\Controllers\Api\UserServices\PostServiceController;
@@ -51,6 +52,7 @@ Route::post('/refresh', RefreshTokenControllerController::class);
 
 // User
 Route::get('/users', GetUserController::class);
+Route::post('/users/defaults', PostUserDefaultsController::class);
 Route::get('/users/services', GetUserServicesController::class);
 Route::post('/users/services', PostServiceController::class);
 Route::delete('/users/services/{userService}', DeleteUserServiceController::class);
