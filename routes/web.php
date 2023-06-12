@@ -9,6 +9,7 @@ use App\Http\Controllers\Lead\PostLeadController;
 use App\Http\Controllers\Open\GetOpenPageController;
 use App\Http\Controllers\Trigger\GetWebhookTriggerController;
 use App\Http\Controllers\Trigger\PostWebhookTriggerController;
+use App\Http\Middleware\RedirectOldNotifyWaveDomain;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +19,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'welcome');
-Route::permanentRedirect('/roadmap', '/');
+Route::middleware(RedirectOldNotifyWaveDomain::class)->group(function () {
+    Route::permanentRedirect('/roadmap', '/');
+});
 Route::get('/blog', BlogController::class);
 Route::get('/blog/category/{slug}', CategoryController::class);
 
