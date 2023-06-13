@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Events\TriggerNotificationSent;
+use App\Events\UserCreated;
 use App\Notifications\TriggerNotification;
 use App\Services\Visits\Visits;
 use App\Transfers\PriceType;
@@ -48,6 +49,10 @@ class User extends Authenticatable
     protected $appends = [
         'subscription_status',
         'subscription_type',
+    ];
+
+    protected $dispatchesEvents = [
+        'created' => UserCreated::class
     ];
 
     /**
