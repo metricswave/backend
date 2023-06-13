@@ -5,6 +5,13 @@ use App\Models\TriggerType;
 use App\Models\User;
 use Awssat\Visits\Models\Visit;
 
+$csv = file_get_contents(__DIR__.'/assets/expire_params.csv');
+$visits = fn(): array => collect(explode("\n", $csv))
+    ->map(function ($row) {
+        return explode(',', $row);
+    })
+    ->toArray();
+
 it('increase visits and set expired_at dates as expected', function () {
     $user = User::factory()->create();
 
@@ -89,6 +96,38 @@ it('fails because unique index violation', function () {
             'score' => 21,
         ],
     ]);
+});
+
+it('should set expire date on each visit', function () use ($visits) {
+    $trigger = Trigger::factory()
+        ->for(User::factory()->create())
+        ->for(TriggerType::factory()->create())
+        ->create([
+            'id' => 48,
+            'configuration' => [
+                'fields' => ['parameters' => ['path', 'referrer']],
+            ],
+        ]);
+
+    $this->travelTo(Date::createFromDate('1989', '10', '23')->startOfDay()->addHour());
+
+    foreach ($visits() as $row) {
+        if (count($row) === 1) {
+            continue;
+        }
+
+        DB::table('visits')
+            ->insert([
+                'primary_key' => Str::of($row[1])->replace('visits:triggers', 'visits:testing:triggers')->toString(),
+                'secondary_key' => $row[2] !== "" ? $row[2] : null,
+                'score' => (int) $row[3],
+                'expired_at' => null,
+            ]);
+    }
+
+    $trigger->visits()->recordParams(['path' => 'testing', 'referrer' => 'https://google.com']);
+
+    expect(Visit::query()->whereNull('expired_at')->count())->toBe(0);
 });
 
 

@@ -62,13 +62,9 @@ class Visits extends AwssatVisits
                 $periodKey = $this->keys->period($period);
                 $periodKey = "{$periodKey}_{$key}:{$this->keys->id}";
 
-                if ($this->noExpiration($periodKey)) {
-                    $expireInSeconds = $this->newExpiration($period);
-                    $this->connection->increment($periodKey.'_total', 0);
-                    $this->connection->increment($periodKey, 0, 0);
-                    $this->connection->setExpiration($periodKey, $expireInSeconds);
-                    $this->connection->setExpiration($periodKey.'_total', $expireInSeconds);
-                }
+                $expireInSeconds = $this->newExpiration($period);
+                $this->connection->setExpiration($periodKey, $expireInSeconds);
+                $this->connection->setExpiration($periodKey.'_total', $expireInSeconds);
             }
         }
     }
