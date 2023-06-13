@@ -16,6 +16,10 @@ class GetTriggerParameterStatsController extends ApiAuthJsonController
         }
 
         $parameters = $trigger->configuration['fields']['parameters'] ?? [];
+        if ($trigger->isVisitsType()) {
+            $parameters = Trigger::VISITS_PARAMS;
+        }
+
         $period = request()->query('period') ?? 'day';
 
         if (request()->query('date')) {
