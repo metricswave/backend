@@ -30,6 +30,7 @@ it('should be able to get all triggers', function () {
                 ->has('deleted_at')
                 ->has('updated_at')
                 ->has('time')
+                ->has('type')
                 ->has('weekdays')
                 ->has('arrival_time')
             ));

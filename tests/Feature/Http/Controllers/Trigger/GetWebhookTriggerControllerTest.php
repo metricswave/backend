@@ -28,6 +28,37 @@ it('send expected notification', function () {
     Notification::assertCount(1);
 });
 
+it("trigger params are updated because it's called from the script", function () {
+    TriggerType::factory()->create(['id' => TriggerTypeId::Webhook->value]);
+    $t = Trigger::factory()->for(User::factory()->create())->create([
+        'trigger_type_id' => TriggerTypeId::Webhook->value,
+        'configuration' => [
+            'fields' => [
+                "parameters" => [
+                    'name',
+                    'content',
+                ]
+            ]
+        ]
+    ]);
+
+    Notification::fake();
+
+    getJson('/webhooks/'.$t->uuid.'?name=Victor&content=Hola&f=script')
+        ->assertSuccessful();
+
+    $t->refresh();
+
+    expect($t->isVisitsType())->toBeTrue();
+    expect($t->configuration['fields']['parameters'])->toMatchArray([
+        ...Trigger::VISITS_PARAMS,
+        'name',
+        'content',
+    ]);
+
+    Notification::assertCount(1);
+});
+
 it('error because missing parameters expected notification', function () {
     TriggerType::factory()->create(['id' => TriggerTypeId::Webhook->value]);
     $t = Trigger::factory()->for(User::factory()->create())->create([

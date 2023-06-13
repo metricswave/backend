@@ -11,13 +11,13 @@ class SendWebhookTriggerNotification
     /**
      * @throws MissingTriggerParams
      */
-    public function __invoke(Trigger $trigger, array $params): void
+    public function __invoke(Trigger $trigger, array $params, bool $fromScript = false): void
     {
         $requiredParams = collect($trigger->configuration['fields']['parameters']);
 
         $missingParams = $requiredParams->diff(array_keys($params));
 
-        if ($missingParams->isNotEmpty()) {
+        if ($missingParams->isNotEmpty() && !$fromScript) {
             throw MissingTriggerParams::with($missingParams);
         }
 

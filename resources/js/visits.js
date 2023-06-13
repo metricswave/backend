@@ -16,11 +16,12 @@
 
     w.metricswave = t
 
-    const p = () => {
+    const push = () => {
         const r = localStorage.getItem('metricswave:referrer')
             || (new URLSearchParams(w.location.search)).get("utm_source")
             || document.referrer
         t(d.currentScript.getAttribute("event-uuid"), {
+            f: 'script',
             path: l.pathname,
             domain: l.hostname,
             language: n.language,
@@ -32,8 +33,8 @@
 
     let c, h = w.history;
     h.pushState && (c = h.pushState, h.pushState = function () {
-        c.apply(this, arguments), p()
-    }, w.addEventListener("popstate", p)), "prerender" === d.visibilityState ? d.addEventListener("visibilitychange", function () {
-        n || "visible" !== d.visibilityState || p()
-    }) : p()
+        c.apply(this, arguments), push()
+    }, w.addEventListener("popstate", push)), "prerender" === d.visibilityState ? d.addEventListener("visibilitychange", function () {
+        n || "visible" !== d.visibilityState || push()
+    }) : push()
 })()

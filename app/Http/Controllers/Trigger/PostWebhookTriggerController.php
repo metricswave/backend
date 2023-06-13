@@ -11,6 +11,8 @@ use Illuminate\Http\JsonResponse;
 
 class PostWebhookTriggerController extends JsonController
 {
+    use UseTriggerVisitsUpdater;
+
     public function __construct(private readonly SendWebhookTriggerNotification $webhookNotificationSender)
     {
     }
@@ -21,10 +23,13 @@ class PostWebhookTriggerController extends JsonController
             return $this->errorResponse('Trigger type is not webhook', 400);
         }
 
+        $fromScript = request()->post('f', false) === 'script';
+        $this->checkTrigger($fromScript, $trigger);
+
         $params = request()->post();
 
         try {
-            ($this->webhookNotificationSender)($trigger, $params);
+            ($this->webhookNotificationSender)($trigger, $params, $fromScript);
         } catch (Exception $e) {
             return $this->errorResponse($e->getMessage(), 400);
         }
