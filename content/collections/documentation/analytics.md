@@ -5,9 +5,8 @@ title: 'Actionable Insights from your Traffic and Referral'
 short_content: "Learn how to get actionable insights from your traffic and referral. It's super simple and configurable."
 parent: c46aafa5-b49b-4019-a55d-2074ae56570d
 updated_by: 1
-updated_at: 1686500647
+updated_at: 1686651268
 ---
-
 With MetricsWave you can replace Google Analytics or any other analytics service.
 
 We are privacy-friendly because we focus on store only important an actionable insights.
@@ -45,7 +44,13 @@ It's important to add `path`, `language`, `userAgent`, `platform` and `referrer`
 
 Now you just need to trigger the event on every website request you have.
 
-You just need to add this simple line to your javascript file or inside a `script` tag.
+You have two options to start logging your traffic. The first one, and easier, is to just add our script replacing the `event-uuid` parameter.
+
+```html
+<script defer event-uuid="{{EVENT_UUID}}" src="https://metricswave.com/js/visits.js"></script>
+```
+
+Another option, it's to manually calling the endpoint everytime a path is loaded. For example, you can use `fetch` or whatever you want.
 
 ```javascript
   fetch(

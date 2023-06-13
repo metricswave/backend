@@ -4,10 +4,9 @@ blueprint: documentation
 title: 'Tracking custom Events'
 parent: f3552167-30d1-442f-8dc1-1bfbaa5c032a
 updated_by: 1
-updated_at: 1686502819
+updated_at: 1686651420
 short_content: 'You can log and register any custom event on your site as you want. Learn how to take advantage of custom events to find out how your application is used.'
 ---
-
 One of MetricsWave's most powerful features is the ability to record custom events and obtain information from them.
 
 Events, along with custom parameters, will allow you to view statistics and understand how users are using your
@@ -29,6 +28,14 @@ with the event UUID you just copied.
 fetch(
     `https://metricswave.com/webhooks/${eventUuid}?email=hi@metricswave.com`
 )
+```
+
+#### Track custom event using visits script
+
+If you are logging your traffic using our visits script. You can log an event `window.metricswave()` function.
+
+```javascript
+window.metricswave(eventUuid, {email: 'hi@metricswave.com'})
 ```
 
 ### Using a POST request
