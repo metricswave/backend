@@ -27,10 +27,10 @@ trait UseTriggerVisitsUpdater
             return;
         }
 
-        $configuration['fields']['parameters'] = array_merge(
-            Trigger::VISITS_PARAMS,
-            $configuration['fields']['parameters'] ?? []
-        );
+        $configuration['fields']['parameters'] = [
+            ...Trigger::VISITS_PARAMS,
+            ...($configuration['fields']['parameters'] ?? [])
+        ];
 
         $trigger->configuration = $configuration;
         $trigger->save();
