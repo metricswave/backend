@@ -18,15 +18,6 @@ trait UseTriggerVisitsUpdater
             $configuration['type'] = 'visits';
         }
 
-        if (
-            isset($trigger->configuration['fields']['parameters'])
-            && collect(Trigger::VISITS_PARAMS)
-                ->diff($trigger->configuration['fields']['parameters'])
-                ->isEmpty()
-        ) {
-            return;
-        }
-
         $configuration['fields']['parameters'] = [
             ...Trigger::VISITS_PARAMS,
             ...($configuration['fields']['parameters'] ?? [])
