@@ -22,6 +22,7 @@
             || document.referrer
         t(d.currentScript.getAttribute("event-uuid"), {
             path: l.pathname,
+            domain: l.hostname,
             language: n.language,
             userAgent: n.userAgent,
             platform: n.platform,

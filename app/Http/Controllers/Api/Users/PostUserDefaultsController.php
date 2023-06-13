@@ -25,8 +25,9 @@ class PostUserDefaultsController extends ApiAuthJsonController
             'content' => 'Path {path}',
             'configuration' => [
                 'version' => '1.0',
+                'type' => 'visits',
                 'fields' => [
-                    'parameters' => ['path', 'language', 'userAgent', 'platform', 'referrer']
+                    'parameters' => Trigger::VISITS_PARAMS
                 ],
             ],
             'via' => [],

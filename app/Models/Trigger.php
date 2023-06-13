@@ -20,6 +20,8 @@ class Trigger extends Model
     use HasFactory;
     use SoftDeletes;
 
+    public const VISITS_PARAMS = ['path', 'domain', 'language', 'userAgent', 'platform', 'referrer'];
+
     protected $fillable = [
         'user_id',
         'trigger_type_id',
@@ -87,5 +89,11 @@ class Trigger extends Model
     public function formattedTitle(array $params): string
     {
         return $this->replaceVariables($this->title, $params);
+    }
+
+    public function isVisitsType(): bool
+    {
+        return isset($this->configuration['type'])
+            && $this->configuration['type'] === 'visits';
     }
 }

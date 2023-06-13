@@ -4,6 +4,7 @@ use App\Models\Trigger;
 use App\Models\TriggerType;
 use App\Models\User;
 use Awssat\Visits\Models\Visit;
+use function Pest\Laravel\postJson;
 
 $csv = file_get_contents(__DIR__.'/assets/expire_params.csv');
 $visits = fn(): array => collect(explode("\n", $csv))
@@ -130,4 +131,206 @@ it('should set expire date on each visit', function () use ($visits) {
     expect(Visit::query()->whereNull('expired_at')->count())->toBe(0);
 });
 
+it('store visits params, unique visits and new visits', function () {
+    $trigger = Trigger::factory()
+        ->for(User::factory()->create())
+        ->for(TriggerType::factory()->create())
+        ->create([
+            'id' => 48,
+            'configuration' => [
+                'version' => '1.0',
+                'type' => 'visits',
+                'fields' => [
+                    'parameters' => Trigger::VISITS_PARAMS
+                ],
+            ],
+        ]);
 
+    postJson('/webhooks/'.$trigger->uuid, [
+        'path' => '/blog',
+        'domain' => 'metricswave.com',
+        'language' => 'en-US',
+        'userAgent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
+        'platform' => 'MacIntel',
+        'referrer' => ''
+    ]);
+
+    postJson('/webhooks/'.$trigger->uuid, [
+        'path' => '/',
+        'domain' => 'metricswave.com',
+        'language' => 'en-US',
+        'userAgent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
+        'platform' => 'MacIntel',
+        'referrer' => 'https://metricswave.com/blog'
+    ]);
+
+    postJson('/webhooks/'.$trigger->uuid, [
+        'path' => '/documentation',
+        'domain' => 'metricswave.com',
+        'language' => 'en-US',
+        'userAgent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
+        'platform' => 'MacIntel',
+        'referrer' => 'https://metricswave.com/'
+    ]);
+
+    postJson('/webhooks/'.$trigger->uuid, [
+        'path' => '/blog',
+        'domain' => 'metricswave.com',
+        'language' => 'en-US',
+        'userAgent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
+        'platform' => 'MacIntel',
+        'referrer' => ''
+    ]);
+
+    expect(
+        Visit::query()
+            ->where('primary_key', 'visits:testing:triggers_unique_visits_day')
+            ->where('secondary_key', $trigger->id)
+            ->get('score')
+            ->first()
+            ->score
+    )->toBe(1);
+
+    expect(
+        Visit::query()
+            ->where('primary_key', 'visits:testing:triggers_new_visits_day')
+            ->where('secondary_key', $trigger->id)
+            ->get('score')
+            ->first()
+            ->score
+    )->toBe(2);
+
+    expect(
+        Visit::query()
+            ->where('primary_key', 'visits:testing:triggers_visits_day_referrer:48')
+            ->exists()
+    )->toBeFalse();
+});
+
+it('store visits referrer', function () {
+    $trigger = Trigger::factory()
+        ->for(User::factory()->create())
+        ->for(TriggerType::factory()->create())
+        ->create([
+            'id' => 48,
+            'configuration' => [
+                'version' => '1.0',
+                'type' => 'visits',
+                'fields' => [
+                    'parameters' => Trigger::VISITS_PARAMS
+                ],
+            ],
+        ]);
+
+    postJson('/webhooks/'.$trigger->uuid, [
+        'path' => '/blog',
+        'domain' => 'metricswave.com',
+        'language' => 'en-US',
+        'userAgent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
+        'platform' => 'MacIntel',
+        'referrer' => 'https://google.com'
+    ]);
+
+    postJson('/webhooks/'.$trigger->uuid, [
+        'path' => '/blog',
+        'domain' => 'metricswave.com',
+        'language' => 'en-US',
+        'userAgent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
+        'platform' => 'MacIntel',
+        'referrer' => ''
+    ]);
+
+    expect(
+        Visit::query()
+            ->where('primary_key', 'visits:testing:triggers_visits_day_referrer:48')
+            ->where('secondary_key', 'https://google.com')
+            ->get('score')
+            ->first()
+            ->score
+    )->toBe(1);
+});
+
+it('visit type works even when it has no params', function () {
+    $trigger = Trigger::factory()
+        ->for(User::factory()->create())
+        ->for(TriggerType::factory()->create())
+        ->create([
+            'id' => 48,
+            'configuration' => [
+                'version' => '1.0',
+                'type' => 'visits',
+                'fields' => [
+                    'parameters' => []
+                ],
+            ],
+        ]);
+
+    postJson('/webhooks/'.$trigger->uuid, [
+        'path' => '/blog',
+        'domain' => 'metricswave.com',
+        'language' => 'en-US',
+        'userAgent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
+        'platform' => 'MacIntel',
+        'referrer' => ''
+    ]);
+
+    postJson('/webhooks/'.$trigger->uuid, [
+        'path' => '/',
+        'domain' => 'metricswave.com',
+        'language' => 'en-US',
+        'userAgent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
+        'platform' => 'MacIntel',
+        'referrer' => 'https://metricswave.com/blog'
+    ]);
+
+    postJson('/webhooks/'.$trigger->uuid, [
+        'path' => '/documentation',
+        'domain' => 'metricswave.com',
+        'language' => 'en-US',
+        'userAgent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
+        'platform' => 'MacIntel',
+        'referrer' => 'https://metricswave.com/'
+    ]);
+
+    postJson('/webhooks/'.$trigger->uuid, [
+        'path' => '/blog',
+        'domain' => 'metricswave.com',
+        'language' => 'en-US',
+        'userAgent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
+        'platform' => 'MacIntel',
+        'referrer' => ''
+    ]);
+
+    expect(
+        Visit::query()
+            ->where('primary_key', 'visits:testing:triggers_visits_day_language:48')
+            ->where('secondary_key', 'en-US')
+            ->get('score')
+            ->first()
+            ->score
+    )->toBe(4);
+
+    expect(
+        Visit::query()
+            ->where('primary_key', 'visits:testing:triggers_unique_visits_day')
+            ->where('secondary_key', $trigger->id)
+            ->get('score')
+            ->first()
+            ->score
+    )->toBe(1);
+
+    expect(
+        Visit::query()
+            ->where('primary_key', 'visits:testing:triggers_new_visits_day')
+            ->where('secondary_key', $trigger->id)
+            ->get('score')
+            ->first()
+            ->score
+    )->toBe(2);
+
+    expect(
+        Visit::query()
+            ->where('primary_key', 'visits:testing:triggers_visits_day_referrer:48')
+            ->exists()
+    )->toBeFalse();
+});

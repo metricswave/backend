@@ -7,6 +7,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Str;
 
 class TriggerNotification extends Notification implements ShouldQueue
 {
@@ -32,7 +33,28 @@ class TriggerNotification extends Notification implements ShouldQueue
         // }
 
         $this->trigger->visits()->increment();
-        $this->trigger->visits()->recordParams($this->params);
+
+        $params = $this->params;
+
+        if ($this->trigger->isVisitsType()) {
+            $this->trigger->visits('unique_visits')->increment(1, false);
+
+            if (array_key_exists('referrer', $params) && empty($params['referrer'])) {
+                $this->trigger->visits('new_visits')->increment();
+            }
+
+            if (
+                empty($params['referrer'])
+                || (
+                    isset($params['domain'])
+                    && Str::of($params['referrer'])->contains($params['domain'])
+                )
+            ) {
+                unset($params['referrer']);
+            }
+        }
+
+        $this->trigger->visits()->recordParams($params);
 
         $via = collect($this->trigger->via)
             ->filter(fn($via) => $via['checked'] && $via['type'] !== 'telegram')
