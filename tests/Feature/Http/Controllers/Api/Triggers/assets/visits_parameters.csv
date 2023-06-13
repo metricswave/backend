@@ -69,3 +69,20 @@
 1194,visits:triggers_visits_week_path:48,/,10,,2023-06-12 00:00:00,2023-06-08 13:05:13,2023-06-09 05:32:02
 1193,visits:triggers_visits_day_path:48_total,/,7,,2023-06-09 00:00:00,2023-06-08 13:05:13,2023-06-08 20:25:54
 1192,visits:triggers_visits_day_path:48,/,7,,2023-06-09 00:00:00,2023-06-08 13:05:13,2023-06-08 20:25:54
+7330,visits:triggers_visits_day_referrer:48,,148,,,2023-06-11 15:58:42,2023-06-13 06:26:24
+7331,visits:triggers_visits_day_referrer:48_total,,148,,,2023-06-11 15:58:42,2023-06-13 06:26:24
+7384,visits:triggers_visits_day_referrer:48,http://localhost:3000/,1,,,2023-06-11 16:55:46,2023-06-11 16:55:46
+7385,visits:triggers_visits_day_referrer:48_total,http://localhost:3000/,1,,,2023-06-11 16:55:46,2023-06-11 16:55:46
+9018,visits:triggers_visits_day_referrer:51,,1,,,2023-06-12 07:41:25,2023-06-12 07:41:25
+9019,visits:triggers_visits_day_referrer:51_total,,1,,,2023-06-12 07:41:25,2023-06-12 07:41:25
+9130,visits:triggers_visits_day_referrer:48,https://notifywave.com/,1,,,2023-06-12 08:19:16,2023-06-12 08:19:16
+9131,visits:triggers_visits_day_referrer:48_total,https://notifywave.com/,1,,,2023-06-12 08:19:16,2023-06-12 08:19:16
+9236,visits:triggers_visits_day_referrer:52,http://localhost:5173/,18,,2023-06-13 00:00:00,2023-06-12 08:48:27,2023-06-12 15:51:54
+9237,visits:triggers_visits_day_referrer:52_total,http://localhost:5173/,18,,2023-06-13 00:00:00,2023-06-12 08:48:27,2023-06-12 15:51:54
+9260,visits:triggers_visits_day_referrer:52_total,,0,,2023-06-13 00:00:00,2023-06-12 08:48:27,2023-06-12 15:51:54
+9364,visits:triggers_visits_day_referrer:48,https://t.co/,11,,,2023-06-12 09:35:40,2023-06-12 18:53:35
+9365,visits:triggers_visits_day_referrer:48_total,https://t.co/,11,,,2023-06-12 09:35:40,2023-06-12 18:53:35
+9388,visits:triggers_visits_day_referrer:48,https://www.google.com/,12,,,2023-06-12 09:37:58,2023-06-13 05:12:01
+9389,visits:triggers_visits_day_referrer:48_total,https://www.google.com/,12,,,2023-06-12 09:37:58,2023-06-13 05:12:01
+9396,visits:triggers_visits_day_referrer:48,https://metricswave.com/,10,,,2023-06-12 09:38:29,2023-06-13 06:25:50
+9397,visits:triggers_visits_day_referrer:48_total,https://metricswave.com/,10,,,2023-06-12 09:38:29,2023-06-13 06:25:50
