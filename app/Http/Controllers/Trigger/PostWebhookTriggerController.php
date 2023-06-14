@@ -8,6 +8,7 @@ use App\Services\Triggers\SendWebhookTriggerNotification;
 use App\Transfers\TriggerTypeId;
 use Exception;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Request;
 
 class PostWebhookTriggerController extends JsonController
 {
@@ -22,6 +23,8 @@ class PostWebhookTriggerController extends JsonController
         if ($trigger->trigger_type_id !== TriggerTypeId::Webhook->value) {
             return $this->errorResponse('Trigger type is not webhook', 400);
         }
+
+        $trigger->user->domainVisits()->recordParams(['domain' => Request::server('HTTP_HOST', 'unknown')]);
 
         $fromScript = request()->post('f', false) === 'script';
         $this->checkTrigger($fromScript, $trigger);

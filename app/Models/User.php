@@ -29,6 +29,7 @@ class User extends Authenticatable
     use HasFactory;
     use Notifiable;
 
+    public const DOMAIN = 'domain';
     public const TRIGGER_NOTIFICATION = 'trigger-notification';
 
     protected $fillable = [
@@ -115,6 +116,11 @@ class User extends Authenticatable
     public function triggerNotificationVisits(): Visits
     {
         return visitsService($this, self::TRIGGER_NOTIFICATION);
+    }
+
+    public function domainVisits(): Visits
+    {
+        return visitsService($this, self::DOMAIN);
     }
 
     public function mailLogs(): HasMany
