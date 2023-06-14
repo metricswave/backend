@@ -101,7 +101,7 @@ class UserTriggerTelegramNotificationJob implements ShouldQueue
                         $telegramChannelId,
                         '⚠️',
                         'This bot is deprecated!',
-                        'This bot is deprecated and will be removed on 1st July 2023. Please invite the new bot to this channel: https://t.me/MetricsWaveBot'
+                        'This bot is deprecated and will be removed on 1st July 2023. Please replace me with @MetricsWaveBot in this channel.'
                     );
                     Cache::put($key, true, now()->addDay());
                 }
