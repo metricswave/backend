@@ -6,7 +6,6 @@ use App\Services\CacheKey;
 use Cache;
 use Http;
 use Illuminate\Console\Command;
-use Log;
 
 class ReplyWithGroupIdCommand extends Command
 {
@@ -34,13 +33,10 @@ class ReplyWithGroupIdCommand extends Command
             ->json('result');
 
         if (empty($messages)) {
-            Log::info('No messages found.');
             return;
         }
 
         foreach ($messages as $message) {
-            Log::info('Message found.', $message);
-
             if (isset($message['message']['chat']['type']) && $message['message']['chat']['type'] === 'group' && isset($message['message']['text']) && ($message['message']['text'] === '/connect@NotifyWaveBot' || $message['message']['text'] === '/connect')) {
                 $cacheKey = CacheKey::generate(
                     'telegram_connect_command',
@@ -56,11 +52,6 @@ class ReplyWithGroupIdCommand extends Command
                 $messageId = $message['message']['message_id'];
                 $text = "This is the group id: {$chatId}";
                 Http::get("https://api.telegram.org/bot{$telegramBotToken}/sendMessage", [
-                    'chat_id' => $chatId,
-                    'text' => $text,
-                    'reply_to_message_id' => $messageId,
-                ]);
-                Log::info('Message sent.', [
                     'chat_id' => $chatId,
                     'text' => $text,
                     'reply_to_message_id' => $messageId,
