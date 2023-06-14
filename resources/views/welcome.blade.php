@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="flex flex-col items-center justify-center space-y-14 sm:space-y-32">
-        <div class="mw-landing mx-auto my-10 flex flex-col space-y-8 sm:my-40">
+        <div class="mw-landing px-app mx-auto my-10 flex flex-col space-y-8 sm:my-40">
             <h1 class="animate-[out_1s,_fade-in-down_1.5s_ease-out_1s] text-3xl sm:text-6xl leading-[1.3] sm:leading-[1.1] tracking-tighter">
                 Real-time
                 <span class="relative bg-gradient-to-br from-pink-500 to-amber-500 bg-clip-text text-transparent">analytics</span>
