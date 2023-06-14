@@ -38,6 +38,6 @@ return [
     |
     */
 
-    'middleware' => 'web',
+    'middleware' => 'statamic',
 
 ];
