@@ -37,7 +37,7 @@ class ReplyWithGroupIdCommand extends Command
         }
 
         foreach ($messages as $message) {
-            if (isset($message['message']['chat']['type']) && $message['message']['chat']['type'] === 'group' && isset($message['message']['text']) && ($message['message']['text'] === '/connect@NotifyWaveBot' || $message['message']['text'] === '/connect')) {
+            if (isset($message['message']['chat']['type']) && $message['message']['chat']['type'] === 'group' && isset($message['message']['text']) && ($message['message']['text'] === '/connect@MetricsWaveBot' || $message['message']['text'] === '/connect')) {
                 $cacheKey = CacheKey::generate(
                     'telegram_connect_command',
                     $message['message']['chat']['id'],

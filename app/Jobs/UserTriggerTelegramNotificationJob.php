@@ -4,6 +4,9 @@ namespace App\Jobs;
 
 use App\Models\UserService;
 use App\Notifications\TriggerNotification;
+use App\Services\CacheKey;
+use Cache;
+use Carbon\Carbon;
 use Http;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -48,14 +51,8 @@ class UserTriggerTelegramNotificationJob implements ShouldQueue
         try {
             $this->sendTelegramMessageTo($chatId, $emoji, $title, $content);
         } catch (RequestException $e) {
-            $response = $e->response->json();
-
-            if (
-                $response['ok'] === false
-                && $response['error_code'] === 400
-                && $response['description'] === 'Bad Request: group chat was upgraded to a supergroup chat'
-                && isset($response['parameters']['migrate_to_chat_id'])
-            ) {
+            if ($this->requestExceptionBecauseGroupIdChanged($e)) {
+                $response = $e->response->json();
                 $migrateToChatId = $response['parameters']['migrate_to_chat_id'];
 
                 $data = $this->userService->service_data;
@@ -83,12 +80,64 @@ class UserTriggerTelegramNotificationJob implements ShouldQueue
         string $title,
         string $content
     ): void {
-        Http::post("https://api.telegram.org/bot".config('services.telegram-bot-api.token')."/sendMessage", [
+        $token = config('services.telegram-bot-api.token');
+        $exception = $this->send($token, $telegramChannelId, $emoji, $title, $content);
+
+        if ($exception === null) {
+            return;
+        } elseif ($this->requestExceptionBecauseGroupIdChanged($exception)) {
+            throw $exception;
+        }
+
+        if (now()->isBefore(Carbon::createFromDate(2023, 07, 01))) {
+            $token = config('services.telegram-bot-api.old_token');
+            $exception = $this->send($token, $telegramChannelId, $emoji, $title, $content);
+
+            if ($exception === null) {
+                $key = CacheKey::generate('telegram_channel', $telegramChannelId);
+                if (!Cache::has($key)) {
+                    $this->send(
+                        $token,
+                        $telegramChannelId,
+                        '⚠️',
+                        'This bot is deprecated!',
+                        'This bot is deprecated and will be removed on 1st July 2023. Please invite the new bot to this channel: https://t.me/MetricsWaveBot'
+                    );
+                    Cache::put($key, true, now()->addDay());
+                }
+
+                return;
+            }
+        }
+
+        throw $exception;
+    }
+
+    private function send(
+        mixed $token,
+        string $telegramChannelId,
+        string $emoji,
+        string $title,
+        string $content
+    ): ?RequestException {
+        return Http::post("https://api.telegram.org/bot".$token."/sendMessage", [
             'chat_id' => $telegramChannelId,
             'text' => Str::of("**${emoji} ${title}**\n\n${content}")
                 ->inlineMarkdown()
                 ->toString(),
             'parse_mode' => 'HTML',
-        ])->throw();
+        ])->toException();
+    }
+
+    public function requestExceptionBecauseGroupIdChanged(RequestException $exception): bool
+    {
+        $response = $exception->response->json();
+
+        return (
+            $response['ok'] === false
+            && $response['error_code'] === 400
+            && $response['description'] === 'Bad Request: group chat was upgraded to a supergroup chat'
+            && isset($response['parameters']['migrate_to_chat_id'])
+        );
     }
 }
