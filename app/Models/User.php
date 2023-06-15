@@ -118,11 +118,6 @@ class User extends Authenticatable
         return visitsService($this, self::TRIGGER_NOTIFICATION);
     }
 
-    public function domainVisits(): Visits
-    {
-        return visitsService($this, self::DOMAIN);
-    }
-
     public function mailLogs(): HasMany
     {
         return $this->hasMany(MailLog::class, 'mail', 'email');

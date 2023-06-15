@@ -23,9 +23,6 @@ class GetWebhookTriggerController extends JsonController
             return $this->errorResponse('Trigger type is not webhook', 400);
         }
 
-        $host = parse_url(request()->root())['host'] ?? 'unknown';
-        $trigger->user->domainVisits()->recordParams(['domain' => $host]);
-
         $fromScript = request()->query('f', false) === 'script';
         $this->checkTrigger($fromScript, $trigger);
 
