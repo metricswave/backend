@@ -15,9 +15,18 @@ class GetTriggerStatsController extends ApiAuthJsonController
         }
 
         return $this->response([
+            'new_visits' => [
+                'monthly' => $trigger->visits()->period('month')->countAll(),
+                'yearly' => $trigger->visits()->period('year')->countAll(),
+            ],
+            'unique_visits' => [
+                'monthly' => $trigger->visits('unique_visits')->period('month')->countAll(),
+                'yearly' => $trigger->visits('unique_visits')->period('year')->countAll(),
+            ],
             'daily' => $trigger->visits()->period('day')->countAll(),
             'weekly' => $trigger->visits()->period('week')->countAll(),
             'monthly' => $trigger->visits()->period('month')->countAll(),
+            'yearly' => $trigger->visits()->period('year')->countAll(),
         ]);
     }
 }

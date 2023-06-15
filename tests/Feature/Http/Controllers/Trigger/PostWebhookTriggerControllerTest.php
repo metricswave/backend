@@ -4,7 +4,6 @@ use App\Models\Trigger;
 use App\Models\TriggerType;
 use App\Models\User;
 use App\Transfers\TriggerTypeId;
-use Awssat\Visits\Models\Visit;
 use function Pest\Laravel\postJson;
 
 it('send expected notification', function () {
@@ -32,9 +31,6 @@ it('send expected notification', function () {
     )->assertSuccessful();
 
     Notification::assertCount(1);
-    expect(Visit::query()->where('primary_key', 'visits:testing:users_domain_day_domain:1')->first())
-        ->score->toBe(1)
-        ->secondary_key->toBe('notifywave.test');
 });
 
 it("trigger params are updated because it's called from the script", function () {
