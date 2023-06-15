@@ -16,6 +16,7 @@ class GetTriggerStatsController extends ApiAuthJsonController
 
         return $this->response([
             'daily' => $trigger->visits()->period('day')->countAll(),
+            'weekly' => $trigger->visits()->period('week')->countAll(),
             'monthly' => $trigger->visits()->period('month')->countAll(),
         ]);
     }
