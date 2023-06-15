@@ -1,6 +1,8 @@
 <title>{{ isset($title) ? $title . " - " : "" }}{{ config('app.name') }}</title>
 <meta content="{{  $meta_desription ?? 'Real-time notifications for everything that matters to you.'  }}"
       name="description"/>
+<link rel="canonical"
+      href="{{ config('app.url') }}{{ request()->getPathInfo() }}"/>
 
 {{-- OG Tags --}}
 <meta property="og:url"

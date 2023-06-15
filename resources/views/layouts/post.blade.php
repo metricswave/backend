@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport"
           content="width=device-width, initial-scale=1">
+    <link rel="canonical"
+          href="{{ config('app.url') }}{{ request()->getPathInfo() }}"/>
 
     @yield('meta')
     @include('partials.favicon')
