@@ -7,7 +7,7 @@ use Str;
 
 class CacheKey
 {
-    public static function generateForModel(Model $model, string $key): string
+    public static function generateForModel(Model $model, array|string $key): string
     {
         return self::generate($model->getTable(), $model->id, $key);
     }

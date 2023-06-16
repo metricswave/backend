@@ -3,10 +3,12 @@
 namespace App\Notifications;
 
 use App\Models\Trigger;
+use App\Services\CacheKey;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Cache;
 use Str;
 
 class TriggerNotification extends Notification implements ShouldQueue
@@ -37,10 +39,21 @@ class TriggerNotification extends Notification implements ShouldQueue
         $params = $this->params;
 
         if ($this->trigger->isVisitsType()) {
-            $this->trigger->visits('unique_visits')->increment(1, false);
+            if (isset($params['deviceName'])) {
+                $cacheKey = CacheKey::generateForModel($this->trigger, ['unique', $params['deviceName']]);
+                unset($params['deviceName']);
 
-            if (array_key_exists('referrer', $params) && empty($params['referrer'])) {
-                $this->trigger->visits('new_visits')->increment();
+                if (!Cache::has($cacheKey)) {
+                    $this->trigger->visits(Trigger::UNIQUE_VISITS)->increment();
+                    Cache::put($cacheKey, true, now()->endOfDay());
+                }
+            }
+
+            if (isset($params['visit'])) {
+                if ($params['visit'] === 1) {
+                    $this->trigger->visits(Trigger::NEW_VISITS)->increment();
+                }
+                unset($params['visit']);
             }
 
             if (

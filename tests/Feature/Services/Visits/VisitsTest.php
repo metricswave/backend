@@ -148,6 +148,8 @@ it('store visits params, unique visits and new visits', function () {
 
     postJson('/webhooks/'.$trigger->uuid, [
         'path' => '/blog',
+        'visit' => 1,
+        'deviceName' => 'any-device-name',
         'domain' => 'metricswave.com',
         'language' => 'en-US',
         'userAgent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
@@ -157,6 +159,8 @@ it('store visits params, unique visits and new visits', function () {
 
     postJson('/webhooks/'.$trigger->uuid, [
         'path' => '/',
+        'visit' => 0,
+        'deviceName' => 'any-device-name',
         'domain' => 'metricswave.com',
         'language' => 'en-US',
         'userAgent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
@@ -166,6 +170,8 @@ it('store visits params, unique visits and new visits', function () {
 
     postJson('/webhooks/'.$trigger->uuid, [
         'path' => '/documentation',
+        'visit' => 0,
+        'deviceName' => 'any-device-name',
         'domain' => 'metricswave.com',
         'language' => 'en-US',
         'userAgent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
@@ -175,6 +181,8 @@ it('store visits params, unique visits and new visits', function () {
 
     postJson('/webhooks/'.$trigger->uuid, [
         'path' => '/blog',
+        'visit' => 1,
+        'deviceName' => 'any-device-name',
         'domain' => 'metricswave.com',
         'language' => 'en-US',
         'userAgent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
@@ -267,6 +275,8 @@ it('visit type works even when it has no params', function () {
 
     postJson('/webhooks/'.$trigger->uuid, [
         'path' => '/blog',
+        'visit' => 1,
+        'deviceName' => 'any-device-name',
         'domain' => 'metricswave.com',
         'language' => 'en-US',
         'userAgent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
@@ -276,6 +286,8 @@ it('visit type works even when it has no params', function () {
 
     postJson('/webhooks/'.$trigger->uuid, [
         'path' => '/',
+        'visit' => 0,
+        'deviceName' => 'any-device-name',
         'domain' => 'metricswave.com',
         'language' => 'en-US',
         'userAgent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
@@ -285,6 +297,8 @@ it('visit type works even when it has no params', function () {
 
     postJson('/webhooks/'.$trigger->uuid, [
         'path' => '/documentation',
+        'deviceName' => 'any-device-name',
+        'visit' => 0,
         'domain' => 'metricswave.com',
         'language' => 'en-US',
         'userAgent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
@@ -294,6 +308,8 @@ it('visit type works even when it has no params', function () {
 
     postJson('/webhooks/'.$trigger->uuid, [
         'path' => '/blog',
+        'deviceName' => 'any-device-name',
+        'visit' => 1,
         'domain' => 'metricswave.com',
         'language' => 'en-US',
         'userAgent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
