@@ -4,6 +4,12 @@
         n = w.navigator,
         d = w.document
 
+    let deviceName = localStorage.getItem("mw:dn")
+    if (!deviceName) {
+        deviceName = (() => ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, a => (a ^ Math.random() * 16 >> a / 4).toString(16)))()
+        localStorage.setItem("mw:dn", deviceName)
+    }
+
     const t = (uuid, params) => {
         if (w._phantom || w.__nightmare || n.webdriver || w.Cypress) return
         if (l.hostname === 'localhost' || l.hostname.includes('.test')) {
@@ -17,18 +23,19 @@
     w.metricswave = t
 
     const push = () => {
-        const r = localStorage.getItem('metricswave:referrer')
-            || (new URLSearchParams(w.location.search)).get("utm_source")
-            || document.referrer
         t(d.currentScript.getAttribute("event-uuid"), {
             f: 'script',
+            visit: sessionStorage.getItem('mw') ? 0 : 1,
+            deviceName: deviceName,
             path: l.pathname,
             domain: l.hostname,
             language: n.language,
             userAgent: n.userAgent,
             platform: n.platform,
-            referrer: r
+            referrer: (new URLSearchParams(w.location.search)).get("utm_source")
+                || d.referrer
         })
+        sessionStorage.setItem('mw', '1')
     }
 
     let c, h = w.history;
