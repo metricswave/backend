@@ -19,6 +19,7 @@ use App\Http\Controllers\Api\Services\GetServicesController;
 use App\Http\Controllers\Api\Socialite\RedirectToDriverController;
 use App\Http\Controllers\Api\Socialite\StoreUserServiceController;
 use App\Http\Controllers\Api\Triggers\DeleteTriggersController;
+use App\Http\Controllers\Api\Triggers\GetPublicDashboardTriggerParameterStatsController;
 use App\Http\Controllers\Api\Triggers\GetPublicDashboardTriggerStatsController;
 use App\Http\Controllers\Api\Triggers\GetTriggerParameterStatsController;
 use App\Http\Controllers\Api\Triggers\GetTriggersController;
@@ -92,6 +93,10 @@ Route::get('/dashboards/{dashboard:uuid}/triggers', GetDashboardTriggersByUuidCo
 Route::get(
     '/dashboards/{dashboard:uuid}/triggers/{trigger:uuid}/stats',
     GetPublicDashboardTriggerStatsController::class
+)->withoutScopedBindings();
+Route::get(
+    '/dashboards/{dashboard:uuid}/triggers/{trigger:uuid}/parameters-stats',
+    GetPublicDashboardTriggerParameterStatsController::class
 )->withoutScopedBindings();
 
 // Services
