@@ -14,12 +14,15 @@ class Dashboard extends Model
 
     protected $fillable = [
         'name',
+        'public',
+        'uuid',
         'user_id',
         'items',
     ];
 
     protected $casts = [
         'items' => DataCollection::class.':'.DashboardItem::class,
+        'public' => 'boolean',
     ];
 
     public function user(): BelongsTo

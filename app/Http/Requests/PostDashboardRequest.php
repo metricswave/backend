@@ -4,11 +4,11 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PutDashboardRequest extends FormRequest
+class PostDashboardRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return $this->route('dashboard')->user_id === $this->user()->id;
+        return true;
     }
 
     public function rules(): array
