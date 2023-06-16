@@ -18,13 +18,28 @@
                 @if(config('feature.sign_up_leads_only'))
                     @include('landing.lead-form')
                 @else
-                    @include('partials.sign-up-button', [
-                        'buttonText' => 'Start Tracking my Product →',
-                    ])
+                    <div class="flex flex-col sm:flex-row items-center justify-start gap-6">
+                        <a
+                            class="py-4 px-6 text-center bg-gradient-to-b from-slate-800 via-black to-black dark:from-zinc-800 dark:via-zinc-800 dark:to-zinc-800 hover:bg-gradient-to-b hover:from-slate-600 hover:via-slate-900 hover:to-black hover:dark:from-zinc-700 hover:dark:via-zinc-700 hover:dark:to-zinc-700 text-white block ml-0 rounded-lg shadow-lg hover:shadow smooth linkToApp w-full sm:w-auto"
+                            href="{{ config('app.web_app_url') }}"
+                        >
+                            {{ $buttonText ?? 'Start Tracking my Product →' }}
+                        </a>
+
+                        <a
+                            class="py-4 px-6 opacity-60 hover:opacity-100 smooth border rounded-lg w-full sm:w-auto text-center"
+                            href="https://app.metricswave.com/fUwWlrz6Xhedh12/metricswave.com"
+                            target="_blank"
+                        >
+                            Live Demo
+                        </a>
+                    </div>
                 @endif
 
-                <div class="pt-10">
-                    @include('partials.trusting_users')
+                <div class="text-center sm:text-left pt-10">
+                    <div class="opacity-70 smooth mb-6 sm:mb-12 mx-auto inline-block bg-gradient-to-r from-yellow-200 to-yellow-200 dark:from-yellow-800 dark:to-yellow-800 bg-no-repeat [background-position:0_88%] hover:opacity-75 [background-size:100%_0.2em] motion-safe:transition-all motion-safe:duration-200 hover:[background-size:100%_100%] focus:[background-size:100%_100%]">
+                        +500 companies are trusting us!
+                    </div>
                 </div>
             </div>
 
@@ -48,7 +63,8 @@
             <div class="mw-landing mx-auto mb-16">
                 <h2 class="text-3xl">Measure your Traffic.</h2>
                 <p class="text-lg pt-5 max-w-[568px]">
-                    Start registering all your traffic and referrals to get basic insights about how people are using
+                    Start registering all your traffic and referrals to get basic insights about how people are
+                    using
                     your product.
                 </p>
             </div>
@@ -65,7 +81,8 @@
             <div class="mw-landing mx-auto mb-16">
                 <h2 class="text-3xl">Watch every important event<br/>in Real-time.</h2>
                 <p class="text-lg pt-5 max-w-[568px]">
-                    Track every important event in your product, receive notifications, and monitor potential issues.
+                    Track every important event in your product, receive notifications, and monitor potential
+                    issues.
                 </p>
             </div>
 
@@ -98,7 +115,8 @@
             <div class="mw-landing mx-auto mb-32">
                 <h2 class="text-3xl">Easy to Integrate</h2>
                 <p class="text-lg pt-5 max-w-[568px]">
-                    You can integrate it in minutes, just copy and paste a few lines of code, and you're ready to go.
+                    You can integrate it in minutes, just copy and paste a few lines of code, and you're ready to
+                    go.
                 </p>
                 <p class="pt-5">
                     <a
