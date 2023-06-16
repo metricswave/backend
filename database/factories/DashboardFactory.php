@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Dashboard;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Str;
 
 /**
  * @extends Factory<Dashboard>
@@ -16,6 +17,8 @@ class DashboardFactory extends Factory
 
         return [
             'name' => $this->faker->word,
+            'uuid' => Str::random(15),
+            'public' => $this->faker->boolean,
             'items' => [
                 [
                     'eventUuid' => $this->faker->uuid,

@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\Auth\SignUpController;
 use App\Http\Controllers\Api\Checkout\GetPortalPathController;
 use App\Http\Controllers\Api\Checkout\GetPriceCheckoutPathController;
 use App\Http\Controllers\Api\Checkout\GetPricesController;
+use App\Http\Controllers\Api\Dashboard\GetDashboardByUuidController;
 use App\Http\Controllers\Api\Dashboard\GetDashboardsController;
 use App\Http\Controllers\Api\Dashboard\PostDashboardsController;
 use App\Http\Controllers\Api\Dashboard\PutDashboardsController;
@@ -84,6 +85,7 @@ Route::get('/triggers/{trigger:uuid}/parameters-stats', GetTriggerParameterStats
 Route::get('/dashboards', GetDashboardsController::class);
 Route::post('/dashboards', PostDashboardsController::class);
 Route::put('/dashboards/{dashboard}', PutDashboardsController::class);
+Route::get('/dashboards/{dashboard:uuid}', GetDashboardByUuidController::class);
 
 // Services
 Route::get('/services', GetServicesController::class);
