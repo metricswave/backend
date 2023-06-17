@@ -19,7 +19,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(RedirectOldNotifyWaveDomain::class)->group(function () {
-    Route::view('/', 'welcome');
+    Route::view('/', 'welcome', [
+        'title' => 'An Event-Driven Google Analytics Alternative',
+        'meta_description' => 'MetricsWave is a lightweight and privacy-friendly Google Analytics alternative. Seamless Integration for any Website or App.'
+    ]);
     Route::permanentRedirect('/roadmap', '/');
     Route::get('/blog', BlogController::class);
     Route::get('/blog/category/{slug}', CategoryController::class);

@@ -1,5 +1,5 @@
 <title>{{ isset($title) ? $title . " - " : "" }}{{ config('app.name') }}</title>
-<meta content="{{  $meta_desription ?? 'Real-time notifications for everything that matters to you.'  }}"
+<meta content="{{  $meta_description ?? 'Real-time notifications for everything that matters to you.'  }}"
       name="description"/>
 <link rel="canonical"
       href="{{ config('app.url') }}{{ request()->getPathInfo() }}"/>
@@ -14,7 +14,7 @@
 <meta property="og:title"
       content="{{ isset($title) ? $title . " - " : "" }}{{ config('app.name') }}"/>
 <meta property="og:description"
-      content="{{ $meta_desription ?? 'Real-time notifications for everything that matters to you.' }}"/>
+      content="{{ $meta_description ?? 'Real-time notifications for everything that matters to you.' }}"/>
 <meta property="og:image"
       content="{{ config('app.url') }}/images/metricswave.png?v=20230612161011"/>
 
@@ -23,6 +23,6 @@
 <meta name="twitter:title"
       content="{{ config('app.name') }}"/>
 <meta name="twitter:description"
-      content="Real-time notifications for everything that matters to you."/>
+      content="{{ $meta_description ?? 'Real-time notifications for everything that matters to you.' }}"/>
 <meta name="twitter:image"
       content="{{ config('app.url') }}/images/metricswave.png?v=20230612161011"/>
