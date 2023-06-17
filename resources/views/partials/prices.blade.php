@@ -11,17 +11,14 @@
 
     <div class="p-app mt-12 {{!$withoutTitle ? 'sm:mt-44' : ''}} mw-landing mx-auto">
         @if (!$withoutTitle)
-            <h2 class="text-4xl sm:text-center font-bold mb-6">Get your lifetime license deal</h2>
-            <div class="sm:text-center opacity-50 pb-6 flex flex-col space-y-3 md:px-10">
-                <p>We are currently selling lifetime licenses and monthly subsciptions at a discounted price. It will
-                    increase soon.</p>
-                <p class="font-bold">Users who buy any of them will receive and invitation inmediately.</p>
-            </div>
-
-            <div class="sm:text-center">
-                <div class="opacity-70 smooth mb-6 sm:mb-12 mx-auto inline-block bg-gradient-to-r from-yellow-200 to-yellow-200 bg-no-repeat [background-position:0_88%] hover:opacity-75 [background-size:100%_0.2em] motion-safe:transition-all motion-safe:duration-200 hover:[background-size:100%_100%] focus:[background-size:100%_100%]">
-                    +500 users are trusting us!
-                </div>
+            <h2 class="text-2xl md:text-4xl sm:text-center font-bold mb-6 leading-snug mx-auto">
+                Secure your <br class="hidden md:inline-block"/>lifetime license deal
+            </h2>
+            <div class="sm:text-center opacity-50 pb-6 flex flex-col space-y-3 md:px-10 mb-8 max-w-[700px] mx-auto">
+                <p>Get lifetime licenses or monthly subscriptions at <br class="hidden md:inline-block"/>a discounted
+                    rate. Prices set to increase soon.</p>
+                <p class="font-bold">Users who buy any of them will receive an
+                    <br class="hidden md:inline-block"/>invitation immediately.</p>
             </div>
         @endif
 
@@ -56,7 +53,7 @@
                     </p>
 
                     <p class="mt-0 opacity-80 text-center text-xs leading-relaxed {{ $color }}">
-                        Next price will be <strong>30% higher</strong>!
+                        Price increasing by <strong>30%</strong>
                     </p>
 
                     <ul class="flex flex-col space-y-1 pt-6 pb-2 text-xs opacity-70 text-center">

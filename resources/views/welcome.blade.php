@@ -2,16 +2,15 @@
 
 @section('content')
     <div class="flex flex-col items-center justify-center space-y-14 sm:space-y-32">
-        <div class="mw-landing px-app mx-auto my-10 flex flex-col space-y-8 sm:my-40">
-            <h1 class="animate-[out_1s,_fade-in-down_1.5s_ease-out_1s] text-3xl sm:text-6xl leading-[1.3] sm:leading-[1.1] tracking-tighter">
-                Real-time
+        <div class="mw-landing px-app mx-auto my-10 w-full flex flex-col space-y-8 sm:my-40">
+            <h1 class="animate-[out_1s,_fade-in-down_1.5s_ease-out_1s] text-4xl sm:text-6xl leading-[1.3] sm:leading-[1.1] tracking-tighter">
+                Live
                 <span class="relative bg-gradient-to-br from-pink-500 to-amber-500 bg-clip-text text-transparent">analytics</span>
                 <br/>for your product
             </h1>
 
             <p class="animate-[out_1.25s,_fade-in-down_1.5s_ease-out_1.25s] text-lg font-light leading-normal sm:text-2xl">
-                Track every use-case of your business in real-time, know what your users are doing, and monitor
-                potential issues easily.
+                Monitor every aspect of your business, <br class="hidden md:inline-block"/>in real-time, and with ease.
             </p>
 
             <div class="animate-[out_1.75s,_fade-in-down_1.5s_ease-out_1.75s] ">
@@ -47,7 +46,7 @@
 
         <div id="eu"
              class="animate-[out_2.25s,_fade-in-down_1.5s_ease-out_2.25s] relative w-full border-b soft-border px-app">
-            <div class="mw-landing mx-auto mb-32">
+            <div class="mw-landing mx-auto mb-16 sm:mb-32">
                 <h2 class="text-3xl">No cookies, fully compliant with GDPR, CCPA and PECR.</h2>
                 <p class="text-lg pt-5 max-w-[568px]">
                     We don't use cookies, we don't store any personal data, and we don't track your users across
@@ -61,11 +60,9 @@
 
         <div class="animate-[out_2.25s,_fade-in-down_1.5s_ease-out_2.25s] relative w-full border-b soft-border px-app">
             <div class="mw-landing mx-auto mb-16">
-                <h2 class="text-3xl">Measure your Traffic.</h2>
+                <h2 class="text-3xl">Track your website traffic.</h2>
                 <p class="text-lg pt-5 max-w-[568px]">
-                    Start registering all your traffic and referrals to get basic insights about how people are
-                    using
-                    your product.
+                    Gain insights into user behavior.
                 </p>
             </div>
 
@@ -79,7 +76,7 @@
 
         <div class="animate-[out_2.25s,_fade-in-down_1.5s_ease-out_2.25s] relative w-full border-b soft-border px-app">
             <div class="mw-landing mx-auto mb-16">
-                <h2 class="text-3xl">Watch every important event<br/>in Real-time.</h2>
+                <h2 class="text-3xl">Experience every critical moment in Real-time.</h2>
                 <p class="text-lg pt-5 max-w-[568px]">
                     Track every important event in your product, receive notifications, and monitor potential
                     issues.
@@ -96,10 +93,9 @@
 
         <div class="animate-[out_2.25s,_fade-in-down_1.5s_ease-out_2.25s] relative w-full border-b soft-border px-app">
             <div class="mw-landing mx-auto mb-16">
-                <h2 class="text-3xl">Not just traffic.</h2>
+                <h2 class="text-3xl">More than Just Traffic.</h2>
                 <p class="text-lg pt-5 max-w-[568px]">
-                    You can track any event in your product, from a user signing up, to a payment, or a user
-                    clicking a button and get stats about it.
+                    Stay on top of your product's important events, potential issues, and notifications with ease.
                 </p>
             </div>
 
@@ -112,18 +108,17 @@
         </div>
 
         <div class="animate-[out_2.25s,_fade-in-down_1.5s_ease-out_2.25s] relative w-full border-b soft-border px-app">
-            <div class="mw-landing mx-auto mb-32">
-                <h2 class="text-3xl">Easy to Integrate</h2>
+            <div class="mw-landing mx-auto mb-16 sm:mb-32">
+                <h2 class="text-3xl">Seamless Integration for Any Website</h2>
                 <p class="text-lg pt-5 max-w-[568px]">
-                    You can integrate it in minutes, just copy and paste a few lines of code, and you're ready to
-                    go.
+                    Integrating is quick and easy - just copy and paste a few lines of code!
                 </p>
                 <p class="pt-5">
                     <a
                         class="text-blue-500 hover:text-blue-600 underline smooth"
                         href="/documentation"
                         target="_blank">
-                        Explore our docs →
+                        Browse our documentation →
                     </a>
                 </p>
             </div>
@@ -131,12 +126,12 @@
 
     </div>
 
-    <div class="mw-landing m-auto my-20 flex flex-col sm:flex-row items-center justify-between space-y-8 sm:space-y-0 sm:space-x-8 sm:my-40">
+    <div class="mw-landing m-auto my-20 flex flex-col sm:flex-row items-center justify-between space-y-8 sm:space-y-0 sm:space-x-8 sm:my-40 px-app">
         <div class="text-center sm:text-left">
-            <h2 class="text-2xl sm:text-3xl pb-4">Start for
-                <span class="relative bg-gradient-to-br from-pink-500 to-amber-500 bg-clip-text text-transparent">free</span>
-                today.</h2>
-            <h3 class="text-lg sm:text-xl">Measure and analyze your traffic.</h3>
+            <h2 class="text-2xl sm:text-3xl pb-4">Get started for
+                <span class="relative bg-gradient-to-br from-pink-500 to-amber-500 bg-clip-text text-transparent">free</span>.
+            </h2>
+            <h3 class="text-lg sm:text-xl">Track, analyze and optimize traffic.</h3>
         </div>
 
         @include('partials.sign-up-button', [
