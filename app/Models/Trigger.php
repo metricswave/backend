@@ -23,7 +23,19 @@ class Trigger extends Model
     public const UNIQUE_VISITS = 'unique_visits';
     public const NEW_VISITS = 'new_visits';
 
-    public const VISITS_PARAMS = ['path', 'domain', 'language', 'userAgent', 'platform', 'referrer'];
+    public const VISITS_PARAMS = [
+        'path',
+        'domain',
+        'language',
+        'userAgent',
+        'platform',
+        'referrer',
+        'utm_source',
+        'utm_medium',
+        'utm_campaign',
+        'utm_term',
+        'utm_content',
+    ];
 
     protected $fillable = [
         'user_id',

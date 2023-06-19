@@ -23,6 +23,7 @@
     w.metricswave = t
 
     const push = () => {
+        const u = new URL(l)
         t(d.currentScript.getAttribute("event-uuid"), {
             f: 'script',
             visit: sessionStorage.getItem('mw') ? 0 : 1,
@@ -32,8 +33,12 @@
             language: n.language,
             userAgent: n.userAgent,
             platform: n.platform,
-            referrer: (new URLSearchParams(w.location.search)).get("utm_source")
-                || d.referrer
+            referrer: d.referrer,
+            utm_source: u.searchParams.get('utm_source'),
+            utm_medium: u.searchParams.get('utm_medium'),
+            utm_campaign: u.searchParams.get('utm_campaign'),
+            utm_term: u.searchParams.get('utm_term'),
+            utm_content: u.searchParams.get('utm_content'),
         })
         sessionStorage.setItem('mw', '1')
     }
