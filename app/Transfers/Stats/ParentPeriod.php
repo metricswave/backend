@@ -5,7 +5,7 @@ namespace App\Transfers\Stats;
 use Illuminate\Support\Carbon;
 use Spatie\LaravelData\Data;
 
-class Period extends Data implements PeriodInterface
+class ParentPeriod extends Data implements PeriodInterface
 {
     readonly public Carbon $date;
 
@@ -14,8 +14,8 @@ class Period extends Data implements PeriodInterface
         readonly public PeriodEnum $period,
     ) {
         $this->date = $date
-            ->add($this->period->visitsPeriod(), 1)
-            ->startOf($this->period->visitsPeriod());
+            ->add($this->period->visitsPeriodParent(), 1)
+            ->startOf($this->period->visitsPeriodParent());
     }
 
     public function fromDate(): Carbon

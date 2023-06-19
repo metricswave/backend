@@ -26,7 +26,6 @@ it('catch error 400 when group changed to supergroup and change channel_id', fun
         ]),
     ]);
 
-
     $trigger = Trigger::factory()
         ->for(User::factory()->create())
         ->for(TriggerType::factory()->create())

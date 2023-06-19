@@ -49,7 +49,7 @@ it('return expected data', function () use ($visits) {
         ->getJson('/api/triggers/'.$trigger->uuid.'/graph-stats')
         ->assertSuccessful()
         ->assertJson(fn(AssertableJson $json) => $json
-            ->where('data.period.date', '2023-06-05')
+            ->where('data.period.date', '2023-06-06T00:00:00+00:00')
             ->where('data.period.period', '30d')
             ->where('data.headers.pageViews', 110)
             ->count('data.plot', 22)
@@ -84,7 +84,7 @@ it('return expected data for week period', function () use ($visits) {
         ->getJson('/api/triggers/'.$trigger->uuid.'/graph-stats?period=7d')
         ->assertSuccessful()
         ->assertJson(fn(AssertableJson $json) => $json
-            ->where('data.period.date', '2023-06-05')
+            ->where('data.period.date', '2023-06-06T00:00:00+00:00')
             ->where('data.period.period', '7d')
             ->where('data.headers', null)
             ->count('data.plot', 7)
@@ -119,7 +119,7 @@ it('return expected data for year period', function () use ($visits) {
         ->getJson('/api/triggers/'.$trigger->uuid.'/graph-stats?period=12m')
         ->assertSuccessful()
         ->assertJson(fn(AssertableJson $json) => $json
-            ->where('data.period.date', '2023-06-01')
+            ->where('data.period.date', '2023-07-01T00:00:00+00:00')
             ->where('data.period.period', '12m')
             ->count('data.plot', 0)
         );

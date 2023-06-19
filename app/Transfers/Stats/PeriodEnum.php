@@ -33,7 +33,7 @@ enum PeriodEnum: string
         };
     }
 
-    public function visitsHeaderPeriod(): string
+    public function visitsPeriodParent(): string
     {
         return match ($this) {
             self::weekInDays => 'week',
