@@ -79,9 +79,9 @@
                 <h2 class="text-3xl">
                     Experience every critical moment <br class="hidden md:inline-block"/>in Real-time.
                 </h2>
-                50px]">
-                Track every important event in your product, receive notifications, and monitor potential
-                issues.
+                <p class="text-lg pt-5 max-w-[760px]">
+                    Track every important event in your product, receive notifications, and monitor potential
+                    issues.
                 </p>
             </div>
 
