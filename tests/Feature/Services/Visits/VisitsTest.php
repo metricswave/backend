@@ -154,7 +154,12 @@ it('store visits params, unique visits and new visits', function () {
         'language' => 'en-US',
         'userAgent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
         'platform' => 'MacIntel',
-        'referrer' => ''
+        'referrer' => '',
+        'utm_source' => null,
+        'utm_medium' => null,
+        'utm_campaign' => null,
+        'utm_term' => null,
+        'utm_content' => null,
     ]);
 
     postJson('/webhooks/'.$trigger->uuid, [
@@ -165,7 +170,12 @@ it('store visits params, unique visits and new visits', function () {
         'language' => 'en-US',
         'userAgent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
         'platform' => 'MacIntel',
-        'referrer' => 'https://metricswave.com/blog'
+        'referrer' => 'https://metricswave.com/blog',
+        'utm_source' => null,
+        'utm_medium' => null,
+        'utm_campaign' => null,
+        'utm_term' => null,
+        'utm_content' => null,
     ]);
 
     postJson('/webhooks/'.$trigger->uuid, [
@@ -176,7 +186,12 @@ it('store visits params, unique visits and new visits', function () {
         'language' => 'en-US',
         'userAgent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
         'platform' => 'MacIntel',
-        'referrer' => 'https://metricswave.com/'
+        'referrer' => 'https://metricswave.com/',
+        'utm_source' => null,
+        'utm_medium' => null,
+        'utm_campaign' => null,
+        'utm_term' => null,
+        'utm_content' => null,
     ]);
 
     postJson('/webhooks/'.$trigger->uuid, [
@@ -187,7 +202,12 @@ it('store visits params, unique visits and new visits', function () {
         'language' => 'en-US',
         'userAgent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
         'platform' => 'MacIntel',
-        'referrer' => ''
+        'referrer' => '',
+        'utm_source' => null,
+        'utm_medium' => null,
+        'utm_campaign' => null,
+        'utm_term' => null,
+        'utm_content' => null,
     ]);
 
     expect(
@@ -236,7 +256,12 @@ it('store visits referrer', function () {
         'language' => 'en-US',
         'userAgent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
         'platform' => 'MacIntel',
-        'referrer' => 'https://google.com'
+        'referrer' => 'https://google.com',
+        'utm_source' => null,
+        'utm_medium' => null,
+        'utm_campaign' => null,
+        'utm_term' => null,
+        'utm_content' => null,
     ]);
 
     postJson('/webhooks/'.$trigger->uuid, [
@@ -245,7 +270,12 @@ it('store visits referrer', function () {
         'language' => 'en-US',
         'userAgent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
         'platform' => 'MacIntel',
-        'referrer' => ''
+        'referrer' => '',
+        'utm_source' => null,
+        'utm_medium' => null,
+        'utm_campaign' => null,
+        'utm_term' => null,
+        'utm_content' => null,
     ]);
 
     expect(
