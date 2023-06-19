@@ -67,7 +67,7 @@ class PermanentEloquentEngine implements DataEngine
         return $row->save();
     }
 
-    public function all(string $period, string $key, $member = null)
+    public function all(string $period, string $key, $member = null, Carbon $from = null, Carbon $to = null)
     {
         if (!empty($member) || is_numeric($member)) {
             $query = $this->model->where(['primary_key' => $this->prefix.$key, 'secondary_key' => $member]);
@@ -76,6 +76,12 @@ class PermanentEloquentEngine implements DataEngine
         }
 
         return $query
+            ->when($from !== null, function ($q) use ($from) {
+                return $q->whereDate('expired_at', '>=', $from);
+            })
+            ->when($to !== null, function ($q) use ($to) {
+                return $q->whereDate('expired_at', '<=', $to);
+            })
             ->when($period === 'day', function ($q) {
                 return $q->where(function ($q) {
                     return $q->whereDate('expired_at', '>',

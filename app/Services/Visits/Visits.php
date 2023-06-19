@@ -69,12 +69,12 @@ class Visits extends AwssatVisits
         }
     }
 
-    public function countAll(): Collection
+    public function countAll(Carbon $from = null, Carbon $to = null): Collection
     {
         $key = $this->keys->visits;
         $id = $this->keys->id;
 
-        return $this->connection->all($this->period, $key, $id);
+        return $this->connection->all($this->period, $key, $id, $from, $to);
     }
 
     public function countAllByParam(string $param, Carbon $date): Collection

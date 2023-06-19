@@ -22,6 +22,7 @@ class Trigger extends Model
 
     public const UNIQUE_VISITS = 'unique_visits';
     public const NEW_VISITS = 'new_visits';
+    public const PAGE_VIEWS = 'visits';
 
     public const VISITS_PARAMS = [
         'path',

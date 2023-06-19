@@ -19,8 +19,10 @@ use App\Http\Controllers\Api\Services\GetServicesController;
 use App\Http\Controllers\Api\Socialite\RedirectToDriverController;
 use App\Http\Controllers\Api\Socialite\StoreUserServiceController;
 use App\Http\Controllers\Api\Triggers\DeleteTriggersController;
+use App\Http\Controllers\Api\Triggers\GetGraphStatsController;
 use App\Http\Controllers\Api\Triggers\GetPublicDashboardTriggerParameterStatsController;
 use App\Http\Controllers\Api\Triggers\GetPublicDashboardTriggerStatsController;
+use App\Http\Controllers\Api\Triggers\GetPublicGraphStatsController;
 use App\Http\Controllers\Api\Triggers\GetTriggerParameterStatsController;
 use App\Http\Controllers\Api\Triggers\GetTriggersController;
 use App\Http\Controllers\Api\Triggers\GetTriggerStatsController;
@@ -81,7 +83,8 @@ Route::post('/triggers', PostTriggersController::class);
 Route::put('/triggers/{trigger:uuid}', PutTriggersController::class);
 Route::delete('/triggers/{trigger:uuid}', DeleteTriggersController::class);
 Route::get('/triggers', GetTriggersController::class);
-Route::get('/triggers/{trigger:uuid}/stats', GetTriggerStatsController::class);
+Route::get('/triggers/{trigger:uuid}/stats', GetTriggerStatsController::class); // deprecated
+Route::get('/triggers/{trigger:uuid}/graph-stats', GetGraphStatsController::class);
 Route::get('/triggers/{trigger:uuid}/parameters-stats', GetTriggerParameterStatsController::class);
 
 // Dashboard
@@ -90,14 +93,15 @@ Route::post('/dashboards', PostDashboardsController::class);
 Route::put('/dashboards/{dashboard}', PutDashboardsController::class);
 Route::get('/dashboards/{dashboard:uuid}', GetDashboardByUuidController::class);
 Route::get('/dashboards/{dashboard:uuid}/triggers', GetDashboardTriggersByUuidController::class);
-Route::get(
-    '/dashboards/{dashboard:uuid}/triggers/{trigger:uuid}/stats',
-    GetPublicDashboardTriggerStatsController::class
-)->withoutScopedBindings();
-Route::get(
-    '/dashboards/{dashboard:uuid}/triggers/{trigger:uuid}/parameters-stats',
-    GetPublicDashboardTriggerParameterStatsController::class
-)->withoutScopedBindings();
+
+$dashboardAndTrigger = '/dashboards/{dashboard:uuid}/triggers/{trigger:uuid}';
+
+// ↓ Deprecated
+Route::get($dashboardAndTrigger.'/stats', GetPublicDashboardTriggerStatsController::class)->withoutScopedBindings();
+Route::get($dashboardAndTrigger.'/graph-stats', GetPublicGraphStatsController::class,)->withoutScopedBindings();
+
+Route::get($dashboardAndTrigger.'/parameters-stats', GetPublicDashboardTriggerParameterStatsController::class)
+    ->withoutScopedBindings();
 
 // Services
 Route::get('/services', GetServicesController::class);
