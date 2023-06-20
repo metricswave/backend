@@ -20,8 +20,8 @@ enum PeriodEnum: string
             self::weekInDays => 7,
             self::monthInDays => 30,
             self::yearInDays => 365,
-            self::month => now()->startOfMonth()->diffInDays(),
-            self::year => now()->startOfYear()->diffInDays(),
+            self::month => now()->subMonth()->startOfMonth()->diffInDays(),
+            self::year => now()->subYear()->startOfYear()->diffInDays(),
             default => throw new Exception('Invalid period'),
         };
     }
