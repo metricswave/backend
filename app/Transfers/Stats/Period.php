@@ -8,6 +8,7 @@ use Spatie\LaravelData\Data;
 class Period extends Data implements PeriodInterface
 {
     readonly public Carbon $date;
+    readonly public array $periodDates;
 
     public function __construct(
         Carbon $date,
@@ -16,17 +17,9 @@ class Period extends Data implements PeriodInterface
         $this->date = $date
             ->add($this->period->visitsPeriod(), 1)
             ->startOf($this->period->visitsPeriod());
-    }
-
-    public function toArray(): array
-    {
-        return [
-            'date' => $this->date->format('Y-m-d'),
-            'period' => $this->period->value,
-            [
-                'from' => $this->fromDate()->format('Y-m-d'),
-                'to' => $this->toDate()->format('Y-m-d'),
-            ]
+        $this->periodDates = [
+            'from' => $this->fromDate()->toDateString(),
+            'to' => $this->toDate()->toDateString(),
         ];
     }
 
