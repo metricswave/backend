@@ -26,7 +26,7 @@ class Period extends Data implements PeriodInterface
     public function fromDate(): Carbon
     {
         return $this->date->clone()
-            ->subDays($this->period->days())
+            ->subDays($this->period->days($this->date))
             ->startOfDay();
     }
 

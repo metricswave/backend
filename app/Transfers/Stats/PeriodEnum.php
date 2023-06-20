@@ -3,6 +3,7 @@
 namespace App\Transfers\Stats;
 
 use Exception;
+use Illuminate\Support\Carbon;
 
 enum PeriodEnum: string
 {
@@ -13,15 +14,15 @@ enum PeriodEnum: string
     case month = 'month';
     case year = 'year';
 
-    public function days(): int
+    public function days(Carbon $date): int
     {
         return match ($this) {
             self::day => 1,
             self::weekInDays => 7,
             self::monthInDays => 30,
             self::yearInDays => 365,
-            self::month => now()->subMonth()->startOfMonth()->diffInDays(),
-            self::year => now()->subYear()->startOfYear()->diffInDays(),
+            self::month => $date->clone()->subMonth()->startOfMonth()->diffInDays(),
+            self::year => $date->clone()->subYear()->startOfYear()->diffInDays(),
             default => throw new Exception('Invalid period'),
         };
     }
