@@ -48,9 +48,9 @@ it('return expected data', function () use ($visits) {
         ->assertJson(fn(AssertableJson $json) => $json
             ->where('data.period.date', '2023-06-06T00:00:00+00:00')
             ->where('data.period.period', '30d')
-            ->count('data.plot', 21)
-            ->where('data.plot.0.date', '2023-06-05T00:00:00+00:00')
-            ->where('data.plot.0.score', 2)
+            ->count('data.plot', 30)
+            ->where('data.plot.0.date', '2023-05-07T00:00:00+00:00')
+            ->where('data.plot.0.score', 3)
         );
 });
 
@@ -87,8 +87,8 @@ it('return expected data for week period', function () use ($visits) {
             ->where('data.period.date', '2023-06-06T00:00:00+00:00')
             ->where('data.period.period', '7d')
             ->count('data.plot', 7)
-            ->where('data.plot.0.date', '2023-06-05T00:00:00+00:00')
-            ->where('data.plot.0.score', 2)
+            ->where('data.plot.0.date', '2023-05-30T00:00:00+00:00')
+            ->where('data.plot.0.score', 6)
         );
 });
 
@@ -124,6 +124,6 @@ it('return expected data for year period', function () use ($visits) {
         ->assertJson(fn(AssertableJson $json) => $json
             ->where('data.period.date', '2023-07-01T00:00:00+00:00')
             ->where('data.period.period', '12m')
-            ->count('data.plot', 0)
+            ->count('data.plot', 12)
         );
 });

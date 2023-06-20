@@ -60,7 +60,7 @@ it('return expected parameters stats', function () use ($visits) {
     actingAs($trigger->user)
         ->getJson('/api/dashboards/'.$dashboard->uuid.'/triggers/'.$trigger->uuid.'/parameters-graph-stats?date=2023-06-08')
         ->assertJson(fn(AssertableJson $json) => $json
-            ->where('data.period.date', '2023-06-09')
+            ->where('data.period.date', '2023-06-09T00:00:00+00:00')
             ->where('data.period.period', '30d')
             ->has('data.plot.path')
             ->count('data.plot.path', 7)

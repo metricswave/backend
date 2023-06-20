@@ -75,15 +75,19 @@ class Visits extends AwssatVisits
         $key = $this->keys->visits;
         $id = $this->keys->id;
 
-        $count = $this->connection->all($this->period, $key, $id, $from, $to);
+        $count = $this->connection->all($this->period, $key, $id, $from, $to)
+            ->map(function ($item) {
+                return [
+                    'score' => $item->score,
+                    'date' => $this->extractedDate($item, $this->period),
+                ];
+            });
 
-        return $count->map(function ($item) {
-            return [
-                'score' => $item->score,
-                'date' => $this->extractedDate($item, $this->period),
-            ];
-        });
+        if ($from !== null && $to !== null) {
+            $count = $this->fillMissingDates($count, $from, $to);
+        }
 
+        return $count;
     }
 
     private function extractedDate($item, string $period): Carbon
@@ -96,6 +100,42 @@ class Visits extends AwssatVisits
         $date = $item->expired_at;
 
         return $date->sub($period, 1, false);
+    }
+
+    private function fillMissingDates(
+        \Illuminate\Database\Eloquent\Collection|array|Collection $count,
+        Carbon $from,
+        Carbon $to
+    ) {
+        $dates = $this->getDatesBetween($from, $to);
+        $count = $count->keyBy(fn($item) => $item['date']->toDateString());
+
+        $count = $dates->map(function ($date) use ($count) {
+            $dateString = $date->toDateString();
+
+            if ($count->has($dateString)) {
+                return $count->get($dateString);
+            }
+
+            return [
+                'score' => 0,
+                'date' => $date,
+            ];
+        });
+
+        return $count->values();
+    }
+
+    private function getDatesBetween(Carbon $from, Carbon $to): Collection
+    {
+        $dates = collect();
+
+        while ($from->lt($to)) {
+            $dates->push($from->copy());
+            $from->add($this->period, 1);
+        }
+
+        return $dates;
     }
 
     public function countAllByParam(string $param, Carbon $date): Collection

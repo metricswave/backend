@@ -50,7 +50,7 @@ it('return expected parameters stats', function () use ($visits) {
     actingAs($trigger->user)
         ->getJson('/api/triggers/'.$trigger->uuid.'/parameters-graph-stats?date=2023-06-08')
         ->assertJson(fn(AssertableJson $json) => $json
-            ->where('data.period.date', '2023-06-09')
+            ->where('data.period.date', '2023-06-09T00:00:00+00:00')
             ->where('data.period.period', '30d')
             ->has('data.plot.path')
             ->count('data.plot.path', 7)
@@ -91,7 +91,7 @@ it('return expected parameters stats by week', function () use ($visits) {
         ->getJson('/api/triggers/'.$trigger->uuid.'/parameters-graph-stats?period=7d')
         ->assertSuccessful()
         ->assertJson(fn(AssertableJson $json) => $json
-            ->where('data.period.date', '2023-06-09')
+            ->where('data.period.date', '2023-06-09T00:00:00+00:00')
             ->where('data.period.period', '7d')
             ->has('data.plot.path')
             ->count('data.plot.path', 7)
@@ -131,7 +131,7 @@ it('return expected parameters stats by day', function () use ($visits) {
         ->getJson('/api/triggers/'.$trigger->uuid.'/parameters-graph-stats?period=day')
         ->assertSuccessful()
         ->assertJson(fn(AssertableJson $json) => $json
-            ->where('data.period.date', '2023-06-08')
+            ->where('data.period.date', '2023-06-08T00:00:00+00:00')
             ->where('data.period.period', 'day')
             ->has('data.plot.path')
             ->count('data.plot.path', 0)
