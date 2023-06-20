@@ -48,7 +48,7 @@ it('return expected data', function () use ($visits) {
         ->assertJson(fn(AssertableJson $json) => $json
             ->where('data.period.date', '2023-06-06T00:00:00+00:00')
             ->where('data.period.period', '30d')
-            ->count('data.plot', 22)
+            ->count('data.plot', 21)
             ->where('data.plot.0.date', '2023-06-05T00:00:00+00:00')
             ->where('data.plot.0.score', 2)
         );

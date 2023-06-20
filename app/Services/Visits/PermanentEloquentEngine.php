@@ -77,7 +77,7 @@ class PermanentEloquentEngine implements DataEngine
 
         return $query
             ->when($from !== null, function ($q) use ($from) {
-                return $q->whereDate('expired_at', '>=', $from);
+                return $q->whereDate('expired_at', '>', $from);
             })
             ->when($to !== null, function ($q) use ($to) {
                 return $q->whereDate('expired_at', '<=', $to);
