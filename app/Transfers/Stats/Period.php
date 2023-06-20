@@ -18,6 +18,18 @@ class Period extends Data implements PeriodInterface
             ->startOf($this->period->visitsPeriod());
     }
 
+    public function toArray(): array
+    {
+        return [
+            'date' => $this->date->format('Y-m-d'),
+            'period' => $this->period->value,
+            [
+                'from' => $this->fromDate()->format('Y-m-d'),
+                'to' => $this->toDate()->format('Y-m-d'),
+            ]
+        ];
+    }
+
     public function fromDate(): Carbon
     {
         return $this->date->clone()
@@ -30,13 +42,5 @@ class Period extends Data implements PeriodInterface
         return $this->date->clone()
             ->startOfDay()
             ->clone();
-    }
-
-    public function toArray(): array
-    {
-        return [
-            'date' => $this->date->format('Y-m-d'),
-            'period' => $this->period->value,
-        ];
     }
 }
