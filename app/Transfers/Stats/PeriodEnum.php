@@ -6,6 +6,7 @@ use Exception;
 
 enum PeriodEnum: string
 {
+    case day = 'day';
     case weekInDays = '7d';
     case monthInDays = '30d';
     case yearInDays = '12m';
@@ -15,6 +16,7 @@ enum PeriodEnum: string
     public function days(): int
     {
         return match ($this) {
+            self::day => 1,
             self::weekInDays => 7,
             self::monthInDays => 30,
             self::yearInDays => 365,
@@ -27,18 +29,8 @@ enum PeriodEnum: string
     public function visitsPeriod(): string
     {
         return match ($this) {
-            self::weekInDays, self::monthInDays, self::month => 'day',
+            self::day, self::weekInDays, self::monthInDays, self::month => 'day',
             self::yearInDays, self::year => 'month',
-            default => throw new Exception('Invalid period'),
-        };
-    }
-
-    public function visitsPeriodParent(): string
-    {
-        return match ($this) {
-            self::weekInDays => 'week',
-            self::monthInDays, self::month => 'month',
-            self::yearInDays, self::year => 'year',
             default => throw new Exception('Invalid period'),
         };
     }

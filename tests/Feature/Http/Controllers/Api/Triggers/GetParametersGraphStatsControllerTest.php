@@ -100,3 +100,40 @@ it('return expected parameters stats by week', function () use ($visits) {
         );
 });
 
+it('return expected parameters stats by day', function () use ($visits) {
+    Carbon::setTestNow('2023-06-07');
+
+    $trigger = Trigger::factory()
+        ->for(User::factory()->create())
+        ->for(TriggerType::factory()->create())
+        ->create([
+            'id' => 48,
+            'configuration' => [
+                'fields' => ['parameters' => ['path', 'referrer']],
+            ],
+        ]);
+
+    foreach ($visits() as $row) {
+        if (count($row) === 1) {
+            continue;
+        }
+
+        DB::table('visits')
+            ->insert([
+                'primary_key' => Str::of($row[1])->replace('visits:triggers', 'visits:testing:triggers')->toString(),
+                'secondary_key' => $row[2],
+                'score' => (int) $row[3],
+                'expired_at' => $row[5] === "" ? null : new Carbon($row[5]),
+            ]);
+    }
+
+    actingAs($trigger->user)
+        ->getJson('/api/triggers/'.$trigger->uuid.'/parameters-graph-stats?period=day')
+        ->assertSuccessful()
+        ->assertJson(fn(AssertableJson $json) => $json
+            ->where('data.period.date', '2023-06-08')
+            ->where('data.period.period', 'day')
+            ->has('data.plot.path')
+            ->count('data.plot.path', 0)
+        );
+});
