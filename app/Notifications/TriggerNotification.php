@@ -50,7 +50,7 @@ class TriggerNotification extends Notification implements ShouldQueue
             }
 
             if (isset($params['visit'])) {
-                if ($params['visit'] === 1) {
+                if ($params['visit'] === 1 || $params['visit'] === '1') {
                     $this->trigger->visits(Trigger::NEW_VISITS)->increment();
                 }
                 unset($params['visit']);
