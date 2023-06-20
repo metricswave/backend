@@ -22,6 +22,10 @@ class Visits extends AwssatVisits
                 continue;
             }
 
+            if (empty($value) || $value === "null") {
+                continue;
+            }
+
             $key = Str::of($param)->snake();
 
             foreach ($this->periods as $period) {
