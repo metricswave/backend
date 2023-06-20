@@ -95,13 +95,7 @@ class PermanentEloquentEngine implements DataEngine
                 });
             })
             ->orderByDesc('expired_at')
-            ->get(['score', 'expired_at'])
-            ->map(function ($item) use ($period) {
-                return [
-                    'score' => $item->score,
-                    'date' => $this->extractedDate($item, $period),
-                ];
-            });
+            ->get();
     }
 
     public function get(string $key, $member = null)
@@ -119,18 +113,6 @@ class PermanentEloquentEngine implements DataEngine
                 })
                 ->value('score');
         }
-    }
-
-    private function extractedDate($item, string $period): Carbon
-    {
-        if ($item->expired_at === null) {
-            return now()->startOf($period);
-        }
-
-        /** @var Carbon $date */
-        $date = $item->expired_at;
-
-        return $date->sub($period, 1, false);
     }
 
     public function allByParam(string $key, Carbon $date): Collection

@@ -60,12 +60,12 @@ it('return expected parameters stats', function () use ($visits) {
     actingAs($trigger->user)
         ->getJson('/api/dashboards/'.$dashboard->uuid.'/triggers/'.$trigger->uuid.'/parameters-graph-stats?date=2023-06-08')
         ->assertJson(fn(AssertableJson $json) => $json
-            ->where('data.period.date', '2023-07-01')
+            ->where('data.period.date', '2023-06-09')
             ->where('data.period.period', '30d')
             ->has('data.plot.path')
-            ->count('data.plot.path', 3)
-            ->where('data.plot.path.0.param', '/')
-            ->where('data.plot.path.0.score', 3)
+            ->count('data.plot.path', 7)
+            ->where('data.plot.path.0.param', '/open')
+            ->where('data.plot.path.0.score', 13)
         )
         ->assertSuccessful();
 });

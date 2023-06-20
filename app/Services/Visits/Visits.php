@@ -6,6 +6,7 @@ use Awssat\Visits\Visits as AwssatVisits;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use Str;
+use const SORT_NUMERIC;
 
 /**
  * @property PermanentEloquentEngine $connection
@@ -74,7 +75,27 @@ class Visits extends AwssatVisits
         $key = $this->keys->visits;
         $id = $this->keys->id;
 
-        return $this->connection->all($this->period, $key, $id, $from, $to);
+        $count = $this->connection->all($this->period, $key, $id, $from, $to);
+
+        return $count->map(function ($item) {
+            return [
+                'score' => $item->score,
+                'date' => $this->extractedDate($item, $this->period),
+            ];
+        });
+
+    }
+
+    private function extractedDate($item, string $period): Carbon
+    {
+        if ($item->expired_at === null) {
+            return now()->startOf($period);
+        }
+
+        /** @var Carbon $date */
+        $date = $item->expired_at;
+
+        return $date->sub($period, 1, false);
     }
 
     public function countAllByParam(string $param, Carbon $date): Collection
@@ -83,5 +104,22 @@ class Visits extends AwssatVisits
         $key = "{$this->keys->visits}_{$param}:{$this->keys->id}";
 
         return $this->connection->allByParam($key, $date)->sortByDesc('score', SORT_NUMERIC);
+    }
+
+    public function countAllByParamAndDate(string $param, Carbon $from, Carbon $to): Collection
+    {
+        $param = Str::of($param)->snake();
+        $key = "{$this->keys->visits}_{$param}:{$this->keys->id}";
+
+        $count = $this->connection->all($this->period, $key, null, $from, $to);
+
+        return $count
+            ->groupBy(fn($item) => $item->secondary_key)
+            ->map(fn($item, $key) => [
+                'score' => $item->sum('score'),
+                'param' => $key,
+            ])
+            ->sortByDesc('score', SORT_NUMERIC)
+            ->values();
     }
 }

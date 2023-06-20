@@ -50,13 +50,53 @@ it('return expected parameters stats', function () use ($visits) {
     actingAs($trigger->user)
         ->getJson('/api/triggers/'.$trigger->uuid.'/parameters-graph-stats?date=2023-06-08')
         ->assertJson(fn(AssertableJson $json) => $json
-            ->where('data.period.date', '2023-07-01')
+            ->where('data.period.date', '2023-06-09')
             ->where('data.period.period', '30d')
             ->has('data.plot.path')
-            ->count('data.plot.path', 3)
-            ->where('data.plot.path.0.param', '/')
-            ->where('data.plot.path.0.score', 3)
+            ->count('data.plot.path', 7)
+            ->where('data.plot.path.0.param', '/open')
+            ->where('data.plot.path.0.score', 13)
         )
         ->assertSuccessful();
+});
+
+it('return expected parameters stats by week', function () use ($visits) {
+    Carbon::setTestNow('2023-06-08');
+
+    $trigger = Trigger::factory()
+        ->for(User::factory()->create())
+        ->for(TriggerType::factory()->create())
+        ->create([
+            'id' => 48,
+            'configuration' => [
+                'fields' => ['parameters' => ['path', 'referrer']],
+            ],
+        ]);
+
+    foreach ($visits() as $row) {
+        if (count($row) === 1) {
+            continue;
+        }
+
+        DB::table('visits')
+            ->insert([
+                'primary_key' => Str::of($row[1])->replace('visits:triggers', 'visits:testing:triggers')->toString(),
+                'secondary_key' => $row[2],
+                'score' => (int) $row[3],
+                'expired_at' => $row[5] === "" ? null : new Carbon($row[5]),
+            ]);
+    }
+
+    actingAs($trigger->user)
+        ->getJson('/api/triggers/'.$trigger->uuid.'/parameters-graph-stats?period=7d')
+        ->assertSuccessful()
+        ->assertJson(fn(AssertableJson $json) => $json
+            ->where('data.period.date', '2023-06-09')
+            ->where('data.period.period', '7d')
+            ->has('data.plot.path')
+            ->count('data.plot.path', 7)
+            ->where('data.plot.path.0.param', '/open')
+            ->where('data.plot.path.0.score', 13)
+        );
 });
 
