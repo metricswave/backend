@@ -21,8 +21,8 @@ enum PeriodEnum: string
             self::weekInDays => 7,
             self::monthInDays => 30,
             self::yearInDays => 365,
-            self::month => $date->clone()->subMonth()->startOfMonth()->diffInDays(),
-            self::year => $date->clone()->subYear()->startOfYear()->diffInDays(),
+            self::month => $date->clone()->daysInMonth,
+            self::year => $date->clone()->daysInYear,
             default => throw new Exception('Invalid period'),
         };
     }
