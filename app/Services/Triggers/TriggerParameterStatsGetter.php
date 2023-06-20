@@ -18,7 +18,7 @@ class TriggerParameterStatsGetter
         foreach ($parameters as $parameter) {
             $parametersData[$parameter] = $trigger
                 ->visits()
-                ->period($period->period->visitsPeriod())
+                ->period($period->period->visitsPeriodInterval())
                 ->countAllByParamAndDate(
                     $parameter,
                     $period->fromDate(),

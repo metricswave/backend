@@ -26,11 +26,21 @@ enum PeriodEnum: string
         };
     }
 
-    public function visitsPeriod(): string
+    public function visitsPeriodInterval(): string
     {
         return match ($this) {
             self::day, self::weekInDays, self::monthInDays, self::month => 'day',
             self::yearInDays, self::year => 'month',
+            default => throw new Exception('Invalid period'),
+        };
+    }
+
+    public function visitsPeriod(): string
+    {
+        return match ($this) {
+            self::day, self::weekInDays, self::monthInDays => 'day',
+            self::yearInDays, self::month => 'month',
+            self::year => 'year',
             default => throw new Exception('Invalid period'),
         };
     }

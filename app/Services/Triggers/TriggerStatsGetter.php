@@ -16,7 +16,7 @@ class TriggerStatsGetter
         Period $period,
     ): GraphDataCollection {
         $stats = $trigger->visits()
-            ->period($period->period->visitsPeriod())
+            ->period($period->period->visitsPeriodInterval())
             ->countAll(
                 $period->fromDate(),
                 $period->toDate(),
@@ -49,7 +49,7 @@ class TriggerStatsGetter
     public function total(Trigger $trigger, Period $period, string $key): int
     {
         return $trigger->visits($key)
-            ->period($period->period->visitsPeriod())
+            ->period($period->period->visitsPeriodInterval())
             ->countAll(
                 $period->fromDate(),
                 $period->toDate(),
