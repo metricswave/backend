@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api\Triggers;
 
-use App\Http\Controllers\Api\ApiAuthJsonController;
+use App\Http\Controllers\Api\JsonController;
 use App\Models\Dashboard;
 use App\Models\Trigger;
 use App\Services\Triggers\TriggerParameterStatsGetter;
@@ -11,11 +11,10 @@ use App\Transfers\Stats\PeriodEnum;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Carbon;
 
-class GetPublicParametersGraphStatsController extends ApiAuthJsonController
+class GetPublicParametersGraphStatsController extends JsonController
 {
     public function __construct(readonly private TriggerParameterStatsGetter $statsGetter)
     {
-        parent::__construct();
     }
 
     public function __invoke(Dashboard $dashboard, Trigger $trigger): JsonResponse
