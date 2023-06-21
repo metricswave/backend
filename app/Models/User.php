@@ -5,7 +5,9 @@ namespace App\Models;
 use App\Events\TriggerNotificationSent;
 use App\Events\UserCreated;
 use App\Notifications\TriggerNotification;
+use App\Services\Plans\PlanGetter;
 use App\Services\Visits\Visits;
+use App\Transfers\PlanId;
 use App\Transfers\PriceType;
 use App\Transfers\ServiceId;
 use App\Transfers\SubscriptionType;
@@ -130,11 +132,13 @@ class User extends Authenticatable
 
     public function triggerMonthlyLimit(): int
     {
+        $planGetter = app(PlanGetter::class);
+
         if ($this->subscription_status === false) {
-            return 500;
+            return $planGetter->get(PlanId::FREE)->eventsLimit;
         }
 
-        return 99999;
+        return $planGetter->get(PlanId::BASIC)->eventsLimit;
     }
 
     public function getSubscriptionStatusAttribute(): bool
