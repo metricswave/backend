@@ -56,7 +56,21 @@ class PostUserDefaultsController extends ApiAuthJsonController
                     "title" => "Languages",
                     "eventUuid" => $trigger->uuid,
                     "parameter" => "language"
-                ]
+                ],
+                [
+                    "size" => "base",
+                    "type" => "parameter",
+                    "title" => "UTM Source",
+                    "eventUuid" => $trigger->uuid,
+                    "parameter" => "utm_source"
+                ],
+                [
+                    "size" => "base",
+                    "type" => "parameter",
+                    "title" => "Referrer",
+                    "eventUuid" => $trigger->uuid,
+                    "parameter" => "referrer"
+                ],
             ],
         ]);
 
