@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f0aea7efadca142e660b0936cef29954",
+    "content-hash": "70283710c473ed90477fad7a07f5d864",
     "packages": [
         {
             "name": "ajthinking/archetype",
@@ -2058,6 +2058,71 @@
                 "source": "https://github.com/JayBizzle/Crawler-Detect/tree/v1.2.114"
             },
             "time": "2023-03-21T21:54:27+00:00"
+        },
+        {
+            "name": "jedamzik/statamic-toc",
+            "version": "v1.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jedamzik/statamic-toc.git",
+                "reference": "1fd74beff488de6b9f09697a16d460f2ca5e2d50"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jedamzik/statamic-toc/zipball/1fd74beff488de6b9f09697a16d460f2ca5e2d50",
+                "reference": "1fd74beff488de6b9f09697a16d460f2ca5e2d50",
+                "shasum": ""
+            },
+            "require": {
+                "league/commonmark": "^2.3.5",
+                "php": "^8.0 | ^8.1",
+                "statamic/cms": "^3.3 | ^4.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.24.1 | ^7.4",
+                "phpunit/phpunit": "^9.5.21"
+            },
+            "type": "statamic-addon",
+            "extra": {
+                "download-dist": {
+                    "url": "https://github.com/jedamzik/statamic-toc/releases/download/{$version}/dist.tar.gz",
+                    "path": "resources/dist"
+                },
+                "statamic": {
+                    "name": "Toc",
+                    "description": "Auto-Generated Table Of Contents from Markdown Fields for Statamic 3."
+                },
+                "laravel": {
+                    "providers": [
+                        "Njed\\Toc\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Njed\\Toc\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicholas Jedamzik",
+                    "email": "nicholas@njed.dev"
+                }
+            ],
+            "description": "Auto-Generated Table Of Contents from Markdown Fields for Statamic 3.",
+            "keywords": [
+                "statamic",
+                "table of contents"
+            ],
+            "support": {
+                "issues": "https://github.com/jedamzik/statamic-toc/issues",
+                "source": "https://github.com/jedamzik/statamic-toc/tree/v1.3.1"
+            },
+            "time": "2023-05-28T07:19:13+00:00"
         },
         {
             "name": "justinrainbow/json-schema",

@@ -12,6 +12,8 @@ use App\Services\TravelDistance\TravelDistanceCalculator;
 use App\Services\Weather\OpenMeteoWeatherForecastGetter;
 use App\Services\Weather\WeatherForecastGetter;
 use Illuminate\Support\ServiceProvider;
+use Njed\Toc\Extensions\CommonMark\TitleAnchorIdExtension;
+use Statamic\Facades\Markdown;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -50,6 +52,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Markdown::addExtension(function () {
+            return new TitleAnchorIdExtension();
+        });
     }
 }

@@ -44,7 +44,7 @@
             <h1 class="text-4xl font-bold mb-8">{{ $title }}</h1>
         @endif
 
-        <div class="prose dark:prose-invert mx-auto">
+        <div class="prose dark:prose-invert mx-auto prose-headings:scroll-mt-8">
             {!! $content !!}
 
             @if ($blueprint->raw()->handle === 'article')
