@@ -2,7 +2,7 @@
 <meta content="{{  $meta_description ?? 'Real-time notifications for everything that matters to you.'  }}"
       name="description"/>
 <link rel="canonical"
-      href="{{ config('app.url') }}{{ request()->getPathInfo() }}"/>
+      href="{{ Str::of(config('app.url').request()->getPathInfo())->replace('//', '/') }}"/>
 
 {{-- OG Tags --}}
 <meta property="og:url"
