@@ -4,7 +4,7 @@ blueprint: documentation
 title: Documentation
 short_content: 'A collection of good articles about how MetricsWave works.'
 updated_by: 1
-updated_at: 1687508707
+updated_at: 1687516894
 ---
 ### 💎 Main topics
 
@@ -19,7 +19,8 @@ updated_at: 1687508707
 
 ### 🔗 Integrations
 
-- [FlutterFlow](/documentation/integrations/flutterflow): FlutterFlow is a low-code builder for developing native mobile applications and you can use MetricsWave to log user behaviour.
+- [React](/documentation/integrations/react): free, open-source JavaScript library utilized for crafting user interfaces based on components.
+- [FlutterFlow](/documentation/integrations/flutterflow): a low-code builder for developing native mobile applications and you can use MetricsWave to log user behaviour.
 
 ---
 
