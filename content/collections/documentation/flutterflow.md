@@ -5,7 +5,7 @@ title: 'Integrations: FlutterFlow'
 short_content: 'FlutterFlow is a low-code builder for developing native mobile applications and you can use MetricsWave to log user behaviour.'
 parent: 515e68b9-1b87-4a82-80d6-f614c1a536f3
 updated_by: 1
-updated_at: 1687509524
+updated_at: 1687509686
 ---
 [FlutterFlow](https://flutterflow.io) is a low-code builder for developing native mobile applications. You can use our simple drag and drop interface to build your app 10x faster than traditional development.
 
@@ -43,3 +43,7 @@ We just need to an [Action](https://docs.flutterflow.io/actions/actions/backend-
 That's all! Now you can integrate MetricsWave in your FlutterFlow application and learn about what users are doing with your app.
 
 You can measure everything, monitor your business and detect possible errors or problems in your flow.
+
+---
+
+[← Go back to documentation](/documentation)
