@@ -4,7 +4,7 @@ blueprint: documentation
 title: Documentation
 short_content: 'A collection of good articles about how MetricsWave works.'
 updated_by: 1
-updated_at: 1686566689
+updated_at: 1687508707
 ---
 ### 💎 Main topics
 
@@ -14,6 +14,12 @@ updated_at: 1686566689
   you want. Learn how to take advantage of custom events to find out how your application is used.
 - [Tracking deployments](/documentation/tracking/deployments): Log and event after a deploy and get stats about the
   version, the author and what's new on your server.
+
+---
+
+### 🔗 Integrations
+
+- [FlutterFlow](/documentation/integrations/flutterflow): FlutterFlow is a low-code builder for developing native mobile applications and you can use MetricsWave to log user behaviour.
 
 ---
 
