@@ -13,7 +13,7 @@
     const t = (uuid, params) => {
         if (w._phantom || w.__nightmare || n.webdriver || w.Cypress) return
         if (l.hostname === 'localhost' || l.hostname.includes('.test')) {
-            console.warn("Ignoring Event: localhost or .test")
+            console.warn("Ignoring Event: localhost or .test", {uuid, params})
             return
         }
 
