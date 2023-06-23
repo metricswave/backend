@@ -22,7 +22,7 @@
                             class="py-4 px-6 text-center bg-gradient-to-b from-slate-800 via-black to-black dark:from-zinc-800 dark:via-zinc-800 dark:to-zinc-800 hover:bg-gradient-to-b hover:from-slate-600 hover:via-slate-900 hover:to-black hover:dark:from-zinc-700 hover:dark:via-zinc-700 hover:dark:to-zinc-700 text-white block ml-0 rounded-lg shadow-lg hover:shadow smooth linkToApp w-full sm:w-auto"
                             href="{{ config('app.web_app_url') }}"
                         >
-                            {{ $buttonText ?? 'Start Tracking my Product →' }}
+                            {!! $buttonText ?? 'Start Tracking <span class="hidden md:inline">my Product </span>for Free →' !!}
                         </a>
 
                         <a
@@ -110,7 +110,7 @@
         </div>
 
         <div class="animate-[out_2.25s,_fade-in-down_1.5s_ease-out_2.25s] relative w-full border-b soft-border px-app">
-            <div class="mw-landing mx-auto mb-16 sm:mb-32">
+            <div class="mw-landing mx-auto mb-16">
                 <h2 class="text-3xl">Seamless Integration for Any Website</h2>
                 <p class="text-lg pt-5 max-w-[568px]">
                     Integrating is quick and easy - just copy and paste a few lines of code!
@@ -127,6 +127,8 @@
         </div>
 
     </div>
+
+    @include('partials.prices')
 
     <div class="mw-landing m-auto my-20 flex flex-col sm:flex-row items-center justify-between space-y-8 sm:space-y-0 sm:space-x-8 sm:my-40 px-app">
         <div class="text-center sm:text-left">
