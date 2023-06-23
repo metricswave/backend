@@ -3,6 +3,7 @@
         l = w.location,
         n = w.navigator,
         d = w.document
+    const uuid = d.currentScript.getAttribute("event-uuid")
 
     let deviceName = localStorage.getItem("mw:dn")
     if (!deviceName) {
@@ -24,7 +25,7 @@
 
     const push = () => {
         const u = new URL(l)
-        t(d.currentScript.getAttribute("event-uuid"), {
+        t(uuid, {
             f: 'script',
             visit: sessionStorage.getItem('mw') ? 0 : 1,
             deviceName: deviceName,
