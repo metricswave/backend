@@ -18,10 +18,10 @@ trait UseTriggerVisitsUpdater
             $configuration['type'] = 'visits';
         }
 
-        $configuration['fields']['parameters'] = array_unique([
+        $configuration['fields']['parameters'] = array_values(array_unique([
             ...Trigger::VISITS_PARAMS,
             ...($configuration['fields']['parameters'] ?? [])
-        ]);
+        ]));
 
         $trigger->configuration = $configuration;
         $trigger->save();

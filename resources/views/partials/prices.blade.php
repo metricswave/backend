@@ -1,5 +1,6 @@
 @php
-    use App\Services\Prices\GetLandingPricesService;use App\Transfers\PriceType;
+    use App\Services\Prices\GetLandingPricesService;
+    use App\Transfers\PriceType;
     $withoutTitle = $withoutTitle ?? false;
 @endphp
 
