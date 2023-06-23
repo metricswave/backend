@@ -5,9 +5,9 @@ title: 'Integrations: React'
 short_content: 'React is a free, open-source JavaScript library utilized for crafting user interfaces based on components.'
 parent: 515e68b9-1b87-4a82-80d6-f614c1a536f3
 updated_by: 1
-updated_at: 1687516853
+updated_at: 1687516938
 ---
-**React is a free, open-source JavaScript library utilized for crafting user interfaces based on components.**
+**[React](https://react.dev/) is a free, open-source JavaScript library utilized for crafting user interfaces based on components.**
 
 Integrating MetricsWave with react it's usualy a single line of code.
 
