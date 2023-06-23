@@ -4,12 +4,13 @@ blueprint: documentation
 title: 'Closed Beta'
 parent: c46aafa5-b49b-4019-a55d-2074ae56570d
 updated_by: 1
-updated_at: 1683360559
+updated_at: 1687524151
 short_content: 'For now, MetricsWave is still in closed beta. Only paying users can create an account right now and access the application.'
 ---
-
 For now, **MetricsWave is still in closed beta**. Only paying users can create an account right now and access the
 application.
+
+> ⚠️ This information could be deprecated. Right now MetricsWave still in private beta, but, if you buy a licence, you will receive an invitation immediately.
 
 MetricsWave is functional, but it still lacks many features that we are working on and many others that we are polishing
 and improving.
