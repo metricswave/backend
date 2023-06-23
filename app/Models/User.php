@@ -138,7 +138,7 @@ class User extends Authenticatable
             return $planGetter->get(PlanId::FREE)->eventsLimit;
         }
 
-        return $planGetter->get(PlanId::BASIC)->eventsLimit;
+        return $planGetter->get(PlanId::BUSINESS)->eventsLimit;
     }
 
     public function getSubscriptionStatusAttribute(): bool
