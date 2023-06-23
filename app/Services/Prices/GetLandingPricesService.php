@@ -16,7 +16,7 @@ class GetLandingPricesService
         ]);
     }
 
-    private function unavailableLifetimePrice()
+    private function unavailableLifetimePrice(): Collection
     {
         return Price::query()
             ->where('type', PriceType::Lifetime)
