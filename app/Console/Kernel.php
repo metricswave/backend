@@ -18,16 +18,7 @@ class Kernel extends ConsoleKernel
             ->dailyAt(8);
         $schedule->command('app:mail:lead-beta-access')->everyMinute();
         $schedule->command('app:mail:user-lifetime-licence-mail')->twiceDaily(12, 20);
-        $schedule->command('app:mail-users-without-triggers-command')->twiceDaily(12, 20);
-
-        // Triggers
-        // $schedule->command('app:trigger:time-to-leave')->everyMinute();
-        // $schedule->command('app:trigger:weather-summary')->everyMinute();
-        // $schedule->command('app:trigger:on-time')->everyMinute();
-
-        // Calendar
-        // $schedule->command('app:user:get-calendars')->dailyAt('02:00');
-        // $schedule->command('app:trigger:calendar-time-to-leave')->hourly();
+        $schedule->command('app:users:mail-without-events --sub-days=1')->twiceDaily(10, 18);
 
         // Telegram Bot
         $schedule->command('telegram:reply-with-group-id')->everyMinute();
