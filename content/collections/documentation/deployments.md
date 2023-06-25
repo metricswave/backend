@@ -57,6 +57,3 @@ Description:
 {message}
 ```
 
----
-
-[← Go back to documentation](/documentation)

@@ -7,13 +7,15 @@ parent: 515e68b9-1b87-4a82-80d6-f614c1a536f3
 updated_by: 1
 updated_at: 1687524087
 ---
-[Next.js](https://nextjs.org/) is a react framework for the Web. It enables you to create full-stack web applications by extending the latest React features.
+
+[Next.js](https://nextjs.org/) is a react framework for the Web. It enables you to create full-stack web applications by
+extending the latest React features.
 
 ## Monitor your traffic
 
 Integrating MetricsWave with Next.js is easy. You only need to add the Script using the `next/script` tag.
 
-Something like this is enough. 
+Something like this is enough.
 
 ```typescript
 import Script from "next/script";
@@ -29,13 +31,16 @@ export default function Home() {
 }
 ```
 
-It's important that this script should be included on all the pages of your application, maybe you can use a layout or extend the app from this component.
+It's important that this script should be included on all the pages of your application, maybe you can use a layout or
+extend the app from this component.
 
 ## How to trigger events
 
-To trigger events whenever you want you will need to use [the API](http://metricswave.test/documentation/tracking/events).
+To trigger events whenever you want you will need to
+use [the API](http://metricswave.test/documentation/tracking/events).
 
-You have multiple options to do this, but a simple one it's to create a function like the next and use it everywhere in your application.
+You have multiple options to do this, but a simple one it's to create a function like the next and use it everywhere in
+your application.
 
 You only need to pass the trigger UUID and the parameters of your event.
 
@@ -56,7 +61,3 @@ export function triggerEvent(eventUuid: string, params: Object = {}) {
   })
 }
 ```
-
----
-
-[← Go back to documentation](/documentation)

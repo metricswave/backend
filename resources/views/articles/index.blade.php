@@ -45,10 +45,19 @@
         @endif
 
         <div class="prose dark:prose-invert mx-auto prose-headings:scroll-mt-8">
-            {!! $content !!}
+            @if (isset($table_of_contents))
+                {!! Str::of($content)->replaceMatches('/\<p\>\{\{ toc }}\<\/p\>/', "<div class='pt-6 px-6 pb-3 mt-10 dark:bg-zinc-800/50 bg-zinc-100 rounded-sm border soft-border'><p class='font-bold mt-0 pt-0'>Table of contents:</p>".$table_of_contents->raw()."</div>") !!}
+            @else
+                {!! $content !!}
+            @endif
+
 
             @if ($blueprint->raw()->handle === 'article')
                 <p class="mt-10"><a href="/blog">← Go back to the blog</a></p>
+            @endif
+
+            @if ($blueprint->raw()->handle === 'documentation')
+                <p class="mt-10"><a href="/documentation">← Go back to Documentation</a></p>
             @endif
         </div>
     </div>

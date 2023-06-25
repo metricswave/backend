@@ -7,6 +7,7 @@ updated_by: 1
 updated_at: 1686651420
 short_content: 'You can log and register any custom event on your site as you want. Learn how to take advantage of custom events to find out how your application is used.'
 ---
+
 One of MetricsWave's most powerful features is the ability to record custom events and obtain information from them.
 
 Events, along with custom parameters, will allow you to view statistics and understand how users are using your
@@ -62,7 +63,3 @@ All events have a hidden `emoji` parameter. This parameter gives you the option 
 
 Just add the param `&emoji=😍` at the end of your GET request, or as a param in your POST, and the notification will be
 triggered with this emoji instead of the one configured in the Trigger.
-
----
-
-[← Go back to documentation](/documentation)

@@ -4,7 +4,7 @@ blueprint: documentation
 title: Documentation
 short_content: 'A collection of good articles about how MetricsWave works.'
 updated_by: 1
-updated_at: 1687524076
+updated_at: 1687634260
 ---
 ### 💎 Main topics
 
@@ -14,6 +14,7 @@ updated_at: 1687524076
   you want. Learn how to take advantage of custom events to find out how your application is used.
 - [Tracking deployments](/documentation/tracking/deployments): Log and event after a deploy and get stats about the
   version, the author and what's new on your server.
+- [How to use UTM parameters to track marketing campaigns](/documentation/utm-parameters): UTM parameters help track dark traffic, paid campaigns, newsletters, and high-converting social media content.
 
 ---
 

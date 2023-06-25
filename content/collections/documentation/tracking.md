@@ -15,6 +15,3 @@ updated_at: 1686501976
 - [Tracking deployments](/documentation/tracking/deployments): Log and event after a deploy and get stats about the
   version, the author and what's new on your server.
 
----
-
-[← Go back to documentation](/documentation)

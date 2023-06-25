@@ -27,6 +27,17 @@ tabs:
             field:
               type: markdown
               localizable: true
+          -
+            handle: table_of_contents
+            field:
+              antlers: false
+              type: textarea
+              display: 'Table of Contents'
+              icon: textarea
+              listable: hidden
+              instructions_position: above
+              visibility: read_only
+              hide_display: false
   sidebar:
     display: Sidebar
     sections:

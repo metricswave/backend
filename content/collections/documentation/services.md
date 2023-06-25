@@ -11,6 +11,3 @@ Services are different applications that you can connect and integrate inside Me
 
 - [Telegram](/documentation/services/telegram): Connect a Telegram Channel or Group to receive notifications there.
 
----
-
-[← Go back to documentation](/documentation)

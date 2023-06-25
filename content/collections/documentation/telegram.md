@@ -7,6 +7,7 @@ updated_by: 1
 updated_at: 1686724791
 short_content: 'Connect a Telegram channel to receive notifications there.'
 ---
+
 **Telegram groups allow you to receive notifications there in a simple and unobtrusive way.**
 
 ## How to connect your channel or group
@@ -42,7 +43,3 @@ I'm going to use the desktop version of Telegram but the process it's almost the
 
 💬 **Are you having problems connecting your Telegram channel?**
 Mail us at [info@metricswave.com](mailto:info@metricswave.com).
-
----
-
-[← Go back to documentation](/documentation)
