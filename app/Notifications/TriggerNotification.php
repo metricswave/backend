@@ -63,7 +63,7 @@ class TriggerNotification extends Notification implements ShouldQueue
                     && Str::of($params['referrer'])->contains($params['domain'])
                 )
             ) {
-                unset($params['referrer']);
+                $params['referrer'] = 'Direct / None';
             }
         }
 
