@@ -1,11 +1,8 @@
 ---
-id: ca653e51-a9dc-4b90-84a6-57a3f649a9a8
+id: f6b216f1-9e69-49c2-9674-71e75f67091b
 blueprint: documentation
-title: 'Integrations: React'
-short_content: 'React is a free, open-source JavaScript library utilized for crafting user interfaces based on components.'
-parent: 515e68b9-1b87-4a82-80d6-f614c1a536f3
-updated_by: 1
-updated_at: 1687768014
+title: 'Integrations: HTML and JavaScript'
+short_content: 'Follow this steps to monitor your basic HTML and JavaScript site. You just need to follow one simple step.'
 table_of_contents: |-
   <ul class="table-of-contents">
   <li class="">
@@ -15,11 +12,13 @@ table_of_contents: |-
   <p><a href="#how-to-measure-events" title="How to measure events">How to measure events</a></p>
   </li>
   </ul>
+parent: 515e68b9-1b87-4a82-80d6-f614c1a536f3
+updated_by: 1
+updated_at: 1687768054
 ---
-**[React](https://react.dev/) is a free, open-source JavaScript library utilized for crafting user interfaces based on
-components.**
+To integrate MetricsWave in your HTML and JavaScript site you just need to add the visits script. This should be added inside the `<head>` tag in all your sites.
 
-Integrating MetricsWave with react it's usually a single line of code.
+It's a super small script (less than 1KB) so it's going to load fast without compromising the user experience or loading time.
 
 {{ toc }}
 
@@ -45,8 +44,7 @@ Something like this:
 </head>
 
 <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <!-- website content -->
 </body>
 
 </html>
@@ -62,13 +60,8 @@ your application.
 
 You only need to pass the trigger UUID and the parameters of your event.
 
-```typescript
-export function triggerEvent(eventUuid: string, params: Object = {}) {
-    if (!process.env.NODE_ENV === "production") {
-        console.log(`[EventTracker] ${eventUuid}`, params)
-        return
-    }
-
+```javascript
+export function triggerEvent(eventUuid, params = {}) {
     fetch(`https://notifywave.com/webhooks/${eventUuid}`, {
         method: "POST",
         headers: {
