@@ -23,7 +23,11 @@ class Visits extends AwssatVisits
             }
 
             if (empty($value) || $value === "null") {
-                continue;
+                if (Str::of($param)->startsWith('utm_')) {
+                    $value = "Direct / None";
+                } else {
+                    continue;
+                }
             }
 
             $key = Str::of($param)->snake();
