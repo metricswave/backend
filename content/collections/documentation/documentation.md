@@ -4,7 +4,7 @@ blueprint: documentation
 title: Documentation
 short_content: 'A collection of good articles about how MetricsWave works.'
 updated_by: 1
-updated_at: 1687768121
+updated_at: 1687846315
 ---
 ### 💎 Main topics
 
@@ -22,6 +22,7 @@ updated_at: 1687768121
 
 - [React](/documentation/integrations/react): free, open-source JavaScript library utilized for crafting user interfaces based on components.
 - [Next.js](/documentation/integrations/next-js): a react framework for the Web. It enables you to create full-stack web applications by extending the latest React features.
+- [WordPress](/documentation/integrations/wordpress): MetricsWave is easy to integrate with your WordPress site and is designed to be user-friendly for site owners of all skill levels.
 - [HTML and Javascript](/documentation/integrations/html-and-javascript): if you have a simple site, monitoring your traffic with MetricsWave is a matter of seconds.
 - [FlutterFlow](/documentation/integrations/flutterflow): a low-code builder for developing native mobile applications and you can use MetricsWave to log user behaviour.
 
