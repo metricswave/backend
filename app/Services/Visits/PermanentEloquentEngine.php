@@ -275,6 +275,8 @@ class PermanentEloquentEngine implements DataEngine
 
                 return true;
             }
+
+            throw $exception;
         }
     }
 
