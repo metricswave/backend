@@ -243,14 +243,17 @@ class PermanentEloquentEngine implements DataEngine
     public function setExpiration(string $key, int $time): bool
     {
         try {
+            $newExpireAt = Carbon::now()->addSeconds($time);
+
             return $this->model
                 ->where(['primary_key' => $this->prefix.$key])
                 ->where(function ($q) {
-                    return $q->where('expired_at', '>', Carbon::now())->orWhereNull('expired_at');
+                    return $q
+                        ->where('expired_at', '>', Carbon::now())
+                        ->orWhereNull('expired_at');
                 })
-                ->update([
-                    'expired_at' => Carbon::now()->addSeconds($time)
-                ]);
+                ->whereDate('expired_at', '!=', $newExpireAt)
+                ->update(['expired_at' => $newExpireAt]);
         } catch (QueryException $exception) {
             if ($exception->getCode() == 23000) {
                 $visits = $this->model
