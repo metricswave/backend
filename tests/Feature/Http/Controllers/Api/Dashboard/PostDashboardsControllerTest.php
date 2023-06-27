@@ -34,3 +34,20 @@ it('create a new dashboard', function () {
         ->public->toBeFalse()
         ->items->toHaveCount(2);
 });
+
+it('create a new dashboard without items', function () {
+    $user = User::factory()->create();
+
+    $this->actingAs($user)
+        ->postJson('/api/dashboards/', [
+            'name' => 'New name',
+            'items' => [],
+        ])
+        ->assertNoContent();
+
+    expect(Dashboard::find(1))
+        ->name->toBe('New name')
+        ->uuid->toBeString()
+        ->public->toBeFalse()
+        ->items->toHaveCount(0);
+});
