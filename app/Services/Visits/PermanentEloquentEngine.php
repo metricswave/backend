@@ -259,7 +259,7 @@ class PermanentEloquentEngine implements DataEngine
                 })
                 ->update(['expired_at' => $newExpireAt]);
         } catch (QueryException $exception) {
-            if ($exception->getCode() === self::MYSQL_DUPLICATE_KEY_CODE) {
+            if ($exception->getCode() == self::MYSQL_DUPLICATE_KEY_CODE) {
                 $visits = $this->model
                     ->where(['primary_key' => $this->prefix.$key])
                     ->where(function ($q) {
@@ -283,7 +283,7 @@ class PermanentEloquentEngine implements DataEngine
                 return true;
             }
 
-            if ($exception->getCode() === self::MYSQL_DEADLOCK_CODE) {
+            if ($exception->getCode() == self::MYSQL_DEADLOCK_CODE) {
                 Http::post('https://metricswave.com/webhooks/8fef80f2-d4ab-4310-a035-309a9895886b');
                 return true;
             }
