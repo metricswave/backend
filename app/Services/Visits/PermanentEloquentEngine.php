@@ -300,7 +300,8 @@ class PermanentEloquentEngine implements DataEngine
                 Http::post(
                     'https://metricswave.com/webhooks/842e2f48-4c9f-436f-bb88-c00266496f10',
                     [
-                        'message' => "Duplicate key error with key \"{$this->prefix}{$key}\".",
+                        'message' => 'Duplicate key error.',
+                        'description' => "Duplicate key error with key \"{$this->prefix}{$key}\".",
                     ]
                 );
 
