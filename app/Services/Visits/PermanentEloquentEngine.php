@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 
 class PermanentEloquentEngine implements DataEngine
@@ -188,24 +189,6 @@ class PermanentEloquentEngine implements DataEngine
             });
     }
 
-    public function set(string $key, $value, $member = null): bool
-    {
-        if (!empty($member) || is_numeric($member)) {
-            return $this->model->updateOrCreate([
-                    'primary_key' => $this->prefix.$key,
-                    'secondary_key' => $member,
-                    'score' => $value,
-                    'expired_at' => null,
-                ]) instanceof Model;
-        } else {
-            return $this->model->updateOrCreate([
-                    'primary_key' => $this->prefix.$key,
-                    'score' => $value,
-                    'expired_at' => null,
-                ]) instanceof Model;
-        }
-    }
-
     public function search(string $word, bool $noPrefix = true): array
     {
         $results = [];
@@ -326,6 +309,16 @@ class PermanentEloquentEngine implements DataEngine
                     })
                     ->get();
 
+                if (!Cache::has('duplicate_key_error')) {
+                    Http::post(
+                        'https://metricswave.com/webhooks/842e2f48-4c9f-436f-bb88-c00266496f10',
+                        [
+                            'message' => "Duplicate key error with {$visits->count()} rows.",
+                        ]
+                    );
+                    Cache::put('duplicate_key_error', true, now()->addMinutes(5));
+                }
+
                 $visits->groupBy('secondary_key')->each(function ($item) use ($time, $newExpireAt) {
                     $totalScore = $item->sum('score');
 
@@ -348,6 +341,24 @@ class PermanentEloquentEngine implements DataEngine
             }
 
             throw $exception;
+        }
+    }
+
+    public function set(string $key, $value, $member = null): bool
+    {
+        if (!empty($member) || is_numeric($member)) {
+            return $this->model->updateOrCreate([
+                    'primary_key' => $this->prefix.$key,
+                    'secondary_key' => $member,
+                    'score' => $value,
+                    'expired_at' => null,
+                ]) instanceof Model;
+        } else {
+            return $this->model->updateOrCreate([
+                    'primary_key' => $this->prefix.$key,
+                    'score' => $value,
+                    'expired_at' => null,
+                ]) instanceof Model;
         }
     }
 }
