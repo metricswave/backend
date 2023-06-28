@@ -82,13 +82,13 @@ class PermanentEloquentEngine implements DataEngine
             ->when($to !== null, function ($q) use ($to) {
                 return $q->whereDate('expired_at', '<=', $to);
             })
-            ->when($period === 'day', function ($q) {
+            ->when($from === null && $period === 'day', function ($q) {
                 return $q->where(function ($q) {
                     return $q->whereDate('expired_at', '>',
                         Carbon::now()->subDays(30)->startOfDay())->orWhereNull('expired_at');
                 });
             })
-            ->when($period === 'month', function ($q) {
+            ->when($from === null && $period === 'month', function ($q) {
                 return $q->where(function ($q) {
                     return $q->whereDate('expired_at', '>',
                         Carbon::now()->subMonths(12)->startOfMonth())->orWhereNull('expired_at');
@@ -247,12 +247,13 @@ class PermanentEloquentEngine implements DataEngine
 
             return $this->model
                 ->where(['primary_key' => $this->prefix.$key])
-                ->where(function ($q) {
+                ->where(function ($q) use ($newExpireAt) {
                     return $q
-                        ->where('expired_at', '>', Carbon::now())
+                        ->where(function ($q) use ($newExpireAt) {
+                            $q->where('expired_at', '>', Carbon::now())->where('expired_at', '!=', $newExpireAt);
+                        })
                         ->orWhereNull('expired_at');
                 })
-                ->whereDate('expired_at', '!=', $newExpireAt)
                 ->update(['expired_at' => $newExpireAt]);
         } catch (QueryException $exception) {
             if ($exception->getCode() == 23000) {

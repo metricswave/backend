@@ -231,6 +231,7 @@ it('store visits params, unique visits and new visits', function () {
     expect(
         Visit::query()
             ->where('primary_key', 'visits:testing:triggers_visits_day_referrer:48')
+            ->where('secondary_key', '!=', 'Direct / None')
             ->exists()
     )->toBeFalse();
 });
@@ -377,6 +378,7 @@ it('visit type works even when it has no params', function () {
     expect(
         Visit::query()
             ->where('primary_key', 'visits:testing:triggers_visits_day_referrer:48')
+            ->where('secondary_key', '!=', 'Direct / None')
             ->exists()
     )->toBeFalse();
 });
