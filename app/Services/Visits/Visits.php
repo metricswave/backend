@@ -35,9 +35,10 @@ class Visits extends AwssatVisits
             foreach ($this->periods as $period) {
                 $periodKey = $this->keys->period($period);
                 $periodKey = "{$periodKey}_{$key}:{$this->keys->id}";
+                $expireInSeconds = $this->newExpiration($period);
 
-                $this->connection->increment($periodKey, $inc, $value);
-                $this->connection->increment($periodKey.'_total', $inc, $value);
+                $this->connection->incrementWithExpiration($periodKey, $inc, $value, $expireInSeconds);
+                $this->connection->incrementWithExpiration($periodKey.'_total', $inc, $value, $expireInSeconds);
             }
         }
 
@@ -48,14 +49,6 @@ class Visits extends AwssatVisits
     {
         $this->period = $period;
         return parent::period($period);
-    }
-
-    public function increment($inc = 1, $force = true, $ignore = []): bool
-    {
-        $response = parent::increment($inc, $force, $ignore);
-        $this->periodsSync();
-
-        return $response;
     }
 
     private function periodsParamsSync(array $params): void
@@ -76,6 +69,14 @@ class Visits extends AwssatVisits
                 $this->connection->setExpiration($periodKey.'_total', $expireInSeconds);
             }
         }
+    }
+
+    public function increment($inc = 1, $force = true, $ignore = []): bool
+    {
+        $response = parent::increment($inc, $force, $ignore);
+        $this->periodsSync();
+
+        return $response;
     }
 
     public function countAll(Carbon $from = null, Carbon $to = null): Collection
@@ -169,5 +170,16 @@ class Visits extends AwssatVisits
             ])
             ->sortByDesc('score', SORT_NUMERIC)
             ->values();
+    }
+
+    protected function recordPeriods($inc): void
+    {
+        foreach ($this->periods as $period) {
+            $expireInSeconds = $this->newExpiration($period);
+            $periodKey = $this->keys->period($period);
+
+            $this->connection->incrementWithExpiration($periodKey, $inc, $this->keys->id, $expireInSeconds);
+            $this->connection->incrementWithExpiration($periodKey.'_total', $inc, null, $expireInSeconds);
+        }
     }
 }
