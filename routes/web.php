@@ -52,6 +52,12 @@ Route::middleware(RedirectOldNotifyWaveDomain::class)->group(function () {
     Route::get('/leads/create/prices/{price}', GetCheckoutCreatingLeadController::class);
     Route::get('/leads/{lead:uuid}/prices/{price}', GetCheckoutController::class);
     Route::view('/payment/success', 'payment.success');
+
+    // Blog redirections
+    Route::permanentRedirect(
+        '/blog/google-analytics-is-blocked-by-more-than-50-of-tech-sites-audientes',
+        '/blog/50-of-tech-sites-traffic-is-blocking-google-analytics'
+    );
 });
 
 // Webhooks notification
