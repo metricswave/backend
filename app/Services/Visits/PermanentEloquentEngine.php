@@ -12,7 +12,7 @@ use Illuminate\Support\Collection;
 class PermanentEloquentEngine implements DataEngine
 {
     private const MYSQL_DUPLICATE_KEY_CODE = 23000;
-    public const MYSQL_DEADLOCK_ERROR_CODE = 40001;
+    private const MYSQL_DEADLOCK_CODE = 40001;
     private $model = null;
     private $prefix = null;
 
@@ -258,7 +258,7 @@ class PermanentEloquentEngine implements DataEngine
                 })
                 ->update(['expired_at' => $newExpireAt]);
         } catch (QueryException $exception) {
-            if ($exception->getCode() == self::MYSQL_DUPLICATE_KEY_CODE) {
+            if ($exception->getCode() === self::MYSQL_DUPLICATE_KEY_CODE) {
                 $visits = $this->model
                     ->where(['primary_key' => $this->prefix.$key])
                     ->where(function ($q) {
@@ -282,7 +282,7 @@ class PermanentEloquentEngine implements DataEngine
                 return true;
             }
 
-            if ($exception->getCode() == self::MYSQL_DEADLOCK_ERROR_CODE) {
+            if ($exception->getCode() === self::MYSQL_DEADLOCK_CODE) {
                 return true;
             }
 
