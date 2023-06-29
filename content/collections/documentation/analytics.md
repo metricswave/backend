@@ -5,7 +5,19 @@ title: 'Actionable Insights from your Traffic and Referral'
 short_content: "Learn how to get actionable insights from your traffic and referral. It's super simple and configurable."
 parent: c46aafa5-b49b-4019-a55d-2074ae56570d
 updated_by: 1
-updated_at: 1686651268
+updated_at: 1688018333
+table_of_contents: |-
+  <ul class="table-of-contents">
+  <li class="">
+  <p><a href="#1-create-the-event" title="1 - Create the event">1 - Create the event</a></p>
+  </li>
+  <li class="">
+  <p><a href="#2-track-your-traffic" title="2 - Track your traffic">2 - Track your traffic</a></p>
+  </li>
+  <li class="">
+  <p><a href="#are-you-in-localhost-or-test-environment" title="Are you in localhost or test environment?">Are you in localhost or test environment?</a></p>
+  </li>
+  </ul>
 ---
 With MetricsWave you can replace Google Analytics or any other analytics service.
 
@@ -18,12 +30,7 @@ of analytics users find most useful.
 Also, because it's a self-made tool where you can configure it as you want you can add or remove more parameters if you
 need too, but, in this case we are going to focus on how to start tracking traffic with all the basic features.
 
-#### Table of Content
-
-1. [Create the event](#create-event)
-2. [Track your traffic](#track-traffic)
-
-<div style="scroll-margin-top: 40px" id="create-avent"></div>
+{{ toc }}
 
 ## 1 - Create the event
 
@@ -35,10 +42,6 @@ It's important to add `path`, `language`, `userAgent`, `platform` and `referrer`
 **Important:** After creating the event, you will need to copy the Event UUID.
 
 ![Event UUID](/images/documentation/event_uuid.png)
-
----
-
-<div style="scroll-margin-top: 40px" id="track-traffic"></div>
 
 ## 2 - Track your traffic
 
@@ -65,4 +68,10 @@ Another option, it's to manually calling the endpoint everytime a path is loaded
 
 ---
 
-[← Go back to Documentation](/documentation)
+## Are you in localhost or test environment?
+
+![Events in Localhost](/images/documentation/20230629075617_events_in_localhost.png)
+
+While using our visit script you should know that we are skipping events from localhost or `.test` domains.
+
+If you are seeing a warning message inside the browser console from this domains it's normal. It should work perfectly on production.
