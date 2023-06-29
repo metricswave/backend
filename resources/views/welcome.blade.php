@@ -27,7 +27,7 @@
 
                         <a
                             class="py-4 px-6 opacity-60 hover:opacity-100 smooth border rounded-lg w-full sm:w-auto text-center"
-                            href="https://app.metricswave.com/fUwWlrz6Xhedh12/metricswave.com"
+                            href="https://app.metricswave.com/fUwWlrz6Xhedh12/metricswave.com?compare=1&period=7d"
                             target="_blank"
                         >
                             Live Demo
