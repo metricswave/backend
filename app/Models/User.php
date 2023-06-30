@@ -52,6 +52,7 @@ class User extends Authenticatable
     protected $appends = [
         'subscription_status',
         'subscription_type',
+        'subscription_plan_id',
     ];
 
     protected $dispatchesEvents = [
@@ -130,19 +131,17 @@ class User extends Authenticatable
         return $this->triggerNotificationVisits()->period('month')->count() > $this->triggerMonthlyLimit();
     }
 
-    public function triggerMonthlyLimit(): int
+    public function triggerMonthlyLimit(): null|int
     {
-        $planGetter = app(PlanGetter::class);
-
-        if ($this->subscription_status === false) {
-            return $planGetter->get(PlanId::FREE)->eventsLimit;
-        }
-
-        return $planGetter->get(PlanId::BUSINESS)->eventsLimit;
+        return app(PlanGetter::class)->get($this->subscription_plan_id)->eventsLimit;
     }
 
     public function getSubscriptionStatusAttribute(): bool
     {
+        if ($this->subscriptions()->whereIn('stripe_status', ['active', 'trailing'])->exists()) {
+            return true;
+        }
+
         $lead = Lead::query()->where('email', $this->email)->first();
 
         if ($lead === null) {
@@ -150,6 +149,19 @@ class User extends Authenticatable
         }
 
         return $lead->price_id !== null;
+    }
+
+    public function getSubscriptionPlanIdAttribute(): PlanId
+    {
+        if ($this->subscription_status === false) {
+            return PlanId::FREE;
+        }
+
+        if ($this->subscribedToProduct(PlanGetter::BASIC_PRODUCT_ID)) {
+            return PlanId::BASIC;
+        }
+
+        return PlanId::BUSINESS;
     }
 
     public function getSubscriptionTypeAttribute(): ?SubscriptionType

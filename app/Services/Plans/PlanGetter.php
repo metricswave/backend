@@ -8,6 +8,9 @@ use Illuminate\Support\Collection;
 
 class PlanGetter
 {
+    public const BASIC_PRODUCT_ID = 'prod_OB1lbP1pyUy5E0';
+    public const BUSINESS_PRODUCT_ID = 'prod_OB1pdLUu9FIBGh';
+
     public function get(PlanId $id): Plan
     {
         return $this->all()->first(fn(Plan $plan) => $plan->id === $id);
@@ -25,7 +28,7 @@ class PlanGetter
                 dataRetentionInMonths: 12,
                 eventsLimit: 25000,
                 dedicatedSupport: false,
-                productStripeId: 'prod_OB1lbP1pyUy5E0',
+                productStripeId: self::BASIC_PRODUCT_ID,
                 monthlyPriceStripeId: 'price_1NOfhbDpKR4Se5u8lPzm7X4F',
                 yearlyPriceStripeId: 'price_1NOfhbDpKR4Se5u8QcTpZUTl'
             ),
@@ -37,7 +40,7 @@ class PlanGetter
                 dataRetentionInMonths: 24,
                 eventsLimit: 75000,
                 dedicatedSupport: true,
-                productStripeId: 'prod_OB1pdLUu9FIBGh',
+                productStripeId: self::BUSINESS_PRODUCT_ID,
                 monthlyPriceStripeId: 'price_1NOflyDpKR4Se5u8nvIxnEah',
                 yearlyPriceStripeId: 'price_1NOflyDpKR4Se5u8Ni02CvDH',
             ),
