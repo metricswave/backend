@@ -45,7 +45,7 @@ class PlanGetter
                 id: PlanId::ENTERPRISE,
                 name: 'Enterprise',
                 monthlyPrice: null,
-                yearlyPrice: false,
+                yearlyPrice: null,
                 dataRetentionInMonths: null,
                 eventsLimit: null,
                 dedicatedSupport: true
