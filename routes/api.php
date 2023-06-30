@@ -6,6 +6,8 @@ use App\Http\Controllers\Api\Auth\LogoutController;
 use App\Http\Controllers\Api\Auth\RefreshTokenControllerController;
 use App\Http\Controllers\Api\Auth\ResetPasswordController;
 use App\Http\Controllers\Api\Auth\SignUpController;
+use App\Http\Controllers\Api\Checkout\GetPlanCheckoutPathController;
+use App\Http\Controllers\Api\Checkout\GetPlansController;
 use App\Http\Controllers\Api\Checkout\GetPortalPathController;
 use App\Http\Controllers\Api\Checkout\GetPriceCheckoutPathController;
 use App\Http\Controllers\Api\Checkout\GetPricesController;
@@ -72,8 +74,10 @@ Route::get('/users/usage', GetUserUsageController::class);
 
 // Checkout
 Route::get('/checkout/prices', GetPricesController::class);
+Route::get('/checkout/plans', GetPlansController::class);
 Route::get('/checkout/portal-path', GetPortalPathController::class);
 Route::get('/checkout/prices/{price}', GetPriceCheckoutPathController::class);
+Route::get('/checkout/plan/{planId}/{period}', GetPlanCheckoutPathController::class);
 
 // Notifications
 Route::get('/notifications', GetNotificationsController::class);

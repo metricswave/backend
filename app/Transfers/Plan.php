@@ -10,10 +10,13 @@ class Plan extends Data
         readonly public PlanId $id,
         readonly public string $name,
         readonly public int|null $monthlyPrice,
-        readonly public bool $yearlyDiscount,
+        readonly public int|null $yearlyPrice,
         readonly public int|null $dataRetentionInMonths,
         readonly public int|null $eventsLimit,
         readonly public bool $dedicatedSupport,
+        readonly public null|string $productStripeId = null,
+        readonly public null|string $monthlyPriceStripeId = null,
+        readonly public null|string $yearlyPriceStripeId = null,
     ) {
     }
 }
