@@ -26,7 +26,7 @@
                 @endif
 
                 <a
-                    href="https://app.metricswave.com?utm_source=metricswave&utm_medium=referral&utm_campaign=pricing&utm_term={{$plan->id->value}}"
+                    href="https://app.metricswave.com?utm_source=metricswave&utm_medium=landing_prices&utm_campaign=pricing&utm_term=price_{{$plan->id->value}}"
                     class="backdrop-blur-x duration-400 flex-grow flex-1 rounded border bg-white/50 p-6 transition-all dark:border-zinc-600 dark:bg-zinc-700/50 dark:shadow-zinc-400 shadow hover:bg-white/90 dark:hover:bg-zinc-700">
 
                     <h2 class="text-center mb-4 opacity-60">
