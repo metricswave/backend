@@ -4,15 +4,10 @@ namespace App\Http\Controllers\Lead;
 
 use App\Http\Controllers\Controller;
 use App\Models\Lead;
-use App\Services\Prices\GetLandingPricesService;
 use Illuminate\Contracts\View\View;
 
 class GetLeadController extends Controller
 {
-    public function __construct(public readonly GetLandingPricesService $landingPricesService)
-    {
-    }
-
     public function __invoke(Lead $lead): View
     {
         $name = config('app.name');

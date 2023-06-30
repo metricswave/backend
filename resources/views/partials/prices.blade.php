@@ -1,5 +1,5 @@
 @php
-    use App\Services\Plans\PlanGetter;use App\Transfers\PriceType;
+    use App\Services\Plans\PlanGetter;
     $withoutTitle = $withoutTitle ?? false;
 @endphp
 

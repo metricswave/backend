@@ -4,16 +4,11 @@ namespace App\Http\Controllers\Open;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Services\Prices\GetLandingPricesService;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 
 class GetOpenPageController extends Controller
 {
-    public function __construct(public readonly GetLandingPricesService $landingPricesService)
-    {
-    }
-
     public function __invoke(): View|Factory
     {
         $firstDayWithStats = now()->year === 2023 ? 126 : 0;
