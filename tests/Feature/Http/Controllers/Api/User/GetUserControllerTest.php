@@ -18,6 +18,7 @@ it('return current user', function () {
                     'email_verified_at',
                     'subscription_status',
                     'subscription_type',
+                    'subscription_plan_id',
                     'created_at',
                     'updated_at',
                 ])

@@ -4,6 +4,7 @@ use App\Http\Controllers\Blog\BlogController;
 use App\Http\Controllers\Blog\CategoryController;
 use App\Http\Controllers\Checkout\GetCheckoutController;
 use App\Http\Controllers\Checkout\GetCheckoutCreatingLeadController;
+use App\Http\Controllers\Checkout\GetCheckoutPlanCreatingLeadController;
 use App\Http\Controllers\Lead\GetLeadController;
 use App\Http\Controllers\Lead\PostLeadController;
 use App\Http\Controllers\Open\GetOpenPageController;

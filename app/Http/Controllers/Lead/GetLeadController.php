@@ -19,7 +19,6 @@ class GetLeadController extends Controller
 
         return view('lead.lead_index', [
             'lead' => $lead,
-            'prices' => ($this->landingPricesService)(),
             'todos' => [
                 [
                     "done" => $lead->form_filled,
