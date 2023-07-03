@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\Auth\ForgotPasswordController;
 use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\LogoutController;
+use App\Http\Controllers\Api\Auth\PostImpersonateController;
 use App\Http\Controllers\Api\Auth\RefreshTokenControllerController;
 use App\Http\Controllers\Api\Auth\ResetPasswordController;
 use App\Http\Controllers\Api\Auth\SignUpController;
@@ -61,6 +62,9 @@ Route::post('/logout', LogoutController::class);
 Route::post('/forgot-password', ForgotPasswordController::class);
 Route::post('/reset-password', ResetPasswordController::class);
 Route::post('/refresh', RefreshTokenControllerController::class);
+
+// Impersonate
+Route::post('/auth/impersonate/', PostImpersonateController::class);
 
 // User
 Route::get('/users', GetUserController::class);
