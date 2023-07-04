@@ -18,7 +18,7 @@
                 <p>
                     <a href="https://app.metricswave.com"
                        class="border-b border-dotted border-blue-500 text-blue-500 smooth hover:text-blue-700 dark:hover:text-blue-300 hover:border-solid">Start
-                        for free</a> and upgrade your account at any moment.
+                        for free</a>, and upgrade your account at any moment.
                 </p>
             </div>
         @endif
