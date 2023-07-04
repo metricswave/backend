@@ -12,18 +12,26 @@
     <div class="p-app mt-12 {{!$withoutTitle ? 'sm:mt-44' : ''}} mw-landing mx-auto">
         @if (!$withoutTitle)
             <h2 class="text-2xl md:text-4xl sm:text-center font-bold mb-6 leading-snug mx-auto">
-                Secure your <br class="hidden md:inline-block"/>lifetime license deal
+                Choose the plan <br/>that fits your needs
             </h2>
-            <div class="sm:text-center opacity-50 pb-6 flex flex-col space-y-3 md:px-10 mb-8 max-w-[700px] mx-auto">
-                <p>Get your deal at a discounted rate. You will receive an invitation immediately.</p>
+            <div class="sm:text-center text-zinc-500 pb-6 flex flex-col space-y-3 md:px-10 mb-8 max-w-[700px] mx-auto">
+                <p>
+                    <a href="https://app.metricswave.com"
+                       class="border-b border-dotted border-blue-500 text-blue-500 smooth hover:text-blue-700 dark:hover:text-blue-300 hover:border-solid">Start
+                        for free</a> and upgrade your account at any moment.
+                </p>
             </div>
         @endif
 
-        <div class="mw-landing mx-auto flex flex-col gap-4 md:flex-row">
+        <div class="mw-wide-landing mx-auto flex flex-col gap-4 md:flex-row mb-14">
             @foreach(app(PlanGetter::class)->all() as $plan)
-                @if ($plan->id->value === 4)
+                @if ($plan->id->value === 5 || $plan->id->value === 1)
                     @continue
                 @endif
+
+                @php
+                    $formattedLimit = format_long_numbers($plan->eventsLimit, 0)
+                @endphp
 
                 <a
                     href="https://app.metricswave.com?utm_source=metricswave&utm_medium=landing_prices&utm_campaign=pricing&utm_term=price_{{$plan->id->value}}"
@@ -33,16 +41,16 @@
                         {{ $plan->name }} Plan
                     </h2>
 
-                    <h3 class="mt-3 flex flex-row items-center justify-center text-center text-6xl font-light">
-                        <span class="text-3xl opacity-90">$</span>
+                    <h3 class="mt-3 flex flex-row items-center justify-center text-center text-5xl font-light">
+                        <span class="text-lg opacity-90">$</span>
                         <span>{{ explode(',', number_format($plan->monthlyPrice/100, 2, ',', '.'))[0] }}</span>
-                        <span class="-ml-1 text-3xl opacity-80">.{{ explode(',', number_format($plan->monthlyPrice/100, 2, ',', '.'))[1] }}/mo</span>
+                        <span class="-ml-1 text-lg opacity-80">.{{ explode(',', number_format($plan->monthlyPrice/100, 2, ',', '.'))[1] }}/mo</span>
                     </h3>
 
                     <ul class="flex flex-col gap-2 pt-6 pb-2 text-xs opacity-70 text-center">
                         <li>All features available.</li>
                         <li>Cancel at any time.</li>
-                        <li>{{ $plan->eventsLimit !== null ? number_format($plan->eventsLimit) : 'Unlimited' }}
+                        <li>{{ $plan->eventsLimit !== null ? $formattedLimit : 'Unlimited' }}
                             events per month.
                         </li>
                         <li>{{ $plan->dataRetentionInMonths ?? 'Unlimited' }} months retention.</li>
@@ -61,7 +69,7 @@
         </div>
 
         <div>
-            <p class="text-center opacity-80 pt-10 text-sm">
+            <p class="text-center opacity-80 text-sm">
                 Need more? <a href="mailto:sales@metricswave.com"
                               class="text-blue-500 dark:hover:text-blue-200 hover:text-blue-800 transition-all duration-300">Contact
                     us</a> for a custom plan.

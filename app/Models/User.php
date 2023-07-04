@@ -157,8 +157,13 @@ class User extends Authenticatable
             return PlanId::FREE;
         }
 
+
         if ($this->subscribedToProduct(PlanGetter::BASIC_PRODUCT_ID)) {
             return PlanId::BASIC;
+        }
+
+        if ($this->subscribedToProduct(PlanGetter::STARTER_PRODUCT_ID)) {
+            return PlanId::STARTER;
         }
 
         return PlanId::BUSINESS;
