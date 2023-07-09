@@ -9,7 +9,7 @@ You can find the tracking code inside the event in your event list, but basicall
 ```html
 <script defer
     event-uuid="{{ $uuid  }}"
-    src="https://metricswave.com/js/visits.js">
+    src="https://tracker.metricswave.com/js/visits.js">
 </script>
 ```
 

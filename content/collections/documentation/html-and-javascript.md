@@ -16,9 +16,12 @@ parent: 515e68b9-1b87-4a82-80d6-f614c1a536f3
 updated_by: 1
 updated_at: 1687768054
 ---
-To integrate MetricsWave in your HTML and JavaScript site you just need to add the visits script. This should be added inside the `<head>` tag in all your sites.
 
-It's a super small script (less than 1KB) so it's going to load fast without compromising the user experience or loading time.
+To integrate MetricsWave in your HTML and JavaScript site you just need to add the visits script. This should be added
+inside the `<head>` tag in all your sites.
+
+It's a super small script (less than 1KB) so it's going to load fast without compromising the user experience or loading
+time.
 
 {{ toc }}
 
@@ -39,7 +42,7 @@ Something like this:
     <!-- Add MetricsWave visit script -->
     <script defer
             event-uuid="00000000-0000-0000-0000-000000000000"
-            src="https://metricswave.com/js/visits.js"></script>
+            src="https://tracker.metricswave.com/js/visits.js"></script>
 
 </head>
 

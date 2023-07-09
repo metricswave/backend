@@ -16,6 +16,7 @@ table_of_contents: |-
   </li>
   </ul>
 ---
+
 **[React](https://react.dev/) is a free, open-source JavaScript library utilized for crafting user interfaces based on
 components.**
 
@@ -40,7 +41,7 @@ Something like this:
     <!-- Add MetricsWave visit script -->
     <script defer
             event-uuid="00000000-0000-0000-0000-000000000000"
-            src="https://metricswave.com/js/visits.js"></script>
+            src="https://tracker.metricswave.com/js/visits.js"></script>
 
 </head>
 

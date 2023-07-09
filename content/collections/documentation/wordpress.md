@@ -13,19 +13,24 @@ parent: 515e68b9-1b87-4a82-80d6-f614c1a536f3
 updated_by: 1
 updated_at: 1687846318
 ---
+
 **MetricsWave is a powerful analytics tool that offers several advantages over other analytics solutions.**
 
-MetricsWave provides detailed, real-time analytics that can help you optimize your website's performance. With MetricsWave, you can track metrics such as page views, bounce rates, and visitor behavior, and use this data to make informed decisions about content, design, and marketing. 
+MetricsWave provides detailed, real-time analytics that can help you optimize your website's performance. With
+MetricsWave, you can track metrics such as page views, bounce rates, and visitor behavior, and use this data to make
+informed decisions about content, design, and marketing.
 
-This can help you increase engagement, generate more leads, and ultimately boost conversions. 
+This can help you increase engagement, generate more leads, and ultimately boost conversions.
 
-Also, MetricsWave is easy to integrate with your [WordPress](https://wordpress.org/) site and is designed to be user-friendly for site owners of all skill levels. 
+Also, MetricsWave is easy to integrate with your [WordPress](https://wordpress.org/) site and is designed to be
+user-friendly for site owners of all skill levels.
 
 {{ toc }}
 
 ## How to measure your traffic
 
-Inside your **WordPress Dashboard**, go to Appearance → Editor. Click the `header.php` file to edit its code and add the next code just before the end `</head>` tag.
+Inside your **WordPress Dashboard**, go to Appearance → Editor. Click the `header.php` file to edit its code and add the
+next code just before the end `</head>` tag.
 
 Something like this:
 
@@ -39,7 +44,7 @@ Something like this:
   <!-- Add MetricsWave visit script -->
   <script defer
           event-uuid="00000000-0000-0000-0000-000000000000"
-          src="https://metricswave.com/js/visits.js"></script>
+          src="https://tracker.metricswave.com/js/visits.js"></script>
 </head>
 
 <body <?php body_class(); ?>>

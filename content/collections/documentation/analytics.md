@@ -19,6 +19,7 @@ table_of_contents: |-
   </li>
   </ul>
 ---
+
 With MetricsWave you can replace Google Analytics or any other analytics service.
 
 We are privacy-friendly because we focus on store only important an actionable insights.
@@ -47,13 +48,15 @@ It's important to add `path`, `language`, `userAgent`, `platform` and `referrer`
 
 Now you just need to trigger the event on every website request you have.
 
-You have two options to start logging your traffic. The first one, and easier, is to just add our script replacing the `event-uuid` parameter.
+You have two options to start logging your traffic. The first one, and easier, is to just add our script replacing
+the `event-uuid` parameter.
 
 ```html
-<script defer event-uuid="{{EVENT_UUID}}" src="https://metricswave.com/js/visits.js"></script>
+<script defer event-uuid="{{EVENT_UUID}}" src="https://tracker.metricswave.com/js/visits.js"></script>
 ```
 
-Another option, it's to manually calling the endpoint everytime a path is loaded. For example, you can use `fetch` or whatever you want.
+Another option, it's to manually calling the endpoint everytime a path is loaded. For example, you can use `fetch` or
+whatever you want.
 
 ```javascript
   fetch(
@@ -74,4 +77,5 @@ Another option, it's to manually calling the endpoint everytime a path is loaded
 
 While using our visit script you should know that we are skipping events from localhost or `.test` domains.
 
-If you are seeing a warning message inside the browser console from this domains it's normal. It should work perfectly on production.
+If you are seeing a warning message inside the browser console from this domains it's normal. It should work perfectly
+on production.

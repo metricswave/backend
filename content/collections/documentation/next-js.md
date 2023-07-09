@@ -16,6 +16,7 @@ table_of_contents: |-
   </li>
   </ul>
 ---
+
 [Next.js](https://nextjs.org/) is a react framework for the Web. It enables you to create full-stack web applications by
 extending the latest React features.
 
@@ -34,7 +35,7 @@ export default function Home() {
   return (<>
     <Script defer
             event-uuid="00000000-0000-0000-0000-000000000000"
-            src="https://metricswave.com/js/visits.js"></Script>
+            src="https://tracker.metricswave.com/js/visits.js"></Script>
 
     {/* Rest of your page */}
   </>)
