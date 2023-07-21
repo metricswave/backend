@@ -26,7 +26,7 @@ class UsersWithoutEventsMail extends Mailable
         return new Envelope(
             from: 'victor@metricswave.com',
             to: $this->user->email,
-            subject: 'You are not receiving any events yet.',
+            subject: 'Your tracking code is not working! 😱',
         );
     }
 

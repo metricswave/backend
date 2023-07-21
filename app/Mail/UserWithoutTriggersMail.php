@@ -23,14 +23,23 @@ class UserWithoutTriggersMail extends Mailable
         return new Envelope(
             from: 'victor@metricswave.com',
             to: $this->user->email,
-            subject: 'You have not created any trigger yet! 😱',
+            subject: 'Your tracking code is not working! 😱',
         );
     }
 
     public function content(): Content
     {
+        $triggerUuid = $this->user->triggers()->first()->uuid;
+
         return new Content(
             markdown: 'mail.user_without_triggers',
+            with: [
+                'user' => $this->user,
+                'script' => '<script defer
+    event-uuid="'.$triggerUuid.'"
+    src="https://tracker.metricswave.com/js/visits.js">
+</script>',
+            ],
         );
     }
 }
