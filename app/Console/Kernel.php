@@ -13,11 +13,6 @@ class Kernel extends ConsoleKernel
         $schedule->command('horizon:snapshot')->everyFiveMinutes();
 
         // Mails
-        $schedule->command('app:mail:lead-beta-access --free-users --count=1')
-            ->emailOutputTo('victoor89@gmail.com')
-            ->dailyAt(8);
-        $schedule->command('app:mail:lead-beta-access')->everyMinute();
-        $schedule->command('app:mail:user-lifetime-licence-mail')->twiceDaily(12, 20);
         $schedule->command('app:users:mail-without-events --sub-days=1')->twiceDaily(10, 18);
 
         // Telegram Bot
