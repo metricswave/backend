@@ -67,7 +67,7 @@
         </section>
 
         {{-- w-10 dark:text-orange-500 h-auto animate-[out_1.5s,_fade-in-down_2s_ease-out_1s] animate-[out_2s,_fade-in-down_2.5s_ease-out_1s] animate-[out_2.5s,_fade-in-down_3s_ease-out_1s] animate-[out_3s,_fade-in-down_3.5s_ease-out_1s] --}}
-        <div class="flex flex-col gap-8 md:gap-12 lg:gap-28 mt-16 md:mt-24 lg:mt-36">
+        <div class="flex flex-col gap-8 md:gap-32 mt-16 md:mt-24 lg:mt-36">
             @foreach($structured_content as $i => $content)
                 @php
                     $out =  min(3, 1.5 + ($i * 0.5));
