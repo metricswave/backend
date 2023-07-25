@@ -73,13 +73,17 @@
 @endif
 
 <ul class="flex space-x-6 items-center">
-    <li>
+    <li class="hidden sm:block">
         <a class="hover:underline smooth linkToApp"
-           href="https://app.metricswave.com/auth/login">Sign In</a>
+           href="https://app.metricswave.com/auth/login">Log In</a>
     </li>
-    <li>
+    <li class="hidden sm:block">
         <a class="hover:underline smooth linkToApp bg-orange-400/10 rounded-md py-1.5 px-3"
            href="https://app.metricswave.com/auth/signup">Free Trial</a>
+    </li>
+    <li class="sm:hidden">
+        <a class="hover:underline smooth linkToApp bg-orange-400/10 rounded-md py-1.5 px-3"
+           href="https://app.metricswave.com">App</a>
     </li>
 </ul>
 
