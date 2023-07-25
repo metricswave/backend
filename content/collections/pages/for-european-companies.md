@@ -4,9 +4,9 @@ blueprint: page
 title: 'Website Analytics for European Companies'
 show_buttons: true
 updated_by: 1
-updated_at: 1690300336
+updated_at: 1690303434
 hero_content: |-
-  **[MetricsWave](https://metricswave.com?utm_source=vs_google_anatics) was built from the ground up to be fully compliant with GDPR, CCPA and PECR.**
+  **[MetricsWave](https://metricswave.com?utm_source=for_european_companies) was built from the ground up to be fully compliant with GDPR, CCPA and PECR.**
 
   The tracking script is tiny and it only store useful and privacy-friendly data from the user. Also, we don't use cookies, so you don't have to ask your users for permission.
 

@@ -109,7 +109,7 @@
                                 {!! $content['content'] !!}
                             </div>
                         </div>
-                        <div>
+                        <div class="max-w-4xl mx-auto">
                             <img src="{{ $content['image'] }}"
                                  alt="{{ $content['title'] }}"
                                  class="max-w-full mx-auto dark:hidden"/>

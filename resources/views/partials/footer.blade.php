@@ -13,6 +13,8 @@
         <li><a class="hover:underline smooth"
                href="/for-european-companies">European Companies</a></li>
         <li><a class="hover:underline smooth"
+               href="/for-bootstrappers">Bootstrapped Companies</a></li>
+        <li><a class="hover:underline smooth"
                href="/for-open-companies">Open Companies</a></li>
     </ul>
 

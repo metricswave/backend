@@ -2,7 +2,7 @@
 id: 5609cca6-f3a7-4bb8-b371-47e6ae079c74
 blueprint: page
 title: 'Website Analytics for Open Companies'
-hero_content: '**[MetricsWave](https://metricswave.com) is an open company, and if you are too, this is the perfect tool to monitor your web traffic.**'
+hero_content: '**[MetricsWave](https://metricswave.com?utm_source=for_open_companies) is an open company, and if you are too, this is the perfect tool to monitor your web traffic.**'
 show_buttons: true
 structured_content:
   -
@@ -54,7 +54,7 @@ structured_content:
     type: features
     enabled: true
 updated_by: 1
-updated_at: 1690302700
+updated_at: 1690303464
 seo_title: 'Website Analytics for Open Companies'
 seo_description: 'MetricsWave is an open company, and if you are too, this is the perfect tool to monitor your web traffic.'
 og_image: pages/metricswave-open-companies.png
