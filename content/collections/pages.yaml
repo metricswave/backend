@@ -1,0 +1,14 @@
+title: Pages
+template: pages/index
+layout: pages/index
+revisions: false
+route: '{slug}'
+sort_dir: asc
+date_behavior:
+  past: public
+  future: private
+preview_targets:
+  -
+    label: Entry
+    url: '{permalink}'
+    refresh: true

@@ -1,0 +1,239 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+          -
+            handle: hero_content
+            field:
+              automatic_line_breaks: true
+              automatic_links: false
+              escape_markup: false
+              smartypants: false
+              restrict: false
+              antlers: false
+              type: markdown
+              display: 'Hero Content'
+              icon: markdown
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              hide_display: false
+          -
+            handle: show_buttons
+            field:
+              default: false
+              type: toggle
+              display: 'Show Buttons'
+              icon: toggle
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              hide_display: false
+          -
+            handle: structured_content
+            field:
+              collapse: false
+              previews: true
+              fullscreen: true
+              sets:
+                new_set_group:
+                  display: 'New Set Group'
+                  instructions: null
+                  icon: null
+                  sets:
+                    section:
+                      display: Section
+                      instructions: null
+                      icon: null
+                      fields:
+                        -
+                          handle: title
+                          field:
+                            input_type: text
+                            antlers: false
+                            type: text
+                            display: Title
+                            icon: text
+                            listable: hidden
+                            instructions_position: above
+                            visibility: visible
+                            hide_display: false
+                        -
+                          handle: content
+                          field:
+                            automatic_line_breaks: true
+                            automatic_links: false
+                            escape_markup: false
+                            smartypants: false
+                            restrict: false
+                            antlers: false
+                            type: markdown
+                            display: Content
+                            icon: markdown
+                            listable: hidden
+                            instructions_position: above
+                            visibility: visible
+                            hide_display: false
+                    features:
+                      display: Features
+                      instructions: null
+                      icon: null
+                      fields:
+                        -
+                          handle: title
+                          field:
+                            input_type: text
+                            antlers: false
+                            type: text
+                            display: Title
+                            icon: text
+                            listable: hidden
+                            instructions_position: above
+                            visibility: visible
+                            hide_display: false
+                        -
+                          handle: short_description
+                          field:
+                            automatic_line_breaks: true
+                            automatic_links: false
+                            escape_markup: false
+                            smartypants: false
+                            restrict: false
+                            antlers: false
+                            type: markdown
+                            display: 'Short Description'
+                            icon: markdown
+                            listable: hidden
+                            instructions_position: above
+                            visibility: visible
+                            hide_display: false
+                        -
+                          handle: grid
+                          field:
+                            fields:
+                              -
+                                handle: icon
+                                field:
+                                  theme: material
+                                  mode: htmlmixed
+                                  mode_selectable: true
+                                  indent_type: tabs
+                                  indent_size: 4
+                                  key_map: default
+                                  line_numbers: true
+                                  line_wrapping: true
+                                  antlers: false
+                                  type: code
+                                  display: Icon
+                                  icon: code
+                                  listable: hidden
+                                  instructions_position: above
+                                  visibility: visible
+                                  hide_display: false
+                              -
+                                handle: title
+                                field:
+                                  input_type: text
+                                  antlers: false
+                                  type: text
+                                  display: Title
+                                  icon: text
+                                  listable: hidden
+                                  instructions_position: above
+                                  visibility: visible
+                                  hide_display: false
+                              -
+                                handle: content
+                                field:
+                                  automatic_line_breaks: true
+                                  automatic_links: false
+                                  escape_markup: false
+                                  smartypants: false
+                                  restrict: false
+                                  antlers: false
+                                  type: markdown
+                                  display: Content
+                                  icon: markdown
+                                  listable: hidden
+                                  instructions_position: above
+                                  visibility: visible
+                                  hide_display: false
+                            mode: table
+                            reorderable: true
+                            fullscreen: true
+                            type: grid
+                            display: Grid
+                            icon: grid
+                            listable: hidden
+                            instructions_position: above
+                            visibility: visible
+                            hide_display: false
+              type: replicator
+              display: 'Structured Content'
+              icon: replicator
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              hide_display: false
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        display: SEO
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+          -
+            handle: seo_title
+            field:
+              input_type: text
+              character_limit: 65
+              antlers: false
+              type: text
+              display: 'SEO Title'
+              icon: text
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              hide_display: false
+          -
+            handle: seo_description
+            field:
+              character_limit: '165'
+              antlers: false
+              type: textarea
+              display: 'SEO Description'
+              icon: textarea
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              hide_display: false
+          -
+            handle: og_image
+            field:
+              max_files: 1
+              mode: list
+              restrict: false
+              allow_uploads: true
+              show_filename: true
+              show_set_alt: false
+              type: assets
+              display: 'OG Image'
+              icon: assets
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              hide_display: false
+title: Page
