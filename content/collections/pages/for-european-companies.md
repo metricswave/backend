@@ -4,7 +4,7 @@ blueprint: page
 title: 'Website Analytics for European Companies'
 show_buttons: true
 updated_by: 1
-updated_at: 1690266624
+updated_at: 1690300336
 hero_content: |-
   **[MetricsWave](https://metricswave.com?utm_source=vs_google_anatics) was built from the ground up to be fully compliant with GDPR, CCPA and PECR.**
 
@@ -81,4 +81,6 @@ structured_content:
       On the other site, MetricsWave just add a simple 1 KB script.
     type: section
     enabled: true
+seo_description: 'If your company is in Europe, MetricsWave is the tool you need. Fully compliant with GDPR, CCPA and PECR, No Cookies and Privacy Friendly.'
+og_image: pages/metricswave-european-companies.png
 ---
