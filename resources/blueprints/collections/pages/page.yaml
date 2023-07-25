@@ -177,6 +177,73 @@ tabs:
                             instructions_position: above
                             visibility: visible
                             hide_display: false
+                    section_with_image:
+                      display: 'Section with Image'
+                      instructions: null
+                      icon: null
+                      fields:
+                        -
+                          handle: title
+                          field:
+                            input_type: text
+                            antlers: false
+                            type: text
+                            display: Title
+                            icon: text
+                            listable: hidden
+                            instructions_position: above
+                            visibility: visible
+                            hide_display: false
+                        -
+                          handle: content
+                          field:
+                            automatic_line_breaks: true
+                            automatic_links: false
+                            escape_markup: false
+                            smartypants: false
+                            restrict: false
+                            antlers: false
+                            type: markdown
+                            display: Content
+                            icon: markdown
+                            listable: hidden
+                            instructions_position: above
+                            visibility: visible
+                            hide_display: false
+                        -
+                          handle: image
+                          field:
+                            max_files: 1
+                            mode: list
+                            container: images
+                            restrict: false
+                            allow_uploads: true
+                            show_filename: true
+                            show_set_alt: true
+                            type: assets
+                            display: Image
+                            icon: assets
+                            listable: hidden
+                            instructions_position: above
+                            visibility: visible
+                            hide_display: false
+                        -
+                          handle: dark_image
+                          field:
+                            max_files: 1
+                            mode: list
+                            container: images
+                            restrict: false
+                            allow_uploads: true
+                            show_filename: true
+                            show_set_alt: true
+                            type: assets
+                            display: 'Dark Image'
+                            icon: assets
+                            listable: hidden
+                            instructions_position: above
+                            visibility: visible
+                            hide_display: false
               type: replicator
               display: 'Structured Content'
               icon: replicator

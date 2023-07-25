@@ -67,7 +67,7 @@
         </section>
 
         {{-- w-10 dark:text-orange-500 h-auto animate-[out_1.5s,_fade-in-down_2s_ease-out_1s] animate-[out_2s,_fade-in-down_2.5s_ease-out_1s] animate-[out_2.5s,_fade-in-down_3s_ease-out_1s] animate-[out_3s,_fade-in-down_3.5s_ease-out_1s] --}}
-        <div class="flex flex-col gap-8 md:gap-32 mt-16 md:mt-24 lg:mt-36">
+        <div class="flex flex-col gap-8 md:gap-32 mt-16 md:mt-32">
             @foreach($structured_content as $i => $content)
                 @php
                     $out =  min(3, 1.5 + ($i * 0.5));
@@ -100,6 +100,23 @@
                     <section class="mx-auto mw-landing px-app prose dark:prose-invert animate-[out_{{$out}}s,_fade-in-down_{{ $fade }}s_ease-out_1s]">
                         <h2>{{ $content['title'] }}</h2>
                         {!! $content['content'] !!}
+                    </section>
+                @elseif($content['type'] === 'section_with_image')
+                    <section class="mx-auto w-full soft-border border-b animate-[out_{{$out}}s,_fade-in-down_{{ $fade }}s_ease-out_1s]">
+                        <div class="mw-landing mx-auto mb-16 px-app">
+                            <h2 class="text-2xl font-bold mb-4 !leading-snug">{{ $content['title'] }}</h2>
+                            <div class="prose dark:prose-invert">
+                                {!! $content['content'] !!}
+                            </div>
+                        </div>
+                        <div>
+                            <img src="{{ $content['image'] }}"
+                                 alt="{{ $content['title'] }}"
+                                 class="max-w-full mx-auto dark:hidden"/>
+                            <img src="{{ $content['dark_image'] }}"
+                                 alt="{{ $content['title'] }}"
+                                 class="max-w-full mx-auto hidden dark:block"/>
+                        </div>
                     </section>
                 @endif
             @endforeach

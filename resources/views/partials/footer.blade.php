@@ -12,6 +12,8 @@
         <li class="text-sm opacity-50">Websites Analytics for:</li>
         <li><a class="hover:underline smooth"
                href="/for-european-companies">European Companies</a></li>
+        <li><a class="hover:underline smooth"
+               href="/for-open-companies">Open Companies</a></li>
     </ul>
 
     <ul class="flex space-y-4 tracking-tighter flex-col">

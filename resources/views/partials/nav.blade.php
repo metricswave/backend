@@ -61,6 +61,11 @@
                            role="menuitem"
                            tabindex="-1"
                            id="menu-item-0">European Companies</a>
+                        <a href="/for-open-companies"
+                           class="text-zinc-700 block px-4 py-2 text-sm smooth hover:bg-zinc-100 hover:text-zinc-800"
+                           role="menuitem"
+                           tabindex="-1"
+                           id="menu-item-0">Open Companies</a>
                     </div>
                 </div>
             </div>
