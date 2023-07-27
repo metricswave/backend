@@ -5,7 +5,7 @@ title: 'Web Analytics for Bootstrappers'
 show_buttons: true
 seo_title: 'Web Analytics for Bootstrappers'
 updated_by: 1
-updated_at: 1690311343
+updated_at: 1690444945
 hero_content: |-
   **As a bootstrapped company, we understand bootstrappers.**
 
@@ -17,7 +17,7 @@ structured_content:
     content: |-
       You don't need a overkilled application like Google Analytics to monitor your business.
 
-      You need a simple app that gives you the metrics you need to understand your traffic and user behabiour and that's what you'll get with MetricsWave.
+      You need a simple app that gives you the metrics you need to understand your traffic and user behaviour and that's what you'll get with MetricsWave.
     image: pages/scr-20230725-ryss.png
     dark_image: pages/scr-20230725-ryzs.png
     type: section_with_image
