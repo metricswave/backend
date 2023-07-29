@@ -116,10 +116,12 @@
         menu.classList.add('opacity-100')
     }
 
-    menuButton.addEventListener('click', toggle)
-    document.addEventListener('click', (event) => {
-        if (!menu.contains(event.target) && !menuButton.contains(event.target)) {
-            close()
-        }
-    })
+    if (menuButton !== null) {
+        menuButton.addEventListener('click', toggle)
+        document.addEventListener('click', (event) => {
+            if (!menu.contains(event.target) && !menuButton.contains(event.target)) {
+                close()
+            }
+        })
+    }
 </script>

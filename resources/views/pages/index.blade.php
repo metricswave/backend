@@ -19,6 +19,9 @@
     @if (isset($og_image))
         <meta property="og:image"
               content="{{ $og_image }}"/>
+    @else
+        <meta property="og:image"
+              content="{{ config('app.url') }}/images/metricswave.png?v=20230612161011"/>
     @endif
 
     <meta name="twitter:card"
@@ -30,6 +33,9 @@
     @if (isset($og_image))
         <meta name="twitter:image"
               content="{{ $og_image }}"/>
+    @else
+        <meta name="twitter:image"
+              content="{{ config('app.url') }}/images/metricswave.png?v=20230612161011"/>
     @endif
 @endsection
 
@@ -66,61 +72,7 @@
             @endif
         </section>
 
-        {{-- w-10 dark:text-orange-500 h-auto animate-[out_1.5s,_fade-in-down_2s_ease-out_1s] animate-[out_2s,_fade-in-down_2.5s_ease-out_1s] animate-[out_2.5s,_fade-in-down_3s_ease-out_1s] animate-[out_3s,_fade-in-down_3.5s_ease-out_1s] --}}
-        <div class="flex flex-col gap-8 md:gap-32 mt-16 md:mt-32">
-            @foreach($structured_content as $i => $content)
-                @php
-                    $out =  min(3, 1.5 + ($i * 0.5));
-                    $fade = $out + 0.5;
-                @endphp
-
-                @if($content['type'] === 'features')
-                    <section class="mx-auto mw-landing px-app animate-[out_{{$out}}s,_fade-in-down_{{ $fade }}s_ease-out_1s]">
-                        @if (Str::of($content['title'])->length() > 0)
-                            <h2 class="font-bold text-2xl pb-4">
-                                {{ $content['title'] }}
-                            </h2>
-                        @endif
-
-                        @if(Str::of($content['short_description'])->length() > 0)
-                            {!! $content['short_description'] !!}
-                        @endif
-
-                        <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-x-8 md:gap-y-10">
-                            @foreach($content['grid'] as $grid)
-                                <div class="flex flex-col gap-2">
-                                    <div class="-ml-1">{!! $grid['icon'] !!}</div>
-                                    <h3 class="font-bold text-lg">{{ $grid['title'] }}</h3>
-                                    {!! $grid['content'] !!}
-                                </div>
-                            @endforeach
-                        </div>
-                    </section>
-                @elseif($content['type'] === 'section')
-                    <section class="mx-auto mw-landing px-app prose dark:prose-invert animate-[out_{{$out}}s,_fade-in-down_{{ $fade }}s_ease-out_1s]">
-                        <h2>{{ $content['title'] }}</h2>
-                        {!! $content['content'] !!}
-                    </section>
-                @elseif($content['type'] === 'section_with_image')
-                    <section class="mx-auto w-full soft-border border-b animate-[out_{{$out}}s,_fade-in-down_{{ $fade }}s_ease-out_1s]">
-                        <div class="mw-landing mx-auto mb-16 px-app">
-                            <h2 class="text-2xl font-bold mb-4 !leading-snug">{{ $content['title'] }}</h2>
-                            <div class="prose dark:prose-invert">
-                                {!! $content['content'] !!}
-                            </div>
-                        </div>
-                        <div class="max-w-4xl mx-auto">
-                            <img src="{{ $content['image'] }}"
-                                 alt="{{ $content['title'] }}"
-                                 class="max-w-full mx-auto dark:hidden"/>
-                            <img src="{{ $content['dark_image'] }}"
-                                 alt="{{ $content['title'] }}"
-                                 class="max-w-full mx-auto hidden dark:block"/>
-                        </div>
-                    </section>
-                @endif
-            @endforeach
-        </div>
+        @include('partials.page_content')
     </div>
 
     @include('partials.prices')

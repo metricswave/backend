@@ -12,6 +12,7 @@ use App\Http\Controllers\Trigger\GetWebhookTriggerController;
 use App\Http\Controllers\Trigger\PostWebhookTriggerController;
 use App\Http\Middleware\RedirectOldNotifyWaveDomain;
 use Illuminate\Support\Facades\Route;
+use Statamic\Facades\Entry;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,10 +21,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(RedirectOldNotifyWaveDomain::class)->group(function () {
-    Route::view('/', 'welcome', [
-        'title' => 'An Event-Driven Google Analytics Alternative',
-        'meta_description' => 'MetricsWave is a lightweight and privacy-friendly Google Analytics alternative. Seamless Integration for any Website or App.'
-    ]);
+    Route::get('/', function () {
+        return view('welcome', [
+            'page' => Entry::query()->where('slug', 'landing')->first(),
+        ]);
+    });
     Route::permanentRedirect('/roadmap', '/');
     Route::get('/blog', BlogController::class);
     Route::get('/blog/category/{slug}', CategoryController::class);
