@@ -33,5 +33,7 @@
     @include('partials.prices')
 
     @include('partials.footer')
+
+    @yield('scripts')
 </body>
 </html>

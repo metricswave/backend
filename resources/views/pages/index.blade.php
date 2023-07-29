@@ -77,3 +77,18 @@
 
     @include('partials.prices')
 @endsection
+
+@section('scripts')
+    <script>
+        const internal = location.host.replace("www.", "")
+        const a = document.getElementsByTagName('a')
+
+        console.log(internal)
+
+        for (let i = 0; i < a.length; i++) {
+            if (!a[i].href.includes(internal) || a[i].href.includes('/documentation')) {
+                a[i].setAttribute('target', '_blank')
+            }
+        }
+    </script>
+@endsection
