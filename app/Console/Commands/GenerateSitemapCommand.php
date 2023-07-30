@@ -26,11 +26,11 @@ class GenerateSitemapCommand extends Command
             ->add($this->url('/terms-and-conditions', 0.1))
             ->add($this->url('/privacy-policy', 0.1));
 
-        $pages = Entry::query()->where('date', '<=', now())->get();
+        $pages = Entry::query()->where('date', '<=', now())->where('published', true)->get();
         foreach ($pages as $page) {
             $sitemap->add(Url::create($page->absoluteUrl())
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
-                ->setPriority(0.8)
+                ->setPriority($page->collection()->handle() === "articles" ? 0.7 : 0.8)
             );
         }
 
