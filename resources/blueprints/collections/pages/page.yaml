@@ -296,6 +296,7 @@ tabs:
                                   instructions_position: above
                                   visibility: visible
                                   hide_display: false
+                                  instructions: 'From [here](https://www.svgrepo.com/collection/solar-linear-icons/). Use `currentColor` and add classes `w-10 h-auto dark:text-orange-500`.'
                               -
                                 handle: us
                                 field:
