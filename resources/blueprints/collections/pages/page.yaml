@@ -244,6 +244,100 @@ tabs:
                             instructions_position: above
                             visibility: visible
                             hide_display: false
+                    comparison:
+                      display: Comparison
+                      instructions: null
+                      icon: null
+                      fields:
+                        -
+                          handle: competitor
+                          field:
+                            input_type: text
+                            antlers: false
+                            type: text
+                            display: Competitor
+                            icon: text
+                            listable: hidden
+                            instructions_position: above
+                            visibility: visible
+                            hide_display: false
+                        -
+                          handle: characteristic
+                          field:
+                            fields:
+                              -
+                                handle: characteristic
+                                field:
+                                  input_type: text
+                                  antlers: false
+                                  type: text
+                                  display: Characteristic
+                                  icon: text
+                                  listable: hidden
+                                  instructions_position: above
+                                  visibility: visible
+                                  hide_display: false
+                              -
+                                handle: icon
+                                field:
+                                  theme: material
+                                  mode: htmlmixed
+                                  mode_selectable: true
+                                  indent_type: tabs
+                                  indent_size: 4
+                                  key_map: default
+                                  line_numbers: true
+                                  line_wrapping: true
+                                  antlers: false
+                                  type: code
+                                  display: Icon
+                                  icon: code
+                                  listable: hidden
+                                  instructions_position: above
+                                  visibility: visible
+                                  hide_display: false
+                              -
+                                handle: us
+                                field:
+                                  automatic_line_breaks: true
+                                  automatic_links: false
+                                  escape_markup: false
+                                  smartypants: false
+                                  restrict: false
+                                  antlers: false
+                                  type: markdown
+                                  display: Us
+                                  icon: markdown
+                                  listable: hidden
+                                  instructions_position: above
+                                  visibility: visible
+                                  hide_display: false
+                              -
+                                handle: competitor
+                                field:
+                                  automatic_line_breaks: true
+                                  automatic_links: false
+                                  escape_markup: false
+                                  smartypants: false
+                                  restrict: false
+                                  antlers: false
+                                  type: markdown
+                                  display: Competitor
+                                  icon: markdown
+                                  listable: hidden
+                                  instructions_position: above
+                                  visibility: visible
+                                  hide_display: false
+                            mode: table
+                            reorderable: true
+                            fullscreen: true
+                            type: grid
+                            display: Characteristic
+                            icon: grid
+                            listable: hidden
+                            instructions_position: above
+                            visibility: visible
+                            hide_display: false
               type: replicator
               display: 'Structured Content'
               icon: replicator

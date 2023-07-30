@@ -56,6 +56,28 @@
                     </div>
                 @endif
             </section>
+        @elseif($content['type'] === 'comparison')
+            <section class="mw-landing px-app mx-auto w-full animate-[out_{{$out}}s,_fade-in-down_{{ $fade }}s_ease-out_1s] flex flex-col gap-10 sm:gap-12">
+                @foreach($content['characteristic'] as $c)
+                    <div class="flex flex-col gap-2">
+                        <div class="-ml-1">{!! $c['icon'] !!}</div>
+                        <h3 class="text-xl sm:text-2xl font-medium mb-4 !leading-snug max-w-[30ch]">
+                            {{ $c['characteristic'] }}
+                        </h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="prose prose-sm dark:prose-invert">
+                                <h4>{{ config('app.name') }}</h4>
+                                {!! $c['us'] !!}
+                            </div>
+
+                            <div class="prose prose-sm dark:prose-invert">
+                                <h4>{{ $content['competitor'] }}</h4>
+                                {!! $c['competitor'] !!}
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </section>
         @endif
     @endforeach
 </div>
