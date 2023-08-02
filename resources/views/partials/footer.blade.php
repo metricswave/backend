@@ -13,6 +13,8 @@
         <li><a class="hover:underline smooth"
                href="/metricswave-vs-google-analytics">MetricsWave vs Google Analytics</a></li>
         <li><a class="hover:underline smooth"
+               href="/metricswave-vs-plausible">MetricsWave vs Plausible</a></li>
+        <li><a class="hover:underline smooth"
                href="/blog">Blog</a></li>
         <li><a class="hover:underline smooth"
                href="/open">Open Metrics</a></li>
