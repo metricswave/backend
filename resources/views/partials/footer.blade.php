@@ -15,12 +15,14 @@
         <li><a class="hover:underline smooth"
                href="/metricswave-vs-plausible">MetricsWave vs Plausible</a></li>
         <li><a class="hover:underline smooth"
-               href="/blog">Blog</a></li>
+               href="/metricswave-vs-fathom">MetricsWave vs Fathom</a></li>
         <li><a class="hover:underline smooth"
-               href="/open">Open Metrics</a></li>
+               href="/blog">Blog</a></li>
     </ul>
 
     <ul class="flex space-y-4 tracking-tighter flex-col">
+        <li><a class="hover:underline smooth"
+               href="/open">Open Metrics</a></li>
         <li><a class="hover:underline smooth"
                href="/documentation">Documentation</a></li>
         <li><a class="hover:underline smooth"

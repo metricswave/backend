@@ -329,7 +329,7 @@ tabs:
                                   instructions_position: above
                                   visibility: visible
                                   hide_display: false
-                            mode: table
+                            mode: stacked
                             reorderable: true
                             fullscreen: true
                             type: grid
