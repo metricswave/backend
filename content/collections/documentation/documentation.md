@@ -4,14 +4,15 @@ blueprint: documentation
 title: Documentation
 short_content: 'A collection of good articles about how MetricsWave works.'
 updated_by: 1
-updated_at: 1689150452
+updated_at: 1691339158
 ---
 ### 💎 Main topics
 
-- [Register your Traffic and Referrals](/documentation/analytics): start registering all your traffic and referrals to
+- 📊 [Register your Traffic and Referrals](/documentation/analytics): start registering all your traffic and referrals to
   get basic insights about how people are using your product.
-- [Tracking custom Events](/documentation/tracking/events): You can log and register any custom event on your site as
+- 💅 [Tracking custom Events](/documentation/tracking/events): You can log and register any custom event on your site as
   you want. Learn how to take advantage of custom events to find out how your application is used.
+- 📣 [Create and log custom Funnels](/documentation/tracking/funnels): Create a measure custom flows using funnels. You can see how your users are making purchases, registering or anything else.
 - [Tracking deployments](/documentation/tracking/deployments): Log and event after a deploy and get stats about the
   version, the author and what's new on your server.
 - [How to use UTM parameters to track marketing campaigns](/documentation/utm-parameters): UTM parameters help track dark traffic, paid campaigns, newsletters, and high-converting social media content.
