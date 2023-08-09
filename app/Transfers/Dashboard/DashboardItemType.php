@@ -6,4 +6,5 @@ enum DashboardItemType: string
 {
     case stats = 'stats';
     case parameter = 'parameter';
+    case funnel = 'funnel';
 }

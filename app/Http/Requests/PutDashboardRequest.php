@@ -16,7 +16,7 @@ class PutDashboardRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'public' => ['nullable', 'boolean'],
-            'items' => ['required', 'array'],
+            'items' => ['present', 'array'],
             'items.*.eventUuid' => ['required', 'string', 'max:255'],
             'items.*.title' => ['required', 'string', 'max:255'],
             'items.*.size' => ['required', 'string', 'max:255'],
