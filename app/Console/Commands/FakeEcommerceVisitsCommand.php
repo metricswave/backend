@@ -220,9 +220,14 @@ class FakeEcommerceVisitsCommand extends Command
         if ($utmSources === 'email' || $utmSources === 'newsletter') {
             $referrer = array_random(['mail.google.com', 'hotmail.com', 'outlook.com']);
         } elseif ($utmSources === 'affiliate') {
-            $referrer = array_random(['clickbank.com', 'jvzoo.com', 'warriorplus.com']);
+            $referrer = array_random([
+                'clickbank.com', 'jvzoo.com', 'warriorplus.com', 'amazon.com', 'ebay.com', 'shareasale.com',
+                'cj.com', 'avangate.com', 'impactradius.com', 'linkconnector.com', 'flexoffers.com', 'avantlink.com',
+                'pepperjam.com', 'ebaypartnernetwork.com', 'rakuten.com', 'ebayenterprise.com', 'tradedoubler.com',
+                'zanox.com',
+            ]);
         } elseif ($utmSources === 'cpc' || $utmSources === 'display') {
-            $referrer = array_random(['google.com', 'bing.com', 'yahoo.com']);
+            $referrer = array_random(['google.com', 'bing.com', 'yahoo.com', 'facebook.com', 'twitter.com']);
         } elseif ($utmSources !== null) {
             $referrer = $utmSources.'.com';
         } else {

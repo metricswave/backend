@@ -15,8 +15,9 @@ class Kernel extends ConsoleKernel
         // Mails
         $schedule->command('app:users:mail-without-events --sub-days=1')->twiceDaily(10, 18);
 
-        // Fake ecommerce visits
+        // Fake ecommerce
         $schedule->command('app:fake:ecommerce-visits')->everyFiveMinutes();
+        $schedule->command('app:fake:ecommerce-funnel')->everyFiveMinutes();
 
         // Telegram Bot
         $schedule->command('telegram:reply-with-group-id')->everyMinute();
