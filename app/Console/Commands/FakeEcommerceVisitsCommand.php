@@ -29,6 +29,7 @@ class FakeEcommerceVisitsCommand extends Command
                 'language' => $this->fakeLanguage(),
                 'userAgent' => $this->fakeUserAgent(),
                 'platform' => $this->fakePlatform(),
+                'visit' => random_int(1, 10) > 4 ? "1" : "0",
                 ...$this->fakeUtmParams(),
             ];
 
