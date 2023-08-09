@@ -2,9 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Trigger;
-use App\Services\Triggers\SendWebhookTriggerNotification;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 
 class FakeEcommerceVisitsCommand extends Command
@@ -15,24 +14,32 @@ class FakeEcommerceVisitsCommand extends Command
     protected $signature = 'app:fake:ecommerce-visits {--dry-run}';
     protected $description = 'Fake ecommerce visits.';
 
-    public function handle(SendWebhookTriggerNotification $webhookTriggerNotificationSender): void
+    public function handle(): void
     {
         $this->info('Fake ecommerce visits.');
 
-        if ($this->option('dry-run')) {
-            $trigger = Trigger::first();
-        } else {
-            $trigger = Trigger::where('uuid', self::TRIGGER_UUID)->firstOrFail();
-        }
-
         $numberOfVisits = $this->getRandomNumberOfVisits();
+        $visits = array_fill(0, $numberOfVisits, null);
 
-        $this->withProgressBar($numberOfVisits, function () use ($webhookTriggerNotificationSender, $trigger) {
+        $this->withProgressBar($visits, function () {
+            $params = [
+                'deviceName' => $this->fakeDeviceName(),
+                'path' => $this->fakePath(),
+                'domain' => 'proteinshakes.shop',
+                'language' => $this->fakeLanguage(),
+                'userAgent' => $this->fakeUserAgent(),
+                'platform' => $this->fakePlatform(),
+                ...$this->fakeUtmParams(),
+            ];
+
             if ($this->option('dry-run')) {
+                $this->info('Dry run: '.json_encode($params));
                 return;
             }
 
-            $this->visitSite($webhookTriggerNotificationSender, $trigger);
+            Http::acceptJson()
+                ->asJson()
+                ->post('https://metricswave.com/webhooks/'.self::TRIGGER_UUID, $params);
         });
     }
 
@@ -42,22 +49,6 @@ class FakeEcommerceVisitsCommand extends Command
         $multiplier = (random_int(1, 100) / 100);
 
         return random_int((5 * $daysSinceStart) * $multiplier, (20 * $daysSinceStart) * $multiplier);
-    }
-
-    private function visitSite(
-        SendWebhookTriggerNotification $webhookTriggerNotificationSender,
-        Trigger $trigger
-    ): void {
-        $params = [
-            'deviceName' => $this->fakeDeviceName(),
-            'path' => $this->fakePath(),
-            'domain' => 'proteinshakes.shop',
-            'language' => $this->fakeLanguage(),
-            'userAgent' => $this->fakeUserAgent(),
-            'platform' => $this->fakePlatform(),
-            ...$this->fakeUtmParams(),
-        ];
-        ($webhookTriggerNotificationSender)($trigger, $params, true);
     }
 
     private function fakeDeviceName(): string
