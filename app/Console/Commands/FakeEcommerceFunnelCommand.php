@@ -28,7 +28,14 @@ class FakeEcommerceFunnelCommand extends Command
         $visits = array_fill(0, $numberOfVisits, null);
 
         $this->withProgressBar($visits, function () {
-            $lastStep = random_int(1, count(self::STEPS));
+            $lastStep = random_int(1, count(self::STEPS) + 2);
+
+            if ($lastStep === count(self::STEPS) + 2) {
+                $lastStep = count(self::STEPS);
+            } elseif ($lastStep > count(self::STEPS)) {
+                $lastStep = count(self::STEPS);
+            }
+
             for ($i = 1; $i <= $lastStep; $i++) {
                 Http::acceptJson()
                     ->asJson()
