@@ -49,7 +49,7 @@ class FakeEcommerceVisitsCommand extends Command
         $daysSinceStart = (now()->diffInDays(self::START_DATE) + 1);
         $multiplier = (random_int(1, 100) / 100);
 
-        return random_int((5 * $daysSinceStart) * $multiplier, (20 * $daysSinceStart) * $multiplier);
+        return random_int((2 * $daysSinceStart) * $multiplier, (6 * $daysSinceStart) * $multiplier);
     }
 
     private function fakeDeviceName(): string
@@ -86,27 +86,7 @@ class FakeEcommerceVisitsCommand extends Command
 
     private function randomItemFromWeightedArray(array $items): string
     {
-        $weights = array_values($items); // Extract weights
-        $items = array_keys($items); // Extract items
-
-        $weightSum = array_sum($weights);
-        $cumulativeWeights = array();
-        $cumulativeWeight = 0;
-
-        foreach ($weights as $weight) {
-            $cumulativeWeight += $weight / $weightSum;
-            $cumulativeWeights[] = $cumulativeWeight;
-        }
-
-        $rand = mt_rand() / mt_getrandmax();
-
-        foreach ($cumulativeWeights as $key => $weight) {
-            if ($rand < $weight) {
-                return $items[$key];
-            }
-        }
-
-        return $items[0];
+        return random_item_from_weighted_array($items);
     }
 
     private function fakePath(): string

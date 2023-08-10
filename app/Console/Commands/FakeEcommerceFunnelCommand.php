@@ -16,6 +16,13 @@ class FakeEcommerceFunnelCommand extends Command
         "Payment",
         "Success",
     ];
+    private const STEP_WEIGHTED = [
+        0 => 20,
+        1 => 16,
+        2 => 15,
+        3 => 8,
+        4 => 1,
+    ];
 
     protected $signature = 'app:fake:ecommerce-funnel';
     protected $description = 'Fake ecommerce funnel.';
@@ -28,13 +35,7 @@ class FakeEcommerceFunnelCommand extends Command
         $visits = array_fill(0, $numberOfVisits, null);
 
         $this->withProgressBar($visits, function () {
-            $lastStep = random_int(1, count(self::STEPS) + 2);
-
-            if ($lastStep === count(self::STEPS) + 2) {
-                $lastStep = count(self::STEPS);
-            } elseif ($lastStep > count(self::STEPS)) {
-                $lastStep = count(self::STEPS);
-            }
+            $lastStep = random_item_from_weighted_array(self::STEP_WEIGHTED);
 
             for ($i = 1; $i <= $lastStep; $i++) {
                 Http::acceptJson()
