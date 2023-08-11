@@ -49,7 +49,7 @@ class FakeEcommerceVisitsCommand extends Command
         $daysSinceStart = (now()->diffInDays(self::START_DATE) + 1);
         $multiplier = (random_int(1, 100) / 100);
 
-        return random_int((2 * $daysSinceStart) * $multiplier, (6 * $daysSinceStart) * $multiplier);
+        return random_int((1 * $daysSinceStart) * $multiplier, (4 * $daysSinceStart) * $multiplier);
     }
 
     private function fakeDeviceName(): string

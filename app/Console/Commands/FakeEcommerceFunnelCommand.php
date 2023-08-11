@@ -17,10 +17,10 @@ class FakeEcommerceFunnelCommand extends Command
         "Success",
     ];
     private const STEP_WEIGHTED = [
-        0 => 20,
-        1 => 16,
-        2 => 15,
-        3 => 8,
+        0 => 40,
+        1 => 34,
+        2 => 30,
+        3 => 16,
         4 => 1,
     ];
 
