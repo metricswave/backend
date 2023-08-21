@@ -26,14 +26,16 @@ class UsersWithoutEventsMail extends Mailable
         return new Envelope(
             from: 'victor@metricswave.com',
             to: $this->user->email,
-            subject: 'Your tracking code is not working! 😱',
+            subject: 'Do you need help?',
         );
     }
 
     public function content(): Content
     {
         return (new Content(
-            markdown: 'mail.user_without_events',
-        ))->with('uuid', $this->uuid);
+            text: 'mail.user_without_events',
+        ))
+            ->with('uuid', $this->uuid)
+            ->with('name', $this->user->first_name);
     }
 }

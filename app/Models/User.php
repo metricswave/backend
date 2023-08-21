@@ -12,6 +12,7 @@ use App\Transfers\PriceType;
 use App\Transfers\ServiceId;
 use App\Transfers\SubscriptionType;
 use Illuminate\Contracts\Notifications\Dispatcher;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -99,6 +100,13 @@ class User extends Authenticatable
                 )->plainTextToken,
             'expires_at' => $expiresAt->timestamp,
         ];
+    }
+
+    public function firstName(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => explode(' ', $this->name)[0] ?? $this->name,
+        );
     }
 
     public function triggers(): HasMany
