@@ -13,8 +13,11 @@ use Illuminate\Support\Facades\Http;
 class PermanentEloquentEngine implements DataEngine
 {
     private const MYSQL_DUPLICATE_KEY_CODE = 23000;
+
     private const MYSQL_DEADLOCK_CODE = 40001;
+
     private $model = null;
+
     private $prefix = null;
 
     public function __construct(Model $model)
@@ -30,6 +33,7 @@ class PermanentEloquentEngine implements DataEngine
     public function setPrefix(string $prefix): DataEngine
     {
         $this->prefix = $prefix.':';
+
         return $this;
     }
 
@@ -40,23 +44,15 @@ class PermanentEloquentEngine implements DataEngine
 
     public function increment(string $key, int $value, $member = null): bool
     {
-        if (!empty($member) || is_numeric($member)) {
-            $row = $this->model
-                ->where(fn(Builder $query) => $query
-                    ->whereDate('expired_at', '>', now())
-                    ->orWhereNull('expired_at')
-                )
-                ->firstOrNew([
-                    'primary_key' => $this->prefix.$key, 'secondary_key' => $member
+        if (! empty($member) || is_numeric($member)) {
+            $row = $this->model->where(fn (Builder $query) => $query->whereDate('expired_at', '>',
+                now())->orWhereNull('expired_at'))->firstOrNew([
+                    'primary_key' => $this->prefix.$key, 'secondary_key' => $member,
                 ]);
         } else {
-            $row = $this->model
-                ->where(fn(Builder $query) => $query
-                    ->whereDate('expired_at', '>', now())
-                    ->orWhereNull('expired_at')
-                )
-                ->firstOrNew([
-                    'primary_key' => $this->prefix.$key, 'secondary_key' => null
+            $row = $this->model->where(fn (Builder $query) => $query->whereDate('expired_at', '>',
+                now())->orWhereNull('expired_at'))->firstOrNew([
+                    'primary_key' => $this->prefix.$key, 'secondary_key' => null,
                 ]);
         }
 
@@ -70,31 +66,22 @@ class PermanentEloquentEngine implements DataEngine
         return $row->save();
     }
 
-    public function incrementWithExpiration(string $key, int $value, $member = null, int $expireInSeconds): bool
+    public function incrementWithExpiration(string $key, int $value, $member, int $expireInSeconds): bool
     {
         $expiredAt = Carbon::now()->addSeconds($expireInSeconds);
 
-        $row = $this->model
-            ->where('primary_key', $this->prefix.$key)
-            ->when(
-                !empty($member) || is_numeric($member),
-                fn($query) => $query->where('secondary_key', $member)
-            )
-            ->where(fn(Builder $query) => $query
-                ->whereDate('expired_at', $expiredAt)
-                ->orWhereNull('expired_at')
-            )
-            ->get();
+        $row = $this->model->where('primary_key', $this->prefix.$key)->when(! empty($member) || is_numeric($member),
+            fn ($query) => $query->where('secondary_key', $member))->where(fn (Builder $query
+            ) => $query->whereDate('expired_at', $expiredAt)->orWhereNull('expired_at'))->get();
 
         if ($row->count() > 1) {
             $value = $row->slice(1)->sum('score') + $value;
-            $row->slice(1)->each(fn($r) => $r->delete());
+            $row->slice(1)->each(fn ($r) => $r->delete());
             $row = $row->first();
         } elseif ($row->count() === 0) {
             $row = $this->model->create([
                 'primary_key' => $this->prefix.$key,
-                'secondary_key' => !empty($member) || is_numeric($member) ? $member : null,
-                'expired_at' => $expiredAt,
+                'secondary_key' => ! empty($member) || is_numeric($member) ? $member : null, 'expired_at' => $expiredAt,
                 'score' => $value,
             ]);
 
@@ -111,18 +98,18 @@ class PermanentEloquentEngine implements DataEngine
 
     public function get(string $key, $member = null)
     {
-        if (!empty($member) || is_numeric($member)) {
-            return $this->model->where(['primary_key' => $this->prefix.$key, 'secondary_key' => $member])
-                ->where(function ($q) {
-                    return $q->where('expired_at', '>', Carbon::now())->orWhereNull('expired_at');
-                })
-                ->value('score');
+        if (! empty($member) || is_numeric($member)) {
+            return $this->model->where([
+                'primary_key' => $this->prefix.$key, 'secondary_key' => $member,
+            ])->where(function ($q) {
+                return $q->where('expired_at', '>', Carbon::now())->orWhereNull('expired_at');
+            })->value('score');
         } else {
-            return $this->model->where(['primary_key' => $this->prefix.$key, 'secondary_key' => null])
-                ->where(function ($q) {
-                    return $q->where('expired_at', '>', Carbon::now())->orWhereNull('expired_at');
-                })
-                ->value('score');
+            return $this->model->where(['primary_key' => $this->prefix.$key, 'secondary_key' => null])->where(function (
+                $q
+            ) {
+                return $q->where('expired_at', '>', Carbon::now())->orWhereNull('expired_at');
+            })->value('score');
         }
     }
 
@@ -132,10 +119,11 @@ class PermanentEloquentEngine implements DataEngine
             array_walk($key, function ($item) {
                 $this->delete($item);
             });
+
             return true;
         }
 
-        if (!empty($member) || is_numeric($member)) {
+        if (! empty($member) || is_numeric($member)) {
             return $this->model->where(['primary_key' => $this->prefix.$key, 'secondary_key' => $member])->delete();
         } else {
             return $this->model->where(['primary_key' => $this->prefix.$key])->delete();
@@ -144,46 +132,35 @@ class PermanentEloquentEngine implements DataEngine
 
     public function all(string $period, string $key, $member = null, Carbon $from = null, Carbon $to = null)
     {
-        if (!empty($member) || is_numeric($member)) {
+        if (! empty($member) || is_numeric($member)) {
             $query = $this->model->where(['primary_key' => $this->prefix.$key, 'secondary_key' => $member]);
         } else {
             $query = $this->model->where(['primary_key' => $this->prefix.$key]);
         }
 
-        return $query
-            ->when($from !== null, function ($q) use ($from) {
-                return $q->whereDate('expired_at', '>', $from);
-            })
-            ->when($to !== null, function ($q) use ($to) {
-                return $q->whereDate('expired_at', '<=', $to);
-            })
-            ->when($from === null && $period === 'day', function ($q) {
-                return $q->where(function ($q) {
-                    return $q->whereDate('expired_at', '>',
-                        Carbon::now()->subDays(30)->startOfDay())->orWhereNull('expired_at');
-                });
-            })
-            ->when($from === null && $period === 'month', function ($q) {
-                return $q->where(function ($q) {
-                    return $q->whereDate('expired_at', '>',
-                        Carbon::now()->subMonths(12)->startOfMonth())->orWhereNull('expired_at');
-                });
-            })
-            ->orderByDesc('expired_at')
-            ->get();
+        return $query->when($from !== null, function ($q) use ($from) {
+            return $q->whereDate('expired_at', '>', $from);
+        })->when($to !== null, function ($q) use ($to) {
+            return $q->whereDate('expired_at', '<=', $to);
+        })->when($from === null && $period === 'day', function ($q) {
+            return $q->where(function ($q) {
+                return $q->whereDate('expired_at', '>',
+                    Carbon::now()->subDays(30)->startOfDay())->orWhereNull('expired_at');
+            });
+        })->when($from === null && $period === 'month', function ($q) {
+            return $q->where(function ($q) {
+                return $q->whereDate('expired_at', '>',
+                    Carbon::now()->subMonths(12)->startOfMonth())->orWhereNull('expired_at');
+            });
+        })->orderByDesc('expired_at')->get();
     }
 
     public function allByParam(string $key, Carbon $date): Collection
     {
-        return $this->model
-            ->where(['primary_key' => $this->prefix.$key])
-            ->whereDate('expired_at', $date)
-            ->orderByDesc('expired_at')
-            ->get(['secondary_key', 'score', 'expired_at'])
-            ->map(function ($item) {
+        return $this->model->where(['primary_key' => $this->prefix.$key])->whereDate('expired_at',
+            $date)->orderByDesc('expired_at')->get(['secondary_key', 'score', 'expired_at'])->map(function ($item) {
                 return [
-                    'param' => $item->secondary_key,
-                    'score' => $item->score,
+                    'param' => $item->secondary_key, 'score' => $item->score,
                 ];
             });
     }
@@ -193,40 +170,32 @@ class PermanentEloquentEngine implements DataEngine
         $results = [];
 
         if ($word == '*') {
-            $results = $this->model
-                ->where(function ($q) {
-                    return $q->where('expired_at', '>', Carbon::now())->orWhereNull('expired_at');
-                })
-                ->pluck('primary_key');
+            $results = $this->model->where(function ($q) {
+                return $q->where('expired_at', '>', Carbon::now())->orWhereNull('expired_at');
+            })->pluck('primary_key');
         } else {
-            $results = $this->model->where('primary_key', 'like', $this->prefix.str_replace('*', '%', $word))
-                ->where(function ($q) {
+            $results = $this->model->where('primary_key', 'like',
+                $this->prefix.str_replace('*', '%', $word))->where(function ($q) {
                     return $q->where('expired_at', '>', Carbon::now())->orWhereNull('expired_at');
-                })
-                ->pluck('primary_key');
+                })->pluck('primary_key');
         }
 
-        return array_map(
-            function ($item) use ($noPrefix) {
-                if ($noPrefix && substr($item, 0, strlen($this->prefix)) == $this->prefix) {
-                    return substr($item, strlen($this->prefix));
-                }
+        return array_map(function ($item) use ($noPrefix) {
+            if ($noPrefix && substr($item, 0, strlen($this->prefix)) == $this->prefix) {
+                return substr($item, strlen($this->prefix));
+            }
 
-                return $item;
-            },
-            $results->toArray() ?? []
-        );
+            return $item;
+        }, $results->toArray() ?? []);
     }
 
     public function flatList(string $key, int $limit = -1): array
     {
-        return array_slice(
-            $this->model->where(['primary_key' => $this->prefix.$key, 'secondary_key' => null])
-                ->where(function ($q) {
-                    return $q->where('expired_at', '>', Carbon::now())->orWhereNull('expired_at');
-                })
-                ->value('list') ?? [], 0, $limit
-        );
+        return array_slice($this->model->where([
+            'primary_key' => $this->prefix.$key, 'secondary_key' => null,
+        ])->where(function ($q) {
+            return $q->where('expired_at', '>', Carbon::now())->orWhereNull('expired_at');
+        })->value('list') ?? [], 0, $limit);
     }
 
     public function addToFlatList(string $key, $value): bool
@@ -241,18 +210,16 @@ class PermanentEloquentEngine implements DataEngine
         }
 
         $row->score = $row->score ?? 0;
+
         return (bool) $row->save();
     }
 
     public function valueList(string $key, int $limit = -1, bool $orderByAsc = false, bool $withValues = false): array
     {
-        $rows = $this->model->where('primary_key', $this->prefix.$key)
-            ->where(function ($q) {
-                return $q->where('expired_at', '>', Carbon::now())->orWhereNull('expired_at');
-            })
-            ->whereNotNull('secondary_key')
-            ->orderBy('score', $orderByAsc ? 'asc' : 'desc')
-            ->when($limit > -1, function ($q) use ($limit) {
+        $rows = $this->model->where('primary_key', $this->prefix.$key)->where(function ($q) {
+            return $q->where('expired_at', '>', Carbon::now())->orWhereNull('expired_at');
+        })->whereNotNull('secondary_key')->orderBy('score', $orderByAsc ? 'asc' : 'desc')->when($limit > -1,
+            function ($q) use ($limit) {
                 return $q->limit($limit + 1);
             })->pluck('score', 'secondary_key') ?? Collection::make();
 
@@ -261,11 +228,10 @@ class PermanentEloquentEngine implements DataEngine
 
     public function exists(string $key): bool
     {
-        return $this->model->where(['primary_key' => $this->prefix.$key, 'secondary_key' => null])
-            ->where(function ($q) {
-                return $q->where('expired_at', '>', Carbon::now())->orWhereNull('expired_at');
-            })
-            ->exists();
+        return $this->model->where(['primary_key' => $this->prefix.$key, 'secondary_key' => null])->where(function ($q
+        ) {
+            return $q->where('expired_at', '>', Carbon::now())->orWhereNull('expired_at');
+        })->exists();
     }
 
     public function timeLeft(string $key): int
@@ -277,6 +243,7 @@ class PermanentEloquentEngine implements DataEngine
         }
 
         $ttl = $expired_at->timestamp - Carbon::now()->timestamp;
+
         return $ttl <= 0 ? -1 : $ttl;
     }
 
@@ -285,55 +252,30 @@ class PermanentEloquentEngine implements DataEngine
         $newExpireAt = Carbon::now()->addSeconds($time);
 
         try {
-            return $this->model
-                ->where(['primary_key' => $this->prefix.$key])
-                ->where(function ($q) use ($newExpireAt) {
-                    return $q
-                        ->where(function ($q) use ($newExpireAt) {
-                            $q->where('expired_at', '>', Carbon::now())->where('expired_at', '!=', $newExpireAt);
-                        })
-                        ->orWhereNull('expired_at');
-                })
-                ->update(['expired_at' => $newExpireAt]);
+            return $this->model->where(['primary_key' => $this->prefix.$key])->where(function ($q) use ($newExpireAt) {
+                return $q->where(function ($q) use ($newExpireAt) {
+                    $q->where('expired_at', '>', Carbon::now())->where('expired_at', '!=', $newExpireAt);
+                })->orWhereNull('expired_at');
+            })->update(['expired_at' => $newExpireAt]);
         } catch (QueryException $exception) {
             if ($exception->getCode() == self::MYSQL_DUPLICATE_KEY_CODE) {
-                Http::post(
-                    'https://metricswave.com/webhooks/842e2f48-4c9f-436f-bb88-c00266496f10',
-                    [
+                if (app()->isProduction()) {
+                    Http::post('https://metricswave.com/webhooks/842e2f48-4c9f-436f-bb88-c00266496f10', [
                         'message' => 'Duplicate key error.',
-                        'description' => "Duplicate key error with key \"{$this->prefix}{$key}\".",
-                    ]
-                );
-
-                $visits = $this->model
-                    ->where(['primary_key' => $this->prefix.$key])
-                    ->where(function ($q) use ($newExpireAt) {
-                        return $q
-                            ->where(function ($q) use ($newExpireAt) {
-                                $q->where('expired_at', '>', Carbon::now());
-                            })
-                            ->orWhereNull('expired_at');
-                    })
-                    ->get();
-
-                $visits->groupBy('secondary_key')->each(function ($item) use ($time, $newExpireAt) {
-                    $totalScore = $item->sum('score');
-
-                    $item->slice(1)->each(function ($item) {
-                        $item->delete();
-                    });
-
-                    $item->first()->update([
-                        'score' => $totalScore,
-                        'expired_at' => $newExpireAt,
+                        'description' => "Duplicate key error with key \"{$this->prefix}{$key}\" and \"{$newExpireAt->toIso8601ZuluString()}\".",
                     ]);
-                });
+                }
+
+                $this->tryToFixDuplicateKeyError($key, $newExpireAt, $time);
 
                 return true;
             }
 
             if ($exception->getCode() == self::MYSQL_DEADLOCK_CODE) {
-                Http::post('https://metricswave.com/webhooks/8fef80f2-d4ab-4310-a035-309a9895886b');
+                if (app()->isProduction()) {
+                    Http::post('https://metricswave.com/webhooks/8fef80f2-d4ab-4310-a035-309a9895886b');
+                }
+
                 return true;
             }
 
@@ -341,21 +283,54 @@ class PermanentEloquentEngine implements DataEngine
         }
     }
 
+    private function tryToFixDuplicateKeyError(string $key, Carbon $newExpireAt, int $time): void
+    {
+        try {
+            $visits = $this->model->where(['primary_key' => $this->prefix.$key])->where(function ($q) {
+                return $q->where(function ($q) {
+                    $q->where('expired_at', '>', Carbon::now());
+                })->orWhereNull('expired_at');
+            })->get();
+
+            $visits->groupBy('secondary_key')->each(function ($item) use ($newExpireAt) {
+                $totalScore = $item->sum('score');
+
+                $item->slice(1)->each(function ($item) {
+                    $item->delete();
+                });
+
+                $item->first()->update([
+                    'score' => $totalScore, 'expired_at' => $newExpireAt,
+                ]);
+            });
+
+            if (app()->isProduction()) {
+                Http::post('https://metricswave.com/webhooks/842e2f48-4c9f-436f-bb88-c00266496f10', [
+                    'message' => '🟩 Duplicate key error fixed.',
+                    'description' => "Duplicate key error with key \"{$this->prefix}{$key}\" and \"{$newExpireAt->toIso8601ZuluString()}\".",
+                ]);
+            }
+        } catch (QueryException $exception) {
+            if (app()->isProduction()) {
+                Http::post('https://metricswave.com/webhooks/842e2f48-4c9f-436f-bb88-c00266496f10', [
+                    'message' => '🟥 Duplicate key error NOT fixed.',
+                    'description' => "Duplicate key error with key \"{$this->prefix}{$key}\" and \"{$newExpireAt->toIso8601ZuluString()}\".",
+                ]);
+            }
+        }
+    }
+
     public function set(string $key, $value, $member = null): bool
     {
-        if (!empty($member) || is_numeric($member)) {
+        if (! empty($member) || is_numeric($member)) {
             return $this->model->updateOrCreate([
-                    'primary_key' => $this->prefix.$key,
-                    'secondary_key' => $member,
-                    'score' => $value,
-                    'expired_at' => null,
-                ]) instanceof Model;
+                'primary_key' => $this->prefix.$key, 'secondary_key' => $member, 'score' => $value,
+                'expired_at' => null,
+            ]) instanceof Model;
         } else {
             return $this->model->updateOrCreate([
-                    'primary_key' => $this->prefix.$key,
-                    'score' => $value,
-                    'expired_at' => null,
-                ]) instanceof Model;
+                'primary_key' => $this->prefix.$key, 'score' => $value, 'expired_at' => null,
+            ]) instanceof Model;
         }
     }
 }

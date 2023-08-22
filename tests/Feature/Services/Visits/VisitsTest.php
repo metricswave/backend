@@ -4,10 +4,11 @@ use App\Models\Trigger;
 use App\Models\TriggerType;
 use App\Models\User;
 use Awssat\Visits\Models\Visit;
+
 use function Pest\Laravel\postJson;
 
 $csv = file_get_contents(__DIR__.'/assets/expire_params.csv');
-$visits = fn(): array => collect(explode("\n", $csv))
+$visits = fn (): array => collect(explode("\n", $csv))
     ->map(function ($row) {
         return explode(',', $row);
     })
@@ -120,7 +121,7 @@ it('should set expire date on each visit', function () use ($visits) {
         DB::table('visits')
             ->insert([
                 'primary_key' => Str::of($row[1])->replace('visits:triggers', 'visits:testing:triggers')->toString(),
-                'secondary_key' => $row[2] !== "" ? $row[2] : null,
+                'secondary_key' => $row[2] !== '' ? $row[2] : null,
                 'score' => (int) $row[3],
                 'expired_at' => null,
             ]);
@@ -141,7 +142,7 @@ it('store visits params, unique visits and new visits', function () {
                 'version' => '1.0',
                 'type' => 'visits',
                 'fields' => [
-                    'parameters' => Trigger::VISITS_PARAMS
+                    'parameters' => Trigger::VISITS_PARAMS,
                 ],
             ],
         ]);
@@ -246,7 +247,7 @@ it('store visits referrer', function () {
                 'version' => '1.0',
                 'type' => 'visits',
                 'fields' => [
-                    'parameters' => Trigger::VISITS_PARAMS
+                    'parameters' => Trigger::VISITS_PARAMS,
                 ],
             ],
         ]);
@@ -299,7 +300,7 @@ it('visit type works even when it has no params', function () {
                 'version' => '1.0',
                 'type' => 'visits',
                 'fields' => [
-                    'parameters' => []
+                    'parameters' => [],
                 ],
             ],
         ]);
@@ -312,7 +313,7 @@ it('visit type works even when it has no params', function () {
         'language' => 'en-US',
         'userAgent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
         'platform' => 'MacIntel',
-        'referrer' => ''
+        'referrer' => '',
     ]);
 
     postJson('/webhooks/'.$trigger->uuid, [
@@ -323,7 +324,7 @@ it('visit type works even when it has no params', function () {
         'language' => 'en-US',
         'userAgent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
         'platform' => 'MacIntel',
-        'referrer' => 'https://metricswave.com/blog'
+        'referrer' => 'https://metricswave.com/blog',
     ]);
 
     postJson('/webhooks/'.$trigger->uuid, [
@@ -334,7 +335,7 @@ it('visit type works even when it has no params', function () {
         'language' => 'en-US',
         'userAgent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
         'platform' => 'MacIntel',
-        'referrer' => 'https://metricswave.com/'
+        'referrer' => 'https://metricswave.com/',
     ]);
 
     postJson('/webhooks/'.$trigger->uuid, [
@@ -345,7 +346,7 @@ it('visit type works even when it has no params', function () {
         'language' => 'en-US',
         'userAgent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
         'platform' => 'MacIntel',
-        'referrer' => ''
+        'referrer' => '',
     ]);
 
     expect(
