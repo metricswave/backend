@@ -49,7 +49,7 @@ class FakeEcommerceVisitsCommand extends Command
         $daysSinceStart = (now()->diffInDays(self::START_DATE) + 1);
         $multiplier = (random_int(1, 100) / 100);
 
-        return random_int((1 * $daysSinceStart) * $multiplier, (4 * $daysSinceStart) * $multiplier);
+        return random_int((1 * $daysSinceStart) * $multiplier, (2 * $daysSinceStart) * $multiplier);
     }
 
     private function fakeDeviceName(): string
@@ -76,7 +76,7 @@ class FakeEcommerceVisitsCommand extends Command
             'e1610285-f627-4fc8-a4c8-47d06f191cct' => 1,
             'e1610285-f627-4fc8-a4c8-47d06f191ccu' => 1,
             'e1610285-f627-4fc8-a4c8-47d06f191ccv' => 1,
-            'new' => 30,
+            'new' => 40,
         ];
 
         $deviceName = $this->randomItemFromWeightedArray($deviceNames);
@@ -92,7 +92,7 @@ class FakeEcommerceVisitsCommand extends Command
     private function fakePath(): string
     {
         $paths = [
-            '/' => 100,
+            '/' => 150,
             '/cart' => 50,
             '/checkout/information' => 49,
             '/checkout/shipping' => 48,
@@ -189,7 +189,7 @@ class FakeEcommerceVisitsCommand extends Command
             'affiliate' => 50,
             'cpc' => 50,
             'display' => 50,
-            'direct' => 50,
+            'direct' => 200,
         ];
 
         $utmSources = $this->randomItemFromWeightedArray($utmSources);

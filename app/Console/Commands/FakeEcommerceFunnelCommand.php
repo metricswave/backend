@@ -21,7 +21,7 @@ class FakeEcommerceFunnelCommand extends Command
         1 => 34,
         2 => 30,
         3 => 16,
-        4 => 1,
+        4 => 5,
     ];
 
     protected $signature = 'app:fake:ecommerce-funnel';
