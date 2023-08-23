@@ -259,13 +259,6 @@ class PermanentEloquentEngine implements DataEngine
             })->update(['expired_at' => $newExpireAt]);
         } catch (QueryException $exception) {
             if ($exception->getCode() == self::MYSQL_DUPLICATE_KEY_CODE) {
-                if (app()->isProduction()) {
-                    Http::post('https://metricswave.com/webhooks/842e2f48-4c9f-436f-bb88-c00266496f10', [
-                        'message' => 'Duplicate key error.',
-                        'description' => "Duplicate key error with key \"{$this->prefix}{$key}\" and \"{$newExpireAt->toIso8601ZuluString()}\".",
-                    ]);
-                }
-
                 $this->tryToFixDuplicateKeyError($key, $newExpireAt, $time);
 
                 return true;
@@ -303,13 +296,6 @@ class PermanentEloquentEngine implements DataEngine
                     'score' => $totalScore, 'expired_at' => $newExpireAt,
                 ]);
             });
-
-            if (app()->isProduction()) {
-                Http::post('https://metricswave.com/webhooks/842e2f48-4c9f-436f-bb88-c00266496f10', [
-                    'message' => '🟩 Duplicate key error fixed.',
-                    'description' => "Duplicate key error with key \"{$this->prefix}{$key}\" and \"{$newExpireAt->toIso8601ZuluString()}\".",
-                ]);
-            }
         } catch (QueryException $exception) {
             if (app()->isProduction()) {
                 Http::post('https://metricswave.com/webhooks/842e2f48-4c9f-436f-bb88-c00266496f10', [
