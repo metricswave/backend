@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Open;
+namespace App\Http\Controllers\Api\Open;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Api\JsonController;
 use App\Models\User;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
 
-class GetOpenPageController extends Controller
+class GetOpenDataController extends JsonController
 {
-    public function __invoke(): View|Factory
+    public function __invoke(): JsonResponse
     {
         $firstDayWithStats = now()->year === 2023 ? 126 : 0;
         $yearlyEstimation = (
@@ -18,7 +17,7 @@ class GetOpenPageController extends Controller
             * 365
         );
 
-        return view('open.open', [
+        return $this->response([
             'notifications' => [
                 'weekly' => format_long_numbers(
                     visitsService(User::class, User::TRIGGER_NOTIFICATION)->period('week')->count()
@@ -31,5 +30,6 @@ class GetOpenPageController extends Controller
                 ),
             ],
         ]);
+
     }
 }

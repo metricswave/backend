@@ -19,6 +19,7 @@ use App\Http\Controllers\Api\Dashboard\GetDashboardTriggersByUuidController;
 use App\Http\Controllers\Api\Dashboard\PostDashboardsController;
 use App\Http\Controllers\Api\Dashboard\PutDashboardsController;
 use App\Http\Controllers\Api\Notifications\GetNotificationsController;
+use App\Http\Controllers\Api\Open\GetOpenDataController;
 use App\Http\Controllers\Api\Services\GetServicesController;
 use App\Http\Controllers\Api\Socialite\RedirectToDriverController;
 use App\Http\Controllers\Api\Socialite\StoreUserServiceController;
@@ -65,6 +66,9 @@ Route::post('/refresh', RefreshTokenControllerController::class);
 
 // Impersonate
 Route::post('/auth/impersonate/', PostImpersonateController::class);
+
+// Open data
+Route::get('/open', GetOpenDataController::class);
 
 // User
 Route::get('/users', GetUserController::class);
