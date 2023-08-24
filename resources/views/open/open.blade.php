@@ -33,32 +33,14 @@
 
 @section('scripts')
     <script>
-        countUp = async function (elementId, target) {
-            let current = parseInt(document.getElementById(elementId).innerHTML);
-            while (target !== current) {
-                if (target > current) {
-                    current++;
-                } else {
-                    current--;
-                }
-                document.getElementById(elementId).innerHTML = current;
-
-                await new Promise((resolve) => {
-                    setTimeout(() => {
-                        resolve(true)
-                    }, 5)
-                });
-            }
-        }
-
         setInterval(function () {
             fetch('/api/open')
                 .then(response => response.json())
                 .then(data => {
                     const notifications = data.data.notifications
-                    countUp('weekly', (notifications.weekly * 2));
-                    countUp('monthly', (notifications.monthly * 2));
-                    countUp('yearly', (notifications.yearly * 2));
+                    document.getElementById('weekly').innerHTML = notifications.weekly
+                    document.getElementById('monthly').innerHTML = notifications.monthly
+                    document.getElementById('yearly').innerHTML = notifications.yearly
                 });
         }, 1500);
     </script>
