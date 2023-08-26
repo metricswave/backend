@@ -1,13 +1,6 @@
 <?php
 
-if (!function_exists('visitsService')) {
-    function visitsService($subject, $tag = 'visits'): \App\Services\Visits\Visits
-    {
-        return new \App\Services\Visits\Visits($subject, $tag);
-    }
-}
-
-if (!function_exists('format_long_numbers')) {
+if (! function_exists('format_long_numbers')) {
     function format_long_numbers($n, $precision = 3): string
     {
         if ($n < 1000000) {
@@ -24,14 +17,14 @@ if (!function_exists('format_long_numbers')) {
     }
 }
 
-if (!function_exists('random_item_from_weighted_array')) {
+if (! function_exists('random_item_from_weighted_array')) {
     function random_item_from_weighted_array(array $items): mixed
     {
         $weights = array_values($items); // Extract weights
         $items = array_keys($items); // Extract items
 
         $weightSum = array_sum($weights);
-        $cumulativeWeights = array();
+        $cumulativeWeights = [];
         $cumulativeWeight = 0;
 
         foreach ($weights as $weight) {

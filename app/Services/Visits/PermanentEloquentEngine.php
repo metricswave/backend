@@ -81,7 +81,8 @@ class PermanentEloquentEngine implements DataEngine
         } elseif ($row->count() === 0) {
             $row = $this->model->create([
                 'primary_key' => $this->prefix.$key,
-                'secondary_key' => ! empty($member) || is_numeric($member) ? $member : null, 'expired_at' => $expiredAt,
+                'secondary_key' => ! empty($member) || is_numeric($member) ? $member : null,
+                'expired_at' => $expiredAt,
                 'score' => $value,
             ]);
 

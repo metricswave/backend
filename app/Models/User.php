@@ -6,7 +6,7 @@ use App\Events\TriggerNotificationSent;
 use App\Events\UserCreated;
 use App\Notifications\TriggerNotification;
 use App\Services\Plans\PlanGetter;
-use App\Services\Visits\Visits;
+use App\Services\Visits\VisitsInterface;
 use App\Transfers\PlanId;
 use App\Transfers\PriceType;
 use App\Transfers\ServiceId;
@@ -33,6 +33,7 @@ class User extends Authenticatable
     use Notifiable;
 
     public const DOMAIN = 'domain';
+
     public const TRIGGER_NOTIFICATION = 'trigger-notification';
 
     protected $fillable = [
@@ -57,11 +58,10 @@ class User extends Authenticatable
     ];
 
     protected $dispatchesEvents = [
-        'created' => UserCreated::class
+        'created' => UserCreated::class,
     ];
 
     /**
-     * @param  string  $deviceName
      * @return array{token: array{token: string, expires_at: int}, refresh_token: array{token: string, expires_at: int}}
      */
     public function createTokens(string $deviceName): array
@@ -105,7 +105,7 @@ class User extends Authenticatable
     public function firstName(): Attribute
     {
         return Attribute::make(
-            get: fn() => explode(' ', $this->name)[0] ?? $this->name,
+            get: fn () => explode(' ', $this->name)[0] ?? $this->name,
         );
     }
 
@@ -124,7 +124,7 @@ class User extends Authenticatable
         app(Dispatcher::class)->send($this, $instance);
     }
 
-    public function triggerNotificationVisits(): Visits
+    public function triggerNotificationVisits(): VisitsInterface
     {
         return visitsService($this, self::TRIGGER_NOTIFICATION);
     }
@@ -139,7 +139,7 @@ class User extends Authenticatable
         return $this->triggerNotificationVisits()->period('month')->count() > $this->triggerMonthlyLimit();
     }
 
-    public function triggerMonthlyLimit(): null|int
+    public function triggerMonthlyLimit(): ?int
     {
         return app(PlanGetter::class)->get($this->subscription_plan_id)->eventsLimit;
     }
@@ -164,7 +164,6 @@ class User extends Authenticatable
         if ($this->subscription_status === false) {
             return PlanId::FREE;
         }
-
 
         if ($this->subscribedToProduct(PlanGetter::BASIC_PRODUCT_ID)) {
             return PlanId::BASIC;

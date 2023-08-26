@@ -2,16 +2,17 @@
 
 namespace App\Services\Visits;
 
+use const SORT_NUMERIC;
+
 use Awssat\Visits\Visits as AwssatVisits;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use Str;
-use const SORT_NUMERIC;
 
 /**
  * @property PermanentEloquentEngine $connection
  */
-class Visits extends AwssatVisits
+class Visits extends AwssatVisits implements VisitsInterface
 {
     private string $period;
 
@@ -22,9 +23,9 @@ class Visits extends AwssatVisits
                 continue;
             }
 
-            if (empty($value) || $value === "null") {
+            if (empty($value) || $value === 'null') {
                 if (Str::of($param)->startsWith('utm_')) {
-                    $value = "Direct / None";
+                    $value = 'Direct / None';
                 } else {
                     continue;
                 }
@@ -48,6 +49,7 @@ class Visits extends AwssatVisits
     public function period($period): Visits|static
     {
         $this->period = $period;
+
         return parent::period($period);
     }
 
@@ -73,7 +75,27 @@ class Visits extends AwssatVisits
 
     public function increment($inc = 1, $force = true, $ignore = []): bool
     {
-        $response = parent::increment($inc, $force, $ignore);
+        if ($force || (! $this->isCrawler() && ! $this->recordedIp())) {
+
+            $this->connection->increment($this->keys->visits, $inc, $this->keys->id);
+            $this->connection->increment($this->keys->visitsTotal(), $inc);
+
+            if (is_array($this->globalIgnore) && count($this->globalIgnore) > 0) {
+                $ignore = array_merge($ignore, $this->globalIgnore);
+            }
+
+            //NOTE: $$method is parameter also .. ($periods,$country,$refer)
+            foreach (['country', 'refer', 'periods', 'operatingSystem', 'language'] as $method) {
+                if (! in_array($method, $ignore)) {
+                    $this->{'record'.\Illuminate\Support\Str::studly($method)}($inc);
+                }
+            }
+
+            $response = true;
+        } else {
+            $response = false;
+        }
+
         $this->periodsSync();
 
         return $response;
@@ -117,7 +139,7 @@ class Visits extends AwssatVisits
         Carbon $to
     ) {
         $dates = $this->getDatesBetween($from, $to);
-        $count = $count->keyBy(fn($item) => $item['date']->toDateString());
+        $count = $count->keyBy(fn ($item) => $item['date']->toDateString());
 
         $count = $dates->map(function ($date) use ($count) {
             $dateString = $date->toDateString();
@@ -163,8 +185,8 @@ class Visits extends AwssatVisits
         $count = $this->connection->all($this->period, $key, null, $from, $to);
 
         return $count
-            ->groupBy(fn($item) => $item->secondary_key)
-            ->map(fn($item, $key) => [
+            ->groupBy(fn ($item) => $item->secondary_key)
+            ->map(fn ($item, $key) => [
                 'score' => $item->sum('score'),
                 'param' => $key,
             ])

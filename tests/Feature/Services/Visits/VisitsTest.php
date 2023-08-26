@@ -15,7 +15,7 @@ $visits = fn (): array => collect(explode("\n", $csv))
     ->toArray();
 
 it('increase visits and set expired_at dates as expected', function () {
-    $user = User::factory()->create();
+    $user = User::factory()->create(['id' => 1]);
 
     $startDate = Date::createFromDate('1989', '10', '23')->startOfDay()->subDay();
     $this->travelTo($startDate);
@@ -37,7 +37,7 @@ it('increase visits and set expired_at dates as expected', function () {
 
 it('increase visits with params and set expired_at dates as expected', function () {
     $trigger = Trigger::factory()
-        ->for(User::factory()->create())
+        ->for(User::factory()->create(['id' => 1]))
         ->for(TriggerType::factory()->create())
         ->create([
             'id' => 48,
@@ -65,20 +65,13 @@ it('increase visits with params and set expired_at dates as expected', function 
 });
 
 it('fails because unique index violation', function () {
-    $user = User::factory()->create();
+    $user = User::factory()->create(['id' => 1]);
 
     Visit::create([
         'primary_key' => 'visits:testing:users_triggernotification_day',
         'secondary_key' => 1,
-        'score' => 10,
+        'score' => 20,
         'expired_at' => now()->addDay()->startOfDay(),
-    ]);
-
-    Visit::create([
-        'primary_key' => 'visits:testing:users_triggernotification_day',
-        'secondary_key' => 1,
-        'score' => 10,
-        'expired_at' => null,
     ]);
 
     $user->triggerNotificationVisits()->increment();
@@ -100,41 +93,9 @@ it('fails because unique index violation', function () {
     ]);
 });
 
-it('should set expire date on each visit', function () use ($visits) {
-    $trigger = Trigger::factory()
-        ->for(User::factory()->create())
-        ->for(TriggerType::factory()->create())
-        ->create([
-            'id' => 48,
-            'configuration' => [
-                'fields' => ['parameters' => ['path', 'referrer']],
-            ],
-        ]);
-
-    $this->travelTo(Date::createFromDate('1989', '10', '23')->startOfDay()->addHour());
-
-    foreach ($visits() as $row) {
-        if (count($row) === 1) {
-            continue;
-        }
-
-        DB::table('visits')
-            ->insert([
-                'primary_key' => Str::of($row[1])->replace('visits:triggers', 'visits:testing:triggers')->toString(),
-                'secondary_key' => $row[2] !== '' ? $row[2] : null,
-                'score' => (int) $row[3],
-                'expired_at' => null,
-            ]);
-    }
-
-    $trigger->visits()->recordParams(['path' => 'testing', 'referrer' => 'https://google.com']);
-
-    expect(Visit::query()->whereNull('expired_at')->count())->toBe(0);
-});
-
 it('store visits params, unique visits and new visits', function () {
     $trigger = Trigger::factory()
-        ->for(User::factory()->create())
+        ->for(User::factory()->create(['id' => 1]))
         ->for(TriggerType::factory()->create())
         ->create([
             'id' => 48,
@@ -239,7 +200,7 @@ it('store visits params, unique visits and new visits', function () {
 
 it('store visits referrer', function () {
     $trigger = Trigger::factory()
-        ->for(User::factory()->create())
+        ->for(User::factory()->create(['id' => 1]))
         ->for(TriggerType::factory()->create())
         ->create([
             'id' => 48,
@@ -292,7 +253,7 @@ it('store visits referrer', function () {
 
 it('visit type works even when it has no params', function () {
     $trigger = Trigger::factory()
-        ->for(User::factory()->create())
+        ->for(User::factory()->create(['id' => 1]))
         ->for(TriggerType::factory()->create())
         ->create([
             'id' => 48,

@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use App\Events\TriggerCreated;
-use App\Services\Visits\Visits;
+use App\Services\Visits\VisitsInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
+
 use function Emoji\is_single_emoji;
 
 /**
@@ -21,7 +22,9 @@ class Trigger extends Model
     use SoftDeletes;
 
     public const UNIQUE_VISITS = 'unique_visits';
+
     public const NEW_VISITS = 'new_visits';
+
     public const PAGE_VIEWS = 'visits';
 
     public const VISITS_PARAMS = [
@@ -70,7 +73,7 @@ class Trigger extends Model
         return $this->belongsTo(TriggerType::class);
     }
 
-    public function visits($tag = 'visits'): Visits
+    public function visits($tag = 'visits'): VisitsInterface
     {
         return visitsService($this, $tag);
     }
