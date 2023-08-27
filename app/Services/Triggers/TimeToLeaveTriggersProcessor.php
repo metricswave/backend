@@ -16,6 +16,7 @@ use Arr;
 class TimeToLeaveTriggersProcessor
 {
     public const HOURS_BEFORE = 4;
+
     public const MINUTES_BEFORE = 15;
 
     public function __construct(private readonly TravelDistanceCalculator $calculator)
@@ -29,7 +30,7 @@ class TimeToLeaveTriggersProcessor
         }
 
         $weekday = Weekday::fromDayOfWeek(now()->dayOfWeek);
-        if (!in_array($weekday->toString(), $trigger->configuration['fields']['weekdays'])) {
+        if (! in_array($weekday->toString(), $trigger->configuration['fields']['weekdays'])) {
             return;
         }
 

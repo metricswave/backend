@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use App\Events\TriggerNotificationSent;
+use App\Events\CheckTriggerLimitUsage;
 use App\Events\UserCreated;
 use App\Notifications\TriggerNotification;
+use App\Services\CacheKey;
 use App\Services\Plans\PlanGetter;
 use App\Services\Visits\VisitsInterface;
 use App\Transfers\PlanId;
@@ -17,6 +18,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Cache;
 use Laravel\Cashier\Billable;
 use Laravel\Sanctum\HasApiTokens;
 
@@ -118,7 +120,12 @@ class User extends Authenticatable
     {
         if ($instance instanceof TriggerNotification) {
             $this->triggerNotificationVisits()->increment();
-            TriggerNotificationSent::dispatch($instance);
+
+            $key = CacheKey::generateForModel($instance->trigger->user, 'trigger_notification_sent_checked');
+            if (! Cache::has($key)) {
+                CheckTriggerLimitUsage::dispatch($instance);
+                Cache::put($key, '1', now()->addDay());
+            }
         }
 
         app(Dispatcher::class)->send($this, $instance);
