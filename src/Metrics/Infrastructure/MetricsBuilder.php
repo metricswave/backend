@@ -11,7 +11,7 @@ use MetricsWave\Metrics\Metrics;
 
 class MetricsBuilder
 {
-    public function __invoke(Model $subject, $tag = 'visits'): VisitsInterface
+    public function __invoke(Model|string $subject, $tag = 'visits'): VisitsInterface
     {
         if ($this->shouldUserMetricsWith($subject) && config('features.use_metrics')) {
             return new Metrics($subject, $tag);
@@ -20,7 +20,7 @@ class MetricsBuilder
         return new Visits($subject, $tag);
     }
 
-    private function shouldUserMetricsWith(Model $subject): bool
+    private function shouldUserMetricsWith(string|Model $subject): bool
     {
         return (
             $subject instanceof Trigger && $subject->user->id === 1

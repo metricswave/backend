@@ -27,7 +27,7 @@ class Metrics implements VisitsInterface
     private MetricsEloquentConnection $connection;
 
     public function __construct(
-        Model $subject,
+        string|Model $subject,
         string $tag,
     ) {
         $this->keys = new Keys($subject, preg_replace('/[^a-z0-9_]/i', '', $tag));
