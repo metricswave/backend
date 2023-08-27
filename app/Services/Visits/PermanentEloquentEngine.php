@@ -45,13 +45,17 @@ class PermanentEloquentEngine implements DataEngine
     public function increment(string $key, int $value, $member = null): bool
     {
         if (! empty($member) || is_numeric($member)) {
-            $row = $this->model->where(fn (Builder $query) => $query->whereDate('expired_at', '>',
-                now())->orWhereNull('expired_at'))->firstOrNew([
+            $row = $this->model
+                ->where(fn (Builder $query) => $query
+                    ->whereDate('expired_at', '>', now())->orWhereNull('expired_at')
+                )->firstOrNew([
                     'primary_key' => $this->prefix.$key, 'secondary_key' => $member,
                 ]);
         } else {
-            $row = $this->model->where(fn (Builder $query) => $query->whereDate('expired_at', '>',
-                now())->orWhereNull('expired_at'))->firstOrNew([
+            $row = $this->model
+                ->where(fn (Builder $query) => $query
+                    ->whereDate('expired_at', '>', now())->orWhereNull('expired_at')
+                )->firstOrNew([
                     'primary_key' => $this->prefix.$key, 'secondary_key' => null,
                 ]);
         }
@@ -70,9 +74,16 @@ class PermanentEloquentEngine implements DataEngine
     {
         $expiredAt = Carbon::now()->addSeconds($expireInSeconds);
 
-        $row = $this->model->where('primary_key', $this->prefix.$key)->when(! empty($member) || is_numeric($member),
-            fn ($query) => $query->where('secondary_key', $member))->where(fn (Builder $query
-            ) => $query->whereDate('expired_at', $expiredAt)->orWhereNull('expired_at'))->get();
+        $row = $this->model->where('primary_key', $this->prefix.$key)
+            ->when(
+                ! empty($member) || is_numeric($member),
+                fn ($query) => $query->where('secondary_key', $member)
+            )
+            ->where(
+                fn (Builder $query) => $query
+                    ->whereDate('expired_at', $expiredAt)
+                    ->orWhereNull('expired_at')
+            )->get();
 
         if ($row->count() > 1) {
             $value = $row->slice(1)->sum('score') + $value;

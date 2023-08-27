@@ -100,6 +100,12 @@ class MetricsEloquentConnection implements MetricsConnection
     public function increment(string $key, int $value, int $member = null): void
     {
         $row = $this->query()
+            ->where('primary_key', self::PREFIX.$key)
+            ->when(
+                (! empty($member) || is_numeric($member)),
+                fn ($query) => $query->where('secondary_key', $member),
+                fn ($query) => $query->whereNull('secondary_key')
+            )
             ->whereNull('expired_at')
             ->first();
 
