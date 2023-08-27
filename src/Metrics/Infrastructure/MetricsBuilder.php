@@ -22,10 +22,11 @@ class MetricsBuilder
 
     private function shouldUserMetricsWith(string|Model $subject): bool
     {
-        return (
-            $subject instanceof Trigger && $subject->user->id === 1
-        ) || (
-            $subject instanceof User && $subject->id === 1
-        );
+        return config('features.force_use_metrics')
+             || (
+                 $subject instanceof Trigger && $subject->user->id === 1
+             ) || (
+                 $subject instanceof User && $subject->id === 1
+             );
     }
 }
