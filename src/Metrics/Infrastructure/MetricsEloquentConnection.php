@@ -73,6 +73,10 @@ class MetricsEloquentConnection implements MetricsConnection
                 fn ($query) => $query->where('secondary_key', $member),
                 fn ($query) => $query->whereNull('secondary_key')
             )
+            ->where(function ($q) {
+                return $q->where('expired_at', '>', Carbon::now())
+                    ->orWhereNull('expired_at');
+            })
             ->value('score');
 
         return intval($score);
