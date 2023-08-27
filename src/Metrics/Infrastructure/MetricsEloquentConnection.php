@@ -67,7 +67,7 @@ class MetricsEloquentConnection implements MetricsConnection
     public function get(string $key, int $member = null): int
     {
         $score = $this->query()
-            ->where('primary_key', $key)
+            ->where('primary_key', self::PREFIX.$key)
             ->when(
                 (! empty($member) || is_numeric($member)),
                 fn ($query) => $query->where('secondary_key', $member),
