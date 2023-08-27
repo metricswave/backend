@@ -3,12 +3,12 @@
 namespace App\Models;
 
 use App\Events\TriggerCreated;
-use App\Services\Visits\VisitsInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
+use MetricsWave\Metrics\MetricsInterface;
 
 use function Emoji\is_single_emoji;
 
@@ -73,7 +73,7 @@ class Trigger extends Model
         return $this->belongsTo(TriggerType::class);
     }
 
-    public function visits($tag = 'visits'): VisitsInterface
+    public function visits($tag = 'visits'): MetricsInterface
     {
         return visitsService($this, $tag);
     }

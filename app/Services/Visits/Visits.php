@@ -7,12 +7,13 @@ use const SORT_NUMERIC;
 use Awssat\Visits\Visits as AwssatVisits;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
+use MetricsWave\Metrics\MetricsInterface;
 use Str;
 
 /**
  * @property PermanentEloquentEngine $connection
  */
-class Visits extends AwssatVisits implements VisitsInterface
+class Visits extends AwssatVisits implements MetricsInterface
 {
     private string $period;
 

@@ -7,7 +7,6 @@ use App\Events\UserCreated;
 use App\Notifications\TriggerNotification;
 use App\Services\CacheKey;
 use App\Services\Plans\PlanGetter;
-use App\Services\Visits\VisitsInterface;
 use App\Transfers\PlanId;
 use App\Transfers\PriceType;
 use App\Transfers\ServiceId;
@@ -21,6 +20,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Cache;
 use Laravel\Cashier\Billable;
 use Laravel\Sanctum\HasApiTokens;
+use MetricsWave\Metrics\MetricsInterface;
 
 /**
  * @property int $id
@@ -131,7 +131,7 @@ class User extends Authenticatable
         app(Dispatcher::class)->send($this, $instance);
     }
 
-    public function triggerNotificationVisits(): VisitsInterface
+    public function triggerNotificationVisits(): MetricsInterface
     {
         return visitsService($this, self::TRIGGER_NOTIFICATION);
     }

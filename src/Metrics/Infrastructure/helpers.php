@@ -1,10 +1,10 @@
 <?php
 
-use App\Services\Visits\VisitsInterface;
 use MetricsWave\Metrics\Infrastructure\MetricsBuilder;
+use MetricsWave\Metrics\MetricsInterface;
 
 if (! function_exists('visitsService')) {
-    function visitsService($subject, $tag = 'visits'): VisitsInterface
+    function visitsService($subject, $tag = 'visits'): MetricsInterface
     {
         return (new MetricsBuilder())($subject, $tag);
     }

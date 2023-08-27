@@ -2,8 +2,6 @@
 
 namespace MetricsWave\Metrics;
 
-use App\Services\Visits\VisitsInterface;
-use Awssat\Visits\Keys;
 use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
@@ -11,7 +9,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use MetricsWave\Metrics\Infrastructure\MetricsEloquentConnection;
 
-class Metrics implements VisitsInterface
+class Metrics implements MetricsInterface
 {
     private const PERIODS = [
         'day',
@@ -20,7 +18,7 @@ class Metrics implements VisitsInterface
         'year',
     ];
 
-    private Keys $keys;
+    private MetricsKeys $keys;
 
     private string $period;
 
@@ -30,7 +28,7 @@ class Metrics implements VisitsInterface
         string|Model $subject,
         string $tag,
     ) {
-        $this->keys = new Keys($subject, preg_replace('/[^a-z0-9_]/i', '', $tag));
+        $this->keys = new MetricsKeys($subject, preg_replace('/[^a-z0-9_]/i', '', $tag));
         $this->connection = new MetricsEloquentConnection();
     }
 
