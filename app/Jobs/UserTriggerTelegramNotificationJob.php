@@ -85,6 +85,8 @@ class UserTriggerTelegramNotificationJob implements ShouldQueue
 
         if ($exception === null) {
             return;
+        } elseif ($this->requestExceptionBecauseChatNotFound($exception)) {
+            return;
         } elseif ($this->requestExceptionBecauseGroupIdChanged($exception)) {
             throw $exception;
         }
@@ -95,7 +97,7 @@ class UserTriggerTelegramNotificationJob implements ShouldQueue
 
             if ($exception === null) {
                 $key = CacheKey::generate('telegram_channel', $telegramChannelId);
-                if (!Cache::has($key)) {
+                if (! Cache::has($key)) {
                     $this->send(
                         $token,
                         $telegramChannelId,
@@ -120,7 +122,7 @@ class UserTriggerTelegramNotificationJob implements ShouldQueue
         string $title,
         string $content
     ): ?RequestException {
-        return Http::post("https://api.telegram.org/bot".$token."/sendMessage", [
+        return Http::post('https://api.telegram.org/bot'.$token.'/sendMessage', [
             'chat_id' => $telegramChannelId,
             'text' => Str::of("**${emoji} ${title}**\n\n${content}")
                 ->inlineMarkdown()
@@ -133,11 +135,20 @@ class UserTriggerTelegramNotificationJob implements ShouldQueue
     {
         $response = $exception->response->json();
 
-        return (
+        return
             $response['ok'] === false
             && $response['error_code'] === 400
             && $response['description'] === 'Bad Request: group chat was upgraded to a supergroup chat'
-            && isset($response['parameters']['migrate_to_chat_id'])
-        );
+            && isset($response['parameters']['migrate_to_chat_id']);
+    }
+
+    private function requestExceptionBecauseChatNotFound(RequestException $exception): bool
+    {
+        $response = $exception->response->json();
+
+        return
+            $response['ok'] === false
+            && $response['error_code'] === 400
+            && $response['description'] === 'Bad Request: chat not found';
     }
 }
