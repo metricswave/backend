@@ -23,8 +23,8 @@
             </div>
         @endif
 
-        <div class="mw-wide-landing mx-auto flex flex-row items-start gap-10 mb-14">
-            <div class="w-7/12 flex flex-col gap-4">
+        <div class="mw-wide-landing mx-auto flex flex-col sm:flex-row items-start gap-10 mb-14">
+            <div class="w-full sm:w-7/12 flex flex-col gap-4">
                 @foreach(app(PlanGetter::class)->all() as $plan)
                     @php
                         $formattedLimit = format_long_numbers($plan->eventsLimit, 0);
@@ -52,13 +52,17 @@
                         </h3>
 
                         <div class="flex flex-col gap-2 text-xs opacity-70 text-center">
-                            {{ $plan->eventsLimit !== null ? $formattedLimit : 'Unlimited' }} events per month.
+                            @if($plan->name === "Enterprise")
+                                Unlimited events
+                            @else
+                                {{ $plan->eventsLimit !== null ? $formattedLimit : 'Unlimited' }} events per month.
+                            @endif
                         </div>
                     </a>
                 @endforeach
             </div>
 
-            <div class="">
+            <div class="pl-4 sm:pl-0">
                 <h3 class="font-semibold mb-4">All plans include:</h3>
 
                 <ul class="list-disc list-inside text-sm flex flex-col gap-2">
