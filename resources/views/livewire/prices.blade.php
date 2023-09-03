@@ -3,7 +3,8 @@
     $withoutTitle = $withoutTitle ?? false;
 @endphp
 
-<div class="relative">
+<div class="relative scroll-mt-10 sm:scroll-mt-16"
+     id="pricing">
     <div class="absolute bottom-2 left-10 h-48 w-48 animate-blob rounded-full bg-pink-500/30 blur-3xl"></div>
     <div class="absolute top-64 left-0 h-48 w-48 animate-blob rounded-full bg-cyan-500/30 blur-3xl"></div>
     <div class="absolute bottom-12 right-10 h-48 w-48 animate-blob rounded-full bg-blue-500/30 blur-3xl"></div>
