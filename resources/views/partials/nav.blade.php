@@ -3,7 +3,7 @@
         <div class="relative inline-block text-left">
             <div class="flex flex-row items-center">
                 <button type="button"
-                        class="inline-flex w-full justify-center gap-x-1.5 rounded-md px-3 py-2 hover:bg-gray-50 group-hover:bg-gray-50"
+                        class="inline-flex w-full justify-center gap-x-1.5 rounded-md px-3 py-2 hover:bg-gray-50 group-hover:bg-gray-50 dark:hover:bg-zinc-800 dark:group-hover:bg-zinc-800"
                         id="menu-button"
                         aria-expanded="true"
                         aria-haspopup="true">
@@ -25,10 +25,10 @@
                  aria-orientation="vertical"
                  aria-labelledby="menu-button"
                  tabindex="-1">
-                <div class="py-2 bg-white shadow-lg ring-1 ring-black ring-opacity-5 rounded-md"
+                <div class="py-2 bg-white dark:bg-zinc-800 shadow-lg ring-1 ring-black ring-opacity-5 rounded-md"
                      role="none">
                     <a href="/metricswave-vs-google-analytics"
-                       class="text-zinc-700 block px-4 py-2 text-sm smooth hover:bg-zinc-100 hover:text-zinc-800"
+                       class="text-zinc-700 dark:text-zinc-300 block px-4 py-2 text-sm smooth hover:bg-zinc-100 dark:hover:bg-zinc-700 hover:text-zinc-800 dark:hover:text-zinc-200"
                        role="menuitem"
                        tabindex="-1"
                        id="menu-item-0">
@@ -36,7 +36,7 @@
                         <span class="text-xs text-gray-500">MetricsWave is the  best alternative to GA</span>
                     </a>
                     <a href="/metricswave-vs-plausible"
-                       class="text-zinc-700 block px-4 py-2 text-sm smooth hover:bg-zinc-100 hover:text-zinc-800"
+                       class="text-zinc-700 dark:text-zinc-300 block px-4 py-2 text-sm smooth hover:bg-zinc-100 dark:hover:bg-zinc-700 hover:text-zinc-800 dark:hover:text-zinc-200"
                        role="menuitem"
                        tabindex="-1"
                        id="menu-item-1">
@@ -48,17 +48,17 @@
                         Website Analytics for:
                     </div>
                     <a href="/for-european-companies"
-                       class="text-zinc-700 block px-4 py-2 text-sm smooth hover:bg-zinc-100 hover:text-zinc-800"
+                       class="text-zinc-700 dark:text-zinc-300 block px-4 py-2 text-sm smooth hover:bg-zinc-100 dark:hover:bg-zinc-700 hover:text-zinc-800 dark:hover:text-zinc-200"
                        role="menuitem"
                        tabindex="-1"
                        id="menu-item-2">European Companies</a>
                     <a href="/for-bootstrappers"
-                       class="text-zinc-700 block px-4 py-2 text-sm smooth hover:bg-zinc-100 hover:text-zinc-800"
+                       class="text-zinc-700 dark:text-zinc-300 block px-4 py-2 text-sm smooth hover:bg-zinc-100 dark:hover:bg-zinc-700 hover:text-zinc-800 dark:hover:text-zinc-200"
                        role="menuitem"
                        tabindex="-1"
                        id="menu-item-3">Bootstrapped Companies</a>
                     <a href="/for-open-companies"
-                       class="text-zinc-700 block px-4 py-2 text-sm smooth hover:bg-zinc-100 hover:text-zinc-800"
+                       class="text-zinc-700 dark:text-zinc-300 block px-4 py-2 text-sm smooth hover:bg-zinc-100 dark:hover:bg-zinc-700 hover:text-zinc-800 dark:hover:text-zinc-200"
                        role="menuitem"
                        tabindex="-1"
                        id="menu-item-4">Open Companies</a>
