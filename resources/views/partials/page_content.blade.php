@@ -5,6 +5,7 @@
             $out =  min(3, 1.5 + ($i * 0.5));
             $fade = $out + 0.5;
             $hasImage = strlen($content['image']) > 0 && strlen($content['dark_image']) > 0;
+            $hasVideo = $hasImage && Str::of($content['image'])->contains('mp4');
         @endphp
 
         @if($content['type'] === 'features')
@@ -35,7 +36,7 @@
                 {!! $content['content'] !!}
             </section>
         @elseif($content['type'] === 'section_with_image')
-            <section class="mx-auto w-full soft-border border-b animate-[out_{{$out}}s,_fade-in-down_{{ $fade }}s_ease-out_1s]">
+            <section class="mx-auto w-full soft-border border-b animate-[out_{{$out}}s,_fade-in-down_{{ $fade }}s_ease-out_1s] overflow-hidden">
                 <div class="mw-landing mx-auto px-app {{ !$hasImage ? 'mb-16 md:mb-32' : 'mb-8 md:mb-16' }}">
                     <h2 class="text-2xl sm:text-3xl font-medium mb-4 !leading-snug max-w-[30ch]">
                         {{ $content['title'] }}
@@ -45,7 +46,26 @@
                     </div>
                 </div>
 
-                @if($hasImage)
+                @if ($hasVideo)
+                    <div class="max-w-4xl mx-auto -mb-0.5">
+                        <video autoplay
+                               loop
+                               muted
+                               playsinline
+                               class="max-w-full mx-auto dark:hidden">
+                            <source src="{{ $content['image'] }}"
+                                    type="video/mp4">
+                        </video>
+                        <video autoplay
+                               loop
+                               muted
+                               playsinline
+                               class="max-w-full mx-auto hidden dark:block">
+                            <source src="{{ $content['dark_image'] }}"
+                                    type="video/mp4">
+                        </video>
+                    </div>
+                @elseif($hasImage)
                     <div class="max-w-4xl mx-auto">
                         <img src="{{ $content['image'] }}"
                              alt="{{ $content['title'] }}"

@@ -244,6 +244,59 @@ tabs:
                             instructions_position: above
                             visibility: visible
                             hide_display: false
+                    section_with_video:
+                      display: 'Section with Video'
+                      instructions: null
+                      icon: null
+                      fields:
+                        -
+                          handle: title
+                          field:
+                            input_type: text
+                            antlers: false
+                            type: text
+                            display: Title
+                            icon: text
+                            listable: hidden
+                            instructions_position: above
+                            visibility: visible
+                            hide_display: false
+                        -
+                          handle: content
+                          field:
+                            automatic_line_breaks: true
+                            automatic_links: false
+                            escape_markup: false
+                            smartypants: false
+                            restrict: false
+                            antlers: false
+                            type: markdown
+                            display: Content
+                            icon: markdown
+                            listable: hidden
+                            instructions_position: above
+                            visibility: visible
+                            hide_display: false
+                        -
+                          handle: video
+                          field:
+                            type: video
+                            display: Video
+                            icon: video
+                            listable: hidden
+                            instructions_position: above
+                            visibility: visible
+                            hide_display: false
+                        -
+                          handle: dark_video
+                          field:
+                            type: video
+                            display: 'Dark Video'
+                            icon: video
+                            listable: hidden
+                            instructions_position: above
+                            visibility: visible
+                            hide_display: false
                     comparison:
                       display: Comparison
                       instructions: null

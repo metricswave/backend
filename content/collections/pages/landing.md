@@ -5,7 +5,7 @@ blueprint: page
 title: '[Unpublished] Langing'
 show_buttons: true
 updated_by: 1
-updated_at: 1690640646
+updated_at: 1693725619
 seo_title: 'An Event-Driven Google Analytics Alternative'
 seo_description: 'MetricsWave is a lightweight and privacy-friendly Google Analytics alternative. Seamless Integration for any Website or App.'
 hero_content: "Don't compromise your visitor. We provide easy to use and respectful website analytics."
@@ -22,13 +22,32 @@ structured_content:
 
       This is how traffic analytics should have always been.
   -
+    id: lm34gp22
+    title: 'Not just bar or line graphs'
+    content: 'Register and measure your events as you want. There is **nothing better than a funnel to measure registration or sales**!'
+    image: pages/funnel---light.mp4
+    dark_image: pages/funnel---dark.mp4
+    type: section_with_image
+    enabled: true
+  -
+    id: lm332a5s
+    title: 'Customize your Dashboard as you want'
+    content: |-
+      Your business, your rules. Customize the Dashboard to your liking and put the most important metrics for your business on top.
+
+      Visits, registrations, sales, deploys, whatever you want.
+    image: pages/customize-your-dashboard---light-1693724454.mp4
+    dark_image: pages/customize-your-dashboard---dark-1693724461.mp4
+    type: section_with_image
+    enabled: true
+  -
     id: lko1ksok
     title: 'Experience Every Critical Moment in Real-time.'
     content: |-
       Track every important event in your product, receive notifications, and monitor potential issues.
 
       You can even [log error messages](https://twitter.com/falcon_maker/status/1664925147239776256?s=20) to see what's happening.
-    image: pages/event_history_light.png
+    image: pages/event_stats_light.png
     dark_image: pages/event_stats_dark.png
     type: section_with_image
     enabled: true
