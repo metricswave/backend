@@ -9,9 +9,11 @@ use Illuminate\Support\Str;
 class FakeEcommerceVisitsCommand extends Command
 {
     private const START_DATE = '2023-08-09';
+
     private const TRIGGER_UUID = '30a512e6-01b2-4430-bc04-41b4af5371e9';
 
     protected $signature = 'app:fake:ecommerce-visits {--dry-run}';
+
     protected $description = 'Fake ecommerce visits.';
 
     public function handle(): void
@@ -29,12 +31,13 @@ class FakeEcommerceVisitsCommand extends Command
                 'language' => $this->fakeLanguage(),
                 'userAgent' => $this->fakeUserAgent(),
                 'platform' => $this->fakePlatform(),
-                'visit' => random_int(1, 10) > 4 ? "1" : "0",
+                'visit' => random_int(1, 10) > 4 ? '1' : '0',
                 ...$this->fakeUtmParams(),
             ];
 
             if ($this->option('dry-run')) {
                 $this->info('Dry run: '.json_encode($params));
+
                 return;
             }
 
@@ -47,7 +50,7 @@ class FakeEcommerceVisitsCommand extends Command
     private function getRandomNumberOfVisits(): int
     {
         $daysSinceStart = (now()->diffInDays(self::START_DATE) + 1);
-        $multiplier = (random_int(1, 100) / 100);
+        $multiplier = (random_int(1, 50) / 100);
 
         return random_int((1 * $daysSinceStart) * $multiplier, (2 * $daysSinceStart) * $multiplier);
     }
@@ -81,7 +84,7 @@ class FakeEcommerceVisitsCommand extends Command
 
         $deviceName = $this->randomItemFromWeightedArray($deviceNames);
 
-        return $deviceName === "new" ? Str::uuid()->toString() : $deviceName;
+        return $deviceName === 'new' ? Str::uuid()->toString() : $deviceName;
     }
 
     private function randomItemFromWeightedArray(array $items): string
@@ -218,7 +221,7 @@ class FakeEcommerceVisitsCommand extends Command
             'referrer' => $referrer,
             'utm_source' => $utmSources,
             'utm_medium' => $utmSources === 'direct' ? null : array_random([
-                'cpc', 'display', 'email', 'newsletter', 'affiliate'
+                'cpc', 'display', 'email', 'newsletter', 'affiliate',
             ]),
             'utm_campaign' => $utmSources === 'direct' ? null : Str::random(10),
             'utm_term' => $utmSources === 'direct' ? null : Str::random(10),

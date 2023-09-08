@@ -8,14 +8,17 @@ use Illuminate\Support\Facades\Http;
 class FakeEcommerceFunnelCommand extends Command
 {
     private const START_DATE = '2023-08-09';
+
     private const TRIGGER_UUID = '0e14250f-1d56-4389-8913-f652e8fc5a65';
+
     private const STEPS = [
-        "Cart",
-        "Information",
-        "Shipping",
-        "Payment",
-        "Success",
+        'Cart',
+        'Information',
+        'Shipping',
+        'Payment',
+        'Success',
     ];
+
     private const STEP_WEIGHTED = [
         0 => 40,
         1 => 34,
@@ -25,6 +28,7 @@ class FakeEcommerceFunnelCommand extends Command
     ];
 
     protected $signature = 'app:fake:ecommerce-funnel';
+
     protected $description = 'Fake ecommerce funnel.';
 
     public function handle(): void
@@ -51,7 +55,7 @@ class FakeEcommerceFunnelCommand extends Command
     private function getRandomNumberOfVisits(): int
     {
         $daysSinceStart = (now()->diffInDays(self::START_DATE) + 1);
-        $multiplier = (random_int(1, 100) / 100);
+        $multiplier = (random_int(1, 50) / 100);
 
         return random_int((2 * $daysSinceStart) * $multiplier, (6 * $daysSinceStart) * $multiplier);
     }
