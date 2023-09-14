@@ -4,7 +4,7 @@ blueprint: documentation
 title: 'Integration: Google Tag Manager'
 short_content: 'You can use Google Tag Manager to add MetricsWave tracking code in your website easily.'
 updated_by: 1
-updated_at: 1694716131
+updated_at: 1694716354
 table_of_contents: |-
   <ul class="table-of-contents">
   <li class="">
@@ -41,10 +41,10 @@ There are different ways to find your event UUID for the code before.
 
 If you're in the welcome screen you can find it inside the current code block that we are showing to you. **Just look in the tag `event-uuid`, it's there, between quotes.**
 
-![Welcome page tracking code in welcome page - MetricsWave](http://metricswave.test/storage/documentation/find-event-uuid-in-welcome-page.png)
+![Welcome page tracking code in welcome page - MetricsWave](/storage/documentation/find-event-uuid-in-welcome-page.png)
 
 If you are inside the app, you should go to Events, and enter the desire Visit type event you want to track.
 
 **There, you can find the UUID in the top of page, under the event name.**
 
-![Welcome page tracking code In event page - MetricsWave](http://metricswave.test/storage/documentation/find-event-uuid-in-event-page.png)
+![Welcome page tracking code In event page - MetricsWave](/storage/documentation/find-event-uuid-in-event-page.png)
