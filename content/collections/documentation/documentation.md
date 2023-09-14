@@ -4,7 +4,7 @@ blueprint: documentation
 title: Documentation
 short_content: 'A collection of good articles about how MetricsWave works.'
 updated_by: 1
-updated_at: 1691339158
+updated_at: 1694716280
 ---
 ### 💎 Main topics
 
@@ -21,6 +21,7 @@ updated_at: 1691339158
 
 ### 🔗 Integrations
 
+- [Google Tag Manager](/documentation/integrations/google-tag-manager): add your tracking script using Google Tag Manager in a few seconds.
 - [React](/documentation/integrations/react): free, open-source JavaScript library utilized for crafting user interfaces based on components.
 - [Next.js](/documentation/integrations/next-js): a react framework for the Web. It enables you to create full-stack web applications by extending the latest React features.
 - [Svelte](/documentation/integrations/svelte): a lightweight JavaScript framework for building web applications.
