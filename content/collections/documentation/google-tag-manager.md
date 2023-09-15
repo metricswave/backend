@@ -4,7 +4,7 @@ blueprint: documentation
 title: 'Integration: Google Tag Manager'
 short_content: 'You can use Google Tag Manager to add MetricsWave tracking code in your website easily.'
 updated_by: 1
-updated_at: 1694716354
+updated_at: 1694758733
 table_of_contents: |-
   <ul class="table-of-contents">
   <li class="">
@@ -23,7 +23,7 @@ In a few and simple steps you can add MetricsWave script to all your sites with 
 
 1. In your Google Tag Manager account, go to Tags > New.
 2. Choose Tag Configuration and setup a custom name.
-3. Choose HTML Tag and add the code bellow in the HTML field
+3. Choose HTML Tag and add the code bellow in the HTML field. Remember to replace `YOUR EVENT UUID`.
 ```html
 <script>
   var script = document.createElement('script');
