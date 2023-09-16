@@ -6,6 +6,8 @@ use App\Transfers\Dashboard\DashboardItem;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 use Spatie\LaravelData\DataCollection;
 
 class Dashboard extends Model
@@ -16,7 +18,7 @@ class Dashboard extends Model
         'name',
         'public',
         'uuid',
-        'user_id',
+        'team_id',
         'items',
     ];
 
@@ -25,8 +27,18 @@ class Dashboard extends Model
         'public' => 'boolean',
     ];
 
-    public function user(): BelongsTo
+    public function team(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Team::class);
+    }
+
+    public function owner(): HasOneThrough
+    {
+        return $this->hasOneThrough(User::class, Team::class, 'id', 'id', 'team_id', 'owner_id');
+    }
+
+    public function users(): HasManyThrough
+    {
+        return $this->hasManyThrough(User::class, Team::class);
     }
 }

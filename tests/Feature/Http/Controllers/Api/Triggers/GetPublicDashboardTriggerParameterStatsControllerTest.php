@@ -1,25 +1,23 @@
 <?php
 
-use App\Models\Dashboard;
 use App\Models\Trigger;
 use App\Models\TriggerType;
 use App\Models\User;
 use Illuminate\Support\Carbon;
 use Illuminate\Testing\Fluent\AssertableJson;
+
 use function Pest\Laravel\getJson;
 
 $csv = file_get_contents(__DIR__.'/assets/visits_parameters.csv');
 
-$visits = fn(): array => collect(explode("\n", $csv))
+$visits = fn (): array => collect(explode("\n", $csv))
     ->map(function ($row) {
         return explode(',', $row);
     })
     ->toArray();
 
-it('return expected parameters stats when trigger has no params', function () use ($visits) {
-    $dashboard = Dashboard::factory()
-        ->for(User::factory()->create())
-        ->create(['public' => true]);
+it('return expected parameters stats when trigger has no params', function () {
+    $dashboard = dashboard(['public' => true]);
     $trigger = Trigger::factory()
         ->for(User::factory()->create())
         ->for(TriggerType::factory()->create())
@@ -31,9 +29,7 @@ it('return expected parameters stats when trigger has no params', function () us
 });
 
 it('return expected parameters stats', function () use ($visits) {
-    $dashboard = Dashboard::factory()
-        ->for(User::factory()->create())
-        ->create(['public' => true]);
+    $dashboard = dashboard(['public' => true]);
     $trigger = Trigger::factory()
         ->for(User::factory()->create())
         ->for(TriggerType::factory()->create())
@@ -55,15 +51,14 @@ it('return expected parameters stats', function () use ($visits) {
                 'primary_key' => Str::of($row[1])->replace('visits:triggers', 'visits:testing:triggers')->toString(),
                 'secondary_key' => $row[2],
                 'score' => (int) $row[3],
-                'expired_at' => $row[5] === "" ? null : new Carbon($row[5]),
+                'expired_at' => $row[5] === '' ? null : new Carbon($row[5]),
             ]);
     }
 
     getJson('/api/dashboards/'.$dashboard->uuid.'/triggers/'.$trigger->uuid.'/parameters-stats?date=2023-06-08')
-        ->assertJson(fn(AssertableJson $json) => $json
+        ->assertJson(fn (AssertableJson $json) => $json
             ->has('data.path')
             ->count('data.path', 7)
         )
         ->assertSuccessful();
 });
-

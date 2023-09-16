@@ -14,7 +14,9 @@ use App\Transfers\SubscriptionType;
 use Illuminate\Contracts\Notifications\Dispatcher;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Cache;
@@ -148,7 +150,10 @@ class User extends Authenticatable
 
     public function triggerMonthlyLimit(): ?int
     {
-        return app(PlanGetter::class)->get($this->subscription_plan_id)->eventsLimit;
+        /** @var PlanGetter $planGetter */
+        $planGetter = app(PlanGetter::class);
+
+        return $planGetter->get($this->subscription_plan_id)->eventsLimit;
     }
 
     public function getSubscriptionStatusAttribute(): bool
@@ -199,11 +204,6 @@ class User extends Authenticatable
         return SubscriptionType::Monthly;
     }
 
-    public function serviceToken(ServiceId $serviceId): string
-    {
-        return $this->userServiceById($serviceId)->service_data['token'];
-    }
-
     public function userServiceById(ServiceId $serviceId): ?UserService
     {
         /** @var UserService|null $service */
@@ -217,18 +217,18 @@ class User extends Authenticatable
         return $this->hasMany(UserService::class);
     }
 
-    public function serviceRefreshToken(ServiceId $serviceId): string
+    public function dashboards(): HasManyThrough
     {
-        return $this->userServiceById($serviceId)->service_data['refreshToken'];
+        return $this->hasManyThrough(Dashboard::class, Team::class, 'owner_id', 'team_id');
     }
 
-    public function calendars(): HasMany
+    public function ownedTeams(): HasMany
     {
-        return $this->hasMany(UserCalendar::class);
+        return $this->hasMany(Team::class, 'owner_id');
     }
 
-    public function dashboards(): HasMany
+    public function teams(): BelongsToMany
     {
-        return $this->hasMany(Dashboard::class);
+        return $this->belongsToMany(Team::class, 'team_user');
     }
 }

@@ -8,11 +8,11 @@ it('return default dashboard if user has not any', function () {
 
     $this->getJson('/api/dashboards')
         ->assertOk()
-        ->assertJson(fn(AssertableJson $json) => $json
+        ->assertJson(fn (AssertableJson $json) => $json
             ->count('data', 1)
-            ->has('data.0', fn(AssertableJson $json) => $json
+            ->has('data.0', fn (AssertableJson $json) => $json
                 ->where('id', 1)
-                ->where('user_id', 1)
+                ->where('team_id', 1)
                 ->where('name', 'Default')
                 ->where('items', [])
                 ->etc()
