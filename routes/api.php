@@ -94,10 +94,10 @@ Route::get('/notifications', GetNotificationsController::class);
 Route::get('/trigger-types', GetTriggerTypesController::class);
 
 // Triggers
-Route::post('/triggers', PostTriggersController::class);
+Route::post('/{team}/triggers', PostTriggersController::class);
 Route::put('/triggers/{trigger:uuid}', PutTriggersController::class);
 Route::delete('/triggers/{trigger:uuid}', DeleteTriggersController::class);
-Route::get('/triggers', GetTriggersController::class);
+Route::get('/{team}/triggers', GetTriggersController::class);
 
 // Dashboard
 Route::get('/dashboards', GetDashboardsController::class);

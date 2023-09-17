@@ -26,6 +26,11 @@ return new class extends Migration
             $table->foreignId('team_id')->nullable()->after('user_id')->constrained()->cascadeOnDelete();
             $table->dropConstrainedForeignId('user_id');
         });
+
+        Schema::table('triggers', function (Blueprint $table) {
+            $table->foreignId('team_id')->nullable()->after('user_id')->constrained()->cascadeOnDelete();
+            $table->dropConstrainedForeignId('user_id');
+        });
     }
 
     public function down(): void

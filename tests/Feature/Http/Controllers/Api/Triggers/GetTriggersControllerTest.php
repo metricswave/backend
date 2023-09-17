@@ -1,23 +1,25 @@
 <?php
 
+use App\Models\Team;
 use App\Models\Trigger;
 use App\Models\TriggerType;
-use App\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
 
+use function Pest\Laravel\getJson;
+
 it('should be able to get all triggers', function () {
-    $user = User::factory()->create();
     $triggerType = TriggerType::factory()->create();
-    Trigger::factory()->for($user)->for($triggerType)->count(3)->create();
+    [$user, $team] = user_with_team();
+    Trigger::factory()->for($team)->for($triggerType)->count(3)->create();
 
     $this->actingAs($user)
-        ->getJson('/api/triggers')
+        ->getJson('/api/'.$team->id.'/triggers')
         ->assertSuccessful()
-        ->assertJson(fn(AssertableJson $json) => $json
+        ->assertJson(fn (AssertableJson $json) => $json
             ->count('data.triggers', 3)
-            ->has('data.triggers.0', fn(AssertableJson $json) => $json
+            ->has('data.triggers.0', fn (AssertableJson $json) => $json
                 ->has('id')
-                ->has('user_id')
+                ->has('team_id')
                 ->has('trigger_type_id')
                 ->has('uuid')
                 ->has('emoji')
@@ -36,6 +38,9 @@ it('should be able to get all triggers', function () {
             ));
 });
 
-it('requires authentication')
-    ->getJson('/api/triggers')
-    ->assertUnauthorized();
+it('requires authentication', function () {
+    $team = Team::factory()->create();
+
+    getJson('/api/'.$team->id.'/triggers')
+        ->assertUnauthorized();
+});

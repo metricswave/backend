@@ -123,7 +123,7 @@ class User extends Authenticatable
         if ($instance instanceof TriggerNotification) {
             $this->triggerNotificationVisits()->increment();
 
-            $key = CacheKey::generateForModel($instance->trigger->user, 'trigger_notification_sent_checked');
+            $key = CacheKey::generateForModel($instance->trigger->team, 'trigger_notification_sent_checked');
             if (! Cache::has($key)) {
                 CheckTriggerLimitUsage::dispatch($instance);
                 Cache::put($key, '1', now()->addDay());
@@ -220,6 +220,12 @@ class User extends Authenticatable
     public function dashboards(): HasManyThrough
     {
         return $this->hasManyThrough(Dashboard::class, Team::class, 'owner_id', 'team_id');
+    }
+
+    public function hasAccessToTeam(Team $team): bool
+    {
+        return $this->ownedTeams()->where('id', $team->id)->exists() ||
+            $this->teams()->where('team_id', $team->id)->exists();
     }
 
     public function ownedTeams(): HasMany

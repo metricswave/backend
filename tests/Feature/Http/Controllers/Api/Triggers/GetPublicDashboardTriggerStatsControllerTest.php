@@ -1,8 +1,8 @@
 <?php
 
+use App\Models\Team;
 use App\Models\Trigger;
 use App\Models\TriggerType;
-use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Testing\Fluent\AssertableJson;
 
@@ -22,7 +22,7 @@ it('return expected array list', function () use ($visits) {
     $dashboard = dashboard(['public' => true]);
 
     $trigger = Trigger::factory()
-        ->for(User::factory()->create())
+        ->for(Team::factory()->create())
         ->for(TriggerType::factory()->create())
         ->create(['uuid' => $dashboard->items[0]->eventUuid]);
 
@@ -55,7 +55,7 @@ it('return 404 if trigger is not public', function () {
     $dashboard = dashboard(['public' => true]);
 
     $trigger = Trigger::factory()
-        ->for(User::factory()->create())
+        ->for(Team::factory()->create())
         ->for(TriggerType::factory()->create())
         ->create(['uuid' => 'random']);
 

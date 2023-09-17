@@ -18,12 +18,12 @@ uses(Tests\TestCase::class, WithFaker::class)->in('Unit', 'Feature');
 
 /**
  * @param  array<string, mixed>  $attributes
- * @return array<User, Team>
+ * @return array{0: User, 1: Team}
  */
-function user_with_team(array $attributes = []): array
+function user_with_team(array $attributes = [], array $teamAttributes = []): array
 {
     $user = User::factory()->create($attributes);
-    $team = Team::factory()->for($user, 'owner')->create();
+    $team = Team::factory()->for($user, 'owner')->create($teamAttributes);
 
     return [$user, $team];
 }

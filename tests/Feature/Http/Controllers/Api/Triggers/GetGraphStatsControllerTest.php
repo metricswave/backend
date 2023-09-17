@@ -2,7 +2,6 @@
 
 use App\Models\Trigger;
 use App\Models\TriggerType;
-use App\Models\User;
 use Illuminate\Support\Carbon;
 use Illuminate\Testing\Fluent\AssertableJson;
 
@@ -19,8 +18,9 @@ $visits = fn (): array => collect(explode("\n", $csv))
 it('return expected data', function () use ($visits) {
     Date::setTestNow('2023-06-05');
 
+    [$user, $team] = user_with_team();
     $trigger = Trigger::factory()
-        ->for(User::factory()->create(['id' => 1]))
+        ->for($team)
         ->for(TriggerType::factory()->create())
         ->create([
             'configuration' => [
@@ -46,7 +46,7 @@ it('return expected data', function () use ($visits) {
             ]);
     }
 
-    actingAs($trigger->user)
+    actingAs($user)
         ->getJson('/api/triggers/'.$trigger->uuid.'/graph-stats')
         ->assertSuccessful()
         ->assertJson(fn (AssertableJson $json) => $json
@@ -62,8 +62,9 @@ it('return expected data', function () use ($visits) {
 it('return expected data for week period', function () use ($visits) {
     Date::setTestNow('2023-06-05');
 
+    [$user, $team] = user_with_team();
     $trigger = Trigger::factory()
-        ->for(User::factory()->create())
+        ->for($team)
         ->for(TriggerType::factory()->create())
         ->create();
 
@@ -81,7 +82,7 @@ it('return expected data for week period', function () use ($visits) {
             ]);
     }
 
-    actingAs($trigger->user)
+    actingAs($user)
         ->getJson('/api/triggers/'.$trigger->uuid.'/graph-stats?period=7d')
         ->assertSuccessful()
         ->assertJson(fn (AssertableJson $json) => $json
@@ -97,8 +98,9 @@ it('return expected data for week period', function () use ($visits) {
 it('return expected data for year period', function () use ($visits) {
     Date::setTestNow('2023-06-05');
 
+    [$user, $team] = user_with_team();
     $trigger = Trigger::factory()
-        ->for(User::factory()->create())
+        ->for($team)
         ->for(TriggerType::factory()->create())
         ->create();
 
@@ -116,7 +118,7 @@ it('return expected data for year period', function () use ($visits) {
             ]);
     }
 
-    actingAs($trigger->user)
+    actingAs($user)
         ->getJson('/api/triggers/'.$trigger->uuid.'/graph-stats?period=12m')
         ->assertSuccessful()
         ->assertJson(fn (AssertableJson $json) => $json

@@ -1,8 +1,8 @@
 <?php
 
+use App\Models\Team;
 use App\Models\Trigger;
 use App\Models\TriggerType;
-use App\Models\User;
 use Illuminate\Support\Carbon;
 use Illuminate\Testing\Fluent\AssertableJson;
 
@@ -19,7 +19,7 @@ $visits = fn (): array => collect(explode("\n", $csv))
 it('return expected parameters stats when trigger has no params', function () {
     $dashboard = dashboard(['public' => true]);
     $trigger = Trigger::factory()
-        ->for(User::factory()->create())
+        ->for(Team::factory()->create())
         ->for(TriggerType::factory()->create())
         ->create(['id' => 48, 'uuid' => $dashboard->items->first()->eventUuid]);
 
@@ -31,7 +31,7 @@ it('return expected parameters stats when trigger has no params', function () {
 it('return expected parameters stats', function () use ($visits) {
     $dashboard = dashboard(['public' => true]);
     $trigger = Trigger::factory()
-        ->for(User::factory()->create())
+        ->for(Team::factory()->create())
         ->for(TriggerType::factory()->create())
         ->create([
             'id' => 48,

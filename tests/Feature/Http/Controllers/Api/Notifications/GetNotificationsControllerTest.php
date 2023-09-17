@@ -2,15 +2,15 @@
 
 use App\Models\Trigger;
 use App\Models\TriggerType;
-use App\Models\User;
 use App\Notifications\TriggerNotification;
+
 use function Pest\Laravel\actingAs;
 
 it('return a expected list of user notifications', function () {
-    $user = User::factory()->create();
+    [$user, $team] = user_with_team();
     $triggerType = TriggerType::factory()->create();
 
-    foreach (Trigger::factory()->for($user)->for($triggerType)->count(3)->create() as $trigger) {
+    foreach (Trigger::factory()->for($team)->for($triggerType)->count(3)->create() as $trigger) {
         $user->notify(new TriggerNotification($trigger));
     }
 

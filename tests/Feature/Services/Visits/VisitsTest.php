@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Team;
 use App\Models\Trigger;
 use App\Models\TriggerType;
 use App\Models\User;
@@ -37,7 +38,7 @@ it('increase visits and set expired_at dates as expected', function () {
 
 it('increase visits with params and set expired_at dates as expected', function () {
     $trigger = Trigger::factory()
-        ->for(User::factory()->create(['id' => 1]))
+        ->for(Team::factory()->create(['id' => 1]))
         ->for(TriggerType::factory()->create())
         ->create([
             'id' => 48,
@@ -65,7 +66,7 @@ it('increase visits with params and set expired_at dates as expected', function 
 });
 
 it('fails because unique index violation', function () {
-    $user = User::factory()->create(['id' => 1]);
+    [$user, $team] = user_with_team(['id' => 1]);
 
     Visit::create([
         'primary_key' => 'visits:testing:users_triggernotification_day',
@@ -94,8 +95,9 @@ it('fails because unique index violation', function () {
 });
 
 it('store visits params, unique visits and new visits', function () {
+    [$user, $team] = user_with_team();
     $trigger = Trigger::factory()
-        ->for(User::factory()->create(['id' => 1]))
+        ->for($team)
         ->for(TriggerType::factory()->create())
         ->create([
             'id' => 48,
@@ -199,8 +201,9 @@ it('store visits params, unique visits and new visits', function () {
 });
 
 it('store visits referrer', function () {
+    [$user, $team] = user_with_team(teamAttributes: ['id' => 1]);
     $trigger = Trigger::factory()
-        ->for(User::factory()->create(['id' => 1]))
+        ->for($team)
         ->for(TriggerType::factory()->create())
         ->create([
             'id' => 48,
@@ -252,8 +255,9 @@ it('store visits referrer', function () {
 });
 
 it('visit type works even when it has no params', function () {
+    [$user, $team] = user_with_team(teamAttributes: ['id' => 1]);
     $trigger = Trigger::factory()
-        ->for(User::factory()->create(['id' => 1]))
+        ->for($team)
         ->for(TriggerType::factory()->create())
         ->create([
             'id' => 48,

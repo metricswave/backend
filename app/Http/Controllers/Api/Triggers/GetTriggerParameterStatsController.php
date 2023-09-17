@@ -11,9 +11,7 @@ class GetTriggerParameterStatsController extends ApiAuthJsonController
 {
     public function __invoke(Trigger $trigger): JsonResponse
     {
-        if ($trigger->user_id !== $this->user()->id) {
-            abort(404);
-        }
+        abort_unless($this->user()->hasAccessToTeam($trigger->team), 404);
 
         $parameters = $trigger->configuration['fields']['parameters'] ?? [];
 

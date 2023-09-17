@@ -17,17 +17,16 @@ class SendWebhookTriggerNotification
 
         $missingParams = $requiredParams->diff(array_keys($params));
 
-        if ($missingParams->isNotEmpty() && !$fromScript) {
+        if ($missingParams->isNotEmpty() && ! $fromScript) {
             throw MissingTriggerParams::with($missingParams);
         }
 
         UserTriggerNotificationJob::dispatch(
-            $trigger->user,
+            $trigger->team->owner,
             new TriggerNotification(
                 $trigger,
                 $params,
             )
         );
     }
-
 }

@@ -10,7 +10,7 @@ it('return triggers list', function () {
     $dashboard = dashboard(['public' => true]);
     $trigger = Trigger::factory()
         ->for(TriggerType::factory()->create())
-        ->for($dashboard->owner, 'user')
+        ->for($dashboard->team)
         ->create([
             'uuid' => $dashboard->items->first()->eventUuid,
         ]);
