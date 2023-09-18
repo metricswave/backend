@@ -14,7 +14,7 @@ class PostServiceController extends ApiAuthJsonController
             'service_id' => $request->input('service_id'),
             'service_data' => [
                 'configuration' => $request->input('fields'),
-            ]
+            ],
         ]);
 
         return $this->createdResponse();

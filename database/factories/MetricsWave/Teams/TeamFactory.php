@@ -16,6 +16,7 @@ class TeamFactory extends Factory
     {
         return [
             'domain' => fake()->domainName(),
+            'price_id' => null,
         ];
     }
 }

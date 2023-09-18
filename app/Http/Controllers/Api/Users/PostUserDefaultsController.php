@@ -27,7 +27,7 @@ class PostUserDefaultsController extends ApiAuthJsonController
                 'version' => '1.0',
                 'type' => 'visits',
                 'fields' => [
-                    'parameters' => Trigger::VISITS_PARAMS
+                    'parameters' => Trigger::VISITS_PARAMS,
                 ],
             ],
             'via' => [],
@@ -37,39 +37,39 @@ class PostUserDefaultsController extends ApiAuthJsonController
             'name' => 'Default',
             'items' => [
                 [
-                    "size" => "large",
-                    "type" => "stats",
-                    "title" => "Visits",
-                    "eventUuid" => $trigger->uuid,
-                    "parameter" => null
+                    'size' => 'large',
+                    'type' => 'stats',
+                    'title' => 'Visits',
+                    'eventUuid' => $trigger->uuid,
+                    'parameter' => null,
                 ],
                 [
-                    "size" => "base",
-                    "type" => "parameter",
-                    "title" => "Paths",
-                    "eventUuid" => $trigger->uuid,
-                    "parameter" => null
+                    'size' => 'base',
+                    'type' => 'parameter',
+                    'title' => 'Paths',
+                    'eventUuid' => $trigger->uuid,
+                    'parameter' => null,
                 ],
                 [
-                    "size" => "base",
-                    "type" => "parameter",
-                    "title" => "Languages",
-                    "eventUuid" => $trigger->uuid,
-                    "parameter" => "language"
+                    'size' => 'base',
+                    'type' => 'parameter',
+                    'title' => 'Languages',
+                    'eventUuid' => $trigger->uuid,
+                    'parameter' => 'language',
                 ],
                 [
-                    "size" => "base",
-                    "type" => "parameter",
-                    "title" => "UTM Source",
-                    "eventUuid" => $trigger->uuid,
-                    "parameter" => "utm_source"
+                    'size' => 'base',
+                    'type' => 'parameter',
+                    'title' => 'UTM Source',
+                    'eventUuid' => $trigger->uuid,
+                    'parameter' => 'utm_source',
                 ],
                 [
-                    "size" => "base",
-                    "type" => "parameter",
-                    "title" => "Referrer",
-                    "eventUuid" => $trigger->uuid,
-                    "parameter" => "referrer"
+                    'size' => 'base',
+                    'type' => 'parameter',
+                    'title' => 'Referrer',
+                    'eventUuid' => $trigger->uuid,
+                    'parameter' => 'referrer',
                 ],
             ],
         ]);

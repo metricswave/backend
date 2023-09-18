@@ -3,7 +3,6 @@
 namespace MetricsWave\Teams;
 
 use App\Models\Dashboard;
-use App\Models\Lead;
 use App\Models\Price;
 use App\Models\Trigger;
 use App\Models\User;
@@ -28,6 +27,7 @@ class Team extends Model
 
     protected $fillable = [
         'domain',
+        'price_id',
     ];
 
     protected $appends = [
@@ -76,17 +76,15 @@ class Team extends Model
 
     public function getSubscriptionStatusAttribute(): bool
     {
+        if ($this->price_id !== null) {
+            return true;
+        }
+
         if ($this->subscriptions()->whereIn('stripe_status', ['active', 'trailing'])->exists()) {
             return true;
         }
 
-        $lead = Lead::query()->where('email', $this->email)->first();
-
-        if ($lead === null) {
-            return false;
-        }
-
-        return $lead->price_id !== null;
+        return false;
     }
 
     public function getSubscriptionPlanIdAttribute(): PlanId
@@ -106,17 +104,18 @@ class Team extends Model
         return PlanId::BUSINESS;
     }
 
-    public function getSubscriptionTypeAttribute(): ?SubscriptionType
+    public function getSubscriptionTypeAttribute(): SubscriptionType
     {
         if ($this->subscription_status === false) {
             return SubscriptionType::Free;
         }
 
-        $paidPriceId = Lead::query()->where('email', $this->email)->first()->price_id;
-        $price = Price::query()->find($paidPriceId);
+        if ($this->price_id) {
+            $price = Price::query()->find($this->price_id);
 
-        if ($price->type === PriceType::Lifetime) {
-            return SubscriptionType::Lifetime;
+            if ($price->type === PriceType::Lifetime) {
+                return SubscriptionType::Lifetime;
+            }
         }
 
         return SubscriptionType::Monthly;
