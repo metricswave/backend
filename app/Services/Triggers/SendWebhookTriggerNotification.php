@@ -22,7 +22,7 @@ class SendWebhookTriggerNotification
         }
 
         UserTriggerNotificationJob::dispatch(
-            $trigger->team->owner,
+            $trigger->team,
             new TriggerNotification(
                 $trigger,
                 $params,

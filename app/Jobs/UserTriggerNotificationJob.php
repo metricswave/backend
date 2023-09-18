@@ -10,10 +10,11 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Foundation\Bus\PendingDispatch;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use MetricsWave\Teams\Team;
 
 /**
- * @method static PendingDispatch dispatch(User $user, TriggerNotification $notification)
- * @method static PendingDispatch dispatchSync(User $user, TriggerNotification $notification)
+ * @method static PendingDispatch dispatch(Team $team, TriggerNotification $notification)
+ * @method static PendingDispatch dispatchSync(Team $team, TriggerNotification $notification)
  */
 class UserTriggerNotificationJob implements ShouldQueue
 {
@@ -22,10 +23,13 @@ class UserTriggerNotificationJob implements ShouldQueue
     use Queueable;
     use SerializesModels;
 
+    private User $user;
+
     public function __construct(
-        private readonly User $user,
+        private readonly Team $team,
         private readonly TriggerNotification $notification
     ) {
+        $this->user = $this->team->owner;
     }
 
     public function handle(): void
@@ -38,8 +42,8 @@ class UserTriggerNotificationJob implements ShouldQueue
     private function enqueueTelegramNotificationsInAnotherJob(): void
     {
         $serviceIds = collect($this->notification->trigger->via)
-            ->filter(fn($via) => $via['checked'] && $via['type'] === 'telegram')
-            ->map(fn($via) => $via['id']);
+            ->filter(fn ($via) => $via['checked'] && $via['type'] === 'telegram')
+            ->map(fn ($via) => $via['id']);
 
         $telegramUserServices = $this->user->services()->whereIn('id', $serviceIds)->get();
 

@@ -16,11 +16,15 @@ class TriggerNotification extends Notification implements ShouldQueue
     use Queueable;
 
     public readonly string $title;
+
     public readonly string $content;
+
     public readonly string $emoji;
 
-    public function __construct(public readonly Trigger $trigger, public readonly array $params = [])
-    {
+    public function __construct(
+        public readonly Trigger $trigger,
+        public readonly array $params = []
+    ) {
         $this->title = $trigger->formattedTitle($params);
         $this->content = $trigger->formattedContent($params);
         $this->emoji = $trigger->formattedEmoji($params);
@@ -43,7 +47,7 @@ class TriggerNotification extends Notification implements ShouldQueue
                 $cacheKey = CacheKey::generateForModel($this->trigger, ['unique', $params['deviceName']]);
                 unset($params['deviceName']);
 
-                if (!Cache::has($cacheKey)) {
+                if (! Cache::has($cacheKey)) {
                     $this->trigger->visits(Trigger::UNIQUE_VISITS)->increment();
                     Cache::put($cacheKey, true, now()->endOfDay());
                 }
@@ -70,9 +74,9 @@ class TriggerNotification extends Notification implements ShouldQueue
         $this->trigger->visits()->recordParams($params);
 
         $via = collect($this->trigger->via)
-            ->filter(fn($via) => $via['checked'] && $via['type'] !== 'telegram')
+            ->filter(fn ($via) => $via['checked'] && $via['type'] !== 'telegram')
             ->unique('type')
-            ->map(fn($via) => $via['type'])
+            ->map(fn ($via) => $via['type'])
             ->toArray();
 
         return [

@@ -111,9 +111,10 @@ class User extends Authenticatable
     public function notify($instance): void
     {
         if ($instance instanceof TriggerNotification) {
-            $this->triggerNotificationVisits()->increment();
+            $team = $instance->trigger->team;
+            $team->triggerNotificationVisits()->increment();
 
-            $key = CacheKey::generateForModel($instance->trigger->team, 'trigger_notification_sent_checked');
+            $key = CacheKey::generateForModel($team, 'trigger_notification_sent_checked');
             if (! Cache::has($key)) {
                 CheckTriggerLimitUsage::dispatch($instance);
                 Cache::put($key, '1', now()->addDay());
