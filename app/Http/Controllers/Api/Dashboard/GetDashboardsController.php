@@ -5,32 +5,23 @@ namespace App\Http\Controllers\Api\Dashboard;
 use App\Http\Controllers\Api\ApiAuthJsonController;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Str;
+use MetricsWave\Teams\Team;
 
 class GetDashboardsController extends ApiAuthJsonController
 {
-    public function __invoke(): JsonResponse
+    public function __invoke(Team $team): JsonResponse
     {
-        $this->createDefaultTeamIfUserHasNotAny();
-        $this->createDefaultIfUserHasNotAny();
+        $this->createDefaultIfUserHasNotAny($team);
 
         return $this->response(
-            $this->user()->dashboards()->get()->toArray()
+            $team->dashboards()->get()->toArray()
         );
     }
 
-    private function createDefaultTeamIfUserHasNotAny(): void
+    private function createDefaultIfUserHasNotAny(Team $team): void
     {
-        if ($this->user()->ownedTeams->isEmpty()) {
-            $this->user()->ownedTeams()->create([
-                'domain' => 'Default',
-            ]);
-        }
-    }
-
-    private function createDefaultIfUserHasNotAny(): void
-    {
-        if ($this->user()->dashboards->isEmpty()) {
-            $this->user()->dashboards()->create([
+        if ($team->dashboards->isEmpty()) {
+            $team->dashboards()->create([
                 'name' => 'Default',
                 'team_id' => $this->user()->ownedTeams()->first()->id,
                 'uuid' => Str::random(15),

@@ -6,23 +6,19 @@ use App\Events\CheckTriggerLimitUsage;
 use App\Events\UserCreated;
 use App\Notifications\TriggerNotification;
 use App\Services\CacheKey;
-use App\Services\Plans\PlanGetter;
-use App\Transfers\PlanId;
-use App\Transfers\PriceType;
 use App\Transfers\ServiceId;
-use App\Transfers\SubscriptionType;
 use Illuminate\Contracts\Notifications\Dispatcher;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
-use Laravel\Cashier\Billable;
 use Laravel\Sanctum\HasApiTokens;
 use MetricsWave\Metrics\MetricsInterface;
+use MetricsWave\Teams\Team;
 
 /**
  * @property int $id
@@ -31,7 +27,6 @@ use MetricsWave\Metrics\MetricsInterface;
  */
 class User extends Authenticatable
 {
-    use Billable;
     use HasApiTokens;
     use HasFactory;
     use Notifiable;
@@ -49,20 +44,20 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'teams',
+        'ownedTeams',
     ];
 
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
 
-    protected $appends = [
-        'subscription_status',
-        'subscription_type',
-        'subscription_plan_id',
-    ];
-
     protected $dispatchesEvents = [
         'created' => UserCreated::class,
+    ];
+
+    protected $appends = [
+        'all_teams',
     ];
 
     /**
@@ -113,11 +108,6 @@ class User extends Authenticatable
         );
     }
 
-    public function triggers(): HasMany
-    {
-        return $this->hasMany(Trigger::class);
-    }
-
     public function notify($instance): void
     {
         if ($instance instanceof TriggerNotification) {
@@ -143,67 +133,6 @@ class User extends Authenticatable
         return $this->hasMany(MailLog::class, 'mail', 'email');
     }
 
-    public function triggerNotificationVisitsLimitReached(): bool
-    {
-        return $this->triggerNotificationVisits()->period('month')->count() > $this->triggerMonthlyLimit();
-    }
-
-    public function triggerMonthlyLimit(): ?int
-    {
-        /** @var PlanGetter $planGetter */
-        $planGetter = app(PlanGetter::class);
-
-        return $planGetter->get($this->subscription_plan_id)->eventsLimit;
-    }
-
-    public function getSubscriptionStatusAttribute(): bool
-    {
-        if ($this->subscriptions()->whereIn('stripe_status', ['active', 'trailing'])->exists()) {
-            return true;
-        }
-
-        $lead = Lead::query()->where('email', $this->email)->first();
-
-        if ($lead === null) {
-            return false;
-        }
-
-        return $lead->price_id !== null;
-    }
-
-    public function getSubscriptionPlanIdAttribute(): PlanId
-    {
-        if ($this->subscription_status === false) {
-            return PlanId::FREE;
-        }
-
-        if ($this->subscribedToProduct(PlanGetter::BASIC_PRODUCT_ID)) {
-            return PlanId::BASIC;
-        }
-
-        if ($this->subscribedToProduct(PlanGetter::STARTER_PRODUCT_ID)) {
-            return PlanId::STARTER;
-        }
-
-        return PlanId::BUSINESS;
-    }
-
-    public function getSubscriptionTypeAttribute(): ?SubscriptionType
-    {
-        if ($this->subscription_status === false) {
-            return SubscriptionType::Free;
-        }
-
-        $paidPriceId = Lead::query()->where('email', $this->email)->first()->price_id;
-        $price = Price::query()->find($paidPriceId);
-
-        if ($price->type === PriceType::Lifetime) {
-            return SubscriptionType::Lifetime;
-        }
-
-        return SubscriptionType::Monthly;
-    }
-
     public function userServiceById(ServiceId $serviceId): ?UserService
     {
         /** @var UserService|null $service */
@@ -217,15 +146,14 @@ class User extends Authenticatable
         return $this->hasMany(UserService::class);
     }
 
-    public function dashboards(): HasManyThrough
-    {
-        return $this->hasManyThrough(Dashboard::class, Team::class, 'owner_id', 'team_id');
-    }
-
     public function hasAccessToTeam(Team $team): bool
     {
-        return $this->ownedTeams()->where('id', $team->id)->exists() ||
-            $this->teams()->where('team_id', $team->id)->exists();
+        return $this->all_teams->where('id', $team->id)->isNotEmpty();
+    }
+
+    public function getAllTeamsAttribute(): Collection
+    {
+        return $this->teams->merge($this->ownedTeams);
     }
 
     public function ownedTeams(): HasMany

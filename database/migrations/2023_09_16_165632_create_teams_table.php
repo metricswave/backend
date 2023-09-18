@@ -24,18 +24,39 @@ return new class extends Migration
 
         Schema::table('dashboards', function (Blueprint $table) {
             $table->foreignId('team_id')->nullable()->after('user_id')->constrained()->cascadeOnDelete();
-            $table->dropConstrainedForeignId('user_id');
         });
 
         Schema::table('triggers', function (Blueprint $table) {
             $table->foreignId('team_id')->nullable()->after('user_id')->constrained()->cascadeOnDelete();
+        });
+
+        \Illuminate\Support\Facades\Artisan::call('app:migrate:models-to-teams');
+
+        Schema::table('dashboards', function (Blueprint $table) {
             $table->dropConstrainedForeignId('user_id');
+            $table->foreignId('team_id')->nullable(false)->change();
+        });
+
+        Schema::table('triggers', function (Blueprint $table) {
+            $table->dropConstrainedForeignId('user_id');
+            $table->foreignId('team_id')->nullable(false)->change();
         });
     }
 
     public function down(): void
     {
         Schema::dropIfExists('teams');
+
         Schema::dropIfExists('team_user');
+
+        Schema::table('dashboards', function (Blueprint $table) {
+            $table->dropConstrainedForeignId('team_id');
+            $table->foreignId('user_id')->nullable()->after('id')->constrained()->cascadeOnDelete();
+        });
+
+        Schema::table('triggers', function (Blueprint $table) {
+            $table->dropConstrainedForeignId('team_id');
+            $table->foreignId('user_id')->nullable()->after('id')->constrained()->cascadeOnDelete();
+        });
     }
 };

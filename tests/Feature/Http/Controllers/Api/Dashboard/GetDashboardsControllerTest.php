@@ -1,12 +1,12 @@
 <?php
 
-use App\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
 
 it('return default dashboard if user has not any', function () {
-    $this->actingAs(User::factory()->create());
+    [$user, $team] = user_with_team();
 
-    $this->getJson('/api/dashboards')
+    $this->actingAs($user)
+        ->getJson('/api/'.$team->id.'/dashboards')
         ->assertOk()
         ->assertJson(fn (AssertableJson $json) => $json
             ->count('data', 1)

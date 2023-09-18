@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api\Triggers;
 
 use App\Http\Controllers\Api\ApiAuthJsonController;
-use App\Models\Team;
 use Illuminate\Http\JsonResponse;
+use MetricsWave\Teams\Team;
 
 class GetTriggersController extends ApiAuthJsonController
 {

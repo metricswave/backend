@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\Team;
 use App\Models\Trigger;
 use App\Models\TriggerType;
 use Illuminate\Testing\Fluent\AssertableJson;
+use MetricsWave\Teams\Team;
 
 use function Pest\Laravel\getJson;
 

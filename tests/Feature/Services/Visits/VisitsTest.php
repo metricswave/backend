@@ -1,10 +1,10 @@
 <?php
 
-use App\Models\Team;
 use App\Models\Trigger;
 use App\Models\TriggerType;
 use App\Models\User;
 use Awssat\Visits\Models\Visit;
+use MetricsWave\Teams\Team;
 
 use function Pest\Laravel\postJson;
 

@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\Team;
 use App\Models\User;
+use MetricsWave\Teams\Team;
 
 it('return expected owned team relation', function () {
     $user = User::factory()->create();

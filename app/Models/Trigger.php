@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 use MetricsWave\Metrics\MetricsInterface;
+use MetricsWave\Teams\Team;
 
 use function Emoji\is_single_emoji;
 

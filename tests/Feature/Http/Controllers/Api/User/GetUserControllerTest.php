@@ -2,6 +2,7 @@
 
 use App\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
+
 use function Pest\Laravel\actingAs;
 
 it('return current user', function () {
@@ -9,16 +10,15 @@ it('return current user', function () {
     actingAs($user)
         ->getJson('/api/users')
         ->assertSuccessful()
-        ->assertJson(fn(AssertableJson $json) => $json
-            ->has('data', fn(AssertableJson $json) => $json
+        ->dump()
+        ->assertJson(fn (AssertableJson $json) => $json
+            ->has('data', fn (AssertableJson $json) => $json
                 ->hasAll([
                     'id',
                     'name',
                     'email',
+                    'all_teams',
                     'email_verified_at',
-                    'subscription_status',
-                    'subscription_type',
-                    'subscription_plan_id',
                     'created_at',
                     'updated_at',
                 ])
