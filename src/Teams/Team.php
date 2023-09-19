@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Laravel\Cashier\Billable;
+use MetricsWave\Channels\TeamChannel;
 use MetricsWave\Metrics\MetricsInterface;
 
 class Team extends Model
@@ -54,6 +55,11 @@ class Team extends Model
     public function triggers(): HasMany
     {
         return $this->hasMany(Trigger::class);
+    }
+
+    public function channels(): HasMany
+    {
+        return $this->hasMany(TeamChannel::class);
     }
 
     public function triggerNotificationVisitsLimitReached(): bool

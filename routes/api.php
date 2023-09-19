@@ -134,3 +134,9 @@ Route::post('/tally', PostTallyController::class);
 // Socialite
 Route::get('/auth/{service:driver}/redirect', RedirectToDriverController::class);
 Route::get('/auth/{service:driver}/callback', StoreUserServiceController::class);
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Modules
+// ---------------------------------------------------------------------------------------------------------------------
+require __DIR__.'/../src/Channels/Http/Routes/api.php';
+require __DIR__.'/../src/Teams/Http/Routes/api.php';
