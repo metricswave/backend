@@ -3,8 +3,9 @@
 use App\Jobs\UserTriggerTelegramNotificationJob;
 use App\Models\Trigger;
 use App\Models\TriggerType;
-use App\Models\UserService;
 use App\Notifications\TriggerNotification;
+use MetricsWave\Channels\Channel;
+use MetricsWave\Channels\TeamChannel;
 
 it('catch error 400 when group changed to supergroup and change channel_id', function () {
     // https://api.telegram.org/bot6183664646:AAHMLE4zkKB2KPnpTRJoewYIZ6pYo0yVdR4/sendMessage
@@ -30,10 +31,11 @@ it('catch error 400 when group changed to supergroup and change channel_id', fun
         ->for($team)
         ->for(TriggerType::factory()->create())
         ->create();
-    $userService = UserService::factory()->create([
-        'user_id' => $user->id,
-        'service_id' => 1,
-        'service_data' => [
+    $channel = Channel::factory()->create();
+    $userService = TeamChannel::factory()->create([
+        'team_id' => $team->id,
+        'channel_id' => $channel->id,
+        'data' => [
             'configuration' => [
                 'channel_id' => '-111111',
             ],

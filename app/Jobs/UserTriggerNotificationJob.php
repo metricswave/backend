@@ -45,12 +45,12 @@ class UserTriggerNotificationJob implements ShouldQueue
             ->filter(fn ($via) => $via['checked'] && $via['type'] === 'telegram')
             ->map(fn ($via) => $via['id']);
 
-        $telegramUserServices = $this->user->services()->whereIn('id', $serviceIds)->get();
+        $telegramChannels = $this->team->channels()->whereIn('id', $serviceIds)->get();
 
-        foreach ($telegramUserServices as $telegramUserService) {
+        foreach ($telegramChannels as $telegramChannel) {
             UserTriggerTelegramNotificationJob::dispatch(
                 $this->notification,
-                $telegramUserService,
+                $telegramChannel,
             );
         }
     }

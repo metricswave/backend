@@ -2,7 +2,6 @@
 
 namespace App\Jobs;
 
-use App\Models\UserService;
 use App\Notifications\TriggerNotification;
 use App\Services\CacheKey;
 use Cache;
@@ -15,11 +14,12 @@ use Illuminate\Foundation\Bus\PendingDispatch;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use MetricsWave\Channels\TeamChannel;
 use Str;
 
 /**
- * @method static PendingDispatch dispatch(TriggerNotification $notification, UserService $userService)
- * @method static PendingDispatch dispatchSync(TriggerNotification $notification, UserService $userService)
+ * @method static PendingDispatch dispatch(TriggerNotification $notification, TeamChannel $channel)
+ * @method static PendingDispatch dispatchSync(TriggerNotification $notification, TeamChannel $channel)
  */
 class UserTriggerTelegramNotificationJob implements ShouldQueue
 {
@@ -30,7 +30,7 @@ class UserTriggerTelegramNotificationJob implements ShouldQueue
 
     public function __construct(
         private readonly TriggerNotification $notification,
-        private readonly UserService $userService
+        private readonly TeamChannel $channel
     ) {
     }
 
@@ -45,8 +45,7 @@ class UserTriggerTelegramNotificationJob implements ShouldQueue
         $emoji = $this->notification->emoji;
         $title = $this->notification->title;
         $content = $this->notification->content;
-
-        $chatId = $this->userService->service_data['configuration']['channel_id'];
+        $chatId = $this->channel->data['configuration']['channel_id'];
 
         try {
             $this->sendTelegramMessageTo($chatId, $emoji, $title, $content);
@@ -55,10 +54,10 @@ class UserTriggerTelegramNotificationJob implements ShouldQueue
                 $response = $e->response->json();
                 $migrateToChatId = $response['parameters']['migrate_to_chat_id'];
 
-                $data = $this->userService->service_data;
+                $data = $this->channel->data;
                 $data['configuration']['channel_id'] = $migrateToChatId;
-                $this->userService->service_data = $data;
-                $this->userService->save();
+                $this->channel->data = $data;
+                $this->channel->save();
 
                 $this->sendTelegramMessageTo(
                     $migrateToChatId,
@@ -131,6 +130,16 @@ class UserTriggerTelegramNotificationJob implements ShouldQueue
         ])->toException();
     }
 
+    private function requestExceptionBecauseChatNotFound(RequestException $exception): bool
+    {
+        $response = $exception->response->json();
+
+        return
+            $response['ok'] === false
+            && $response['error_code'] === 400
+            && $response['description'] === 'Bad Request: chat not found';
+    }
+
     public function requestExceptionBecauseGroupIdChanged(RequestException $exception): bool
     {
         $response = $exception->response->json();
@@ -140,15 +149,5 @@ class UserTriggerTelegramNotificationJob implements ShouldQueue
             && $response['error_code'] === 400
             && $response['description'] === 'Bad Request: group chat was upgraded to a supergroup chat'
             && isset($response['parameters']['migrate_to_chat_id']);
-    }
-
-    private function requestExceptionBecauseChatNotFound(RequestException $exception): bool
-    {
-        $response = $exception->response->json();
-
-        return
-            $response['ok'] === false
-            && $response['error_code'] === 400
-            && $response['description'] === 'Bad Request: chat not found';
     }
 }
