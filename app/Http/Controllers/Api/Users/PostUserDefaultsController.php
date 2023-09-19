@@ -12,12 +12,14 @@ class PostUserDefaultsController extends ApiAuthJsonController
 {
     public function __invoke(): JsonResponse
     {
-        if ($this->user()->triggers()->count() > 0) {
+        if ($this->user()->ownedTeams()->count() > 0) {
             return $this->noContentResponse();
         }
 
+        $team = $this->user()->ownedTeams()->create(['domain' => 'my-team.dev']);
+
         /** @var Trigger $trigger */
-        $trigger = $this->user()->triggers()->create([
+        $trigger = $team->triggers()->create([
             'trigger_type_id' => TriggerTypeId::Webhook,
             'uuid' => Str::uuid(),
             'emoji' => '📊',
@@ -33,7 +35,7 @@ class PostUserDefaultsController extends ApiAuthJsonController
             'via' => [],
         ]);
 
-        $this->user()->dashboards()->create([
+        $team->dashboards()->create([
             'name' => 'Default',
             'items' => [
                 [

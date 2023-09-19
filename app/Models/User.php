@@ -147,9 +147,13 @@ class User extends Authenticatable
         return $this->hasMany(UserService::class);
     }
 
-    public function hasAccessToTeam(Team $team): bool
+    public function hasAccessToTeam(int|Team $team): bool
     {
-        return $this->all_teams->where('id', $team->id)->isNotEmpty();
+        if ($team instanceof Team) {
+            $team = $team->id;
+        }
+
+        return $this->all_teams->where('id', $team)->isNotEmpty();
     }
 
     public function getAllTeamsAttribute(): Collection

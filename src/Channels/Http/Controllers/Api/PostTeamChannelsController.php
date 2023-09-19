@@ -11,11 +11,7 @@ class PostTeamChannelsController extends ApiAuthJsonController
 {
     public function __invoke(Team $team, CreateTeamChannelRequest $request): JsonResponse
     {
-        abort_unless(
-            $this->user()->all_teams->where('id', $team->id)->isNotEmpty(),
-            403,
-            'You do not have access to this team.'
-        );
+        abort_unless($this->user()->hasAccessToTeam($team->id), 403, 'You do not have access to this team.');
 
         $team->channels()->create([
             'channel_id' => $request->channel_id,
