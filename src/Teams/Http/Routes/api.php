@@ -6,9 +6,11 @@ use MetricsWave\Teams\Http\Controllers\Api\DeleteUserFromTeamController;
 use MetricsWave\Teams\Http\Controllers\Api\GetTeamInviteController;
 use MetricsWave\Teams\Http\Controllers\Api\GetTeamsController;
 use MetricsWave\Teams\Http\Controllers\Api\PostTeamInviteController;
+use MetricsWave\Teams\Http\Controllers\Api\PostTeamsController;
 use MetricsWave\Teams\Http\Controllers\Api\PutTeamsController;
 
 Route::get('/teams', GetTeamsController::class);
+Route::post('/teams', PostTeamsController::class);
 Route::put('/teams/{team}', PutTeamsController::class);
 
 Route::delete('/teams/{team}/users/{user}', DeleteUserFromTeamController::class);

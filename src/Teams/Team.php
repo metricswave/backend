@@ -29,6 +29,11 @@ class Team extends Model
     protected $fillable = [
         'domain',
         'price_id',
+        'initiated',
+    ];
+
+    protected $casts = [
+        'initiated' => 'boolean',
     ];
 
     protected $appends = [

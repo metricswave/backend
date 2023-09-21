@@ -16,7 +16,7 @@ use MetricsWave\Teams\Team;
  * @method static PendingDispatch dispatch(Team $team, TriggerNotification $notification)
  * @method static PendingDispatch dispatchSync(Team $team, TriggerNotification $notification)
  */
-class UserTriggerNotificationJob implements ShouldQueue
+class TeamTriggerNotificationJob implements ShouldQueue
 {
     use Dispatchable;
     use InteractsWithQueue;
@@ -34,9 +34,19 @@ class UserTriggerNotificationJob implements ShouldQueue
 
     public function handle(): void
     {
+        $this->checkIfTeamIsInitiated();
+
         $this->enqueueTelegramNotificationsInAnotherJob();
 
         $this->user->notify($this->notification);
+    }
+
+    private function checkIfTeamIsInitiated(): void
+    {
+        if (! $this->team->initiated) {
+            $this->team->initiated = true;
+            $this->team->save();
+        }
     }
 
     private function enqueueTelegramNotificationsInAnotherJob(): void

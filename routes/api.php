@@ -88,7 +88,7 @@ Route::get('/checkout/prices/{price}', GetPriceCheckoutPathController::class);
 Route::get('/{team}/checkout/plan/{planId}/{period}', GetPlanCheckoutPathController::class);
 
 // Notifications
-Route::get('/notifications', GetNotificationsController::class);
+Route::get('/teams/{team}/notifications', GetNotificationsController::class);
 
 // Trigger types
 Route::get('/trigger-types', GetTriggerTypesController::class);

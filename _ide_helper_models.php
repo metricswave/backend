@@ -484,6 +484,7 @@ namespace MetricsWave\Teams{
      * @property int $id
      * @property string $domain
      * @property int|null $owner_id
+     * @property int $initiated
      * @property string|null $stripe_id
      * @property string|null $pm_type
      * @property string|null $pm_last_four
@@ -517,6 +518,7 @@ namespace MetricsWave\Teams{
      * @method static \Illuminate\Database\Eloquent\Builder|Team whereCreatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder|Team whereDomain($value)
      * @method static \Illuminate\Database\Eloquent\Builder|Team whereId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Team whereInitiated($value)
      * @method static \Illuminate\Database\Eloquent\Builder|Team whereOwnerId($value)
      * @method static \Illuminate\Database\Eloquent\Builder|Team wherePmLastFour($value)
      * @method static \Illuminate\Database\Eloquent\Builder|Team wherePmType($value)

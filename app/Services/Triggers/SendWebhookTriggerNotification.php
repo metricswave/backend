@@ -2,7 +2,7 @@
 
 namespace App\Services\Triggers;
 
-use App\Jobs\UserTriggerNotificationJob;
+use App\Jobs\TeamTriggerNotificationJob;
 use App\Models\Trigger;
 use App\Notifications\TriggerNotification;
 
@@ -21,7 +21,7 @@ class SendWebhookTriggerNotification
             throw MissingTriggerParams::with($missingParams);
         }
 
-        UserTriggerNotificationJob::dispatch(
+        TeamTriggerNotificationJob::dispatch(
             $trigger->team,
             new TriggerNotification(
                 $trigger,

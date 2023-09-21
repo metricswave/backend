@@ -1,32 +1,29 @@
 <?php
 
-namespace App\Http\Controllers\Api\Users;
+namespace MetricsWave\Teams\Http\Controllers\Api;
 
 use App\Http\Controllers\Api\ApiAuthJsonController;
 use App\Services\Users\CreateDefaultsForUser;
 use Illuminate\Http\JsonResponse;
+use MetricsWave\Teams\Http\Controllers\Requests\CreateTeamRequest;
 use MetricsWave\Teams\Team;
 
-class PostUserDefaultsController extends ApiAuthJsonController
+class PostTeamsController extends ApiAuthJsonController
 {
     public function __construct(readonly private CreateDefaultsForUser $defaultCreator)
     {
         parent::__construct();
     }
 
-    public function __invoke(): JsonResponse
+    public function __invoke(CreateTeamRequest $request): JsonResponse
     {
-        if ($this->user()->ownedTeams()->count() > 0) {
-            return $this->noContentResponse();
-        }
-
         /** @var Team $team */
         $team = $this->user()->ownedTeams()->create([
-            'domain' => 'default.dev',
+            ...$request->validated(),
             'initiated' => false,
         ]);
 
-        ($this->defaultCreator)($team);
+        ($this->defaultCreator)($team, $request->domain);
 
         return $this->createdResponse();
     }
