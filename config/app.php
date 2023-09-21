@@ -106,6 +106,8 @@ return [
         App\Providers\HorizonServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // MetricsWave Providers
+        MetricsWave\Teams\Providers\TeamServiceProvider::class,
     ],
 
     /*

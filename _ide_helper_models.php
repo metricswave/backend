@@ -14,7 +14,7 @@ namespace App\Models{
      * App\Models\Dashboard
      *
      * @property int $id
-     * @property int|null $team_id
+     * @property int $team_id
      * @property string $name
      * @property string|null $uuid
      * @property bool $public
@@ -22,7 +22,7 @@ namespace App\Models{
      * @property \Illuminate\Support\Carbon|null $created_at
      * @property \Illuminate\Support\Carbon|null $updated_at
      * @property-read \App\Models\User|null $owner
-     * @property-read \MetricsWave\Teams\Team|null $team
+     * @property-read \MetricsWave\Teams\Team $team
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\User> $users
      * @property-read int|null $users_count
      *
@@ -174,7 +174,7 @@ namespace App\Models{
      * @property array{version: string, fields: array{name: string, value: string|array|int}} $configuration
      * @property array{id: string, label: string, checked: bool, type: string} $via
      * @property int $id
-     * @property int|null $team_id
+     * @property int $team_id
      * @property int $trigger_type_id
      * @property string $uuid
      * @property string $emoji
@@ -189,7 +189,7 @@ namespace App\Models{
      * @property string|null $weekdays
      * @property string|null $arrival_time
      * @property string|null $type
-     * @property-read \MetricsWave\Teams\Team|null $team
+     * @property-read \MetricsWave\Teams\Team $team
      * @property-read \App\Models\TriggerType $triggerType
      *
      * @method static \Database\Factories\TriggerFactory factory($count = null, $state = [])
@@ -267,8 +267,6 @@ namespace App\Models{
      * @property string|null $avatar
      * @property mixed|null $preferences
      * @property string|null $last_login
-     * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Dashboard> $dashboards
-     * @property-read int|null $dashboards_count
      * @property-read \Illuminate\Support\Collection $all_teams
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\MailLog> $mailLogs
      * @property-read int|null $mail_logs_count
@@ -282,8 +280,6 @@ namespace App\Models{
      * @property-read int|null $teams_count
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \Laravel\Sanctum\PersonalAccessToken> $tokens
      * @property-read int|null $tokens_count
-     * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Trigger> $triggers
-     * @property-read int|null $triggers_count
      *
      * @method static \Database\Factories\UserFactory factory($count = null, $state = [])
      * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
@@ -384,6 +380,180 @@ namespace App\Models{
      * @method static \Illuminate\Database\Eloquent\Builder|UserService withoutTrashed()
      */
     class UserService extends \Eloquent
+    {
+    }
+}
+
+namespace MetricsWave\Channels{
+    /**
+     * MetricsWave\Channels\Channel
+     *
+     * @property int $id
+     * @property string $name
+     * @property string $driver
+     * @property string $description
+     * @property array $configuration
+     * @property \Illuminate\Support\Carbon|null $created_at
+     * @property \Illuminate\Support\Carbon|null $updated_at
+     *
+     * @method static \Database\Factories\MetricsWave\Channels\ChannelFactory factory($count = null, $state = [])
+     * @method static \Illuminate\Database\Eloquent\Builder|Channel newModelQuery()
+     * @method static \Illuminate\Database\Eloquent\Builder|Channel newQuery()
+     * @method static \Illuminate\Database\Eloquent\Builder|Channel query()
+     * @method static \Illuminate\Database\Eloquent\Builder|Channel whereConfiguration($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Channel whereCreatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Channel whereDescription($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Channel whereDriver($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Channel whereId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Channel whereName($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Channel whereUpdatedAt($value)
+     */
+    class Channel extends \Eloquent
+    {
+    }
+}
+
+namespace MetricsWave\Channels{
+    /**
+     * MetricsWave\Channels\TeamChannel
+     *
+     * @property int $id
+     * @property int $team_id
+     * @property int $channel_id
+     * @property array $data
+     * @property string|null $data_channel_id
+     * @property \Illuminate\Support\Carbon|null $created_at
+     * @property \Illuminate\Support\Carbon|null $updated_at
+     * @property \Illuminate\Support\Carbon|null $deleted_at
+     *
+     * @method static \Database\Factories\MetricsWave\Channels\TeamChannelFactory factory($count = null, $state = [])
+     * @method static \Illuminate\Database\Eloquent\Builder|TeamChannel newModelQuery()
+     * @method static \Illuminate\Database\Eloquent\Builder|TeamChannel newQuery()
+     * @method static \Illuminate\Database\Eloquent\Builder|TeamChannel onlyTrashed()
+     * @method static \Illuminate\Database\Eloquent\Builder|TeamChannel query()
+     * @method static \Illuminate\Database\Eloquent\Builder|TeamChannel whereChannelId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|TeamChannel whereCreatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|TeamChannel whereData($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|TeamChannel whereDataChannelId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|TeamChannel whereDeletedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|TeamChannel whereId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|TeamChannel whereTeamId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|TeamChannel whereUpdatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|TeamChannel withTrashed()
+     * @method static \Illuminate\Database\Eloquent\Builder|TeamChannel withoutTrashed()
+     */
+    class TeamChannel extends \Eloquent
+    {
+    }
+}
+
+namespace MetricsWave\Metrics\Models{
+    /**
+     * MetricsWave\Metrics\Models\Visit
+     *
+     * @property int $id
+     * @property string $primary_key
+     * @property string|null $secondary_key
+     * @property int $score
+     * @property array|null $list
+     * @property \Illuminate\Support\Carbon|null $expired_at
+     * @property \Illuminate\Support\Carbon|null $created_at
+     * @property \Illuminate\Support\Carbon|null $updated_at
+     *
+     * @method static \Illuminate\Database\Eloquent\Builder|Visit newModelQuery()
+     * @method static \Illuminate\Database\Eloquent\Builder|Visit newQuery()
+     * @method static \Illuminate\Database\Eloquent\Builder|Visit query()
+     * @method static \Illuminate\Database\Eloquent\Builder|Visit whereCreatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Visit whereExpiredAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Visit whereId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Visit whereList($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Visit wherePrimaryKey($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Visit whereScore($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Visit whereSecondaryKey($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Visit whereUpdatedAt($value)
+     */
+    class Visit extends \Eloquent
+    {
+    }
+}
+
+namespace MetricsWave\Teams{
+    /**
+     * MetricsWave\Teams\Team
+     *
+     * @property int $id
+     * @property string $domain
+     * @property int|null $owner_id
+     * @property string|null $stripe_id
+     * @property string|null $pm_type
+     * @property string|null $pm_last_four
+     * @property string|null $trial_ends_at
+     * @property \Illuminate\Support\Carbon|null $created_at
+     * @property \Illuminate\Support\Carbon|null $updated_at
+     * @property int|null $price_id
+     * @property-read \Illuminate\Database\Eloquent\Collection<int, \MetricsWave\Channels\TeamChannel> $channels
+     * @property-read int|null $channels_count
+     * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Dashboard> $dashboards
+     * @property-read int|null $dashboards_count
+     * @property-read \App\Transfers\PlanId $subscription_plan_id
+     * @property-read bool $subscription_status
+     * @property-read \App\Transfers\SubscriptionType $subscription_type
+     * @property-read \Illuminate\Database\Eloquent\Collection<int, \MetricsWave\Teams\TeamInvite> $invites
+     * @property-read int|null $invites_count
+     * @property-read \App\Models\User|null $owner
+     * @property-read \Illuminate\Database\Eloquent\Collection<int, \Laravel\Cashier\Subscription> $subscriptions
+     * @property-read int|null $subscriptions_count
+     * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Trigger> $triggers
+     * @property-read int|null $triggers_count
+     * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\User> $users
+     * @property-read int|null $users_count
+     *
+     * @method static \Database\Factories\MetricsWave\Teams\TeamFactory factory($count = null, $state = [])
+     * @method static \Illuminate\Database\Eloquent\Builder|Team hasExpiredGenericTrial()
+     * @method static \Illuminate\Database\Eloquent\Builder|Team newModelQuery()
+     * @method static \Illuminate\Database\Eloquent\Builder|Team newQuery()
+     * @method static \Illuminate\Database\Eloquent\Builder|Team onGenericTrial()
+     * @method static \Illuminate\Database\Eloquent\Builder|Team query()
+     * @method static \Illuminate\Database\Eloquent\Builder|Team whereCreatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Team whereDomain($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Team whereId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Team whereOwnerId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Team wherePmLastFour($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Team wherePmType($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Team wherePriceId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Team whereStripeId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Team whereTrialEndsAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Team whereUpdatedAt($value)
+     */
+    class Team extends \Eloquent
+    {
+    }
+}
+
+namespace MetricsWave\Teams{
+    /**
+     * MetricsWave\Teams\TeamInvite
+     *
+     * @property int $id
+     * @property int $team_id
+     * @property string $email
+     * @property string $token
+     * @property \Illuminate\Support\Carbon|null $created_at
+     * @property \Illuminate\Support\Carbon|null $updated_at
+     * @property-read \MetricsWave\Teams\Team $team
+     *
+     * @method static \Database\Factories\MetricsWave\Teams\TeamInviteFactory factory($count = null, $state = [])
+     * @method static \Illuminate\Database\Eloquent\Builder|TeamInvite newModelQuery()
+     * @method static \Illuminate\Database\Eloquent\Builder|TeamInvite newQuery()
+     * @method static \Illuminate\Database\Eloquent\Builder|TeamInvite query()
+     * @method static \Illuminate\Database\Eloquent\Builder|TeamInvite whereCreatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|TeamInvite whereEmail($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|TeamInvite whereId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|TeamInvite whereTeamId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|TeamInvite whereToken($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|TeamInvite whereUpdatedAt($value)
+     */
+    class TeamInvite extends \Eloquent
     {
     }
 }
