@@ -18,7 +18,7 @@
           content="{{ $meta_description ?? $short_content }}"/>
     @if (isset($meta_image))
         <meta property="og:image"
-              content="{{ config('app.url') }}{{ $meta_image }}"/>
+              content="{{ Str::replace('//', '/', config('app.url').$meta_image) }}"/>
     @endif
 
     <meta name="twitter:card"
@@ -29,7 +29,7 @@
           content="{{ $meta_description ?? $short_content }}"/>
     @if (isset($meta_image))
         <meta name="twitter:image"
-              content="{{ config('app.url') }}{{ $meta_image }}"/>
+              content="{{ Str::replace('//', '/', config('app.url').$meta_image) }}"/>
     @endif
 @endsection
 
