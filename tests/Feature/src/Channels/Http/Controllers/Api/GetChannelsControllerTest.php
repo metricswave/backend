@@ -8,7 +8,7 @@ use function Pest\Laravel\actingAs;
 
 it('return expected channels', function () {
     $user = User::factory()->create();
-    Channel::factory()->count(3)->create();
+    Channel::factory()->count(2)->create(); // Plus one from the seeder that runs automatically in service migration
 
     actingAs($user)
         ->getJson('/api/channels')

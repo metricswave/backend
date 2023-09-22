@@ -15,7 +15,7 @@ it('return a expected list of user notifications', function () {
     }
 
     actingAs($user)
-        ->getJson('/api/notifications')
+        ->getJson('/api/teams/'.$team->id.'/notifications')
         ->assertSuccessful()
         ->assertJsonCount(3, 'data')
         ->assertJsonFragment([
