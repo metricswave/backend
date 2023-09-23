@@ -52,6 +52,11 @@
                        role="menuitem"
                        tabindex="-1"
                        id="menu-item-2">European Companies</a>
+                    <a href="/for-agencies"
+                       class="text-zinc-700 dark:text-zinc-300 block px-4 py-2 text-sm smooth hover:bg-zinc-100 dark:hover:bg-zinc-700 hover:text-zinc-800 dark:hover:text-zinc-200"
+                       role="menuitem"
+                       tabindex="-1"
+                       id="menu-item-2">Agencies</a>
                     <a href="/for-bootstrappers"
                        class="text-zinc-700 dark:text-zinc-300 block px-4 py-2 text-sm smooth hover:bg-zinc-100 dark:hover:bg-zinc-700 hover:text-zinc-800 dark:hover:text-zinc-200"
                        role="menuitem"
