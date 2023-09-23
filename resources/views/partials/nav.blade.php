@@ -79,7 +79,7 @@
     </li>
     <li class="hidden sm:block">
         <a class="hover:underline smooth linkToApp bg-orange-400/10 rounded-md py-1.5 px-3"
-           href="https://app.metricswave.com/auth/signup">Free Trial</a>
+           href="https://app.metricswave.com/auth/signup">Create an Account</a>
     </li>
     <li class="sm:hidden">
         <a class="hover:underline smooth linkToApp bg-orange-400/10 rounded-md py-1.5 px-3"
