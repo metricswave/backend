@@ -3,9 +3,9 @@
 use App\Jobs\UserTriggerTelegramNotificationJob;
 use App\Models\Trigger;
 use App\Models\TriggerType;
-use App\Models\User;
-use App\Models\UserService;
 use App\Notifications\TriggerNotification;
+use MetricsWave\Channels\Channel;
+use MetricsWave\Channels\TeamChannel;
 
 it('catch error 400 when group changed to supergroup and change channel_id', function () {
     // https://api.telegram.org/bot6183664646:AAHMLE4zkKB2KPnpTRJoewYIZ6pYo0yVdR4/sendMessage
@@ -16,28 +16,30 @@ it('catch error 400 when group changed to supergroup and change channel_id', fun
                 'error_code' => 400,
                 'description' => 'Bad Request: group chat was upgraded to a supergroup chat',
                 'parameters' => [
-                    'migrate_to_chat_id' => -222222
-                ]
+                    'migrate_to_chat_id' => -222222,
+                ],
             ], 400),
             Http::response([
                 'ok' => true,
                 'error_code' => 200,
-            ])
+            ]),
         ]),
     ]);
 
+    [$user, $team] = user_with_team();
     $trigger = Trigger::factory()
-        ->for(User::factory()->create())
+        ->for($team)
         ->for(TriggerType::factory()->create())
         ->create();
-    $userService = UserService::factory()->create([
-        'user_id' => $trigger->user_id,
-        'service_id' => 1,
-        'service_data' => [
+    $channel = Channel::factory()->create();
+    $userService = TeamChannel::factory()->create([
+        'team_id' => $team->id,
+        'channel_id' => $channel->id,
+        'data' => [
             'configuration' => [
-                'channel_id' => '-111111'
-            ]
-        ]
+                'channel_id' => '-111111',
+            ],
+        ],
     ]);
 
     UserTriggerTelegramNotificationJob::dispatchSync(new TriggerNotification($trigger, []), $userService);

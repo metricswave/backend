@@ -3,76 +3,30 @@
 namespace App\Http\Controllers\Api\Users;
 
 use App\Http\Controllers\Api\ApiAuthJsonController;
-use App\Models\Trigger;
-use App\Transfers\TriggerTypeId;
+use App\Services\Users\CreateDefaultsForUser;
 use Illuminate\Http\JsonResponse;
-use Str;
+use MetricsWave\Teams\Team;
 
 class PostUserDefaultsController extends ApiAuthJsonController
 {
+    public function __construct(readonly private CreateDefaultsForUser $defaultCreator)
+    {
+        parent::__construct();
+    }
+
     public function __invoke(): JsonResponse
     {
-        if ($this->user()->triggers()->count() > 0) {
+        if ($this->user()->ownedTeams()->count() > 0) {
             return $this->noContentResponse();
         }
 
-        /** @var Trigger $trigger */
-        $trigger = $this->user()->triggers()->create([
-            'trigger_type_id' => TriggerTypeId::Webhook,
-            'uuid' => Str::uuid(),
-            'emoji' => '📊',
-            'title' => 'New visit',
-            'content' => 'Path {path}',
-            'configuration' => [
-                'version' => '1.0',
-                'type' => 'visits',
-                'fields' => [
-                    'parameters' => Trigger::VISITS_PARAMS
-                ],
-            ],
-            'via' => [],
+        /** @var Team $team */
+        $team = $this->user()->ownedTeams()->create([
+            'domain' => 'default.dev',
+            'initiated' => false,
         ]);
 
-        $this->user()->dashboards()->create([
-            'name' => 'Default',
-            'items' => [
-                [
-                    "size" => "large",
-                    "type" => "stats",
-                    "title" => "Visits",
-                    "eventUuid" => $trigger->uuid,
-                    "parameter" => null
-                ],
-                [
-                    "size" => "base",
-                    "type" => "parameter",
-                    "title" => "Paths",
-                    "eventUuid" => $trigger->uuid,
-                    "parameter" => null
-                ],
-                [
-                    "size" => "base",
-                    "type" => "parameter",
-                    "title" => "Languages",
-                    "eventUuid" => $trigger->uuid,
-                    "parameter" => "language"
-                ],
-                [
-                    "size" => "base",
-                    "type" => "parameter",
-                    "title" => "UTM Source",
-                    "eventUuid" => $trigger->uuid,
-                    "parameter" => "utm_source"
-                ],
-                [
-                    "size" => "base",
-                    "type" => "parameter",
-                    "title" => "Referrer",
-                    "eventUuid" => $trigger->uuid,
-                    "parameter" => "referrer"
-                ],
-            ],
-        ]);
+        ($this->defaultCreator)($team);
 
         return $this->createdResponse();
     }

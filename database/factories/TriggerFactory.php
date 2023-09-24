@@ -17,7 +17,7 @@ class TriggerFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => fake()->numberBetween(1, 10),
+            'team_id' => fake()->numberBetween(1, 10),
             'trigger_type_id' => fake()->numberBetween(1, 10),
             'uuid' => fake()->uuid,
             'emoji' => fake()->emoji,
@@ -41,7 +41,7 @@ class TriggerFactory extends Factory
                     'fields' => [
                         'time' => '08:00',
                         'weekdays' => '["monday","tuesday","wednesday","thursday","friday"]',
-                    ]
+                    ],
                 ],
             ];
         });
@@ -87,12 +87,12 @@ class TriggerFactory extends Factory
                 'trigger_type_id' => TriggerTypeId::Webhook->value,
                 'configuration' => [
                     'fields' => [
-                        "parameters" => [
+                        'parameters' => [
                             'name',
                             'content',
-                        ]
-                    ]
-                ]
+                        ],
+                    ],
+                ],
             ];
         });
     }

@@ -4,29 +4,33 @@
         <li><a class="hover:underline smooth"
                href="/for-european-companies">European Companies</a></li>
         <li><a class="hover:underline smooth"
+               href="/for-agencies">Agencies</a></li>
+        <li><a class="hover:underline smooth"
                href="/for-bootstrappers">Bootstrapped Companies</a></li>
         <li><a class="hover:underline smooth"
                href="/for-open-companies">Open Companies</a></li>
     </ul>
 
     <ul class="flex space-y-4 tracking-tighter flex-col">
+        <li class="text-sm opacity-50">Why MetricsWave:</li>
         <li><a class="hover:underline smooth"
                href="/metricswave-vs-google-analytics">MetricsWave vs Google Analytics</a></li>
         <li><a class="hover:underline smooth"
                href="/metricswave-vs-plausible">MetricsWave vs Plausible</a></li>
         <li><a class="hover:underline smooth"
                href="/metricswave-vs-fathom">MetricsWave vs Fathom</a></li>
-        <li><a class="hover:underline smooth"
-               href="/blog">Blog</a></li>
     </ul>
 
     <ul class="flex space-y-4 tracking-tighter flex-col">
-        <li><a class="hover:underline smooth"
-               href="/open">Open Metrics</a></li>
+        <li class="text-sm opacity-50">About us:</li>
         <li><a class="hover:underline smooth"
                href="/documentation">Documentation</a></li>
         <li><a class="hover:underline smooth"
                href="/blog/category/changelog">Changelog</a></li>
+        <li><a class="hover:underline smooth"
+               href="/open">Open Metrics</a></li>
+        <li><a class="hover:underline smooth"
+               href="/blog">Blog</a></li>
         <li><a href="https://twitter.com/metricswave"
                target="_blank"
                title="@metricswave on Twitter"
@@ -34,6 +38,7 @@
     </ul>
 
     <ul class="flex space-y-4 tracking-tighter flex-col">
+        <li class="text-sm opacity-0">Legal links</li>
         <li><a class="hover:underline smooth"
                href="/privacy-policy">Privacy Policy</a></li>
         <li><a class="hover:underline smooth"

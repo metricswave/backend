@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Checkout;
 
 use App\Models\Lead;
 use App\Models\Price;
-use App\Models\User;
 use App\Transfers\PriceType;
 use Laravel\Cashier\Checkout;
+use MetricsWave\Teams\Team;
 use Str;
 
 trait HasCheckoutSessions
@@ -81,13 +81,13 @@ trait HasCheckoutSessions
             );
     }
 
-    public function authCheckoutStripeProduct(User $user, string $productId, string $priceId): Checkout
+    public function authCheckoutStripeProduct(Team $team, string $productId, string $priceId): Checkout
     {
         $redirectTo = Str::of(config('app.web_app_url'))->trim('/').'/settings/billing?fromBillingPortal=true';
         $successPage = $redirectTo.'&success=true';
         $cancelPage = $redirectTo.'&cancelled=true';
 
-        return $user
+        return $team
             ->newSubscription(
                 $productId, $priceId
             )->checkout([

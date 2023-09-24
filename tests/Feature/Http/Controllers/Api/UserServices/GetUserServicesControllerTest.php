@@ -11,9 +11,9 @@ it('should return 200', function () {
     $this->actingAs($user)
         ->getJson('/api/users/services')
         ->assertSuccessful()
-        ->assertJson(fn(AssertableJson $json) => $json
+        ->assertJson(fn (AssertableJson $json) => $json
             ->count('data.services', 1)
-            ->has('data.services.0', fn(AssertableJson $json) => $json
+            ->has('data.services.0', fn (AssertableJson $json) => $json
                 ->whereType('id', 'integer')
                 ->whereType('service_id', 'integer')
                 ->whereType('user_id', 'integer')

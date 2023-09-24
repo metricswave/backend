@@ -52,6 +52,11 @@
                        role="menuitem"
                        tabindex="-1"
                        id="menu-item-2">European Companies</a>
+                    <a href="/for-agencies"
+                       class="text-zinc-700 dark:text-zinc-300 block px-4 py-2 text-sm smooth hover:bg-zinc-100 dark:hover:bg-zinc-700 hover:text-zinc-800 dark:hover:text-zinc-200"
+                       role="menuitem"
+                       tabindex="-1"
+                       id="menu-item-2">Agencies</a>
                     <a href="/for-bootstrappers"
                        class="text-zinc-700 dark:text-zinc-300 block px-4 py-2 text-sm smooth hover:bg-zinc-100 dark:hover:bg-zinc-700 hover:text-zinc-800 dark:hover:text-zinc-200"
                        role="menuitem"
@@ -79,7 +84,7 @@
     </li>
     <li class="hidden sm:block">
         <a class="hover:underline smooth linkToApp bg-orange-400/10 rounded-md py-1.5 px-3"
-           href="https://app.metricswave.com/auth/signup">Free Trial</a>
+           href="https://app.metricswave.com/auth/signup">Create an Account</a>
     </li>
     <li class="sm:hidden">
         <a class="hover:underline smooth linkToApp bg-orange-400/10 rounded-md py-1.5 px-3"

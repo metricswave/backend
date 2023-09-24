@@ -1,13 +1,12 @@
 <?php
 
 use App\Models\Dashboard;
-use App\Models\User;
 
 it('create a new dashboard', function () {
-    $user = User::factory()->create();
+    [$user, $team] = user_with_team();
 
     $this->actingAs($user)
-        ->postJson('/api/dashboards/', [
+        ->postJson('/api/'.$team->id.'/dashboards/', [
             'name' => 'New name',
             'public' => false,
             'items' => [
@@ -30,16 +29,17 @@ it('create a new dashboard', function () {
 
     expect(Dashboard::find(1))
         ->name->toBe('New name')
+        ->team_id->toBe($team->id)
         ->uuid->toBeString()
         ->public->toBeFalse()
         ->items->toHaveCount(2);
 });
 
 it('create a new dashboard without items', function () {
-    $user = User::factory()->create();
+    [$user, $team] = user_with_team();
 
     $this->actingAs($user)
-        ->postJson('/api/dashboards/', [
+        ->postJson('/api/'.$team->id.'/dashboards/', [
             'name' => 'New name',
             'items' => [],
         ])
@@ -47,6 +47,7 @@ it('create a new dashboard without items', function () {
 
     expect(Dashboard::find(1))
         ->name->toBe('New name')
+        ->team_id->toBe($team->id)
         ->uuid->toBeString()
         ->public->toBeFalse()
         ->items->toHaveCount(0);

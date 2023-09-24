@@ -1,39 +1,36 @@
 <?php
 
-use App\Models\Dashboard;
 use App\Models\Trigger;
 use App\Models\TriggerType;
-use App\Models\User;
 use Illuminate\Support\Carbon;
 use Illuminate\Testing\Fluent\AssertableJson;
+
 use function Pest\Laravel\actingAs;
 
 $csv = file_get_contents(__DIR__.'/assets/visits_parameters.csv');
-$visits = fn(): array => collect(explode("\n", $csv))->map(fn($row) => explode(',', $row))->toArray();
+$visits = fn (): array => collect(explode("\n", $csv))->map(fn ($row) => explode(',', $row))->toArray();
 
-it('return expected parameters stats when trigger has no params', function () use ($visits) {
-    $dashboard = Dashboard::factory()
-        ->for(User::factory()->create())
-        ->create(['public' => true]);
+it('return expected parameters stats when trigger has no params', function () {
+    $dashboard = dashboard(['public' => true]);
 
+    [$user, $team] = user_with_team();
     $trigger = Trigger::factory()
-        ->for(User::factory()->create())
+        ->for($team)
         ->for(TriggerType::factory()->create())
         ->create(['id' => 48, 'uuid' => $dashboard->items[0]->eventUuid]);
 
-    actingAs($trigger->user)
+    actingAs($user)
         ->getJson('/api/dashboards/'.$dashboard->uuid.'/triggers/'.$trigger->uuid.'/parameters-graph-stats')
         ->assertJson([])
         ->assertSuccessful();
 });
 
 it('return expected parameters stats', function () use ($visits) {
-    $dashboard = Dashboard::factory()
-        ->for(User::factory()->create())
-        ->create(['public' => true]);
+    $dashboard = dashboard(['public' => true]);
 
+    [$user, $team] = user_with_team();
     $trigger = Trigger::factory()
-        ->for(User::factory()->create())
+        ->for($team)
         ->for(TriggerType::factory()->create())
         ->create([
             'id' => 48,
@@ -53,13 +50,13 @@ it('return expected parameters stats', function () use ($visits) {
                 'primary_key' => Str::of($row[1])->replace('visits:triggers', 'visits:testing:triggers')->toString(),
                 'secondary_key' => $row[2],
                 'score' => (int) $row[3],
-                'expired_at' => $row[5] === "" ? null : new Carbon($row[5]),
+                'expired_at' => $row[5] === '' ? null : new Carbon($row[5]),
             ]);
     }
 
-    actingAs($trigger->user)
+    actingAs($user)
         ->getJson('/api/dashboards/'.$dashboard->uuid.'/triggers/'.$trigger->uuid.'/parameters-graph-stats?date=2023-06-08')
-        ->assertJson(fn(AssertableJson $json) => $json
+        ->assertJson(fn (AssertableJson $json) => $json
             ->where('data.period.date', '2023-06-09T00:00:00+00:00')
             ->where('data.period.period', '30d')
             ->has('data.plot.path')
@@ -69,4 +66,3 @@ it('return expected parameters stats', function () use ($visits) {
         )
         ->assertSuccessful();
 });
-

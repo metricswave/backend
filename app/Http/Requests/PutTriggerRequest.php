@@ -8,7 +8,10 @@ class PutTriggerRequest extends TriggerRequest
 {
     public function authorize(): bool
     {
-        return $this->route('trigger')->user_id === $this->user()->id;
+        /** @var User $user */
+        $user = $this->user();
+
+        return $user->hasAccessToTeam($this->route('trigger')->team);
     }
 
     public function rules(): array
@@ -18,7 +21,7 @@ class PutTriggerRequest extends TriggerRequest
             'title' => 'string|max:255',
             'content' => 'string|max:255',
             'configuration' => ['array', new TriggerConfiguration()],
-            'via' => ['array']
+            'via' => ['array'],
         ];
     }
 }

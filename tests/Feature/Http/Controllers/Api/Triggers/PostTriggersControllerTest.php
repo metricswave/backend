@@ -1,13 +1,10 @@
 <?php
 
 use App\Models\TriggerType;
-use App\Models\User;
 
 it('creates a trigger', function () {
     $uuid = $this->faker->uuid;
-
-    /** @var User $user */
-    $user = User::factory()->create();
+    [$user, $team] = user_with_team();
 
     /** @var TriggerType $triggerType */
     $triggerType = TriggerType::factory()->create([
@@ -28,14 +25,14 @@ it('creates a trigger', function () {
                     'label' => 'Weekdays',
                     'required' => true,
                     'multiple' => true,
-                ]
+                ],
             ],
         ],
     ]);
 
     $this
         ->actingAs($user)
-        ->postJson('/api/triggers', [
+        ->postJson('/api/'.$team->id.'/triggers', [
             'uuid' => $uuid,
             'trigger_type_id' => $triggerType->id,
             'emoji' => '👍',
@@ -53,13 +50,13 @@ it('creates a trigger', function () {
                     'label' => 'Mail',
                     'checked' => true,
                     'type' => 'mail',
-                ]
+                ],
             ],
         ])->assertCreated();
 
     $this->assertDatabaseHas('triggers', [
         'uuid' => $uuid,
-        'user_id' => $user->id,
+        'team_id' => $team->id,
         'trigger_type_id' => $triggerType->id,
         'emoji' => '👍',
         'title' => 'Test Trigger',
@@ -76,7 +73,7 @@ it('creates a trigger', function () {
                 'label' => 'Mail',
                 'checked' => true,
                 'type' => 'mail',
-            ]
+            ],
         ]),
     ]);
 });
@@ -84,8 +81,7 @@ it('creates a trigger', function () {
 it('creates a trigger updating time to UTC', function () {
     $uuid = $this->faker->uuid;
 
-    /** @var User $user */
-    $user = User::factory()->create();
+    [$user, $team] = user_with_team();
 
     /** @var TriggerType $triggerType */
     $triggerType = TriggerType::factory()->create([
@@ -106,7 +102,7 @@ it('creates a trigger updating time to UTC', function () {
                     'label' => 'Weekdays',
                     'required' => true,
                     'multiple' => true,
-                ]
+                ],
             ],
         ],
     ]);
@@ -114,7 +110,7 @@ it('creates a trigger updating time to UTC', function () {
     $this
         ->actingAs($user)
         ->postJson(
-            '/api/triggers',
+            '/api/'.$team->id.'/triggers',
             [
                 'uuid' => $uuid,
                 'trigger_type_id' => $triggerType->id,
@@ -135,7 +131,7 @@ it('creates a trigger updating time to UTC', function () {
 
     $this->assertDatabaseHas('triggers', [
         'uuid' => $uuid,
-        'user_id' => $user->id,
+        'team_id' => $team->id,
         'trigger_type_id' => $triggerType->id,
         'emoji' => '👍',
         'title' => 'Test Trigger',
@@ -150,8 +146,7 @@ it('creates a trigger updating time to UTC', function () {
 });
 
 it('tries to create a trigger with missing fields', function () {
-    /** @var User $user */
-    $user = User::factory()->create();
+    [$user, $team] = user_with_team();
 
     /** @var TriggerType $triggerType */
     $triggerType = TriggerType::factory()->create([
@@ -172,14 +167,14 @@ it('tries to create a trigger with missing fields', function () {
                     'label' => 'Weekdays',
                     'required' => true,
                     'multiple' => true,
-                ]
+                ],
             ],
         ],
     ]);
 
     $this
         ->actingAs($user)
-        ->postJson('/api/triggers', [
+        ->postJson('/api/'.$team->id.'/triggers', [
             'trigger_type_id' => $triggerType->id,
             'configuration' => [
                 'fields' => [
@@ -198,8 +193,7 @@ it('tries to create a trigger with missing fields', function () {
 it('tries to create trigger with missing fields in configuration', function () {
     $uuid = $this->faker->uuid;
 
-    /** @var User $user */
-    $user = User::factory()->create();
+    [$user, $team] = user_with_team();
 
     /** @var TriggerType $triggerType */
     $triggerType = TriggerType::factory()->create([
@@ -226,14 +220,14 @@ it('tries to create trigger with missing fields in configuration', function () {
                     'label' => 'Weekdays',
                     'required' => true,
                     'multiple' => true,
-                ]
+                ],
             ],
         ],
     ]);
 
     $this
         ->actingAs($user)
-        ->postJson('/api/triggers', [
+        ->postJson('/api/'.$team->id.'/triggers', [
             'uuid' => $uuid,
             'trigger_type_id' => $triggerType->id,
             'emoji' => '👍',
@@ -247,9 +241,9 @@ it('tries to create trigger with missing fields in configuration', function () {
             ],
         ])->assertInvalid([
             'configuration' => [
-                "The filter inside configuration field is required.",
-                "The time inside configuration field is required.",
-                "The weekdays inside configuration field is required.",
-            ]
+                'The filter inside configuration field is required.',
+                'The time inside configuration field is required.',
+                'The weekdays inside configuration field is required.',
+            ],
         ]);
 });

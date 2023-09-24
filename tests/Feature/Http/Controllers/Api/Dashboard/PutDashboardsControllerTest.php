@@ -1,13 +1,9 @@
 <?php
 
-use App\Models\Dashboard;
-use App\Models\User;
-
 it('update an existing dashboard', function () {
-    $user = User::factory()->create();
-    $dashboard = Dashboard::factory()->for($user)->create();
+    $dashboard = dashboard();
 
-    $this->actingAs($user)
+    $this->actingAs($dashboard->owner)
         ->putJson('/api/dashboards/'.$dashboard->id, [
             'name' => 'New name',
             'items' => [

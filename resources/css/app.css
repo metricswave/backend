@@ -13,6 +13,7 @@
     --background-color: rgb(249 246 241);
 
     /*  Size and spacing */
+    --content-max-width: 250px;
     --landing-max-width: 768px;
     --wide-landing-max-width: 868px;
     --app-padding: 1rem;
@@ -33,6 +34,11 @@ html {
     scroll-behavior: smooth;
 }
 
+.max-w-content {
+    max-width: var(--content-max-width);
+}
+
+.max-w-landing,
 .mw-landing {
     @apply max-w-[var(--landing-max-width)];
 }

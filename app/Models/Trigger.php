@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 use MetricsWave\Metrics\MetricsInterface;
+use MetricsWave\Teams\Team;
 
 use function Emoji\is_single_emoji;
 
@@ -42,7 +43,7 @@ class Trigger extends Model
     ];
 
     protected $fillable = [
-        'user_id',
+        'team_id',
         'trigger_type_id',
         'uuid',
         'emoji',
@@ -63,9 +64,9 @@ class Trigger extends Model
         'created' => TriggerCreated::class,
     ];
 
-    public function user(): BelongsTo
+    public function team(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Team::class);
     }
 
     public function triggerType(): BelongsTo

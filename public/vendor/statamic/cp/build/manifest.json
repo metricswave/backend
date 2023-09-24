@@ -1,6 +1,6 @@
 {
   "resources/css/tailwind.css": {
-    "file": "assets/tailwind-358db8aa.css",
+    "file": "assets/tailwind-af2123d2.css",
     "isEntry": true,
     "src": "resources/css/tailwind.css"
   },
@@ -12,13 +12,25 @@
     "file": "assets/Inter-roman.var-17fe38ab.woff2",
     "src": "resources/fonts/Inter/Inter-roman.var.woff2"
   },
+  "resources/img/favicon-16x16.png": {
+    "file": "assets/favicon-16x16-a15cab2f.png",
+    "src": "resources/img/favicon-16x16.png"
+  },
+  "resources/img/favicon-32x32.png": {
+    "file": "assets/favicon-32x32-c29eba9f.png",
+    "src": "resources/img/favicon-32x32.png"
+  },
+  "resources/img/favicon.ico": {
+    "file": "assets/favicon-bbfe21cf.ico",
+    "src": "resources/img/favicon.ico"
+  },
   "resources/js/app.css": {
-    "file": "assets/app-53115558.css",
+    "file": "assets/app-ef802262.css",
     "src": "resources/js/app.css"
   },
   "resources/js/app.js": {
     "css": [
-      "assets/app-53115558.css"
+      "assets/app-ef802262.css"
     ],
     "dynamicImports": [
       "resources/svg/icons/regular/image.svg",
@@ -328,6 +340,7 @@
       "resources/svg/icons/regular/arrows-horizontal-collapse.svg",
       "resources/svg/icons/regular/arrows-horizontal-expand.svg",
       "resources/svg/icons/regular/arrows-shrink.svg",
+      "resources/svg/icons/regular/asset-folder.svg",
       "resources/svg/icons/regular/assets-mode-grid.svg",
       "resources/svg/icons/regular/assets-mode-table.svg",
       "resources/svg/icons/regular/code-block.svg",
@@ -719,6 +732,7 @@
       "resources/svg/icons/regular/arrows-horizontal-collapse.svg",
       "resources/svg/icons/regular/arrows-horizontal-expand.svg",
       "resources/svg/icons/regular/arrows-shrink.svg",
+      "resources/svg/icons/regular/asset-folder.svg",
       "resources/svg/icons/regular/assets-mode-grid.svg",
       "resources/svg/icons/regular/assets-mode-table.svg",
       "resources/svg/icons/regular/code-block.svg",
@@ -819,7 +833,7 @@
       "resources/svg/filetypes/video.svg",
       "resources/svg/filetypes/xml.svg"
     ],
-    "file": "assets/app-c9f95e89.js",
+    "file": "assets/app-1a5ff3f9.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   },
@@ -2422,6 +2436,11 @@
     "file": "assets/arrows-shrink-9620cfb7.js",
     "isDynamicEntry": true,
     "src": "resources/svg/icons/regular/arrows-shrink.svg"
+  },
+  "resources/svg/icons/regular/asset-folder.svg": {
+    "file": "assets/asset-folder-5e5084a4.js",
+    "isDynamicEntry": true,
+    "src": "resources/svg/icons/regular/asset-folder.svg"
   },
   "resources/svg/icons/regular/assets-mode-grid.svg": {
     "file": "assets/assets-mode-grid-61de1550.js",

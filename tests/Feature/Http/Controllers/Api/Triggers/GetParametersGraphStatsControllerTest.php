@@ -2,29 +2,31 @@
 
 use App\Models\Trigger;
 use App\Models\TriggerType;
-use App\Models\User;
 use Illuminate\Support\Carbon;
 use Illuminate\Testing\Fluent\AssertableJson;
+
 use function Pest\Laravel\actingAs;
 
 $csv = file_get_contents(__DIR__.'/assets/visits_parameters.csv');
-$visits = fn(): array => collect(explode("\n", $csv))->map(fn($row) => explode(',', $row))->toArray();
+$visits = fn (): array => collect(explode("\n", $csv))->map(fn ($row) => explode(',', $row))->toArray();
 
-it('return expected parameters stats when trigger has no params', function () use ($visits) {
+it('return expected parameters stats when trigger has no params', function () {
+    [$user, $team] = user_with_team();
     $trigger = Trigger::factory()
-        ->for(User::factory()->create())
+        ->for($team)
         ->for(TriggerType::factory()->create())
         ->create(['id' => 48]);
 
-    actingAs($trigger->user)
+    actingAs($user)
         ->getJson('/api/triggers/'.$trigger->uuid.'/parameters-graph-stats')
         ->assertJson([])
         ->assertSuccessful();
 });
 
 it('return expected parameters stats', function () use ($visits) {
+    [$user, $team] = user_with_team();
     $trigger = Trigger::factory()
-        ->for(User::factory()->create())
+        ->for($team)
         ->for(TriggerType::factory()->create())
         ->create([
             'id' => 48,
@@ -43,13 +45,13 @@ it('return expected parameters stats', function () use ($visits) {
                 'primary_key' => Str::of($row[1])->replace('visits:triggers', 'visits:testing:triggers')->toString(),
                 'secondary_key' => $row[2],
                 'score' => (int) $row[3],
-                'expired_at' => $row[5] === "" ? null : new Carbon($row[5]),
+                'expired_at' => $row[5] === '' ? null : new Carbon($row[5]),
             ]);
     }
 
-    actingAs($trigger->user)
+    actingAs($user)
         ->getJson('/api/triggers/'.$trigger->uuid.'/parameters-graph-stats?date=2023-06-08')
-        ->assertJson(fn(AssertableJson $json) => $json
+        ->assertJson(fn (AssertableJson $json) => $json
             ->where('data.period.date', '2023-06-09T00:00:00+00:00')
             ->where('data.period.period', '30d')
             ->has('data.plot.path')
@@ -63,8 +65,9 @@ it('return expected parameters stats', function () use ($visits) {
 it('return expected parameters stats by week', function () use ($visits) {
     Carbon::setTestNow('2023-06-08');
 
+    [$user, $team] = user_with_team();
     $trigger = Trigger::factory()
-        ->for(User::factory()->create())
+        ->for($team)
         ->for(TriggerType::factory()->create())
         ->create([
             'id' => 48,
@@ -83,14 +86,14 @@ it('return expected parameters stats by week', function () use ($visits) {
                 'primary_key' => Str::of($row[1])->replace('visits:triggers', 'visits:testing:triggers')->toString(),
                 'secondary_key' => $row[2],
                 'score' => (int) $row[3],
-                'expired_at' => $row[5] === "" ? null : new Carbon($row[5]),
+                'expired_at' => $row[5] === '' ? null : new Carbon($row[5]),
             ]);
     }
 
-    actingAs($trigger->user)
+    actingAs($user)
         ->getJson('/api/triggers/'.$trigger->uuid.'/parameters-graph-stats?period=7d')
         ->assertSuccessful()
-        ->assertJson(fn(AssertableJson $json) => $json
+        ->assertJson(fn (AssertableJson $json) => $json
             ->where('data.period.date', '2023-06-09T00:00:00+00:00')
             ->where('data.period.period', '7d')
             ->has('data.plot.path')
@@ -103,8 +106,9 @@ it('return expected parameters stats by week', function () use ($visits) {
 it('return expected parameters stats by day', function () use ($visits) {
     Carbon::setTestNow('2023-06-07');
 
+    [$user, $team] = user_with_team();
     $trigger = Trigger::factory()
-        ->for(User::factory()->create())
+        ->for($team)
         ->for(TriggerType::factory()->create())
         ->create([
             'id' => 48,
@@ -123,14 +127,14 @@ it('return expected parameters stats by day', function () use ($visits) {
                 'primary_key' => Str::of($row[1])->replace('visits:triggers', 'visits:testing:triggers')->toString(),
                 'secondary_key' => $row[2],
                 'score' => (int) $row[3],
-                'expired_at' => $row[5] === "" ? null : new Carbon($row[5]),
+                'expired_at' => $row[5] === '' ? null : new Carbon($row[5]),
             ]);
     }
 
-    actingAs($trigger->user)
+    actingAs($user)
         ->getJson('/api/triggers/'.$trigger->uuid.'/parameters-graph-stats?period=day')
         ->assertSuccessful()
-        ->assertJson(fn(AssertableJson $json) => $json
+        ->assertJson(fn (AssertableJson $json) => $json
             ->where('data.period.date', '2023-06-08T00:00:00+00:00')
             ->where('data.period.period', 'day')
             ->has('data.plot.path')

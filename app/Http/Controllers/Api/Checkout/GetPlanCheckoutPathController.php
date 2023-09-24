@@ -7,6 +7,7 @@ use App\Http\Controllers\Checkout\HasCheckoutSessions;
 use App\Services\Plans\PlanGetter;
 use App\Transfers\PlanId;
 use Illuminate\Http\JsonResponse;
+use MetricsWave\Teams\Team;
 
 class GetPlanCheckoutPathController extends ApiAuthJsonController
 {
@@ -17,15 +18,13 @@ class GetPlanCheckoutPathController extends ApiAuthJsonController
         parent::__construct();
     }
 
-    public function __invoke(int $planId, string $period): JsonResponse
+    public function __invoke(Team $team, int $planId, string $period): JsonResponse
     {
-        $plan = $this->planGetter->get(
-            PlanId::from($planId)
-        );
+        $plan = $this->planGetter->get(PlanId::from($planId));
 
         return $this->response([
             'path' => $this->authCheckoutStripeProduct(
-                $this->user(),
+                $team,
                 $plan->productStripeId,
                 $period === 'monthly' ?
                     $plan->monthlyPriceStripeId :

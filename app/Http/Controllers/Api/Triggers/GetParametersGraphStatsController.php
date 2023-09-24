@@ -19,9 +19,7 @@ class GetParametersGraphStatsController extends ApiAuthJsonController
 
     public function __invoke(Trigger $trigger): JsonResponse
     {
-        if ($trigger->user_id !== $this->user()->id) {
-            abort(404);
-        }
+        abort_unless($this->user()->hasAccessToTeam($trigger->team), 404);
 
         $date = Carbon::createFromFormat('Y-m-d', request()->query('date', now()->format('Y-m-d')));
         $stats = $this->statsGetter->get(

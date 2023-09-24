@@ -13,10 +13,11 @@ class CheckUsageLimitOnCheckTriggerLimitUsage implements ShouldQueue
 {
     public function handle(CheckTriggerLimitUsage $event): void
     {
-        $user = $event->notification->trigger->user;
-        $key = CacheKey::generateForModel($user, 'trigger_notification_sent');
+        $team = $event->notification->trigger->team;
+        $user = $team->owner;
+        $key = CacheKey::generateForModel($team, 'trigger_notification_sent');
 
-        if (! Cache::has($key) && $user->triggerNotificationVisitsLimitReached()) {
+        if (! Cache::has($key) && $team->triggerNotificationVisitsLimitReached()) {
             Http::post('https://metricswave.com/webhooks/d5c2d8ab-983e-4653-8e92-b6dc4c55ee6a', [
                 'email' => $user->email,
             ]);

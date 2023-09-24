@@ -85,23 +85,23 @@ Route::get('/checkout/prices', GetPricesController::class);
 Route::get('/checkout/plans', GetPlansController::class);
 Route::get('/checkout/portal-path', GetPortalPathController::class);
 Route::get('/checkout/prices/{price}', GetPriceCheckoutPathController::class);
-Route::get('/checkout/plan/{planId}/{period}', GetPlanCheckoutPathController::class);
+Route::get('/{team}/checkout/plan/{planId}/{period}', GetPlanCheckoutPathController::class);
 
 // Notifications
-Route::get('/notifications', GetNotificationsController::class);
+Route::get('/teams/{team}/notifications', GetNotificationsController::class);
 
 // Trigger types
 Route::get('/trigger-types', GetTriggerTypesController::class);
 
 // Triggers
-Route::post('/triggers', PostTriggersController::class);
+Route::post('/{team}/triggers', PostTriggersController::class);
 Route::put('/triggers/{trigger:uuid}', PutTriggersController::class);
 Route::delete('/triggers/{trigger:uuid}', DeleteTriggersController::class);
-Route::get('/triggers', GetTriggersController::class);
+Route::get('/{team}/triggers', GetTriggersController::class);
 
 // Dashboard
-Route::get('/dashboards', GetDashboardsController::class);
-Route::post('/dashboards', PostDashboardsController::class);
+Route::get('/{team}/dashboards', GetDashboardsController::class);
+Route::post('/{team}/dashboards', PostDashboardsController::class);
 Route::put('/dashboards/{dashboard}', PutDashboardsController::class);
 Route::delete('/dashboards/{dashboard}', DeleteDashboardsController::class);
 Route::get('/dashboards/{dashboard:uuid}', GetDashboardByUuidController::class);
@@ -134,3 +134,9 @@ Route::post('/tally', PostTallyController::class);
 // Socialite
 Route::get('/auth/{service:driver}/redirect', RedirectToDriverController::class);
 Route::get('/auth/{service:driver}/callback', StoreUserServiceController::class);
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Modules
+// ---------------------------------------------------------------------------------------------------------------------
+require __DIR__.'/../src/Channels/Http/Routes/api.php';
+require __DIR__.'/../src/Teams/Http/Routes/api.php';

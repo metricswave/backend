@@ -5,10 +5,10 @@ use App\Models\TriggerType;
 use App\Models\User;
 
 it('delete a trigger', function () {
-    $user = User::factory()->create();
+    [$user, $team] = user_with_team();
     $triggerType = TriggerType::factory()->create();
     /** @var Trigger $trigger */
-    $trigger = Trigger::factory()->for($user)->for($triggerType)->create();
+    $trigger = Trigger::factory()->for($team)->for($triggerType)->create();
 
     $this
         ->actingAs($user)
@@ -17,16 +17,16 @@ it('delete a trigger', function () {
 
     $this->assertDatabaseMissing('triggers', [
         'uuid' => $trigger->uuid,
-        'user_id' => $user->id,
+        'team_id' => $team->id,
         'deleted_at' => null,
     ]);
 });
 
 it('check that the user is the owner of the trigger', function () {
-    $user = User::factory()->create();
+    [$user, $team] = user_with_team();
     $triggerType = TriggerType::factory()->create();
     /** @var Trigger $trigger */
-    $trigger = Trigger::factory()->for($user)->for($triggerType)->create();
+    $trigger = Trigger::factory()->for($team)->for($triggerType)->create();
 
     $otherUser = User::factory()->create();
 
