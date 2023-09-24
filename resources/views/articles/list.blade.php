@@ -7,7 +7,7 @@
 
     {{-- OG Tags --}}
     <meta property="og:url"
-          content="{{ Str::of(config('app.url').request()->getPathInfo())->replace('//', '/') }}"/>
+          content="{{ safe_url(config('app.url').request()->getPathInfo()) }}"/>
     <meta property="og:locale"
           content="en_US"/>
     <meta property="og:type"

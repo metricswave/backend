@@ -2,11 +2,11 @@
 <meta content="{{  $meta_description ?? 'Real-time notifications for everything that matters to you.'  }}"
       name="description"/>
 <link rel="canonical"
-      href="{{ Str::of(config('app.url').request()->getPathInfo())->replace('//', '/') }}"/>
+      href="{{ safe_url(config('app.url').request()->getPathInfo()) }}"/>
 
 {{-- OG Tags --}}
 <meta property="og:url"
-      content="{{ Str::of(config('app.url').request()->getPathInfo())->replace('//', '/') }}"/>
+      content="{{ safe_url(config('app.url').request()->getPathInfo()) }}"/>
 <meta property="og:locale"
       content="en_US"/>
 <meta property="og:type"

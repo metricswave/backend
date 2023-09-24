@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1">
     <link rel="canonical"
-          href="{{ Str::of(config('app.url').request()->getPathInfo())->replace('//', '/') }}"/>
+          href="{{ safe_url(config('app.url').request()->getPathInfo()) }}"/>
 
     @yield('meta')
     @include('partials.favicon')

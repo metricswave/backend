@@ -43,3 +43,10 @@ if (! function_exists('random_item_from_weighted_array')) {
         return $items[0];
     }
 }
+
+if (! function_exists('safe_url')) {
+    function safe_url(string $url): string
+    {
+        return preg_replace('/([^:])(\/{2,})/', '$1/', $url);
+    }
+}
