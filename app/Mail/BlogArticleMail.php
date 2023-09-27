@@ -2,7 +2,6 @@
 
 namespace App\Mail;
 
-use App\Models\Lead;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
@@ -15,15 +14,18 @@ class BlogArticleMail extends Mailable
     use Queueable;
     use SerializesModels;
 
-    public function __construct(private readonly Lead $lead, private readonly Entry $article)
-    {
+    public function __construct(
+        private readonly string $mail,
+        private readonly Entry $article,
+        private readonly ?string $token = null,
+    ) {
     }
 
     public function envelope(): Envelope
     {
         return new Envelope(
-            to: $this->lead->email,
-            subject: $this->article->title,
+            to: $this->mail,
+            subject: $this->article->title.' - 🌊 MetricsWave Blog'
         );
     }
 
@@ -32,8 +34,8 @@ class BlogArticleMail extends Mailable
         return new Content(
             markdown: 'mail.blog_article',
             with: [
-                'leadUuid' => $this->lead->uuid,
                 'article' => $this->article,
+                'token' => $this->token,
             ],
         );
     }

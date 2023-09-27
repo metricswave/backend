@@ -1,8 +1,8 @@
 <?php
 
 use App\Models\TriggerType;
-use App\Models\User;
 use App\Transfers\TriggerTypeId;
+use MetricsWave\Users\User;
 
 use function Pest\Laravel\actingAs;
 

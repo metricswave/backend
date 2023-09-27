@@ -3,10 +3,10 @@
 namespace MetricsWave\Teams\Http\Controllers\Api;
 
 use App\Http\Controllers\Api\ApiAuthJsonController;
-use App\Services\Users\CreateDefaultsForUser;
 use Illuminate\Http\JsonResponse;
 use MetricsWave\Teams\Http\Controllers\Requests\CreateTeamRequest;
 use MetricsWave\Teams\Team;
+use MetricsWave\Users\Services\CreateDefaultsForUser;
 
 class PostTeamsController extends ApiAuthJsonController
 {

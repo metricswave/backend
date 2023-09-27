@@ -1,8 +1,9 @@
 <?php
 
 use App\Models\Service;
-use App\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
+use MetricsWave\Users\User;
+
 use function Pest\Laravel\actingAs;
 
 it('should return all services', function () {
@@ -12,9 +13,9 @@ it('should return all services', function () {
     actingAs($user)
         ->getJson('/api/services')
         ->assertSuccessful()
-        ->assertJson(fn(AssertableJson $json) => $json
+        ->assertJson(fn (AssertableJson $json) => $json
             ->count('data.services', 5)
-            ->has('data.services.0', fn(AssertableJson $json) => $json
+            ->has('data.services.0', fn (AssertableJson $json) => $json
                 ->whereType('id', 'integer')
                 ->whereType('name', 'string')
                 ->whereType('driver', 'string')

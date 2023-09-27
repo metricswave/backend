@@ -1,8 +1,8 @@
 <?php
 
-use App\Models\User;
-use App\Models\UserService;
 use Illuminate\Testing\Fluent\AssertableJson;
+use MetricsWave\Users\User;
+use MetricsWave\Users\UserService;
 
 it('should return 200', function () {
     $user = User::factory()->create();

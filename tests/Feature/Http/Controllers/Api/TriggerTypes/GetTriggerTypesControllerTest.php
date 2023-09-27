@@ -1,8 +1,8 @@
 <?php
 
 use App\Models\TriggerType;
-use App\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
+use MetricsWave\Users\User;
 
 it('returns a list of trigger types', function () {
     $user = User::factory()->create();
@@ -11,9 +11,9 @@ it('returns a list of trigger types', function () {
     $this->actingAs($user)
         ->getJson('/api/trigger-types')
         ->assertSuccessful()
-        ->assertJson(fn(AssertableJson $json) => $json
+        ->assertJson(fn (AssertableJson $json) => $json
             ->count('data.trigger_types', 3)
-            ->has('data.trigger_types.0', fn(AssertableJson $json) => $json
+            ->has('data.trigger_types.0', fn (AssertableJson $json) => $json
                 ->has('id')
                 ->has('name')
                 ->has('description')

@@ -1,11 +1,11 @@
 <?php
 
 use App\Models\Dashboard;
-use App\Models\User;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Illuminate\Foundation\Testing\RefreshDatabaseState;
 use Illuminate\Foundation\Testing\WithFaker;
 use MetricsWave\Teams\Team;
+use MetricsWave\Users\User;
 
 uses(LazilyRefreshDatabase::class)->in('Feature');
 

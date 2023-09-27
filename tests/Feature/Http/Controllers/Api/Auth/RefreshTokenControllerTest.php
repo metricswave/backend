@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
+use MetricsWave\Users\User;
 
 it('return a new token', function () {
     $user = User::factory()->create(['password' => Hash::make('password')]);
@@ -18,7 +18,7 @@ it('return a new token', function () {
             ]
         )
         ->assertSuccessful()
-        ->assertJson(fn(AssertableJson $json) => $json
+        ->assertJson(fn (AssertableJson $json) => $json
             ->hasAll([
                 'data.token.token',
                 'data.token.expires_at',
@@ -46,7 +46,6 @@ it('return error if not using the refresh token', function () {
         )
         ->assertForbidden();
 });
-
 
 it('return error if no auth provided')
     ->postJson(

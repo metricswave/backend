@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Api\Auth;
 
 use App\Http\Requests\ResetPasswordRequest;
-use App\Models\User;
-use App\Repositories\UserRepository;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
+use MetricsWave\Users\Repositories\UserRepository;
+use MetricsWave\Users\User;
 
 class ResetPasswordController extends JsonTokenResponseController
 {
@@ -23,7 +23,7 @@ class ResetPasswordController extends JsonTokenResponseController
             $request->only('email', 'password', 'password_confirmation', 'token'),
             function (User $user, string $password) {
                 $user->forceFill([
-                    'password' => Hash::make($password)
+                    'password' => Hash::make($password),
                 ]);
                 $user->save();
 
@@ -33,6 +33,7 @@ class ResetPasswordController extends JsonTokenResponseController
 
         if ($status === Password::PASSWORD_RESET) {
             $user = $this->userRepository->firstByEmail($request->email);
+
             return $this->tokenResponse($user, $request->device_name);
         }
 

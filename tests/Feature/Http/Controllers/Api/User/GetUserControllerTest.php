@@ -21,6 +21,7 @@ it('return current user', function () {
                     'email',
                     'all_teams',
                     'email_verified_at',
+                    'marketing_mailable',
                     'created_at',
                     'updated_at',
                 ])

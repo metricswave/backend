@@ -2,7 +2,6 @@
 
 namespace App\Jobs;
 
-use App\Models\User;
 use App\Notifications\TriggerNotification;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -11,6 +10,7 @@ use Illuminate\Foundation\Bus\PendingDispatch;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use MetricsWave\Teams\Team;
+use MetricsWave\Users\User;
 
 /**
  * @method static PendingDispatch dispatch(Team $team, TriggerNotification $notification)

@@ -2,10 +2,10 @@
 
 namespace App\Events;
 
-use App\Models\UserService;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use MetricsWave\Users\UserService;
 
 class UserServiceCreated
 {

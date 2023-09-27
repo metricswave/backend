@@ -21,9 +21,9 @@ namespace App\Models{
      * @property \Spatie\LaravelData\DataCollection|null $items
      * @property \Illuminate\Support\Carbon|null $created_at
      * @property \Illuminate\Support\Carbon|null $updated_at
-     * @property-read \App\Models\User|null $owner
+     * @property-read \MetricsWave\Users\User|null $owner
      * @property-read \MetricsWave\Teams\Team $team
-     * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\User> $users
+     * @property-read \Illuminate\Database\Eloquent\Collection<int, \MetricsWave\Users\User> $users
      * @property-read int|null $users_count
      *
      * @method static \Database\Factories\DashboardFactory factory($count = null, $state = [])
@@ -144,7 +144,7 @@ namespace App\Models{
      * @property array|null $configuration
      * @property \Illuminate\Support\Carbon|null $created_at
      * @property \Illuminate\Support\Carbon|null $updated_at
-     * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\UserService> $userServices
+     * @property-read \Illuminate\Database\Eloquent\Collection<int, \MetricsWave\Users\UserService> $userServices
      * @property-read int|null $user_services_count
      *
      * @method static \Database\Factories\ServiceFactory factory($count = null, $state = [])
@@ -251,139 +251,6 @@ namespace App\Models{
     }
 }
 
-namespace App\Models{
-    /**
-     * App\Models\User
-     *
-     * @property int $id
-     * @property string $name
-     * @property string $email
-     * @property \Illuminate\Support\Carbon|null $email_verified_at
-     * @property string|null $password
-     * @property string|null $remember_token
-     * @property \Illuminate\Support\Carbon|null $created_at
-     * @property \Illuminate\Support\Carbon|null $updated_at
-     * @property int $super
-     * @property string|null $avatar
-     * @property mixed|null $preferences
-     * @property string|null $last_login
-     * @property-read \Illuminate\Support\Collection $all_teams
-     * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\MailLog> $mailLogs
-     * @property-read int|null $mail_logs_count
-     * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
-     * @property-read int|null $notifications_count
-     * @property-read \Illuminate\Database\Eloquent\Collection<int, \MetricsWave\Teams\Team> $ownedTeams
-     * @property-read int|null $owned_teams_count
-     * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\UserService> $services
-     * @property-read int|null $services_count
-     * @property-read \Illuminate\Database\Eloquent\Collection<int, \MetricsWave\Teams\Team> $teams
-     * @property-read int|null $teams_count
-     * @property-read \Illuminate\Database\Eloquent\Collection<int, \Laravel\Sanctum\PersonalAccessToken> $tokens
-     * @property-read int|null $tokens_count
-     *
-     * @method static \Database\Factories\UserFactory factory($count = null, $state = [])
-     * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
-     * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
-     * @method static \Illuminate\Database\Eloquent\Builder|User query()
-     * @method static \Illuminate\Database\Eloquent\Builder|User whereAvatar($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|User whereCreatedAt($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|User whereEmail($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|User whereEmailVerifiedAt($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|User whereId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|User whereLastLogin($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|User whereName($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|User wherePreferences($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|User whereSuper($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
-     */
-    class User extends \Eloquent
-    {
-    }
-}
-
-namespace App\Models{
-    /**
-     * App\Models\UserCalendar
-     *
-     * @property int $id
-     * @property int $user_id
-     * @property \App\Transfers\ServiceId $service_id
-     * @property string $calendar_id
-     * @property string $name
-     * @property string|null $description
-     * @property string|null $background_color
-     * @property string|null $foreground_color
-     * @property string $time_zone
-     * @property \Illuminate\Support\Carbon|null $deleted_at
-     * @property \Illuminate\Support\Carbon|null $created_at
-     * @property \Illuminate\Support\Carbon|null $updated_at
-     * @property-read \App\Models\UserService|null $service
-     * @property-read \App\Models\User|null $user
-     *
-     * @method static \Database\Factories\UserCalendarFactory factory($count = null, $state = [])
-     * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar newModelQuery()
-     * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar newQuery()
-     * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar onlyTrashed()
-     * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar query()
-     * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar whereBackgroundColor($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar whereCalendarId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar whereCreatedAt($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar whereDeletedAt($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar whereDescription($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar whereForegroundColor($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar whereId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar whereName($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar whereServiceId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar whereTimeZone($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar whereUpdatedAt($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar whereUserId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar withTrashed()
-     * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar withoutTrashed()
-     */
-    class UserCalendar extends \Eloquent
-    {
-    }
-}
-
-namespace App\Models{
-    /**
-     * App\Models\UserService
-     *
-     * @property int $id
-     * @property int $user_id
-     * @property int $service_id
-     * @property int $reconectable
-     * @property array $service_data
-     * @property \Illuminate\Support\Carbon|null $created_at
-     * @property \Illuminate\Support\Carbon|null $updated_at
-     * @property \Illuminate\Support\Carbon|null $deleted_at
-     * @property string|null $channel_id
-     * @property-read \App\Models\User $user
-     *
-     * @method static \Database\Factories\UserServiceFactory factory($count = null, $state = [])
-     * @method static \Illuminate\Database\Eloquent\Builder|UserService newModelQuery()
-     * @method static \Illuminate\Database\Eloquent\Builder|UserService newQuery()
-     * @method static \Illuminate\Database\Eloquent\Builder|UserService onlyTrashed()
-     * @method static \Illuminate\Database\Eloquent\Builder|UserService query()
-     * @method static \Illuminate\Database\Eloquent\Builder|UserService whereChannelId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|UserService whereCreatedAt($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|UserService whereDeletedAt($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|UserService whereId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|UserService whereReconectable($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|UserService whereServiceData($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|UserService whereServiceId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|UserService whereUpdatedAt($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|UserService whereUserId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|UserService withTrashed()
-     * @method static \Illuminate\Database\Eloquent\Builder|UserService withoutTrashed()
-     */
-    class UserService extends \Eloquent
-    {
-    }
-}
-
 namespace MetricsWave\Channels{
     /**
      * MetricsWave\Channels\Channel
@@ -484,7 +351,7 @@ namespace MetricsWave\Teams{
      * @property int $id
      * @property string $domain
      * @property int|null $owner_id
-     * @property int $initiated
+     * @property bool $initiated
      * @property string|null $stripe_id
      * @property string|null $pm_type
      * @property string|null $pm_last_four
@@ -501,12 +368,12 @@ namespace MetricsWave\Teams{
      * @property-read \App\Transfers\SubscriptionType $subscription_type
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \MetricsWave\Teams\TeamInvite> $invites
      * @property-read int|null $invites_count
-     * @property-read \App\Models\User|null $owner
+     * @property-read \MetricsWave\Users\User|null $owner
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \Laravel\Cashier\Subscription> $subscriptions
      * @property-read int|null $subscriptions_count
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Trigger> $triggers
      * @property-read int|null $triggers_count
-     * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\User> $users
+     * @property-read \Illuminate\Database\Eloquent\Collection<int, \MetricsWave\Users\User> $users
      * @property-read int|null $users_count
      *
      * @method static \Database\Factories\MetricsWave\Teams\TeamFactory factory($count = null, $state = [])
@@ -556,6 +423,139 @@ namespace MetricsWave\Teams{
      * @method static \Illuminate\Database\Eloquent\Builder|TeamInvite whereUpdatedAt($value)
      */
     class TeamInvite extends \Eloquent
+    {
+    }
+}
+
+namespace MetricsWave\Users{
+    /**
+     * MetricsWave\Users\User
+     *
+     * @property int $id
+     * @property string $name
+     * @property string $email
+     * @property \Illuminate\Support\Carbon|null $email_verified_at
+     * @property string|null $password
+     * @property string|null $remember_token
+     * @property \Illuminate\Support\Carbon|null $created_at
+     * @property \Illuminate\Support\Carbon|null $updated_at
+     * @property int $super
+     * @property string|null $avatar
+     * @property mixed|null $preferences
+     * @property string|null $last_login
+     * @property-read \Illuminate\Support\Collection $all_teams
+     * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\MailLog> $mailLogs
+     * @property-read int|null $mail_logs_count
+     * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
+     * @property-read int|null $notifications_count
+     * @property-read \Illuminate\Database\Eloquent\Collection<int, \MetricsWave\Teams\Team> $ownedTeams
+     * @property-read int|null $owned_teams_count
+     * @property-read \Illuminate\Database\Eloquent\Collection<int, \MetricsWave\Users\UserService> $services
+     * @property-read int|null $services_count
+     * @property-read \Illuminate\Database\Eloquent\Collection<int, \MetricsWave\Teams\Team> $teams
+     * @property-read int|null $teams_count
+     * @property-read \Illuminate\Database\Eloquent\Collection<int, \Laravel\Sanctum\PersonalAccessToken> $tokens
+     * @property-read int|null $tokens_count
+     *
+     * @method static \Database\Factories\MetricsWave\Users\UserFactory factory($count = null, $state = [])
+     * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
+     * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
+     * @method static \Illuminate\Database\Eloquent\Builder|User query()
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereAvatar($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereCreatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereEmail($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereEmailVerifiedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereLastLogin($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereName($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User wherePreferences($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereSuper($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
+     */
+    class User extends \Eloquent
+    {
+    }
+}
+
+namespace MetricsWave\Users{
+    /**
+     * MetricsWave\Users\UserCalendar
+     *
+     * @property int $id
+     * @property int $user_id
+     * @property \App\Transfers\ServiceId $service_id
+     * @property string $calendar_id
+     * @property string $name
+     * @property string|null $description
+     * @property string|null $background_color
+     * @property string|null $foreground_color
+     * @property string $time_zone
+     * @property \Illuminate\Support\Carbon|null $deleted_at
+     * @property \Illuminate\Support\Carbon|null $created_at
+     * @property \Illuminate\Support\Carbon|null $updated_at
+     * @property-read \MetricsWave\Users\UserService|null $service
+     * @property-read \MetricsWave\Users\User|null $user
+     *
+     * @method static \Database\Factories\MetricsWave\Users\UserCalendarFactory factory($count = null, $state = [])
+     * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar newModelQuery()
+     * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar newQuery()
+     * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar onlyTrashed()
+     * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar query()
+     * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar whereBackgroundColor($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar whereCalendarId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar whereCreatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar whereDeletedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar whereDescription($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar whereForegroundColor($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar whereId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar whereName($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar whereServiceId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar whereTimeZone($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar whereUpdatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar whereUserId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar withTrashed()
+     * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar withoutTrashed()
+     */
+    class UserCalendar extends \Eloquent
+    {
+    }
+}
+
+namespace MetricsWave\Users{
+    /**
+     * MetricsWave\Users\UserService
+     *
+     * @property int $id
+     * @property int $user_id
+     * @property int $service_id
+     * @property int $reconectable
+     * @property array $service_data
+     * @property \Illuminate\Support\Carbon|null $created_at
+     * @property \Illuminate\Support\Carbon|null $updated_at
+     * @property \Illuminate\Support\Carbon|null $deleted_at
+     * @property string|null $channel_id
+     * @property-read \MetricsWave\Users\User $user
+     *
+     * @method static \Database\Factories\MetricsWave\Users\UserServiceFactory factory($count = null, $state = [])
+     * @method static \Illuminate\Database\Eloquent\Builder|UserService newModelQuery()
+     * @method static \Illuminate\Database\Eloquent\Builder|UserService newQuery()
+     * @method static \Illuminate\Database\Eloquent\Builder|UserService onlyTrashed()
+     * @method static \Illuminate\Database\Eloquent\Builder|UserService query()
+     * @method static \Illuminate\Database\Eloquent\Builder|UserService whereChannelId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|UserService whereCreatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|UserService whereDeletedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|UserService whereId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|UserService whereReconectable($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|UserService whereServiceData($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|UserService whereServiceId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|UserService whereUpdatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|UserService whereUserId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|UserService withTrashed()
+     * @method static \Illuminate\Database\Eloquent\Builder|UserService withoutTrashed()
+     */
+    class UserService extends \Eloquent
     {
     }
 }

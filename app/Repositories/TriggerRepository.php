@@ -3,12 +3,12 @@
 namespace App\Repositories;
 
 use App\Models\Trigger;
-use App\Models\User;
 use App\Transfers\Time;
 use App\Transfers\TriggerTypeId;
 use App\Transfers\Weekday;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
+use MetricsWave\Users\User;
 
 class TriggerRepository
 {
@@ -19,14 +19,7 @@ class TriggerRepository
             ->get();
     }
 
-    private function builder(): Builder|User
-    {
-        return Trigger::query();
-    }
-
     /**
-     * @param  Time  $time
-     * @param  Weekday  $weekday
      * @return Collection<Trigger>
      */
     public function timeToLeaveFor(Time $time, Weekday $weekday): Collection
@@ -39,13 +32,24 @@ class TriggerRepository
     }
 
     /**
-     * @param  Time  $time
-     * @param  Weekday  $weekday
      * @return Collection<Trigger>
      */
     public function onTimeFor(Time $time, Weekday $weekday): Collection
     {
         return $this->byTypeAndTime(TriggerTypeId::OnTime, $time, $weekday);
+    }
+
+    /**
+     * @return Collection<Trigger>
+     */
+    public function weatherSummaryFor(Time $time, Weekday $weekday): Collection
+    {
+        return $this->byTypeAndTime(TriggerTypeId::WeatherSummary, $time, $weekday);
+    }
+
+    private function builder(): Builder|User
+    {
+        return Trigger::query();
     }
 
     private function byTypeAndTime(TriggerTypeId $type, Time $time, Weekday $weekday): Collection
@@ -55,15 +59,5 @@ class TriggerRepository
             ->where('time', $time->toString())
             ->where('weekdays', 'like', '%'.$weekday->toString().'%')
             ->get();
-    }
-
-    /**
-     * @param  Time  $time
-     * @param  Weekday  $weekday
-     * @return Collection<Trigger>
-     */
-    public function weatherSummaryFor(Time $time, Weekday $weekday): Collection
-    {
-        return $this->byTypeAndTime(TriggerTypeId::WeatherSummary, $time, $weekday);
     }
 }

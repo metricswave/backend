@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Api\Auth;
 
 use App\Http\Requests\ImpersonateRequest;
 use App\Models\TokenAbility;
-use App\Models\User;
 use Illuminate\Http\JsonResponse;
+use MetricsWave\Users\User;
 
 class PostImpersonateController extends JsonTokenResponseController
 {

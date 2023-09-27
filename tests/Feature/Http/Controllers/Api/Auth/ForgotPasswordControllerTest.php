@@ -1,14 +1,15 @@
 <?php
 
-use App\Models\User;
 use App\Notifications\ResetPasswordNotification;
+use MetricsWave\Users\User;
+
 use function Pest\Laravel\postJson;
 
-it("send reset password mail", function () {
+it('send reset password mail', function () {
     Notification::fake();
     $user = User::factory()->create();
 
-    postJson('/api/forgot-password', ['email' => $user->email,])
+    postJson('/api/forgot-password', ['email' => $user->email])
         ->assertSuccessful();
 
     Notification::assertSentTo($user, ResetPasswordNotification::class);

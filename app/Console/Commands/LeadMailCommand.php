@@ -9,20 +9,26 @@ use Illuminate\Support\Collection;
 
 trait LeadMailCommand
 {
-    private function getMailableLeads(?string $email, string $type): Collection|array|EloquentCollection
+    private function getMailableLeads(?string $email, string $type, bool $avoidUsers = false): Collection|array|EloquentCollection
     {
-        if ($email !== null) {
-            $leads = Lead::where('email', $email)->get();
-        } else {
-            $leads = Lead::all();
-            $mailLogs = MailLog::where('type', $type)->get()->pluck('mail');
+        $leads = Lead::query()
+            ->when($email !== null, fn ($query) => $query->where('email', $email))
+            ->when($avoidUsers, fn ($query) => $query
+                ->whereNotIn('email', fn ($query) => $query
+                    ->select('email')->from('users')
+                )
+            )
+            ->get();
 
-            $leads = $leads->filter(function (Lead $lead) use ($mailLogs) {
-                return !$mailLogs->contains($lead->email);
-            });
+        if ($email !== null) {
+            return $leads;
         }
 
-        return $leads;
+        $mailLogs = MailLog::query()->where('type', $type)->get()->pluck('mail');
+
+        return $leads->filter(function (Lead $lead) use ($mailLogs) {
+            return ! $mailLogs->contains($lead->email);
+        });
     }
 
     private function getMailableLeadsWithoutLicences(?string $email, string $type): Collection|array|EloquentCollection
@@ -34,7 +40,7 @@ trait LeadMailCommand
             $mailLogs = MailLog::where('type', $type)->get()->pluck('mail');
 
             $leads = $leads->filter(function (Lead $lead) use ($mailLogs) {
-                return !$mailLogs->contains($lead->email);
+                return ! $mailLogs->contains($lead->email);
             });
         }
 
@@ -50,7 +56,7 @@ trait LeadMailCommand
             $mailLogs = MailLog::where('type', $type)->get()->pluck('mail');
 
             $leads = $leads->filter(function (Lead $lead) use ($mailLogs) {
-                return !$mailLogs->contains($lead->email);
+                return ! $mailLogs->contains($lead->email);
             });
         }
 

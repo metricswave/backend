@@ -3,13 +3,15 @@
 namespace App\Console\Commands;
 
 use App\Models\Trigger;
-use App\Models\UserService;
 use Illuminate\Console\Command;
+use MetricsWave\Users\UserService;
 
 class MigrateTriggersViaFieldFromValueToIdCommand extends Command
 {
     protected $signature = 'app:triggers-via-field-from-value-to-id';
+
     protected $description = 'Migrate triggers via field from value to id';
+
     private array $errors = [];
 
     public function handle(): int
@@ -21,15 +23,16 @@ class MigrateTriggersViaFieldFromValueToIdCommand extends Command
             function (Trigger $trigger) {
                 $viaField = collect($trigger->via)
                     ->map(function ($via) {
-                        if (!isset($via['value'])) {
+                        if (! isset($via['value'])) {
                             return $via;
                         }
 
                         if ($via['type'] === 'telegram') {
                             $us = UserService::query()->where('channel_id', $via['value'])->first();
 
-                            if (!$us) {
+                            if (! $us) {
                                 $this->errors[] = "User service with channel_id {$via['value']} not found";
+
                                 return $via;
                             }
 

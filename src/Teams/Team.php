@@ -5,7 +5,6 @@ namespace MetricsWave\Teams;
 use App\Models\Dashboard;
 use App\Models\Price;
 use App\Models\Trigger;
-use App\Models\User;
 use App\Services\Plans\PlanGetter;
 use App\Transfers\PlanId;
 use App\Transfers\PriceType;
@@ -18,6 +17,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Laravel\Cashier\Billable;
 use MetricsWave\Channels\TeamChannel;
 use MetricsWave\Metrics\MetricsInterface;
+use MetricsWave\Users\User;
 
 class Team extends Model
 {

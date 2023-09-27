@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Api\Auth;
 
 use App\Exceptions\CanNotCreateUserBecauseNoPaidLicence;
 use App\Http\Requests\SignUpRequest;
-use App\Repositories\UserRepository;
 use Illuminate\Http\JsonResponse;
+use MetricsWave\Users\Repositories\UserRepository;
 
 class SignUpController extends JsonTokenResponseController
 {

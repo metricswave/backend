@@ -1,10 +1,11 @@
 <?php
 
-use App\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
+use MetricsWave\Users\User;
+
 use function Pest\Laravel\postJson;
 
-it("return expected response", function () {
+it('return expected response', function () {
     $user = User::factory()->create([
         'password' => Hash::make('password'),
     ]);
@@ -15,7 +16,7 @@ it("return expected response", function () {
         'device_name' => 'test',
     ])
         ->assertStatus(200)
-        ->assertJson(fn(AssertableJson $json) => $json
+        ->assertJson(fn (AssertableJson $json) => $json
             ->hasAll([
                 'data.token.token',
                 'data.token.expires_at',
@@ -36,9 +37,7 @@ it('return http status 400 if invalid login', function () {
         'device_name' => 'test',
     ])
         ->assertStatus(401)
-        ->assertJson(fn(AssertableJson $json) => $json
+        ->assertJson(fn (AssertableJson $json) => $json
             ->hasAll(['message'])
         );
 });
-
-

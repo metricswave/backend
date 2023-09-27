@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Api\Socialite;
 use App\Exceptions\CanNotCreateUserBecauseNoPaidLicence;
 use App\Http\Controllers\Api\Auth\JsonTokenResponseController;
 use App\Models\Service;
-use App\Repositories\UserRepository;
 use Illuminate\Http\JsonResponse;
 use Laravel\Socialite\Two\User;
+use MetricsWave\Users\Repositories\UserRepository;
 use Socialite;
 
 class StoreUserServiceController extends JsonTokenResponseController
@@ -40,7 +40,7 @@ class StoreUserServiceController extends JsonTokenResponseController
         $user->services()->updateOrCreate(
             [
                 'service_id' => $service->id,
-                'user_id' => $user->id
+                'user_id' => $user->id,
             ],
             [
                 'reconectable' => false,

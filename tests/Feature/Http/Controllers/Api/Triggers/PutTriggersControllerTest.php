@@ -2,7 +2,7 @@
 
 use App\Models\Trigger;
 use App\Models\TriggerType;
-use App\Models\User;
+use MetricsWave\Users\User;
 
 it('updates a trigger', function () {
     [$user, $team] = user_with_team();

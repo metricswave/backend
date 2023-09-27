@@ -36,12 +36,6 @@ use App\Http\Controllers\Api\Triggers\GetTriggerStatsController;
 use App\Http\Controllers\Api\Triggers\PostTriggersController;
 use App\Http\Controllers\Api\Triggers\PutTriggersController;
 use App\Http\Controllers\Api\TriggerTypes\GetTriggerTypesController;
-use App\Http\Controllers\Api\Users\GetUserController;
-use App\Http\Controllers\Api\Users\GetUserUsageController;
-use App\Http\Controllers\Api\Users\PostUserDefaultsController;
-use App\Http\Controllers\Api\UserServices\DeleteUserServiceController;
-use App\Http\Controllers\Api\UserServices\GetUserServicesController;
-use App\Http\Controllers\Api\UserServices\PostServiceController;
 use App\Http\Controllers\Tally\PostTallyController;
 use Illuminate\Support\Facades\Route;
 
@@ -69,16 +63,6 @@ Route::post('/auth/impersonate/', PostImpersonateController::class);
 
 // Open data
 Route::get('/open', GetOpenDataController::class);
-
-// User
-Route::get('/users', GetUserController::class);
-Route::post('/users/defaults', PostUserDefaultsController::class);
-Route::get('/users/services', GetUserServicesController::class);
-Route::post('/users/services', PostServiceController::class);
-Route::delete('/users/services/{userService}', DeleteUserServiceController::class);
-
-// Usage
-Route::get('/users/usage', GetUserUsageController::class);
 
 // Checkout
 Route::get('/checkout/prices', GetPricesController::class);
@@ -138,5 +122,6 @@ Route::get('/auth/{service:driver}/callback', StoreUserServiceController::class)
 // ---------------------------------------------------------------------------------------------------------------------
 // Modules
 // ---------------------------------------------------------------------------------------------------------------------
+require __DIR__.'/../src/Users/Http/Routes/api.php';
 require __DIR__.'/../src/Channels/Http/Routes/api.php';
 require __DIR__.'/../src/Teams/Http/Routes/api.php';
