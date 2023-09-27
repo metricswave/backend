@@ -3,12 +3,12 @@
 namespace MetricsWave\Users\Console\Commands;
 
 use App\Models\MailLog;
+use App\Models\User;
 use Illuminate\Console\Command;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Mail;
 use MetricsWave\Users\Mail\UsersWithoutEventsMail;
-use MetricsWave\Users\User;
 
 class MailUsersWithoutEventsAfterADayCommand extends Command
 {

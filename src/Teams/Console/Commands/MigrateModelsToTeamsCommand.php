@@ -4,8 +4,8 @@ namespace MetricsWave\Teams\Console\Commands;
 
 use App\Models\Dashboard;
 use App\Models\Trigger;
+use App\Models\User;
 use Illuminate\Console\Command;
-use MetricsWave\Users\User;
 
 class MigrateModelsToTeamsCommand extends Command
 {

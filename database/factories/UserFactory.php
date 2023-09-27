@@ -1,10 +1,10 @@
 <?php
 
-namespace Database\Factories\MetricsWave\Users;
+namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-use MetricsWave\Users\User;
 
 /**
  * @extends Factory<User>

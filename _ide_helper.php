@@ -2302,7 +2302,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Get the currently authenticated user.
          *
-         * @return \MetricsWave\Users\User|null
+         * @return \App\Models\User|null
          *
          * @static
          */
@@ -2343,7 +2343,7 @@ namespace Illuminate\Support\Facades {
          * Log the given user ID into the application without sessions or cookies.
          *
          * @param  mixed  $id
-         * @return \MetricsWave\Users\User|false
+         * @return \App\Models\User|false
          *
          * @static
          */
@@ -2437,7 +2437,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param  mixed  $id
          * @param  bool  $remember
-         * @return \MetricsWave\Users\User|false
+         * @return \App\Models\User|false
          *
          * @static
          */
@@ -2497,7 +2497,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param  string  $password
          * @param  string  $attribute
-         * @return \MetricsWave\Users\User|null
+         * @return \App\Models\User|null
          *
          * @throws \Illuminate\Auth\AuthenticationException
          *
@@ -2526,7 +2526,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Get the last user we attempted to authenticate.
          *
-         * @return \MetricsWave\Users\User
+         * @return \App\Models\User
          *
          * @static
          */
@@ -2661,7 +2661,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Return the currently cached user.
          *
-         * @return \MetricsWave\Users\User|null
+         * @return \App\Models\User|null
          *
          * @static
          */
@@ -2728,7 +2728,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Determine if the current user is authenticated. If not, throw an exception.
          *
-         * @return \MetricsWave\Users\User
+         * @return \App\Models\User
          *
          * @throws \Illuminate\Auth\AuthenticationException
          *

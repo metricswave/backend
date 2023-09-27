@@ -1,11 +1,9 @@
 <?php
 
-namespace MetricsWave\Users;
+namespace App\Models;
 
 use App\Events\CheckTriggerLimitUsage;
 use App\Events\UserCreated;
-use App\Models\MailLog;
-use App\Models\TokenAbility;
 use App\Notifications\TriggerNotification;
 use App\Services\CacheKey;
 use App\Transfers\ServiceId;
@@ -21,6 +19,7 @@ use Illuminate\Support\Facades\Cache;
 use Laravel\Sanctum\HasApiTokens;
 use MetricsWave\Metrics\MetricsInterface;
 use MetricsWave\Teams\Team;
+use MetricsWave\Users\UserService;
 
 /**
  * @property int $id

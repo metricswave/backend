@@ -3,12 +3,12 @@
 namespace App\Repositories;
 
 use App\Models\Trigger;
+use App\Models\User;
 use App\Transfers\Time;
 use App\Transfers\TriggerTypeId;
 use App\Transfers\Weekday;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
-use MetricsWave\Users\User;
 
 class TriggerRepository
 {

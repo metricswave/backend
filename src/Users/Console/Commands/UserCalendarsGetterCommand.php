@@ -3,10 +3,10 @@
 namespace MetricsWave\Users\Console\Commands;
 
 use App\Jobs\Calendar\UserServiceCalendarGetterJob;
+use App\Models\User;
 use App\Transfers\ServiceId;
 use Illuminate\Console\Command;
 use MetricsWave\Users\Repositories\UserServiceRepository;
-use MetricsWave\Users\User;
 use MetricsWave\Users\UserService;
 
 class UserCalendarsGetterCommand extends Command

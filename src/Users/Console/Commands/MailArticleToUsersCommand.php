@@ -7,9 +7,9 @@ use App\Console\Commands\UserMailCommand;
 use App\Mail\BlogArticleMail;
 use App\Models\Lead;
 use App\Models\MailLog;
+use App\Models\User;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
-use MetricsWave\Users\User;
 use Statamic\Entries\Entry;
 
 class MailArticleToUsersCommand extends Command
@@ -27,6 +27,11 @@ class MailArticleToUsersCommand extends Command
 
         $this->mailUsers($article);
         $this->mailLeads($article);
+    }
+
+    protected function mailType(): string
+    {
+        return 'blog-article-'.$this->argument('articleId');
     }
 
     private function mailUsers($article): void
@@ -47,11 +52,6 @@ class MailArticleToUsersCommand extends Command
         });
 
         $this->newLine(2);
-    }
-
-    protected function mailType(): string
-    {
-        return 'blog-article-'.$this->argument('articleId');
     }
 
     private function mailLeads($article): void

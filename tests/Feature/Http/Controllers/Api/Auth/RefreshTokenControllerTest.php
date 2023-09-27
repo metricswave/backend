@@ -1,7 +1,7 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
-use MetricsWave\Users\User;
 
 it('return a new token', function () {
     $user = User::factory()->create(['password' => Hash::make('password')]);

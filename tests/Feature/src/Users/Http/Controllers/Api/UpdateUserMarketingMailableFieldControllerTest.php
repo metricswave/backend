@@ -1,6 +1,6 @@
 <?php
 
-use MetricsWave\Users\User;
+use App\Models\User;
 
 use function Pest\Laravel\deleteJson;
 

@@ -2,6 +2,7 @@
 
 namespace MetricsWave\Users;
 
+use App\Models\User;
 use App\Transfers\ServiceId;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

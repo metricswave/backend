@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Api\Auth;
 
 use App\Http\Controllers\Api\JsonController;
 use App\Http\Requests\ForgotPasswordRequest;
+use App\Models\User;
 use App\Notifications\ResetPasswordNotification;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Password;
-use MetricsWave\Users\User;
 
 class ForgotPasswordController extends JsonController
 {

@@ -3,11 +3,11 @@
 namespace MetricsWave\Teams\Http\Controllers\Api;
 
 use App\Http\Controllers\Api\JsonController;
+use App\Models\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
 use MetricsWave\Teams\Team;
 use MetricsWave\Teams\TeamInvite;
-use MetricsWave\Users\User;
 
 class AcceptTeamInviteController extends JsonController
 {

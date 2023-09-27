@@ -1,7 +1,7 @@
 <?php
 
+use App\Models\User;
 use MetricsWave\Teams\TeamInvite;
-use MetricsWave\Users\User;
 
 it('accepts an invitation', function () {
     $email = fake()->email;

@@ -62,7 +62,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => \MetricsWave\Users\User::class,
+            'model' => \App\Models\User::class,
         ],
 
         // 'users' => [

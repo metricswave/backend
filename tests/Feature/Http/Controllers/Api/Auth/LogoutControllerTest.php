@@ -1,6 +1,6 @@
 <?php
 
-use MetricsWave\Users\User;
+use App\Models\User;
 
 it('successfully logs out a user', function () {
     $user = User::factory()->create(['password' => Hash::make('password')]);

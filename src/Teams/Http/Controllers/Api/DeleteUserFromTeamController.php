@@ -3,9 +3,9 @@
 namespace MetricsWave\Teams\Http\Controllers\Api;
 
 use App\Http\Controllers\Api\ApiAuthJsonController;
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use MetricsWave\Teams\Team;
-use MetricsWave\Users\User;
 
 class DeleteUserFromTeamController extends ApiAuthJsonController
 {

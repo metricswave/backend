@@ -1,6 +1,6 @@
 <?php
 
-use MetricsWave\Users\User;
+use App\Models\User;
 
 it('can impersonate a user', function () {
     $user = User::factory()->create(['id' => 1]);

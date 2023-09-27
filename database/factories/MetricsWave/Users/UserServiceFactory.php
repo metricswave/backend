@@ -2,8 +2,8 @@
 
 namespace Database\Factories\MetricsWave\Users;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use MetricsWave\Users\User;
 use MetricsWave\Users\UserService;
 
 /**

@@ -4,9 +4,9 @@ namespace MetricsWave\Users\Repositories;
 
 use App\Exceptions\CanNotCreateUserBecauseNoPaidLicence;
 use App\Models\Lead;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Hash;
-use MetricsWave\Users\User;
 
 class UserRepository
 {
@@ -15,11 +15,6 @@ class UserRepository
         return $this->builder()
             ->where('email', $email)
             ->firstOrFail();
-    }
-
-    private function builder(): Builder|User
-    {
-        return User::query();
     }
 
     public function userByToken(string $token): User
@@ -59,5 +54,10 @@ class UserRepository
             'email' => $email,
             'password' => Hash::make($password),
         ]);
+    }
+
+    private function builder(): Builder|User
+    {
+        return User::query();
     }
 }

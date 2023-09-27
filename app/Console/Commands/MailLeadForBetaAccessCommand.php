@@ -5,9 +5,9 @@ namespace App\Console\Commands;
 use App\Mail\BetaAccessMail;
 use App\Models\Lead;
 use App\Models\MailLog;
+use App\Models\User;
 use Illuminate\Console\Command;
 use Mail;
-use MetricsWave\Users\User;
 
 class MailLeadForBetaAccessCommand extends Command
 {

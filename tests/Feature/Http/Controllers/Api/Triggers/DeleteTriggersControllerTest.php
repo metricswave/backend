@@ -2,7 +2,7 @@
 
 use App\Models\Trigger;
 use App\Models\TriggerType;
-use MetricsWave\Users\User;
+use App\Models\User;
 
 it('delete a trigger', function () {
     [$user, $team] = user_with_team();

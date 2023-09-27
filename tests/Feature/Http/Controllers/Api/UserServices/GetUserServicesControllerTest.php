@@ -1,7 +1,7 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
-use MetricsWave\Users\User;
 use MetricsWave\Users\UserService;
 
 it('should return 200', function () {

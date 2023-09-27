@@ -1,7 +1,7 @@
 <?php
 
+use App\Models\User;
 use App\Notifications\ResetPasswordNotification;
-use MetricsWave\Users\User;
 
 use function Pest\Laravel\postJson;
 

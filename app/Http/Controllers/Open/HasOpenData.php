@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Open;
 
+use App\Models\User;
 use MetricsWave\Teams\Team;
-use MetricsWave\Users\User;
 
 trait HasOpenData
 {

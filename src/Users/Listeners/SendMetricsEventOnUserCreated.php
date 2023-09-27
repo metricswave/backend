@@ -3,8 +3,8 @@
 namespace MetricsWave\Users\Listeners;
 
 use App\Events\UserCreated;
+use App\Models\User;
 use Illuminate\Support\Facades\Http;
-use MetricsWave\Users\User;
 
 class SendMetricsEventOnUserCreated
 {

@@ -1,8 +1,8 @@
 <?php
 
 use App\Models\Dashboard;
+use App\Models\User;
 use MetricsWave\Teams\Team;
-use MetricsWave\Users\User;
 
 use function Pest\Laravel\assertDatabaseCount;
 

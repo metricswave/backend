@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api\Auth;
 
 use App\Http\Controllers\Api\JsonController;
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
-use MetricsWave\Users\User;
 
 class JsonTokenResponseController extends JsonController
 {

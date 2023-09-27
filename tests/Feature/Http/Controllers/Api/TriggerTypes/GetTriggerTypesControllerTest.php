@@ -1,8 +1,8 @@
 <?php
 
 use App\Models\TriggerType;
+use App\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
-use MetricsWave\Users\User;
 
 it('returns a list of trigger types', function () {
     $user = User::factory()->create();

@@ -3,6 +3,7 @@
 namespace MetricsWave\Users;
 
 use App\Events\UserServiceCreated;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

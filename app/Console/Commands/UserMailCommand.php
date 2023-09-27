@@ -3,9 +3,9 @@
 namespace App\Console\Commands;
 
 use App\Models\MailLog;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Support\Collection;
-use MetricsWave\Users\User;
 
 trait UserMailCommand
 {

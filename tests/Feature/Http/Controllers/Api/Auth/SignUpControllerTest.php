@@ -1,8 +1,8 @@
 <?php
 
 use App\Models\Lead;
+use App\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
-use MetricsWave\Users\User;
 
 it('return expected response', function () {
     Lead::factory()->create(['email' => 'victoor89@gmail.com', 'paid_at' => now()]);

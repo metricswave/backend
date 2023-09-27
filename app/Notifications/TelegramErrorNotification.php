@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Models\User;
 use App\Services\CacheKey;
 use App\Transfers\TelegramChannelErrors;
 use Cache;
@@ -9,7 +10,6 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
-use MetricsWave\Users\User;
 use MetricsWave\Users\UserService;
 
 class TelegramErrorNotification extends Notification implements ShouldQueue

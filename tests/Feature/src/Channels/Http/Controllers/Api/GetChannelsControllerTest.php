@@ -1,8 +1,8 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
 use MetricsWave\Channels\Channel;
-use MetricsWave\Users\User;
 
 use function Pest\Laravel\actingAs;
 

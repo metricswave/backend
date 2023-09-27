@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Api\Auth;
 
 use App\Http\Requests\ResetPasswordRequest;
+use App\Models\User;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use MetricsWave\Users\Repositories\UserRepository;
-use MetricsWave\Users\User;
 
 class ResetPasswordController extends JsonTokenResponseController
 {
