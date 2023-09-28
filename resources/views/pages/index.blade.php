@@ -21,7 +21,7 @@
               content="{{ $og_image }}"/>
     @else
         <meta property="og:image"
-              content="{{ config('app.url') }}/images/metricswave.png?v=20230612161011"/>
+              content="{{ safe_url(config('app.url').'/images/metricswave.png?v=20230612161011') }}"/>
     @endif
 
     <meta name="twitter:card"
@@ -35,7 +35,7 @@
               content="{{ $og_image }}"/>
     @else
         <meta name="twitter:image"
-              content="{{ config('app.url') }}/images/metricswave.png?v=20230612161011"/>
+              content="{{ safe_url(config('app.url').'/images/metricswave.png?v=20230612161011') }}"/>
     @endif
 @endsection
 
@@ -55,16 +55,16 @@
             @if($show_buttons)
                 <div class="flex flex-col sm:flex-row items-center justify-start gap-6 mt-8">
                     <a
-                            class="py-4 px-6 text-center bg-gradient-to-b from-slate-800 via-black to-black dark:from-zinc-800 dark:via-zinc-800 dark:to-zinc-800 hover:bg-gradient-to-b hover:from-slate-600 hover:via-slate-900 hover:to-black hover:dark:from-zinc-700 hover:dark:via-zinc-700 hover:dark:to-zinc-700 text-white block ml-0 rounded-lg shadow-lg hover:shadow smooth linkToApp w-full sm:w-auto"
-                            href="{{ config('app.web_app_url') }}"
+                        class="py-4 px-6 text-center bg-gradient-to-b from-slate-800 via-black to-black dark:from-zinc-800 dark:via-zinc-800 dark:to-zinc-800 hover:bg-gradient-to-b hover:from-slate-600 hover:via-slate-900 hover:to-black hover:dark:from-zinc-700 hover:dark:via-zinc-700 hover:dark:to-zinc-700 text-white block ml-0 rounded-lg shadow-lg hover:shadow smooth linkToApp w-full sm:w-auto"
+                        href="{{ config('app.web_app_url') }}"
                     >
                         {!! $buttonText ?? 'Start Tracking <span class="hidden md:inline">my Product </span>for Free →' !!}
                     </a>
 
                     <a
-                            class="py-4 px-6 opacity-60 hover:opacity-100 smooth border rounded-lg w-full sm:w-auto text-center"
-                            href="https://app.metricswave.com/fUwWlrz6Xhedh12/metricswave.com?compare=1&period=7d"
-                            target="_blank"
+                        class="py-4 px-6 opacity-60 hover:opacity-100 smooth border rounded-lg w-full sm:w-auto text-center"
+                        href="https://app.metricswave.com/fUwWlrz6Xhedh12/metricswave.com?compare=1&period=7d"
+                        target="_blank"
                     >
                         Live Demo
                     </a>

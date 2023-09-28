@@ -21,7 +21,7 @@
               content="{{ $page->og_image }}"/>
     @else
         <meta property="og:image"
-              content="{{ config('app.url') }}/images/metricswave.png?v=20230612161011"/>
+              content="{{ safe_url(config('app.url').'/images/metricswave.png?v=20230612161011') }}"/>
     @endif
 
     <meta name="twitter:card"
@@ -35,7 +35,7 @@
               content="{{ $page->og_image }}"/>
     @else
         <meta property="twitter:image"
-              content="{{ config('app.url') }}/images/metricswave.png?v=20230612161011"/>
+              content="{{ safe_url(config('app.url').'/images/metricswave.png?v=20230612161011') }}"/>
     @endif
 @endsection
 
