@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'repository' => 'eloquent',
+    'repository' => 'file',
 
     'repositories' => [
 
@@ -134,7 +134,7 @@ return [
     */
 
     'guards' => [
-        'cp' => 'web',
+        'cp' => 'statamic',
         'web' => 'web',
     ],
 

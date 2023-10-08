@@ -4,8 +4,8 @@ blueprint: documentation
 title: 'Integrations: Next.js'
 short_content: 'The React Framework for the Web.'
 parent: 515e68b9-1b87-4a82-80d6-f614c1a536f3
-updated_by: 1
-updated_at: 1687768038
+updated_by: 6ee8895a-52f6-44a1-a772-a0e7f04692b7
+updated_at: 1696755152
 table_of_contents: |-
   <ul class="table-of-contents">
   <li class="">
@@ -16,7 +16,6 @@ table_of_contents: |-
   </li>
   </ul>
 ---
-
 [Next.js](https://nextjs.org/) is a react framework for the Web. It enables you to create full-stack web applications by
 extending the latest React features.
 
@@ -48,7 +47,7 @@ extend the app from this component.
 ## How to trigger events
 
 To trigger events whenever you want you will need to
-use [the API](http://metricswave.test/documentation/tracking/events).
+use [the API](/documentation/tracking/events).
 
 You have multiple options to do this, but a simple one it's to create a function like the next and use it everywhere in
 your application.
