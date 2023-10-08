@@ -3,12 +3,18 @@ id: e6248cc2-7855-480f-aad5-ea148eae478d
 blueprint: documentation
 title: 'Integration: Google Tag Manager'
 short_content: 'You can use Google Tag Manager to add MetricsWave tracking code in your website easily.'
-updated_by: 1
-updated_at: 1694758733
+updated_by: 6ee8895a-52f6-44a1-a772-a0e7f04692b7
+updated_at: 1696757211
 table_of_contents: |-
   <ul class="table-of-contents">
   <li class="">
   <p><a href="#how-to-add-the-script-to-your-site-with-google-tag-manager" title="How to add the script to your site with Google Tag Manager">How to add the script to your site with Google Tag Manager</a></p>
+  </li>
+  <li class="">
+  <p><a href="#how-to-create-a-custom-event" title="How to create a custom event">How to create a custom event</a></p>
+  </li>
+  <li class="">
+  <p><a href="#how-to-create-a-custom-funnel-with-google-tag-manager" title="How to create a custom funnel with Google Tag Manager">How to create a custom funnel with Google Tag Manager</a></p>
   </li>
   <li class="">
   <p><a href="#how-to-find-your-event-uuid" title="How to find your event UUID">How to find your event UUID</a></p>
@@ -34,6 +40,39 @@ In a few and simple steps you can add MetricsWave script to all your sites with 
 </script>
 ```
 4. Save, Submit and Publish your new tag.
+
+---
+
+## How to create a custom event
+
+If you already have the script to track your visits in your website it's super simple to create custom funnels.
+
+You just need to add the following script every time you want to log the event:
+
+```html
+<script>
+  window.metricswave('EVENT UUID', {amount: 1})
+</script>
+```
+
+---
+
+## How to create a custom funnel with Google Tag Manager
+
+If you already have the script to track your visits in your website it's super simple to create custom funnels.
+
+You just need to add the following script to each step on your funnel:
+
+```html
+<script>
+  window.metricswave('EVENT UUID', {
+    step: 'STEP', 
+    user_id: 0
+  })
+</script>
+```
+
+---
 
 ## How to find your event UUID
 

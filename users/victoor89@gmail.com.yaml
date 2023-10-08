@@ -2,3 +2,7 @@ name: 'Víctor Falcón'
 super: true
 id: 6ee8895a-52f6-44a1-a772-a0e7f04692b7
 password_hash: $2y$10$m6mZcbhv61uQlh.9v4dsjuWfDJ2EaYNtSSkha9tUsiQY.a1N79Zuu
+preferences:
+  collections:
+    documentation:
+      after_save: continue_editing
