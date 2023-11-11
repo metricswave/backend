@@ -55,6 +55,10 @@ class TeamTriggerNotificationJob implements ShouldQueue
             ->filter(fn ($via) => $via['checked'] && $via['type'] === 'telegram')
             ->map(fn ($via) => $via['id']);
 
+        if ($serviceIds->isEmpty()) {
+            return;
+        }
+
         $telegramChannels = $this->team->channels()->whereIn('id', $serviceIds)->get();
 
         foreach ($telegramChannels as $telegramChannel) {
