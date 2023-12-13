@@ -62,7 +62,7 @@
                     </a>
 
                     <a
-                        class="py-4 px-6 opacity-60 hover:opacity-100 smooth border rounded-lg w-full sm:w-auto text-center"
+                        class="py-4 px-6 opacity-60 hover:opacity-100 smooth border rounded-lg w-full sm:w-auto text-center metricswave-event-uuid--6337915a-0498-4e42-baeb-ad57b9bcc541 metricswave-event-param-location--Page"
                         href="https://app.metricswave.com/fUwWlrz6Xhedh12/metricswave.com?compare=1&period=7d"
                         target="_blank"
                     >
