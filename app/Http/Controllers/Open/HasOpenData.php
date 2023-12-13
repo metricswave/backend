@@ -13,13 +13,19 @@ trait HasOpenData
 
         $firstDayWithStats = now()->year === 2023 ? 126 : 0;
         $yearlyEstimation = (
-            visitsService(Team::class, Team::TRIGGER_NOTIFICATION)->period('year')->count()
-            / (now()->dayOfYear - $firstDayWithStats)
+            (
+                visitsService(Team::class, Team::TRIGGER_NOTIFICATION)->period('year')->count()
+                + $previousUserData['notifications']['yearly']
+            ) / (now()->dayOfYear - $firstDayWithStats)
             * 365
         );
 
         return [
             'notifications' => [
+                'daily' => format_long_numbers(
+                    visitsService(Team::class, Team::TRIGGER_NOTIFICATION)->period('day')->count()
+                    + $previousUserData['notifications']['daily']
+                ),
                 'weekly' => format_long_numbers(
                     visitsService(Team::class, Team::TRIGGER_NOTIFICATION)->period('week')->count()
                     + $previousUserData['notifications']['weekly']
@@ -29,7 +35,7 @@ trait HasOpenData
                     + $previousUserData['notifications']['monthly']
                 ),
                 'yearly' => format_long_numbers(
-                    $yearlyEstimation + $previousUserData['notifications']['yearly']
+                    $yearlyEstimation
                 ),
             ],
         ];
@@ -37,18 +43,12 @@ trait HasOpenData
 
     public function getOpenUserData(): array
     {
-        $firstDayWithStats = now()->year === 2023 ? 126 : 0;
-        $yearlyEstimation = (
-            visitsService(User::class, User::TRIGGER_NOTIFICATION)->period('year')->count()
-            / (now()->dayOfYear - $firstDayWithStats)
-            * 365
-        );
-
         return [
             'notifications' => [
+                'daily' => visitsService(User::class, User::TRIGGER_NOTIFICATION)->period('day')->count(),
                 'weekly' => visitsService(User::class, User::TRIGGER_NOTIFICATION)->period('week')->count(),
                 'monthly' => visitsService(User::class, User::TRIGGER_NOTIFICATION)->period('month')->count(),
-                'yearly' => $yearlyEstimation,
+                'yearly' => visitsService(User::class, User::TRIGGER_NOTIFICATION)->period('year')->count()
             ],
         ];
     }

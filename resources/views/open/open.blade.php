@@ -10,6 +10,12 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-10 mt-10 mb-24 sm:mb-0">
             <div class="flex flex-col space-y-3 p-6 border dark:border-zinc-600 rounded-sm w-full aspect-square items-center justify-center">
                 <div class="text-6xl"
+                     id="weekly">{{ $notifications['daily'] }}</div>
+                <div class="text-center">Today's Events</div>
+            </div>
+
+            <div class="flex flex-col space-y-3 p-6 border dark:border-zinc-600 rounded-sm w-full aspect-square items-center justify-center">
+                <div class="text-6xl"
                      id="weekly">{{ $notifications['weekly'] }}</div>
                 <div class="text-center">Current Week Events</div>
             </div>
