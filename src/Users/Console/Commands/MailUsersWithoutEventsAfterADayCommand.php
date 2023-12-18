@@ -14,7 +14,7 @@ class MailUsersWithoutEventsAfterADayCommand extends Command
 {
     private const MAIL_TYPE = 'users_without_events';
 
-    protected $signature = 'app:users:mail-without-events {email?} {{--sub-days=1}}';
+    protected $signature = 'app:users:mail-without-events {email?} {--sub-days=1}';
 
     protected $description = 'Mail users without events after a day of registration';
 
