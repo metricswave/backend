@@ -3,6 +3,7 @@
 namespace MetricsWave\Metrics\Infrastructure;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\UniqueConstraintViolationException;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use MetricsWave\Metrics\Models\Visit;
@@ -126,30 +127,41 @@ class MetricsEloquentConnection implements MetricsConnection
         $row->save();
     }
 
-    public function incrementWithExpiration(string $key, mixed $inc, mixed $id, int $expireInSeconds): void
-    {
+    public function incrementWithExpiration(
+        string $key,
+        mixed $inc,
+        mixed $id,
+        int $expireInSeconds,
+        int $attempt = 0
+    ): void {
         $expiredAt = Carbon::now()->addSeconds($expireInSeconds);
+
+        $secondaryKey = (! empty($id) || is_numeric($id)) ? $id : null;
 
         $row = $this->query()
             ->where('primary_key', self::PREFIX.$key)
-            ->when(
-                (! empty($id) || is_numeric($id)),
-                fn ($query) => $query->where('secondary_key', $id),
-                fn ($query) => $query->whereNull('secondary_key')
-            )
+            ->where('secondary_key', $secondaryKey)
             ->whereDate('expired_at', $expiredAt)
             ->first();
 
         if ($row === null) {
             $row = new Visit([
                 'primary_key' => self::PREFIX.$key,
-                'secondary_key' => (! empty($id) || is_numeric($id)) ? $id : null,
+                'secondary_key' => $secondaryKey,
                 'expired_at' => $expiredAt,
                 'score' => 0,
             ]);
         }
 
         $row->score += $inc;
-        $row->save();
+
+        try {
+            $row->save();
+        } catch (UniqueConstraintViolationException $e) {
+            if ($attempt >= 3) throw $e;
+
+            sleep(100);
+            $this->incrementWithExpiration($key, $inc, $id, $expireInSeconds, $attempt + 1);
+        }
     }
 }
