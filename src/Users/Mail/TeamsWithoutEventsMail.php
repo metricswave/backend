@@ -2,30 +2,30 @@
 
 namespace MetricsWave\Users\Mail;
 
-use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use MetricsWave\Teams\Team;
 
-class UsersWithoutEventsMail extends Mailable
+class TeamsWithoutEventsMail extends Mailable
 {
     use Queueable;
     use SerializesModels;
 
     private string $uuid;
 
-    public function __construct(private readonly User $user)
+    public function __construct(private readonly Team $team)
     {
-        $this->uuid = $this->user->triggers()->first()->uuid;
+        $this->uuid = $this->team->triggers()->first()->uuid;
     }
 
     public function envelope(): Envelope
     {
         return new Envelope(
             from: 'victor@metricswave.com',
-            to: $this->user->email,
+            to: $this->team->owner->email,
             subject: 'Do you need help?',
         );
     }
@@ -33,9 +33,10 @@ class UsersWithoutEventsMail extends Mailable
     public function content(): Content
     {
         return (new Content(
-            text: 'mail.user_without_events',
+            text: 'mail.team_without_events',
         ))
             ->with('uuid', $this->uuid)
-            ->with('name', $this->user->first_name);
+            ->with('name', $this->team->owner->name)
+            ->with('domain', $this->team->domain);
     }
 }

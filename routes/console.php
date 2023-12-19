@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Artisan;
 use MetricsWave\Teams\Console\Commands\MigrateModelsToTeamsCommand;
 use MetricsWave\Users\Console\Commands\MailArticleToUsersCommand;
-use MetricsWave\Users\Console\Commands\MailUsersWithoutEventsAfterADayCommand;
+use MetricsWave\Users\Console\Commands\MailTeamsWithoutEventsAfterADayCommand;
 use MetricsWave\Users\Console\Commands\UserCalendarsGetterCommand;
 use MetricsWave\Users\Console\Commands\UserLifetimeLicenceMailCommand;
 use MetricsWave\Users\Console\Commands\UserRoadmapMailCommand;
@@ -24,7 +24,7 @@ Artisan::registerCommand(new MigrateModelsToTeamsCommand());
 
 // Users
 Artisan::registerCommand(new MailArticleToUsersCommand());
-Artisan::registerCommand(new MailUsersWithoutEventsAfterADayCommand());
+Artisan::registerCommand(new MailTeamsWithoutEventsAfterADayCommand());
 Artisan::registerCommand(new UserCalendarsGetterCommand());
 Artisan::registerCommand(new UserLifetimeLicenceMailCommand());
 Artisan::registerCommand(new UserRoadmapMailCommand());
