@@ -7,25 +7,25 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
-use MetricsWave\Teams\Team;
 
 class TeamsWithoutEventsMail extends Mailable
 {
     use Queueable;
     use SerializesModels;
 
-    private string $uuid;
-
-    public function __construct(private readonly Team $team)
-    {
-        $this->uuid = $this->team->triggers()->first()->uuid;
+    public function __construct(
+        private string $triggerUuid,
+        private string $ownerName,
+        private string $ownerEmail,
+        private string $domain,
+    ) {
     }
 
     public function envelope(): Envelope
     {
         return new Envelope(
             from: 'victor@metricswave.com',
-            to: $this->team->owner->email,
+            to: $this->ownerEmail,
             subject: 'Do you need help?',
         );
     }
@@ -35,8 +35,8 @@ class TeamsWithoutEventsMail extends Mailable
         return (new Content(
             text: 'mail.team_without_events',
         ))
-            ->with('uuid', $this->uuid)
-            ->with('name', $this->team->owner->name)
-            ->with('domain', $this->team->domain);
+            ->with('uuid', $this->triggerUuid)
+            ->with('name', $this->ownerName)
+            ->with('domain', $this->domain);
     }
 }

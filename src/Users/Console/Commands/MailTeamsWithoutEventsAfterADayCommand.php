@@ -23,7 +23,16 @@ class MailTeamsWithoutEventsAfterADayCommand extends Command
         $teams = $this->getTeams((int) $this->option('sub-days'), $this->argument('email'));
 
         $this->withProgressBar($teams, function (Team $team) {
-            Mail::send(new TeamsWithoutEventsMail($team));
+            if ($team->triggers()->first() === null) {
+                return;
+            }
+
+            Mail::send(new TeamsWithoutEventsMail(
+                $team->triggers()->first()->uuid,
+                $team->owner->name,
+                $team->owner->email,
+                $team->domain,
+            ));
         });
 
         $this->newLine(2);
