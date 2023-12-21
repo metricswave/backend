@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('horizon:snapshot')->everyFiveMinutes();
 
         // Mails
-        $schedule->command('app:teams:mail-without-events --sub-days=1')->twiceDaily(10, 18);
+        // $schedule->command('app:teams:mail-without-events --sub-days=1')->twiceDaily(10, 18);
 
         // Fake ecommerce
         // $schedule->command('app:fake:ecommerce-visits')->everyFiveMinutes();
