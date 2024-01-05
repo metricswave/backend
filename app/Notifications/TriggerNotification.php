@@ -4,6 +4,7 @@ namespace App\Notifications;
 
 use App\Models\Trigger;
 use App\Services\CacheKey;
+use Carbon\CarbonImmutable;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -23,7 +24,8 @@ class TriggerNotification extends Notification implements ShouldQueue
 
     public function __construct(
         public readonly Trigger $trigger,
-        public readonly array $params = []
+        public readonly array $params = [],
+        public readonly CarbonImmutable $notifiedAt = new CarbonImmutable(),
     ) {
         $this->title = $trigger->formattedTitle($params);
         $this->content = $trigger->formattedContent($params);
@@ -38,7 +40,7 @@ class TriggerNotification extends Notification implements ShouldQueue
         //     return ['database'];
         // }
 
-        $this->trigger->visits()->increment();
+        $this->trigger->visits()->increment(date: $this->notifiedAt);
 
         $params = $this->params;
 
@@ -48,14 +50,14 @@ class TriggerNotification extends Notification implements ShouldQueue
                 unset($params['deviceName']);
 
                 if (! Cache::has($cacheKey)) {
-                    $this->trigger->visits(Trigger::UNIQUE_VISITS)->increment();
+                    $this->trigger->visits(Trigger::UNIQUE_VISITS)->increment(date: $this->notifiedAt);
                     Cache::put($cacheKey, true, now()->endOfDay());
                 }
             }
 
             if (isset($params['visit'])) {
                 if ($params['visit'] === 1 || $params['visit'] === '1') {
-                    $this->trigger->visits(Trigger::NEW_VISITS)->increment();
+                    $this->trigger->visits(Trigger::NEW_VISITS)->increment(date: $this->notifiedAt);
                 }
                 unset($params['visit']);
             }

@@ -2,6 +2,7 @@
 
 namespace MetricsWave\Metrics;
 
+use Carbon\CarbonInterface;
 use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
@@ -130,13 +131,13 @@ class Metrics implements MetricsInterface
             ->values();
     }
 
-    public function increment($inc = 1): void
+    public function increment($inc = 1, CarbonInterface $date = null): void
     {
         $this->connection->increment($this->keys->visits, $inc, $this->keys->id);
         $this->connection->increment($this->keys->visitsTotal(), $inc);
 
         foreach (self::PERIODS as $period) {
-            $expireInSeconds = $this->newExpiration($period);
+            $expireInSeconds = $this->newExpiration($period, $date);
             $periodKey = $this->keys->period($period);
 
             $this->connection->incrementWithExpiration($periodKey, $inc, $this->keys->id, $expireInSeconds);
@@ -144,10 +145,11 @@ class Metrics implements MetricsInterface
         }
     }
 
-    protected function newExpiration($period): int
+    protected function newExpiration($period, CarbonInterface $date = null): int
     {
         try {
-            $periodCarbon = $this->xHoursPeriod($period) ?? Carbon::now()->{'endOf'.Str::studly($period)}();
+            $date = $date ?? Carbon::now();
+            $periodCarbon = $this->xHoursPeriod($period, $date) ?? $date->{'endOf'.Str::studly($period)}();
         } catch (Exception $e) {
             throw new Exception("Wrong period: `{$period}`! please update config/visits.php file.");
         }
@@ -155,12 +157,14 @@ class Metrics implements MetricsInterface
         return $periodCarbon->diffInSeconds() + 1;
     }
 
-    protected function xHoursPeriod($period)
+    protected function xHoursPeriod($period, CarbonInterface $date = null)
     {
+        $date = $date ?? Carbon::now();
+
         preg_match('/([\d]+)\s?([\w]+)/', $period, $match);
 
         return isset($match[2]) && isset($match[1]) && $match[2] == 'hours' && $match[1] < 12
-            ? Carbon::now()->endOfxHours((int) $match[1])
+            ? $date->endOfxHours((int) $match[1])
             : null;
     }
 
@@ -172,7 +176,7 @@ class Metrics implements MetricsInterface
         return $this;
     }
 
-    public function recordParams(array $params, int $inc = 1): void
+    public function recordParams(array $params, int $inc = 1, CarbonInterface $date = null): void
     {
         foreach ($params as $param => $value) {
             if (Str::of($value)->length() > 255) {
@@ -192,7 +196,7 @@ class Metrics implements MetricsInterface
             foreach (self::PERIODS as $period) {
                 $periodKey = $this->keys->period($period);
                 $periodKey = "{$periodKey}_{$key}:{$this->keys->id}";
-                $expireInSeconds = $this->newExpiration($period);
+                $expireInSeconds = $this->newExpiration($period, $date);
 
                 $this->connection->incrementWithExpiration($periodKey, $inc, $value, $expireInSeconds);
                 $this->connection->incrementWithExpiration($periodKey.'_total', $inc, $value, $expireInSeconds);

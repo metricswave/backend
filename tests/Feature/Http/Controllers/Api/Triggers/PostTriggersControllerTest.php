@@ -129,6 +129,8 @@ it('creates a trigger updating time to UTC', function () {
             ]
         )->assertCreated();
 
+    $expectedTime = now()->setTime(10, 0)->setTimezone('Europe/Madrid')->format('H:i');
+
     $this->assertDatabaseHas('triggers', [
         'uuid' => $uuid,
         'team_id' => $team->id,
@@ -138,7 +140,7 @@ it('creates a trigger updating time to UTC', function () {
         'content' => 'This is a test trigger',
         'configuration' => cast_to_json([
             'fields' => [
-                'time' => '10:00',
+                'time' => $expectedTime,
                 'weekdays' => ['monday', 'tuesday'],
             ],
         ]),
