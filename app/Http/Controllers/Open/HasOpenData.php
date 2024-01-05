@@ -11,15 +11,6 @@ trait HasOpenData
     {
         $previousUserData = $this->getOpenUserData();
 
-        $firstDayWithStats = now()->year === 2023 ? 126 : 0;
-        $yearlyEstimation = (
-            (
-                visitsService(Team::class, Team::TRIGGER_NOTIFICATION)->period('year')->count()
-                + $previousUserData['notifications']['yearly']
-            ) / (now()->dayOfYear - $firstDayWithStats)
-            * 365
-        );
-
         return [
             'notifications' => [
                 'daily' => format_long_numbers(
@@ -35,7 +26,8 @@ trait HasOpenData
                     + $previousUserData['notifications']['monthly']
                 ),
                 'yearly' => format_long_numbers(
-                    $yearlyEstimation
+                    visitsService(Team::class, Team::TRIGGER_NOTIFICATION)->period('year')->count()
+                    + $previousUserData['notifications']['yearly']
                 ),
             ],
         ];
