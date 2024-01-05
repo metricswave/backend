@@ -5,7 +5,6 @@ namespace App\Notifications;
 use App\Models\Trigger;
 use App\Services\CacheKey;
 use Carbon\CarbonImmutable;
-use Carbon\CarbonInterface;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -20,12 +19,12 @@ class TriggerNotification extends Notification implements ShouldQueue
     public readonly string $title;
     public readonly string $content;
     public readonly string $emoji;
-    public readonly CarbonInterface $notifiedAt;
+    public ?CarbonImmutable $notifiedAt = null;
 
     public function __construct(
         public readonly Trigger $trigger,
         public readonly array $params = [],
-        ?CarbonInterface $notifiedAt = null,
+        ?CarbonImmutable $notifiedAt = null,
     ) {
         $this->title = $trigger->formattedTitle($params);
         $this->content = $trigger->formattedContent($params);
@@ -35,13 +34,9 @@ class TriggerNotification extends Notification implements ShouldQueue
 
     public function via(object $notifiable): array
     {
-        // todo: uncomment this when we have a billing system
-        // $user = $this->trigger->user;
-        // if ($user->triggerNotificationVisitsLimitReached()) {
-        //     return ['database'];
-        // }
+        $notifiedAt = $this->notifiedAt ?? CarbonImmutable::now();
 
-        $this->trigger->visits()->increment(date: $this->notifiedAt);
+        $this->trigger->visits()->increment(date: $notifiedAt);
 
         $params = $this->params;
 
@@ -51,14 +46,14 @@ class TriggerNotification extends Notification implements ShouldQueue
                 unset($params['deviceName']);
 
                 if (! Cache::has($cacheKey)) {
-                    $this->trigger->visits(Trigger::UNIQUE_VISITS)->increment(date: $this->notifiedAt);
+                    $this->trigger->visits(Trigger::UNIQUE_VISITS)->increment(date: $notifiedAt);
                     Cache::put($cacheKey, true, now()->endOfDay());
                 }
             }
 
             if (isset($params['visit'])) {
                 if ($params['visit'] === 1 || $params['visit'] === '1') {
-                    $this->trigger->visits(Trigger::NEW_VISITS)->increment(date: $this->notifiedAt);
+                    $this->trigger->visits(Trigger::NEW_VISITS)->increment(date: $notifiedAt);
                 }
                 unset($params['visit']);
             }
