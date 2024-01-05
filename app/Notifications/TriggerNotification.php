@@ -5,6 +5,7 @@ namespace App\Notifications;
 use App\Models\Trigger;
 use App\Services\CacheKey;
 use Carbon\CarbonImmutable;
+use Carbon\CarbonInterface;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -17,19 +18,19 @@ class TriggerNotification extends Notification implements ShouldQueue
     use Queueable;
 
     public readonly string $title;
-
     public readonly string $content;
-
     public readonly string $emoji;
+    public readonly CarbonInterface $notifiedAt;
 
     public function __construct(
         public readonly Trigger $trigger,
         public readonly array $params = [],
-        public readonly CarbonImmutable $notifiedAt = new CarbonImmutable(),
+        ?CarbonInterface $notifiedAt = null,
     ) {
         $this->title = $trigger->formattedTitle($params);
         $this->content = $trigger->formattedContent($params);
         $this->emoji = $trigger->formattedEmoji($params);
+        $this->notifiedAt = $notifiedAt ?? CarbonImmutable::now();
     }
 
     public function via(object $notifiable): array
