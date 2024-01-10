@@ -53,7 +53,7 @@
 
     d.querySelectorAll("[class*='metricswave-event-uuid--']").forEach((item) => {
         item.addEventListener('click', (e) => {
-            const cn = e.target.className
+            const cn = e.currentTarget.className
 
             const u = cn.match(/metricswave-event-uuid--([a-zA-Z0-9\-]+)/)[1]
             const params = (cn.match(/metricswave-event-param-([a-z0-9\-]+)--([a-zA-Z0-9\-\+]+)/g) ?? [])
