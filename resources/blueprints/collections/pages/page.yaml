@@ -103,6 +103,18 @@ tabs:
                             hide_display: false
                             validate:
                               - required
+                        -
+                          handle: asset_url
+                          field:
+                            input_type: text
+                            antlers: false
+                            type: text
+                            display: asset_url
+                            icon: text
+                            listable: hidden
+                            instructions_position: above
+                            visibility: visible
+                            hide_display: false
               type: replicator
               display: 'Partner Logos'
               icon: replicator

@@ -84,7 +84,7 @@
                                 @foreach($page->partner_logos ?? [] as $i => $logo)
                                     <a href="{{ $logo->url }}"
                                        class="scale-95 grayscale transition-all duration-300 hover:grayscale-0 hover:scale-100 dark:hidden max-w-[150px] h-auto">
-                                        <img src="{{ $logo["logo"] }}"
+                                        <img src="{{ $logo["asset_url"] }}"
                                              alt="{{ $logo->title }}"
                                              class="max-w-full mx-auto"/>
                                     </a>
