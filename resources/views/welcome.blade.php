@@ -60,7 +60,10 @@
                             class="py-4 px-6 text-center bg-gradient-to-b from-slate-800 via-black to-black dark:from-zinc-800 dark:via-zinc-800 dark:to-zinc-800 hover:bg-gradient-to-b hover:from-slate-600 hover:via-slate-900 hover:to-black hover:dark:from-zinc-700 hover:dark:via-zinc-700 hover:dark:to-zinc-700 text-white block ml-0 rounded-lg shadow-lg hover:shadow smooth linkToApp w-full sm:w-auto"
                             href="{{ config('app.web_app_url') }}"
                         >
-                            {!! $buttonText ?? 'Start Tracking <span class="hidden md:inline">my Product </span>for Free →' !!}
+                            {!!
+                              $buttonText ??
+                              'Start Tracking <span class="hidden md:inline">my Product </span>for Free →'
+                            !!}
                         </a>
 
                         <a
@@ -71,13 +74,29 @@
                             Live Demo
                         </a>
                     </div>
+
+                    @if(count($page->partner_logos) > 0)
+                        <div class="flex flex-row items-start gap-5 pt-20 opacity-70">
+                            <h6>Some of our customers</h6>
+                        </div>
+                        <div class="flex flex-row items-center justify-start gap-5 pt-5 pb-0">
+                            @foreach($page->partner_logos ?? [] as $i => $logo)
+                                <a href="{{ $logo->url }}"
+                                   class="scale-95 grayscale transition-all duration-300 hover:grayscale-0 hover:scale-100 dark:hidden max-w-[150px] h-auto">
+                                    <img src="{{ $logo->logo }}"
+                                         alt="{{ $logo->title }}"
+                                         class="max-w-full mx-auto"/>
+                                </a>
+                            @endforeach
+                        </div>
+                    @endif
                 @endif
 
             </div>
         </div>
 
         <div id="eu"
-             class="animate-[out_2.25s,_fade-in-down_1.5s_ease-out_2.25s] relative w-full border-b soft-border px-app">
+             class="animate-[out_2.25s,_fade-in-down_1.5s_ease-out_2.25s] relative w-full border-b soft-border px-app !mt-0">
             <div class="mw-landing mx-auto mb-16 sm:mb-32">
                 <h2 class="text-2xl sm:text-3xl font-medium mb-4 !leading-snug max-w-[30ch]">
                     No cookies, fully compliant with GDPR, CCPA and PECR.

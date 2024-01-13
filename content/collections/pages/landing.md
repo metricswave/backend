@@ -4,8 +4,8 @@ published: false
 blueprint: page
 title: '[Unpublished] Langing'
 show_buttons: true
-updated_by: 1
-updated_at: 1693725619
+updated_by: 6ee8895a-52f6-44a1-a772-a0e7f04692b7
+updated_at: 1705165898
 seo_title: 'An Event-Driven Google Analytics Alternative'
 seo_description: 'MetricsWave is a lightweight and privacy-friendly Google Analytics alternative. Seamless Integration for any Website or App.'
 hero_content: "Don't compromise your visitor. We provide easy to use and respectful website analytics."
@@ -71,4 +71,40 @@ structured_content:
     type: section_with_image
     enabled: true
     title: 'Seamless Integration.'
+partner_logos:
+  -
+    id: lrcb4tqh
+    title: Basikko
+    url: 'https://basikko.com/'
+    logo: partners/basikko.png
+    type: partner
+    enabled: true
+  -
+    id: lrcbmj4x
+    title: Kanilleras
+    url: 'https://canillerasencanarias.com/'
+    logo: partners/kanilleras.png
+    type: partner
+    enabled: true
+  -
+    id: lrcbok5y
+    title: '3com Marketing'
+    url: 'https://3commarketing.com/'
+    logo: partners/3com.png
+    type: partner
+    enabled: true
+  -
+    id: lrcbp5r7
+    title: PaTuMovil
+    url: 'https://patumovil.com/'
+    logo: partners/patumovil.png
+    type: partner
+    enabled: true
+  -
+    id: lrcbpopd
+    title: BuyMuscle
+    url: 'https://tienda.buymuscle.es/'
+    logo: partners/buymuscle.png
+    type: partner
+    enabled: true
 ---

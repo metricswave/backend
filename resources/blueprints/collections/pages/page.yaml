@@ -39,6 +39,79 @@ tabs:
               visibility: visible
               hide_display: false
           -
+            handle: partner_logos
+            field:
+              collapse: false
+              previews: true
+              fullscreen: true
+              sets:
+                new_set_group:
+                  display: 'New Set Group'
+                  instructions: null
+                  icon: null
+                  sets:
+                    partner:
+                      display: Partner
+                      instructions: null
+                      icon: null
+                      fields:
+                        -
+                          handle: title
+                          field:
+                            input_type: text
+                            antlers: false
+                            type: text
+                            display: Title
+                            icon: text
+                            listable: hidden
+                            instructions_position: above
+                            visibility: visible
+                            hide_display: false
+                        -
+                          handle: url
+                          field:
+                            input_type: url
+                            placeholder: 'https://'
+                            default: 'https://'
+                            autocomplete: url
+                            antlers: false
+                            type: text
+                            display: URL
+                            icon: text
+                            listable: hidden
+                            instructions_position: above
+                            visibility: visible
+                            hide_display: false
+                        -
+                          handle: logo
+                          field:
+                            max_files: 1
+                            min_files: 1
+                            mode: list
+                            container: images
+                            restrict: false
+                            allow_uploads: true
+                            show_filename: true
+                            show_set_alt: true
+                            type: assets
+                            display: Logo
+                            icon: assets
+                            instructions: 'Dimensions: 400 x 180 pixels'
+                            listable: hidden
+                            instructions_position: above
+                            visibility: visible
+                            hide_display: false
+                            validate:
+                              - required
+              type: replicator
+              display: 'Partner Logos'
+              icon: replicator
+              instructions: 'Add some partner images, with title and link.'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              hide_display: false
+          -
             handle: structured_content
             field:
               collapse: false
