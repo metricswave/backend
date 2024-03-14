@@ -12,7 +12,6 @@ it('return current user', function () {
     actingAs($user)
         ->getJson('/api/users')
         ->assertSuccessful()
-        ->dump()
         ->assertJson(fn (AssertableJson $json) => $json
             ->has('data', fn (AssertableJson $json) => $json
                 ->hasAll([
