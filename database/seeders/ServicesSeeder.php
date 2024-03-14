@@ -13,22 +13,6 @@ class ServicesSeeder extends Seeder
         Service::query()
             ->updateOrCreate(
                 [
-                    'id' => ServiceId::Github->value,
-                    'driver' => 'github',
-                ],
-                [
-                    'name' => 'GitHub',
-                    'description' => 'GitHub is a web-based hosting service for version control.',
-                    'scopes' => ['read:user', 'notifications', 'user:email'],
-                    'configuration' => [
-                        'type' => 'oauth',
-                    ]
-                ]
-            );
-
-        Service::query()
-            ->updateOrCreate(
-                [
                     'id' => ServiceId::Google->value,
                     'driver' => 'google',
                 ],

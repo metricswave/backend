@@ -17,14 +17,14 @@ class PostUserDefaultsController extends ApiAuthJsonController
     public function __invoke(): JsonResponse
     {
         if ($this->user()->ownedTeams()->count() > 0) {
-            return $this->noContentResponse();
+            $team = $this->user()->ownedTeams()->first();
+        } else {
+            /** @var Team $team */
+            $team = $this->user()->ownedTeams()->create([
+                'domain' => 'default.dev',
+                'initiated' => false,
+            ]);
         }
-
-        /** @var Team $team */
-        $team = $this->user()->ownedTeams()->create([
-            'domain' => 'default.dev',
-            'initiated' => false,
-        ]);
 
         ($this->defaultCreator)($team);
 

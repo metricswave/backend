@@ -11,22 +11,30 @@ class CreateDefaultsForUser
 {
     public function __invoke(Team $team, string $dashboardName = null): void
     {
-        /** @var Trigger $trigger */
-        $trigger = $team->triggers()->create([
-            'trigger_type_id' => TriggerTypeId::Webhook,
-            'uuid' => Str::uuid(),
-            'emoji' => '📊',
-            'title' => 'New visit',
-            'content' => 'Path {path}',
-            'configuration' => [
-                'version' => '1.0',
-                'type' => 'visits',
-                'fields' => [
-                    'parameters' => Trigger::VISITS_PARAMS,
+        if ($team->triggers()->count() > 0) {
+            $trigger = $team->triggers()->first();
+        } else {
+            /** @var Trigger $trigger */
+            $trigger = $team->triggers()->create([
+                'trigger_type_id' => TriggerTypeId::Webhook,
+                'uuid' => Str::uuid(),
+                'emoji' => '📊',
+                'title' => 'New visit',
+                'content' => 'Path {path}',
+                'configuration' => [
+                    'version' => '1.0',
+                    'type' => 'visits',
+                    'fields' => [
+                        'parameters' => Trigger::VISITS_PARAMS,
+                    ],
                 ],
-            ],
-            'via' => [],
-        ]);
+                'via' => [],
+            ]);
+        }
+
+        if ($team->dashboards()->count() > 0) {
+            return;
+        }
 
         $team->dashboards()->create([
             'name' => $dashboardName ?? 'Default',
