@@ -56,7 +56,7 @@ export function triggerEvent(eventUuid: string, params: Object = {}) {
     return
   }
 
-  fetch(`https://notifywave.com/webhooks/${eventUuid}`, {
+  fetch(`https://metricswave.com/webhooks/${eventUuid}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

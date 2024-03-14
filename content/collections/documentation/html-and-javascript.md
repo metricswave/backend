@@ -65,7 +65,7 @@ You only need to pass the trigger UUID and the parameters of your event.
 
 ```javascript
 export function triggerEvent(eventUuid, params = {}) {
-    fetch(`https://notifywave.com/webhooks/${eventUuid}`, {
+    fetch(`https://metricswave.com/webhooks/${eventUuid}`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
