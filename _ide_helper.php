@@ -4319,26 +4319,14 @@
                         return \Illuminate\Cache\Repository::rememberWithExpiration($cacheKey, $callback);
         }
                     /**
-         * Remove all items from the cache.
+         * 
          *
-         * @return bool 
          * @static 
          */ 
-        public static function flush()
+        public static function path($key)
         {
-                        /** @var \Illuminate\Cache\ArrayStore $instance */
-                        return $instance->flush();
-        }
-                    /**
-         * Get the cache key prefix.
-         *
-         * @return string 
-         * @static 
-         */ 
-        public static function getPrefix()
-        {
-                        /** @var \Illuminate\Cache\ArrayStore $instance */
-                        return $instance->getPrefix();
+                        /** @var \Statamic\Extensions\FileStore $instance */
+                        return $instance->path($key);
         }
                     /**
          * Get a lock instance.
@@ -4350,8 +4338,8 @@
          * @static 
          */ 
         public static function lock($name, $seconds = 0, $owner = null)
-        {
-                        /** @var \Illuminate\Cache\ArrayStore $instance */
+        {            //Method inherited from \Illuminate\Cache\FileStore         
+                        /** @var \Statamic\Extensions\FileStore $instance */
                         return $instance->lock($name, $seconds, $owner);
         }
                     /**
@@ -4363,9 +4351,65 @@
          * @static 
          */ 
         public static function restoreLock($name, $owner)
-        {
-                        /** @var \Illuminate\Cache\ArrayStore $instance */
+        {            //Method inherited from \Illuminate\Cache\FileStore         
+                        /** @var \Statamic\Extensions\FileStore $instance */
                         return $instance->restoreLock($name, $owner);
+        }
+                    /**
+         * Remove all items from the cache.
+         *
+         * @return bool 
+         * @static 
+         */ 
+        public static function flush()
+        {            //Method inherited from \Illuminate\Cache\FileStore         
+                        /** @var \Statamic\Extensions\FileStore $instance */
+                        return $instance->flush();
+        }
+                    /**
+         * Get the Filesystem instance.
+         *
+         * @return \Illuminate\Filesystem\Filesystem 
+         * @static 
+         */ 
+        public static function getFilesystem()
+        {            //Method inherited from \Illuminate\Cache\FileStore         
+                        /** @var \Statamic\Extensions\FileStore $instance */
+                        return $instance->getFilesystem();
+        }
+                    /**
+         * Get the working directory of the cache.
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getDirectory()
+        {            //Method inherited from \Illuminate\Cache\FileStore         
+                        /** @var \Statamic\Extensions\FileStore $instance */
+                        return $instance->getDirectory();
+        }
+                    /**
+         * Set the cache directory where locks should be stored.
+         *
+         * @param string|null $lockDirectory
+         * @return \Statamic\Extensions\FileStore 
+         * @static 
+         */ 
+        public static function setLockDirectory($lockDirectory)
+        {            //Method inherited from \Illuminate\Cache\FileStore         
+                        /** @var \Statamic\Extensions\FileStore $instance */
+                        return $instance->setLockDirectory($lockDirectory);
+        }
+                    /**
+         * Get the cache key prefix.
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getPrefix()
+        {            //Method inherited from \Illuminate\Cache\FileStore         
+                        /** @var \Statamic\Extensions\FileStore $instance */
+                        return $instance->getPrefix();
         }
          
     }
@@ -14505,7 +14549,7 @@
          * @param mixed $data
          * @static 
          */ 
-        public static function statamic($uri, $view, $data = [])
+        public static function statamic($uri, $view = null, $data = [])
         {
                         return \Illuminate\Routing\Router::statamic($uri, $view, $data);
         }
@@ -20091,89 +20135,6 @@
      
 }
 
-    namespace Torann\GeoIP\Facades { 
-            /**
-     * 
-     *
-     */ 
-        class GeoIP {
-                    /**
-         * Get the location from the provided IP.
-         *
-         * @param string $ip
-         * @return \Torann\GeoIP\Location 
-         * @throws \Exception
-         * @static 
-         */ 
-        public static function getLocation($ip = null)
-        {
-                        /** @var \Torann\GeoIP\GeoIP $instance */
-                        return $instance->getLocation($ip);
-        }
-                    /**
-         * Get the currency code from ISO.
-         *
-         * @param string $iso
-         * @return string 
-         * @static 
-         */ 
-        public static function getCurrency($iso)
-        {
-                        /** @var \Torann\GeoIP\GeoIP $instance */
-                        return $instance->getCurrency($iso);
-        }
-                    /**
-         * Get service instance.
-         *
-         * @return \Torann\GeoIP\Contracts\ServiceInterface 
-         * @throws Exception
-         * @static 
-         */ 
-        public static function getService()
-        {
-                        /** @var \Torann\GeoIP\GeoIP $instance */
-                        return $instance->getService();
-        }
-                    /**
-         * Get cache instance.
-         *
-         * @return \Torann\GeoIP\Cache 
-         * @static 
-         */ 
-        public static function getCache()
-        {
-                        /** @var \Torann\GeoIP\GeoIP $instance */
-                        return $instance->getCache();
-        }
-                    /**
-         * Get the client IP address.
-         *
-         * @return string 
-         * @static 
-         */ 
-        public static function getClientIP()
-        {
-                        /** @var \Torann\GeoIP\GeoIP $instance */
-                        return $instance->getClientIP();
-        }
-                    /**
-         * Get configuration value.
-         *
-         * @param string $key
-         * @param mixed $default
-         * @return mixed 
-         * @static 
-         */ 
-        public static function config($key, $default = null)
-        {
-                        /** @var \Torann\GeoIP\GeoIP $instance */
-                        return $instance->config($key, $default);
-        }
-         
-    }
-     
-}
-
     namespace Wilderborn\Partyline { 
             /**
      * 
@@ -20410,7 +20371,7 @@
          * @param mixed $data
          * @static 
          */ 
-        public static function statamic($uri, $view, $data = [])
+        public static function statamic($uri, $view = null, $data = [])
         {
                         return \Illuminate\Routing\Router::statamic($uri, $view, $data);
         }
@@ -20582,13 +20543,6 @@
         {
                         return \Illuminate\Cache\Repository::rememberWithExpiration($cacheKey, $callback);
         }
-         
-    }
-            /**
-     * 
-     *
-     */ 
-        class TaggedCache {
          
     }
      
@@ -24529,7 +24483,6 @@ namespace  {
             class Sentry extends \Sentry\Laravel\Facade {}
             class Flare extends \Spatie\LaravelIgnition\Facades\Flare {}
             class Statamic extends \Statamic\Statamic {}
-            class GeoIP extends \Torann\GeoIP\Facades\GeoIP {}
             class Partyline extends \Wilderborn\Partyline\Facade {}
      
 }
