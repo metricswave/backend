@@ -199,7 +199,7 @@ return [
         'production' => [
             'supervisor-1' => [
                 'minProcesses' => 10,
-                'maxProcesses' => 25,
+                'maxProcesses' => 10,
                 'balanceMaxShift' => 4,
                 'balanceCooldown' => 3,
             ],
