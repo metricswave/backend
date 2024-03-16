@@ -6,3 +6,5 @@ preferences:
   collections:
     documentation:
       after_save: continue_editing
+    articles:
+      after_save: continue_editing

@@ -1,6 +1,6 @@
 {
   "resources/css/tailwind.css": {
-    "file": "assets/tailwind-af2123d2.css",
+    "file": "assets/tailwind-dbc9382a.css",
     "isEntry": true,
     "src": "resources/css/tailwind.css"
   },
@@ -25,15 +25,14 @@
     "src": "resources/img/favicon.ico"
   },
   "resources/js/app.css": {
-    "file": "assets/app-ef802262.css",
+    "file": "assets/app-e0fc4bb9.css",
     "src": "resources/js/app.css"
   },
   "resources/js/app.js": {
     "css": [
-      "assets/app-ef802262.css"
+      "assets/app-e0fc4bb9.css"
     ],
     "dynamicImports": [
-      "resources/svg/icons/regular/image.svg",
       "resources/svg/icons/light/add-circle.svg",
       "resources/svg/icons/light/add.svg",
       "resources/svg/icons/light/addons.svg",
@@ -70,6 +69,7 @@
       "resources/svg/icons/light/drag-dots.svg",
       "resources/svg/icons/light/drawer-file.svg",
       "resources/svg/icons/light/duplicate-ids.svg",
+      "resources/svg/icons/light/duplicate.svg",
       "resources/svg/icons/light/earth.svg",
       "resources/svg/icons/light/email-utility.svg",
       "resources/svg/icons/light/entries.svg",
@@ -88,6 +88,7 @@
       "resources/svg/icons/light/generic-field.svg",
       "resources/svg/icons/light/git.svg",
       "resources/svg/icons/light/grid.svg",
+      "resources/svg/icons/light/group.svg",
       "resources/svg/icons/light/hammer-wrench.svg",
       "resources/svg/icons/light/hidden.svg",
       "resources/svg/icons/light/hierarchy-files.svg",
@@ -399,6 +400,7 @@
       "resources/svg/icons/regular/pencil.svg",
       "resources/svg/icons/regular/performance-decrease.svg",
       "resources/svg/icons/regular/performance-increase.svg",
+      "resources/svg/icons/regular/pulse.svg",
       "resources/svg/icons/regular/quote.svg",
       "resources/svg/icons/regular/relationship.svg",
       "resources/svg/icons/regular/rename-file.svg",
@@ -462,6 +464,7 @@
       "resources/svg/icons/light/drag-dots.svg",
       "resources/svg/icons/light/drawer-file.svg",
       "resources/svg/icons/light/duplicate-ids.svg",
+      "resources/svg/icons/light/duplicate.svg",
       "resources/svg/icons/light/earth.svg",
       "resources/svg/icons/light/email-utility.svg",
       "resources/svg/icons/light/entries.svg",
@@ -480,6 +483,7 @@
       "resources/svg/icons/light/generic-field.svg",
       "resources/svg/icons/light/git.svg",
       "resources/svg/icons/light/grid.svg",
+      "resources/svg/icons/light/group.svg",
       "resources/svg/icons/light/hammer-wrench.svg",
       "resources/svg/icons/light/hidden.svg",
       "resources/svg/icons/light/hierarchy-files.svg",
@@ -791,6 +795,7 @@
       "resources/svg/icons/regular/pencil.svg",
       "resources/svg/icons/regular/performance-decrease.svg",
       "resources/svg/icons/regular/performance-increase.svg",
+      "resources/svg/icons/regular/pulse.svg",
       "resources/svg/icons/regular/quote.svg",
       "resources/svg/icons/regular/relationship.svg",
       "resources/svg/icons/regular/rename-file.svg",
@@ -818,6 +823,7 @@
       "resources/svg/icons/regular/trash.svg",
       "resources/svg/icons/regular/upload-cloud.svg",
       "resources/svg/icons/regular/upload.svg",
+      "resources/svg/icons/regular/image.svg",
       "resources/svg/filetypes/archive.svg",
       "resources/svg/filetypes/audio.svg",
       "resources/svg/filetypes/doc.svg",
@@ -833,7 +839,7 @@
       "resources/svg/filetypes/video.svg",
       "resources/svg/filetypes/xml.svg"
     ],
-    "file": "assets/app-1a5ff3f9.js",
+    "file": "assets/app-77beb8be.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   },
@@ -1087,6 +1093,11 @@
     "isDynamicEntry": true,
     "src": "resources/svg/icons/light/duplicate-ids.svg"
   },
+  "resources/svg/icons/light/duplicate.svg": {
+    "file": "assets/duplicate-e06d08d8.js",
+    "isDynamicEntry": true,
+    "src": "resources/svg/icons/light/duplicate.svg"
+  },
   "resources/svg/icons/light/earth.svg": {
     "file": "assets/earth-bf12bee8.js",
     "isDynamicEntry": true,
@@ -1176,6 +1187,11 @@
     "file": "assets/grid-3e1f6818.js",
     "isDynamicEntry": true,
     "src": "resources/svg/icons/light/grid.svg"
+  },
+  "resources/svg/icons/light/group.svg": {
+    "file": "assets/group-95d5e899.js",
+    "isDynamicEntry": true,
+    "src": "resources/svg/icons/light/group.svg"
   },
   "resources/svg/icons/light/hammer-wrench.svg": {
     "file": "assets/hammer-wrench-38a73504.js",
@@ -2731,6 +2747,11 @@
     "file": "assets/performance-increase-93126e96.js",
     "isDynamicEntry": true,
     "src": "resources/svg/icons/regular/performance-increase.svg"
+  },
+  "resources/svg/icons/regular/pulse.svg": {
+    "file": "assets/pulse-fe14689b.js",
+    "isDynamicEntry": true,
+    "src": "resources/svg/icons/regular/pulse.svg"
   },
   "resources/svg/icons/regular/quote.svg": {
     "file": "assets/quote-42c6ac19.js",
