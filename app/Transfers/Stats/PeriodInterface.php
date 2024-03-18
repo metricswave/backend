@@ -6,7 +6,7 @@ use Illuminate\Support\Carbon;
 
 interface PeriodInterface
 {
-    public function __construct(Carbon $date, PeriodEnum $period);
+    public function __construct(Carbon $date, PeriodEnum $period, ?Carbon $fromDate = null);
 
     public function fromDate(): Carbon;
 

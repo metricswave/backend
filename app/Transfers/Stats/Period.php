@@ -13,6 +13,7 @@ class Period extends Data implements PeriodInterface
     public function __construct(
         Carbon $date,
         readonly public PeriodEnum $period,
+        readonly public ?Carbon $fromDate = null,
     ) {
         $this->date = $date
             ->add($this->period->visitsPeriod(), 1)
@@ -25,15 +26,14 @@ class Period extends Data implements PeriodInterface
 
     public function fromDate(): Carbon
     {
-        return $this->date->clone()
+        return ($this->fromDate ?? $this->date)
+            ->clone()
             ->subDays($this->period->days($this->date))
-            ->startOfDay();
+            ->startOf($this->period->visitsPeriod());
     }
 
     public function toDate(): Carbon
     {
-        return $this->date->clone()
-            ->startOfDay()
-            ->clone();
+        return $this->date->clone();
     }
 }

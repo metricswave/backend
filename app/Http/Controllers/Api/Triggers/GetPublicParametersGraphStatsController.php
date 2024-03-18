@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Triggers;
 
 use App\Http\Controllers\Api\JsonController;
+use App\Http\Requests\PeriodRequest;
 use App\Models\Dashboard;
 use App\Models\Trigger;
 use App\Services\Triggers\TriggerParameterStatsGetter;
@@ -17,7 +18,7 @@ class GetPublicParametersGraphStatsController extends JsonController
     {
     }
 
-    public function __invoke(Dashboard $dashboard, Trigger $trigger): JsonResponse
+    public function __invoke(Dashboard $dashboard, Trigger $trigger, PeriodRequest $request): JsonResponse
     {
         abort_if(!$dashboard->public, 404);
 
@@ -25,13 +26,9 @@ class GetPublicParametersGraphStatsController extends JsonController
             abort(404);
         }
 
-        $date = Carbon::createFromFormat('Y-m-d', request()->query('date', now()->format('Y-m-d')));
         $stats = $this->statsGetter->get(
             $trigger,
-            new Period(
-                date: $date,
-                period: PeriodEnum::from(request()->query('period', '30d')),
-            )
+            $request->getPeriod(),
         );
 
         return $this->response(
