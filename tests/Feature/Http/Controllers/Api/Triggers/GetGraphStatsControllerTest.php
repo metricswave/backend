@@ -15,7 +15,24 @@ $visits = fn (): array => collect(explode("\n", $csv))
     })
     ->toArray();
 
-it('return expected data', function () use ($visits) {
+$loadVisits = function(Trigger $trigger) use ($visits): void
+{
+    foreach ($visits() as $row) {
+        if (count($row) === 1) {
+            continue;
+        }
+
+        DB::table('visits')
+            ->insert([
+                'primary_key' => 'visits:testing:triggers_visits_day',
+                'secondary_key' => $trigger->id,
+                'score' => (int) $row[3],
+                'expired_at' => $row[5] === '' ? null : new Carbon($row[5]),
+            ]);
+    }
+};
+
+it('return expected data', function () use ($loadVisits) {
     Date::setTestNow('2023-06-05');
 
     [$user, $team] = user_with_team();
@@ -32,19 +49,7 @@ it('return expected data', function () use ($visits) {
             ],
         ]);
 
-    foreach ($visits() as $row) {
-        if (count($row) === 1) {
-            continue;
-        }
-
-        DB::table('visits')
-            ->insert([
-                'primary_key' => 'visits:testing:triggers_visits_day',
-                'secondary_key' => $trigger->id,
-                'score' => (int) $row[3],
-                'expired_at' => $row[5] === '' ? null : new Carbon($row[5]),
-            ]);
-    }
+    $loadVisits($trigger);
 
     actingAs($user)
         ->getJson('/api/triggers/'.$trigger->uuid.'/graph-stats')
@@ -59,7 +64,7 @@ it('return expected data', function () use ($visits) {
         );
 });
 
-it('return expected data for week period', function () use ($visits) {
+it('return expected data for week period', function () use ($loadVisits) {
     Date::setTestNow('2023-06-05');
 
     [$user, $team] = user_with_team();
@@ -68,19 +73,7 @@ it('return expected data for week period', function () use ($visits) {
         ->for(TriggerType::factory()->create())
         ->create();
 
-    foreach ($visits() as $row) {
-        if (count($row) === 1) {
-            continue;
-        }
-
-        DB::table('visits')
-            ->insert([
-                'primary_key' => 'visits:testing:triggers_visits_day',
-                'secondary_key' => $trigger->id,
-                'score' => (int) $row[3],
-                'expired_at' => $row[5] === '' ? null : new Carbon($row[5]),
-            ]);
-    }
+    $loadVisits($trigger);
 
     actingAs($user)
         ->getJson('/api/triggers/'.$trigger->uuid.'/graph-stats?period=7d')
@@ -95,7 +88,7 @@ it('return expected data for week period', function () use ($visits) {
         );
 });
 
-it('return expected data for year period', function () use ($visits) {
+it('return expected data for year period', function () use ($loadVisits) {
     Date::setTestNow('2023-06-05');
 
     [$user, $team] = user_with_team();
@@ -104,19 +97,7 @@ it('return expected data for year period', function () use ($visits) {
         ->for(TriggerType::factory()->create())
         ->create();
 
-    foreach ($visits() as $row) {
-        if (count($row) === 1) {
-            continue;
-        }
-
-        DB::table('visits')
-            ->insert([
-                'primary_key' => 'visits:testing:triggers_visits_day',
-                'secondary_key' => $trigger->id,
-                'score' => (int) $row[3],
-                'expired_at' => $row[5] === '' ? null : new Carbon($row[5]),
-            ]);
-    }
+    $loadVisits($trigger);
 
     actingAs($user)
         ->getJson('/api/triggers/'.$trigger->uuid.'/graph-stats?period=12m')
