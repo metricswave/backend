@@ -30,7 +30,7 @@ class GenerateSitemapCommand extends Command
         foreach ($pages as $page) {
             $sitemap->add(Url::create($page->absoluteUrl())
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
-                ->setPriority($page->collection()->handle() === "articles" ? 0.7 : 0.8)
+                ->setPriority($page->collection()->handle() === 'articles' ? 0.7 : 0.8)
             );
         }
 

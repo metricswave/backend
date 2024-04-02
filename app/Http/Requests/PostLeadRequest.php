@@ -17,7 +17,7 @@ class PostLeadRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => ['string', 'required', 'email']
+            'email' => ['string', 'required', 'email'],
         ];
     }
 }

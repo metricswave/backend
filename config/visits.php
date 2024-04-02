@@ -16,7 +16,6 @@ return [
 
     'connection' => 'mysql',
 
-
     /*
     |--------------------------------------------------------------------------
     | Counters periods
@@ -56,7 +55,6 @@ return [
     */
     'always_fresh' => false,
 
-
     /*
     |--------------------------------------------------------------------------
     | Ignore Crawlers
@@ -78,4 +76,3 @@ return [
     'global_ignore' => ['country', 'operatingSystem', 'language', 'refer'],
 
 ];
-

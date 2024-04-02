@@ -40,7 +40,7 @@ trait HasOpenData
                 'daily' => visitsService(User::class, User::TRIGGER_NOTIFICATION)->period('day')->count(),
                 'weekly' => visitsService(User::class, User::TRIGGER_NOTIFICATION)->period('week')->count(),
                 'monthly' => visitsService(User::class, User::TRIGGER_NOTIFICATION)->period('month')->count(),
-                'yearly' => visitsService(User::class, User::TRIGGER_NOTIFICATION)->period('year')->count()
+                'yearly' => visitsService(User::class, User::TRIGGER_NOTIFICATION)->period('year')->count(),
             ],
         ];
     }

@@ -16,16 +16,16 @@ class GetLeadController extends Controller
             'lead' => $lead,
             'todos' => [
                 [
-                    "done" => $lead->form_filled,
-                    "text" => "What would you like {$name} to be like? 🤔",
-                    "description" => '(less than 2 minutes)',
-                    "link" => "https://tally.so/r/3xVO5y?lead_id={$lead->uuid}",
+                    'done' => $lead->form_filled,
+                    'text' => "What would you like {$name} to be like? 🤔",
+                    'description' => '(less than 2 minutes)',
+                    'link' => "https://tally.so/r/3xVO5y?lead_id={$lead->uuid}",
                 ],
                 [
-                    "done" => $lead->paid_at !== null,
-                    "text" => 'Check out the lifetime license 🎉',
-                    "description" => "With one payment only you'll get all the features for free and for ever.",
-                    "link" => '#lifetime-license',
+                    'done' => $lead->paid_at !== null,
+                    'text' => 'Check out the lifetime license 🎉',
+                    'description' => "With one payment only you'll get all the features for free and for ever.",
+                    'link' => '#lifetime-license',
                 ],
             ],
         ]);

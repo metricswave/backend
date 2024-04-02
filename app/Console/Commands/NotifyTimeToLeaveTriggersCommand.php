@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Date;
 class NotifyTimeToLeaveTriggersCommand extends Command
 {
     protected $signature = 'app:trigger:time-to-leave {time?} {weekday?}';
+
     protected $description = 'Check time to leave triggers to queue a notification on time.';
 
     public function handle(): int

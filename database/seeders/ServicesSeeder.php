@@ -28,7 +28,7 @@ class ServicesSeeder extends Seeder
                     'configuration' => [
                         'version' => '1.0',
                         'type' => 'oauth',
-                    ]
+                    ],
                 ]
             );
 
@@ -75,8 +75,8 @@ class ServicesSeeder extends Seeder
                                     ],
                                 ],
                             ],
-                        ]
-                    ]
+                        ],
+                    ],
                 ]
             );
     }

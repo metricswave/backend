@@ -12,9 +12,9 @@ class GetPublicDashboardTriggerParameterStatsController extends JsonController
 {
     public function __invoke(Dashboard $dashboard, Trigger $trigger): JsonResponse
     {
-        abort_if(!$dashboard->public, 404);
+        abort_if(! $dashboard->public, 404);
 
-        if ($dashboard->items->filter(fn($i) => $i->eventUuid === $trigger->uuid)->count() === 0) {
+        if ($dashboard->items->filter(fn ($i) => $i->eventUuid === $trigger->uuid)->count() === 0) {
             abort(404);
         }
 

@@ -17,14 +17,17 @@ class TriggerNotification extends Notification implements ShouldQueue
     use Queueable;
 
     public readonly string $title;
+
     public readonly string $content;
+
     public readonly string $emoji;
+
     public ?CarbonImmutable $notifiedAt = null;
 
     public function __construct(
         public readonly Trigger $trigger,
         public readonly array $params = [],
-        ?CarbonImmutable $notifiedAt = null,
+        CarbonImmutable $notifiedAt = null,
     ) {
         $this->title = $trigger->formattedTitle($params);
         $this->content = $trigger->formattedContent($params);

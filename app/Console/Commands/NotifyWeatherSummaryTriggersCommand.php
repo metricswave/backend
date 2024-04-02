@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Date;
 class NotifyWeatherSummaryTriggersCommand extends Command
 {
     protected $signature = 'app:trigger:weather-summary';
+
     protected $description = 'Queue weather summary triggers notifications.';
 
     public function handle(): int

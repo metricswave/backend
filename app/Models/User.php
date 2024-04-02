@@ -120,6 +120,15 @@ class User extends Authenticatable
         return $this->hasMany(UserService::class);
     }
 
+    public function isOwnerOfTeam(int|Team $team): bool
+    {
+        if ($team instanceof Team) {
+            $team = $team->id;
+        }
+
+        return $this->ownedTeams->where('id', $team)->isNotEmpty();
+    }
+
     public function hasAccessToTeam(int|Team $team): bool
     {
         if ($team instanceof Team) {

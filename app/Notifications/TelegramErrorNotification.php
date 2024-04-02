@@ -27,7 +27,7 @@ class TelegramErrorNotification extends Notification implements ShouldQueue
 
     public function via(User $notifiable): array
     {
-        if (TelegramChannelErrors::GROUP_CHAT_UPGRADED_TO_SUPERGROUP_CHAT !== $this->error) {
+        if ($this->error !== TelegramChannelErrors::GROUP_CHAT_UPGRADED_TO_SUPERGROUP_CHAT) {
             return [];
         }
 

@@ -11,8 +11,8 @@ class GetAppPricesService
     public function __invoke(): LandingPrices
     {
         return new LandingPrices([
-            ... $this->unavailableMonthlyPrice()->all(),
-            ... $this->getMonthlyPrices()->all(),
+            ...$this->unavailableMonthlyPrice()->all(),
+            ...$this->getMonthlyPrices()->all(),
         ]);
     }
 

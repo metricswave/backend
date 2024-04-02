@@ -44,6 +44,7 @@ class MailTeamsWithoutEventsAfterADayCommand extends Command
         if ($testMail !== null) {
             /** @var User $owner */
             $owner = User::query()->where('email', $testMail)->get();
+
             return $owner->teams;
         }
 

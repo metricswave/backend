@@ -15,8 +15,7 @@ $visits = fn (): array => collect(explode("\n", $csv))
     })
     ->toArray();
 
-$loadVisits = function(Trigger $trigger) use ($visits): void
-{
+$loadVisits = function (Trigger $trigger) use ($visits): void {
     foreach ($visits() as $row) {
         if (count($row) === 1) {
             continue;

@@ -33,7 +33,7 @@ class StripeEventListener
             $lead->update([
                 'price_id' => $price->id,
                 'paid_price' => $price->price,
-                'paid_at' => now()
+                'paid_at' => now(),
             ]);
 
             $price->update([

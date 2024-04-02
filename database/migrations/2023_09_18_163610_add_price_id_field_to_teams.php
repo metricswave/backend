@@ -15,15 +15,17 @@ return new class extends Migration
         });
 
         // Migrate price_id from leads to teams using owner email
-        foreach (Team::all() as $team) {
-            $lead = Lead::query()->where('email', $team->owner->email)->first();
+        if (config('env') === 'production') {
+            foreach (Team::all() as $team) {
+                $lead = Lead::query()->where('email', $team->owner->email)->first();
 
-            if (! $lead) {
-                continue;
+                if (! $lead) {
+                    continue;
+                }
+
+                $team->price_id = $lead->price_id;
+                $team->save();
             }
-
-            $team->price_id = $lead->price_id;
-            $team->save();
         }
     }
 

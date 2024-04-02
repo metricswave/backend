@@ -25,7 +25,7 @@ class TriggerTypeSeeder extends Seeder
                             'label' => 'Parameters',
                             'multiple' => true,
                             'required' => false,
-                        ]
+                        ],
                     ],
                 ],
             ],
@@ -61,7 +61,7 @@ class TriggerTypeSeeder extends Seeder
                                 'saturday',
                                 'sunday',
                             ],
-                        ]
+                        ],
                     ],
                 ],
             ],
@@ -104,7 +104,7 @@ class TriggerTypeSeeder extends Seeder
                                 'saturday',
                                 'sunday',
                             ],
-                        ]
+                        ],
                     ],
                 ],
             ],
@@ -143,7 +143,7 @@ class TriggerTypeSeeder extends Seeder
                                 ['value' => 'walking', 'label' => 'Walking'],
                                 ['value' => 'bicycling', 'label' => 'Bicycling'],
                                 ['value' => 'transit', 'label' => 'Transit'],
-                            ]
+                            ],
                         ],
                         [
                             'name' => 'arrival_time',
@@ -167,7 +167,7 @@ class TriggerTypeSeeder extends Seeder
                                 'saturday',
                                 'sunday',
                             ],
-                        ]
+                        ],
                     ],
                 ],
             ],
@@ -200,7 +200,7 @@ class TriggerTypeSeeder extends Seeder
                                 ['value' => 'walking', 'label' => 'Walking'],
                                 ['value' => 'bicycling', 'label' => 'Bicycling'],
                                 ['value' => 'transit', 'label' => 'Transit'],
-                            ]
+                            ],
                         ],
                     ],
                 ],

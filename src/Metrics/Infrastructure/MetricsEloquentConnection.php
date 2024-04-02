@@ -158,7 +158,9 @@ class MetricsEloquentConnection implements MetricsConnection
         try {
             $row->save();
         } catch (UniqueConstraintViolationException $e) {
-            if ($attempt >= 3) throw $e;
+            if ($attempt >= 3) {
+                throw $e;
+            }
 
             sleep(100);
             $this->incrementWithExpiration($key, $inc, $id, $expireInSeconds, $attempt + 1);

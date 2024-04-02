@@ -37,7 +37,7 @@ class PeriodRequest extends FormRequest
             'period' => [new Enum(PeriodEnum::class)],
             'date' => ['date'],
             'from-date' => [
-                new RequiredIf($this->period()->isCustom())
+                new RequiredIf($this->period()->isCustom()),
             ],
         ];
     }

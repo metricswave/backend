@@ -9,12 +9,14 @@ use Illuminate\Support\Collection;
 class PlanGetter
 {
     public const BASIC_PRODUCT_ID = 'prod_OB1lbP1pyUy5E0';
+
     public const STARTER_PRODUCT_ID = 'prod_OB1pdLUu9FIBGh';
+
     public const BUSINESS_PRODUCT_ID = 'prod_OCTDyX3AR3DRul';
 
     public function get(PlanId $id): Plan
     {
-        return $this->all()->first(fn(Plan $plan) => $plan->id === $id);
+        return $this->all()->first(fn (Plan $plan) => $plan->id === $id);
     }
 
     public function all(): Collection

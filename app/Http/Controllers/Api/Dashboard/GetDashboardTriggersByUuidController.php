@@ -11,7 +11,7 @@ class GetDashboardTriggersByUuidController extends JsonController
 {
     public function __invoke(Dashboard $dashboard): JsonResponse
     {
-        abort_if(!$dashboard->public, 404);
+        abort_if(! $dashboard->public, 404);
 
         $uuids = collect($dashboard->items->toArray())->pluck('eventUuid')->toArray();
 

@@ -25,7 +25,7 @@ class DashboardFactory extends Factory
                     'title' => $this->faker->word,
                     'size' => $this->faker->randomElement(['base', 'large']),
                     'type' => $type,
-                    ...($type === 'parameter' ? ['parameter' => $this->faker->word] : [])
+                    ...($type === 'parameter' ? ['parameter' => $this->faker->word] : []),
                 ],
             ],
         ];

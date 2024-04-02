@@ -21,7 +21,7 @@ class TriggerStatsGetter
                 $period->fromDate(),
                 $period->toDate(),
             )
-            ->map(fn(array $stat) => new GraphData(
+            ->map(fn (array $stat) => new GraphData(
                 $stat['date'],
                 $stat['score'],
             ));
@@ -35,7 +35,7 @@ class TriggerStatsGetter
 
     private function getHeadersOrNull(Trigger $trigger, Period $period): ?GraphHeaders
     {
-        if (!$trigger->isVisitsType()) {
+        if (! $trigger->isVisitsType()) {
             return null;
         }
 

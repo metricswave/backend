@@ -8,19 +8,19 @@ trait UseTriggerVisitsUpdater
 {
     public function checkTrigger(bool $fromScript, Trigger $trigger): void
     {
-        if (!$fromScript) {
+        if (! $fromScript) {
             return;
         }
 
         $configuration = $trigger->configuration;
 
-        if (!$trigger->isVisitsType()) {
+        if (! $trigger->isVisitsType()) {
             $configuration['type'] = 'visits';
         }
 
         $configuration['fields']['parameters'] = array_values(array_unique([
             ...Trigger::VISITS_PARAMS,
-            ...($configuration['fields']['parameters'] ?? [])
+            ...($configuration['fields']['parameters'] ?? []),
         ]));
 
         $trigger->configuration = $configuration;

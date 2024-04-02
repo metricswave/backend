@@ -11,6 +11,7 @@ class LogoutController extends ApiAuthJsonController
     public function __invoke(LogoutRequest $request): JsonResponse
     {
         $this->user()->tokens()->where('name', $request->device_name)->delete();
-        return $this->response(["message" => 'User logged out successfully.']);
+
+        return $this->response(['message' => 'User logged out successfully.']);
     }
 }

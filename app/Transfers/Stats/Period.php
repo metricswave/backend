@@ -7,8 +7,9 @@ use Spatie\LaravelData\Data;
 
 class Period extends Data implements PeriodInterface
 {
-    readonly public Carbon $date;
-    readonly public array $periodDates;
+    public readonly Carbon $date;
+
+    public readonly array $periodDates;
 
     public function __construct(
         Carbon $date,
