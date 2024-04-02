@@ -8,7 +8,8 @@ use MetricsWave\Teams\Team;
 
 class DeleteVisitsByTeamIdCommand extends Command
 {
-    protected $signature = 'teams:delete-visits {teamId}';
+    protected $signature = 'teams:delete-visits {teamId}
+                            { --just-params : Only delete parameters rows }';
 
     protected $description = 'Delete events by team id.';
 
@@ -33,9 +34,12 @@ class DeleteVisitsByTeamIdCommand extends Command
 
     private function deleteTriggerVisits(Trigger $trigger): void
     {
-        $trigger->visits(Trigger::UNIQUE_VISITS)->delete();
-        $trigger->visits(Trigger::NEW_VISITS)->delete();
-        $trigger->visits()->delete();
+        if ($this->option('just-params') === false) {
+            $trigger->visits(Trigger::UNIQUE_VISITS)->delete();
+            $trigger->visits(Trigger::NEW_VISITS)->delete();
+            $trigger->visits()->delete();
+        }
+
         $trigger->visits()->deleteParams($trigger->configuration['fields']['parameters']);
     }
 }
