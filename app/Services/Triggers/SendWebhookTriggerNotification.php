@@ -21,7 +21,7 @@ class SendWebhookTriggerNotification
             throw MissingTriggerParams::with($missingParams);
         }
 
-        if ($trigger->team === 76) {
+        if ($trigger->team_id === 76) {
             return;
         }
 
