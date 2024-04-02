@@ -35,6 +35,7 @@ class DeleteVisitsByTeamIdCommand extends Command
     {
         $trigger->visits(Trigger::UNIQUE_VISITS)->delete();
         $trigger->visits(Trigger::NEW_VISITS)->delete();
-        $trigger->visits(Trigger::NEW_VISITS)->deleteParams($trigger->configuration['fields']['parameters']);
+        $trigger->visits()->delete();
+        $trigger->visits()->deleteParams($trigger->configuration['fields']['parameters']);
     }
 }
