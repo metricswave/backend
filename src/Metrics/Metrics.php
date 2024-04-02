@@ -228,8 +228,8 @@ class Metrics implements MetricsInterface
                 $periodKey = $this->keys->period($period);
                 $periodKey = "{$periodKey}_{$key}:{$this->keys->id}";
 
-                $this->connection->delete($periodKey);
-                $this->connection->delete($periodKey.'_total');
+                $this->connection->deleteByPrimary($periodKey);
+                $this->connection->deleteByPrimary($periodKey.'_total');
             }
         }
 

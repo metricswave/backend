@@ -95,6 +95,13 @@ class MetricsEloquentConnection implements MetricsConnection
             ->delete();
     }
 
+    public function deleteByPrimary(string $key): void
+    {
+        $this->query()
+            ->where('primary_key', self::PREFIX.$key)
+            ->delete();
+    }
+
     private function query(): Builder
     {
         return Visit::query();
