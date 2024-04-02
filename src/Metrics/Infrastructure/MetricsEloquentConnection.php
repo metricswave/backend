@@ -99,7 +99,7 @@ class MetricsEloquentConnection implements MetricsConnection
     {
         do {
             $deleted = $this->query()
-                ->where('primary_key', $key)
+                ->where('primary_key', self::PREFIX.$key)
                 ->limit(1000)
                 ->delete();
         } while ($deleted > 0);
