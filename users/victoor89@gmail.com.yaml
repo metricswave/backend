@@ -8,3 +8,5 @@ preferences:
       after_save: continue_editing
     articles:
       after_save: continue_editing
+    pages:
+      after_save: continue_editing

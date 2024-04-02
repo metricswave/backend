@@ -22,7 +22,6 @@ tabs:
               antlers: false
               type: markdown
               display: 'Hero Content'
-              icon: markdown
               listable: hidden
               instructions_position: above
               visibility: visible
@@ -33,7 +32,6 @@ tabs:
               default: false
               type: toggle
               display: 'Show Buttons'
-              icon: toggle
               listable: hidden
               instructions_position: above
               visibility: visible
@@ -62,7 +60,6 @@ tabs:
                             antlers: false
                             type: text
                             display: Title
-                            icon: text
                             listable: hidden
                             instructions_position: above
                             visibility: visible
@@ -77,7 +74,6 @@ tabs:
                             antlers: false
                             type: text
                             display: URL
-                            icon: text
                             listable: hidden
                             instructions_position: above
                             visibility: visible
@@ -85,7 +81,7 @@ tabs:
                         -
                           handle: logo
                           field:
-                            max_files: 1
+                            max_files: 2
                             min_files: 1
                             mode: list
                             container: images
@@ -95,7 +91,6 @@ tabs:
                             show_set_alt: true
                             type: assets
                             display: Logo
-                            icon: assets
                             instructions: 'Dimensions: 400 x 180 pixels'
                             listable: hidden
                             instructions_position: above
@@ -103,6 +98,7 @@ tabs:
                             hide_display: false
                             validate:
                               - required
+                            replicator_preview: true
                         -
                           handle: asset_url
                           field:
@@ -110,19 +106,30 @@ tabs:
                             antlers: false
                             type: text
                             display: asset_url
-                            icon: text
                             listable: hidden
                             instructions_position: above
                             visibility: visible
                             hide_display: false
+                        -
+                          handle: dark_asset_url
+                          field:
+                            input_type: text
+                            antlers: false
+                            type: text
+                            display: dark_asset_url
+                            listable: hidden
+                            instructions_position: above
+                            visibility: visible
+                            hide_display: false
+                            replicator_preview: true
               type: replicator
               display: 'Partner Logos'
-              icon: replicator
               instructions: 'Add some partner images, with title and link.'
               listable: hidden
               instructions_position: above
               visibility: visible
               hide_display: false
+              replicator_preview: true
           -
             handle: structured_content
             field:
@@ -479,7 +486,6 @@ tabs:
                             hide_display: false
               type: replicator
               display: 'Structured Content'
-              icon: replicator
               listable: hidden
               instructions_position: above
               visibility: visible
@@ -495,6 +501,7 @@ tabs:
             field:
               type: slug
               localizable: true
+              validate: 'max:200'
           -
             handle: seo_title
             field:
@@ -503,7 +510,6 @@ tabs:
               antlers: false
               type: text
               display: 'SEO Title'
-              icon: text
               listable: hidden
               instructions_position: above
               visibility: visible
@@ -515,7 +521,6 @@ tabs:
               antlers: false
               type: textarea
               display: 'SEO Description'
-              icon: textarea
               listable: hidden
               instructions_position: above
               visibility: visible
@@ -531,7 +536,6 @@ tabs:
               show_set_alt: false
               type: assets
               display: 'OG Image'
-              icon: assets
               listable: hidden
               instructions_position: above
               visibility: visible
