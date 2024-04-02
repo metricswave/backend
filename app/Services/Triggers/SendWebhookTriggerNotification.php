@@ -21,6 +21,10 @@ class SendWebhookTriggerNotification
             throw MissingTriggerParams::with($missingParams);
         }
 
+        if ($trigger->team === 76) {
+            return;
+        }
+
         TeamTriggerNotificationJob::dispatch(
             $trigger->team,
             new TriggerNotification(
