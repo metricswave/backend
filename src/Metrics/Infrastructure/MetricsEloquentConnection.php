@@ -83,6 +83,18 @@ class MetricsEloquentConnection implements MetricsConnection
         return intval($score);
     }
 
+    public function delete(string $key, ?int $member = null): void
+    {
+        $this->query()
+            ->where('primary_key', self::PREFIX.$key)
+            ->when(
+                (! empty($member) || is_numeric($member)),
+                fn ($query) => $query->where('secondary_key', $member),
+                fn ($query) => $query->whereNull('secondary_key')
+            )
+            ->delete();
+    }
+
     private function query(): Builder
     {
         return Visit::query();

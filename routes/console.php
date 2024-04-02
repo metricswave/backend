@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Artisan;
+use MetricsWave\Teams\Console\Commands\DeleteVisitsByTeamIdCommand;
 use MetricsWave\Teams\Console\Commands\MigrateModelsToTeamsCommand;
 use MetricsWave\Users\Console\Commands\MailArticleToUsersCommand;
 use MetricsWave\Users\Console\Commands\MailTeamsWithoutEventsAfterADayCommand;
@@ -21,6 +22,7 @@ use MetricsWave\Users\Console\Commands\UserRoadmapMailCommand;
 
 // Teams
 Artisan::registerCommand(new MigrateModelsToTeamsCommand());
+Artisan::registerCommand(new DeleteVisitsByTeamIdCommand());
 
 // Users
 Artisan::registerCommand(new MailArticleToUsersCommand());

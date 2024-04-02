@@ -203,4 +203,35 @@ class Metrics implements MetricsInterface
             }
         }
     }
+
+    public function delete(): void
+    {
+        $this->connection->delete($this->keys->visits, $this->keys->id);
+        $this->connection->delete($this->keys->visitsTotal());
+
+        foreach (self::PERIODS as $period) {
+            $periodKey = $this->keys->period($period);
+            $this->connection->delete($periodKey, $this->keys->id);
+            $this->connection->delete($periodKey.'_total');
+        }
+    }
+
+    /**
+     * @param  array<string> $params
+     */
+    public function deleteParams(array $params): void
+    {
+        foreach ($params as $param) {
+            $key = Str::of($param)->snake();
+
+            foreach (self::PERIODS as $period) {
+                $periodKey = $this->keys->period($period);
+                $periodKey = "{$periodKey}_{$key}:{$this->keys->id}";
+
+                $this->connection->delete($periodKey);
+                $this->connection->delete($periodKey.'_total');
+            }
+        }
+
+    }
 }
