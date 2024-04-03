@@ -14,7 +14,7 @@ return [
     */
     'engine' => PermanentEloquentEngine::class,
 
-    'table' => env('VISITS_DB_TABLE', 'visits_2024'),
+    'table' => env('VISITS_DB_TABLE', 'visits_'.date('Y')),
 
     'connection' => env('VISITS_DB_CONNECTION', 'mysql'),
 

@@ -21,7 +21,7 @@ $loadVisits = function (Trigger $trigger) use ($visits): void {
             continue;
         }
 
-        DB::table('visits')
+        DB::table(config('visits.table'))
             ->insert([
                 'primary_key' => 'visits:testing:triggers_visits_day',
                 'secondary_key' => $trigger->id,

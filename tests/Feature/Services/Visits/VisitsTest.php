@@ -27,7 +27,10 @@ it('increase visits and set expired_at dates as expected', function () {
         $user->triggerNotificationVisits()->increment();
     }
 
-    $visits = Visit::query()->where('secondary_key', $user->id)->get([
+    $visits = (new Visit())
+        ->setTable(config('visits.table'))
+        ->setConnection(config('visits.connection'))
+        ->where('secondary_key', $user->id)->get([
         'primary_key',
         'expired_at',
         'score',
@@ -68,16 +71,17 @@ it('increase visits with params and set expired_at dates as expected', function 
 it('fails because unique index violation', function () {
     [$user, $team] = user_with_team(['id' => 1]);
 
-    Visit::create([
+    $visits = new Visit([
         'primary_key' => 'visits:testing:users_triggernotification_day',
         'secondary_key' => 1,
         'score' => 20,
         'expired_at' => now()->addDay()->startOfDay(),
     ]);
+    $visits->setTable(config('visits.table'))->setConnection(config('visits.connection'))->save();
 
     $user->triggerNotificationVisits()->increment();
 
-    $visits = Visit::query()
+    $visits = (new Visit())->setTable(config('visits.table'))->setConnection(config('visits.connection'))
         ->where('primary_key', 'visits:testing:users_triggernotification_day')
         ->where('secondary_key', $user->id)->get([
             'primary_key',
@@ -175,7 +179,7 @@ it('store visits params, unique visits and new visits', function () {
     ]);
 
     expect(
-        Visit::query()
+        (new Visit())->setTable(config('visits.table'))->setConnection(config('visits.connection'))
             ->where('primary_key', 'visits:testing:triggers_unique_visits_day')
             ->where('secondary_key', $trigger->id)
             ->get('score')
@@ -184,7 +188,7 @@ it('store visits params, unique visits and new visits', function () {
     )->toBe(1);
 
     expect(
-        Visit::query()
+        (new Visit())->setTable(config('visits.table'))->setConnection(config('visits.connection'))
             ->where('primary_key', 'visits:testing:triggers_new_visits_day')
             ->where('secondary_key', $trigger->id)
             ->get('score')
@@ -193,7 +197,7 @@ it('store visits params, unique visits and new visits', function () {
     )->toBe(2);
 
     expect(
-        Visit::query()
+        (new Visit())->setTable(config('visits.table'))->setConnection(config('visits.connection'))
             ->where('primary_key', 'visits:testing:triggers_visits_day_referrer:48')
             ->where('secondary_key', '!=', 'Direct / None')
             ->exists()
@@ -245,7 +249,7 @@ it('store visits referrer', function () {
     ]);
 
     expect(
-        Visit::query()
+        (new Visit())->setTable(config('visits.table'))->setConnection(config('visits.connection'))
             ->where('primary_key', 'visits:testing:triggers_visits_day_referrer:48')
             ->where('secondary_key', 'https://google.com')
             ->get('score')
@@ -315,7 +319,7 @@ it('visit type works even when it has no params', function () {
     ]);
 
     expect(
-        Visit::query()
+        (new Visit())->setTable(config('visits.table'))->setConnection(config('visits.connection'))
             ->where('primary_key', 'visits:testing:triggers_visits_day_language:48')
             ->where('secondary_key', 'en-US')
             ->get('score')
@@ -324,7 +328,7 @@ it('visit type works even when it has no params', function () {
     )->toBe(4);
 
     expect(
-        Visit::query()
+        (new Visit())->setTable(config('visits.table'))->setConnection(config('visits.connection'))
             ->where('primary_key', 'visits:testing:triggers_unique_visits_day')
             ->where('secondary_key', $trigger->id)
             ->get('score')
@@ -333,7 +337,7 @@ it('visit type works even when it has no params', function () {
     )->toBe(1);
 
     expect(
-        Visit::query()
+        (new Visit())->setTable(config('visits.table'))->setConnection(config('visits.connection'))
             ->where('primary_key', 'visits:testing:triggers_new_visits_day')
             ->where('secondary_key', $trigger->id)
             ->get('score')
@@ -342,7 +346,7 @@ it('visit type works even when it has no params', function () {
     )->toBe(2);
 
     expect(
-        Visit::query()
+        (new Visit())->setTable(config('visits.table'))->setConnection(config('visits.connection'))
             ->where('primary_key', 'visits:testing:triggers_visits_day_referrer:48')
             ->where('secondary_key', '!=', 'Direct / None')
             ->exists()

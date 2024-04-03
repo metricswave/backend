@@ -31,7 +31,7 @@ it('return expected data', function () use ($visits) {
             continue;
         }
 
-        DB::table('visits')
+        DB::table(config('visits.table'))
             ->insert([
                 'primary_key' => 'visits:testing:triggers_visits_day',
                 'secondary_key' => $trigger->id,
@@ -68,7 +68,7 @@ it('return expected data for week period', function () use ($visits) {
             continue;
         }
 
-        DB::table('visits')
+        DB::table(config('visits.table'))
             ->insert([
                 'primary_key' => 'visits:testing:triggers_visits_day',
                 'secondary_key' => $trigger->id,
@@ -105,7 +105,7 @@ it('return expected data for year period', function () use ($visits) {
             continue;
         }
 
-        DB::table('visits')
+        DB::table(config('visits.table'))
             ->insert([
                 'primary_key' => 'visits:testing:triggers_visits_day',
                 'secondary_key' => $trigger->id,

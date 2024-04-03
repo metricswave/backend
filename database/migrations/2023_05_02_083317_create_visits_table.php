@@ -1,19 +1,20 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 class CreateVisitsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
+    public function tableName(): string
     {
-        Schema::create('visits', function (Blueprint $table) {
+        return config('visits.table', 'visits');
+    }
+
+    public function up(): void
+    {
+        Schema::create($this->tableName(), function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('primary_key');
             $table->string('secondary_key')->nullable();
@@ -25,13 +26,8 @@ class CreateVisitsTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('visits');
+        Schema::dropIfExists($this->tableName());
     }
 }

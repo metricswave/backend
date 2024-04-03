@@ -31,7 +31,7 @@ it('return expected array list', function () use ($visits) {
             continue;
         }
 
-        DB::table('visits')
+        DB::table(config('visits.table'))
             ->insert([
                 'primary_key' => 'visits:testing:triggers_visits_day',
                 'secondary_key' => $trigger->id,

@@ -40,7 +40,7 @@ it('return expected parameters stats', function () use ($visits) {
             continue;
         }
 
-        DB::table('visits')
+        DB::table(config('visits.table'))
             ->insert([
                 'primary_key' => Str::of($row[1])->replace('visits:triggers', 'visits:testing:triggers')->toString(),
                 'secondary_key' => $row[2],
@@ -81,7 +81,7 @@ it('return expected parameters stats by week', function () use ($visits) {
             continue;
         }
 
-        DB::table('visits')
+        DB::table(config('visits.table'))
             ->insert([
                 'primary_key' => Str::of($row[1])->replace('visits:triggers', 'visits:testing:triggers')->toString(),
                 'secondary_key' => $row[2],
@@ -122,7 +122,7 @@ it('return expected parameters stats by day', function () use ($visits) {
             continue;
         }
 
-        DB::table('visits')
+        DB::table(config('visits.table'))
             ->insert([
                 'primary_key' => Str::of($row[1])->replace('visits:triggers', 'visits:testing:triggers')->toString(),
                 'secondary_key' => $row[2],
