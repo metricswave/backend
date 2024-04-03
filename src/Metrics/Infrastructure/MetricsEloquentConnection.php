@@ -107,9 +107,10 @@ class MetricsEloquentConnection implements MetricsConnection
 
     private function query(): Builder
     {
-        return Visit::on(
-            config('visits.connection')
-        );
+        return (new Visit)
+            ->setTable(config('visits.table'))
+            ->setConnection(config('visits.connection'))
+            ->newQuery();
     }
 
     public function allByParam(string $key, Carbon $date): Collection
