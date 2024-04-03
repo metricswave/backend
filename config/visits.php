@@ -14,7 +14,7 @@ return [
     */
     'engine' => PermanentEloquentEngine::class,
 
-    'connection' => 'mysql',
+    'connection' => env('VISITS_DB_CONNECTION', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
