@@ -198,8 +198,8 @@ return [
     'environments' => [
         'production' => [
             'supervisor-1' => [
-                'minProcesses' => 10,
-                'maxProcesses' => 20,
+                'minProcesses' => 5,
+                'maxProcesses' => 15,
                 'balanceMaxShift' => 4,
                 'balanceCooldown' => 3,
             ],
