@@ -19,24 +19,24 @@ class RetryFailedHorizonJobsCommand extends Command
 
     public function handle(): void
     {
-        $failedJobs = $this->jobs->getFailed();
+        $afterIndex = 0;
 
-        // You can create a progress bar:
-        $bar = $this->output->createProgressBar($failedJobs->count());
+        do {
+            $failedJobs = $this->jobs->getFailed($afterIndex);
 
-        foreach ($failedJobs as $failedJob) {
-            $uuid = $failedJob->uuid;
-            $payload = json_decode($failedJob->payload);
+            foreach ($failedJobs as $failedJob) {
+                if (!empty($failedJob->retried_by)) {
+                    continue;
+                }
 
-            // Dispatch failed job via Horizon
-            dispatch(new RetryFailedJob($uuid));
+                $uuid = $failedJob->id;
+                dispatch(new RetryFailedJob($uuid));
+                \DB::table('failed_jobs')->where('uuid', $uuid)->delete();
 
-            // Delete it in database (if it fails again, it will create a new record)
-            \DB::table('failed_jobs')->where('uuid', $uuid)->delete();
+                echo ".";
+            }
 
-            $bar->advance();
-        }
-
-        $bar->finish();
+            $afterIndex += 50;
+        } while ($failedJobs->count() > 0);
     }
 }
