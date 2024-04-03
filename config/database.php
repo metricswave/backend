@@ -63,15 +63,15 @@ return [
             ]) : [],
         ],
 
-        'planetscale' => [
+        'visits' => [
             'driver' => 'mysql',
-            'url' => env('PLANETSCALE_DATABASE_URL'),
-            'host' => env('PLANETSCALE_DB_HOST', '127.0.0.1'),
-            'port' => env('PLANETSCALE_DB_PORT', '3306'),
-            'database' => env('PLANETSCALE_DB_DATABASE', 'forge'),
-            'username' => env('PLANETSCALE_DB_USERNAME', 'forge'),
-            'password' => env('PLANETSCALE_DB_PASSWORD', ''),
-            'unix_socket' => env('PLANETSCALE_DB_SOCKET', ''),
+            'url' => env('VISITS_DATABASE_URL'),
+            'host' => env('VISITS_DB_HOST', '127.0.0.1'),
+            'port' => env('VISITS_DB_PORT', '3306'),
+            'database' => env('VISITS_DB_DATABASE', 'forge'),
+            'username' => env('VISITS_DB_USERNAME', 'forge'),
+            'password' => env('VISITS_DB_PASSWORD', ''),
+            'unix_socket' => env('VISITS_DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',

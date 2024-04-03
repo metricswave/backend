@@ -13,7 +13,9 @@ return [
     |
     */
     'engine' => PermanentEloquentEngine::class,
-    'table' => env('VISITS_DB_table', 'visits'),
+
+    'table' => env('VISITS_DB_TABLE', 'visits_2024'),
+
     'connection' => env('VISITS_DB_CONNECTION', 'mysql'),
 
     /*
