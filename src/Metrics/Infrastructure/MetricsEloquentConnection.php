@@ -15,10 +15,25 @@ class MetricsEloquentConnection implements MetricsConnection
 {
     private const PREFIX = 'visits:';
     private int $year;
+    private bool $hasCache;
 
-    public function __construct()
+    public function __construct(bool $hasCache = true)
     {
         $this->year = now()->year;
+        $this->hasCache = $hasCache;
+    }
+
+    public function withCached($key, Closure $callback): mixed
+    {
+        if ($this->hasCache) {
+            return Cache::remember(
+                $key,
+                Carbon::now()->addMinute(),
+                $callback
+            );
+        }
+
+        return $callback();
     }
 
     public function all(
@@ -28,7 +43,7 @@ class MetricsEloquentConnection implements MetricsConnection
         Carbon $from = null,
         Carbon $to = null
     ): Collection {
-        return Cache::remember(
+        return $this->withCached(
             CacheKey::generate('metrics:all', $key, [
                 'tableYear' => $this->year,
                 'period' => $period,
@@ -36,7 +51,6 @@ class MetricsEloquentConnection implements MetricsConnection
                 'from' => $from?->toDateString(),
                 'to' => $to?->toDateString(),
             ]),
-            Carbon::now()->addMinute(),
             fn () => $this->query()
                 ->where('primary_key', self::PREFIX.$key)
                 ->when(
@@ -86,9 +100,8 @@ class MetricsEloquentConnection implements MetricsConnection
 
     public function get(string $key, int $member = null): int
     {
-        $score = Cache::remember(
+        $score = $this->withCached(
             CacheKey::generate('metrics:get', $key, ['member' => $member, 'tableYear' => $this->year]),
-            Carbon::now()->addMinute(),
             fn() => $this->query()
                 ->where('primary_key', self::PREFIX.$key)
                 ->when(
@@ -158,13 +171,12 @@ class MetricsEloquentConnection implements MetricsConnection
 
     public function allByParam(string $key, Carbon $date): Collection
     {
-        return Cache::remember(
+        return $this->withCached(
             CacheKey::generate(
                 'metrics:allByParam',
                 $key,
                 ['date' => $date->toDateString(), 'tableYear' => $this->year]
             ),
-            Carbon::now()->addMinute(),
             fn() => $this->query()
                 ->where('primary_key', self::PREFIX.$key)
                 ->whereDate('expired_at', $date)

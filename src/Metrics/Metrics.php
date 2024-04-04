@@ -28,9 +28,10 @@ class Metrics implements MetricsInterface
     public function __construct(
         string|Model $subject,
         string $tag,
+        bool $useCache = true,
     ) {
         $this->keys = new MetricsKeys($subject, preg_replace('/[^a-z0-9_]/i', '', $tag));
-        $this->connection = new MetricsEloquentConnection();
+        $this->connection = new MetricsEloquentConnection($useCache);
     }
 
     public function count(): int

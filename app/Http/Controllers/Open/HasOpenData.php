@@ -14,19 +14,27 @@ trait HasOpenData
         return [
             'notifications' => [
                 'daily' => format_long_numbers(
-                    visitsService(Team::class, Team::TRIGGER_NOTIFICATION)->period('day')->count()
+                    visitsService(Team::class, Team::TRIGGER_NOTIFICATION, withCache: false)
+                        ->period('day')
+                        ->count()
                     + $previousUserData['notifications']['daily']
                 ),
                 'weekly' => format_long_numbers(
-                    visitsService(Team::class, Team::TRIGGER_NOTIFICATION)->period('week')->count()
+                    visitsService(Team::class, Team::TRIGGER_NOTIFICATION, withCache: false)
+                        ->period('week')
+                        ->count()
                     + $previousUserData['notifications']['weekly']
                 ),
                 'monthly' => format_long_numbers(
-                    visitsService(Team::class, Team::TRIGGER_NOTIFICATION)->period('month')->count()
+                    visitsService(Team::class, Team::TRIGGER_NOTIFICATION, withCache: false)
+                        ->period('month')
+                        ->count()
                     + $previousUserData['notifications']['monthly']
                 ),
                 'yearly' => format_long_numbers(
-                    visitsService(Team::class, Team::TRIGGER_NOTIFICATION)->period('year')->count()
+                    visitsService(Team::class, Team::TRIGGER_NOTIFICATION, withCache: false)
+                        ->period('year')
+                        ->count()
                     + $previousUserData['notifications']['yearly']
                 ),
             ],
@@ -37,10 +45,18 @@ trait HasOpenData
     {
         return [
             'notifications' => [
-                'daily' => visitsService(User::class, User::TRIGGER_NOTIFICATION)->period('day')->count(),
-                'weekly' => visitsService(User::class, User::TRIGGER_NOTIFICATION)->period('week')->count(),
-                'monthly' => visitsService(User::class, User::TRIGGER_NOTIFICATION)->period('month')->count(),
-                'yearly' => visitsService(User::class, User::TRIGGER_NOTIFICATION)->period('year')->count(),
+                'daily' => visitsService(User::class, User::TRIGGER_NOTIFICATION, withCache: false)
+                    ->period('day')
+                    ->count(),
+                'weekly' => visitsService(User::class, User::TRIGGER_NOTIFICATION, withCache: false)
+                    ->period('week')
+                    ->count(),
+                'monthly' => visitsService(User::class, User::TRIGGER_NOTIFICATION, withCache: false)
+                    ->period('month')
+                    ->count(),
+                'yearly' => visitsService(User::class, User::TRIGGER_NOTIFICATION, withCache: false)
+                    ->period('year')
+                    ->count(),
             ],
         ];
     }

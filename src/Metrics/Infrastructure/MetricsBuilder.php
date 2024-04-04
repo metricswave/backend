@@ -8,8 +8,8 @@ use MetricsWave\Metrics\MetricsInterface;
 
 class MetricsBuilder
 {
-    public function __invoke(Model|string $subject, $tag = 'visits'): MetricsInterface
+    public function __invoke(Model|string $subject, $tag = 'visits', bool $withCache = true): MetricsInterface
     {
-        return new Metrics($subject, $tag);
+        return new Metrics($subject, $tag, $withCache);
     }
 }
