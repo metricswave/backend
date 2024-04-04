@@ -32,6 +32,7 @@ class RetryFailedHorizonJobsCommand extends Command
                 $uuid = $failedJob->id;
                 dispatch(new RetryFailedJob($uuid));
                 \DB::table('failed_jobs')->where('uuid', $uuid)->delete();
+                $this->jobs->deleteFailed($uuid);
 
                 echo ".";
             }
