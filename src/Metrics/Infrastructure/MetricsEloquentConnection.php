@@ -30,6 +30,7 @@ class MetricsEloquentConnection implements MetricsConnection
     ): Collection {
         return Cache::remember(
             CacheKey::generate('metrics:all', $key, [
+                'tableYear' => $this->year,
                 'period' => $period,
                 'member' => $member,
                 'from' => $from?->toDateString(),
@@ -86,7 +87,7 @@ class MetricsEloquentConnection implements MetricsConnection
     public function get(string $key, int $member = null): int
     {
         $score = Cache::remember(
-            'metrics:get:'.$key.':'.$member,
+            CacheKey::generate('metrics:get', $key, ['member' => $member, 'tableYear' => $this->year]),
             Carbon::now()->addMinute(),
             fn() => $this->query()
                 ->where('primary_key', self::PREFIX.$key)
@@ -158,7 +159,11 @@ class MetricsEloquentConnection implements MetricsConnection
     public function allByParam(string $key, Carbon $date): Collection
     {
         return Cache::remember(
-            'metrics:allByParam:'.$key.':'.$date->toDateString(),
+            CacheKey::generate(
+                'metrics:allByParam',
+                $key,
+                ['date' => $date->toDateString(), 'tableYear' => $this->year]
+            ),
             Carbon::now()->addMinute(),
             fn() => $this->query()
                 ->where('primary_key', self::PREFIX.$key)
