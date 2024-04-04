@@ -381,6 +381,7 @@ namespace MetricsWave\Teams{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property int|null $price_id
+ * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \MetricsWave\Channels\TeamChannel> $channels
  * @property-read int|null $channels_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Dashboard> $dashboards
@@ -405,6 +406,7 @@ namespace MetricsWave\Teams{
  * @method static \Illuminate\Database\Eloquent\Builder|Team onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|Team query()
  * @method static \Illuminate\Database\Eloquent\Builder|Team whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Team whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Team whereDomain($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Team whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Team whereInitiated($value)
