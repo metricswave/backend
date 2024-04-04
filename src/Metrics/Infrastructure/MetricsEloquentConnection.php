@@ -4,7 +4,7 @@ namespace MetricsWave\Metrics\Infrastructure;
 
 use App\Services\CacheKey;
 use Cache;
-use Illuminate\Cache\Events\CacheEvent;
+use Closure;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\UniqueConstraintViolationException;
 use Illuminate\Support\Carbon;
@@ -14,6 +14,12 @@ use MetricsWave\Metrics\Models\Visit;
 class MetricsEloquentConnection implements MetricsConnection
 {
     private const PREFIX = 'visits:';
+    private int $year;
+
+    public function __construct()
+    {
+        $this->year = now()->year;
+    }
 
     public function all(
         string $period,
@@ -101,30 +107,50 @@ class MetricsEloquentConnection implements MetricsConnection
 
     public function delete(string $key, ?int $member = null): void
     {
-        $this->query()
-            ->where('primary_key', self::PREFIX.$key)
-            ->when(
-                (! empty($member) || is_numeric($member)),
-                fn ($query) => $query->where('secondary_key', $member),
-                fn ($query) => $query->whereNull('secondary_key')
-            )
-            ->delete();
+        foreach ($this->tables() as $year) {
+            $this->query($year)
+                ->where('primary_key', self::PREFIX.$key)
+                ->when(
+                    (!empty($member) || is_numeric($member)),
+                    fn($query) => $query->where('secondary_key', $member),
+                    fn($query) => $query->whereNull('secondary_key')
+                )
+                ->delete();
+        }
     }
 
     public function deleteByPrimary(string $key): void
     {
         do {
-            $deleted = $this->query()
-                ->where('primary_key', self::PREFIX.$key)
-                ->limit(1000)
-                ->delete();
+            foreach ($this->tables() as $year) {
+                $deleted = $this->query($year)
+                    ->where('primary_key', self::PREFIX.$key)
+                    ->limit(1000)
+                    ->delete();
+            }
         } while ($deleted > 0);
     }
 
-    private function query(): Builder
+    /** @return array<int> */
+    public function tables(): array
     {
-        return (new Visit)
-            ->setTable(config('visits.table'))
+        return [
+            2024,
+            2023, // or older
+        ];
+    }
+
+    public function setYear(?int $year): self
+    {
+        $this->year = $year ?? now()->year;
+
+        return $this;
+    }
+
+    private function query(?int $year = null): Builder
+    {
+        return (new Visit())
+            ->setTableForYear($year ?? $this->year)
             ->setConnection(config('visits.connection'))
             ->newQuery();
     }
@@ -149,7 +175,8 @@ class MetricsEloquentConnection implements MetricsConnection
 
     public function increment(string $key, int $value, int $member = null): void
     {
-        $row = $this->query()
+        $row = $this
+            ->query()
             ->where('primary_key', self::PREFIX.$key)
             ->when(
                 (! empty($member) || is_numeric($member)),
@@ -165,7 +192,7 @@ class MetricsEloquentConnection implements MetricsConnection
                     ['primary_key' => self::PREFIX.$key, 'secondary_key' => $member] :
                     ['primary_key' => self::PREFIX.$key]
             );
-            $row->setConnection(config('visits.connection'))->setTable(config('visits.table'));
+            $row->setConnection(config('visits.connection'))->setTableForYear();
         }
 
         $row->score += $value;
@@ -197,7 +224,7 @@ class MetricsEloquentConnection implements MetricsConnection
                 'expired_at' => $expiredAt,
                 'score' => 0,
             ]);
-            $row->setConnection(config('visits.connection'))->setTable(config('visits.table'));
+            $row->setConnection(config('visits.connection'))->setTableForYear();
         }
 
         $row->score += $inc;

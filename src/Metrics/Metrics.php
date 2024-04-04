@@ -40,16 +40,34 @@ class Metrics implements MetricsInterface
             : $this->connection->get($this->keys->visitsTotal());
     }
 
+    private function yearsInPeriod(Carbon $from = null, Carbon $to = null)
+    {
+        $from = $from ?? now();
+        $to = $to ?? now();
+
+        return range(
+            max(2023, $from->year),
+            $to->year,
+        );
+    }
+
     public function countAll(Carbon $from = null, Carbon $to = null): Collection
     {
-        $count = $this->connection
-            ->all($this->period, $this->keys->visits, $this->keys->id, $from, $to)
-            ->map(function ($item) {
-                return [
-                    'score' => $item->score,
-                    'date' => $this->extractedDate($item, $this->period),
-                ];
-            });
+        $count = collect();
+
+        foreach ($this->yearsInPeriod($from, $to) as $year) {
+            $count = $count->merge(
+                $this->connection
+                    ->setYear($year)
+                    ->all($this->period, $this->keys->visits, $this->keys->id, $from, $to)
+                    ->map(function ($item) {
+                        return [
+                            'score' => $item->score,
+                            'date' => $this->extractedDate($item, $this->period),
+                        ];
+                    })
+            );
+        }
 
         if ($from !== null && $to !== null) {
             $count = $this->fillMissingDates($count, $from, $to);
@@ -111,7 +129,10 @@ class Metrics implements MetricsInterface
         $param = Str::of($param)->snake();
         $key = "{$this->keys->visits}_{$param}:{$this->keys->id}";
 
-        return $this->connection->allByParam($key, $date)->sortByDesc('score', SORT_NUMERIC);
+        return $this->connection
+            ->setYear($date->year)
+            ->allByParam($key, $date)
+            ->sortByDesc('score', SORT_NUMERIC);
     }
 
     public function countAllByParamAndDate(string $param, Carbon $from, Carbon $to): Collection
@@ -119,7 +140,13 @@ class Metrics implements MetricsInterface
         $param = Str::of($param)->snake();
         $key = "{$this->keys->visits}_{$param}:{$this->keys->id}";
 
-        $count = $this->connection->all($this->period, $key, null, $from, $to);
+        $count = collect();
+
+        foreach ($this->yearsInPeriod($from, $to) as $year) {
+            $count = $count->merge(
+                $this->connection->setYear($year)->all($this->period, $key, null, $from, $to)
+            );
+        }
 
         return $count
             ->groupBy(fn ($item) => $item->secondary_key)
@@ -133,15 +160,23 @@ class Metrics implements MetricsInterface
 
     public function increment($inc = 1, CarbonInterface $date = null): void
     {
-        $this->connection->increment($this->keys->visits, $inc, $this->keys->id);
-        $this->connection->increment($this->keys->visitsTotal(), $inc);
+        $this->connection
+            ->setYear(null)
+            ->increment($this->keys->visits, $inc, $this->keys->id);
+        $this->connection
+            ->setYear(null)
+            ->increment($this->keys->visitsTotal(), $inc);
 
         foreach (self::PERIODS as $period) {
             $expireInSeconds = $this->newExpiration($period, $date);
             $periodKey = $this->keys->period($period);
 
-            $this->connection->incrementWithExpiration($periodKey, $inc, $this->keys->id, $expireInSeconds);
-            $this->connection->incrementWithExpiration($periodKey.'_total', $inc, null, $expireInSeconds);
+            $this->connection
+                ->setYear(null)
+                ->incrementWithExpiration($periodKey, $inc, $this->keys->id, $expireInSeconds);
+            $this->connection
+                ->setYear(null)
+                ->incrementWithExpiration($periodKey.'_total', $inc, null, $expireInSeconds);
         }
     }
 
@@ -198,8 +233,12 @@ class Metrics implements MetricsInterface
                 $periodKey = "{$periodKey}_{$key}:{$this->keys->id}";
                 $expireInSeconds = $this->newExpiration($period, $date);
 
-                $this->connection->incrementWithExpiration($periodKey, $inc, $value, $expireInSeconds);
-                $this->connection->incrementWithExpiration($periodKey.'_total', $inc, $value, $expireInSeconds);
+                $this->connection
+                    ->setYear(null)
+                    ->incrementWithExpiration($periodKey, $inc, $value, $expireInSeconds);
+                $this->connection
+                    ->setYear(null)
+                    ->incrementWithExpiration($periodKey.'_total', $inc, $value, $expireInSeconds);
             }
         }
     }

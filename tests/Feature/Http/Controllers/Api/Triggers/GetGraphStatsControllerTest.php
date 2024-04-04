@@ -5,6 +5,8 @@ use App\Models\TriggerType;
 use Illuminate\Support\Carbon;
 use Illuminate\Testing\Fluent\AssertableJson;
 
+use MetricsWave\Metrics\Models\Visit;
+
 use function Pest\Laravel\actingAs;
 
 $csv = file_get_contents(__DIR__.'/assets/visits.csv');
@@ -21,12 +23,15 @@ $loadVisits = function (Trigger $trigger) use ($visits): void {
             continue;
         }
 
-        DB::table(config('visits.table'))
-            ->insert([
+        $expiredAt = $row[5] === '' ? null : new Carbon($row[5]);
+
+        $tableName = Visit::tableNameForYear(($expiredAt ?? now())->year);
+
+        DB::table($tableName)->insert([
                 'primary_key' => 'visits:testing:triggers_visits_day',
                 'secondary_key' => $trigger->id,
                 'score' => (int) $row[3],
-                'expired_at' => $row[5] === '' ? null : new Carbon($row[5]),
+                'expired_at' => $expiredAt,
             ]);
     }
 };

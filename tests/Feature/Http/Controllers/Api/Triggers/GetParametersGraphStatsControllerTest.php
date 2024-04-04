@@ -5,6 +5,8 @@ use App\Models\TriggerType;
 use Illuminate\Support\Carbon;
 use Illuminate\Testing\Fluent\AssertableJson;
 
+use MetricsWave\Metrics\Models\Visit;
+
 use function Pest\Laravel\actingAs;
 
 $csv = file_get_contents(__DIR__.'/assets/visits_parameters.csv');
@@ -40,12 +42,14 @@ it('return expected parameters stats', function () use ($visits) {
             continue;
         }
 
-        DB::table(config('visits.table'))
+        $expiredAt = $row[5] === '' ? null : new Carbon($row[5]);
+
+        DB::table(Visit::tableNameForYear(($expiredAt ?? now())->year))
             ->insert([
                 'primary_key' => Str::of($row[1])->replace('visits:triggers', 'visits:testing:triggers')->toString(),
                 'secondary_key' => $row[2],
                 'score' => (int) $row[3],
-                'expired_at' => $row[5] === '' ? null : new Carbon($row[5]),
+                'expired_at' => $expiredAt,
             ]);
     }
 
@@ -80,7 +84,7 @@ it('return expected parameters stats with only one parameter', function () use (
             continue;
         }
 
-        DB::table(config('visits.table'))
+        DB::table(Visit::tableNameForYear(now()->year))
             ->insert([
                 'primary_key' => Str::of($row[1])->replace('visits:triggers', 'visits:testing:triggers')->toString(),
                 'secondary_key' => $row[2],
@@ -119,7 +123,7 @@ it('return expected parameters stats by week', function () use ($visits) {
             continue;
         }
 
-        DB::table(config('visits.table'))
+        DB::table(Visit::tableNameForYear(now()->year))
             ->insert([
                 'primary_key' => Str::of($row[1])->replace('visits:triggers', 'visits:testing:triggers')->toString(),
                 'secondary_key' => $row[2],
@@ -160,7 +164,7 @@ it('return expected parameters stats by day', function () use ($visits) {
             continue;
         }
 
-        DB::table(config('visits.table'))
+        DB::table(Visit::tableNameForYear(now()->year))
             ->insert([
                 'primary_key' => Str::of($row[1])->replace('visits:triggers', 'visits:testing:triggers')->toString(),
                 'secondary_key' => $row[2],

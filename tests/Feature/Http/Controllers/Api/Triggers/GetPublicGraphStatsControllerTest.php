@@ -5,6 +5,8 @@ use App\Models\TriggerType;
 use Illuminate\Support\Carbon;
 use Illuminate\Testing\Fluent\AssertableJson;
 
+use MetricsWave\Metrics\Models\Visit;
+
 use function Pest\Laravel\actingAs;
 
 $csv = file_get_contents(__DIR__.'/assets/visits.csv');
@@ -31,7 +33,7 @@ it('return expected data', function () use ($visits) {
             continue;
         }
 
-        DB::table(config('visits.table'))
+        DB::table(Visit::tableNameForYear(now()->year))
             ->insert([
                 'primary_key' => 'visits:testing:triggers_visits_day',
                 'secondary_key' => $trigger->id,
@@ -68,7 +70,7 @@ it('return expected data for week period', function () use ($visits) {
             continue;
         }
 
-        DB::table(config('visits.table'))
+        DB::table(Visit::tableNameForYear(now()->year))
             ->insert([
                 'primary_key' => 'visits:testing:triggers_visits_day',
                 'secondary_key' => $trigger->id,
@@ -105,7 +107,7 @@ it('return expected data for year period', function () use ($visits) {
             continue;
         }
 
-        DB::table(config('visits.table'))
+        DB::table(Visit::tableNameForYear(now()->year))
             ->insert([
                 'primary_key' => 'visits:testing:triggers_visits_day',
                 'secondary_key' => $trigger->id,
