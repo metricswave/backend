@@ -93,7 +93,7 @@ Route::get('/dashboards/{dashboard:uuid}/triggers', GetDashboardTriggersByUuidCo
 
 // Graphs
 Route::get('/triggers/{trigger:uuid}/graph-stats', GetGraphStatsController::class);
-Route::get('/triggers/{trigger:uuid}/parameters-graph-stats', GetParametersGraphStatsController::class);
+Route::get('/triggers/{trigger:uuid}/parameters-graph-stats/{parameter?}', GetParametersGraphStatsController::class);
 $dashboardAndTrigger = '/dashboards/{dashboard:uuid}/triggers/{trigger:uuid}';
 Route::get($dashboardAndTrigger.'/graph-stats', GetPublicGraphStatsController::class)
     ->withoutScopedBindings();

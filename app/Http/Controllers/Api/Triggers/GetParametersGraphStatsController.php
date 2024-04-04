@@ -15,13 +15,14 @@ class GetParametersGraphStatsController extends ApiAuthJsonController
         parent::__construct();
     }
 
-    public function __invoke(Trigger $trigger, PeriodRequest $request): JsonResponse
+    public function __invoke(Trigger $trigger, PeriodRequest $request, ?string $parameter = null): JsonResponse
     {
         abort_unless($this->user()->hasAccessToTeam($trigger->team), 404);
 
         $stats = $this->statsGetter->get(
             $trigger,
             $request->getPeriod(),
+            $parameter,
         );
 
         return $this->response(
