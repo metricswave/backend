@@ -15,8 +15,12 @@ class GetPublicParametersGraphStatsController extends JsonController
     {
     }
 
-    public function __invoke(Dashboard $dashboard, Trigger $trigger, PeriodRequest $request): JsonResponse
-    {
+    public function __invoke(
+        Dashboard $dashboard,
+        Trigger $trigger,
+        PeriodRequest $request,
+        ?string $parameter = null
+    ): JsonResponse {
         abort_if(! $dashboard->public, 404);
 
         if ($dashboard->items->filter(fn ($i) => $i->eventUuid === $trigger->uuid)->count() === 0) {
@@ -26,6 +30,7 @@ class GetPublicParametersGraphStatsController extends JsonController
         $stats = $this->statsGetter->get(
             $trigger,
             $request->getPeriod(),
+            $parameter,
         );
 
         return $this->response(

@@ -97,8 +97,10 @@ Route::get('/triggers/{trigger:uuid}/parameters-graph-stats/{parameter?}', GetPa
 $dashboardAndTrigger = '/dashboards/{dashboard:uuid}/triggers/{trigger:uuid}';
 Route::get($dashboardAndTrigger.'/graph-stats', GetPublicGraphStatsController::class)
     ->withoutScopedBindings();
-Route::get($dashboardAndTrigger.'/parameters-graph-stats', GetPublicParametersGraphStatsController::class)
-    ->withoutScopedBindings();
+Route::get(
+    $dashboardAndTrigger.'/parameters-graph-stats/{parameter?}',
+    GetPublicParametersGraphStatsController::class
+)->withoutScopedBindings();
 
 // ↓ - Deprecated Graphs Endpoints
 Route::get('/triggers/{trigger:uuid}/stats', GetTriggerStatsController::class); // deprecated
