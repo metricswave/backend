@@ -33,7 +33,7 @@
 
 @section('content')
     <div class="pt-14 max-w-[65ch] mx-auto">
-        <h1 class="text-4xl font-bold mb-4">{{ $title }}</h1>
+        <h1 class="text-4xl font-bold mb-4 text-pretty">{{ $title }}</h1>
         <div class="max-w-[400px] opacity-50 pb-24">
             Here you can find all the updates and articles about {{ config('app.name') }}.
         </div>
@@ -41,7 +41,7 @@
         <div class="flex flex-col space-y-14 sm:space-y-20">
             @foreach($articles as $article)
                 <div class="max-w-[65ch] mx-auto">
-                    <h2 class="text-2xl font-bold mb-2">
+                    <h2 class="text-2xl font-bold mb-2 text-pretty">
                         <a href="/blog/{{ $article->slug }}">
                             {{ $article->title }}
                         </a>

@@ -36,12 +36,12 @@
 @section('content')
     <div class="pt-14 max-w-[65ch] mx-auto">
         @if ($blueprint->raw()->handle === 'article')
-            <h1 class="text-4xl sm:text-center font-bold mb-6">{{ $title }}</h1>
+            <h1 class="text-4xl sm:text-center font-bold mb-6 text-pretty">{{ $title }}</h1>
             <div class="sm:text-center opacity-50 mb-12">
                 {{ Date::parse($date)->format('F j, Y') }}
             </div>
         @else
-            <h1 class="text-4xl font-bold mb-8">{{ $title }}</h1>
+            <h1 class="text-4xl font-bold mb-8 text-pretty">{{ $title }}</h1>
         @endif
 
         <div class="prose dark:prose-invert mx-auto prose-headings:scroll-mt-8">
