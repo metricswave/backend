@@ -25,16 +25,17 @@ class RetryFailedHorizonJobsCommand extends Command
             $failedJobs = $this->jobs->getFailed($afterIndex);
 
             foreach ($failedJobs as $failedJob) {
-                if (!empty($failedJob->retried_by)) {
-                    continue;
+                $uuid = $failedJob->id;
+
+                if (empty($failedJob->retried_by)) {
+                    dispatch(new RetryFailedJob($uuid));
+                    echo "R";
                 }
 
-                $uuid = $failedJob->id;
-                dispatch(new RetryFailedJob($uuid));
                 \DB::table('failed_jobs')->where('uuid', $uuid)->delete();
                 $this->jobs->deleteFailed($uuid);
 
-                echo ".";
+                echo "D";
             }
 
             $afterIndex += 50;
