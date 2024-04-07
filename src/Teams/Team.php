@@ -34,6 +34,10 @@ class Team extends Model
         'initiated',
     ];
 
+    protected $dispatchesEvents = [
+        'deleted' => TeamDeleted::class,
+    ];
+
     protected $casts = [
         'initiated' => 'boolean',
     ];
