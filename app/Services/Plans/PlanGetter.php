@@ -22,14 +22,14 @@ class PlanGetter
     public function all(): Collection
     {
         return collect(value: [
-            new Plan(PlanId::FREE, 'Free', 0, false, 6, 1000, false),
+            new Plan(PlanId::FREE, 'Free', 0, false, 6, 20000, false),
             new Plan(
                 id: PlanId::BASIC,
                 name: 'Basic',
                 monthlyPrice: 995,
                 yearlyPrice: 11000,
                 dataRetentionInMonths: 12,
-                eventsLimit: 25000,
+                eventsLimit: 50000,
                 dedicatedSupport: false,
                 productStripeId: self::BASIC_PRODUCT_ID,
                 monthlyPriceStripeId: 'price_1NOfhbDpKR4Se5u8lPzm7X4F',
