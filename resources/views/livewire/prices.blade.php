@@ -54,9 +54,9 @@
 
                         <div class="flex flex-col gap-2 text-xs opacity-70 text-center">
                             @if($plan->name === "Enterprise")
-                                Unlimited events
+                                Unlimited traffic
                             @else
-                                {{ $plan->eventsLimit !== null ? $formattedLimit : 'Unlimited' }} events per month.
+                                {{ $plan->eventsLimit !== null ? $formattedLimit : 'Unlimited' }} visits per month.
                             @endif
                         </div>
                     </a>
