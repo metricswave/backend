@@ -39,8 +39,11 @@
                 <span class="text-sm">{{ __("Choose one plan") }}:</span>
 
                 <div class="flex flex-col gap-3 pt-1">
-                    @foreach((new PlanGetter())->paidPlans() as $plan)
-                        <div
+                    @foreach($plans as $plan)
+                        <a
+                            @if($currentPlan->id !== $plan->id)
+                                href="?plan={{ ($plan->id->value - 1) }}"
+                            @endif
                             class="flex-grow flex gap-6 items-start p-3 justify-center rounded-sm border transition-all duration-200 ease-in-out {{ $currentPlan->id === $plan->id ? 'dark:border-blue-500/60 dark:bg-blue-800/40 font-bold' : 'dark:border-blue-800/15 dark:bg-blue-800/5 dark:hover:bg-blue-800/20 dark:hover:border-blue-800/40 cursor-pointer' }}"
                         >
                             <span class="min-w-[100px]">{{ $plan->name }}</span>
@@ -58,7 +61,7 @@
                             <span>{!!
                                 html_format_currency($plan->monthlyPrice, $this->currencySymbol, '/'.__('mo'))
                             !!}</span>
-                        </div>
+                        </a>
                     @endforeach
                 </div>
             </div>

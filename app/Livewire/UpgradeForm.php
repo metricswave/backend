@@ -7,6 +7,7 @@ use App\Services\Plans\PlanGetter;
 use App\Transfers\Plan;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
+use MetricsWave\Plan\Plans;
 
 class UpgradeForm extends Component
 {
@@ -20,19 +21,25 @@ class UpgradeForm extends Component
 
     public bool $showPlans = true;
 
+    public Plans $plans;
+
     public Plan $currentPlan;
 
     public function mount(): void
     {
-        $plans = (new PlanGetter())->paidPlans();
+        $this->plans = (new PlanGetter())->paidPlans();
+
+        $this->showPlans = match (request()->query('f', false)) {
+            false => true,
+            default => false,
+        };
 
         if (request()->query('plan', false)) {
             $routePlan = (int) request()->query('plan') + 1;
-            $this->showPlans = false;
-            $this->currentPlan = $plans
+            $this->currentPlan = $this->plans
                 ->first(fn(Plan $plan) => $plan->id->value === $routePlan);
         } else {
-            $this->currentPlan = $plans->first();
+            $this->currentPlan = $this->plans->first();
         }
 
         if (App::getLocale() === 'es') {
