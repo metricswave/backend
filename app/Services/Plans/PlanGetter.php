@@ -4,7 +4,7 @@ namespace App\Services\Plans;
 
 use App\Transfers\Plan;
 use App\Transfers\PlanId;
-use Illuminate\Support\Collection;
+use MetricsWave\Plan\Plans;
 
 class PlanGetter
 {
@@ -16,12 +16,12 @@ class PlanGetter
 
     public function get(PlanId $id): Plan
     {
-        return $this->all()->first(fn (Plan $plan) => $plan->id === $id);
+        return $this->all()->first(fn(Plan $plan) => $plan->id === $id);
     }
 
-    public function all(): Collection
+    public function all(): Plans
     {
-        return collect(value: [
+        return new Plans([
             new Plan(PlanId::FREE, 'Free', 0, false, 6, 20000, false),
             new Plan(
                 id: PlanId::BASIC,
@@ -69,5 +69,11 @@ class PlanGetter
                 dedicatedSupport: true
             ),
         ]);
+    }
+
+    public function paidPlans(): Plans
+    {
+        return $this->all()
+            ->filter(fn(Plan $plan) => $plan->monthlyPrice > 0);
     }
 }

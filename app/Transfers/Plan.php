@@ -2,9 +2,10 @@
 
 namespace App\Transfers;
 
+use Livewire\Wireable;
 use Spatie\LaravelData\Data;
 
-class Plan extends Data
+class Plan extends Data implements Wireable
 {
     public function __construct(
         readonly public PlanId $id,
@@ -18,5 +19,26 @@ class Plan extends Data
         readonly public ?string $monthlyPriceStripeId = null,
         readonly public ?string $yearlyPriceStripeId = null,
     ) {
+    }
+
+    public static function fromLivewire($value): static
+    {
+        return new static(
+            id: PlanId::from($value['id']),
+            name: $value['name'],
+            monthlyPrice: $value['monthlyPrice'],
+            yearlyPrice: $value['yearlyPrice'],
+            dataRetentionInMonths: $value['dataRetentionInMonths'],
+            eventsLimit: $value['eventsLimit'],
+            dedicatedSupport: $value['dedicatedSupport'],
+            productStripeId: $value['productStripeId'],
+            monthlyPriceStripeId: $value['monthlyPriceStripeId'],
+            yearlyPriceStripeId: $value['yearlyPriceStripeId'],
+        );
+    }
+
+    public function toLivewire(): array
+    {
+        return $this->toArray();
     }
 }
