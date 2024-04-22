@@ -12,6 +12,7 @@
             <input
                 type="text"
                 wire:model="name"
+                id="card-holder-name"
                 class="w-full p-3 rounded-sm text-zinc-800"
                 placeholder="John Doe"
                 autofocus
@@ -28,6 +29,7 @@
             <input
                 type="email"
                 wire:model="email"
+                id="card-holder-email"
                 class="w-full p-3 rounded-sm text-zinc-800"
                 placeholder="john-doe@email.com"
             />
@@ -78,11 +80,15 @@
 
         <div
             id="card-errors"
+            class="hidden bg-red-500 text-red-50 p-4 rounded-sm my-4 text-sm"
             role="alert"
         ></div>
 
-        <button type="submit"
-                class="w-full bg-blue-500 rounded-sm p-4">
+        <button
+            type="submit"
+            id="submit-button"
+            class="w-full bg-blue-500 rounded-sm p-4 disabled:bg-zinc-500 transition-all duration-200 ease-in-out"
+        >
             {{ __("Upgrade account") }}
             @unless($showPlans)
                 ({!! html_format_currency($currentPlan->monthlyPrice, $this->currencySymbol, '/'.__('mo')) !!})
@@ -91,15 +97,17 @@
     </form>
 
     <script lang="ts">
-        var stripe = Stripe('{{ config('services.stripe.key') }}', {
-            locale: '{{ App::getLocale() }}'
-        });
-
+        var stripe = Stripe('{{ config('services.stripe.key') }}', {locale: '{{ App::getLocale() }}'});
         const options = {
             mode: 'subscription',
             currency: '{{ $this->currency }}',
             amount: {{ $currentPlan->monthlyPrice }},
+            metadata: {
+                plan: {{ $currentPlan->id->value }},
+                currency: '{{ $currency }}',
+            },
             setup_future_usage: 'off_session',
+            captureMethod: 'manual',
             appearance: {
                 theme: 'flat',
                 variables: {
@@ -120,60 +128,40 @@
             }
         };
         const elements = stripe.elements(options);
-
-
-        // Set up Stripe.js and Elements to use in checkout form
-        const paymentElement = elements.create("payment", {
-            // layout: 'accordion',
-            defaultValues: {},
-            fields: {
-                billingDetails: 'never'
-            },
-        });
+        const paymentElement = elements.create("payment");
         paymentElement.mount("#payment-element");
-
 
         // Submit form
         const form = document.getElementById("payment-form");
+        const buttonElement = document.getElementById('submit-button');
+        const cardErrorElement = document.getElementById('card-errors')
+        cardErrorElement.classList.add('hidden')
+
         form.addEventListener("submit", async (event) => {
             event.preventDefault();
+            buttonElement.disabled = true;
+            elements.submit()
 
-            if (!stripe) {
-                // Stripe.js hasn't yet loaded.
-                // Make sure to disable form submission until Stripe.js has loaded.
-                return;
-            }
-
-            setLoading(true);
-
-            // Trigger form validation and wallet collection
-            const {error: submitError} = await elements.submit();
-            if (submitError) {
-                handleError(submitError);
-                return;
-            }
-
-            // Create the PaymentIntent and obtain clientSecret
-            const res = await fetch("/create-intent", {
-                method: "POST",
-                headers: {"Content-Type": "application/json"},
-            });
-
-            const {client_secret: clientSecret} = await res.json();
-
-            // Use the clientSecret and Elements instance to confirm the setup
-            const {error} = await stripe.confirmPayment({
-                elements,
-                clientSecret,
-                confirmParams: {
-                    return_url: 'https://example.com/order/123/complete',
-                },
-                // Uncomment below if you only want redirect for redirect-based payments
-                // redirect: "if_required",
-            });
+            const {error} = await stripe.confirmSetup(
+                {
+                    elements,
+                    clientSecret: '{{ $this->intentCode }}',
+                    confirmParams: {
+                        return_url: '{{ config('app.url') }}{{ App::getLocale() === 'es' ? '/es' : '' }}/upgrading/{{ $teamId }}',
+                        payment_method_data: {
+                            billing_details: {
+                                name: document.getElementById('card-holder-name').value,
+                                email: document.getElementById('card-holder-email').value,
+                            },
+                        },
+                    },
+                }
+            );
 
             if (error) {
-                handleError(error);
+                buttonElement.disabled = false
+                cardErrorElement.innerHTML = error.message
+                cardErrorElement.classList.remove('hidden')
             }
         });
     </script>

@@ -21,7 +21,7 @@ class GetUpgradePageController extends Controller
         if ($team->subscription_plan_id !== PlanId::FREE) {
             return view('pages.team_upgraded', [
                 'team' => $team,
-                'plan' => $this->planGetter->get($team->subscription_plan_id)
+                'plan' => $this->planGetter->get($team->subscription_plan_id),
             ]);
         }
 

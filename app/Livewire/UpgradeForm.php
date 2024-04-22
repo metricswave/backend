@@ -8,6 +8,7 @@ use App\Transfers\Plan;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
 use MetricsWave\Plan\Plans;
+use MetricsWave\Teams\Team;
 
 class UpgradeForm extends Component
 {
@@ -24,6 +25,10 @@ class UpgradeForm extends Component
     public Plans $plans;
 
     public Plan $currentPlan;
+
+    public int $teamId;
+
+    public string $intentCode;
 
     public function mount(): void
     {
@@ -45,6 +50,16 @@ class UpgradeForm extends Component
             $this->currentPlan = $this->plans->first();
         }
 
+        $this->intentCode = Team::find($this->teamId)
+            ->createSetupIntent([
+                'metadata' => [
+                    'team_id' => $this->teamId,
+                    'currency' => $this->currency,
+                    'plan_id' => $this->currentPlan->id->value,
+                ]
+            ])
+            ->client_secret;
+
         if (App::getLocale() === 'es') {
             $this->currency = 'eur';
             $this->currencySymbol = '€';
@@ -62,18 +77,5 @@ class UpgradeForm extends Component
     public function render(): View
     {
         return view('livewire.upgrade-form');
-    }
-
-    public function save()
-    {
-        $this->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-        ]);
-
-        dd('Saving', [
-            'name' => $this->name,
-            'email' => $this->email,
-        ]);
     }
 }

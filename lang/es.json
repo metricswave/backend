@@ -5,5 +5,10 @@
     "Unlimited traffic": "Tráfico ilimitado",
     "visits per month": "visitas al mes",
     "Choose one plan": "Elije un plan",
-    "mo": "m"
+    "mo": "m",
+    "Upgrading your account.": "Actualizando tu cuenta.",
+    "Your :domain page is being updated. <strong>You will receive an email in a few minutes</strong> confirming the entire process.": "Tu página con dominio :domain esta siendo actualizada. <strong>Recibirás un email en unos minutos</strong> confirmando todo el proceso.",
+    "Thank you very much,": "Muchas gracias,",
+    "Site upgraded!": "Página actualizada!",
+    "Your site under :domain has been successfully upgraded to :plan plan and you have up to <strong>:visits visits per month</strong>.": "Tu página con dominio :domain se ha actualizado correctamente al plan :plan y ahora dispones de <strong>:visits visitas al mes</strong>."
 }

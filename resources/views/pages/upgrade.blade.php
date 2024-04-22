@@ -54,7 +54,7 @@
         </section>
 
         <section class="mx-auto mw-landing px-app animate-[out_1.5s,_fade-in-down_2s_ease-out_1.5s] w-full">
-            <livewire:upgrade-form />
+            <livewire:upgrade-form team-id="{{ $team->id }}" />
         </section>
     </div>
 @endsection
