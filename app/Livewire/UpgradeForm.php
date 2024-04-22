@@ -27,6 +27,9 @@ class UpgradeForm extends Component
 
     public function mount(): void
     {
+        $this->name = session('name', '');
+        $this->email = session('email', '');
+
         $this->plans = (new PlanGetter())->paidPlans();
 
         $this->showPlans = match (request()->query('f', false)) {
@@ -46,6 +49,14 @@ class UpgradeForm extends Component
             $this->currency = 'eur';
             $this->currencySymbol = '€';
         }
+    }
+
+    public function changePlan(int $planId): void
+    {
+        session()->put('name', $this->name);
+        session()->put('email', $this->email);
+
+        $this->redirect('?plan=' . $planId);
     }
 
     public function render(): View

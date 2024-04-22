@@ -12,8 +12,9 @@
             <input
                 type="text"
                 wire:model="name"
-                class="w-full p-3 rounded-sm"
+                class="w-full p-3 rounded-sm text-zinc-800"
                 placeholder="John Doe"
+                autofocus
             />
 
             <div>@error('name') {{ $message }} @enderror</div>
@@ -27,7 +28,7 @@
             <input
                 type="email"
                 wire:model="email"
-                class="w-full p-3 rounded-sm"
+                class="w-full p-3 rounded-sm text-zinc-800"
                 placeholder="john-doe@email.com"
             />
 
@@ -43,6 +44,7 @@
                         <a
                             @if($currentPlan->id !== $plan->id)
                                 href="?plan={{ ($plan->id->value - 1) }}"
+                                wire:click.prevent="changePlan({{ ($plan->id->value - 1) }})"
                             @endif
                             class="flex-grow flex gap-6 items-start p-3 justify-center rounded-sm border transition-all duration-200 ease-in-out {{ $currentPlan->id === $plan->id ? 'dark:border-blue-500/60 dark:bg-blue-800/40 font-bold' : 'dark:border-blue-800/15 dark:bg-blue-800/5 dark:hover:bg-blue-800/20 dark:hover:border-blue-800/40 cursor-pointer' }}"
                         >
