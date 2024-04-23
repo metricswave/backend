@@ -13,7 +13,7 @@
                 type="text"
                 wire:model="name"
                 id="card-holder-name"
-                class="w-full p-3 rounded-sm text-zinc-800"
+                class="w-full p-3 rounded-sm text-zinc-800 border border-zinc-200 hover:border-zinc-400 transition-all duration-200 ease-in-out"
                 placeholder="John Doe"
                 autofocus
             />
@@ -30,7 +30,7 @@
                 type="email"
                 wire:model="email"
                 id="card-holder-email"
-                class="w-full p-3 rounded-sm text-zinc-800"
+                class="w-full p-3 rounded-sm text-zinc-800 border border-zinc-200 hover:border-zinc-400 transition-all duration-200 ease-in-out"
                 placeholder="john-doe@email.com"
             />
 
@@ -48,8 +48,17 @@
                                 href="?plan={{ ($plan->id->value - 1) }}"
                                 wire:click.prevent="changePlan({{ ($plan->id->value - 1) }})"
                             @endif
-                            class="flex-grow flex gap-6 items-start p-3 justify-center rounded-sm border transition-all duration-200 ease-in-out {{ $currentPlan->id === $plan->id ? 'dark:border-blue-500/60 dark:bg-blue-800/40 font-bold' : 'dark:border-blue-800/15 dark:bg-blue-800/5 dark:hover:bg-blue-800/20 dark:hover:border-blue-800/40 cursor-pointer' }}"
+                            class="group flex-grow flex gap-6 items-start p-3 justify-center rounded-sm border transition-all duration-200 ease-in-out {{ $currentPlan->id === $plan->id ? 'dark:border-blue-500/60 dark:text-zinc-800 font-bold bg-white' : 'dark:border-blue-800/15 dark:bg-white/5 dark:hover:bg-blue-800/20 dark:hover:border-blue-800/40 cursor-pointer bg-white/20 hover:bg-white/50' }}"
                         >
+                            @if($currentPlan->id === $plan->id)
+                                <div class="mt-0.5 border border-zinc-400 rounded-full">
+                                    <div class="rounded-full aspect-square w-4 bg-blue-500 border-4 border-white"></div>
+                                </div>
+                            @else
+                                <div class="mt-0.5 border border-zinc-400 rounded-full">
+                                    <div class="rounded-full aspect-square w-4 bg-white border-4 border-white group-hover:bg-blue-300 transition-all duration-200 ease-in-out"></div>
+                                </div>
+                            @endif
                             <span class="min-w-[100px]">{{ $plan->name }}</span>
                             <span class="opacity-70 flex-grow">
                             @if($plan->name === "Enterprise")
@@ -87,7 +96,7 @@
         <button
             type="submit"
             id="submit-button"
-            class="w-full bg-blue-500 rounded-sm p-4 disabled:bg-zinc-500 transition-all duration-200 ease-in-out"
+            class="w-full bg-blue-500 text-white rounded-sm p-4 disabled:bg-zinc-500 transition-all duration-200 ease-in-out"
         >
             {{ __("Upgrade account") }}
             @unless($showPlans)
@@ -97,7 +106,10 @@
     </form>
 
     <script lang="ts">
-        var stripe = Stripe('{{ config('services.stripe.key') }}', {locale: '{{ App::getLocale() }}'});
+        let darkModeEnabledQuery = window.matchMedia('(prefers-color-scheme: dark)')
+        let darkModeEnabled = darkModeEnabledQuery.matches
+
+        const stripe = Stripe('{{ config('services.stripe.key') }}', {locale: '{{ App::getLocale() }}'})
         const options = {
             mode: 'subscription',
             currency: '{{ $this->currency }}',
@@ -122,14 +134,27 @@
                 },
                 rules: {
                     '.Label': {
-                        color: '#fff',
-                    }
+                        color: darkModeEnabled ? '#fff' : '#111',
+                    },
+                    '.Input': {
+                        backgroundColor: '#fff',
+                        border: darkModeEnabled ? '0' : '1px rgb(228 228 231) solid',
+                        transition: 'all 150ms',
+                    },
+                    '.Input:hover': {
+                        border: darkModeEnabled ? '0' : '1px rgb(161 161 170) solid',
+                    },
                 }
             }
         };
         const elements = stripe.elements(options);
         const paymentElement = elements.create("payment");
         paymentElement.mount("#payment-element");
+
+
+        darkModeEnabledQuery.addListener(() => {
+            elements.update()
+        });
 
         // Submit form
         const form = document.getElementById("payment-form");
