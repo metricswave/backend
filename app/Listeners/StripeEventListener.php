@@ -6,11 +6,14 @@ use App\Models\Lead;
 use App\Models\Price;
 use App\Services\Leads\FirstOrCreateLeadService;
 use Laravel\Cashier\Events\WebhookReceived;
+use MetricsWave\Plan\Listeners\SubscribeTeamToPlanOnIntentSucceeded;
 
 class StripeEventListener
 {
-    public function __construct(private readonly FirstOrCreateLeadService $firstOrCreateLeadService)
-    {
+    public function __construct(
+        private readonly FirstOrCreateLeadService $firstOrCreateLeadService,
+        private readonly SubscribeTeamToPlanOnIntentSucceeded $intentSucceeded,
+    ) {
     }
 
     public function handle(WebhookReceived $event): void
@@ -39,6 +42,15 @@ class StripeEventListener
             $price->update([
                 'remaining' => max(0, $price->remaining - 1),
             ]);
+        }
+
+        if ($event->payload['type'] === 'setup_intent.succeeded') {
+            $teamId = (int) $event->payload['data']['object']['metadata']['team_id'];
+            $planId = (int) $event->payload['data']['object']['metadata']['plan_id'];
+            $currency = (string) $event->payload['data']['object']['metadata']['currency'];
+            $paymentMethodId = (string) $event->payload['data']['object']['payment_method'];
+
+            $this->intentSucceeded->handle($teamId, $planId, $currency, $paymentMethodId);
         }
     }
 }

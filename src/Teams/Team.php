@@ -142,4 +142,22 @@ class Team extends Model
 
         return SubscriptionType::Monthly;
     }
+
+    public function stripeName(): string
+    {
+        return $this->owner?->name;
+    }
+
+    public function stripeEmail(): string
+    {
+        return $this->owner?->email ?? "";
+    }
+
+    public function stripeMetadata(): array
+    {
+        return [
+            'team_id' => $this->id,
+            'domain' => $this->domain,
+        ];
+    }
 }

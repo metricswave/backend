@@ -17,6 +17,30 @@ return [
     'stripe' => [
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
+
+        'basic' => [
+            'id' => env('STRIPE_BASIC_ID'),
+            'monthly_price' => env('STRIPE_BASIC_MONTHLY_PRICE'),
+            'eur_monthly_price' => env('STRIPE_BASIC_EUR_MONTHLY_PRICE'),
+            'yearly_price' => env('STRIPE_BASIC_YEARLY_PRICE'),
+            'eur_yearly_price' => env('STRIPE_BASIC_EUR_YEARLY_PRICE'),
+        ],
+
+        'starter' => [
+            'id' => env('STRIPE_STARTER_ID'),
+            'monthly_price' => env('STRIPE_STARTER_MONTHLY_PRICE'),
+            'eur_monthly_price' => env('STRIPE_STARTER_EUR_MONTHLY_PRICE'),
+            'yearly_price' => env('STRIPE_STARTER_YEARLY_PRICE'),
+            'eur_yearly_price' => env('STRIPE_STARTER_EUR_YEARLY_PRICE'),
+        ],
+
+        'business' => [
+            'id' => env('STRIPE_BUSINESS_ID'),
+            'monthly_price' => env('STRIPE_BUSINESS_MONTHLY_PRICE'),
+            'eur_monthly_price' => env('STRIPE_BUSINESS_EUR_MONTHLY_PRICE'),
+            'yearly_price' => env('STRIPE_BUSINESS_YEARLY_PRICE'),
+            'eur_yearly_price' => env('STRIPE_BUSINESS_EUR_YEARLY_PRICE'),
+        ],
     ],
 
     'mailgun' => [

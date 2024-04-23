@@ -18,6 +18,8 @@ class Plan extends Data implements Wireable
         readonly public ?string $productStripeId = null,
         readonly public ?string $monthlyPriceStripeId = null,
         readonly public ?string $yearlyPriceStripeId = null,
+        readonly public ?string $eurMonthlyPriceStripeId = null,
+        readonly public ?string $eurYearlyPriceStripeId = null,
     ) {
     }
 
@@ -34,6 +36,8 @@ class Plan extends Data implements Wireable
             productStripeId: $value['productStripeId'],
             monthlyPriceStripeId: $value['monthlyPriceStripeId'],
             yearlyPriceStripeId: $value['yearlyPriceStripeId'],
+            eurMonthlyPriceStripeId: $value['eurMonthlyPriceStripeId'],
+            eurYearlyPriceStripeId: $value['eurYearlyPriceStripeId'],
         );
     }
 

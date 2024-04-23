@@ -48,7 +48,7 @@
                                 href="?plan={{ ($plan->id->value - 1) }}"
                                 wire:click.prevent="changePlan({{ ($plan->id->value - 1) }})"
                             @endif
-                            class="group flex-grow flex gap-6 items-start p-3 justify-center rounded-sm border transition-all duration-200 ease-in-out {{ $currentPlan->id === $plan->id ? 'dark:border-blue-500/60 dark:text-zinc-800 font-bold bg-white' : 'dark:border-blue-800/15 dark:bg-white/5 dark:hover:bg-blue-800/20 dark:hover:border-blue-800/40 cursor-pointer bg-white/20 hover:bg-white/50' }}"
+                            class="group flex-grow flex gap-6 items-start p-3 justify-center rounded-sm border transition-all duration-200 ease-in-out {{ $currentPlan->id === $plan->id ? 'dark:border-zinc-500/60 dark:text-zinc-800 font-bold bg-white' : 'dark:border-blue-800/15 dark:bg-white/5 dark:hover:bg-blue-800/20 dark:hover:border-blue-800/40 cursor-pointer bg-white/20 hover:bg-white/50' }}"
                         >
                             @if($currentPlan->id === $plan->id)
                                 <div class="mt-0.5 border border-zinc-400 rounded-full">
@@ -83,9 +83,7 @@
         <div
             id="payment-element"
             class="pt-1"
-        >
-            <!-- Elements will create input elements here -->
-        </div>
+        ></div>
 
         <div
             id="card-errors"

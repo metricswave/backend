@@ -12,6 +12,8 @@ use App\Services\TravelDistance\TravelDistanceCalculator;
 use App\Services\Weather\OpenMeteoWeatherForecastGetter;
 use App\Services\Weather\WeatherForecastGetter;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Cashier\Cashier;
+use MetricsWave\Teams\Team;
 use Njed\Toc\Extensions\CommonMark\TitleAnchorIdExtension;
 use Statamic\Facades\Markdown;
 
@@ -25,26 +27,6 @@ class AppServiceProvider extends ServiceProvider
         $this->app->extend('command.statamic.install', function () {
             return new StatamicInstallCommand();
         });
-
-        $this->app->bind(
-            WeatherForecastGetter::class,
-            OpenMeteoWeatherForecastGetter::class,
-        );
-
-        $this->app->bind(
-            TravelDistanceCalculator::class,
-            GoogleTravelDistanceCalculator::class,
-        );
-
-        $this->app->bind(
-            CalendarGetter::class,
-            GoogleCalendarGetter::class,
-        );
-
-        $this->app->bind(
-            EventsGetter::class,
-            GoogleCalendarEventsGetter::class,
-        );
     }
 
     /**
@@ -52,6 +34,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Cashier::useCustomerModel(Team::class);
+
         Markdown::addExtension(function () {
             return new TitleAnchorIdExtension();
         });

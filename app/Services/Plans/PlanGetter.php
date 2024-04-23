@@ -31,9 +31,11 @@ class PlanGetter
                 dataRetentionInMonths: 12,
                 eventsLimit: 50000,
                 dedicatedSupport: false,
-                productStripeId: self::BASIC_PRODUCT_ID,
-                monthlyPriceStripeId: 'price_1NOfhbDpKR4Se5u8lPzm7X4F',
-                yearlyPriceStripeId: 'price_1NOfhbDpKR4Se5u8QcTpZUTl'
+                productStripeId: config('services.stripe.basic.id', self::BASIC_PRODUCT_ID),
+                monthlyPriceStripeId: config('services.stripe.basic.monthly_price', 'price_1NOfhbDpKR4Se5u8lPzm7X4F'),
+                yearlyPriceStripeId: config('services.stripe.basic.yearly_price', 'price_1NOfhbDpKR4Se5u8QcTpZUTl'),
+                eurMonthlyPriceStripeId: config('services.stripe.basic.eur_monthly_price', ''),
+                eurYearlyPriceStripeId: config('services.stripe.basic.eur_yearly_price', '')
             ),
             new Plan(
                 id: PlanId::STARTER,
@@ -43,9 +45,11 @@ class PlanGetter
                 dataRetentionInMonths: 24,
                 eventsLimit: 75000,
                 dedicatedSupport: true,
-                productStripeId: self::STARTER_PRODUCT_ID,
-                monthlyPriceStripeId: 'price_1NOflyDpKR4Se5u8nvIxnEah',
-                yearlyPriceStripeId: 'price_1NOflyDpKR4Se5u8Ni02CvDH',
+                productStripeId: config('services.stripe.starter.id', self::STARTER_PRODUCT_ID),
+                monthlyPriceStripeId: config('services.stripe.starter.monthly_price', 'price_1NOflyDpKR4Se5u8nvIxnEah'),
+                yearlyPriceStripeId: config('services.stripe.starter.yearly_price', 'price_1NOflyDpKR4Se5u8Ni02CvDH'),
+                eurMonthlyPriceStripeId: config('services.stripe.starter.eur_monthly_price', ''),
+                eurYearlyPriceStripeId: config('services.stripe.starter.eur_yearly_price', '')
             ),
             new Plan(
                 id: PlanId::BUSINESS,
@@ -55,9 +59,11 @@ class PlanGetter
                 dataRetentionInMonths: 24,
                 eventsLimit: 1000000,
                 dedicatedSupport: true,
-                productStripeId: self::BUSINESS_PRODUCT_ID,
-                monthlyPriceStripeId: 'price_1NQ4HLDpKR4Se5u8NkfW8mCu',
-                yearlyPriceStripeId: 'price_1NQ4HLDpKR4Se5u86q7E6Kqg',
+                productStripeId: config('services.stripe.business.id', self::BUSINESS_PRODUCT_ID),
+                monthlyPriceStripeId: config('services.stripe.business.monthly_price', 'price_1NQ4HLDpKR4Se5u8NkfW8mCu'),
+                yearlyPriceStripeId: config('services.stripe.business.yearly_price', 'price_1NQ4HLDpKR4Se5u86q7E6Kqg'),
+                eurMonthlyPriceStripeId: config('services.stripe.business.eur_monthly_price', ''),
+                eurYearlyPriceStripeId: config('services.stripe.business.eur_yearly_price', '')
             ),
             new Plan(
                 id: PlanId::ENTERPRISE,
