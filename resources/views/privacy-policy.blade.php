@@ -18,8 +18,8 @@
                     <h2 id="owner_of_the_data">
                         Owner and Data Controller
                     </h2>
-                    <p>MetricsWave - Oca 21 Madrid, 20819</p>
-                    <p><strong>Owner contact email:</strong> info@metricswave.com</p>
+                    <p>Tryvor OÜ - Harju maakond. Tallin 10111. Estonia</p>
+                    <p><strong>Owner contact email:</strong> info@tryvor.com</p>
                 </div>
 
                 <div class="one_line_col">
