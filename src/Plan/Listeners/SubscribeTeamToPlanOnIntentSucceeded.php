@@ -2,10 +2,13 @@
 
 namespace MetricsWave\Plan\Listeners;
 
+use App\Models\User;
 use App\Services\Plans\PlanGetter;
 use App\Transfers\PlanId;
-use Laravel\Cashier\Events\WebhookReceived;
+use Laravel\Cashier\Cashier;
+use Laravel\Cashier\Concerns\ManagesPaymentMethods;
 use MetricsWave\Teams\Team;
+use Stripe\PaymentMethod as StripePaymentMethod;
 
 class SubscribeTeamToPlanOnIntentSucceeded
 {
@@ -23,18 +26,11 @@ class SubscribeTeamToPlanOnIntentSucceeded
     {
         $team = Team::findOrFail($teamId);
 
-        // $this->setUpDefaultPaymentMethod($team, $paymentMethodId);
+        $stripePaymentMethod = Cashier::stripe()->paymentMethods->retrieve($paymentMethodId);
+
+        $this->changeTeamOwner($stripePaymentMethod, $team);
 
         $this->subscribeToPlan($team, $planId, $currency, $paymentMethodId);
-    }
-
-    private function setUpDefaultPaymentMethod(
-        Team $team,
-        string $paymentMethodId,
-    ): void {
-        $team->createOrGetStripeCustomer();
-        $team->updateDefaultPaymentMethod($paymentMethodId);
-        $team->updateDefaultPaymentMethodFromStripe();
     }
 
     private function subscribeToPlan(
@@ -57,5 +53,36 @@ class SubscribeTeamToPlanOnIntentSucceeded
             ->create(
                 $paymentMethodId,
             );
+    }
+
+    private function changeTeamOwner(
+        StripePaymentMethod $paymentMethod,
+        Team $team
+    ): void {
+        $email = $paymentMethod->billing_details->email;
+        $name = $paymentMethod->billing_details->name;
+
+        $user = $this->getOrCreateUser($email, $name);
+
+        if ($team->owner_id === $user->id) {
+            return;
+        }
+
+        $previousOwner = User::find($team->owner_id);
+
+        $team->owner_id = $user->id;
+
+        if (! $team->users->contains($previousOwner)) {
+            $team->users()->attach($previousOwner);
+        }
+
+        $team->save();
+    }
+
+    private function getOrCreateUser(mixed $email, mixed $name): User
+    {
+        return User::firstOrCreate(['email' => $email], [
+            'name' => $name,
+        ]);
     }
 }
