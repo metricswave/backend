@@ -1,4 +1,4 @@
-@extends('layouts.landing')
+@extends('layouts.landing', ['minimal' => true])
 
 @section('meta')
     <title>Upgrade your account - {{ config('app.name') }}</title>
