@@ -115,12 +115,16 @@ class Team extends Model
             return PlanId::FREE;
         }
 
-        if ($this->subscribedToProduct(PlanGetter::BASIC_PRODUCT_ID)) {
+        if ($this->subscribed(config('services.stripe.basic.id'))) {
             return PlanId::BASIC;
         }
 
-        if ($this->subscribedToProduct(PlanGetter::STARTER_PRODUCT_ID)) {
+        if ($this->subscribed(config('services.stripe.starter.id'))) {
             return PlanId::STARTER;
+        }
+
+        if ($this->subscribed(config('services.stripe.corporate.id'))) {
+            return PlanId::CORPORATE;
         }
 
         return PlanId::BUSINESS;

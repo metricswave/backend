@@ -41,6 +41,14 @@ return [
             'yearly_price' => env('STRIPE_BUSINESS_YEARLY_PRICE'),
             'eur_yearly_price' => env('STRIPE_BUSINESS_EUR_YEARLY_PRICE'),
         ],
+
+        'corporate' => [
+            'id' => env('STRIPE_CORPORATE_ID'),
+            'monthly_price' => env('STRIPE_CORPORATE_MONTHLY_PRICE'),
+            'eur_monthly_price' => env('STRIPE_CORPORATE_EUR_MONTHLY_PRICE'),
+            'yearly_price' => env('STRIPE_CORPORATE_YEARLY_PRICE'),
+            'eur_yearly_price' => env('STRIPE_CORPORATE_EUR_YEARLY_PRICE'),
+        ],
     ],
 
     'mailgun' => [

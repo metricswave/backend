@@ -7,6 +7,7 @@ use App\Services\Plans\PlanGetter;
 use App\Transfers\PlanId;
 use Laravel\Cashier\Cashier;
 use Laravel\Cashier\Concerns\ManagesPaymentMethods;
+use Log;
 use MetricsWave\Teams\Team;
 use Stripe\PaymentMethod as StripePaymentMethod;
 
@@ -46,9 +47,16 @@ class SubscribeTeamToPlanOnIntentSucceeded
         $team
             ->newSubscription(
                 $plan->productStripeId,
-                $currency === 'eur' ?
-                    $plan->eurMonthlyPriceStripeId :
-                    $plan->monthlyPriceStripeId
+                [
+                    [
+                        'price_data' => [
+                            'product' => $plan->productStripeId,
+                            'currency' => $currency,
+                            'recurring' => ['interval' => 'month'],
+                            'unit_amount' => $plan->monthlyPrice,
+                        ]
+                    ]
+                ]
             )
             ->create(
                 $paymentMethodId,

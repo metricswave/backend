@@ -11,7 +11,7 @@ class Plan extends Data implements Wireable
         readonly public PlanId $id,
         readonly public string $name,
         readonly public ?int $monthlyPrice,
-        readonly public ?int $yearlyPrice,
+        readonly public ?int $yearlyPrice = null,
         readonly public ?int $dataRetentionInMonths,
         readonly public ?int $eventsLimit,
         readonly public bool $dedicatedSupport,

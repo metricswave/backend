@@ -8,5 +8,6 @@ enum PlanId: int
     case BASIC = 2;
     case STARTER = 3;
     case BUSINESS = 4;
-    case ENTERPRISE = 5;
+    case CORPORATE = 5;
+    case ENTERPRISE = 6;
 }

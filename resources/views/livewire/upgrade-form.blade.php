@@ -165,12 +165,14 @@
             buttonElement.disabled = true;
             elements.submit()
 
+            const return_url = '{{ config('app.url') }}{{ App::getLocale() === 'es' ? '/es' : '' }}/upgrading/{{ $teamId }}'
+
             const {error} = await stripe.confirmSetup(
                 {
                     elements,
                     clientSecret: '{{ $this->intentCode }}',
                     confirmParams: {
-                        return_url: '{{ config('app.url') }}{{ App::getLocale() === 'es' ? '/es' : '' }}/upgrading/{{ $teamId }}',
+                        return_url,
                         payment_method_data: {
                             billing_details: {
                                 name: document.getElementById('card-holder-name').value,

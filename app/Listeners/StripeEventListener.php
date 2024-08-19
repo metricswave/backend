@@ -5,7 +5,9 @@ namespace App\Listeners;
 use App\Models\Lead;
 use App\Models\Price;
 use App\Services\Leads\FirstOrCreateLeadService;
+use Cache;
 use Laravel\Cashier\Events\WebhookReceived;
+use Log;
 use MetricsWave\Plan\Listeners\SubscribeTeamToPlanOnIntentSucceeded;
 
 class StripeEventListener
@@ -18,6 +20,12 @@ class StripeEventListener
 
     public function handle(WebhookReceived $event): void
     {
+        if (Cache::has($event->payload['id'])) {
+            return;
+        }
+
+        Cache::put($event->payload['id'], $event->payload, now()->addMinutes(5));
+
         if ($event->payload['type'] === 'checkout.session.completed') {
             $leadUuid = $event->payload['data']['object']['metadata']['lead_uuid'];
             $priceId = $event->payload['data']['object']['metadata']['price_id'];
@@ -42,6 +50,7 @@ class StripeEventListener
             $price->update([
                 'remaining' => max(0, $price->remaining - 1),
             ]);
+            return;
         }
 
         if ($event->payload['type'] === 'setup_intent.succeeded') {
@@ -51,6 +60,7 @@ class StripeEventListener
             $paymentMethodId = (string) $event->payload['data']['object']['payment_method'];
 
             $this->intentSucceeded->handle($teamId, $planId, $currency, $paymentMethodId);
+            return;
         }
     }
 }
