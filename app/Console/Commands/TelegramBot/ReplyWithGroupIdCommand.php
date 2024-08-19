@@ -15,13 +15,7 @@ class ReplyWithGroupIdCommand extends Command
 
     public function handle(): int
     {
-        $time_start = microtime(true);
-        $end_time = $time_start + 59;
-
-        do {
-            $this->getMessages();
-            sleep(1);
-        } while ($end_time > microtime(true));
+        $this->getMessages();
 
         return self::SUCCESS;
     }

@@ -20,7 +20,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('app:fake:ecommerce-funnel')->everyFiveMinutes();
 
         // Telegram Bot
-        $schedule->command('telegram:reply-with-group-id')->everyMinute();
+        $schedule->command('telegram:reply-with-group-id')->everyTwoSeconds();
     }
 
     protected function commands(): void
