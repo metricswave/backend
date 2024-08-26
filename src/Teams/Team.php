@@ -111,6 +111,10 @@ class Team extends Model
 
     public function getSubscriptionPlanIdAttribute(): PlanId
     {
+        if ($this->price_id !== null) {
+            return PlanId::from($this->price_id);
+        }
+
         if ($this->subscription_status === false) {
             return PlanId::FREE;
         }
