@@ -61,3 +61,5 @@ Route::permanentRedirect(
 // Webhooks notification
 Route::get('/webhooks/{trigger:uuid}', GetWebhookTriggerController::class);
 Route::post('/webhooks/{trigger:uuid}', PostWebhookTriggerController::class);
+
+require_once(__DIR__.'/../src/Pages/Providers/routes.php');

@@ -1,6 +1,22 @@
 <?php
 
-if (! function_exists('format_long_numbers')) {
+if (!function_exists('html_format_currency')) {
+    function html_format_currency(int $amount, string $symbol, string $suffix = ''): string
+    {
+        $exploded = explode(',', number_format($amount / 100, 2, ',', '.'));
+        $main = $exploded[0];
+        $cents = $exploded[1];
+        $preSymbol = $symbol === '€' ? '' : '<span class="text-base opacity-90">'.$symbol.'</span>';
+        $postSymbol = $symbol === '€' ? '<span class="text-base opacity-90">'.$symbol.'</span>' : '';
+        $suffix = $suffix === '' ? '' : '<span class="text-base -ml-0.5 opacity-80">'.$suffix.'</span>';
+
+        return <<<HTML
+{$preSymbol}<span>{$main}</span><span class="text-base -ml-0.5 opacity-80">.{$cents}</span>{$postSymbol}{$suffix}
+HTML;
+    }
+}
+
+if (!function_exists('format_long_numbers')) {
     function format_long_numbers($n, $precision = 3): string
     {
         if ($n < 1000000) {
@@ -17,7 +33,7 @@ if (! function_exists('format_long_numbers')) {
     }
 }
 
-if (! function_exists('random_item_from_weighted_array')) {
+if (!function_exists('random_item_from_weighted_array')) {
     function random_item_from_weighted_array(array $items): mixed
     {
         $weights = array_values($items); // Extract weights
@@ -44,7 +60,7 @@ if (! function_exists('random_item_from_weighted_array')) {
     }
 }
 
-if (! function_exists('safe_url')) {
+if (!function_exists('safe_url')) {
     function safe_url(string $url): string
     {
         return preg_replace('/([^:])(\/{2,})/', '$1/', $url);

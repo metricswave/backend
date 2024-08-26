@@ -41,8 +41,6 @@ it('increase visits and set expired_at dates as expected', function () {
         ->get(['primary_key', 'expired_at', 'score'])
         ->toArray();
 
-    dump($visits, $visitsNew);
-
     expect($visits)->toHaveCount(11);
 });
 

@@ -1,3 +1,4 @@
+@php($minimal ??= false)
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -17,24 +18,39 @@
     @viteReactRefresh
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @include('partials.analytics')
+
+    @yield('head_scripts')
 </head>
 <body>
-    <nav class="mx-auto pt-8 pb-8 px-4 sm:px-8 flex items-center justify-between">
-        <a class="flex items-center space-x-3 text-zinc-900 dark:text-white"
-           href="/">
+<nav class="mx-auto pt-8 pb-8 px-4 sm:px-8 flex items-center justify-between">
+    @if(!$minimal)
+    <a class="flex items-center space-x-3 text-zinc-900 dark:text-white"
+       href="/">
+        <div class="inline-block h-6 w-6 bg-gradient-to-b from-pink-500 to-amber-500"></div>
+        <span class="font-bold tracking-tighter">{{ config('app.name') }}</span>
+    </a>
+    @else
+        <div class="flex items-center space-x-3 text-zinc-900 dark:text-white">
             <div class="inline-block h-6 w-6 bg-gradient-to-b from-pink-500 to-amber-500"></div>
             <span class="font-bold tracking-tighter">{{ config('app.name') }}</span>
-        </a>
+        </div>
+    @endif
 
+    @if(!$minimal)
         @include('partials.nav')
-    </nav>
+    @endif
+</nav>
 
-    <div>
-        @yield('content')
-    </div>
+<div>
+    @yield('content')
+</div>
 
+@if(!$minimal)
     @include('partials.footer')
+@else
+    <div class="h-48"></div>
+@endif
 
-    @yield('scripts')
+@yield('scripts')
 </body>
 </html>
