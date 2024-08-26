@@ -28,8 +28,8 @@ class PlanGetter
                 eventsLimit: 25000,
                 dedicatedSupport: false,
                 productStripeId: config('services.stripe.basic.id'),
-                monthlyPriceStripeId: config('services.stripe.basic.monthly_price', 'price_1NOfhbDpKR4Se5u8lPzm7X4F'),
-                yearlyPriceStripeId: config('services.stripe.basic.yearly_price', 'price_1NOfhbDpKR4Se5u8QcTpZUTl'),
+                monthlyPriceStripeId: config('services.stripe.basic.monthly_price', ''),
+                yearlyPriceStripeId: config('services.stripe.basic.yearly_price', ''),
                 eurMonthlyPriceStripeId: config('services.stripe.basic.eur_monthly_price', ''),
                 eurYearlyPriceStripeId: config('services.stripe.basic.eur_yearly_price', '')
             ),
@@ -42,8 +42,8 @@ class PlanGetter
                 eventsLimit: 100000,
                 dedicatedSupport: true,
                 productStripeId: config('services.stripe.starter.id'),
-                monthlyPriceStripeId: config('services.stripe.starter.monthly_price', 'price_1NOflyDpKR4Se5u8nvIxnEah'),
-                yearlyPriceStripeId: config('services.stripe.starter.yearly_price', 'price_1NOflyDpKR4Se5u8Ni02CvDH'),
+                monthlyPriceStripeId: config('services.stripe.starter.monthly_price', ''),
+                yearlyPriceStripeId: config('services.stripe.starter.yearly_price', ''),
                 eurMonthlyPriceStripeId: config('services.stripe.starter.eur_monthly_price', ''),
                 eurYearlyPriceStripeId: config('services.stripe.starter.eur_yearly_price', '')
             ),
@@ -56,8 +56,8 @@ class PlanGetter
                 eventsLimit: 300000,
                 dedicatedSupport: true,
                 productStripeId: config('services.stripe.business.id'),
-                monthlyPriceStripeId: config('services.stripe.business.monthly_price', 'price_1NQ4HLDpKR4Se5u8NkfW8mCu'),
-                yearlyPriceStripeId: config('services.stripe.business.yearly_price', 'price_1NQ4HLDpKR4Se5u86q7E6Kqg'),
+                monthlyPriceStripeId: config('services.stripe.business.monthly_price', ''),
+                yearlyPriceStripeId: config('services.stripe.business.yearly_price', ''),
                 eurMonthlyPriceStripeId: config('services.stripe.business.eur_monthly_price', ''),
                 eurYearlyPriceStripeId: config('services.stripe.business.eur_yearly_price', '')
             ),
@@ -70,8 +70,8 @@ class PlanGetter
                 eventsLimit: 1000000,
                 dedicatedSupport: true,
                 productStripeId: config('services.stripe.business.id'),
-                monthlyPriceStripeId: config('services.stripe.corporate.monthly_price', 'price_1NQ4HLDpKR4Se5u8NkfW8mCu'),
-                yearlyPriceStripeId: config('services.stripe.corporate.yearly_price', 'price_1NQ4HLDpKR4Se5u86q7E6Kqg'),
+                monthlyPriceStripeId: config('services.stripe.corporate.monthly_price', ''),
+                yearlyPriceStripeId: config('services.stripe.corporate.yearly_price', ''),
                 eurMonthlyPriceStripeId: config('services.stripe.corporate.eur_monthly_price', ''),
                 eurYearlyPriceStripeId: config('services.stripe.corporate.eur_yearly_price', '')
             ),
