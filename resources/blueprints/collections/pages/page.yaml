@@ -540,4 +540,24 @@ tabs:
               instructions_position: above
               visibility: visible
               hide_display: false
+          -
+            handle: article_locale
+            field:
+              options:
+                en: English
+                es: Spanish
+              taggable: false
+              push_tags: false
+              multiple: false
+              clearable: false
+              searchable: false
+              cast_booleans: false
+              default: en
+              type: select
+              display: Locale
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
 title: Page

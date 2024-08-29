@@ -116,7 +116,7 @@
     </div>
 
     @include('partials.page_content', [
-        'structured_content' => $page->structured_content,
+        'structured_content' => json_decode(json_encode($page->structured_content), true),
     ])
 
     @include('partials.prices')

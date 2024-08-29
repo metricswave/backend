@@ -18,7 +18,7 @@
           content="{{ $seo_description }}"/>
     @if (isset($og_image))
         <meta property="og:image"
-              content="{{ $og_image }}"/>
+              content="{{ is_array($og_image) ? $og_image['url'] : $og_image }}"/>
     @else
         <meta property="og:image"
               content="{{ safe_url(config('app.url').'/images/metricswave.png?v=20230612161011') }}"/>
@@ -32,7 +32,7 @@
           content="{{ $seo_description }}"/>
     @if (isset($og_image))
         <meta name="twitter:image"
-              content="{{ $og_image }}"/>
+              content="{{ is_array($og_image) ? $og_image['url'] : $og_image }}"/>
     @else
         <meta name="twitter:image"
               content="{{ safe_url(config('app.url').'/images/metricswave.png?v=20230612161011') }}"/>
@@ -58,7 +58,7 @@
                         class="py-4 px-6 text-center bg-gradient-to-b from-slate-800 via-black to-black dark:from-zinc-800 dark:via-zinc-800 dark:to-zinc-800 hover:bg-gradient-to-b hover:from-slate-600 hover:via-slate-900 hover:to-black hover:dark:from-zinc-700 hover:dark:via-zinc-700 hover:dark:to-zinc-700 text-white block ml-0 rounded-lg shadow-lg hover:shadow smooth linkToApp w-full sm:w-auto"
                         href="{{ config('app.web_app_url') }}"
                     >
-                        {!! $buttonText ?? 'Start Tracking <span class="hidden md:inline">my Product </span>for Free →' !!}
+                        {!! $buttonText ?? __('Start Tracking <span class="hidden md:inline">my Product</span> for Free →') !!}
                     </a>
 
                     <a
@@ -66,7 +66,7 @@
                         href="https://app.metricswave.com/fUwWlrz6Xhedh12/metricswave.com?compare=1&period=7d"
                         target="_blank"
                     >
-                        Live Demo
+                        {{ __('Live Demo') }}
                     </a>
                 </div>
             @endif

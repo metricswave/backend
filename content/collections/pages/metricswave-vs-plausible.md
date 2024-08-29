@@ -3,8 +3,8 @@ id: 3e9d3368-7e96-49d7-89a7-8b13763f7fd8
 blueprint: page
 title: 'MetricsWave vs Plausible'
 show_buttons: true
-updated_by: 1
-updated_at: 1693328857
+updated_by: 6ee8895a-52f6-44a1-a772-a0e7f04692b7
+updated_at: 1724926925
 structured_content:
   -
     id: lkpiz2as
@@ -75,4 +75,6 @@ hero_content: |-
   With MetricsWave you also have a privacy-friendly and simple way to measure your traffic, but it's customizable and you have an [API to measure everything](https://metricswave.com/documentation/tracking/events), not just traffic.
 seo_description: 'Discover an alternative to Plausible. With MetricsWave you will be able to measure your traffic, but also the behavior of your users with customized events.'
 duplicated_from: ab990eff-b887-4df8-aeba-f29fdd42c502
+locale: en
+article_locale: en
 ---

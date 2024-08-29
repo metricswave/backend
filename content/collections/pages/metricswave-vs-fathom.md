@@ -3,8 +3,8 @@ id: 2595739a-e55f-4e48-8dfb-bd8e8e182ff8
 blueprint: page
 title: 'MetricsWave vs Fathom'
 show_buttons: true
-updated_by: 1
-updated_at: 1693329044
+updated_by: 6ee8895a-52f6-44a1-a772-a0e7f04692b7
+updated_at: 1724926923
 structured_content:
   -
     id: lkpiz2as
@@ -75,4 +75,6 @@ hero_content: |-
   With MetricsWave you also have a privacy-friendly and simple way to measure your traffic, but it's customizable and you have an [API to measure everything](https://metricswave.com/documentation/tracking/events), not just traffic.
 duplicated_from: 3e9d3368-7e96-49d7-89a7-8b13763f7fd8
 seo_description: "Fathom is a GA alternative but lacks any kind of customization or custom events to measure complex flows. MetricsWave it's better in many ways."
+locale: en
+article_locale: en
 ---

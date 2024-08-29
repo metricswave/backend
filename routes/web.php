@@ -9,6 +9,7 @@ use App\Http\Controllers\Lead\PostLeadController;
 use App\Http\Controllers\Open\GetOpenPageController;
 use App\Http\Controllers\Trigger\GetWebhookTriggerController;
 use App\Http\Controllers\Trigger\PostWebhookTriggerController;
+use App\Http\Middleware\SetLocale;
 use Illuminate\Support\Facades\Route;
 use Statamic\Facades\Entry;
 
@@ -23,6 +24,7 @@ Route::get('/', function () {
         'page' => Entry::query()->where('slug', 'landing')->first(),
     ]);
 });
+
 Route::permanentRedirect('/roadmap', '/');
 Route::get('/blog', BlogController::class);
 Route::get('/blog/category/{slug}', CategoryController::class);
@@ -63,3 +65,28 @@ Route::get('/webhooks/{trigger:uuid}', GetWebhookTriggerController::class);
 Route::post('/webhooks/{trigger:uuid}', PostWebhookTriggerController::class);
 
 require_once(__DIR__.'/../src/Pages/Providers/routes.php');
+
+Route::group(
+    ['prefix' => '{locale?}', 'where' => ['locale' => 'es'], 'middleware' => [SetLocale::class]],
+    function () {
+        Route::get('/{slug}', function (string $slug) {
+            $entry = Entry::query()->where('article_locale', 'es')->where('slug', $slug)->first();
+
+            if ($entry === null) {
+                abort(404);
+            }
+
+            return view('pages.index', $entry);
+        });
+    }
+);
+
+Route::get('/{slug}', function (string $slug) {
+    $entry = Entry::query()->where('article_locale', 'en')->where('slug', $slug)->first();
+
+    if ($entry === null) {
+        abort(404);
+    }
+
+    return view('pages.index', $entry);
+});
