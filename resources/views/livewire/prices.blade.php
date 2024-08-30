@@ -27,8 +27,6 @@
             <div class="w-full sm:w-7/12 flex flex-col gap-4">
                 @foreach(app(PlanGetter::class)->all() as $plan)
                     @php
-                        $beforeCurrencySymbol = App::getLocale() === 'es' ? '' : '$';
-                        $afterCurrencySymbol = App::getLocale() === 'es' ? '€' : '';
                         $formattedLimit = format_long_numbers($plan->eventsLimit, 0);
                         $link = match ($plan->name) {
                             'Free' => 'https://app.metricswave.com',
@@ -47,10 +45,11 @@
                             @elseif($plan->name === 'Enterprise')
                                 <span class="text-base opacity-90">{{ __("Contact us") }}</span>
                             @else
-                                <span class="text-base opacity-90">{{ $beforeCurrencySymbol }}</span>
+                                <span class="text-base opacity-90 beforeSymbol">$</span>
                                 <span>{{ explode(',', number_format($plan->monthlyPrice/100, 2, ',', '.'))[0] }}</span>
                                 <span class="text-base -ml-0.5 opacity-80">.{{ explode(',', number_format($plan->monthlyPrice/100, 2, ',', '.'))[1] }}</span>
-                                <span class="text-base ml-0.5 opacity-80">{{ $afterCurrencySymbol }}/{{ __("mo") }}</span>
+                                <span class="text-base ml-0.5 opacity-80 afterSymbol">€</span>
+                                <span class="text-base opacity-80">/{{ __("mo") }}</span>
                             @endif
                         </h3>
 
@@ -82,3 +81,56 @@
 
     </div>
 </div>
+
+    <script>
+        const EU_TIMEZONES = [
+            'Europe/Vienna',
+            'Europe/Brussels',
+            'Europe/Sofia',
+            'Europe/Zagreb',
+            'Asia/Famagusta',
+            'Asia/Nicosia',
+            'Europe/Prague',
+            'Europe/Copenhagen',
+            'Europe/Tallinn',
+            'Europe/Helsinki',
+            'Europe/Paris',
+            'Europe/Berlin',
+            'Europe/Busingen',
+            'Europe/Athens',
+            'Europe/Budapest',
+            'Europe/Dublin',
+            'Europe/Rome',
+            'Europe/Riga',
+            'Europe/Vilnius',
+            'Europe/Luxembourg',
+            'Europe/Malta',
+            'Europe/Amsterdam',
+            'Europe/Warsaw',
+            'Atlantic/Azores',
+            'Atlantic/Madeira',
+            'Europe/Lisbon',
+            'Europe/Bucharest',
+            'Europe/Bratislava',
+            'Europe/Ljubljana',
+            'Africa/Ceuta',
+            'Atlantic/Canary',
+            'Europe/Madrid',
+            'Europe/Stockholm'
+        ]
+
+        const isFromEu = () => {
+            if ({{ App::getLocale() === 'es' ? 'true' : 'false' }}) {
+                return true;
+            }
+
+            const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            return EU_TIMEZONES.includes(timezone);
+        }
+
+        if (isFromEu()) {
+            document.querySelectorAll('.beforeSymbol').forEach(c => c.remove())
+        } else {
+            document.querySelectorAll('.afterSymbol').forEach(c => c.remove())
+        }
+    </script>
