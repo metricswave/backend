@@ -19,6 +19,7 @@ class GenerateSitemapCommand extends Command
     {
         $sitemap = Sitemap::create()
             ->add($this->url('', 1))
+            ->add($this->url('/es', 1))
             ->add($this->url('/blog', 0.8, Url::CHANGE_FREQUENCY_DAILY))
             ->add($this->url('/blog/category/changelog', 0.8, Url::CHANGE_FREQUENCY_DAILY))
             ->add($this->url('/open', 0.8))
@@ -28,9 +29,9 @@ class GenerateSitemapCommand extends Command
 
         $pages = Entry::query()->where('date', '<=', now())->where('published', true)->get();
         foreach ($pages as $page) {
-            $sitemap->add(Url::create($page->absoluteUrl())
+            $sitemap->add(Url::create($this->getUrl($page))
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
-                ->setPriority($page->collection()->handle() === 'articles' ? 0.7 : 0.8)
+                ->setPriority($page->collection()->handle() === 'pages' ? 0.8 : 0.7)
             );
         }
 
@@ -44,5 +45,18 @@ class GenerateSitemapCommand extends Command
         return Url::create(url($path))
             ->setChangeFrequency($frequency)
             ->setPriority($priority);
+    }
+
+    private function getUrl(mixed $page): mixed
+    {
+        if ($page->collection()->handle() !== 'pages') {
+            return $page->absoluteUrl();
+        }
+
+        if ((string) $page->article_locale !== 'en') {
+            return ((string) $page->article_locale).$page->url();
+        }
+
+        return $page->absoluteUrl();
     }
 }
