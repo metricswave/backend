@@ -29,6 +29,20 @@
                         </div>
                     @endforeach
                 </div>
+
+                @if (isset($content['button']['show_buttons']) && $content['button']['show_buttons'] === true)
+                    <div class="flex flex-col sm:flex-row items-center justify-start gap-6 animate-[out_1.75s,_fade-in-down_1.5s_ease-out_1.75s] mt-6 sm:mt-12">
+                        <a
+                            class="py-4 px-6 text-center bg-gradient-to-b from-slate-800 via-black to-black dark:from-zinc-800 dark:via-zinc-800 dark:to-zinc-800 hover:bg-gradient-to-b hover:from-slate-600 hover:via-slate-900 hover:to-black hover:dark:from-zinc-700 hover:dark:via-zinc-700 hover:dark:to-zinc-700 text-white block ml-0 rounded-lg shadow-lg hover:shadow smooth linkToApp w-full sm:w-auto"
+                            href="{{ config('app.web_app_url') }}"
+                        >
+                            {!!
+                              $content['button']['main_button_text'] ??
+                              'Start Tracking <span class="hidden md:inline">my Product </span>for Free →'
+                            !!}
+                        </a>
+                    </div>
+                @endif
             </section>
         @elseif($content['type'] === 'section')
             <section class="mx-auto mw-landing px-app prose dark:prose-invert animate-[out_{{$out}}s,_fade-in-down_{{ $fade }}s_ease-out_1s]">

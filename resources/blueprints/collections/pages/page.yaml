@@ -154,7 +154,6 @@ tabs:
                             antlers: false
                             type: text
                             display: Title
-                            icon: text
                             listable: hidden
                             instructions_position: above
                             visibility: visible
@@ -170,7 +169,6 @@ tabs:
                             antlers: false
                             type: markdown
                             display: Content
-                            icon: markdown
                             listable: hidden
                             instructions_position: above
                             visibility: visible
@@ -187,7 +185,6 @@ tabs:
                             antlers: false
                             type: text
                             display: Title
-                            icon: text
                             listable: hidden
                             instructions_position: above
                             visibility: visible
@@ -203,7 +200,6 @@ tabs:
                             antlers: false
                             type: markdown
                             display: 'Short Description'
-                            icon: markdown
                             listable: hidden
                             instructions_position: above
                             visibility: visible
@@ -264,10 +260,44 @@ tabs:
                             fullscreen: true
                             type: grid
                             display: Grid
-                            icon: grid
                             listable: hidden
                             instructions_position: above
                             visibility: visible
+                            hide_display: false
+                        -
+                          handle: button
+                          field:
+                            fields:
+                              -
+                                handle: show_buttons
+                                field:
+                                  default: false
+                                  type: toggle
+                                  display: 'Show Buttons'
+                                  listable: hidden
+                                  instructions_position: above
+                                  visibility: visible
+                                  replicator_preview: true
+                                  hide_display: false
+                              -
+                                handle: main_button_text
+                                field:
+                                  input_type: text
+                                  antlers: false
+                                  type: text
+                                  display: 'Main button text'
+                                  listable: hidden
+                                  instructions_position: above
+                                  visibility: visible
+                                  replicator_preview: true
+                                  hide_display: false
+                            fullscreen: true
+                            type: group
+                            display: Button
+                            listable: hidden
+                            instructions_position: above
+                            visibility: visible
+                            replicator_preview: true
                             hide_display: false
                     section_with_image:
                       display: 'Section with Image'
@@ -281,7 +311,6 @@ tabs:
                             antlers: false
                             type: text
                             display: Title
-                            icon: text
                             listable: hidden
                             instructions_position: above
                             visibility: visible
@@ -297,7 +326,6 @@ tabs:
                             antlers: false
                             type: markdown
                             display: Content
-                            icon: markdown
                             listable: hidden
                             instructions_position: above
                             visibility: visible
@@ -314,7 +342,6 @@ tabs:
                             show_set_alt: true
                             type: assets
                             display: Image
-                            icon: assets
                             listable: hidden
                             instructions_position: above
                             visibility: visible
@@ -331,7 +358,6 @@ tabs:
                             show_set_alt: true
                             type: assets
                             display: 'Dark Image'
-                            icon: assets
                             listable: hidden
                             instructions_position: above
                             visibility: visible
@@ -348,7 +374,6 @@ tabs:
                             antlers: false
                             type: text
                             display: Title
-                            icon: text
                             listable: hidden
                             instructions_position: above
                             visibility: visible
@@ -364,7 +389,6 @@ tabs:
                             antlers: false
                             type: markdown
                             display: Content
-                            icon: markdown
                             listable: hidden
                             instructions_position: above
                             visibility: visible
@@ -374,7 +398,6 @@ tabs:
                           field:
                             type: video
                             display: Video
-                            icon: video
                             listable: hidden
                             instructions_position: above
                             visibility: visible
@@ -384,7 +407,6 @@ tabs:
                           field:
                             type: video
                             display: 'Dark Video'
-                            icon: video
                             listable: hidden
                             instructions_position: above
                             visibility: visible
@@ -401,7 +423,6 @@ tabs:
                             antlers: false
                             type: text
                             display: Competitor
-                            icon: text
                             listable: hidden
                             instructions_position: above
                             visibility: visible
@@ -479,7 +500,6 @@ tabs:
                             fullscreen: true
                             type: grid
                             display: Characteristic
-                            icon: grid
                             listable: hidden
                             instructions_position: above
                             visibility: visible
@@ -490,6 +510,7 @@ tabs:
               instructions_position: above
               visibility: visible
               hide_display: false
+              replicator_preview: true
   sidebar:
     display: Sidebar
     sections:

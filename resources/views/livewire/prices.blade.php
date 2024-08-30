@@ -27,6 +27,8 @@
             <div class="w-full sm:w-7/12 flex flex-col gap-4">
                 @foreach(app(PlanGetter::class)->all() as $plan)
                     @php
+                        $beforeCurrencySymbol = App::getLocale() === 'es' ? '' : '$';
+                        $afterCurrencySymbol = App::getLocale() === 'es' ? '€' : '';
                         $formattedLimit = format_long_numbers($plan->eventsLimit, 0);
                         $link = match ($plan->name) {
                             'Free' => 'https://app.metricswave.com',
@@ -45,9 +47,10 @@
                             @elseif($plan->name === 'Enterprise')
                                 <span class="text-base opacity-90">{{ __("Contact us") }}</span>
                             @else
-                                <span class="text-base opacity-90">$</span>
+                                <span class="text-base opacity-90">{{ $beforeCurrencySymbol }}</span>
                                 <span>{{ explode(',', number_format($plan->monthlyPrice/100, 2, ',', '.'))[0] }}</span>
-                                <span class="text-base -ml-0.5 opacity-80">.{{ explode(',', number_format($plan->monthlyPrice/100, 2, ',', '.'))[1] }}/{{ __("mo") }}</span>
+                                <span class="text-base -ml-0.5 opacity-80">.{{ explode(',', number_format($plan->monthlyPrice/100, 2, ',', '.'))[1] }}</span>
+                                <span class="text-base ml-0.5 opacity-80">{{ $afterCurrencySymbol }}/{{ __("mo") }}</span>
                             @endif
                         </h3>
 
