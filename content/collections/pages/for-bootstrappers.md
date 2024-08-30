@@ -4,8 +4,8 @@ blueprint: page
 title: 'Web Analytics for Bootstrappers'
 show_buttons: true
 seo_title: 'Web Analytics for Bootstrappers'
-updated_by: 1
-updated_at: 1690444945
+updated_by: 6ee8895a-52f6-44a1-a772-a0e7f04692b7
+updated_at: 1724926925
 hero_content: |-
   **As a bootstrapped company, we understand bootstrappers.**
 
@@ -43,4 +43,6 @@ structured_content:
     enabled: true
 seo_description: 'MetricsWave can help you, in a very simple way, to see where your customers come from, your traffic and how it behaves in your tool or website.'
 og_image: pages/metricswave-bootstrapped-companies.png
+locale: en
+article_locale: en
 ---

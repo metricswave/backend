@@ -10,6 +10,11 @@ preferences:
       after_save: continue_editing
     pages:
       after_save: continue_editing
+      columns:
+        - title
+        - article_locale
+        - slug
+        - status
   favorites:
     -
       name: Articles

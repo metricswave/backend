@@ -3,8 +3,8 @@ id: ab990eff-b887-4df8-aeba-f29fdd42c502
 blueprint: page
 title: 'MetricsWave vs Google Analytics'
 show_buttons: true
-updated_by: 1
-updated_at: 1690729546
+updated_by: 6ee8895a-52f6-44a1-a772-a0e7f04692b7
+updated_at: 1724926924
 structured_content:
   -
     id: lkpiz2as
@@ -60,4 +60,6 @@ hero_content: |-
 
   MetricsWave is an easy to understand alternative, but also privacy-friendly and better in most cases.
 seo_description: 'Discover the privacy-friendly alternative to Google Analytics. MetricsWave is easy to use, more efficient, and lawful. Upgrade your website analytics today!'
+locale: en
+article_locale: en
 ---

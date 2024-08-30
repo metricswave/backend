@@ -1,6 +1,6 @@
 <footer class="mt-16 flex flex-col sm:flex-row items-start space-y-8 sm:space-y-0 justify-between px-[var(--app-padding)] pb-[var(--app-padding)] sm:px-10 sm:pb-10 sm:mt-32 md:mt-64">
     <ul class="flex space-y-4 tracking-tighter flex-col">
-        <li class="text-sm opacity-50">Websites Analytics for:</li>
+        <li class="text-sm opacity-50">{{ __("Websites Analytics for") }}:</li>
         <li><a class="hover:underline smooth"
                href="/for-european-companies">European Companies</a></li>
         <li><a class="hover:underline smooth"
@@ -12,25 +12,30 @@
     </ul>
 
     <ul class="flex space-y-4 tracking-tighter flex-col">
-        <li class="text-sm opacity-50">Why MetricsWave:</li>
-        <li><a class="hover:underline smooth"
-               href="/metricswave-vs-google-analytics">MetricsWave vs Google Analytics</a></li>
-        <li><a class="hover:underline smooth"
-               href="/metricswave-vs-plausible">MetricsWave vs Plausible</a></li>
-        <li><a class="hover:underline smooth"
-               href="/metricswave-vs-fathom">MetricsWave vs Fathom</a></li>
+        <li class="text-sm opacity-50">{{ __("Why MetricsWave") }}:</li>
+        @if (App::getLocale() === "es")
+            <li><a class="hover:underline smooth"
+                   href="/es/mejor-alternativa-a-google-analytics">MetricsWave vs Google Analytica</a></li>
+        @else
+            <li><a class="hover:underline smooth"
+                   href="/metricswave-vs-google-analytics">MetricsWave vs Google Analytics</a></li>
+            <li><a class="hover:underline smooth"
+                   href="/metricswave-vs-plausible">MetricsWave vs Plausible</a></li>
+            <li><a class="hover:underline smooth"
+                   href="/metricswave-vs-fathom">MetricsWave vs Fathom</a></li>
+            @endif
     </ul>
 
     <ul class="flex space-y-4 tracking-tighter flex-col">
-        <li class="text-sm opacity-50">About us:</li>
+        <li class="text-sm opacity-50">{{ __("About us") }}:</li>
         <li><a class="hover:underline smooth"
-               href="/documentation">Documentation</a></li>
+               href="/documentation">{{ __("Documentation") }}</a></li>
         <li><a class="hover:underline smooth"
-               href="/blog/category/changelog">Changelog</a></li>
+               href="/blog/category/changelog">{{ __("Changelog") }}</a></li>
         <li><a class="hover:underline smooth"
-               href="/open">Open Metrics</a></li>
+               href="/open">{{ __("Open Metrics") }}</a></li>
         <li><a class="hover:underline smooth"
-               href="/blog">Blog</a></li>
+               href="/blog">{{ __("Blog") }}</a></li>
         <li><a href="https://twitter.com/metricswave"
                target="_blank"
                title="@metricswave on Twitter"
@@ -38,11 +43,11 @@
     </ul>
 
     <ul class="flex space-y-4 tracking-tighter flex-col">
-        <li class="text-sm opacity-0">Legal links</li>
+        <li class="text-sm opacity-0">{{ __("Legal links") }}</li>
         <li><a class="hover:underline smooth"
-               href="/privacy-policy">Privacy Policy</a></li>
+               href="/privacy-policy">{{ __("Privacy Policy") }}</a></li>
         <li><a class="hover:underline smooth"
-               href="/terms-and-conditions">Terms of Service</a></li>
+               href="/terms-and-conditions">{{ __("Terms of Service") }}</a></li>
         <li><a class="flex items-center space-x-3 text-zinc-900 dark:text-white"
                href="/">
                 <span class="font-bold tracking-tighter">{{ config('app.name') }} {{ now()->year }}™</span>

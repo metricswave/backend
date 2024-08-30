@@ -3,8 +3,8 @@ id: a98abde3-5efb-4834-bf0b-1eff87ccb8af
 blueprint: page
 title: 'Website Analytics for European Companies'
 show_buttons: true
-updated_by: 1
-updated_at: 1690303434
+updated_by: 6ee8895a-52f6-44a1-a772-a0e7f04692b7
+updated_at: 1724926927
 hero_content: |-
   **[MetricsWave](https://metricswave.com?utm_source=for_european_companies) was built from the ground up to be fully compliant with GDPR, CCPA and PECR.**
 
@@ -83,4 +83,6 @@ structured_content:
     enabled: true
 seo_description: 'If your company is in Europe, MetricsWave is the tool you need. Fully compliant with GDPR, CCPA and PECR, No Cookies and Privacy Friendly.'
 og_image: pages/metricswave-european-companies.png
+locale: en
+article_locale: en
 ---

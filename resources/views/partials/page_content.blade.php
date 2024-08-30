@@ -4,8 +4,8 @@
         @php
             $out =  min(3, 1.5 + ($i * 0.5));
             $fade = $out + 0.5;
-            $hasImage = strlen($content['image']) > 0 && strlen($content['dark_image']) > 0;
-            $hasVideo = $hasImage && Str::of($content['image'])->contains('mp4');
+            $hasImage = isset($content['image']) && strlen($content['image']['url']) > 0 && strlen($content['dark_image']['url']) > 0;
+            $hasVideo = $hasImage && Str::of($content['image']['url'])->contains('mp4');
         @endphp
 
         @if($content['type'] === 'features')
@@ -23,12 +23,26 @@
                 <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-x-8 md:gap-y-10">
                     @foreach($content['grid'] as $grid)
                         <div class="flex flex-col gap-2">
-                            <div class="-ml-1">{!! $grid['icon'] !!}</div>
+                            <div class="-ml-1">{!! $grid['icon']['value'] !!}</div>
                             <h3 class="font-bold text-lg">{{ $grid['title'] }}</h3>
                             {!! $grid['content'] !!}
                         </div>
                     @endforeach
                 </div>
+
+                @if (isset($content['button']['show_buttons']) && $content['button']['show_buttons'] === true)
+                    <div class="flex flex-col sm:flex-row items-center justify-start gap-6 animate-[out_1.75s,_fade-in-down_1.5s_ease-out_1.75s] mt-6 sm:mt-12">
+                        <a
+                            class="py-4 px-6 text-center bg-gradient-to-b from-slate-800 via-black to-black dark:from-zinc-800 dark:via-zinc-800 dark:to-zinc-800 hover:bg-gradient-to-b hover:from-slate-600 hover:via-slate-900 hover:to-black hover:dark:from-zinc-700 hover:dark:via-zinc-700 hover:dark:to-zinc-700 text-white block ml-0 rounded-lg shadow-lg hover:shadow smooth linkToApp w-full sm:w-auto"
+                            href="{{ config('app.web_app_url') }}"
+                        >
+                            {!!
+                              $content['button']['main_button_text'] ??
+                              'Start Tracking <span class="hidden md:inline">my Product </span>for Free →'
+                            !!}
+                        </a>
+                    </div>
+                @endif
             </section>
         @elseif($content['type'] === 'section')
             <section class="mx-auto mw-landing px-app prose dark:prose-invert animate-[out_{{$out}}s,_fade-in-down_{{ $fade }}s_ease-out_1s]">
@@ -53,7 +67,7 @@
                                muted
                                playsinline
                                class="max-w-full mx-auto dark:hidden">
-                            <source src="{{ $content['image'] }}"
+                            <source src="{{ $content['image']['url'] }}"
                                     type="video/mp4">
                         </video>
                         <video autoplay
@@ -61,16 +75,16 @@
                                muted
                                playsinline
                                class="max-w-full mx-auto hidden dark:block">
-                            <source src="{{ $content['dark_image'] }}"
+                            <source src="{{ $content['dark_image']['url'] }}"
                                     type="video/mp4">
                         </video>
                     </div>
                 @elseif($hasImage)
                     <div class="max-w-4xl mx-auto">
-                        <img src="{{ $content['image'] }}"
+                        <img src="{{ $content['image']['url'] }}"
                              alt="{{ $content['title'] }}"
                              class="max-w-full mx-auto dark:hidden"/>
-                        <img src="{{ $content['dark_image'] }}"
+                        <img src="{{ $content['dark_image']['url'] }}"
                              alt="{{ $content['title'] }}"
                              class="max-w-full mx-auto hidden dark:block"/>
                     </div>
@@ -80,7 +94,7 @@
             <section class="mw-landing px-app mx-auto w-full animate-[out_{{$out}}s,_fade-in-down_{{ $fade }}s_ease-out_1s] flex flex-col gap-10 sm:gap-12">
                 @foreach($content['characteristic'] as $c)
                     <div class="flex flex-col gap-2">
-                        <div class="-ml-1">{!! $c['icon'] !!}</div>
+                        <div class="-ml-1">{!! $c['icon']['value'] !!}</div>
                         <h3 class="text-xl sm:text-2xl font-medium mb-4 !leading-snug max-w-[30ch]">
                             {{ $c['characteristic'] }}
                         </h3>

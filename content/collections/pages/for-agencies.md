@@ -61,10 +61,12 @@ structured_content:
         content: 'Your business is not the same as others. Configure your dashboard as you need.'
     type: features
     enabled: true
-updated_by: 1
-updated_at: 1695488816
+updated_by: 6ee8895a-52f6-44a1-a772-a0e7f04692b7
+updated_at: 1724926926
 seo_title: 'Website Analytics for Open Companies'
 seo_description: 'MetricsWave is an open company, and if you are too, this is the perfect tool to monitor your web traffic.'
 og_image: pages/metricswave-for-agencies.png
 duplicated_from: 5609cca6-f3a7-4bb8-b371-47e6ae079c74
+locale: en
+article_locale: en
 ---

@@ -7,7 +7,7 @@
                         id="menu-button"
                         aria-expanded="true"
                         aria-haspopup="true">
-                    Why MetricsWave
+                    {{ __("Why MetricsWave") }}
                     <svg class="-mr-1 h-5 w-5 opacity-40"
                          viewBox="0 0 20 15"
                          fill="currentColor"
@@ -27,68 +27,79 @@
                  tabindex="-1">
                 <div class="py-2 bg-white dark:bg-zinc-800 shadow-lg ring-1 ring-black ring-opacity-5 rounded-md"
                      role="none">
-                    <a href="/metricswave-vs-google-analytics"
-                       class="text-zinc-700 dark:text-zinc-300 block px-4 py-2 text-sm smooth hover:bg-zinc-100 dark:hover:bg-zinc-700 hover:text-zinc-800 dark:hover:text-zinc-200"
-                       role="menuitem"
-                       tabindex="-1"
-                       id="menu-item-0">
-                        Vs. Google Analytics<br/>
-                        <span class="text-xs text-gray-500">MetricsWave is the  best alternative to GA</span>
-                    </a>
-                    <a href="/metricswave-vs-plausible"
-                       class="text-zinc-700 dark:text-zinc-300 block px-4 py-2 text-sm smooth hover:bg-zinc-100 dark:hover:bg-zinc-700 hover:text-zinc-800 dark:hover:text-zinc-200"
-                       role="menuitem"
-                       tabindex="-1"
-                       id="menu-item-1">
-                        Vs. Plausible<br/>
-                        <span class="text-xs text-gray-500">Symple analytics, but configurable</span>
-                    </a>
+                    @if (App::getLocale() === 'es')
+                        <a href="/es/mejor-alternativa-a-google-analytics"
+                           class="text-zinc-700 dark:text-zinc-300 block px-4 py-2 text-sm smooth hover:bg-zinc-100 dark:hover:bg-zinc-700 hover:text-zinc-800 dark:hover:text-zinc-200"
+                           role="menuitem"
+                           tabindex="-1"
+                           id="menu-item-0">
+                            Vs. Google Analytica<br/>
+                            <span class="text-xs text-gray-500">Analítica sencilla, y sin cookies.</span>
+                        </a>
+                    @else
+                        <a href="/metricswave-vs-google-analytics"
+                           class="text-zinc-700 dark:text-zinc-300 block px-4 py-2 text-sm smooth hover:bg-zinc-100 dark:hover:bg-zinc-700 hover:text-zinc-800 dark:hover:text-zinc-200"
+                           role="menuitem"
+                           tabindex="-1"
+                           id="menu-item-0">
+                            Vs. Google Analytics<br/>
+                            <span class="text-xs text-gray-500">MetricsWave is the  best alternative to GA</span>
+                        </a>
+                        <a href="/metricswave-vs-plausible"
+                           class="text-zinc-700 dark:text-zinc-300 block px-4 py-2 text-sm smooth hover:bg-zinc-100 dark:hover:bg-zinc-700 hover:text-zinc-800 dark:hover:text-zinc-200"
+                           role="menuitem"
+                           tabindex="-1"
+                           id="menu-item-1">
+                            Vs. Plausible<br/>
+                            <span class="text-xs text-gray-500">Symple analytics, but configurable</span>
+                        </a>
 
-                    <div class="text-zinc-400 px-4 py-2 mt-4 text-xs">
-                        Website Analytics for:
-                    </div>
-                    <a href="/for-european-companies"
-                       class="text-zinc-700 dark:text-zinc-300 block px-4 py-2 text-sm smooth hover:bg-zinc-100 dark:hover:bg-zinc-700 hover:text-zinc-800 dark:hover:text-zinc-200"
-                       role="menuitem"
-                       tabindex="-1"
-                       id="menu-item-2">European Companies</a>
-                    <a href="/for-agencies"
-                       class="text-zinc-700 dark:text-zinc-300 block px-4 py-2 text-sm smooth hover:bg-zinc-100 dark:hover:bg-zinc-700 hover:text-zinc-800 dark:hover:text-zinc-200"
-                       role="menuitem"
-                       tabindex="-1"
-                       id="menu-item-2">Agencies</a>
-                    <a href="/for-bootstrappers"
-                       class="text-zinc-700 dark:text-zinc-300 block px-4 py-2 text-sm smooth hover:bg-zinc-100 dark:hover:bg-zinc-700 hover:text-zinc-800 dark:hover:text-zinc-200"
-                       role="menuitem"
-                       tabindex="-1"
-                       id="menu-item-3">Bootstrapped Companies</a>
-                    <a href="/for-open-companies"
-                       class="text-zinc-700 dark:text-zinc-300 block px-4 py-2 text-sm smooth hover:bg-zinc-100 dark:hover:bg-zinc-700 hover:text-zinc-800 dark:hover:text-zinc-200"
-                       role="menuitem"
-                       tabindex="-1"
-                       id="menu-item-4">Open Companies</a>
+                        <div class="text-zinc-400 px-4 py-2 mt-4 text-xs">
+                            Website Analytics for:
+                        </div>
+                        <a href="/for-european-companies"
+                           class="text-zinc-700 dark:text-zinc-300 block px-4 py-2 text-sm smooth hover:bg-zinc-100 dark:hover:bg-zinc-700 hover:text-zinc-800 dark:hover:text-zinc-200"
+                           role="menuitem"
+                           tabindex="-1"
+                           id="menu-item-2">European Companies</a>
+                        <a href="/for-agencies"
+                           class="text-zinc-700 dark:text-zinc-300 block px-4 py-2 text-sm smooth hover:bg-zinc-100 dark:hover:bg-zinc-700 hover:text-zinc-800 dark:hover:text-zinc-200"
+                           role="menuitem"
+                           tabindex="-1"
+                           id="menu-item-2">Agencies</a>
+                        <a href="/for-bootstrappers"
+                           class="text-zinc-700 dark:text-zinc-300 block px-4 py-2 text-sm smooth hover:bg-zinc-100 dark:hover:bg-zinc-700 hover:text-zinc-800 dark:hover:text-zinc-200"
+                           role="menuitem"
+                           tabindex="-1"
+                           id="menu-item-3">Bootstrapped Companies</a>
+                        <a href="/for-open-companies"
+                           class="text-zinc-700 dark:text-zinc-300 block px-4 py-2 text-sm smooth hover:bg-zinc-100 dark:hover:bg-zinc-700 hover:text-zinc-800 dark:hover:text-zinc-200"
+                           role="menuitem"
+                           tabindex="-1"
+                           id="menu-item-4">Open Companies</a>
+                    @endif
                 </div>
             </div>
         </div>
     </li>
     <li>
-        <a href="/#pricing"
-           class="px-3 py-2 hover:underline smooth">Pricing</a>
+        <a href="#pricing"
+           class="px-3 py-2 hover:underline smooth">{{ __("Pricing") }}</a>
     </li>
 </ul>
 
 <ul class="flex space-x-6 items-center">
     <li class="hidden sm:block">
         <a class="hover:underline smooth linkToApp"
-           href="https://app.metricswave.com/auth/login">Log In</a>
+           href="https://app.metricswave.com/auth/login">{{ __("Log In") }}</a>
     </li>
     <li class="hidden sm:block">
         <a class="hover:underline smooth linkToApp bg-orange-400/10 rounded-md py-1.5 px-3"
-           href="https://app.metricswave.com/auth/signup">Create an Account</a>
+           href="https://app.metricswave.com/auth/signup">{{ __("Create an Account") }}</a>
     </li>
     <li class="sm:hidden">
         <a class="hover:underline smooth linkToApp bg-orange-400/10 rounded-md py-1.5 px-3"
-           href="https://app.metricswave.com">App</a>
+           href="https://app.metricswave.com">{{ __("App") }}</a>
     </li>
 </ul>
 
