@@ -43,8 +43,8 @@
     <div class="flex flex-col items-center justify-center space-y-14 sm:space-y-32">
         <div class="px-[var(--app-padding)] sm:px-0 mw-landing mx-auto my-10 w-full flex flex-col space-y-8 sm:my-40">
             <h1 class="animate-[out_1s,_fade-in-down_1.5s_ease-out_1s] text-3xl sm:text-6xl leading-[1.3] sm:leading-[1.1] tracking-tighter max-w-[22ch]">
-                Best Google Analytics alternative for
-                <br/><span class="relative bg-gradient-to-br from-pink-500 to-amber-500 bg-clip-text text-transparent">Your Product</span>.
+                {{ __("Best Google Analytics alternative for") }}
+                <br/><span class="relative bg-gradient-to-br from-pink-500 to-amber-500 bg-clip-text text-transparent">{{ __("Your Product") }}</span>.
             </h1>
 
             <div class="animate-[out_1.25s,_fade-in-down_1.5s_ease-out_1.25s] text-lg font-light !leading-normal sm:text-2xl prose sm:prose-xl dark:prose-invert">
@@ -62,7 +62,7 @@
                         >
                             {!!
                               $buttonText ??
-                              'Start Tracking <span class="hidden md:inline">my Product </span>for Free →'
+                              __('Start Tracking <span class="hidden md:inline">my Product </span>for Free →')
                             !!}
                         </a>
 
@@ -70,15 +70,13 @@
                             class="py-4 px-6 opacity-60 hover:opacity-100 smooth border rounded-lg w-full sm:w-auto text-center metricswave-event-uuid--6337915a-0498-4e42-baeb-ad57b9bcc541 metricswave-event-param-location--Hero"
                             href="https://app.metricswave.com/fUwWlrz6Xhedh12/metricswave.com?compare=1&period=7d"
                             target="_blank"
-                        >
-                            Live Demo
-                        </a>
+                        >{{ __("Live Demo") }}</a>
                     </div>
 
                     @if(count($page->partner_logos) > 0)
                         <div class="animate-[out_2s,_fade-in-down_1.5s_ease-out_2s]">
                             <div class="flex flex-row items-start gap-5 pt-20 opacity-70">
-                                <h6>Some of our customers</h6>
+                                <h6>{{ __("Some of our customers") }}</h6>
                             </div>
                             <div class="flex flex-row items-center justify-start gap-5 pt-5 pb-0">
                                 @foreach($page->partner_logos ?? [] as $i => $logo)
@@ -103,13 +101,11 @@
         <div id="eu"
              class="animate-[out_2.25s,_fade-in-down_1.5s_ease-out_2.25s] relative w-full border-b soft-border px-app !mt-0">
             <div class="mw-landing mx-auto mb-16 sm:mb-32">
-                <h2 class="text-2xl sm:text-3xl font-medium mb-4 !leading-snug max-w-[30ch]">
-                    No cookies, fully compliant with GDPR, CCPA and PECR.
-                </h2>
+                <h2 class="text-2xl sm:text-3xl font-medium mb-4 !leading-snug max-w-[30ch]">{{ __("No cookies, fully compliant with GDPR, CCPA and PECR.") }}</h2>
                 <div class="prose md:prose-lg dark:prose-invert">
-                    <p>We don't use cookies, we don't store any personal data, and we don't track your users across
-                        websites.</p>
-                    <p>Made and hosted in the EU 🇪🇺.</p>
+                    <p>{{ __("We don't use cookies, we don't store any personal data, and we don't track your users across
+                        websites.") }}</p>
+                    <p>{{ __("Made and hosted in the EU 🇪🇺.") }}</p>
                 </div>
             </div>
         </div>

@@ -1,63 +1,63 @@
 ---
-id: 9d11ffb5-1c82-43ae-859f-3764183b3673
+id: 84390ae0-6877-4bd6-b5d9-a318851e2c55
 published: false
 blueprint: page
-title: '[Unpublished] Langing'
+title: '[Unpublished] Langing (ES)'
 show_buttons: true
 updated_by: 6ee8895a-52f6-44a1-a772-a0e7f04692b7
-updated_at: 1725023632
-seo_title: 'An Event-Driven Google Analytics Alternative'
-seo_description: 'MetricsWave is a lightweight and privacy-friendly Google Analytics alternative. Seamless Integration for any Website or App.'
-hero_content: "Don't compromise your visitor. We provide easy to use and respectful website analytics."
+updated_at: 1725023773
+seo_title: 'Una alternativa a Google Analytics basada en eventos'
+seo_description: 'MetricsWave es una alternativa a Google Analytics ligera y respetuosa con la privacidad. Integración perfecta para cualquier sitio web o aplicación.'
+hero_content: 'No comprometa a su visitante. Ofrecemos análisis de sitios web fáciles de usar y respetuosos.'
 structured_content:
   -
     id: lko1j4et
-    title: 'Track your Website Traffic.'
+    title: 'Seguimiento del tráfico de su sitio web.'
     image: pages/track_visits_light.png
     dark_image: pages/track_visits_dark.png
     type: section_with_image
     enabled: true
     content: |-
-      We believe in easy to understand and actionable statistics. Know how your users know you and how they behave. 
+      Creemos en las estadísticas fáciles de entender y procesables. Sepa cómo le conocen sus usuarios y cómo se comportan.
 
-      This is how traffic analytics should have always been.
+      Así es como debería haber sido siempre la analítica de tráfico.
   -
     id: lm34gp22
-    title: 'Not just bar or line graphs'
-    content: 'Register and measure your events as you want. There is **nothing better than a funnel to measure registration or sales**!'
+    title: 'No sólo gráficos de barras o de líneas.'
+    content: 'Registra y mide tus eventos como quieras. ¡No hay **nada mejor que un embudo para medir inscripciones o ventas**!'
     image: pages/funnel---light.mp4
     dark_image: pages/funnel---dark.mp4
     type: section_with_image
     enabled: true
   -
     id: lm332a5s
-    title: 'Customize your Dashboard as you want'
+    title: 'Personaliza tu panel de control como quieras.'
     content: |-
-      Your business, your rules. Customize the Dashboard to your liking and put the most important metrics for your business on top.
+      Tu negocio, tus reglas. Personaliza el Dashboard a tu gusto y pon las métricas más importantes para tu negocio en la parte superior.
 
-      Visits, registrations, sales, deploys, whatever you want.
+      Visitas, registros, ventas, despliegues, lo que quieras.
     image: pages/customize-your-dashboard---light-1693724454.mp4
     dark_image: pages/customize-your-dashboard---dark-1693724461.mp4
     type: section_with_image
     enabled: true
   -
     id: lko1ksok
-    title: 'Experience Every Critical Moment in Real-time.'
+    title: 'Experimente cada momento crítico en tiempo real.'
     content: |-
-      Track every important event in your product, receive notifications, and monitor potential issues.
+      Realice un seguimiento de todos los eventos importantes de su producto, reciba notificaciones y controle posibles problemas. 
 
-      You can even log error messages to see what's happening, or production deploys.
+      Incluso puede registrar mensajes de error para ver qué está ocurriendo, subidas a producción y más.
     image: pages/event_stats_light.png
     dark_image: pages/event_stats_dark.png
     type: section_with_image
     enabled: true
   -
     id: lko1letc
-    title: 'More than Just Traffic.'
+    title: 'Algo más que tráfico.'
     content: |-
-      Stay on top of your product's important events, potential issues, and notifications with ease.
+      Manténgase al tanto de los eventos importantes, los problemas potenciales y las notificaciones de su producto con facilidad.
 
-      With [our API](/documentation/tracking/events) you can track from logins or sign ups to [deploys](/documentation/tracking/deployments).
+      Con [nuestra API](/documentation/tracking/events) puede realizar un seguimiento desde los inicios de sesión o las inscripciones hasta los [despliegues](/documentation/tracking/deployments).
     image: pages/scr-20230729-nqfu.png
     dark_image: pages/scr-20230729-nqij.png
     type: section_with_image
@@ -65,9 +65,9 @@ structured_content:
   -
     id: lko1w6yo
     content: |-
-      Integrating is quick and easy. We provide easy to understand documentation for different frameworks. Usually is just a copy-paste process.
+      La integración es rápida y sencilla. Proporcionamos documentación fácil de entender para diferentes frameworks. Normalmente es sólo un proceso de copiar y pegar.
 
-      [Browse our documentation →](/documentation/integrations/)
+      [Mira nuestra documentación →](/documentation/integrations/)
     type: section_with_image
     enabled: true
     title: 'Seamless Integration.'
@@ -113,5 +113,6 @@ partner_logos:
     enabled: true
     asset_url: /storage/partners/buymuscle.png
     dark_asset_url: /storage/partners/buymuscle.png
-article_locale: en
+duplicated_from: 9d11ffb5-1c82-43ae-859f-3764183b3673
+article_locale: es
 ---

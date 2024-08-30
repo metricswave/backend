@@ -25,6 +25,14 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/es', function () {
+    App::setLocale('es');
+
+    return view('welcome', [
+        'page' => Entry::query()->where('slug', 'landing-es')->first(),
+    ]);
+});
+
 Route::permanentRedirect('/roadmap', '/');
 Route::get('/blog', BlogController::class);
 Route::get('/blog/category/{slug}', CategoryController::class);

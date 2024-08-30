@@ -16,7 +16,6 @@
     "Choose the plan<br/>that fits your needs": "Elige el plan<br/>perfecto para ti",
     "Start for free": "Empieza gratis",
     "and upgrade your account at any moment": "y actualiza tu cuenta en cualquier momento",
-    "mo": "m",
     "Free":  "Gratis",
     "Contact us": "Contáctanos",
     "100% data ownership": "El 100% de los datos",
@@ -39,5 +38,12 @@
     "Blog": "Blog",
     "Legal links": "Legal",
     "Privacy Policy": "Política de privacidad",
-    "Terms of Service" : "Términos y Servicios"
+    "Terms of Service" : "Términos y Servicios",
+    "Some of our customers": "Algunos de nuestros clientes",
+    "Best Google Analytics alternative for": "La mejor alternativa a Google Analítica para",
+    "Your Product": "Tu Producto",
+    "Start Tracking <span class=\"hidden md:inline\">my Product </span>for Free →": "Empieza a trakear <span class=\"hidden md:inline\">tu producto</span> gratis →",
+    "No cookies, fully compliant with GDPR, CCPA and PECR.": "Sin cookies, totalmente conforme con GDPR, CCPA y PECR",
+    "We don't use cookies, we don't store any personal data, and we don't track your users across websites.": "No utilizamos cookies, no almacenamos datos personales y no rastreamos a los usuarios en los distintos sitios web.",
+    "Made and hosted in the EU 🇪🇺.": "Hecho y alojado en EU  🇪🇺."
 }
