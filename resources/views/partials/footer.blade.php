@@ -16,6 +16,8 @@
         @if (App::getLocale() === "es")
             <li><a class="hover:underline smooth"
                    href="/es/mejor-alternativa-a-google-analytics">MetricsWave vs Google Analytica</a></li>
+            <li><a class="hover:underline smooth"
+                   href="/es/controla-tu-mismo-las-estadisticas-de-tu-web">Controla tus própias Analíticas</a></li>
         @else
             <li><a class="hover:underline smooth"
                    href="/metricswave-vs-google-analytics">MetricsWave vs Google Analytics</a></li>

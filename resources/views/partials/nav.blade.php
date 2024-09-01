@@ -36,6 +36,15 @@
                             Vs. Google Analytica<br/>
                             <span class="text-xs text-gray-500">Analítica sencilla, y sin cookies.</span>
                         </a>
+
+                        <a href="/es/controla-tu-mismo-las-estadisticas-de-tu-web"
+                           class="text-zinc-700 dark:text-zinc-300 block px-4 py-2 text-sm smooth hover:bg-zinc-100 dark:hover:bg-zinc-700 hover:text-zinc-800 dark:hover:text-zinc-200"
+                           role="menuitem"
+                           tabindex="-1"
+                           id="menu-item-0">
+                            Controla tus própias analíticas<br/>
+                            <span class="text-xs text-gray-500">y que no te engañen.</span>
+                        </a>
                     @else
                         <a href="/metricswave-vs-google-analytics"
                            class="text-zinc-700 dark:text-zinc-300 block px-4 py-2 text-sm smooth hover:bg-zinc-100 dark:hover:bg-zinc-700 hover:text-zinc-800 dark:hover:text-zinc-200"
