@@ -58,8 +58,9 @@ class PeriodRequest extends FormRequest
 
     private function fromDate(): ?Carbon
     {
-        return $this->fromDate ?
-            Carbon::createFromFormat('Y-m-d', $this->fromDate) :
+        return $this->get('from-date') ?
+            Carbon::createFromFormat('Y-m-d', $this->get('from-date'))
+                ->startOf($this->period()->visitsPeriod()) :
             null;
     }
 }

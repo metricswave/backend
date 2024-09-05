@@ -112,3 +112,27 @@ it('return expected data for year period', function () use ($loadVisits) {
             ->count('data.plot', 12)
         );
 });
+
+it('return expected data for custom daily period', function () use ($loadVisits) {
+    Date::setTestNow('2023-09-05');
+
+    [$user, $team] = user_with_team();
+    $trigger = Trigger::factory()
+        ->for($team)
+        ->for(TriggerType::factory()->create())
+        ->create();
+
+    $loadVisits($trigger);
+
+    actingAs($user)
+        ->getJson('/api/triggers/'.$trigger->uuid.'/graph-stats?period=c_daily&date=2023-06-05&from-date=2023-05-05')
+        ->assertSuccessful()
+        ->assertJson(fn (AssertableJson $json) => $json
+            ->where('data.period.date', '2023-06-06T00:00:00+00:00')
+            ->where('data.period.fromDate', '2023-05-05T00:00:00+00:00')
+            ->where('data.period.period', 'c_daily')
+            ->count('data.plot', 32)
+            ->where('data.plot.0.score', 6)
+            ->where('data.plot.1.score', 9)
+        );
+});
