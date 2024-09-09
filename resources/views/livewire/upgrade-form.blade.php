@@ -166,7 +166,7 @@
             buttonElement.disabled = true;
             elements.submit()
 
-            const return_url = '{{ config('app.url') }}{{ App::getLocale() === 'es' ? '/es' : '' }}/upgrading/{{ $teamId }}'
+            const return_url = '{{ config('app.url') }}{{ App::getLocale() === 'es' ? 'es' : '' }}/upgrading/{{ $teamId }}'
 
             const {error} = await stripe.confirmSetup(
                 {

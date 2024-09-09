@@ -42,6 +42,11 @@ class UpgradeForm extends Component
             default => false,
         };
 
+        if (App::getLocale() === 'es') {
+            $this->currency = 'eur';
+            $this->currencySymbol = '€';
+        }
+
         if (request()->query('plan', false)) {
             $routePlan = (int) request()->query('plan') + 1;
             $this->currentPlan = $this->plans
@@ -52,7 +57,7 @@ class UpgradeForm extends Component
 
         $this->intentCode = Team::find($this->teamId)
             ->createSetupIntent([
-                'payment_method_types' => ['card', 'link'],
+                'payment_method_types' => ['card'],
                 'metadata' => [
                     'team_id' => $this->teamId,
                     'currency' => $this->currency,
@@ -60,11 +65,6 @@ class UpgradeForm extends Component
                 ]
             ])
             ->client_secret;
-
-        if (App::getLocale() === 'es') {
-            $this->currency = 'eur';
-            $this->currencySymbol = '€';
-        }
     }
 
     public function changePlan(int $planId): void
