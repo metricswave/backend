@@ -111,6 +111,7 @@
         const options = {
             mode: 'subscription',
             currency: '{{ $this->currency }}',
+            paymentMethodTypes: ['card'],
             amount: {{ $currentPlan->monthlyPrice }},
             metadata: {
                 plan: {{ $currentPlan->id->value }},
