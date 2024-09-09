@@ -52,6 +52,7 @@ class UpgradeForm extends Component
 
         $this->intentCode = Team::find($this->teamId)
             ->createSetupIntent([
+                'payment_method_types' => ['card', 'link'],
                 'metadata' => [
                     'team_id' => $this->teamId,
                     'currency' => $this->currency,
