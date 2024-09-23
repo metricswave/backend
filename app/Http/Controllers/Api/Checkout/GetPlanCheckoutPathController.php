@@ -23,13 +23,7 @@ class GetPlanCheckoutPathController extends ApiAuthJsonController
         $plan = $this->planGetter->get(PlanId::from($planId));
 
         return $this->response([
-            'path' => $this->authCheckoutStripeProduct(
-                $team,
-                $plan->productStripeId,
-                $period === 'monthly' ?
-                    $plan->monthlyPriceStripeId :
-                    $plan->yearlyPriceStripeId
-            )->url,
+            'path' => $this->authCheckoutStripeProduct($team, $plan, $period)->url,
         ]);
     }
 }

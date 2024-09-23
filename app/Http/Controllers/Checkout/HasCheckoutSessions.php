@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Checkout;
 
 use App\Models\Lead;
 use App\Models\Price;
+use App\Transfers\Plan;
 use App\Transfers\PriceType;
 use Laravel\Cashier\Checkout;
 use MetricsWave\Teams\Team;
@@ -81,16 +82,34 @@ trait HasCheckoutSessions
             );
     }
 
-    public function authCheckoutStripeProduct(Team $team, string $productId, string $priceId): Checkout
+    public function authCheckoutStripeProduct(Team $team, Plan $plan, string $period): Checkout
     {
         $redirectTo = Str::of(config('app.web_app_url'))->trim('/').'/settings/billing?fromBillingPortal=true';
         $successPage = $redirectTo.'&success=true';
         $cancelPage = $redirectTo.'&cancelled=true';
 
         return $team
-            ->newSubscription(
-                $productId, $priceId
-            )->checkout([
+            ->newSubscription($plan->productStripeId, [
+                [
+                    'price_data' => [
+                        'currency' => $team->preferredCurrency(),
+                        'product_data' => [
+                            'name' => $plan->name,
+                        ],
+                        'unit_amount' => $period === 'monthly' ? $plan->monthlyPrice : $plan->yearlyPrice,
+                        'recurring' => [
+                            'interval' => $period === 'monthly' ? 'month' : 'year',
+                        ],
+                    ],
+                    'quantity' => 1,
+                ],
+            ])->checkout([
+                'metadata' => [
+                    'team_id' => $team->id,
+                    'currency' => $team->preferredCurrency(),
+                    'plan_name' => $plan->name,
+                    'plan_id' => $plan->id->value,
+                ],
                 'success_url' => url($successPage),
                 'cancel_url' => url($cancelPage),
             ]);

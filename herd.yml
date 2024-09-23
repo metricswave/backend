@@ -1,0 +1,5 @@
+integrations:
+  forge:
+    metricswave.com:
+      server-id: 729423
+      site-id: 2144639
