@@ -12,8 +12,8 @@ it('return expected owner', function () {
 });
 
 it('return expected plan information', function () {
-    Price::factory()->create(['id' => 1, 'type' => 'monthly', 'price' => 1000]);
-    [$user, $team] = user_with_team(teamAttributes: ['price_id' => 1]);
+    Price::factory()->create(['id' => 4, 'type' => 'monthly', 'price' => 1000]);
+    [,$team] = user_with_team(teamAttributes: ['price_id' => 4]);
 
     expect($team->subscription_status)->toBe(true)
         ->and($team->subscription_type)->toBe(SubscriptionType::Monthly)
