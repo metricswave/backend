@@ -140,7 +140,10 @@ class User extends Authenticatable
 
     public function getAllTeamsAttribute(): Collection
     {
-        return $this->teams->merge($this->ownedTeams);
+        return Team::with(['subscriptions'])
+            ->whereHas('users', fn ($query) => $query->where('user_id', $this->id))
+            ->orWhere('owner_id', $this->id)
+            ->get();
     }
 
     public function ownedTeams(): HasMany

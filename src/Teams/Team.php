@@ -102,7 +102,7 @@ class Team extends Model
             return true;
         }
 
-        if ($this->subscriptions()->whereIn('stripe_status', ['active', 'trailing'])->exists()) {
+        if ($this->subscriptions->whereIn('stripe_status', ['active', 'trailing'])->count() > 0) {
             return true;
         }
 
