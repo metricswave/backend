@@ -84,7 +84,11 @@ trait HasCheckoutSessions
 
     public function authCheckoutStripeProduct(Team $team, Plan $plan, string $period): Checkout
     {
-        $redirectTo = Str::of(config('app.web_app_url'))->trim('/').'/settings/billing?fromBillingPortal=true';
+        $currency = $team->preferredCurrency();
+        $amount = $period === 'monthly' ? $plan->monthlyPrice : $plan->yearlyPrice;
+
+        $redirectTo = Str::of(config('app.web_app_url'))->trim('/').
+            '/settings/billing?fromBillingPortal=true&currency='.$currency.'&amount='.$amount;
         $successPage = $redirectTo.'&success=true';
         $cancelPage = $redirectTo.'&cancelled=true';
 
@@ -92,14 +96,10 @@ trait HasCheckoutSessions
             ->newSubscription($plan->productStripeId, [
                 [
                     'price_data' => [
-                        'currency' => $team->preferredCurrency(),
-                        'product_data' => [
-                            'name' => $plan->name,
-                        ],
-                        'unit_amount' => $period === 'monthly' ? $plan->monthlyPrice : $plan->yearlyPrice,
-                        'recurring' => [
-                            'interval' => $period === 'monthly' ? 'month' : 'year',
-                        ],
+                        'currency' => $currency,
+                        'product_data' => ['name' => $plan->name],
+                        'unit_amount' => $amount,
+                        'recurring' => ['interval' => $period === 'monthly' ? 'month' : 'year'],
                     ],
                     'quantity' => 1,
                 ],
@@ -115,7 +115,7 @@ trait HasCheckoutSessions
             ]);
     }
 
-    public function checkout(Price $price, Lead $lead = null): Checkout
+    public function checkout(Price $price, ?Lead $lead = null): Checkout
     {
         if ($lead !== null) {
             $successPage = '/leads/'.$lead->uuid.'/?success=true';
