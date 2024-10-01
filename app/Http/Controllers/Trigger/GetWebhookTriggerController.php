@@ -13,9 +13,7 @@ class GetWebhookTriggerController extends JsonController
 {
     use UseTriggerVisitsUpdater;
 
-    public function __construct(private readonly SendWebhookTriggerNotification $webhookNotificationSender)
-    {
-    }
+    public function __construct(private readonly SendWebhookTriggerNotification $webhookNotificationSender) {}
 
     public function __invoke(Trigger $trigger): JsonResponse
     {
@@ -29,7 +27,7 @@ class GetWebhookTriggerController extends JsonController
         $params = request()->query();
 
         try {
-            ($this->webhookNotificationSender)($trigger, $params, $fromScript);
+            ($this->webhookNotificationSender)($trigger, $params, $fromScript, request()->query('triggered_at'));
         } catch (Exception $e) {
             return $this->errorResponse($e->getMessage(), 400);
         }

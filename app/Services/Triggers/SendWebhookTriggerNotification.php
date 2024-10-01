@@ -5,13 +5,14 @@ namespace App\Services\Triggers;
 use App\Jobs\TeamTriggerNotificationJob;
 use App\Models\Trigger;
 use App\Notifications\TriggerNotification;
+use Carbon\CarbonImmutable;
 
 class SendWebhookTriggerNotification
 {
     /**
      * @throws MissingTriggerParams
      */
-    public function __invoke(Trigger $trigger, array $params, bool $fromScript = false): void
+    public function __invoke(Trigger $trigger, array $params, bool $fromScript = false, ?string $triggeredAt = null): void
     {
         $requiredParams = collect($trigger->configuration['fields']['parameters']);
 
@@ -25,11 +26,14 @@ class SendWebhookTriggerNotification
             return;
         }
 
+        $triggeredAt = $triggeredAt !== null ? CarbonImmutable::parse($triggeredAt) : null;
+
         TeamTriggerNotificationJob::dispatch(
             $trigger->team,
             new TriggerNotification(
                 $trigger,
                 $params,
+                $triggeredAt,
             )
         );
     }
