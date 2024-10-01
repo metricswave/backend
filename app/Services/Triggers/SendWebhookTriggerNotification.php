@@ -14,16 +14,16 @@ class SendWebhookTriggerNotification
      */
     public function __invoke(Trigger $trigger, array $params, bool $fromScript = false, ?string $triggeredAt = null): void
     {
+        if ($trigger->team_id === 76) {
+            return;
+        }
+
         $requiredParams = collect($trigger->configuration['fields']['parameters']);
 
         $missingParams = $requiredParams->diff(array_keys($params));
 
         if ($missingParams->isNotEmpty() && ! $fromScript) {
             throw MissingTriggerParams::with($missingParams);
-        }
-
-        if ($trigger->team_id === 76) {
-            return;
         }
 
         $triggeredAt = $triggeredAt !== null ? CarbonImmutable::parse($triggeredAt) : null;

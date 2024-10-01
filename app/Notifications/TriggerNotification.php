@@ -72,7 +72,12 @@ class TriggerNotification extends Notification implements ShouldQueue
             }
         }
 
-        $this->trigger->visits()->recordParams($params, date: $notifiedAt);
+        $inc = 1;
+        if ($this->trigger->isMoneyIncomeType()) {
+            $inc = $params['amount'] ?? 1;
+        }
+
+        $this->trigger->visits()->recordParams($params, inc: $inc, date: $notifiedAt);
 
         $via = collect($this->trigger->via)
             ->filter(fn ($via) => $via['checked'] && $via['type'] !== 'telegram')
