@@ -27,7 +27,7 @@ class TriggerNotification extends Notification implements ShouldQueue
     public function __construct(
         public readonly Trigger $trigger,
         public readonly array $params = [],
-        CarbonImmutable $notifiedAt = null,
+        ?CarbonImmutable $notifiedAt = null,
     ) {
         $this->title = $trigger->formattedTitle($params);
         $this->content = $trigger->formattedContent($params);
@@ -72,7 +72,7 @@ class TriggerNotification extends Notification implements ShouldQueue
             }
         }
 
-        $this->trigger->visits()->recordParams($params);
+        $this->trigger->visits()->recordParams($params, date: $notifiedAt);
 
         $via = collect($this->trigger->via)
             ->filter(fn ($via) => $via['checked'] && $via['type'] !== 'telegram')
@@ -99,7 +99,7 @@ class TriggerNotification extends Notification implements ShouldQueue
 
     public function toMail(object $notifiable): MailMessage
     {
-        return (new MailMessage())
+        return (new MailMessage)
             ->subject($this->trigger->emoji.' '.$this->title)
             ->markdown('mail.trigger', [
                 'emoji' => $this->emoji,
