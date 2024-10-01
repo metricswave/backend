@@ -7,14 +7,14 @@ use Illuminate\Console\Command;
 
 class DeleteVisitsByTriggerCommand extends Command
 {
-    protected $signature = 'trigger:delete-visits {triggerId : The trigger id}';
+    protected $signature = 'trigger:delete-visits {triggerId : The trigger id or UUID.}';
 
-    protected $description = 'Delete events by trigger id.';
+    protected $description = 'Delete events by trigger id or UUID.';
 
     public function handle(): void
     {
         $triggerId = $this->argument('triggerId');
-        $trigger = Trigger::find($triggerId);
+        $trigger = Trigger::find($triggerId) ?? Trigger::query()->where('uuid', $triggerId)->first();
 
         if ($trigger === null) {
             $this->error('Trigger not found.');
