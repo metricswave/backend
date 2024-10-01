@@ -36,6 +36,7 @@ class Team extends Model
 
     protected $dispatchesEvents = [
         'deleted' => TeamDeleted::class,
+        'created' => TeamCreated::class,
     ];
 
     protected $casts = [
@@ -158,7 +159,7 @@ class Team extends Model
 
     public function stripeEmail(): string
     {
-        return $this->owner?->email ?? "";
+        return $this->owner?->email ?? '';
     }
 
     public function stripeMetadata(): array
