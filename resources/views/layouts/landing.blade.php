@@ -1,10 +1,10 @@
 @php($minimal ??= false)
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     @hasSection('meta')
         @yield('meta')
@@ -21,36 +21,42 @@
 
     @yield('head_scripts')
 </head>
+
 <body>
-<nav class="mx-auto pt-8 pb-8 px-4 sm:px-8 flex items-center justify-between">
-    @if(!$minimal)
-    <a class="flex items-center space-x-3 text-zinc-900 dark:text-white"
-       href="/">
-        <div class="inline-block h-6 w-6 bg-gradient-to-b from-pink-500 to-amber-500"></div>
-        <span class="font-bold tracking-tighter">{{ config('app.name') }}</span>
-    </a>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NT7M9TVS" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <nav class="flex justify-between items-center px-4 pt-8 pb-8 mx-auto sm:px-8">
+        @if (!$minimal)
+            <a class="flex items-center space-x-3 dark:text-white text-zinc-900" href="/">
+                <div class="inline-block w-6 h-6 bg-gradient-to-b from-pink-500 to-amber-500"></div>
+                <span class="font-bold tracking-tighter">{{ config('app.name') }}</span>
+            </a>
+        @else
+            <div class="flex items-center space-x-3 dark:text-white text-zinc-900">
+                <div class="inline-block w-6 h-6 bg-gradient-to-b from-pink-500 to-amber-500"></div>
+                <span class="font-bold tracking-tighter">{{ config('app.name') }}</span>
+            </div>
+        @endif
+
+        @if (!$minimal)
+            @include('partials.nav')
+        @endif
+    </nav>
+
+    <div>
+        @yield('content')
+    </div>
+
+    @if (!$minimal)
+        @include('partials.footer')
     @else
-        <div class="flex items-center space-x-3 text-zinc-900 dark:text-white">
-            <div class="inline-block h-6 w-6 bg-gradient-to-b from-pink-500 to-amber-500"></div>
-            <span class="font-bold tracking-tighter">{{ config('app.name') }}</span>
-        </div>
+        <div class="h-48"></div>
     @endif
 
-    @if(!$minimal)
-        @include('partials.nav')
-    @endif
-</nav>
-
-<div>
-    @yield('content')
-</div>
-
-@if(!$minimal)
-    @include('partials.footer')
-@else
-    <div class="h-48"></div>
-@endif
-
-@yield('scripts')
+    @yield('scripts')
 </body>
+
 </html>
