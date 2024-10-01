@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Artisan;
 use MetricsWave\Teams\Console\Commands\DeleteVisitsByTeamIdCommand;
+use MetricsWave\Teams\Console\Commands\DeleteVisitsByTriggerCommand;
 use MetricsWave\Teams\Console\Commands\MigrateModelsToTeamsCommand;
 use MetricsWave\Users\Console\Commands\MailArticleToUsersCommand;
 use MetricsWave\Users\Console\Commands\MailTeamsWithoutEventsAfterADayCommand;
@@ -21,12 +22,15 @@ use MetricsWave\Users\Console\Commands\UserRoadmapMailCommand;
 */
 
 // Teams
-Artisan::registerCommand(new MigrateModelsToTeamsCommand());
-Artisan::registerCommand(new DeleteVisitsByTeamIdCommand());
+Artisan::registerCommand(new MigrateModelsToTeamsCommand);
+Artisan::registerCommand(new DeleteVisitsByTeamIdCommand);
+
+// Triggers
+Artisan::registerCommand(new DeleteVisitsByTriggerCommand);
 
 // Users
-Artisan::registerCommand(new MailArticleToUsersCommand());
-Artisan::registerCommand(new MailTeamsWithoutEventsAfterADayCommand());
-Artisan::registerCommand(new UserCalendarsGetterCommand());
-Artisan::registerCommand(new UserLifetimeLicenceMailCommand());
-Artisan::registerCommand(new UserRoadmapMailCommand());
+Artisan::registerCommand(new MailArticleToUsersCommand);
+Artisan::registerCommand(new MailTeamsWithoutEventsAfterADayCommand);
+Artisan::registerCommand(new UserCalendarsGetterCommand);
+Artisan::registerCommand(new UserLifetimeLicenceMailCommand);
+Artisan::registerCommand(new UserRoadmapMailCommand);

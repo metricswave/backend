@@ -20,6 +20,7 @@ class DeleteVisitsByTeamIdCommand extends Command
 
         if ($team === null) {
             $this->error("Team with id {$teamId} not found.");
+
             return;
         }
 
@@ -28,7 +29,7 @@ class DeleteVisitsByTeamIdCommand extends Command
 
         $this->withProgressBar(
             $team->triggers,
-            fn(Trigger $trigger) => $this->deleteTriggerVisits($trigger),
+            fn (Trigger $trigger) => $this->deleteTriggerVisits($trigger),
         );
     }
 
