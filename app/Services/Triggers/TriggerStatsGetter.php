@@ -27,14 +27,16 @@ class TriggerStatsGetter
                 $stat['score'],
             ));
 
+        $data = new DataCollection($stats);
+
         return new GraphDataCollection(
             $period,
-            $this->getHeadersOrNull($trigger, $period),
-            new DataCollection($stats)
+            $this->getHeadersOrNull($trigger, $period, $data),
+            $data,
         );
     }
 
-    private function getHeadersOrNull(Trigger $trigger, Period $period): ?GraphHeaders
+    private function getHeadersOrNull(Trigger $trigger, Period $period, ?DataCollection $data = null): ?GraphHeaders
     {
         if ($trigger->isVisitsType()) {
             return new GraphHeaders([
@@ -45,8 +47,11 @@ class TriggerStatsGetter
         }
 
         if ($trigger->isMoneyIncomeType()) {
-            // todo: return headers
-            return null;
+            $total = $data->sum(fn (GraphData $d) => $d->score);
+
+            return new GraphHeaders([
+                new GraphHeader('total_income', $total),
+            ]);
         }
 
         return null;

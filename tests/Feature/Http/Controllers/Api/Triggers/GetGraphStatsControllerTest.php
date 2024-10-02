@@ -4,7 +4,6 @@ use App\Models\Trigger;
 use App\Models\TriggerType;
 use Illuminate\Support\Carbon;
 use Illuminate\Testing\Fluent\AssertableJson;
-
 use MetricsWave\Metrics\Models\Visit;
 
 use function Pest\Laravel\actingAs;
@@ -28,11 +27,11 @@ $loadVisits = function (Trigger $trigger) use ($visits): void {
         $tableName = Visit::tableNameForYear(($expiredAt ?? now())->year);
 
         DB::table($tableName)->insert([
-                'primary_key' => 'visits:testing:triggers_visits_day',
-                'secondary_key' => $trigger->id,
-                'score' => (int) $row[3],
-                'expired_at' => $expiredAt,
-            ]);
+            'primary_key' => 'visits:testing:triggers_visits_day',
+            'secondary_key' => $trigger->id,
+            'score' => (int) $row[3],
+            'expired_at' => $expiredAt,
+        ]);
     }
 };
 
@@ -62,6 +61,39 @@ it('return expected data', function () use ($loadVisits) {
             ->where('data.period.date', '2023-06-06T00:00:00+00:00')
             ->where('data.period.period', '30d')
             ->where('data.headers.pageViews', 99)
+            ->count('data.plot', 30)
+            ->where('data.plot.0.date', '2023-05-07T00:00:00+00:00')
+            ->where('data.plot.0.score', 3)
+        );
+});
+
+it('return expected data with headers for money_income type', function () use ($loadVisits) {
+    Date::setTestNow('2023-06-05');
+
+    [$user, $team] = user_with_team();
+    $trigger = Trigger::factory()
+        ->for($team)
+        ->for(TriggerType::factory()->create())
+        ->create([
+            'configuration' => [
+                'version' => '1.0',
+                'type' => 'money_income',
+                'fields' => [
+                    'parameters' => ['amount', 'source'],
+                ],
+            ],
+        ]);
+
+    $loadVisits($trigger);
+
+    actingAs($user)
+        ->getJson('/api/triggers/'.$trigger->uuid.'/graph-stats')
+        ->assertSuccessful()
+        ->dump()
+        ->assertJson(fn (AssertableJson $json) => $json
+            ->where('data.period.date', '2023-06-06T00:00:00+00:00')
+            ->where('data.period.period', '30d')
+            ->where('data.headers.total_income', 99)
             ->count('data.plot', 30)
             ->where('data.plot.0.date', '2023-05-07T00:00:00+00:00')
             ->where('data.plot.0.score', 3)
