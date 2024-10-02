@@ -3,6 +3,7 @@
 namespace MetricsWave\Teams\Http\Controllers\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 use MetricsWave\Teams\Team;
 
 /**
@@ -22,7 +23,8 @@ class UpdateTeamRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'domain' => ['required', 'string', 'max:255'],
+            'domain' => ['string', 'max:255'],
+            'currency' => ['string', Rule::in(['usd', 'eur'])],
             'change_dashboard_name' => ['boolean'],
         ];
     }

@@ -6,8 +6,6 @@ use App\Models\User;
 use App\Services\Plans\PlanGetter;
 use App\Transfers\PlanId;
 use Laravel\Cashier\Cashier;
-use Laravel\Cashier\Concerns\ManagesPaymentMethods;
-use Log;
 use MetricsWave\Teams\Team;
 use Stripe\PaymentMethod as StripePaymentMethod;
 
@@ -15,17 +13,17 @@ class SubscribeTeamToPlanOnIntentSucceeded
 {
     public function __construct(
         private readonly PlanGetter $planGetter,
-    ) {
-    }
+    ) {}
 
     public function handle(
         int $teamId,
         int $planId,
         string $currency,
         string $paymentMethodId,
-    ): void
-    {
+    ): void {
         $team = Team::findOrFail($teamId);
+
+        $team->update(['currency' => $currency]);
 
         $stripePaymentMethod = Cashier::stripe()->paymentMethods->retrieve($paymentMethodId);
 
@@ -54,8 +52,8 @@ class SubscribeTeamToPlanOnIntentSucceeded
                             'currency' => $currency,
                             'recurring' => ['interval' => 'month'],
                             'unit_amount' => $plan->monthlyPrice,
-                        ]
-                    ]
+                        ],
+                    ],
                 ]
             )
             ->create(

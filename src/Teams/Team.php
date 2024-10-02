@@ -30,6 +30,7 @@ class Team extends Model
 
     protected $fillable = [
         'domain',
+        'currency',
         'price_id',
         'initiated',
     ];
@@ -168,5 +169,10 @@ class Team extends Model
             'team_id' => $this->id,
             'domain' => $this->domain,
         ];
+    }
+
+    public function preferredCurrency(): string
+    {
+        return $this->currency ?? 'usd';
     }
 }

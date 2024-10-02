@@ -11,9 +11,10 @@ class PutTeamsController extends ApiAuthJsonController
 {
     public function __invoke(Team $team, UpdateTeamRequest $request): JsonResponse
     {
-        $team->update([
-            'domain' => $request->domain,
-        ]);
+        $teamParams = $request->validated();
+        unset($teamParams['change_dashboard_name']);
+
+        $team->update($teamParams);
 
         if ($request->change_dashboard_name) {
             $team->dashboards->first()->update([
