@@ -116,4 +116,10 @@ class Trigger extends Model
         return isset($this->configuration['type'])
             && $this->configuration['type'] === 'visits';
     }
+
+    public function isMoneyIncomeType(): bool
+    {
+        return isset($this->configuration['type'])
+            && $this->configuration['type'] === 'money_income';
+    }
 }

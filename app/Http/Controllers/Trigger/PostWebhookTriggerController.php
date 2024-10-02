@@ -24,10 +24,13 @@ class PostWebhookTriggerController extends JsonController
         $fromScript = request()->post('f', false) === 'script';
         $this->checkTrigger($fromScript, $trigger);
 
+        $triggeredAt = request()->post('triggered_at');
+
         $params = request()->post();
+        unset($params['triggered_at']);
 
         try {
-            ($this->webhookNotificationSender)($trigger, $params, $fromScript, request()->post('triggered_at'));
+            ($this->webhookNotificationSender)($trigger, $params, $fromScript, $triggeredAt);
         } catch (Exception $e) {
             return $this->errorResponse($e->getMessage(), 400);
         }

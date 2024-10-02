@@ -39,9 +39,14 @@ class TriggerNotification extends Notification implements ShouldQueue
     {
         $notifiedAt = $this->notifiedAt ?? CarbonImmutable::now();
 
-        $this->trigger->visits()->increment(date: $notifiedAt);
-
         $params = $this->params;
+
+        $inc = 1;
+        if ($this->trigger->isMoneyIncomeType()) {
+            $inc = $params['amount'] ?? 1;
+        }
+
+        $this->trigger->visits()->increment(inc: $inc, date: $notifiedAt);
 
         if ($this->trigger->isVisitsType()) {
             if (isset($params['deviceName'])) {
@@ -72,7 +77,7 @@ class TriggerNotification extends Notification implements ShouldQueue
             }
         }
 
-        $this->trigger->visits()->recordParams($params, date: $notifiedAt);
+        $this->trigger->visits()->recordParams($params, inc: $inc, date: $notifiedAt);
 
         $via = collect($this->trigger->via)
             ->filter(fn ($via) => $via['checked'] && $via['type'] !== 'telegram')
