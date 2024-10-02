@@ -166,7 +166,7 @@ class Metrics implements MetricsInterface
             ->increment($this->keys->visits, $inc, $this->keys->id);
         $this->connection
             ->setYear(null)
-            ->increment($this->keys->visitsTotal(), $inc);
+            ->increment($this->keys->visitsTotal(), 1);
 
         foreach (self::PERIODS as $period) {
             $expireInSeconds = $this->newExpiration($period, $date);
@@ -177,7 +177,7 @@ class Metrics implements MetricsInterface
                 ->incrementWithExpiration($periodKey, $inc, $this->keys->id, $expireInSeconds);
             $this->connection
                 ->setYear(null)
-                ->incrementWithExpiration($periodKey.'_total', $inc, null, $expireInSeconds);
+                ->incrementWithExpiration($periodKey.'_total', 1, null, $expireInSeconds);
         }
     }
 

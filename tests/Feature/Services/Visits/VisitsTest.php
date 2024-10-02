@@ -3,6 +3,7 @@
 use App\Models\Trigger;
 use App\Models\TriggerType;
 use App\Models\User;
+use App\Notifications\TriggerNotification;
 use MetricsWave\Metrics\Models\Visit;
 use MetricsWave\Teams\Team;
 
@@ -27,14 +28,14 @@ it('increase visits and set expired_at dates as expected', function () {
         $user->triggerNotificationVisits()->increment();
     }
 
-    $visits = (new Visit())
+    $visits = (new Visit)
         ->setTableForYear(now()->year)
         ->setConnection(config('visits.connection'))
         ->where('secondary_key', $user->id)
         ->get(['primary_key', 'expired_at', 'score'])
         ->toArray();
 
-    $visitsNew = (new Visit())
+    $visitsNew = (new Visit)
         ->setTableForYear(2024)
         ->setConnection(config('visits.connection'))
         ->where('secondary_key', $user->id)
@@ -42,6 +43,44 @@ it('increase visits and set expired_at dates as expected', function () {
         ->toArray();
 
     expect($visits)->toHaveCount(11);
+});
+
+it('increase visits with a money_amount trigger', function () {
+    [, $team] = user_with_team(['id' => 1]);
+
+    $trigger = Trigger::factory()
+        ->for($team)
+        ->for(TriggerType::factory()->create())
+        ->create([
+            'id' => 48,
+            'configuration' => [
+                'type' => 'money_income',
+                'fields' => ['parameters' => ['amount', 'source']],
+            ],
+        ]);
+
+    $startDate = Date::createFromDate('1989', '10', '23')->startOfDay()->subDay();
+    $this->travelTo($startDate);
+
+    $notification = new TriggerNotification($trigger, ['amount' => 2500, 'source' => 'subscription'], $startDate->toImmutable());
+    $trigger->team->owner->notify($notification);
+
+    $visits = $trigger->visits()->period('day')->countAllByParam(
+        'amount',
+        Date::createFromDate('1989', '10', '23')->startOfDay()
+    );
+
+    expect($visits->count())->toBe(1);
+    expect($visits->first()['score'])->toBe(2500);
+
+    $visits = (new Visit)->setTable(Visit::tableNameForYear(now()->year))->setConnection(config('visits.connection'))
+        ->get([
+            'primary_key',
+            'secondary_key',
+            'expired_at',
+            'score',
+        ])->toArray();
+    dump($visits);
 });
 
 it('increase visits with params and set expired_at dates as expected', function () {
@@ -86,7 +125,7 @@ it('fails because unique index violation', function () {
 
     $user->triggerNotificationVisits()->increment();
 
-    $visits = (new Visit())->setTable(Visit::tableNameForYear(now()->year))->setConnection(config('visits.connection'))
+    $visits = (new Visit)->setTable(Visit::tableNameForYear(now()->year))->setConnection(config('visits.connection'))
         ->where('primary_key', 'visits:testing:users_triggernotification_day')
         ->where('secondary_key', $user->id)->get([
             'primary_key',
@@ -184,7 +223,7 @@ it('store visits params, unique visits and new visits', function () {
     ]);
 
     expect(
-        (new Visit())->setTable(Visit::tableNameForYear(now()->year))->setConnection(config('visits.connection'))
+        (new Visit)->setTable(Visit::tableNameForYear(now()->year))->setConnection(config('visits.connection'))
             ->where('primary_key', 'visits:testing:triggers_unique_visits_day')
             ->where('secondary_key', $trigger->id)
             ->get('score')
@@ -193,7 +232,7 @@ it('store visits params, unique visits and new visits', function () {
     )->toBe(1);
 
     expect(
-        (new Visit())->setTable(Visit::tableNameForYear(now()->year))->setConnection(config('visits.connection'))
+        (new Visit)->setTable(Visit::tableNameForYear(now()->year))->setConnection(config('visits.connection'))
             ->where('primary_key', 'visits:testing:triggers_new_visits_day')
             ->where('secondary_key', $trigger->id)
             ->get('score')
@@ -202,7 +241,7 @@ it('store visits params, unique visits and new visits', function () {
     )->toBe(2);
 
     expect(
-        (new Visit())->setTable(Visit::tableNameForYear(now()->year))->setConnection(config('visits.connection'))
+        (new Visit)->setTable(Visit::tableNameForYear(now()->year))->setConnection(config('visits.connection'))
             ->where('primary_key', 'visits:testing:triggers_visits_day_referrer:48')
             ->where('secondary_key', '!=', 'Direct / None')
             ->exists()
@@ -254,7 +293,7 @@ it('store visits referrer', function () {
     ]);
 
     expect(
-        (new Visit())->setTable(Visit::tableNameForYear(now()->year))->setConnection(config('visits.connection'))
+        (new Visit)->setTable(Visit::tableNameForYear(now()->year))->setConnection(config('visits.connection'))
             ->where('primary_key', 'visits:testing:triggers_visits_day_referrer:48')
             ->where('secondary_key', 'https://google.com')
             ->get('score')
@@ -324,7 +363,7 @@ it('visit type works even when it has no params', function () {
     ]);
 
     expect(
-        (new Visit())->setTable(Visit::tableNameForYear(now()->year))->setConnection(config('visits.connection'))
+        (new Visit)->setTable(Visit::tableNameForYear(now()->year))->setConnection(config('visits.connection'))
             ->where('primary_key', 'visits:testing:triggers_visits_day_language:48')
             ->where('secondary_key', 'en-US')
             ->get('score')
@@ -333,7 +372,7 @@ it('visit type works even when it has no params', function () {
     )->toBe(4);
 
     expect(
-        (new Visit())->setTable(Visit::tableNameForYear(now()->year))->setConnection(config('visits.connection'))
+        (new Visit)->setTable(Visit::tableNameForYear(now()->year))->setConnection(config('visits.connection'))
             ->where('primary_key', 'visits:testing:triggers_unique_visits_day')
             ->where('secondary_key', $trigger->id)
             ->get('score')
@@ -342,7 +381,7 @@ it('visit type works even when it has no params', function () {
     )->toBe(1);
 
     expect(
-        (new Visit())->setTable(Visit::tableNameForYear(now()->year))->setConnection(config('visits.connection'))
+        (new Visit)->setTable(Visit::tableNameForYear(now()->year))->setConnection(config('visits.connection'))
             ->where('primary_key', 'visits:testing:triggers_new_visits_day')
             ->where('secondary_key', $trigger->id)
             ->get('score')
@@ -351,7 +390,7 @@ it('visit type works even when it has no params', function () {
     )->toBe(2);
 
     expect(
-        (new Visit())->setTable(Visit::tableNameForYear(now()->year))->setConnection(config('visits.connection'))
+        (new Visit)->setTable(Visit::tableNameForYear(now()->year))->setConnection(config('visits.connection'))
             ->where('primary_key', 'visits:testing:triggers_visits_day_referrer:48')
             ->where('secondary_key', '!=', 'Direct / None')
             ->exists()
