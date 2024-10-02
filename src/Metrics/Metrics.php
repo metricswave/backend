@@ -41,7 +41,7 @@ class Metrics implements MetricsInterface
             : $this->connection->get($this->keys->visitsTotal());
     }
 
-    private function yearsInPeriod(Carbon $from = null, Carbon $to = null)
+    private function yearsInPeriod(?Carbon $from = null, ?Carbon $to = null)
     {
         $from = $from ?? now();
         $to = $to ?? now();
@@ -52,7 +52,7 @@ class Metrics implements MetricsInterface
         );
     }
 
-    public function countAll(Carbon $from = null, Carbon $to = null): Collection
+    public function countAll(?Carbon $from = null, ?Carbon $to = null): Collection
     {
         $count = collect();
 
@@ -159,7 +159,7 @@ class Metrics implements MetricsInterface
             ->values();
     }
 
-    public function increment($inc = 1, CarbonInterface $date = null): void
+    public function increment($inc = 1, ?CarbonInterface $date = null): void
     {
         $this->connection
             ->setYear(null)
@@ -181,7 +181,7 @@ class Metrics implements MetricsInterface
         }
     }
 
-    protected function newExpiration($period, CarbonInterface $date = null): int
+    protected function newExpiration($period, ?CarbonInterface $date = null): int
     {
         try {
             $date = $date ?? Carbon::now();
@@ -190,10 +190,10 @@ class Metrics implements MetricsInterface
             throw new Exception("Wrong period: `{$period}`! please update config/visits.php file.");
         }
 
-        return $periodCarbon->diffInSeconds() + 1;
+        return Carbon::now()->diffInSeconds($periodCarbon, absolute: false) + 1;
     }
 
-    protected function xHoursPeriod($period, CarbonInterface $date = null)
+    protected function xHoursPeriod($period, ?CarbonInterface $date = null)
     {
         $date = $date ?? Carbon::now();
 
@@ -212,7 +212,7 @@ class Metrics implements MetricsInterface
         return $this;
     }
 
-    public function recordParams(array $params, int $inc = 1, CarbonInterface $date = null): void
+    public function recordParams(array $params, int $inc = 1, ?CarbonInterface $date = null): void
     {
         foreach ($params as $param => $value) {
             if (Str::of($value)->length() > 255) {
@@ -257,7 +257,7 @@ class Metrics implements MetricsInterface
     }
 
     /**
-     * @param  array<string> $params
+     * @param  array<string>  $params
      */
     public function deleteParams(array $params): void
     {
