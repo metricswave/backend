@@ -10,6 +10,10 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Cache;
+use Money\Currencies\ISOCurrencies;
+use Money\Currency;
+use Money\Formatter\IntlMoneyFormatter;
+use Money\Money;
 use Str;
 
 class TriggerNotification extends Notification implements ShouldQueue
@@ -29,6 +33,10 @@ class TriggerNotification extends Notification implements ShouldQueue
         public readonly array $params = [],
         ?CarbonImmutable $notifiedAt = null,
     ) {
+        if (isset($params['amount']) && $trigger->isMoneyIncomeType()) {
+            $params['amount'] = $this->formatMoneyAmount((int) $params['amount']);
+        }
+
         $this->title = $trigger->formattedTitle($params);
         $this->content = $trigger->formattedContent($params);
         $this->emoji = $trigger->formattedEmoji($params);
@@ -111,5 +119,16 @@ class TriggerNotification extends Notification implements ShouldQueue
                 'title' => $this->title,
                 'content' => $this->content,
             ]);
+    }
+
+    private function formatMoneyAmount(int $amount): string
+    {
+        $money = new Money($amount, new Currency($this->trigger->team->preferredCurrency()));
+        $currencies = new ISOCurrencies;
+
+        $numberFormatter = new \NumberFormatter('en_US', \NumberFormatter::CURRENCY);
+        $moneyFormatter = new IntlMoneyFormatter($numberFormatter, $currencies);
+
+        return $moneyFormatter->format($money);
     }
 }
