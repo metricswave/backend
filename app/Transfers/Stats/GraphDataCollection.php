@@ -13,6 +13,14 @@ class GraphDataCollection extends Data
         readonly public ?GraphHeaders $headers,
         #[DataCollectionOf(GraphData::class)]
         readonly public DataCollection $plot,
-    ) {
+    ) {}
+
+    public function toArray(): array
+    {
+        return [
+            'period' => $this->period->toArray(),
+            'headers' => $this->headers?->toArray(),
+            'plot' => $this->plot->toArray(),
+        ];
     }
 }

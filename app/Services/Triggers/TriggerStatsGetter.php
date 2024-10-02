@@ -5,6 +5,7 @@ namespace App\Services\Triggers;
 use App\Models\Trigger;
 use App\Transfers\Stats\GraphData;
 use App\Transfers\Stats\GraphDataCollection;
+use App\Transfers\Stats\GraphHeader;
 use App\Transfers\Stats\GraphHeaders;
 use App\Transfers\Stats\Period;
 use Statamic\Data\DataCollection;
@@ -35,15 +36,20 @@ class TriggerStatsGetter
 
     private function getHeadersOrNull(Trigger $trigger, Period $period): ?GraphHeaders
     {
-        if (! $trigger->isVisitsType()) {
+        if ($trigger->isVisitsType()) {
+            return new GraphHeaders([
+                new GraphHeader('unique', $this->total($trigger, $period, Trigger::UNIQUE_VISITS)),
+                new GraphHeader('visits', $this->total($trigger, $period, Trigger::NEW_VISITS)),
+                new GraphHeader('pageViews', $this->total($trigger, $period, Trigger::PAGE_VIEWS)),
+            ]);
+        }
+
+        if ($trigger->isMoneyIncomeType()) {
+            // todo: return headers
             return null;
         }
 
-        return new GraphHeaders(
-            unique: $this->total($trigger, $period, Trigger::UNIQUE_VISITS),
-            visits: $this->total($trigger, $period, Trigger::NEW_VISITS),
-            pageViews: $this->total($trigger, $period, Trigger::PAGE_VIEWS),
-        );
+        return null;
     }
 
     public function total(Trigger $trigger, Period $period, string $key): int
