@@ -24,7 +24,7 @@ it('update an owned team', function () {
 
 it('update team currency', function (string $currency) {
     [$user, $team] = user_with_team();
-    $dashboard = Dashboard::factory()->create(['name' => 'Default', 'team_id' => $team->id]);
+    Dashboard::factory()->create(['name' => 'Default', 'team_id' => $team->id]);
 
     actingAs($user)
         ->putJson('/api/teams/'.$team->id, [
@@ -37,7 +37,7 @@ it('update team currency', function (string $currency) {
 
 it('return bad request when the currency is not valid', function () {
     [$user, $team] = user_with_team();
-    $dashboard = Dashboard::factory()->create(['name' => 'Default', 'team_id' => $team->id]);
+    Dashboard::factory()->create(['name' => 'Default', 'team_id' => $team->id]);
 
     actingAs($user)
         ->putJson('/api/teams/'.$team->id, [
