@@ -72,7 +72,7 @@ Route::permanentRedirect(
 Route::get('/webhooks/{trigger:uuid}', GetWebhookTriggerController::class);
 Route::post('/webhooks/{trigger:uuid}', PostWebhookTriggerController::class);
 
-require_once(__DIR__.'/../src/Pages/Providers/routes.php');
+require_once __DIR__.'/../src/Pages/Providers/routes.php';
 
 Route::group(
     ['prefix' => '{locale?}', 'where' => ['locale' => 'es'], 'middleware' => [SetLocale::class]],
@@ -90,6 +90,7 @@ Route::group(
 );
 
 Route::get('/{slug}', function (string $slug) {
+    dd('here');
     $entry = Entry::query()->where('article_locale', 'en')->where('slug', $slug)->first();
 
     if ($entry === null) {
@@ -97,4 +98,4 @@ Route::get('/{slug}', function (string $slug) {
     }
 
     return view('pages.index', $entry);
-});
+})->where('slug', '^(?!cp|documentation).*$');

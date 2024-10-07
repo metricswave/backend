@@ -3,11 +3,10 @@ id: 5f9d25c0-3095-447d-b11c-4d2749198ee1
 blueprint: documentation
 title: 'Tracking custom Events'
 parent: f3552167-30d1-442f-8dc1-1bfbaa5c032a
-updated_by: 1
-updated_at: 1686651420
+updated_by: 6ee8895a-52f6-44a1-a772-a0e7f04692b7
+updated_at: 1728288754
 short_content: 'You can log and register any custom event on your site as you want. Learn how to take advantage of custom events to find out how your application is used.'
 ---
-
 One of MetricsWave's most powerful features is the ability to record custom events and obtain information from them.
 
 Events, along with custom parameters, will allow you to view statistics and understand how users are using your
@@ -49,7 +48,7 @@ can find an example of a request made from bash terminal.
 
 ```bash
 BODY='{"email": "my@email.com"}'
-curl -X POST https://metricswave.com/webhooks/fd37c3c1-efed-4545-a75b-d32c7fec525e \
+curl -X POST https://metricswave.com/webhooks/[[EVENT-UUID]] \
   -H "Content-Type: application/json" \
   -H "Accept: application/json" \
   -d "$BODY"

@@ -3,8 +3,8 @@ id: c46aafa5-b49b-4019-a55d-2074ae56570d
 blueprint: documentation
 title: Documentation
 short_content: 'A collection of good articles about how MetricsWave works.'
-updated_by: 1
-updated_at: 1694716280
+updated_by: 6ee8895a-52f6-44a1-a772-a0e7f04692b7
+updated_at: 1728288422
 ---
 ### 💎 Main topics
 
@@ -12,6 +12,7 @@ updated_at: 1694716280
   get basic insights about how people are using your product.
 - 💅 [Tracking custom Events](/documentation/tracking/events): You can log and register any custom event on your site as
   you want. Learn how to take advantage of custom events to find out how your application is used.
+- 💰 [Tracking Money Income](/documentation/tracking/money-income): Track all your money transactions from subscriptions, purchases or anything else.
 - 📣 [Create and log custom Funnels](/documentation/tracking/funnels): Create a measure custom flows using funnels. You can see how your users are making purchases, registering or anything else.
 - [Tracking deployments](/documentation/tracking/deployments): Log and event after a deploy and get stats about the
   version, the author and what's new on your server.
