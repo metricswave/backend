@@ -90,7 +90,6 @@ Route::group(
 );
 
 Route::get('/{slug}', function (string $slug) {
-    dd('here');
     $entry = Entry::query()->where('article_locale', 'en')->where('slug', $slug)->first();
 
     if ($entry === null) {
