@@ -97,4 +97,4 @@ Route::get('/{slug}', function (string $slug) {
     }
 
     return view('pages.index', $entry);
-})->where('slug', '^(?!cp|documentation).*$');
+})->where('slug', '^(?!cp|blog|documentation).*$');
