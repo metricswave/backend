@@ -8,7 +8,7 @@ class ResetPasswordNotification extends ResetPassword
 {
     protected function resetUrl($notifiable): string
     {
-        return config('web_app_url').
+        return config('app.web_app_url').
             'auth/reset-password?token='.$this->token.
             '&email='.$notifiable->getEmailForPasswordReset();
     }
