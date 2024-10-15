@@ -7,6 +7,8 @@ use App\Events\UserCreated;
 use App\Notifications\TriggerNotification;
 use App\Services\CacheKey;
 use App\Transfers\ServiceId;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 use Illuminate\Contracts\Notifications\Dispatcher;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -26,7 +28,7 @@ use MetricsWave\Users\UserService;
  * @property string $name
  * @property string $email
  */
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
     use HasApiTokens;
     use HasFactory;
@@ -154,6 +156,11 @@ class User extends Authenticatable
     public function teams(): BelongsToMany
     {
         return $this->belongsToMany(Team::class, 'team_user');
+    }
+
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return in_array($this->email, config('app.filament.users_emails'));
     }
 
     private function createAuthToken(string $deviceName): array
