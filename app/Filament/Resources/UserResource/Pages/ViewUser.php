@@ -28,12 +28,23 @@ class ViewUser extends ViewRecord
                     ->collapsible(),
                 RepeatableEntry::make('all_teams')
                     ->columns(['sm' => 3])
+                    ->grid(1)
                     ->schema([
                         TextEntry::make('domain')
-                            ->columnSpan(2),
+                            ->hiddenLabel()
+                            ->columnSpan(1),
                         TextEntry::make('subscription_status')
+                            ->columnSpan(2)
+                            ->hiddenLabel()
                             ->label('Subscribed')
-                            ->state(fn ($record): string => $record->subscription_plan_id->name()),
+                            ->state(fn ($record): string => $record->subscription_plan_id->name())
+                            ->badge()
+                            ->color(
+                                fn (string $state): string => match ($state) {
+                                    'Free' => 'gray',
+                                    default => 'success',
+                                }
+                            ),
                         TextEntry::make('weekly_visits_count')
                             ->label('Weekly Visits')
                             ->state(fn ($record): string => $record->triggerNotificationVisits()->period('week')->count()),
