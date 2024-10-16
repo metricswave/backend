@@ -15,6 +15,13 @@ return [
         'password' => env('BASIC_AUTH_PASSWORD', 'admin'),
     ],
 
+    'filament' => [
+        'users_emails' => [
+            'victoor89@gmail.com',
+            explode(',', env('FILAMENT_USERS_EMAILS', '')),
+        ],
+    ],
+
     'debug' => (bool) env('APP_DEBUG', false),
 
     'mailto' => env('MAIL_TO', 'hi@metricswave.com'),
@@ -104,6 +111,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\HorizonServiceProvider::class,
+        App\Providers\Filament\AdminPanelProvider::class,
         App\Providers\RouteServiceProvider::class,
 
         // MetricsWave Providers

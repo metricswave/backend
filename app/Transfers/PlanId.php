@@ -10,4 +10,16 @@ enum PlanId: int
     case BUSINESS = 4;
     case CORPORATE = 5;
     case ENTERPRISE = 6;
+
+    public function name(): string
+    {
+        return match ($this) {
+            self::FREE => 'Free',
+            self::BASIC => 'Basic',
+            self::STARTER => 'Starter',
+            self::BUSINESS => 'Business',
+            self::CORPORATE => 'Corporate',
+            self::ENTERPRISE => 'Enterprise',
+        };
+    }
 }
