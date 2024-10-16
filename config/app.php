@@ -18,7 +18,7 @@ return [
     'filament' => [
         'users_emails' => [
             'victoor89@gmail.com',
-            explode(',', env('FILAMENT_USERS_EMAILS', '')),
+            ...explode(',', env('FILAMENT_USERS_EMAILS', '')) ?? [],
         ],
     ],
 
