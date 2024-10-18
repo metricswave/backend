@@ -67,7 +67,7 @@ Route::get('/open', GetOpenDataController::class);
 // Checkout
 Route::get('/checkout/prices', GetPricesController::class);
 Route::get('/checkout/plans', GetPlansController::class);
-Route::get('/checkout/portal-path', GetPortalPathController::class);
+Route::get('/checkout/{team}/portal-path', GetPortalPathController::class);
 Route::get('/checkout/prices/{price}', GetPriceCheckoutPathController::class);
 Route::get('/{team}/checkout/plan/{planId}/{period}', GetPlanCheckoutPathController::class);
 
