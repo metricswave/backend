@@ -11,6 +11,8 @@ class GetPortalPathController extends ApiAuthJsonController
     public function __invoke(Team $team): JsonResponse
     {
         $redirectParam = request()->query('redirect-to', '/');
+        $redirectParam = ltrim($redirectParam, '/');
+
         $redirectTo = config('app.web_app_url').$redirectParam.'?fromBillingPortal=true';
 
         return $this->response([
