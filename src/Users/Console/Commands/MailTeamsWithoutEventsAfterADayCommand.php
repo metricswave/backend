@@ -3,6 +3,7 @@
 namespace MetricsWave\Users\Console\Commands;
 
 use App\Models\User;
+use Http;
 use Illuminate\Console\Command;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
@@ -35,6 +36,14 @@ class MailTeamsWithoutEventsAfterADayCommand extends Command
                 $team->owner->email,
                 $team->domain,
             ));
+
+            Http::get(
+                'https://metricswave.com/webhooks/60bb9264-5e13-42a5-b563-b914b516fc74',
+                [
+                    'type' => 'Team Without Events Mail',
+                    'email' => $team->owner->email,
+                ]
+            );
         });
 
         $this->newLine(2);
