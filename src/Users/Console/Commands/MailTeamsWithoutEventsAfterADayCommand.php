@@ -12,8 +12,6 @@ use MetricsWave\Users\Mail\TeamsWithoutEventsMail;
 
 class MailTeamsWithoutEventsAfterADayCommand extends Command
 {
-    private const MAIL_TYPE = 'team_without_events';
-
     protected $signature = 'app:teams:mail-without-events {email?} {--sub-days=1}';
 
     protected $description = 'Mail team owner without events after a day of creation.';
