@@ -22,6 +22,10 @@ class MailTeamsWithoutEventsAfterADayCommand extends Command
     {
         $teams = $this->getTeams((int) $this->option('sub-days'), $this->argument('email'));
 
+        if ($teams === null) {
+            return;
+        }
+
         $this->withProgressBar($teams, function (Team $team) {
             if ($team->triggers()->first() === null) {
                 return;
@@ -39,13 +43,24 @@ class MailTeamsWithoutEventsAfterADayCommand extends Command
         $this->info($teams->count().' mails sent.');
     }
 
-    private function getTeams(int $subDays = 1, string $testMail = null): Collection
+    private function getTeams(int $subDays = 1, ?string $testMail = null): ?Collection
     {
         if ($testMail !== null) {
-            /** @var User $owner */
-            $owner = User::query()->where('email', $testMail)->get();
+            $user = User::query()->where('email', $testMail)->first();
 
-            return $owner->teams;
+            if ($user === null) {
+                $this->error('User not found.');
+
+                return null;
+            }
+
+            if ($user->ownedTeams()->count() === 0) {
+                $this->error('User does not own any team.');
+
+                return null;
+            }
+
+            return $user->ownedTeams()->get();
         }
 
         return Team::query()
