@@ -5,7 +5,6 @@ namespace MetricsWave\Users\Console\Commands;
 use App\Models\User;
 use Http;
 use Illuminate\Console\Command;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Mail;
 use MetricsWave\Teams\Team;
@@ -76,8 +75,8 @@ class MailTeamsWithoutEventsAfterADayCommand extends Command
                     ->from('visits')
                     ->where('primary_key', 'like', 'visits:teams_triggernotification_year');
             })
-            ->where('created_at', '>', Carbon::createFromFormat('Y-m-d H:i:s', '2023-06-15 00:00:00'))
             ->where('created_at', '<', now()->subDays($subDays))
+            ->where('created_at', '>', now()->subDays($subDays + 1))
             ->get();
     }
 }
