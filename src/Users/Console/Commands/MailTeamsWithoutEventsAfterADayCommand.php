@@ -3,6 +3,7 @@
 namespace MetricsWave\Users\Console\Commands;
 
 use App\Models\User;
+use Cache;
 use Http;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
@@ -29,6 +30,10 @@ class MailTeamsWithoutEventsAfterADayCommand extends Command
                 return;
             }
 
+            if (Cache::has('team_'.$team->triggers()->first()->uuid)) {
+                return;
+            }
+
             Mail::send(new TeamsWithoutEventsMail(
                 $team->triggers()->first()->uuid,
                 $team->owner->name,
@@ -43,6 +48,8 @@ class MailTeamsWithoutEventsAfterADayCommand extends Command
                     'email' => $team->owner->email,
                 ]
             );
+
+            Cache::set('team_'.$team->triggers()->first()->uuid, true, now()->addWeek());
         });
 
         $this->newLine(2);
@@ -70,11 +77,7 @@ class MailTeamsWithoutEventsAfterADayCommand extends Command
         }
 
         return Team::query()
-            ->whereNotIn('id', function ($query) {
-                $query->select('secondary_key')
-                    ->from('visits')
-                    ->where('primary_key', 'like', 'visits:teams_triggernotification_year');
-            })
+            ->where('initiated', false)
             ->where('created_at', '<', now()->subDays($subDays))
             ->where('created_at', '>', now()->subDays($subDays + 1))
             ->get();
