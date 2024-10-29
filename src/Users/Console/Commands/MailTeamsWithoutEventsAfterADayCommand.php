@@ -25,7 +25,9 @@ class MailTeamsWithoutEventsAfterADayCommand extends Command
             return;
         }
 
-        $this->withProgressBar($teams, function (Team $team) {
+        $emailsSent = 0;
+
+        $this->withProgressBar($teams, function (Team $team) use (&$emailsSent) {
             if ($team->triggers()->first() === null) {
                 return;
             }
@@ -49,11 +51,13 @@ class MailTeamsWithoutEventsAfterADayCommand extends Command
                 ]
             );
 
+            $emailsSent++;
+
             Cache::set('team_'.$team->triggers()->first()->uuid, true, now()->addWeek());
         });
 
         $this->newLine(2);
-        $this->info($teams->count().' mails sent.');
+        $this->info($emailsSent.' mails sent.');
     }
 
     private function getTeams(int $subDays = 1, ?string $testMail = null): ?Collection
