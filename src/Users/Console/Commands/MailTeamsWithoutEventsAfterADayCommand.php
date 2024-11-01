@@ -17,6 +17,8 @@ class MailTeamsWithoutEventsAfterADayCommand extends Command
 
     protected $description = 'Mail team owner without events after a day of creation.';
 
+    const CACHE_KEY = 'team_';
+
     public function handle(): void
     {
         $teams = $this->getTeams((int) $this->option('sub-days'), $this->argument('email'));
@@ -28,18 +30,15 @@ class MailTeamsWithoutEventsAfterADayCommand extends Command
         $emailsSent = 0;
 
         $this->withProgressBar($teams, function (Team $team) use (&$emailsSent) {
-            if ($team->triggers()->first() === null) {
-                return;
-            }
-
-            if (Cache::has('team_'.$team->triggers()->first()->uuid)) {
+            $email = $team->owner->email;
+            if (Cache::has(self::CACHE_KEY.$email)) {
                 return;
             }
 
             Mail::send(new TeamsWithoutEventsMail(
                 $team->triggers()->first()->uuid,
                 $team->owner->name,
-                $team->owner->email,
+                $email,
                 $team->domain,
             ));
 
@@ -53,7 +52,7 @@ class MailTeamsWithoutEventsAfterADayCommand extends Command
 
             $emailsSent++;
 
-            Cache::set('team_'.$team->triggers()->first()->uuid, true, now()->addWeek());
+            Cache::set(self::CACHE_KEY.$email, true, now()->addWeek());
         });
 
         $this->newLine(2);
