@@ -31,6 +31,7 @@ class MailTeamsWithoutEventsAfterADayCommand extends Command
 
         $this->withProgressBar($teams, function (Team $team) use (&$emailsSent) {
             $email = $team->owner->email;
+
             if (Cache::has(self::CACHE_KEY.$email)) {
                 return;
             }
@@ -45,7 +46,7 @@ class MailTeamsWithoutEventsAfterADayCommand extends Command
             Http::get(
                 'https://metricswave.com/webhooks/60bb9264-5e13-42a5-b563-b914b516fc74',
                 [
-                    'type' => 'Team Without Events Mail',
+                    'type' => 'Team Without Events Mail (Team ID: '.$team->id.')',
                     'email' => $team->owner->email,
                 ]
             );
