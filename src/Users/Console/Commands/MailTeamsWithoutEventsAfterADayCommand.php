@@ -54,7 +54,7 @@ class MailTeamsWithoutEventsAfterADayCommand extends Command
             Http::get(
                 'https://metricswave.com/webhooks/60bb9264-5e13-42a5-b563-b914b516fc74',
                 [
-                    'type' => 'Team Without Events Mail (Team ID: '.$team->id.')',
+                    'type' => 'Team Without Events Mail',
                     'email' => $team->owner->email,
                 ]
             );
