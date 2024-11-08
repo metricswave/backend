@@ -44,20 +44,22 @@ class MailTeamsWithoutEventsAfterADayCommand extends Command
 
             $teamsProcessedIds[$team->id] = true;
 
-            Mail::send(new TeamsWithoutEventsMail(
-                $team->triggers()->first()->uuid,
+            Mail::queue(new TeamsWithoutEventsMail(
+                $team->triggers()->first()?->uuid,
                 $team->owner->name,
                 $email,
                 $team->domain,
             ));
 
-            Http::get(
-                'https://metricswave.com/webhooks/60bb9264-5e13-42a5-b563-b914b516fc74',
-                [
-                    'type' => 'Team Without Events Mail',
-                    'email' => $team->owner->email,
-                ]
-            );
+            if (config('app.env') === 'production') {
+                Http::get(
+                    'https://metricswave.com/webhooks/60bb9264-5e13-42a5-b563-b914b516fc74',
+                    [
+                        'type' => 'Team Without Events Mail',
+                        'email' => $team->owner->email,
+                    ]
+                );
+            }
 
             $emailsSent++;
 

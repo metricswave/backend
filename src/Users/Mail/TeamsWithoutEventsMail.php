@@ -14,12 +14,11 @@ class TeamsWithoutEventsMail extends Mailable
     use SerializesModels;
 
     public function __construct(
-        private string $triggerUuid,
+        private ?string $triggerUuid,
         private string $ownerName,
         private string $ownerEmail,
         private string $domain,
-    ) {
-    }
+    ) {}
 
     public function envelope(): Envelope
     {
@@ -33,7 +32,7 @@ class TeamsWithoutEventsMail extends Mailable
     public function content(): Content
     {
         return (new Content(
-            text: 'mail.team_without_events',
+            markdown: 'mail.team_without_events',
         ))
             ->with('uuid', $this->triggerUuid)
             ->with('name', $this->ownerName)
