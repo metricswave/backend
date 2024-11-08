@@ -1,14 +1,14 @@
 <x-mail::message>
 Hello {{ $name }},
 
-You created a new site on MetricsWave for your domain {{ $domain }}, but it's not configured yet.
+You created a new site on MetricsWave for your domain **{{ $domain }}**, but it's not configured yet.
 
 To do it now you just need to add the following code to your site:
 
 @if ($uuid !== null)
-<x-mail::code>
+```html
 <script defer event-uuid="{{ $uuid }}" src="https://tracker.metricswave.com/js/visits.js"></script>
-</x-mail::code>
+```
 @endif
 
 You can find more documentation about it in [our docs](https://metricswave.com/documentation/analytics).
