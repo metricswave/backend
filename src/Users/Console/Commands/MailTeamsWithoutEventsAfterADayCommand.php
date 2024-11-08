@@ -29,25 +29,15 @@ class MailTeamsWithoutEventsAfterADayCommand extends Command
 
         $emailsSent = 0;
 
-        $teamsProcessedIds = [];
-
-        $this->withProgressBar($teams, function (Team $team) use (&$emailsSent, &$teamsProcessedIds) {
-            $email = $team->owner->email;
-
-            if (Cache::has(self::CACHE_KEY.$email)) {
+        $this->withProgressBar($teams, function (Team $team) use (&$emailsSent) {
+            if (Cache::has(self::CACHE_KEY.$team->id)) {
                 return;
             }
-
-            if (isset($teamsProcessedIds[$team->id])) {
-                return;
-            }
-
-            $teamsProcessedIds[$team->id] = true;
 
             Mail::queue(new TeamsWithoutEventsMail(
                 $team->triggers()->first()?->uuid,
                 $team->owner->name,
-                $email,
+                $team->owner->email,
                 $team->domain,
             ));
 
@@ -63,7 +53,7 @@ class MailTeamsWithoutEventsAfterADayCommand extends Command
 
             $emailsSent++;
 
-            Cache::set(self::CACHE_KEY.$email, true, now()->addWeek());
+            Cache::set(self::CACHE_KEY.$team->id, true, now()->addWeek());
         });
 
         $this->newLine(2);
