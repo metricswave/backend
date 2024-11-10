@@ -80,6 +80,11 @@ class Team extends Model
         return $this->hasMany(TeamInvite::class);
     }
 
+    public function monthlyLimits(): HasMany
+    {
+        return $this->hasMany(MonthlyLimit::class);
+    }
+
     public function triggerNotificationVisitsLimitReached(): bool
     {
         return $this->triggerNotificationVisits()->period('month')->count() > $this->triggerMonthlyLimit();

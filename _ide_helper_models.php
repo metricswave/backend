@@ -279,7 +279,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereSuper($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  */
-	class User extends \Eloquent {}
+	class User extends \Eloquent implements \Filament\Models\Contracts\FilamentUser {}
 }
 
 namespace MetricsWave\Channels{
@@ -339,31 +339,28 @@ namespace MetricsWave\Channels{
 	class TeamChannel extends \Eloquent {}
 }
 
-namespace MetricsWave\Metrics\Models{
+namespace MetricsWave\Teams{
 /**
- * MetricsWave\Metrics\Models\Visit
+ * MetricsWave\Teams\MonthlyLimit
  *
  * @property int $id
- * @property string $primary_key
- * @property string|null $secondary_key
- * @property int $score
- * @property array|null $list
- * @property \Illuminate\Support\Carbon|null $expired_at
+ * @property int $team_id
+ * @property int $month
+ * @property int $year
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|Visit newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Visit newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Visit query()
- * @method static \Illuminate\Database\Eloquent\Builder|Visit whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Visit whereExpiredAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Visit whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Visit whereList($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Visit wherePrimaryKey($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Visit whereScore($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Visit whereSecondaryKey($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Visit whereUpdatedAt($value)
+ * @property-read \MetricsWave\Teams\Team $team
+ * @method static \Illuminate\Database\Eloquent\Builder|MonthlyLimit newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|MonthlyLimit newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|MonthlyLimit query()
+ * @method static \Illuminate\Database\Eloquent\Builder|MonthlyLimit whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MonthlyLimit whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MonthlyLimit whereMonth($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MonthlyLimit whereTeamId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MonthlyLimit whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MonthlyLimit whereYear($value)
  */
-	class Visit extends \Eloquent {}
+	class MonthlyLimit extends \Eloquent {}
 }
 
 namespace MetricsWave\Teams{
@@ -373,6 +370,7 @@ namespace MetricsWave\Teams{
  * @property int $id
  * @property string $domain
  * @property int|null $owner_id
+ * @property string $currency
  * @property bool $initiated
  * @property string|null $stripe_id
  * @property string|null $pm_type
@@ -391,6 +389,8 @@ namespace MetricsWave\Teams{
  * @property-read \App\Transfers\SubscriptionType $subscription_type
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \MetricsWave\Teams\TeamInvite> $invites
  * @property-read int|null $invites_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \MetricsWave\Teams\MonthlyLimit> $monthlyLimits
+ * @property-read int|null $monthly_limits_count
  * @property-read \App\Models\User|null $owner
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Laravel\Cashier\Subscription> $subscriptions
  * @property-read int|null $subscriptions_count
@@ -406,6 +406,7 @@ namespace MetricsWave\Teams{
  * @method static \Illuminate\Database\Eloquent\Builder|Team onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|Team query()
  * @method static \Illuminate\Database\Eloquent\Builder|Team whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Team whereCurrency($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Team whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Team whereDomain($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Team whereId($value)
