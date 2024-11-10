@@ -20,6 +20,9 @@ use Laravel\Cashier\Billable;
 use MetricsWave\Channels\TeamChannel;
 use MetricsWave\Metrics\MetricsInterface;
 
+/**
+ * @mixin IdeHelperTeam
+ */
 class Team extends Model
 {
     use Billable;

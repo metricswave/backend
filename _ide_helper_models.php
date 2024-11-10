@@ -38,8 +38,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Dashboard whereTeamId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Dashboard whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Dashboard whereUuid($value)
+ * @mixin \Eloquent
  */
-	class Dashboard extends \Eloquent {}
+	class IdeHelperDashboard {}
 }
 
 namespace App\Models{
@@ -68,8 +69,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Lead wherePriceId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Lead whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Lead whereUuid($value)
+ * @mixin \Eloquent
  */
-	class Lead extends \Eloquent {}
+	class IdeHelperLead {}
 }
 
 namespace App\Models{
@@ -90,8 +92,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|MailLog whereMail($value)
  * @method static \Illuminate\Database\Eloquent\Builder|MailLog whereType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|MailLog whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
-	class MailLog extends \Eloquent {}
+	class IdeHelperMailLog {}
 }
 
 namespace App\Models{
@@ -116,8 +119,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Price whereTotalAvailable($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Price whereType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Price whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
-	class Price extends \Eloquent {}
+	class IdeHelperPrice {}
 }
 
 namespace App\Models{
@@ -149,8 +153,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Service whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Service whereScopes($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Service whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
-	class Service extends \Eloquent {}
+	class IdeHelperService {}
 }
 
 namespace App\Models{
@@ -200,8 +205,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Trigger whereWeekdays($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Trigger withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|Trigger withoutTrashed()
+ * @mixin \Eloquent
  */
-	class Trigger extends \Eloquent {}
+	class IdeHelperTrigger {}
 }
 
 namespace App\Models{
@@ -227,8 +233,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|TriggerType whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|TriggerType whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|TriggerType whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
-	class TriggerType extends \Eloquent {}
+	class IdeHelperTriggerType {}
 }
 
 namespace App\Models{
@@ -278,8 +285,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereSuper($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
-	class User extends \Eloquent implements \Filament\Models\Contracts\FilamentUser {}
+	class IdeHelperUser {}
 }
 
 namespace MetricsWave\Channels{
@@ -304,8 +312,9 @@ namespace MetricsWave\Channels{
  * @method static \Illuminate\Database\Eloquent\Builder|Channel whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Channel whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Channel whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
-	class Channel extends \Eloquent {}
+	class IdeHelperChannel {}
 }
 
 namespace MetricsWave\Channels{
@@ -335,8 +344,9 @@ namespace MetricsWave\Channels{
  * @method static \Illuminate\Database\Eloquent\Builder|TeamChannel whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|TeamChannel withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|TeamChannel withoutTrashed()
+ * @mixin \Eloquent
  */
-	class TeamChannel extends \Eloquent {}
+	class IdeHelperTeamChannel {}
 }
 
 namespace MetricsWave\Teams{
@@ -359,8 +369,9 @@ namespace MetricsWave\Teams{
  * @method static \Illuminate\Database\Eloquent\Builder|MonthlyLimit whereTeamId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|MonthlyLimit whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|MonthlyLimit whereYear($value)
+ * @mixin \Eloquent
  */
-	class MonthlyLimit extends \Eloquent {}
+	class IdeHelperMonthlyLimit {}
 }
 
 namespace MetricsWave\Teams{
@@ -420,8 +431,9 @@ namespace MetricsWave\Teams{
  * @method static \Illuminate\Database\Eloquent\Builder|Team whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Team withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|Team withoutTrashed()
+ * @mixin \Eloquent
  */
-	class Team extends \Eloquent {}
+	class IdeHelperTeam {}
 }
 
 namespace MetricsWave\Teams{
@@ -445,8 +457,9 @@ namespace MetricsWave\Teams{
  * @method static \Illuminate\Database\Eloquent\Builder|TeamInvite whereTeamId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|TeamInvite whereToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|TeamInvite whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
-	class TeamInvite extends \Eloquent {}
+	class IdeHelperTeamInvite {}
 }
 
 namespace MetricsWave\Users{
@@ -486,8 +499,9 @@ namespace MetricsWave\Users{
  * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|UserCalendar withoutTrashed()
+ * @mixin \Eloquent
  */
-	class UserCalendar extends \Eloquent {}
+	class IdeHelperUserCalendar {}
 }
 
 namespace MetricsWave\Users{
@@ -520,7 +534,8 @@ namespace MetricsWave\Users{
  * @method static \Illuminate\Database\Eloquent\Builder|UserService whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|UserService withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|UserService withoutTrashed()
+ * @mixin \Eloquent
  */
-	class UserService extends \Eloquent {}
+	class IdeHelperUserService {}
 }
 

@@ -27,6 +27,7 @@ use MetricsWave\Users\UserService;
  * @property int $id
  * @property string $name
  * @property string $email
+ * @mixin IdeHelperUser
  */
 class User extends Authenticatable implements FilamentUser
 {

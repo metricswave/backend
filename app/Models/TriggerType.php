@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $description
  * @property string $icon
  * @property array{version: string, fields: array} $configuration
+ * @mixin IdeHelperTriggerType
  */
 class TriggerType extends Model
 {

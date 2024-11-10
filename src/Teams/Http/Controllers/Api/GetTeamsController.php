@@ -11,16 +11,16 @@ class GetTeamsController extends ApiAuthJsonController
 {
     public function __invoke(): JsonResponse
     {
-        $teams = $this->user()->teams()->with(['owner', 'users'])->get();
         $ownedTeams = $this->user()->ownedTeams()->with(['owner', 'users'])->get();
+        $teams = $this->user()->teams()->with(['owner', 'users'])->get();
 
         return $this->response([
-            ...$this->toArray($ownedTeams),
-            ...$this->toArray($teams),
+            ...$this->mapTeamsToArray($ownedTeams),
+            ...$this->mapTeamsToArray($teams),
         ]);
     }
 
-    public function toArray(Collection $teams): array
+    public function mapTeamsToArray(Collection $teams): array
     {
         return $teams
             ->map(fn (Team $t) => [

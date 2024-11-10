@@ -11,6 +11,9 @@ use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 use MetricsWave\Teams\Team;
 use Spatie\LaravelData\DataCollection;
 
+/**
+ * @mixin IdeHelperDashboard
+ */
 class Dashboard extends Model
 {
     use HasFactory;

@@ -6,6 +6,9 @@ use App\Transfers\PriceType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @mixin IdeHelperPrice
+ */
 class Price extends Model
 {
     use HasFactory;
