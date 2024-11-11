@@ -6,10 +6,12 @@ use App\Models\Dashboard;
 use App\Models\Price;
 use App\Models\Trigger;
 use App\Models\User;
+use App\Services\CacheKey;
 use App\Services\Plans\PlanGetter;
 use App\Transfers\PlanId;
 use App\Transfers\PriceType;
 use App\Transfers\SubscriptionType;
+use Cache;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -182,5 +184,22 @@ class Team extends Model
     public function preferredCurrency(): string
     {
         return $this->currency ?? 'usd';
+    }
+
+    public function softLimit(): bool
+    {
+        $limitKey = CacheKey::generateForModel($this, ['trigger_notification_sent', now()->format('Y-m')]);
+
+        return Cache::has($limitKey);
+    }
+
+    public function hardLimit(): bool
+    {
+        $previousMonth = now()->subMonthNoOverflow();
+
+        return $this->softLimit() && $this->monthlyLimits()
+            ->where('year', $previousMonth->year)
+            ->where('month', $previousMonth->month)
+            ->exists();
     }
 }

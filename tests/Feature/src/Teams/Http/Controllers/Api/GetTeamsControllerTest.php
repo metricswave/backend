@@ -18,5 +18,7 @@ it('return teams with users', function () {
         ->assertJson(fn (AssertableJson $json) => $json
             ->has('data.0.owner')
             ->count('data.0.users', 6)
+            ->where('data.0.limits.soft', false)
+            ->where('data.0.limits.hard', false)
         );
 });

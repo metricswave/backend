@@ -27,6 +27,10 @@ class GetTeamsController extends ApiAuthJsonController
                 ...$t->attributesToArray(),
                 'owner' => $t->owner()->first()->makeHidden('all_teams')->toArray(),
                 'users' => $t->users()->get()->makeHidden('all_teams')->toArray(),
+                'limits' => [
+                    'soft' => $t->softLimit(),
+                    'hard' => $t->hardLimit(),
+                ],
             ])
             ->toArray();
     }
