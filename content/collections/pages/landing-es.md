@@ -13,8 +13,8 @@ structured_content:
   -
     id: lko1j4et
     title: 'Seguimiento del tráfico de su sitio web.'
-    image: pages/track_visits_light.png
-    dark_image: pages/track_visits_dark.png
+    image: pages/track_visits_light-1731578172.png
+    dark_image: pages/track_visits_dark-1731578191.png
     type: section_with_image
     enabled: true
     content: |-
