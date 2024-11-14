@@ -4,6 +4,7 @@ namespace MetricsWave\Metrics\Console\Commands;
 
 use DB;
 use Illuminate\Console\Command;
+use Illuminate\Database\MySqlConnection;
 
 class CreateVisitsTableCommand extends Command
 {
@@ -19,13 +20,13 @@ class CreateVisitsTableCommand extends Command
         $destinationTable = config('visits.table_without_year').($this->argument('year') ?? now()->addYearWithOverflow()->format('Y'));
 
         // Check if the source table exists
-        if (! DB::getSchemaBuilder()->hasTable($sourceTable)) {
+        if (! $this->db()->getSchemaBuilder()->hasTable($sourceTable)) {
             $this->error("The source table '{$sourceTable}' does not exist.");
 
             return self::FAILURE;
         }
 
-        if (DB::getSchemaBuilder()->hasTable($destinationTable)) {
+        if ($this->db()->getSchemaBuilder()->hasTable($destinationTable)) {
             $this->error("The destination table '{$destinationTable}' already exist.");
 
             return self::FAILURE;
@@ -36,7 +37,7 @@ class CreateVisitsTableCommand extends Command
 
         // Execute the SQL query
         if ($this->option('execute') === true) {
-            DB::statement($sql);
+            $this->db()->statement($sql);
             $this->info("Table '{$destinationTable}' created successfully with the structure of '{$sourceTable}'.");
         } else {
             $this->info($sql);
@@ -44,5 +45,10 @@ class CreateVisitsTableCommand extends Command
         }
 
         return self::SUCCESS;
+    }
+
+    private function db(): MySqlConnection
+    {
+        return DB::connection('visits');
     }
 }
