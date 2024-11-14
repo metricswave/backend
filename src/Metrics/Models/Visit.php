@@ -12,7 +12,7 @@ class Visit extends Model
 
     protected $casts = ['list' => 'array', 'expired_at' => 'datetime'];
 
-    public function setTableForYear(?int $year = null): self
+    public function setTableForYear(int $year = null): self
     {
         return $this->setTable(
             self::tableNameForYear($year)
@@ -25,13 +25,22 @@ class Visit extends Model
 
         return match (true) {
             $year < 2024 => 'visits_old',
-            default => config('visits.table'),
+            default => config('visits.table_without_year').$year,
         };
     }
 
     /** @return array<string> */
     public static function tables(): array
     {
-        return ['visits_old', config('visits.table')];
+        $tables = ['visits_old'];
+
+        $currentYear = now()->year;
+
+        // Loop from 2024 to the current year and add each year to the array
+        for ($year = 2024; $year <= $currentYear; $year++) {
+            $tables[] = config('visits.table_without_year').$year;
+        }
+
+        return $tables;
     }
 }
