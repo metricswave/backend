@@ -5,7 +5,7 @@ blueprint: page
 title: '[Unpublished] Langing (ES)'
 show_buttons: true
 updated_by: 6ee8895a-52f6-44a1-a772-a0e7f04692b7
-updated_at: 1725023773
+updated_at: 1731582744
 seo_title: 'Una alternativa a Google Analytics basada en eventos'
 seo_description: 'MetricsWave es una alternativa a Google Analytics ligera y respetuosa con la privacidad. Integración perfecta para cualquier sitio web o aplicación.'
 hero_content: 'No comprometa a su visitante. Ofrecemos análisis de sitios web fáciles de usar y respetuosos.'
@@ -42,6 +42,17 @@ structured_content:
     enabled: true
   -
     id: lko1ksok
+    title: 'Registra Y Controla Tus Ingresos'
+    content: |-
+      No solo visitas; con MetricsWave, también puedes hacer un seguimiento de tus ingresos. 
+
+      Agrega parámetros como la fuente para ver de dónde proviene el dinero o el tipo para verificar si el usuario prefiere suscripciones o pagos únicos, por ejemplo.
+    image: pages/money_light.png
+    dark_image: pages/money_dark.png
+    type: section_with_image
+    enabled: true
+  -
+    id: m3h7mj4p
     title: 'Experimente cada momento crítico en tiempo real.'
     content: |-
       Realice un seguimiento de todos los eventos importantes de su producto, reciba notificaciones y controle posibles problemas. 

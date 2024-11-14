@@ -5,7 +5,7 @@ blueprint: page
 title: '[Unpublished] Langing'
 show_buttons: true
 updated_by: 6ee8895a-52f6-44a1-a772-a0e7f04692b7
-updated_at: 1731578195
+updated_at: 1731582676
 seo_title: 'An Event-Driven Google Analytics Alternative'
 seo_description: 'MetricsWave is a lightweight and privacy-friendly Google Analytics alternative. Seamless Integration for any Website or App.'
 hero_content: "Don't compromise your visitor. We provide easy to use and respectful website analytics."
@@ -31,6 +31,17 @@ structured_content:
     enabled: true
   -
     id: lm332a5s
+    title: 'Track Your Income'
+    content: |-
+      Not just visits; with MetricsWave, you can track your income too.
+
+      Add parameters like source to see where the money is coming from, or type to check if the user prefers subscriptions or single payments, for example.
+    image: pages/money_light.png
+    dark_image: pages/money_dark.png
+    type: section_with_image
+    enabled: true
+  -
+    id: m3h7iazl
     title: 'Customize your Dashboard as you want'
     content: |-
       Your business, your rules. Customize the Dashboard to your liking and put the most important metrics for your business on top.
