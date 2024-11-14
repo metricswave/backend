@@ -14,6 +14,8 @@ return [
     */
     'engine' => PermanentEloquentEngine::class,
 
+    'table_without_year' => 'visits_',
+
     'table' => env('VISITS_DB_TABLE', 'visits_'.date('Y')),
 
     'connection' => env('VISITS_DB_CONNECTION', 'mysql'),

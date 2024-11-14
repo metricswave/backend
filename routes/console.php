@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Artisan;
+use MetricsWave\Metrics\Console\Commands\CreateVisitsTableCommand;
 use MetricsWave\Teams\Console\Commands\DeleteVisitsByTeamIdCommand;
 use MetricsWave\Teams\Console\Commands\DeleteVisitsByTriggerCommand;
 use MetricsWave\Teams\Console\Commands\MigrateModelsToTeamsCommand;
@@ -27,6 +28,9 @@ Artisan::registerCommand(new DeleteVisitsByTeamIdCommand);
 
 // Triggers
 Artisan::registerCommand(new DeleteVisitsByTriggerCommand);
+
+// Metrics
+Artisan::registerCommand(new CreateVisitsTableCommand);
 
 // Users
 Artisan::registerCommand(new MailArticleToUsersCommand);
