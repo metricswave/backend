@@ -19,6 +19,9 @@ class Kernel extends ConsoleKernel
         // $schedule->command('app:fake:ecommerce-visits')->everyFiveMinutes();
         // $schedule->command('app:fake:ecommerce-funnel')->everyFiveMinutes();
 
+        // Create next year vistis table
+        $schedule->command('visits:create-table --execute')->yearlyOn(12, 1, '06:00');
+
         // Telegram Bot
         $schedule->command('telegram:reply-with-group-id')->everyTwoSeconds();
     }
