@@ -10,6 +10,6 @@ class GetNotificationsController extends ApiAuthJsonController
 {
     public function __invoke(Team $team): LengthAwarePaginator
     {
-        return $team->owner->notifications()->paginate(30);
+        return $team->owner->notifications()->where('team_id', $team->id)->paginate(30);
     }
 }
