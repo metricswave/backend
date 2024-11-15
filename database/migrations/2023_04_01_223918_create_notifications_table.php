@@ -15,7 +15,8 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('type');
             $table->morphs('notifiable');
-            $table->text('data');
+            $table->json('data');
+            $table->string('user_parameter')->virtualAs("data->>'$.user_parameter'")->nullable();
             $table->timestamp('read_at')->nullable();
             $table->timestamps();
         });

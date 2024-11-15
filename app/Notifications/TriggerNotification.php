@@ -26,12 +26,14 @@ class TriggerNotification extends Notification implements ShouldQueue
 
     public readonly string $emoji;
 
+    public readonly ?string $userParam;
+
     public ?CarbonImmutable $notifiedAt = null;
 
     public function __construct(
         public readonly Trigger $trigger,
         public readonly array $params = [],
-        ?CarbonImmutable $notifiedAt = null,
+        CarbonImmutable $notifiedAt = null,
     ) {
         if (isset($params['amount']) && $trigger->isMoneyIncomeType()) {
             $params['amount'] = $this->formatMoneyAmount((int) $params['amount']);
@@ -41,6 +43,7 @@ class TriggerNotification extends Notification implements ShouldQueue
         $this->content = $trigger->formattedContent($params);
         $this->emoji = $trigger->formattedEmoji($params);
         $this->notifiedAt = $notifiedAt ?? CarbonImmutable::now();
+        $this->userParam = $params['user'] ?? $params['userId'] ?? $params['user_id'] ?? $params['user-id'] ?? null;
     }
 
     public function via(object $notifiable): array
@@ -107,6 +110,7 @@ class TriggerNotification extends Notification implements ShouldQueue
             'emoji' => $this->emoji,
             'trigger_id' => $this->trigger->id,
             'trigger_type_id' => $this->trigger->trigger_type_id,
+            'user_parameter' => $this->userParam,
         ];
     }
 
