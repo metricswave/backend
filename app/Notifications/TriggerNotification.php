@@ -28,6 +28,8 @@ class TriggerNotification extends Notification implements ShouldQueue
 
     public readonly ?string $userParam;
 
+    public readonly ?int $teamId;
+
     public ?CarbonImmutable $notifiedAt = null;
 
     public function __construct(
@@ -44,6 +46,7 @@ class TriggerNotification extends Notification implements ShouldQueue
         $this->emoji = $trigger->formattedEmoji($params);
         $this->notifiedAt = $notifiedAt ?? CarbonImmutable::now();
         $this->userParam = $params['user'] ?? $params['userId'] ?? $params['user_id'] ?? $params['user-id'] ?? null;
+        $this->teamId = $trigger->team_id;
     }
 
     public function via(object $notifiable): array
@@ -111,6 +114,7 @@ class TriggerNotification extends Notification implements ShouldQueue
             'trigger_id' => $this->trigger->id,
             'trigger_type_id' => $this->trigger->trigger_type_id,
             'user_parameter' => $this->userParam,
+            'team_id' => $this->teamId,
         ];
     }
 
