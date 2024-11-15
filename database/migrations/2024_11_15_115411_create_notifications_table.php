@@ -24,6 +24,7 @@ return new class extends Migration
                 $table->morphs('notifiable');
                 $table->json('data');
                 $table->string('user_parameter')->virtualAs("data->>'$.user_parameter'")->nullable();
+                $table->string('team_id')->virtualAs("data->>'$.team_id'")->nullable();
                 $table->timestamp('read_at')->nullable();
                 $table->timestamps();
             });
