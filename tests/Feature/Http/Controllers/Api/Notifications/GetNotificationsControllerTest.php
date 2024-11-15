@@ -3,13 +3,14 @@
 use App\Models\Trigger;
 use App\Models\TriggerType;
 use App\Notifications\TriggerNotification;
+use DB;
 use Illuminate\Support\Carbon;
 
 use function Pest\Laravel\actingAs;
 
 it('return a expected list of user notifications', function () {
     Carbon::setTestNow(now());
-    \DB::connection('visits')->table('notifications_'.now()->year)->truncate();
+    DB::connection('visits')->table('notifications_'.now()->year)->truncate();
 
     [$user, $team] = user_with_team();
     $triggerType = TriggerType::factory()->create();
