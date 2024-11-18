@@ -3,7 +3,6 @@
 use App\Models\Trigger;
 use App\Models\TriggerType;
 use App\Notifications\TriggerNotification;
-use DB;
 use Illuminate\Support\Carbon;
 
 use function Pest\Laravel\actingAs;

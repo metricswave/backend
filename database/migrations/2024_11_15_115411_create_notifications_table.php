@@ -29,6 +29,7 @@ return new class extends Migration
                 $table->timestamps();
 
                 $table->index(['notifiable_type', 'notifiable_id', 'created_at'], 'notifications_notifiable_type_notifiable_id_created_at_index');
+                $table->index(['notifiable_type', 'notifiable_id', 'user_parameter', 'created_at'], 'all_index');
             });
         }
     }
