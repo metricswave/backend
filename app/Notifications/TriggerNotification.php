@@ -53,7 +53,10 @@ class TriggerNotification extends Notification implements ShouldQueue
     {
         $notifiedAt = $this->notifiedAt ?? CarbonImmutable::now();
 
-        $params = $this->params;
+        $params = [
+            ...$this->params,
+            'user_parameter' => $this->userParam,
+        ];
 
         $inc = 1;
         if ($this->trigger->isMoneyIncomeType()) {
