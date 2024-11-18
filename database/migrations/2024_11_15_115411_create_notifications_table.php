@@ -27,6 +27,8 @@ return new class extends Migration
                 $table->string('team_id')->virtualAs("data->>'$.team_id'")->nullable();
                 $table->timestamp('read_at')->nullable();
                 $table->timestamps();
+
+                $table->index(['notifiable_type', 'notifiable_id', 'created_at'], 'notifications_notifiable_type_notifiable_id_created_at_index');
             });
         }
     }

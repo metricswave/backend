@@ -14,6 +14,7 @@ class GetNotificationsController extends ApiAuthJsonController
     {
         return $team->owner
             ->notifications()
+            ->forceIndex('notifications_notifiable_type_notifiable_id_created_at_index')
             ->where('team_id', $team->id)
             ->when(
                 $request->get('user_parameter', false),
