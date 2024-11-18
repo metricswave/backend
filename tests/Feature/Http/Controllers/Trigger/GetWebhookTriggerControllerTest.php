@@ -84,10 +84,11 @@ it("trigger params are updated because it's called from the script", function ()
     $t->refresh();
 
     expect($t->isVisitsType())->toBeTrue();
-    expect($t->configuration['fields']['parameters'])->toMatchArray([
+    expect($t->configurationParameters())->toMatchArray([
         ...Trigger::VISITS_PARAMS,
         'name',
         'content',
+        'user_parameter',
     ]);
 
     Notification::assertCount(1);

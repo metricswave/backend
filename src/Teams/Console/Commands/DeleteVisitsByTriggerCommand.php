@@ -34,6 +34,6 @@ class DeleteVisitsByTriggerCommand extends Command
         $trigger->visits(Trigger::NEW_VISITS)->delete();
         $trigger->visits()->delete();
 
-        $trigger->visits()->deleteParams($trigger->configuration['fields']['parameters']);
+        $trigger->visits()->deleteParams($trigger->configurationParameters());
     }
 }

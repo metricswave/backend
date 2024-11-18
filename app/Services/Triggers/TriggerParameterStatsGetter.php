@@ -11,10 +11,10 @@ class TriggerParameterStatsGetter
     public function get(
         Trigger $trigger,
         Period $period,
-        ?string $parameter = null,
+        string $parameter = null,
     ): ParametersGraphDataCollection {
         $parameters = $parameter === null
-            ? ($trigger->configuration['fields']['parameters'] ?? [])
+            ? ($trigger->configurationParameters())
             : [$parameter];
         $parametersData = [];
 

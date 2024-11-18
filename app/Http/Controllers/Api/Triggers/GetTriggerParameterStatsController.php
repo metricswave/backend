@@ -13,7 +13,7 @@ class GetTriggerParameterStatsController extends ApiAuthJsonController
     {
         abort_unless($this->user()->hasAccessToTeam($trigger->team), 404);
 
-        $parameters = $trigger->configuration['fields']['parameters'] ?? [];
+        $parameters = $trigger->configurationParameters();
 
         $period = request()->query('period') ?? 'day';
 

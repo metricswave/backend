@@ -16,6 +16,7 @@ use function Emoji\is_single_emoji;
 /**
  * @property array{version: string, fields: array{name: string, value: string|array|int}} $configuration
  * @property array{id: string, label: string, checked: bool, type: string} $via
+ *
  * @mixin IdeHelperTrigger
  */
 class Trigger extends Model
@@ -122,5 +123,15 @@ class Trigger extends Model
     {
         return isset($this->configuration['type'])
             && $this->configuration['type'] === 'money_income';
+    }
+
+    public function configurationParameters(): array
+    {
+        $parameters = $this->configuration['fields']['parameters'] ?? [];
+
+        return [
+            ...$parameters,
+            'user_parameter',
+        ];
     }
 }

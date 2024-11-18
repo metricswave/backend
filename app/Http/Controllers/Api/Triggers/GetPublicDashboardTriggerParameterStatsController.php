@@ -18,7 +18,7 @@ class GetPublicDashboardTriggerParameterStatsController extends JsonController
             abort(404);
         }
 
-        $parameters = $trigger->configuration['fields']['parameters'] ?? [];
+        $parameters = $trigger->configurationParameters();
 
         $period = request()->query('period') ?? 'day';
 
