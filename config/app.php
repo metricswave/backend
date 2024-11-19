@@ -15,6 +15,10 @@ return [
         'password' => env('BASIC_AUTH_PASSWORD', 'admin'),
     ],
 
+    'cache' => [
+        'stats' => env('CACHE_STATS_MIN_TTL', 1),
+    ],
+
     'filament' => [
         'users_emails' => [
             'victoor89@gmail.com',

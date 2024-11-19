@@ -37,4 +37,9 @@ class Period extends Data implements PeriodInterface
     {
         return $this->date->clone();
     }
+
+    public function key(): string
+    {
+        return $this->date->toIso8601String().$this->period->value.$this->fromDate()->toIso8601String();
+    }
 }

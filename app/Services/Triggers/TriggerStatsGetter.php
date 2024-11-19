@@ -3,11 +3,13 @@
 namespace App\Services\Triggers;
 
 use App\Models\Trigger;
+use App\Services\CacheKey;
 use App\Transfers\Stats\GraphData;
 use App\Transfers\Stats\GraphDataCollection;
 use App\Transfers\Stats\GraphHeader;
 use App\Transfers\Stats\GraphHeaders;
 use App\Transfers\Stats\Period;
+use Illuminate\Support\Facades\Cache;
 use Statamic\Data\DataCollection;
 
 class TriggerStatsGetter
@@ -16,16 +18,20 @@ class TriggerStatsGetter
         Trigger $trigger,
         Period $period,
     ): GraphDataCollection {
-        $stats = $trigger->visits()
-            ->period($period->period->visitsPeriodInterval())
-            ->countAll(
-                $period->fromDate(),
-                $period->toDate(),
-            )
-            ->map(fn (array $stat) => new GraphData(
-                $stat['date'],
-                $stat['score'],
-            ));
+        $stats = Cache::remember(
+            CacheKey::generateForModel($trigger, ['stats', $period->key()]),
+            now()->addMinutes(config('app.cache.stats')),
+            fn () => $trigger->visits()
+                ->period($period->period->visitsPeriodInterval())
+                ->countAll(
+                    $period->fromDate(),
+                    $period->toDate(),
+                )
+                ->map(fn (array $stat) => new GraphData(
+                    $stat['date'],
+                    $stat['score'],
+                ))
+        );
 
         $data = new DataCollection($stats);
 
@@ -36,7 +42,7 @@ class TriggerStatsGetter
         );
     }
 
-    private function getHeadersOrNull(Trigger $trigger, Period $period, ?DataCollection $data = null): ?GraphHeaders
+    private function getHeadersOrNull(Trigger $trigger, Period $period, DataCollection $data = null): ?GraphHeaders
     {
         if ($trigger->isVisitsType()) {
             return new GraphHeaders([
