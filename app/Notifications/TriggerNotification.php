@@ -96,11 +96,15 @@ class TriggerNotification extends Notification implements ShouldQueue
 
         $this->trigger->visits()->recordParams($params, inc: $inc, date: $notifiedAt);
 
-        $via = collect($this->trigger->via)
-            ->filter(fn ($via) => $via['checked'] && $via['type'] !== 'telegram')
-            ->unique('type')
-            ->map(fn ($via) => $via['type'])
-            ->toArray();
+        $via = Cache::remember(
+            'via_notifications_trigger_'.$this->trigger->id,
+            now()->addDay(),
+            fn () => collect($this->trigger->via)
+                ->filter(fn ($via) => $via['checked'] && $via['type'] !== 'telegram')
+                ->unique('type')
+                ->map(fn ($via) => $via['type'])
+                ->toArray()
+        );
 
         return [
             // 'database',
