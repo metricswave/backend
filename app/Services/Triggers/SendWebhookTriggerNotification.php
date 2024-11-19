@@ -14,7 +14,7 @@ class SendWebhookTriggerNotification
      */
     public function __invoke(Trigger $trigger, array $params, bool $fromScript = false, string $triggeredAt = null): void
     {
-        if ($trigger->team_id === 76 || $params['deviceName'] === 'eb66a473-a125-47e3-8e8f-fed7683270fe') {
+        if ($trigger->team_id === 76) {
             return;
         }
 
