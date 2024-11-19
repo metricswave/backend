@@ -107,7 +107,7 @@ class TriggerNotification extends Notification implements ShouldQueue
         );
 
         return [
-            // 'database',
+            'database',
             ...$via,
         ];
     }
