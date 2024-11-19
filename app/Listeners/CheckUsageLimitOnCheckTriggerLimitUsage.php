@@ -17,7 +17,7 @@ class CheckUsageLimitOnCheckTriggerLimitUsage implements ShouldQueue
         $team = $event->notification->trigger->team;
         $user = $team->owner;
 
-        $limitKey = CacheKey::generateForModel($team, ['trigger_notification_sent', now()->format('Y-m')]);
+        $limitKey = CacheKey::generateForModel($team, ['limit_trigger_notification_sent', now()->format('Y-m')]);
         $notificationKey = CacheKey::generateForModel($team, 'trigger_notification_sent');
 
         if (! Cache::has($limitKey) && $team->triggerNotificationVisitsLimitReached()) {
