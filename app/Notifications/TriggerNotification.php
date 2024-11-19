@@ -103,7 +103,7 @@ class TriggerNotification extends Notification implements ShouldQueue
             ->toArray();
 
         return [
-            'database',
+            // 'database',
             ...$via,
         ];
     }
