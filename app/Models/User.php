@@ -91,10 +91,10 @@ class User extends Authenticatable implements FilamentUser
             $team = $instance->trigger->team;
             $team->triggerNotificationVisits()->increment();
 
-            $key = CacheKey::generateForModel($team, 'trigger_notification_sent_checked');
+            $key = CacheKey::generateForModel($team, 'trigger_check_limit_usage');
             if (! Cache::has($key)) {
                 CheckTriggerLimitUsage::dispatch($instance);
-                Cache::put($key, '1', now()->addDays(3));
+                Cache::put($key, '1', now()->addDays(1));
             }
         }
 
