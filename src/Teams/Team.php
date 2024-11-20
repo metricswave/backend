@@ -188,9 +188,10 @@ class Team extends Model
 
     public function softLimit(): bool
     {
-        $limitKey = CacheKey::generateForModel($this, ['trigger_notification_sent', now()->format('Y-m')]);
+        $limitKey = CacheKey::generateForModel($this, ['limit_trigger_notification_sent', now()->format('Y-m')]);
+        $previousMonthLimitKey = CacheKey::generateForModel($this, ['limit_trigger_notification_sent', now()->subMonthNoOverflow()->format('Y-m')]);
 
-        return Cache::has($limitKey);
+        return Cache::has($limitKey) || Cache::has($previousMonthLimitKey);
     }
 
     public function hardLimit(): bool
