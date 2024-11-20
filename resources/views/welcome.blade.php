@@ -54,7 +54,7 @@
                             {!! $buttonText ?? __('Start Tracking <span class="hidden md:inline">my Product </span>for Free →') !!}
                         </a>
 
-                        <a class="py-4 px-6 w-full text-center rounded-lg border opacity-60 sm:w-auto hover:opacity-100 metricswave-event-uuid--6337915a-0498-4e42-baeb-ad57b9bcc541 metricswave-event-param-location--Hero smooth"
+                        <a class="py-4 px-6 w-full text-center rounded-lg border opacity-60 sm:w-auto hover:opacity-100 smooth"
                             href="https://app.metricswave.com/fUwWlrz6Xhedh12/metricswave.com?compare=1&period=7d"
                             target="_blank">{{ __('Live Demo') }}</a>
                     </div>
