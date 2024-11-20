@@ -6,12 +6,10 @@ use App\Models\Dashboard;
 use App\Models\Price;
 use App\Models\Trigger;
 use App\Models\User;
-use App\Services\CacheKey;
 use App\Services\Plans\PlanGetter;
 use App\Transfers\PlanId;
 use App\Transfers\PriceType;
 use App\Transfers\SubscriptionType;
-use Cache;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -188,19 +186,33 @@ class Team extends Model
 
     public function softLimit(): bool
     {
-        $limitKey = CacheKey::generateForModel($this, ['limit_trigger_notification_sent', now()->format('Y-m')]);
-        $previousMonthLimitKey = CacheKey::generateForModel($this, ['limit_trigger_notification_sent', now()->subMonthNoOverflow()->format('Y-m')]);
+        $previousMonth = now()->subMonthNoOverflow();
 
-        return Cache::has($limitKey) || Cache::has($previousMonthLimitKey);
+        return $this->monthlyLimits()
+            ->where(fn ($query) => $query
+                ->where('year', now()->year)
+                ->where('month', now()->month)
+            )
+            ->orWhere(fn ($query) => $query
+                ->where('year', $previousMonth->year)
+                ->where('month', $previousMonth->month)
+            )
+            ->exists();
     }
 
     public function hardLimit(): bool
     {
         $previousMonth = now()->subMonthNoOverflow();
 
-        return $this->softLimit() && $this->monthlyLimits()
-            ->where('year', $previousMonth->year)
-            ->where('month', $previousMonth->month)
+        return $this->monthlyLimits()
+            ->where(fn ($query) => $query
+                ->where('year', now()->year)
+                ->where('month', now()->month)
+            )
+            ->where(fn ($query) => $query
+                ->where('year', $previousMonth->year)
+                ->where('month', $previousMonth->month)
+            )
             ->exists();
     }
 }
