@@ -89,7 +89,6 @@ it('return expected data with headers for money_income type', function () use ($
     actingAs($user)
         ->getJson('/api/triggers/'.$trigger->uuid.'/graph-stats')
         ->assertSuccessful()
-        ->dump()
         ->assertJson(fn (AssertableJson $json) => $json
             ->where('data.period.date', '2023-06-06T00:00:00+00:00')
             ->where('data.period.period', '30d')

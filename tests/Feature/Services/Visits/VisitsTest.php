@@ -80,7 +80,6 @@ it('increase visits with a money_amount trigger', function () {
             'expired_at',
             'score',
         ])->toArray();
-    dump($visits);
 });
 
 it('increase visits with params and set expired_at dates as expected', function () {
