@@ -4,12 +4,12 @@ blueprint: documentation
 title: Documentation
 short_content: 'A collection of good articles about how MetricsWave works.'
 updated_by: 6ee8895a-52f6-44a1-a772-a0e7f04692b7
-updated_at: 1728288422
+updated_at: 1732033656
 ---
 ### 💎 Main topics
 
-- 📊 [Register your Traffic and Referrals](/documentation/analytics): start registering all your traffic and referrals to
-  get basic insights about how people are using your product.
+- 📊 [Register your Traffic and Referrals](/documentation/analytics): start registering all your traffic and referrals to get basic insights about how people are using your product.
+- 👤 [Track User Unique Identifier](/documentation/tracking/user-id): Know what each user is doing on your app. Track their actions, clicks, forms, and purchases.
 - 💅 [Tracking custom Events](/documentation/tracking/events): You can log and register any custom event on your site as
   you want. Learn how to take advantage of custom events to find out how your application is used.
 - 💰 [Tracking Money Income](/documentation/tracking/money-income): Track all your money transactions from subscriptions, purchases or anything else.
