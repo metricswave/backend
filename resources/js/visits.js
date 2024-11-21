@@ -4,6 +4,7 @@
         n = w.navigator,
         d = w.document;
     const uuid = d.currentScript.getAttribute("event-uuid");
+    let i;
 
     let deviceName = localStorage.getItem("mw:dn");
     if (!deviceName) {
@@ -41,6 +42,12 @@
     w.metricswave = { track: t, setUser: u };
 
     const push = () => {
+        if (i === l.pathname) {
+            return;
+        }
+
+        i = l.pathname;
+
         const u = new URL(l);
         t(uuid, {
             f: "script",
