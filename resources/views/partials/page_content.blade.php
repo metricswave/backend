@@ -15,14 +15,14 @@
                         {{ $content['title'] }}
                     </h2>
 
-                    <div class="text-center prose mx-auto text-pretty">
+                    <div class="text-center prose dark:prose-invert mx-auto text-pretty">
                         @if(Str::of($content['content'])->length() > 0)
                             {!! $content['content'] !!}
                         @endif
                     </div>
 
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-0 sm:gap-10 mt-10 -mb-2 bg-white rounded-sm border soft-boder shadow">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-0 sm:gap-10 mt-10 -mb-2 bg-white dark:bg-zinc-800/60 rounded-sm border border-zinc-400/20 dark:border-zinc-800 shadow">
                         <div class="flex flex-col space-y-3 px-6 py-12 md:py-24 rounded-sm w-full items-center justify-center">
                             <div class="text-5xl" id="monthly">0000</div>
                             <div class="text-center">{{ app()->getLocale() === 'es' ? 'Mes actual' : 'Current Month Events' }}</div>
