@@ -11,24 +11,24 @@
         @if($content['type'] === 'open_numbers')
             <section class="mx-auto w-full soft-border border-b animate-[out_{{$out}}s,_fade-in-down_{{ $fade }}s_ease-out_1s] overflow-hidden">
                 <div class="mw-landing mx-auto px-app">
-                    <h2 class="text-2xl sm:text-3xl font-medium mb-4 mx-auto text-center !leading-snug max-w-[30ch]">
+                    <h2 class="text-2xl sm:text-3xl font-medium mb-4 text-balance mx-auto text-center !leading-snug max-w-[30ch]">
                         {{ $content['title'] }}
                     </h2>
 
-                    <div class="text-center">
+                    <div class="text-center prose mx-auto text-pretty">
                         @if(Str::of($content['content'])->length() > 0)
                             {!! $content['content'] !!}
                         @endif
                     </div>
 
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-10 mt-10 -mb-2 bg-white rounded-sm border soft-boder shadow">
-                        <div class="flex flex-col space-y-3 px-6 py-24 rounded-sm w-full items-center justify-center">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-0 sm:gap-10 mt-10 -mb-2 bg-white rounded-sm border soft-boder shadow">
+                        <div class="flex flex-col space-y-3 px-6 py-12 md:py-24 rounded-sm w-full items-center justify-center">
                             <div class="text-5xl" id="monthly">0000</div>
                             <div class="text-center">{{ app()->getLocale() === 'es' ? 'Mes actual' : 'Current Month Events' }}</div>
                         </div>
 
-                        <div class="flex flex-col space-y-3 px-6 py-24 rounded-sm w-full items-center justify-center">
+                        <div class="flex flex-col space-y-3 px-6 py-12 md:py-24 rounded-sm w-full items-center justify-center">
                             <div class="text-5xl" id="yearly">0000</div>
                             <div class="text-center">{{ app()->getLocale() === 'es' ? 'Año actual' : 'Current Year Events' }}</div>
                         </div>

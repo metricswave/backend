@@ -5,7 +5,7 @@ blueprint: page
 title: '[Unpublished] Langing (ES)'
 show_buttons: true
 updated_by: 6ee8895a-52f6-44a1-a772-a0e7f04692b7
-updated_at: 1732289589
+updated_at: 1732289676
 seo_title: 'Una alternativa a Google Analytics basada en eventos'
 seo_description: 'MetricsWave es una alternativa a Google Analytics ligera y respetuosa con la privacidad. Integración perfecta para cualquier sitio web o aplicación.'
 hero_content: 'No comprometa a su visitante. Ofrecemos análisis de sitios web fáciles de usar y respetuosos.'
@@ -24,9 +24,7 @@ structured_content:
   -
     id: m3sw6o8k
     title: 'Más de 1,000 empresas ya confían en nosotros'
-    content: |-
-      El año pasado gestionamos más de 20M de eventos
-      con una disponibilidad del 99,9%.
+    content: 'El año pasado gestionamos más de 20M de eventos con una disponibilidad del 99,9%.'
     type: open_numbers
     enabled: true
   -
