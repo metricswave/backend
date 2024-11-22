@@ -25,12 +25,12 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-10 mt-10 -mb-2 bg-white rounded-sm border soft-boder shadow">
                         <div class="flex flex-col space-y-3 px-6 py-24 rounded-sm w-full items-center justify-center">
                             <div class="text-5xl" id="monthly">0000</div>
-                            <div class="text-center">Current Month Events</div>
+                            <div class="text-center">{{ app()->getLocale() === 'es' ? 'Mes actual' : 'Current Month Events' }}</div>
                         </div>
 
                         <div class="flex flex-col space-y-3 px-6 py-24 rounded-sm w-full items-center justify-center">
                             <div class="text-5xl" id="yearly">0000</div>
-                            <div class="text-center">Current Year Events</div>
+                            <div class="text-center">{{ app()->getLocale() === 'es' ? 'Año actual' : 'Current Year Events' }}</div>
                         </div>
                     </div>
                 </div>

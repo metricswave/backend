@@ -5,7 +5,7 @@ blueprint: page
 title: '[Unpublished] Langing'
 show_buttons: true
 updated_by: 6ee8895a-52f6-44a1-a772-a0e7f04692b7
-updated_at: 1732288671
+updated_at: 1732289055
 seo_title: 'An Event-Driven Google Analytics Alternative'
 seo_description: 'MetricsWave is a lightweight and privacy-friendly Google Analytics alternative. Seamless Integration for any Website or App.'
 hero_content: "Don't compromise your visitor. We provide easy to use and respectful website analytics."
@@ -26,7 +26,7 @@ structured_content:
     type: open_numbers
     enabled: true
     title: 'Used by +1,000 companies'
-    content: 'We handle over +30M events the last year with a 99.9% uptime.'
+    content: 'We handled over 20M events the last year with a 99.9% uptime.'
   -
     id: lm34gp22
     title: 'Not just bar or line graphs'
