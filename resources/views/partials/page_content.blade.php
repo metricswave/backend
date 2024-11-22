@@ -145,7 +145,7 @@
 
 @section('scripts')
     <script>
-        setInterval(function () {
+        const fetchOpenData = () => {
             if (document.getElementById('monthly') == null) {
                 return
             }
@@ -157,6 +157,9 @@
                     document.getElementById('monthly').innerHTML = notifications.monthly
                     document.getElementById('yearly').innerHTML = notifications.yearly
                 });
-        }, 1500);
+        }
+
+        fetchOpenData()
+        setInterval(fetchOpenData, 5000);
     </script>
 @endsection
