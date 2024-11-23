@@ -160,6 +160,6 @@
         }
 
         fetchOpenData()
-        setInterval(fetchOpenData, 5000);
+        setInterval(fetchOpenData, 2500);
     </script>
 @endsection
