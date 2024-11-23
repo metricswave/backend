@@ -17,25 +17,29 @@ trait HasOpenData
                     visitsService(Team::class, Team::TRIGGER_NOTIFICATION, withCache: false)
                         ->period('day')
                         ->count()
-                    + $previousUserData['notifications']['daily']
+                        + $previousUserData['notifications']['daily'],
+                    long_format: true,
                 ),
                 'weekly' => format_long_numbers(
                     visitsService(Team::class, Team::TRIGGER_NOTIFICATION, withCache: false)
                         ->period('week')
                         ->count()
-                    + $previousUserData['notifications']['weekly']
+                    + $previousUserData['notifications']['weekly'],
+                    long_format: true,
                 ),
                 'monthly' => format_long_numbers(
                     visitsService(Team::class, Team::TRIGGER_NOTIFICATION, withCache: false)
                         ->period('month')
                         ->count()
-                    + $previousUserData['notifications']['monthly']
+                    + $previousUserData['notifications']['monthly'],
+                    long_format: true,
                 ),
                 'yearly' => format_long_numbers(
                     visitsService(Team::class, Team::TRIGGER_NOTIFICATION, withCache: false)
                         ->period('year')
                         ->count()
-                    + $previousUserData['notifications']['yearly']
+                    + $previousUserData['notifications']['yearly'],
+                    long_format: true,
                 ),
             ],
         ];

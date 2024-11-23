@@ -1,6 +1,6 @@
 <?php
 
-if (!function_exists('html_format_currency')) {
+if (! function_exists('html_format_currency')) {
     function html_format_currency(int $amount, string $symbol, string $suffix = ''): string
     {
         $exploded = explode(',', number_format($amount / 100, 2, ',', '.'));
@@ -16,10 +16,10 @@ HTML;
     }
 }
 
-if (!function_exists('format_long_numbers')) {
-    function format_long_numbers($n, $precision = 3): string
+if (! function_exists('format_long_numbers')) {
+    function format_long_numbers($n, $precision = 3, bool $long_format = false): string
     {
-        if ($n < 1000000) {
+        if ($n < 1000000 || $long_format) {
             return number_format($n);
         }
 
@@ -33,7 +33,7 @@ if (!function_exists('format_long_numbers')) {
     }
 }
 
-if (!function_exists('random_item_from_weighted_array')) {
+if (! function_exists('random_item_from_weighted_array')) {
     function random_item_from_weighted_array(array $items): mixed
     {
         $weights = array_values($items); // Extract weights
@@ -60,7 +60,7 @@ if (!function_exists('random_item_from_weighted_array')) {
     }
 }
 
-if (!function_exists('safe_url')) {
+if (! function_exists('safe_url')) {
     function safe_url(string $url): string
     {
         return preg_replace('/([^:])(\/{2,})/', '$1/', $url);
