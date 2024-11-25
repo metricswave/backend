@@ -32,7 +32,7 @@ class SendWebhookTriggerNotification
                 Http::get(
                     'https://metricswave.com/webhooks/842e2f48-4c9f-436f-bb88-c00266496f10',
                     [
-                        'message' => 'Trigger '.$trigger->uuid.' has no team.',
+                        'value' => 'Trigger '.$trigger->uuid.' has no team.',
                     ]
                 );
             }
