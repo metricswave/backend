@@ -21,17 +21,25 @@ class CheckUsageLimitOnCheckTriggerLimitUsage implements ShouldQueue
         $notificationKey = CacheKey::generateForModel($team, 'trigger_notification_sent');
 
         if (! Cache::has($limitKey) && $team->triggerNotificationVisitsLimitReached()) {
-            Http::post('https://metricswave.com/webhooks/d5c2d8ab-983e-4653-8e92-b6dc4c55ee6a', [
-                'email' => $user->email,
-            ]);
+            Cache::put($limitKey, '1', now()->addMonth());
 
-            MonthlyLimit::create([
+            $params = [
                 'team_id' => $team->id,
                 'month' => now()->month,
                 'year' => now()->year,
-            ]);
+            ];
 
-            Cache::put($limitKey, '1', now()->addMonth());
+            if (! MonthlyLimit::where($params)->exist()) {
+                Http::post('https://metricswave.com/webhooks/d5c2d8ab-983e-4653-8e92-b6dc4c55ee6a', [
+                    'email' => $user->email,
+                ]);
+
+                MonthlyLimit::updateOrCreate([
+                    'team_id' => $team->id,
+                    'month' => now()->month,
+                    'year' => now()->year,
+                ]);
+            }
         }
 
         if (! Cache::has($notificationKey) && Cache::has($limitKey)) {
@@ -42,7 +50,7 @@ class CheckUsageLimitOnCheckTriggerLimitUsage implements ShouldQueue
 
             $user->notify(new TriggerLimitReachedNotification);
 
-            Cache::put($notificationKey, '1', now()->addDays(3));
+            Cache::put($notificationKey, '1', now()->addDays(7));
         }
     }
 }
