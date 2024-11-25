@@ -18,7 +18,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Http;
 use Laravel\Sanctum\HasApiTokens;
 use MetricsWave\Metrics\MetricsInterface;
 use MetricsWave\Teams\Team;
@@ -91,17 +90,6 @@ class User extends Authenticatable implements FilamentUser
         if ($instance instanceof TriggerNotification) {
             $team = $instance->trigger->team;
             $team->triggerNotificationVisits()->increment();
-
-            if (config('app.env') === 'production' && $instance->trigger->uuid !== '3ca54d02-cc2d-4c49-8a72-f46a3681dc62') {
-                Http::get(
-                    'https://metricswave.com/webhooks/3ca54d02-cc2d-4c49-8a72-f46a3681dc62',
-                    [
-                        'domain' => $team->domain,
-                        'plan' => $team->subscription_plan_id->name(),
-                        'user_parameter' => $team->owner->email,
-                    ]
-                );
-            }
 
             $key = CacheKey::generateForModel($team, 'trigger_check_limit_usage');
             if (! Cache::has($key)) {
