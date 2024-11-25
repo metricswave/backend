@@ -14,7 +14,9 @@ use MetricsWave\Metrics\Models\Visit;
 class MetricsEloquentConnection implements MetricsConnection
 {
     private const PREFIX = 'visits:';
+
     private int $year;
+
     private bool $hasCache;
 
     public function __construct(bool $hasCache = true)
@@ -28,7 +30,7 @@ class MetricsEloquentConnection implements MetricsConnection
         if ($this->hasCache) {
             return Cache::remember(
                 $key,
-                Carbon::now()->addMinute(),
+                Carbon::now()->addMinutes(config('app.cache.stats')),
                 $callback
             );
         }
@@ -54,8 +56,8 @@ class MetricsEloquentConnection implements MetricsConnection
             fn () => $this->query()
                 ->where('primary_key', self::PREFIX.$key)
                 ->when(
-                    (!empty($member) || is_numeric($member)),
-                    fn($query) => $query->where('secondary_key', $member),
+                    (! empty($member) || is_numeric($member)),
+                    fn ($query) => $query->where('secondary_key', $member),
                 )
                 ->when(
                     $from !== null,
@@ -102,7 +104,7 @@ class MetricsEloquentConnection implements MetricsConnection
     {
         $score = $this->withCached(
             CacheKey::generate('metrics:get', $key, ['member' => $member, 'tableYear' => $this->year]),
-            fn() => $this->query()
+            fn () => $this->query()
                 ->where('primary_key', self::PREFIX.$key)
                 ->when(
                     (! empty($member) || is_numeric($member)),
@@ -119,15 +121,15 @@ class MetricsEloquentConnection implements MetricsConnection
         return intval($score);
     }
 
-    public function delete(string $key, ?int $member = null): void
+    public function delete(string $key, int $member = null): void
     {
         foreach ($this->tables() as $year) {
             $this->query($year)
                 ->where('primary_key', self::PREFIX.$key)
                 ->when(
-                    (!empty($member) || is_numeric($member)),
-                    fn($query) => $query->where('secondary_key', $member),
-                    fn($query) => $query->whereNull('secondary_key')
+                    (! empty($member) || is_numeric($member)),
+                    fn ($query) => $query->where('secondary_key', $member),
+                    fn ($query) => $query->whereNull('secondary_key')
                 )
                 ->delete();
         }
@@ -161,7 +163,7 @@ class MetricsEloquentConnection implements MetricsConnection
         return $this;
     }
 
-    private function query(?int $year = null): Builder
+    private function query(int $year = null): Builder
     {
         return (new Visit())
             ->setTableForYear($year ?? $this->year)
@@ -177,7 +179,7 @@ class MetricsEloquentConnection implements MetricsConnection
                 $key,
                 ['date' => $date->toDateString(), 'tableYear' => $this->year]
             ),
-            fn() => $this->query()
+            fn () => $this->query()
                 ->where('primary_key', self::PREFIX.$key)
                 ->whereDate('expired_at', $date)
                 ->orderByDesc('expired_at')
