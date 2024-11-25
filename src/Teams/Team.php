@@ -122,12 +122,12 @@ class Team extends Model
     public function getFullSubscriptionPlanIdAttribute(): string
     {
         if ($this->subscription_plan_id === PlanId::FREE) {
-            return $this->subscription_plan_id->value();
+            return $this->subscription_plan_id->name();
         }
 
         $paying = $this->price_id !== null ? ' (Free)' : '';
 
-        return $this->subscription_plan_id->value().$paying;
+        return $this->subscription_plan_id->name().$paying;
     }
 
     public function getSubscriptionPlanIdAttribute(): PlanId
