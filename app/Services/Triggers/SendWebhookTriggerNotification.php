@@ -6,6 +6,7 @@ use App\Jobs\TeamTriggerNotificationJob;
 use App\Models\Trigger;
 use App\Notifications\TriggerNotification;
 use Carbon\CarbonImmutable;
+use Illuminate\Support\Facades\Http;
 
 class SendWebhookTriggerNotification
 {
@@ -24,6 +25,19 @@ class SendWebhookTriggerNotification
 
         if ($missingParams->isNotEmpty() && ! $fromScript) {
             throw MissingTriggerParams::with($missingParams);
+        }
+
+        if ($trigger->team === null) {
+            if (config('app.env') === 'production') {
+                Http::get(
+                    'https://metricswave.com/webhooks/842e2f48-4c9f-436f-bb88-c00266496f10',
+                    [
+                        'message' => 'Trigger '.$trigger->uuid.' has no team.',
+                    ]
+                );
+            }
+
+            return;
         }
 
         $triggeredAt = $triggeredAt !== null ? CarbonImmutable::parse($triggeredAt) : null;
