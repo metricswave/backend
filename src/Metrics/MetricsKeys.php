@@ -9,7 +9,7 @@ class MetricsKeys
 {
     public string|bool $modelName = false;
 
-    public string $id;
+    public string $id = '';
 
     public string $visits;
 
