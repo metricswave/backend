@@ -45,7 +45,7 @@ class TriggerNotification extends Notification implements ShouldQueue
         $this->content = $trigger->formattedContent($params);
         $this->emoji = $trigger->formattedEmoji($params);
         $this->notifiedAt = $notifiedAt ?? CarbonImmutable::now();
-        $this->userParam = $params['user'] ?? $params['userId'] ?? $params['user_id'] ?? $params['user-id'] ?? null;
+        $this->userParam = $params['user_parameter'] ?? $params['user'] ?? $params['userId'] ?? $params['user_id'] ?? $params['user-id'] ?? null;
         $this->teamId = $trigger->team_id;
     }
 
