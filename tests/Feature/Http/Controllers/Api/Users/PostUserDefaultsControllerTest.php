@@ -13,6 +13,6 @@ it('create expected triggers, dashboards and team', function () {
     actingAs($user)->postJson('/api/users/defaults')->assertCreated();
 
     expect($user->ownedTeams()->count())->toBe(1)
-        ->and($user->ownedTeams()->first()->triggers()->count())->toBe(1)
+        ->and($user->ownedTeams()->first()->triggers()->count())->toBe(2)
         ->and($user->ownedTeams()->first()->dashboards()->count())->toBe(1);
 });

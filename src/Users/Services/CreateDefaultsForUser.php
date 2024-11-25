@@ -30,6 +30,22 @@ class CreateDefaultsForUser
                 ],
                 'via' => [],
             ]);
+
+            $trigger = $team->triggers()->create([
+                'trigger_type_id' => TriggerTypeId::Webhook,
+                'uuid' => Str::uuid(),
+                'emoji' => '💰',
+                'title' => 'Payment',
+                'content' => '{amount} ({user_parameter})',
+                'configuration' => [
+                    'version' => '1.0',
+                    'type' => 'money_income',
+                    'fields' => [
+                        'parameters' => ['amount'],
+                    ],
+                ],
+                'via' => [],
+            ]);
         }
 
         if ($team->dashboards()->count() > 0) {
