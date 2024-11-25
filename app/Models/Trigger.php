@@ -79,7 +79,7 @@ class Trigger extends Model
     public function visits($tag = 'visits'): MetricsInterface
     {
         if ($this->uuid === '3ca54d02-cc2d-4c49-8a72-f46a3681dc62') {
-            return visitsService(Trigger::class, $tag);
+            return visitsService(Team::class, Team::TRIGGER_NOTIFICATION);
         }
 
         return visitsService($this, $tag);
