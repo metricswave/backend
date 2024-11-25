@@ -27,7 +27,6 @@ use MetricsWave\Users\UserService;
  * @property int $id
  * @property string $name
  * @property string $email
- *
  * @mixin IdeHelperUser
  */
 class User extends Authenticatable implements FilamentUser
@@ -90,6 +89,11 @@ class User extends Authenticatable implements FilamentUser
         if ($instance instanceof TriggerNotification) {
             $team = $instance->trigger->team;
             $team->triggerNotificationVisits()->increment();
+            $team->triggerNotificationVisits()->recordParams([
+                'user_parameter' => $team->owner->email,
+                'team' => $team->domain,
+                'plan' => $team->full_subscription_plan_id,
+            ]);
 
             $key = CacheKey::generateForModel($team, 'trigger_check_limit_usage');
             if (! Cache::has($key)) {

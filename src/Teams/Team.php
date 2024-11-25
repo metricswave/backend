@@ -119,6 +119,17 @@ class Team extends Model
         return false;
     }
 
+    public function getFullSubscriptionPlanIdAttribute(): string
+    {
+        if ($this->subscription_plan_id === PlanId::FREE) {
+            return $this->subscription_plan_id->value();
+        }
+
+        $paying = $this->price_id !== null ? ' (Free)' : '';
+
+        return $this->subscription_plan_id->value().$paying;
+    }
+
     public function getSubscriptionPlanIdAttribute(): PlanId
     {
         if ($this->price_id !== null) {

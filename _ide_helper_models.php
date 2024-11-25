@@ -258,7 +258,7 @@ namespace App\Models{
  * @property-read \Illuminate\Support\Collection $all_teams
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\MailLog> $mailLogs
  * @property-read int|null $mail_logs_count
- * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \App\Models\DatabaseNotifications> $notifications
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \MetricsWave\Teams\Team> $ownedTeams
  * @property-read int|null $owned_teams_count
@@ -349,6 +349,18 @@ namespace MetricsWave\Channels{
 	class IdeHelperTeamChannel {}
 }
 
+namespace MetricsWave\Metrics\Models{
+/**
+ * MetricsWave\Metrics\Models\Visit
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Visit newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Visit newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Visit query()
+ * @mixin \Eloquent
+ */
+	class IdeHelperVisit {}
+}
+
 namespace MetricsWave\Teams{
 /**
  * MetricsWave\Teams\MonthlyLimit
@@ -395,6 +407,7 @@ namespace MetricsWave\Teams{
  * @property-read int|null $channels_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Dashboard> $dashboards
  * @property-read int|null $dashboards_count
+ * @property-read string $full_subscription_plan_id
  * @property-read \App\Transfers\PlanId $subscription_plan_id
  * @property-read bool $subscription_status
  * @property-read \App\Transfers\SubscriptionType $subscription_type

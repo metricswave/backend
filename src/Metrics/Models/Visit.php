@@ -4,6 +4,9 @@ namespace MetricsWave\Metrics\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @mixin IdeHelperVisit
+ */
 class Visit extends Model
 {
     protected $connection = 'visits';
