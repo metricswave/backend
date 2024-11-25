@@ -41,7 +41,7 @@ class Metrics implements MetricsInterface
             : $this->connection->get($this->keys->visitsTotal());
     }
 
-    private function yearsInPeriod(?Carbon $from = null, ?Carbon $to = null)
+    private function yearsInPeriod(Carbon $from = null, Carbon $to = null)
     {
         $from = $from ?? now();
         $to = $to ?? now();
@@ -52,7 +52,7 @@ class Metrics implements MetricsInterface
         );
     }
 
-    public function countAll(?Carbon $from = null, ?Carbon $to = null): Collection
+    public function countAll(Carbon $from = null, Carbon $to = null): Collection
     {
         $count = collect();
 
@@ -60,7 +60,13 @@ class Metrics implements MetricsInterface
             $count = $count->merge(
                 $this->connection
                     ->setYear($year)
-                    ->all($this->period, $this->keys->visits, $this->keys->id, $from, $to)
+                    ->all(
+                        $this->period,
+                        $this->keys->instanceOfModel ? $this->keys->visits : $this->keys->visitsTotal(),
+                        $this->keys->id,
+                        $from,
+                        $to,
+                    )
                     ->map(function ($item) {
                         return [
                             'score' => $item->score,
@@ -159,7 +165,7 @@ class Metrics implements MetricsInterface
             ->values();
     }
 
-    public function increment($inc = 1, ?CarbonInterface $date = null): void
+    public function increment($inc = 1, CarbonInterface $date = null): void
     {
         $this->connection
             ->setYear(null)
@@ -181,7 +187,7 @@ class Metrics implements MetricsInterface
         }
     }
 
-    protected function newExpiration($period, ?CarbonInterface $date = null): int
+    protected function newExpiration($period, CarbonInterface $date = null): int
     {
         try {
             $date = $date ?? Carbon::now();
@@ -193,7 +199,7 @@ class Metrics implements MetricsInterface
         return Carbon::now()->diffInSeconds($periodCarbon, absolute: false) + 1;
     }
 
-    protected function xHoursPeriod($period, ?CarbonInterface $date = null)
+    protected function xHoursPeriod($period, CarbonInterface $date = null)
     {
         $date = $date ?? Carbon::now();
 
@@ -212,7 +218,7 @@ class Metrics implements MetricsInterface
         return $this;
     }
 
-    public function recordParams(array $params, int $inc = 1, ?CarbonInterface $date = null): void
+    public function recordParams(array $params, int $inc = 1, CarbonInterface $date = null): void
     {
         foreach ($params as $param => $value) {
             if (Str::of($value)->length() > 255) {
