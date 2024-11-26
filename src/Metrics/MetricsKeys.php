@@ -53,8 +53,14 @@ class MetricsKeys
         return "{$this->visits}_total";
     }
 
-    public function period($period): string
+    public function period(string $period, bool $total = false): string
     {
+        if ($total) {
+            $total = Str::of($this->visitsTotal())->replace('_'.$period, '');
+
+            return $total."_$period";
+        }
+
         return "{$this->visits}_{$period}";
     }
 }

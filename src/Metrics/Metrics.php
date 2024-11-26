@@ -145,7 +145,13 @@ class Metrics implements MetricsInterface
     public function countAllByParamAndDate(string $param, Carbon $from, Carbon $to): Collection
     {
         $param = Str::of($param)->snake();
-        $key = "{$this->keys->visits}_{$param}:{$this->keys->id}";
+
+        if ($this->keys->instanceOfModel) {
+            $key = "{$this->keys->visits}_{$param}:{$this->keys->id}";
+        } else {
+            $periodKey = $this->keys->period($this->period, total: true);
+            $key = "{$periodKey}_{$param}";
+        }
 
         $count = collect();
 
@@ -218,7 +224,7 @@ class Metrics implements MetricsInterface
         return $this;
     }
 
-    public function recordParams(array $params, int $inc = 1, CarbonInterface $date = null): void
+    public function recordParams(array $params, int $inc = 1, CarbonInterface $date = null, bool $totalOnly = false): void
     {
         foreach ($params as $param => $value) {
             if (Str::of($value)->length() > 255) {
@@ -236,8 +242,14 @@ class Metrics implements MetricsInterface
             $key = Str::of($param)->snake();
 
             foreach (self::PERIODS as $period) {
-                $periodKey = $this->keys->period($period);
-                $periodKey = "{$periodKey}_{$key}:{$this->keys->id}";
+                if ($this->keys->instanceOfModel && $totalOnly === false) {
+                    $periodKey = $this->keys->period($period);
+                    $periodKey = "{$periodKey}_{$key}:{$this->keys->id}";
+                } else {
+                    $periodKey = $this->keys->period($period, total: true);
+                    $periodKey = "{$periodKey}_{$key}";
+                }
+
                 $expireInSeconds = $this->newExpiration($period, $date);
 
                 $this->connection

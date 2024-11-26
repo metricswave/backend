@@ -23,7 +23,7 @@ interface MetricsInterface
 
     public function period(string $period): static;
 
-    public function recordParams(array $params, int $inc = 1, CarbonInterface $date = null): void;
+    public function recordParams(array $params, int $inc = 1, CarbonInterface $date = null, bool $totalOnly = false): void;
 
     public function delete(): void;
 
