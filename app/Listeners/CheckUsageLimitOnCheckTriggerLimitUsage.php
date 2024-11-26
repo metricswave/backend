@@ -29,7 +29,7 @@ class CheckUsageLimitOnCheckTriggerLimitUsage implements ShouldQueue
                 'year' => now()->year,
             ];
 
-            if (! MonthlyLimit::where($params)->exist()) {
+            if (! MonthlyLimit::where($params)->count() === 0) {
                 Http::post('https://metricswave.com/webhooks/d5c2d8ab-983e-4653-8e92-b6dc4c55ee6a', [
                     'email' => $user->email,
                 ]);
