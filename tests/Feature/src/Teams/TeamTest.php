@@ -19,3 +19,17 @@ it('return expected plan information', function () {
         ->and($team->subscription_type)->toBe(SubscriptionType::Monthly)
         ->and($team->subscription_plan_id)->toBe(PlanId::BUSINESS);
 });
+
+it('domain is formatted properly', function (string $domain, string $expected) {
+    [, $team] = user_with_team();
+
+    $team->domain = $domain;
+
+    expect($team->domain)->toBe($expected);
+})->with([
+    ['https://hola.com/', 'hola.com'],
+    ['https://hola.com', 'hola.com'],
+    ['http://www.hola.com', 'hola.com'],
+    ['hola.com', 'hola.com'],
+    ['hola.com/', 'hola.com'],
+]);

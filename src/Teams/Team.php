@@ -10,6 +10,7 @@ use App\Services\Plans\PlanGetter;
 use App\Transfers\PlanId;
 use App\Transfers\PriceType;
 use App\Transfers\SubscriptionType;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -19,6 +20,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Cashier\Billable;
 use MetricsWave\Channels\TeamChannel;
 use MetricsWave\Metrics\MetricsInterface;
+use Str;
 
 /**
  * @mixin IdeHelperTeam
@@ -86,6 +88,19 @@ class Team extends Model
     public function monthlyLimits(): HasMany
     {
         return $this->hasMany(MonthlyLimit::class);
+    }
+
+    protected function domain(): Attribute
+    {
+        return Attribute::make(
+            set: function (string $value): string {
+                return Str::of($value)->replace(['http://', 'https://'], '')
+                    ->replace('www.', '')
+                    ->trim('/')
+                    ->lower()
+                    ->toString();
+            },
+        );
     }
 
     public function triggerNotificationVisitsLimitReached(): bool
