@@ -12,14 +12,8 @@ class TriggerLimitReachedNotification extends Notification implements ShouldQueu
 {
     use Queueable;
 
-    const SKIP_MAILS = ['3comunicacionlpa@gmail.com'];
-
     public function via(User $notifiable): array
     {
-        if (in_array($notifiable->email, self::SKIP_MAILS)) {
-            return [];
-        }
-
         return ['mail'];
     }
 
