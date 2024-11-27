@@ -65,10 +65,10 @@ class ChannelsSeeder extends Seeder
                         'type' => 'form',
                         'form' => [
                             'title' => 'Stripe Key',
-                            'description' => 'Generate a Stripe Restricted API key just with minimum read permissions and past it bellow.',
+                            'description' => 'Generate a Stripe Restricted API key with the next link (everything is already configured), and paste it bellow.',
                             'help' => [
                                 'title' => 'Create Restricted API key',
-                                'href' => 'https://dashboard.stripe.com/apikeys/create?name=MetricsWave&permissions%5B%5D=rak_charge_read',
+                                'href' => 'https://dashboard.stripe.com/apikeys/create?name=MetricsWave&permissions%5B%5D=rak_charge_read&permissions%5B%5D=rak_bucket_connect_read',
                             ],
                             'fields' => [
                                 [
