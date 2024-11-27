@@ -18,7 +18,8 @@ class TeamsWithoutEventsMail extends Mailable
         private string $ownerName,
         private string $ownerEmail,
         private string $domain,
-    ) {}
+    ) {
+    }
 
     public function envelope(): Envelope
     {
@@ -32,7 +33,7 @@ class TeamsWithoutEventsMail extends Mailable
     public function content(): Content
     {
         return (new Content(
-            markdown: 'mail.team_without_events',
+            text: 'mail.team_without_events',
         ))
             ->with('uuid', $this->triggerUuid)
             ->with('name', $this->ownerName)
