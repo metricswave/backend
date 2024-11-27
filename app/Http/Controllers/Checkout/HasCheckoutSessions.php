@@ -56,6 +56,7 @@ trait HasCheckoutSessions
         }
 
         return Checkout::guest()
+            ->allowPromotionCodes()
             ->create(
                 [
                     [
@@ -103,7 +104,9 @@ trait HasCheckoutSessions
                     ],
                     'quantity' => 1,
                 ],
-            ])->checkout([
+            ])
+            ->allowPromotionCodes()
+            ->checkout([
                 'metadata' => [
                     'team_id' => $team->id,
                     'currency' => $team->preferredCurrency(),
@@ -115,7 +118,7 @@ trait HasCheckoutSessions
             ]);
     }
 
-    public function checkout(Price $price, ?Lead $lead = null): Checkout
+    public function checkout(Price $price, Lead $lead = null): Checkout
     {
         if ($lead !== null) {
             $successPage = '/leads/'.$lead->uuid.'/?success=true';
