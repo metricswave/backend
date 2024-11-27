@@ -52,5 +52,49 @@ class ChannelsSeeder extends Seeder
                 ],
             ]
         );
+
+        Channel::query()
+            ->updateOrCreate(
+                [
+                    'driver' => 'stripe',
+                ],
+                [
+                    'name' => 'Stripe',
+                    'description' => 'Connect your stripe account to automatically track all your charges with the proper user email.',
+                    'configuration' => [
+                        'type' => 'form',
+                        'form' => [
+                            'title' => 'Stripe Key',
+                            'description' => 'Generate a Stripe Restricted API key just with minimum read permissions and past it bellow.',
+                            'help' => [
+                                'title' => 'Create Restricted API key',
+                                'href' => 'https://dashboard.stripe.com/apikeys/create?name=MetricsWave&permissions%5B%5D=rak_charge_read',
+                            ],
+                            'fields' => [
+                                [
+                                    'name' => 'api_key',
+                                    'type' => 'input',
+                                    'label' => 'API Key',
+                                    'placeholder' => 'rk_51O29JHDeHCkjvn4gdfgDgThHuyAOCturdF8m0IoAAlAMSI9g2xBdO0d9Xs7ZV1dqTbOxjULEEWKTq1dg000mZd8Xmgq',
+                                    'required' => true,
+                                    'validation' => [
+                                        'min_length' => 20,
+                                    ],
+                                ],
+                                [
+                                    'name' => 'name',
+                                    'type' => 'input',
+                                    'label' => 'Account Name',
+                                    'placeholder' => 'Name',
+                                    'required' => true,
+                                    'validation' => [
+                                        'min_length' => 3,
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ]
+            );
     }
 }
