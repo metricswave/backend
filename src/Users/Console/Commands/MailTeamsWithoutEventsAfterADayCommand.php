@@ -30,7 +30,7 @@ class MailTeamsWithoutEventsAfterADayCommand extends Command
         $emailsSent = 0;
 
         $this->withProgressBar($teams, function (Team $team) use (&$emailsSent) {
-            if (Cache::has(self::CACHE_KEY.$team->id)) {
+            if (Cache::has(self::CACHE_KEY.$team->id) && $this->argument('email', false) === false) {
                 return;
             }
 
@@ -60,7 +60,7 @@ class MailTeamsWithoutEventsAfterADayCommand extends Command
         $this->info($emailsSent.' mails sent.');
     }
 
-    private function getTeams(int $subDays = 1, ?string $testMail = null): ?Collection
+    private function getTeams(int $subDays = 1, string $testMail = null): ?Collection
     {
         if ($testMail !== null) {
             $user = User::query()->where('email', $testMail)->first();
