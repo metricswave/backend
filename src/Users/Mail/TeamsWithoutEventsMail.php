@@ -33,7 +33,7 @@ class TeamsWithoutEventsMail extends Mailable
     public function content(): Content
     {
         return (new Content(
-            text: 'mail.team_without_events',
+            html: 'mail.team_without_events',
         ))
             ->with('uuid', $this->triggerUuid)
             ->with('name', $this->ownerName)
