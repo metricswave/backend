@@ -7,10 +7,15 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use MetricsWave\Teams\Team;
 
 class TriggerLimitReachedNotification extends Notification implements ShouldQueue
 {
     use Queueable;
+
+    public function __construct(private readonly Team $team)
+    {
+    }
 
     public function via(User $notifiable): array
     {
@@ -20,14 +25,14 @@ class TriggerLimitReachedNotification extends Notification implements ShouldQueu
     public function toMail(User $notifiable): MailMessage
     {
         return (new MailMessage())
-            ->subject('Event and traffic limit reached.')
-            ->greeting('🚨 Your access to the Dashboard may be restricted.')
-            ->line('You have reached the event limit for your current plan. We will continue to process and record all events and visits that come to us from your site, but your access to the dashboard may be restricted soon.')
-            ->line('If you want to continue accessing your Dashboard, see your traffic and events, upgrade your account.')
-            ->action(
-                'Upgrade your account',
-                config('app.web_app_url').'settings/billing?utm_source=trigger_limit_reached_notification'
-            );
+            ->from('victor@metricswave.com')
+            ->subject('Try metricswave free for a month')
+            ->view('mail.trigger_limit_reached_notification', [
+                'coupon' => 'FIRSTMONTHFREE',
+                'name' => $this->team->owner->name,
+                'domain' => $this->team->domain,
+                'url' => config('app.web_app_url').'settings/billing?utm_source=trigger_limit_reached_notification',
+            ]);
     }
 
     public function toArray(User $notifiable): array
