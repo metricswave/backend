@@ -22,7 +22,6 @@ class MailTeamsWithoutEventsAfterADayCommand extends Command
     public function handle(): void
     {
         $email = $this->argument('email') ?? null;
-        dd($email);
         $teams = $this->getTeams((int) $this->option('sub-days'), $email);
 
         if ($teams === null) {
@@ -31,7 +30,7 @@ class MailTeamsWithoutEventsAfterADayCommand extends Command
 
         $emailsSent = 0;
 
-        $this->withProgressBar($teams, function (Team $team) use (&$emailsSent) {
+        $this->withProgressBar($teams, function (Team $team) use (&$emailsSent, $email) {
             if (Cache::has(self::CACHE_KEY.$team->id) && $email === null) {
                 return;
             }
