@@ -23,6 +23,9 @@ class Kernel extends ConsoleKernel
         $schedule->command('users:create-notifications-table --execute')->yearlyOn(12, 1, '05:00')
             ->emailOutputTo('victoor89@gmail.com');
 
+        // Stripe Channels
+        $schedule->command('visits:stripe')->everyThreeHours();
+
         // Telegram Bot
         $schedule->command('telegram:reply-with-group-id')->everyTwoSeconds();
     }
