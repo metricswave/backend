@@ -2,6 +2,7 @@
 
 namespace MetricsWave\Metrics\Console\Commands;
 
+use App\Jobs\TeamTriggerNotificationJob;
 use App\Models\Trigger;
 use App\Notifications\TriggerNotification;
 use Date;
@@ -56,7 +57,7 @@ class GetStripeChargesFromTeamServicesCommand extends Command
                     }
 
                     $notification = new TriggerNotification($trigger, ['amount' => $amount, 'user' => $user], $createdAt->toImmutable());
-                    $team->owner->notify($notification);
+                    TeamTriggerNotificationJob::dispatch($trigger->team, $notification);
 
                     TeamStripeChannelCharge::create(['team_id' => $team->id, 'charge_id' => $id]);
                 }
