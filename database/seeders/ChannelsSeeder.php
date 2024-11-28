@@ -59,7 +59,7 @@ class ChannelsSeeder extends Seeder
                     'driver' => 'stripe',
                 ],
                 [
-                    'name' => 'Stripe',
+                    'name' => 'Stripe (beta)',
                     'description' => 'Connect your stripe account to automatically track all your charges with the proper user email.',
                     'configuration' => [
                         'type' => 'form',
