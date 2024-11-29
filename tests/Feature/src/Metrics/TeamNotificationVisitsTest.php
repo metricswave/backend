@@ -5,7 +5,6 @@ use App\Models\TriggerType;
 use App\Services\Triggers\TriggerParameterStatsGetter;
 use App\Transfers\Stats\Period;
 use App\Transfers\Stats\PeriodEnum;
-use MetricsWave\Metrics\Models\Visit;
 use MetricsWave\Teams\Team;
 
 it('return expected visits without params', function () {
@@ -43,12 +42,6 @@ it('return expected visits with params', function () {
         'team' => $team->domain,
         'plan' => $team->full_subscription_plan_id,
     ], totalOnly: true);
-
-    $visitsNew = (new Visit)
-        ->setTableForYear(now()->year)
-        ->setConnection(config('visits.connection'))
-        ->get(['primary_key', 'expired_at', 'score'])
-        ->toArray();
 
     $params = app(TriggerParameterStatsGetter::class)->get(
         $trigger,
