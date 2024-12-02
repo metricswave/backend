@@ -216,12 +216,14 @@ class Team extends Model
 
         return $this->monthlyLimits()
             ->where(fn ($query) => $query
-                ->where('year', now()->year)
-                ->where('month', now()->month)
-            )
-            ->orWhere(fn ($query) => $query
-                ->where('year', $previousMonth->year)
-                ->where('month', $previousMonth->month)
+                ->where(fn ($query) => $query
+                    ->where('year', now()->year)
+                    ->where('month', now()->month)
+                )
+                ->orWhere(fn ($query) => $query
+                    ->where('year', $previousMonth->year)
+                    ->where('month', $previousMonth->month)
+                )
             )
             ->exists();
     }
