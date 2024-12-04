@@ -52,7 +52,7 @@ class CheckUsageLimitOnCheckTriggerLimitUsage implements ShouldQueue
                     'email' => $user->email,
                 ]);
 
-                $user->notify(new TriggerLimitReachedNotification);
+                $user->notify(new TriggerLimitReachedNotification($team));
             }
 
             Cache::put($notificationKey, '1', now()->addDays(7));
