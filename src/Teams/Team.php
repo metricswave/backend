@@ -238,11 +238,11 @@ class Team extends Model
                     ->where('year', now()->year)
                     ->where('month', now()->month)
                 )
-                ->where(fn ($query) => $query
+                ->orWhere(fn ($query) => $query
                     ->where('year', $previousMonth->year)
                     ->where('month', $previousMonth->month)
                 )
             )
-            ->exists();
+            ->count() == 2;
     }
 }
