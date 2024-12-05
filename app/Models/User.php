@@ -36,6 +36,8 @@ class User extends Authenticatable implements FilamentUser
 
     public const TRIGGER_NOTIFICATION = 'trigger-notification';
 
+    public const EMAILS_WITH_PRIVILEGES = ['3comunicacionlpa@gmail.com'];
+
     protected $fillable = [
         'name',
         'email',

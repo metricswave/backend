@@ -232,6 +232,10 @@ class Team extends Model
     {
         $previousMonth = now()->subMonthNoOverflow();
 
+        if (in_array($this->owner->email, User::EMAILS_WITH_PRIVILEGES)) {
+            return false;
+        }
+
         return $this->monthlyLimits()
             ->where(fn ($query) => $query
                 ->where(fn ($query) => $query

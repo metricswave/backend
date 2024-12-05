@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\CheckTriggerLimitUsage;
+use App\Models\User;
 use App\Notifications\TriggerLimitReachedNotification;
 use App\Services\CacheKey;
 use Http;
@@ -12,8 +13,6 @@ use MetricsWave\Teams\MonthlyLimit;
 
 class CheckUsageLimitOnCheckTriggerLimitUsage implements ShouldQueue
 {
-    const SKIP_MAILS = ['3comunicacionlpa@gmail.com'];
-
     public function handle(CheckTriggerLimitUsage $event): void
     {
         $team = $event->notification->trigger->team;
@@ -41,7 +40,7 @@ class CheckUsageLimitOnCheckTriggerLimitUsage implements ShouldQueue
         }
 
         if (! Cache::has($notificationKey) && Cache::has($limitKey)) {
-            if (in_array($user->email, self::SKIP_MAILS)) {
+            if (in_array($user->email, User::EMAILS_WITH_PRIVILEGES)) {
                 Http::post('https://metricswave.com/webhooks/60bb9264-5e13-42a5-b563-b914b516fc74', [
                     'type' => 'Limit Reached Mail (Email Not Send)',
                     'email' => $user->email,
