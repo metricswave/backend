@@ -20,11 +20,18 @@ it('update an existing dashboard', function () {
                     'type' => 'parameter',
                     'parameter' => $this->faker->word,
                 ],
+                [
+                    'eventUuid' => $this->faker->uuid,
+                    'title' => $this->faker->word,
+                    'size' => 'large',
+                    'type' => 'parameter',
+                    'otherEvents' => [$this->faker->uuid],
+                ],
             ],
         ])
         ->assertNoContent();
 
     expect($dashboard->refresh())
         ->name->toBe('New name')
-        ->items->toHaveCount(2);
+        ->items->toHaveCount(3);
 });

@@ -27,6 +27,7 @@ class PutDashboardRequest extends FormRequest
             'items.*.type' => ['required', 'string', 'max:255'],
             'items.*.parameter' => ['nullable', 'string', 'max:255'],
             'items.*.otherEvents' => ['nullable', 'array'],
+            'items.*.otherEvents.*' => ['string'],
         ];
     }
 }

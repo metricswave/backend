@@ -12,6 +12,7 @@ class DashboardItem extends Data
         public DashboardItemSize $size,
         public DashboardItemType $type,
         public ?string $parameter = null,
+        public ?array $otherEvents = null,
     ) {
     }
 }
