@@ -4,7 +4,7 @@ blueprint: documentation
 title: Documentation
 short_content: 'A collection of good articles about how MetricsWave works.'
 updated_by: 6ee8895a-52f6-44a1-a772-a0e7f04692b7
-updated_at: 1732033656
+updated_at: 1733479494
 ---
 ### 💎 Main topics
 
@@ -36,4 +36,5 @@ updated_at: 1732033656
 
 Services are different applications that you can connect and integrate inside MetricsWave to share events as you want.
 
+- [Stripe](/documentation/services/stripe): Connect your Stripe account to sync all your charges and payments automatically.
 - [Telegram](/documentation/services/telegram): Connect a Telegram Channel or Group to receive notifications there.
