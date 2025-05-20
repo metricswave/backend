@@ -11,13 +11,13 @@ use MetricsWave\Metrics\Models\Visit;
 use function Pest\Laravel\artisan;
 
 it('created expected charges', function () {
-    [,$team] = user_with_team();
+    [, $team] = user_with_team();
     TriggerType::factory()->create(['id' => TriggerTypeId::Webhook]);
     TeamChannel::factory()->create([
         'channel_id' => ChannelId::Stripe,
         'team_id' => $team->id,
         'data' => [
-            'configuration' => ['api_key' => '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'],
+            'configuration' => ['api_key' => 'rk_live_random_key'],
         ],
     ]);
 
