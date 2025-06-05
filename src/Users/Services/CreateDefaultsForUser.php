@@ -50,7 +50,7 @@ class CreateDefaultsForUser
                 'via' => [],
             ]);
 
-            $trigger = $team->triggers()->create(self::defaultMoneyAmountTriggerParams());
+            $moneyTrigger = $team->triggers()->create(self::defaultMoneyAmountTriggerParams());
         }
 
         if ($team->dashboards()->count() > 0) {
@@ -65,6 +65,9 @@ class CreateDefaultsForUser
                     'type' => 'stats',
                     'title' => 'Visits',
                     'eventUuid' => $trigger->uuid,
+                    'otherEvents' => [
+                        $moneyTrigger->uuid,
+                    ],
                     'parameter' => null,
                 ],
                 [
