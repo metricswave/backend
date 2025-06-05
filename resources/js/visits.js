@@ -3,7 +3,15 @@
         l = w.location,
         n = w.navigator,
         d = w.document;
-    const uuid = d.currentScript.getAttribute("event-uuid");
+    const uuid = (() => {
+        if (d.currentScript) {
+            return d.currentScript.getAttribute("event-uuid");
+        }
+        // Fallback for deferred scripts where currentScript is null
+        const scripts = d.querySelectorAll('script[event-uuid]');
+        const currentScript = scripts[scripts.length - 1]; // Get the last script with event-uuid
+        return currentScript ? currentScript.getAttribute("event-uuid") : null;
+    })();
     let i;
 
     let deviceName = localStorage.getItem("mw:dn");
