@@ -18,14 +18,14 @@ class PlanGetter
     public function all(): Plans
     {
         return new Plans([
-            new Plan(PlanId::FREE, 'Free', 0, false, 6, 5_000, false),
+            new Plan(PlanId::FREE, 'Free', 0, false, 6, 1_000_000, false),
             new Plan(
                 id: PlanId::BASIC,
                 name: 'Basic',
                 monthlyPrice: 895,
                 yearlyPrice: 895 * 12 * self::YEARLY_DISCOUNT,
                 dataRetentionInMonths: 12,
-                eventsLimit: 10_000,
+                eventsLimit: 1_250_000,
                 dedicatedSupport: false,
                 productStripeId: config('services.stripe.basic.id'),
                 monthlyPriceStripeId: config('services.stripe.basic.monthly_price', ''),
@@ -39,7 +39,7 @@ class PlanGetter
                 monthlyPrice: 1995,
                 yearlyPrice: 1995 * 12 * self::YEARLY_DISCOUNT,
                 dataRetentionInMonths: 24,
-                eventsLimit: 50_000,
+                eventsLimit: 2_000_000,
                 dedicatedSupport: true,
                 productStripeId: config('services.stripe.starter.id'),
                 monthlyPriceStripeId: config('services.stripe.starter.monthly_price', ''),
@@ -53,7 +53,7 @@ class PlanGetter
                 monthlyPrice: 3995,
                 yearlyPrice: 3995 * 12 * self::YEARLY_DISCOUNT,
                 dataRetentionInMonths: 24,
-                eventsLimit: 150_000,
+                eventsLimit: 3_000_000,
                 dedicatedSupport: true,
                 productStripeId: config('services.stripe.business.id'),
                 monthlyPriceStripeId: config('services.stripe.business.monthly_price', ''),
@@ -67,7 +67,7 @@ class PlanGetter
                 monthlyPrice: 5995,
                 yearlyPrice: 5995 * 12 * self::YEARLY_DISCOUNT,
                 dataRetentionInMonths: 24,
-                eventsLimit: 500_000,
+                eventsLimit: 5_000_000,
                 dedicatedSupport: true,
                 productStripeId: config('services.stripe.business.id'),
                 monthlyPriceStripeId: config('services.stripe.corporate.monthly_price', ''),
