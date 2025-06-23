@@ -27,7 +27,7 @@
             <div class="w-full sm:w-7/12 flex flex-col gap-4">
                 @foreach (app(PlanGetter::class)->all() as $plan)
                     @php
-                        $formattedLimit = format_long_numbers($plan->eventsLimit, 3);
+                        $formattedLimit = format_long_numbers($plan->eventsLimit, 1);
                         $link = match ($plan->name) {
                             'Free' => 'https://app.metricswave.com',
                             'Enterprise' => 'mailto:hi@metricswave.com',
