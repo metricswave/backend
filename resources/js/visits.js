@@ -68,7 +68,7 @@
             userAgent: n.userAgent,
             platform: n.platform,
             referrer: d.referrer,
-            utm_source: u.searchParams.get("utm_source"),
+            utm_source: u.searchParams.get("utm_source") || u.searchParams.get("ref"),
             utm_medium: u.searchParams.get("utm_medium"),
             utm_campaign: u.searchParams.get("utm_campaign"),
             utm_term: u.searchParams.get("utm_term"),
