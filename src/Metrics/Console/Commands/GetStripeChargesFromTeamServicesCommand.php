@@ -13,6 +13,7 @@ use MetricsWave\Channels\TeamChannel;
 use MetricsWave\Metrics\Models\TeamStripeChannelCharge;
 use MetricsWave\Teams\Team;
 use MetricsWave\Users\Services\CreateDefaultsForUser;
+use Stripe\Exception\AuthenticationException;
 use Stripe\StripeClient;
 
 class GetStripeChargesFromTeamServicesCommand extends Command
@@ -29,8 +30,17 @@ class GetStripeChargesFromTeamServicesCommand extends Command
             $team = $channel->team;
             $trigger = $this->getOrCreateMoneyAmountTrigger($team);
             $key = $channel->data['configuration']['api_key'];
-            $client = new StripeClient($key);
-            $charges = $client->charges->all(['limit' => 10]);
+            $this->info("Processing team {$team->id} with key {$key}");
+
+            try {
+                $client = new StripeClient($key);
+                $charges = $client->charges->all(['limit' => 10]);
+            } catch (AuthenticationException $e) {
+                $this->error("Error processing team {$team->id}: {$e->getMessage()}");
+                $this->error("Skipping team {$team->id}");
+                return;
+            }
+
             $continue = true;
 
             do {
@@ -77,7 +87,7 @@ class GetStripeChargesFromTeamServicesCommand extends Command
             ->where('channel_id', ChannelId::Stripe)
             ->when(
                 $teamId,
-                fn ($query) => $query->where('team_id', $teamId),
+                fn($query) => $query->where('team_id', $teamId),
             )
             ->get();
     }
