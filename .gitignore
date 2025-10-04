@@ -21,6 +21,5 @@ yarn-error.log
 mysql_export
 .flyenv
 public/vendor/statamic
-public/vendor/statamic
 public/css/filament
 public/js/filament
