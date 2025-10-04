@@ -8,12 +8,12 @@ use function Pest\Laravel\actingAs;
 
 it('return expected channels', function () {
     $user = User::factory()->create();
-    Channel::factory()->count(2)->create(); // Plus one from the seeder that runs automatically in service migration
+    Channel::factory()->count(2)->create(); // Plus two from the seeder that runs automatically in service migration (Telegram and Stripe)
 
     actingAs($user)
         ->getJson('/api/channels')
         ->assertOk()
-        ->assertJsonCount(3, 'data')
+        ->assertJsonCount(4, 'data')
         ->assertJson(fn (AssertableJson $json) => $json
             ->has('data.0', fn (AssertableJson $json) => $json
                 ->whereType('id', 'integer')
