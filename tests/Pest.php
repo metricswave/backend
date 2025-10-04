@@ -2,17 +2,11 @@
 
 use App\Models\Dashboard;
 use App\Models\User;
-use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
-use Illuminate\Foundation\Testing\RefreshDatabaseState;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use MetricsWave\Teams\Team;
 
-uses(LazilyRefreshDatabase::class)->in('Feature');
-
-uses()->afterEach(function () {
-    RefreshDatabaseState::$lazilyRefreshed = false;
-    RefreshDatabaseState::$migrated = false;
-})->in('Feature');
+uses(RefreshDatabase::class)->in('Feature');
 
 uses(Tests\TestCase::class, WithFaker::class)->in('Unit', 'Feature');
 

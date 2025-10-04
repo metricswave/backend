@@ -18,19 +18,21 @@ return new class extends Migration
         }
 
         foreach ($this->tables() as $table) {
-            Schema::create($table, function (Blueprint $table) {
-                $table->uuid('id')->primary();
-                $table->string('type');
-                $table->morphs('notifiable');
-                $table->json('data');
-                $table->string('user_parameter')->virtualAs("data->>'$.user_parameter'")->nullable();
-                $table->string('team_id')->virtualAs("data->>'$.team_id'")->nullable();
-                $table->timestamp('read_at')->nullable();
-                $table->timestamps();
+            if (! Schema::connection('visits')->hasTable($table)) {
+                Schema::connection('visits')->create($table, function (Blueprint $table) {
+                    $table->uuid('id')->primary();
+                    $table->string('type');
+                    $table->morphs('notifiable');
+                    $table->json('data');
+                    $table->string('user_parameter')->virtualAs("data->>'$.user_parameter'")->nullable();
+                    $table->string('team_id')->virtualAs("data->>'$.team_id'")->nullable();
+                    $table->timestamp('read_at')->nullable();
+                    $table->timestamps();
 
-                $table->index(['notifiable_type', 'notifiable_id', 'created_at'], 'notifications_notifiable_type_notifiable_id_created_at_index');
-                $table->index(['notifiable_type', 'notifiable_id', 'user_parameter', 'created_at'], 'all_index');
-            });
+                    $table->index(['notifiable_type', 'notifiable_id', 'created_at'], 'notifications_notifiable_type_notifiable_id_created_at_index');
+                    $table->index(['notifiable_type', 'notifiable_id', 'user_parameter', 'created_at'], 'all_index');
+                });
+            }
         }
     }
 
@@ -41,7 +43,7 @@ return new class extends Migration
         }
 
         foreach ($this->tables() as $table) {
-            Schema::dropIfExists($table);
+            Schema::connection('visits')->dropIfExists($table);
         }
     }
 };
