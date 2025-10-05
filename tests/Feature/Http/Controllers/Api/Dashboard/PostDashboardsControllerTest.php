@@ -27,7 +27,9 @@ it('create a new dashboard', function () {
         ])
         ->assertNoContent();
 
-    expect(Dashboard::find(1))
+    $dashboard = Dashboard::where('team_id', $team->id)->where('name', 'New name')->first();
+
+    expect($dashboard)
         ->name->toBe('New name')
         ->team_id->toBe($team->id)
         ->uuid->toBeString()
@@ -45,7 +47,9 @@ it('create a new dashboard without items', function () {
         ])
         ->assertNoContent();
 
-    expect(Dashboard::find(1))
+    $dashboard = Dashboard::where('team_id', $team->id)->where('name', 'New name')->first();
+
+    expect($dashboard)
         ->name->toBe('New name')
         ->team_id->toBe($team->id)
         ->uuid->toBeString()

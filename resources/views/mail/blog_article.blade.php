@@ -13,7 +13,7 @@
 {{-- Footer --}}
 <x-slot:footer>
 <x-mail::footer>
-© {{ date('Y') }} {{ config('app.name') }}. @lang('All rights reserved.') @if($token !== null) | <a href="{{ safe_url(config('app.web_app_url').'/unsubscribe').'?token='.$token }}">Unsubscribe</a>@endif
+© {{ date('Y') }} {{ config('app.name') }}. {{ __('All rights reserved.') }} @if($token !== null) | <a href="{{ safe_url(config('app.web_app_url').'/unsubscribe').'?token='.$token }}">Unsubscribe</a>@endif
 </x-mail::footer>
 </x-slot:footer>
 </x-mail::layout>

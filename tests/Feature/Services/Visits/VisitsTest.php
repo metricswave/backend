@@ -143,9 +143,10 @@ it('fails because unique index violation', function () {
 
 it('store visits params, unique visits and new visits', function () {
     [$user, $team] = user_with_team();
+    $triggerType = TriggerType::factory()->create(['id' => 1]);
     $trigger = Trigger::factory()
         ->for($team)
-        ->for(TriggerType::factory()->create())
+        ->for($triggerType)
         ->create([
             'id' => 48,
             'configuration' => [
@@ -249,9 +250,10 @@ it('store visits params, unique visits and new visits', function () {
 
 it('store visits referrer', function () {
     [$user, $team] = user_with_team(teamAttributes: ['id' => 1]);
+    $triggerType = TriggerType::factory()->create(['id' => 1]);
     $trigger = Trigger::factory()
         ->for($team)
-        ->for(TriggerType::factory()->create())
+        ->for($triggerType)
         ->create([
             'id' => 48,
             'configuration' => [
@@ -303,9 +305,10 @@ it('store visits referrer', function () {
 
 it('visit type works even when it has no params', function () {
     [$user, $team] = user_with_team(teamAttributes: ['id' => 1]);
+    $triggerType = TriggerType::factory()->create(['id' => 1]);
     $trigger = Trigger::factory()
         ->for($team)
-        ->for(TriggerType::factory()->create())
+        ->for($triggerType)
         ->create([
             'id' => 48,
             'configuration' => [

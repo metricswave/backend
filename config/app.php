@@ -76,9 +76,8 @@ return [
     */
 
     'providers' => [
-
         /*
-         * Laravel Framework Service Providers...
+         * Laravel Service Providers (required for proper bootstrapping)...
          */
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
@@ -104,10 +103,6 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
-         * Package Service Providers...
-         */
-
-        /*
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
@@ -116,25 +111,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\HorizonServiceProvider::class,
         App\Providers\Filament\AdminPanelProvider::class,
-        App\Providers\RouteServiceProvider::class,
 
         // MetricsWave Providers
         MetricsWave\Teams\Providers\TeamServiceProvider::class,
     ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Class Aliases
-    |--------------------------------------------------------------------------
-    |
-    | This array of class aliases will be registered when this application
-    | is started. However, feel free to register as many as you wish as
-    | the aliases are "lazy" loaded so they don't hinder performance.
-    |
-    */
-
-    'aliases' => Facade::defaultAliases()->merge([
-        // 'ExampleClass' => App\Example\ExampleClass::class,
-    ])->toArray(),
 
 ];

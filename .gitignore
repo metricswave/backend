@@ -20,3 +20,6 @@ yarn-error.log
 /.vscode
 mysql_export
 .flyenv
+public/vendor/statamic
+public/css/filament
+public/js/filament
