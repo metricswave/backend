@@ -16,7 +16,7 @@ return [
     ],
 
     'cache' => [
-        'stats' => env('CACHE_STATS_MIN_TTL', 1),
+        'stats' => (int) env('CACHE_STATS_MIN_TTL', 1),
     ],
 
     'filament' => [
