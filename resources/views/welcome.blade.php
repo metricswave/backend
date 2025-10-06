@@ -32,10 +32,9 @@
     <div class="flex flex-col justify-center items-center space-y-14 sm:space-y-32">
         <div class="px-[var(--app-padding)] sm:px-0 mw-landing mx-auto my-10 w-full flex flex-col space-y-8 sm:my-40">
             <h1
-                class="animate-[out_1s,_fade-in-down_1.5s_ease-out_1s] text-3xl sm:text-6xl leading-[1.3] sm:leading-[1.1] tracking-tighter max-w-[22ch]">
-                {{ __('Best Google Analytics alternative for') }}
-                <br /><span
-                    class="relative text-transparent bg-clip-text bg-gradient-to-br from-pink-500 to-amber-500">{{ __('Your Product') }}</span>.
+                class="animate-[out_1s,_fade-in-down_1.5s_ease-out_1s] text-3xl sm:text-6xl leading-[1.3] sm:leading-[1.1] tracking-tighter text-pretty max-w-[22ch]">
+                {{ __('Track Revenue, Product Usage & User Behavior') }}. <span
+                    class="relative text-transparent bg-clip-text bg-gradient-to-br from-pink-500 to-amber-500">{{ __('Not Just Visits') }}</span>.
             </h1>
 
             <div

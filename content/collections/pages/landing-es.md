@@ -8,19 +8,19 @@ updated_by: 6ee8895a-52f6-44a1-a772-a0e7f04692b7
 updated_at: 1750846107
 seo_title: 'Una alternativa a Google Analytics basada en eventos'
 seo_description: 'MetricsWave es una alternativa a Google Analytics ligera y respetuosa con la privacidad. Integración perfecta para cualquier sitio web o aplicación.'
-hero_content: 'Totalmente gratis para 1M de visitas al mes (sin tarjeta de crédito); fácil configuración; seguimiento de tus ingresos; respeto por la privacidad del usuario y más.'
+hero_content: 'Gratis para 1M de eventos al mes (sin tarjeta de crédito); fácil configuración; respetuoso con la privacidad y más.'
 structured_content:
   -
     id: lko1j4et
-    title: 'Seguimiento del tráfico de su sitio web.'
+    title: 'Rastrea Ingresos, Uso del Producto y Comportamiento del Usuario.'
     image: pages/track_visits_light-1731578172.png
     dark_image: pages/track_visits_dark-1731578191.png
     type: section_with_image
     enabled: true
     content: |-
-      Creemos en las estadísticas fáciles de entender y procesables. Sepa cómo le conocen sus usuarios y cómo se comportan.
+      Ve más allá de las analíticas básicas de tráfico. Rastrea ingresos, entiende cómo los usuarios interactúan con tu producto y descubre qué impulsa las conversiones.
 
-      Así es como debería haber sido siempre la analítica de tráfico.
+      Conoce no solo de dónde vienen los visitantes, sino cómo usan tu producto y qué genera ingresos.
   -
     id: m3sw6o8k
     title: 'Más de 1,000 empresas ya confían en nosotros'
@@ -48,11 +48,11 @@ structured_content:
     enabled: true
   -
     id: lko1ksok
-    title: 'Controla también tus ingresos.'
+    title: 'Seguimiento de Ingresos Simplificado'
     content: |-
-      No solo visitas; con MetricsWave, también puedes hacer un seguimiento de tus ingresos. 
+      Transforma cada interacción en información de ingresos. Rastrea ventas, suscripciones y conversiones con atribución detallada.
 
-      Agrega parámetros como la fuente para ver de dónde proviene el dinero o el tipo para verificar si el usuario prefiere suscripciones o pagos únicos, por ejemplo.
+      Ve exactamente qué características, campañas o acciones del usuario generan ingresos. Agrega parámetros personalizados para entender tus canales y comportamientos más rentables.
     image: pages/money_light.png
     dark_image: pages/money_dark.png
     type: section_with_image
@@ -70,11 +70,11 @@ structured_content:
     enabled: true
   -
     id: lko1letc
-    title: 'Algo más que tráfico.'
+    title: 'Analíticas Completas del Producto.'
     content: |-
-      Manténgase al tanto de los eventos importantes, los problemas potenciales y las notificaciones de su producto con facilidad.
+      Rastrea cada aspecto del rendimiento de tu producto - desde el compromiso del usuario hasta la generación de ingresos.
 
-      Con [nuestra API](/documentation/tracking/events) puede realizar un seguimiento desde los inicios de sesión o las inscripciones hasta los [despliegues](/documentation/tracking/deployments).
+      Monitorea el uso de características, jornadas del usuario, embudos de conversión y métricas de negocio. Con [nuestra API](/documentation/tracking/events) puedes rastrear todo desde acciones del usuario hasta [despliegues](/documentation/tracking/deployments).
     image: pages/scr-20230729-nqfu.png
     dark_image: pages/scr-20230729-nqij.png
     type: section_with_image

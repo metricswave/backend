@@ -8,19 +8,19 @@ updated_by: 6ee8895a-52f6-44a1-a772-a0e7f04692b7
 updated_at: 1750846122
 seo_title: 'An Event-Driven Google Analytics Alternative'
 seo_description: 'MetricsWave is a lightweight and privacy-friendly Google Analytics alternative. Seamless Integration for any Website or App.'
-hero_content: 'Totally free for 1M visits per month (no credit card required); easy setup; track your income; respect user privacy; and more.'
+hero_content: 'Free for 1M events per month (no credit card required); easy setup; privacy-friendly; and more.'
 structured_content:
   -
     id: lko1j4et
-    title: 'Track your Website Traffic.'
+    title: 'Track Revenue, Product Usage & User Behavior.'
     image: pages/track_visits_light-1731578172.png
     dark_image: pages/track_visits_dark-1731578191.png
     type: section_with_image
     enabled: true
     content: |-
-      We believe in easy to understand and actionable statistics. Know how your users know you and how they behave. 
+      Go beyond basic traffic analytics. Track revenue, understand how users interact with your product, and discover what drives conversions.
 
-      This is how traffic analytics should have always been.
+      Know not just where visitors come from, but how they use your product and what generates revenue.
   -
     id: m3svhtpk
     type: open_numbers
@@ -37,11 +37,11 @@ structured_content:
     enabled: true
   -
     id: lm332a5s
-    title: 'Track Your Income'
+    title: 'Revenue Tracking Made Simple'
     content: |-
-      Not just visits; with MetricsWave, you can track your income too.
+      Transform every interaction into revenue insights. Track sales, subscriptions, and conversions with detailed attribution.
 
-      Add parameters like source to see where the money is coming from, or type to check if the user prefers subscriptions or single payments, for example.
+      See exactly which features, campaigns, or user actions drive revenue. Add custom parameters to understand your most profitable channels and user behaviors.
     image: pages/money_light.png
     dark_image: pages/money_dark.png
     type: section_with_image
@@ -70,11 +70,11 @@ structured_content:
     enabled: true
   -
     id: lko1letc
-    title: 'More than Just Traffic.'
+    title: 'Complete Product Analytics.'
     content: |-
-      Stay on top of your product's important events, potential issues, and notifications with ease.
+      Track every aspect of your product's performance - from user engagement to revenue generation.
 
-      With [our API](/documentation/tracking/events) you can track from logins or sign ups to [deploys](/documentation/tracking/deployments).
+      Monitor feature usage, user journeys, conversion funnels, and business metrics. With [our API](/documentation/tracking/events) you can track everything from user actions to [deploys](/documentation/tracking/deployments).
     image: pages/scr-20230729-nqfu.png
     dark_image: pages/scr-20230729-nqij.png
     type: section_with_image
