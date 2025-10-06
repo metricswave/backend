@@ -62,14 +62,14 @@
                             <span class="min-w-[100px]">{{ $plan->name }}</span>
                             <span class="opacity-70 flex-grow">
                             @if($plan->name === "Enterprise")
-                                    {{ __("Unlimited traffic") }}
-                                @else
-                                    {{
-                                        $plan->eventsLimit !== null ?
-                                            format_long_numbers($plan->eventsLimit, 0) :
-                                            'Unlimited'
-                                     }} {{ __("visits per month") }}.
-                                @endif
+                                {{ __("Unlimited traffic") }}
+                            @else
+                                {{
+                                    $plan->eventsLimit !== null ?
+                                    __("up to :visits visits per month", ['visits' => format_long_numbers($plan->eventsLimit, 1)]) :
+                                    'Unlimited'
+                                }}
+                            @endif
                         </span>
                             <span>{!!
                                 html_format_currency($plan->monthlyPrice, $this->currencySymbol, '/'.__('mo'))

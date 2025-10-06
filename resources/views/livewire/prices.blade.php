@@ -59,8 +59,11 @@
                             @if ($plan->name === 'Enterprise')
                                 {{ __('Unlimited traffic') }}
                             @else
-                                {{ $plan->eventsLimit !== null ? $formattedLimit : 'Unlimited' }}
-                                {{ __('visits per month') }}.
+                                {{
+                                    $plan->eventsLimit !== null ?
+                                    __("up to :visits visits per month", ['visits' => $formattedLimit]) :
+                                    'Unlimited'
+                                }}
                             @endif
                         </div>
                     </a>
