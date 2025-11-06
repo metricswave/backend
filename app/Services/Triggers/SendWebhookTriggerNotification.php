@@ -12,15 +12,13 @@ class SendWebhookTriggerNotification
     /**
      * @throws MissingTriggerParams
      */
-    public function __invoke(Trigger $trigger, array $params, bool $fromScript = false, string $triggeredAt = null): void
+    public function __invoke(Trigger $trigger, array $params, bool $fromScript = false, ?string $triggeredAt = null): void
     {
         if ($trigger->team_id === 76) {
             return;
         }
 
-        $requiredParams = collect($trigger->configuration['fields']['parameters']);
-
-        $missingParams = $requiredParams->diff(array_keys($params));
+        $missingParams = $this->missingParams($trigger, $params);
 
         if ($missingParams->isNotEmpty() && ! $fromScript) {
             throw MissingTriggerParams::with($missingParams);
@@ -40,5 +38,13 @@ class SendWebhookTriggerNotification
                 $triggeredAt,
             )
         );
+    }
+
+    private function missingParams(Trigger $trigger, array $params): \Illuminate\Support\Collection
+    {
+        $requiredParams = collect($trigger->configuration['fields']['parameters'])
+            ->reject(fn ($param) => $param === 'user_id');
+
+        return $requiredParams->diff(array_keys($params));
     }
 }
