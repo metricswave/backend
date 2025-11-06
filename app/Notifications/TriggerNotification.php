@@ -35,7 +35,7 @@ class TriggerNotification extends Notification implements ShouldQueue
     public function __construct(
         public readonly Trigger $trigger,
         public readonly array $params = [],
-        CarbonImmutable $notifiedAt = null,
+        ?CarbonImmutable $notifiedAt = null,
     ) {
         if (isset($params['amount']) && $trigger->isMoneyIncomeType()) {
             $params['amount'] = $this->formatMoneyAmount((int) $params['amount']);
@@ -129,7 +129,7 @@ class TriggerNotification extends Notification implements ShouldQueue
 
     public function toMail(object $notifiable): MailMessage
     {
-        return (new MailMessage)
+        return (new MailMessage())
             ->subject($this->trigger->emoji.' '.$this->title)
             ->markdown('mail.trigger', [
                 'emoji' => $this->emoji,
@@ -141,9 +141,9 @@ class TriggerNotification extends Notification implements ShouldQueue
     private function formatMoneyAmount(int $amount): string
     {
         $money = new Money($amount, new Currency($this->trigger->team->preferredCurrency()));
-        $currencies = new ISOCurrencies;
+        $currencies = new ISOCurrencies();
 
-        $numberFormatter = new \NumberFormatter('en_US', \NumberFormatter::CURRENCY);
+        $numberFormatter = new \NumberFormatter('en', \NumberFormatter::CURRENCY);
         $moneyFormatter = new IntlMoneyFormatter($numberFormatter, $currencies);
 
         return $moneyFormatter->format($money);
