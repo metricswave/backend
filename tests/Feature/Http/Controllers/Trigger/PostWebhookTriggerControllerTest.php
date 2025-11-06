@@ -4,6 +4,7 @@ use App\Models\Trigger;
 use App\Models\TriggerType;
 use App\Transfers\TriggerTypeId;
 
+use function Pest\Laravel\post;
 use function Pest\Laravel\postJson;
 
 it('send expected notification', function () {
@@ -131,4 +132,34 @@ it('error because missing parameters expected notification', function () {
         ->assertBadRequest();
 
     Notification::assertCount(0);
+});
+
+it('does not require CSRF token for POST requests', function () {
+    TriggerType::factory()->create(['id' => TriggerTypeId::Webhook->value]);
+    [$user, $team] = user_with_team();
+    $t = Trigger::factory()
+        ->for($team)
+        ->create([
+            'trigger_type_id' => TriggerTypeId::Webhook->value,
+            'configuration' => [
+                'fields' => [
+                    'parameters' => [
+                        'name',
+                        'content',
+                    ],
+                ],
+            ],
+        ]);
+
+    Notification::fake();
+
+    post(
+        '/webhooks/'.$t->uuid,
+        [
+            'name' => 'Victor',
+            'content' => 'Hola',
+        ]
+    )->assertSuccessful();
+
+    Notification::assertCount(1);
 });
