@@ -12,13 +12,11 @@
     <div class="p-app mt-12 {{ !$withoutTitle ? 'sm:mt-44' : '' }} mw-landing mx-auto">
         @if (!$withoutTitle)
             <h2 class="text-2xl md:text-4xl sm:text-center font-bold mb-6 leading-snug mx-auto">
-                {!! __('Choose the plan<br/>that fits your needs') !!}
+                MetricsWave is shutting down
             </h2>
             <div class="sm:text-center text-zinc-500 pb-6 flex flex-col space-y-3 md:px-10 mb-8 max-w-[700px] mx-auto">
                 <p>
-                    <a href="https://app.metricswave.com"
-                        class="border-b border-dotted border-blue-500 text-blue-500 smooth hover:text-blue-700 dark:hover:text-blue-300 hover:border-solid">{{ __('Start for free') }}</a>,
-                    {{ __('and upgrade your account at any moment') }}.
+                    The service will be discontinued in June 2025. New registrations are no longer accepted. Thank you for being part of our journey.
                 </p>
             </div>
         @endif

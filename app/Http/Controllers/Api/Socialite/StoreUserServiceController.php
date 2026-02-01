@@ -2,23 +2,22 @@
 
 namespace App\Http\Controllers\Api\Socialite;
 
-use App\Exceptions\CanNotCreateUserBecauseNoPaidLicence;
 use App\Http\Controllers\Api\Auth\JsonTokenResponseController;
 use App\Models\Service;
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
-use Laravel\Socialite\Two\User;
-use MetricsWave\Users\Repositories\UserRepository;
+use Laravel\Socialite\Two\User as SocialiteUser;
 use Socialite;
 
 class StoreUserServiceController extends JsonTokenResponseController
 {
-    public function __construct(private readonly UserRepository $userRepository)
+    public function __construct()
     {
     }
 
     public function __invoke(Service $service): JsonResponse
     {
-        /** @var User $socialiteUser */
+        /** @var SocialiteUser $socialiteUser */
         $socialiteUser = Socialite::driver($service->driver)->stateless()->user();
         $deviceName = request()->query('deviceName');
 
@@ -26,16 +25,16 @@ class StoreUserServiceController extends JsonTokenResponseController
             $this->errorResponse('DeviceName is required', 400);
         }
 
-        try {
-            $user = $this->userRepository->updateOrCreate(
-                $socialiteUser->email,
-                [
-                    'name' => $socialiteUser->name,
-                ]
+        $existingUser = User::query()->where('email', $socialiteUser->email)->first();
+
+        if ($existingUser === null) {
+            return $this->errorResponse(
+                'MetricsWave is shutting down. New registrations are no longer accepted. The service will be discontinued in June 2025.',
+                410,
             );
-        } catch (CanNotCreateUserBecauseNoPaidLicence) {
-            return $this->errorResponse('Only paid license users can create an account right now.', 409);
         }
+
+        $user = $existingUser;
 
         $user->services()->updateOrCreate(
             [
@@ -56,6 +55,6 @@ class StoreUserServiceController extends JsonTokenResponseController
             ]
         );
 
-        return $this->tokenResponse($user, $deviceName, $user->wasRecentlyCreated ? 201 : 200);
+        return $this->tokenResponse($user, $deviceName, 200);
     }
 }

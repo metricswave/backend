@@ -28,6 +28,10 @@
             style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
+    <div class="bg-amber-500/10 border-b border-amber-500/20 px-4 py-3 text-center text-sm text-amber-800 dark:text-amber-200">
+        <strong>MetricsWave is shutting down.</strong> The service will be discontinued in June 2025. Thank you for being part of our journey.
+    </div>
+
     <nav class="flex justify-between items-center px-4 pt-8 pb-8 mx-auto sm:px-8">
         @if (!$minimal)
             <a class="flex items-center space-x-3 dark:text-white text-zinc-900" href="/">
